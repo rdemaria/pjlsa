@@ -5,21 +5,7 @@ import jpype
 import cmmnbuild_dep_manager
 
 mgr = cmmnbuild_dep_manager.Manager()
-jarlist = mgr.jars()
-jarlist.append(os.path.abspath("./"))
-if os.name == "nt":
-    # We are running on Windows, Java expects a ";" between
-    # classpaths.
-    _jar = ";".join(jarlist)
-else:
-    # ":" works for linux and maybe also some other systems?
-    _jar = ":".join(jarlist)
-
-if not jpype.isJVMStarted():
-   libjvm = jpype.getDefaultJVMPath()
-   jpype.startJVM(libjvm,'-Djava.class.path=%s'%_jar)
-else:
-    print('Warning: JVM already started')
+jpype=mgr.start_jpype_jvm()
 
 
 cern=jpype.JPackage('cern')
