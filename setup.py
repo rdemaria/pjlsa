@@ -12,14 +12,14 @@ class install(_install):
             import cmmnbuild_dep_manager
             mgr = cmmnbuild_dep_manager.Manager()
             mgr.install('pylsa')
-            print('registered pytimber with cmmnbuild_dep_manager')
+            print('registered pylsa with cmmnbuild_dep_manager')
         except ImportError:
             pass
         _install.run(self)
 
 setuptools.setup(
     name='pylsa',
-    version=pytimber.__version__,
+    version=pylsa.__version__,
     description='A Python wrapping of LSA API',
     author='Riccardo De Maria',
     author_email='riccardo.de.maria@cern.ch',
