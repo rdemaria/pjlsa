@@ -4,6 +4,8 @@ import jpype
 
 import cmmnbuild_dep_manager
 
+# Use mgr.class_hints('LhcService')
+# put deps in __init__.py
 mgr = cmmnbuild_dep_manager.Manager()
 jpype=mgr.start_jpype_jvm()
 
@@ -16,9 +18,16 @@ System=java.lang.System
 null=org.apache.log4j.varia.NullAppender()
 org.apache.log4j.BasicConfigurator.configure(null)
 
+
+
 FidelService=cern.lsa.client.FidelService;
 ServiceLocator=cern.lsa.client.ServiceLocator;
 CalibrationFunctionTypes=cern.lsa.domain.optics.CalibrationFunctionTypes;
+
+LhcService=cern.lsa.client.LhcService
+Device=cern.lsa.domain.devices.Device
+
+
 
 
 class Fidel(object):
@@ -41,5 +50,7 @@ class Fidel(object):
              fh=open(fn,'w')
              fh.write('\n'.join(["%s %s"%(i,f) for i,f in zip(current,field)]))
              fh.close()
+
+
 
 
