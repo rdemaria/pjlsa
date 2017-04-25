@@ -4,7 +4,7 @@ import cmmnbuild_dep_manager
 
 # Use mgr.class_hints('LhcService')
 # put deps in __init__.py
-mgr = cmmnbuild_dep_manager.Manager()
+mgr = cmmnbuild_dep_manager.Manager('pylsa')
 jpype=mgr.start_jpype_jvm()
 
 cern=jpype.JPackage('cern')
@@ -16,7 +16,7 @@ null=org.apache.log4j.varia.NullAppender()
 org.apache.log4j.BasicConfigurator.configure(null)
 
 ContextService   =cern.lsa.client.ContextService
-#HyperCycleService=cern.lsa.client.HyperCycleService
+HyperCycleService=cern.lsa.client.HyperCycleService
 ParameterService =cern.lsa.client.ParameterService
 ServiceLocator   =cern.lsa.client.ServiceLocator
 SettingService   =cern.lsa.client.SettingService
@@ -34,7 +34,8 @@ Setting              =cern.lsa.domain.settings.Setting
 StandAloneBeamProcess=cern.lsa.domain.settings.StandAloneBeamProcess
 TrimHeader           =cern.lsa.domain.settings.TrimHeader
 
-Device=cern.lsa.domain.devices.Device
+ParametersRequestBuilder = cern.lsa.domain.settings.factory.ParametersRequestBuilder
+Device                   = cern.lsa.domain.devices.Device
 
 CalibrationFunctionTypes=cern.lsa.domain.optics.CalibrationFunctionTypes;
 
@@ -44,20 +45,19 @@ class LSAClient(object):
         System.setProperty("lsa.server", server);
         System.setProperty("lsa.mode", "3");
         System.setProperty("accelerator", "LHC");
-        self.contextService = ServiceLocator.getService(ContextService)
         self.trimService = ServiceLocator.getService(TrimService)
         self.settingService = ServiceLocator.getService(SettingService)
         self.parameterService = ServiceLocator.getService(ParameterService)
         self.contextService  = ServiceLocator.getService(ContextService)
         self.lhcService      = ServiceLocator.getService(LhcService)
-        #self.hyperCycleService = ServiceLocator.getService(HyperCycleService)
+        self.hyperCycleService = ServiceLocator.getService(HyperCycleService)
     def findHyperCycles(self):
-        return map(str,self.contextService.findHyperCycles())
+        return map(str,self.hyperCycleService.findHyperCycles())
     def getHyperCycle(self,hypercycle=None):
         if hypercycle is None:
-            return self.contextService.findActiveHyperCycle()
+            return self.hyperCycleService.findActiveHyperCycle()
         else:
-            return self.contextService.findHyperCycle(hypercycle)
+            return self.hyperCycleService.findHyperCycle(hypercycle)
     def getUsers(self,hypercycle=None):
         hp=self.getHyperCycle(hypercycle=hypercycle)
         return map(str,hp.getUsers())
@@ -67,7 +67,22 @@ class LSAClient(object):
             return hp.getResidentBeamProcess()
         else:
             return hp.getBeamProcessByUser(user)
-
+    def getParameterList(self,deviceName):
+        req=ParametersRequestBuilder().setDeviceName(deviceName)
+        lst=self.parameterService.findParameters(req.build())
+        return lst
+    def getParameterNames(self,deviceName):
+        req=ParametersRequestBuilder().setDeviceName(deviceName)
+        lst=self.parameterService.findParameters(req.build())
+        return [pp.getName() for pp in lst]
+    def getTrim(self,beamProcess,parameterName):
+        parameter = self.parameterService.findParameterByName(parameterName)
+        bpl=java.util.ArrayList(1)
+        bpl.add(beamProcess)
+        pl=java.util.ArrayList(1)
+        pl.add(parameter)
+        headers=self.trimService.findTrimHeaders(bpl,pl, None)
+        return headers
 
 class Fidel(object):
     def __init__(self,server='lhc'):
