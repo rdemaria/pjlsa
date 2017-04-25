@@ -39,7 +39,7 @@ Device=cern.lsa.domain.devices.Device
 CalibrationFunctionTypes=cern.lsa.domain.optics.CalibrationFunctionTypes;
 
 
-class Context(object):
+class LSAClient(object):
     def __init__(self,server='lhc'):
         System.setProperty("lsa.server", server);
         System.setProperty("lsa.mode", "3");
@@ -48,7 +48,8 @@ class Context(object):
         self.trimService = ServiceLocator.getService(TrimService)
         self.settingService = ServiceLocator.getService(SettingService)
         self.parameterService = ServiceLocator.getService(ParameterService)
-        self.contextService = ServiceLocator.getService(ContextService)
+        self.contextService  = ServiceLocator.getService(ContextService)
+        self.lhcService      = ServiceLocator.getService(LhcService)
         #self.hyperCycleService = ServiceLocator.getService(HyperCycleService)
     def findHyperCycles(self):
         return map(str,self.contextService.findHyperCycles())
