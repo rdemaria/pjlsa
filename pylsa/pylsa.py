@@ -28,6 +28,8 @@ SettingService   =cern.lsa.client.SettingService
 TrimService      =cern.lsa.client.TrimService
 LhcService       =cern.lsa.client.LhcService
 FidelService     =cern.lsa.client.FidelService
+KnobService      =cern.lsa.client.KnobService
+OpticService     =cern.lsa.client.OpticService
 
 
 BeamProcess          =cern.lsa.domain.settings.BeamProcess
@@ -37,7 +39,7 @@ Parameter            =cern.lsa.domain.settings.Parameter
 ParameterSettings    =cern.lsa.domain.settings.ParameterSettings
 Setting              =cern.lsa.domain.settings.Setting
 StandAloneBeamProcess=cern.lsa.domain.settings.StandAloneBeamProcess
-#TrimHeader           =cern.lsa.domain.settings.TrimHeader
+Knob                 =cern.lsa.domain.settings.Knob
 
 Device=cern.lsa.domain.devices.Device
 
@@ -51,7 +53,8 @@ def _build_TrimHeader(th):
             createdDate = datetime.datetime.fromtimestamp(th.createdDate.getTime()/1000),
             description = th.description,
             clientInfo = th.clientInfo)
-Trim = namedtuple('Trim', ['time','beamProcesses','createdDate','description','clientInfo'])
+OpticTableItem = namedtuple('OpticTableItem', ['time', 'id', 'name'])
+
 
 def _toJavaDate(t):
     Date = java.util.Date
@@ -78,6 +81,8 @@ class LSAClient(object):
         self.contextService = ServiceLocator.getService(ContextService)
         self.lhcService = ServiceLocator.getService(LhcService)
         self.hyperCycleService = ServiceLocator.getService(HyperCycleService)
+        self.knobService = ServiceLocator.getService(KnobService)
+        self.opticService = ServiceLocator.getService(OpticService)
 
     def findHyperCycles(self):
         return [str(c) for c in self.contextService.findHyperCycles()]
@@ -93,13 +98,13 @@ class LSAClient(object):
         return [str(u) for u in hp.getUsers()]
 
     def getBeamProcess(self, bp):
-        if isinstance(bp, cern.lsa.domain.settings.BeamProcess):
+        if isinstance(bp, BeamProcess):
             return bp
         else:
             return self.contextService.findStandAloneBeamProcess(bp)
 
     def getParameter(self, param):
-        if isinstance(param, cern.lsa.domain.settings.Parameter):
+        if isinstance(param, Parameter):
             return param
         else:
             return self.parameterService.findParameterByName(param)
@@ -143,8 +148,18 @@ class LSAClient(object):
             timestamps.append(th.createdDate.getTime()/1000)
             values.append(value)
         return { parameter: (np.array(timestamps), np.array(values), headers) }
-        
+       
+    def getOpticTable(self, beamprocess):
+        bp = self.getBeamProcess(beamprocess)
+        opticTable = list(self.opticService.findContextOpticsTables(bp))[0].getOpticsTableItems()
+        return [ OpticTableItem(time=o.getTime(), id=o.getOpticId(), name=o.getOpticName()) for o in opticTable ]
 
+    def getKnobFactors(self, knob, optic):
+        if isinstance(optic, OpticTableItem):
+            optic = optic.name
+        k = self.knobService.findKnob(knob)
+        factors = list(k.getKnobFactors().getFactorsForOptic(optic))
+        return { f.getComponentName(): f.getFactor() for f in factors }
 
 class Fidel(object):
     def __init__(self,server='lhc'):
