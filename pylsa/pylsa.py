@@ -118,12 +118,11 @@ class LSAClient(object):
 
     def getResidentBeamProcesses(self):
         return [str(p) for p in list(self.getHyperCycle().getResidentBeamProcesses())]
- 
-    def _getRawTrimHeaders(self, beamprocess, parameter, start=None, end=None):
-        param = self.getParameter(parameter)
+
+    def _getRawTrimHeaders(self, beamprocess, param, start=None, end=None):
         bp = self.getBeamProcess(beamprocess)
         raw_headers = self.trimService.findTrimHeaders(java.util.Collections.singleton(bp),
-                                                       java.util.Collections.singleton(param),
+                                                       param,
                                                        _toJavaDate(start))
         raw_headers = list(raw_headers)
         if start is not None:
@@ -131,24 +130,42 @@ class LSAClient(object):
         if end is not None:
             raw_headers = [th for th in raw_headers if th.createdDate.before(_toJavaDate(end))]
         return raw_headers
- 
+
     def getTrimHeaders(self, beamprocess, parameter, start=None, end=None):
-        return [_build_TrimHeader(th) for th in self._getRawTrimHeaders(beamprocess, parameter, start, end)]
+        if type(parameter) is str:
+            param = self.getParameter(parameter)
+            param = java.util.Collections.singleton(param)
+        elif type(parameter) in [list,tuple]:
+            param = java.util.LinkedList()
+            for pp in parameter:
+                param.add(self.getParameter(pp))
+        return [_build_TrimHeader(th) for th in self._getRawTrimHeaders(beamprocess, param, start, end)]
 
     def getTrims(self, beamprocess, parameter, start=None, end=None):
-        param = self.getParameter(parameter)
+        if type(parameter) is str:
+            param = self.getParameter(parameter)
+            param = java.util.Collections.singleton(param)
+        elif type(parameter) in [list,tuple]:
+            param = java.util.LinkedList()
+            for pp in parameter:
+                param.add(self.getParameter(pp))
         bp = self.getBeamProcess(beamprocess)
-        headers = []
-        timestamps = []
-        values = []
+
+        headers = {}
+        timestamps = {}
+        values = {}
         for th in self._getRawTrimHeaders(bp, param, start, end):
-            contextSettings = self.settingService.findContextSettings(bp, java.util.Collections.singleton(param), th.createdDate)
-            value = contextSettings.getParameterSettings(param).getSetting(bp).getScalarValue().getDouble()
-            headers.append(_build_TrimHeader(th))
-            timestamps.append(th.createdDate.getTime()/1000)
-            values.append(value)
-        return { parameter: (np.array(timestamps), np.array(values), headers) }
-       
+            contextSettings = self.settingService.findContextSettings(bp, param, th.createdDate)
+            for pp in param:
+              value = contextSettings.getParameterSettings(pp).getSetting(bp).getScalarValue().getDouble()
+              headers.setdefault(pp.getName(),[]).append(_build_TrimHeader(th))
+              timestamps.setdefault(pp.getName(),[]).append(th.createdDate.getTime()/1000)
+              values.setdefault(pp.getName(),[]).append(value)
+        out={}
+        for name in values:
+            out[name]=(timestamps[name],values[name],headers[name])
+        return out
+
     def getOpticTable(self, beamprocess):
         bp = self.getBeamProcess(beamprocess)
         opticTable = list(self.opticService.findContextOpticsTables(bp))[0].getOpticsTableItems()
@@ -165,7 +182,7 @@ class LSAClient(object):
         req=ParametersRequestBuilder().setDeviceName(deviceName)
         lst=self.parameterService.findParameters(req.build())
         return lst
-      
+
     def getParameterNames(self,deviceName):
         req=ParametersRequestBuilder().setDeviceName(deviceName)
         lst=self.parameterService.findParameters(req.build())
@@ -191,6 +208,4 @@ class Fidel(object):
              fh=open(fn,'w')
              fh.write('\n'.join(["%s %s"%(i,f) for i,f in zip(current,field)]))
              fh.close()
-
-
 
