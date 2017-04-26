@@ -24,7 +24,6 @@ TrimService      =cern.lsa.client.TrimService
 LhcService       =cern.lsa.client.LhcService
 FidelService     =cern.lsa.client.FidelService
 
-
 BeamProcess          =cern.lsa.domain.settings.BeamProcess
 ContextSettings      =cern.lsa.domain.settings.ContextSettings
 HyperCycle           =cern.lsa.domain.settings.HyperCycle
