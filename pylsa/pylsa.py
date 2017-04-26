@@ -9,7 +9,7 @@ import six
 
 # Use mgr.class_hints('LhcService')
 # put deps in __init__.py
-mgr = cmmnbuild_dep_manager.Manager()
+mgr = cmmnbuild_dep_manager.Manager('pylsa')
 jpype=mgr.start_jpype_jvm()
 
 cern=jpype.JPackage('cern')
@@ -31,7 +31,6 @@ FidelService     =cern.lsa.client.FidelService
 KnobService      =cern.lsa.client.KnobService
 OpticService     =cern.lsa.client.OpticService
 
-
 BeamProcess          =cern.lsa.domain.settings.BeamProcess
 ContextSettings      =cern.lsa.domain.settings.ContextSettings
 HyperCycle           =cern.lsa.domain.settings.HyperCycle
@@ -41,7 +40,8 @@ Setting              =cern.lsa.domain.settings.Setting
 StandAloneBeamProcess=cern.lsa.domain.settings.StandAloneBeamProcess
 Knob                 =cern.lsa.domain.settings.Knob
 
-Device=cern.lsa.domain.devices.Device
+ParametersRequestBuilder = cern.lsa.domain.settings.factory.ParametersRequestBuilder
+Device                   = cern.lsa.domain.devices.Device
 
 CalibrationFunctionTypes=cern.lsa.domain.optics.CalibrationFunctionTypes;
 
@@ -160,6 +160,16 @@ class LSAClient(object):
         k = self.knobService.findKnob(knob)
         factors = list(k.getKnobFactors().getFactorsForOptic(optic))
         return { f.getComponentName(): f.getFactor() for f in factors }
+
+    def getParameterList(self,deviceName):
+        req=ParametersRequestBuilder().setDeviceName(deviceName)
+        lst=self.parameterService.findParameters(req.build())
+        return lst
+      
+    def getParameterNames(self,deviceName):
+        req=ParametersRequestBuilder().setDeviceName(deviceName)
+        lst=self.parameterService.findParameters(req.build())
+        return [pp.getName() for pp in lst]
 
 class Fidel(object):
     def __init__(self,server='lhc'):

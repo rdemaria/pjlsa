@@ -1,6 +1,6 @@
 __version__ = "0.0.1"
 
-cmmnbuild_deps = [
+__cmmnbuild_deps__ = [
     "lsa-client"
 ]
 
