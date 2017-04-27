@@ -39,6 +39,8 @@ ParameterSettings    =cern.lsa.domain.settings.ParameterSettings
 Setting              =cern.lsa.domain.settings.Setting
 StandAloneBeamProcess=cern.lsa.domain.settings.StandAloneBeamProcess
 Knob                 =cern.lsa.domain.settings.Knob
+FunctionSetting      =cern.lsa.domain.settings.spi.FunctionSetting
+ScalarSetting        =cern.lsa.domain.settings.spi.ScalarSetting
 
 ParametersRequestBuilder = cern.lsa.domain.settings.factory.ParametersRequestBuilder
 Device                   = cern.lsa.domain.devices.Device
@@ -157,7 +159,15 @@ class LSAClient(object):
         for th in self._getRawTrimHeaders(bp, param, start, end):
             contextSettings = self.settingService.findContextSettings(bp, param, th.createdDate)
             for pp in param:
-              value = contextSettings.getParameterSettings(pp).getSetting(bp).getScalarValue().getDouble()
+              setting = contextSettings.getParameterSettings(pp).getSetting(bp)
+              if type(setting) is ScalarSetting:
+                value = setting.getScalarValue().getDouble()
+              elif type(setting) is FunctionSetting:
+                df = setting.getFunctionValue()
+                value = np.array([df.toXArray()[:], df.toYArray()[:]])
+              else:
+                # for now, return the java type (to be extended)
+                value = setting
               headers.setdefault(pp.getName(),[]).append(_build_TrimHeader(th))
               timestamps.setdefault(pp.getName(),[]).append(th.createdDate.getTime()/1000)
               values.setdefault(pp.getName(),[]).append(value)
