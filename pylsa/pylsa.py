@@ -159,7 +159,11 @@ class LSAClient(object):
         for th in self._getRawTrimHeaders(bp, param, start, end):
             contextSettings = self.settingService.findContextSettings(bp, param, th.createdDate)
             for pp in param:
-              setting = contextSettings.getParameterSettings(pp).getSetting(bp)
+              parameterSetting = contextSettings.getParameterSettings(pp)
+              if parameterSetting is None:
+                continue
+
+              setting = parameterSetting.getSetting(bp)
               if type(setting) is ScalarSetting:
                 value = setting.getScalarValue().getDouble()
               elif type(setting) is FunctionSetting:
@@ -168,6 +172,7 @@ class LSAClient(object):
               else:
                 # for now, return the java type (to be extended)
                 value = setting
+                   
               headers.setdefault(pp.getName(),[]).append(_build_TrimHeader(th))
               timestamps.setdefault(pp.getName(),[]).append(th.createdDate.getTime()/1000)
               values.setdefault(pp.getName(),[]).append(value)
