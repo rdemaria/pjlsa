@@ -151,11 +151,9 @@ class LSAClient(object):
         parameterList = self._buildParameterList(parameter)
         bp = self.getBeamProcess(beamprocess)
 
-        headers = []
         timestamps = {}
         values = {}
         for th in self._getRawTrimHeaders(bp, parameterList, start, end):
-            headers.append(_build_TrimHeader(th))
             contextSettings = self.settingService.findContextSettings(bp, parameterList, th.createdDate)
             for pp in parameterList:
               parameterSetting = contextSettings.getParameterSettings(pp)
@@ -174,7 +172,7 @@ class LSAClient(object):
                    
               timestamps.setdefault(pp.getName(),[]).append(th.createdDate.getTime()/1000)
               values.setdefault(pp.getName(),[]).append(value)
-        out={ 'trimHeaders' : headers }
+        out={ }
         for name in values:
             out[name]=TrimTuple(time=timestamps[name], data=values[name])
         return out
