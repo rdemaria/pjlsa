@@ -57,6 +57,7 @@ def _build_TrimHeader(th):
             clientInfo = th.clientInfo)
 OpticTableItem = namedtuple('OpticTableItem', ['time', 'id', 'name'])
 
+TrimTuple = namedtuple('TrimTuple', ['time', 'data', 'trim_headers'])
 
 def _toJavaDate(t):
     Date = java.util.Date
@@ -178,7 +179,7 @@ class LSAClient(object):
               values.setdefault(pp.getName(),[]).append(value)
         out={}
         for name in values:
-            out[name]=(timestamps[name],values[name],headers[name])
+            out[name]=TrimTuple(time=timestamps[name],data=values[name],trim_headers=headers[name])
         return out
 
     def getOpticTable(self, beamprocess):
