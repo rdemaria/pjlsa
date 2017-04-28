@@ -39,6 +39,8 @@ ParameterSettings    =cern.lsa.domain.settings.ParameterSettings
 Setting              =cern.lsa.domain.settings.Setting
 StandAloneBeamProcess=cern.lsa.domain.settings.StandAloneBeamProcess
 Knob                 =cern.lsa.domain.settings.Knob
+FunctionSetting      =cern.lsa.domain.settings.spi.FunctionSetting
+ScalarSetting        =cern.lsa.domain.settings.spi.ScalarSetting
 
 ParametersRequestBuilder = cern.lsa.domain.settings.factory.ParametersRequestBuilder
 Device                   = cern.lsa.domain.devices.Device
@@ -55,6 +57,7 @@ def _build_TrimHeader(th):
             clientInfo = th.clientInfo)
 OpticTableItem = namedtuple('OpticTableItem', ['time', 'id', 'name'])
 
+TrimTuple = namedtuple('TrimTuple', ['time', 'data'])
 
 def _toJavaDate(t):
     Date = java.util.Date
@@ -131,39 +134,47 @@ class LSAClient(object):
             raw_headers = [th for th in raw_headers if th.createdDate.before(_toJavaDate(end))]
         return raw_headers
 
-    def getTrimHeaders(self, beamprocess, parameter, start=None, end=None):
-        if type(parameter) is str:
+    def _buildParameterList(self, parameter):
+        if type(parameter) in [str,BeamProcess]:
             param = self.getParameter(parameter)
             param = java.util.Collections.singleton(param)
-        elif type(parameter) in [list,tuple]:
+        else:
             param = java.util.LinkedList()
             for pp in parameter:
                 param.add(self.getParameter(pp))
-        return [_build_TrimHeader(th) for th in self._getRawTrimHeaders(beamprocess, param, start, end)]
+        return param
+
+    def getTrimHeaders(self, beamprocess, parameter, start=None, end=None):
+        return [_build_TrimHeader(th) for th in self._getRawTrimHeaders(beamprocess, self._buildParameterList(parameter), start, end)]
 
     def getTrims(self, beamprocess, parameter, start=None, end=None):
-        if type(parameter) is str:
-            param = self.getParameter(parameter)
-            param = java.util.Collections.singleton(param)
-        elif type(parameter) in [list,tuple]:
-            param = java.util.LinkedList()
-            for pp in parameter:
-                param.add(self.getParameter(pp))
+        parameterList = self._buildParameterList(parameter)
         bp = self.getBeamProcess(beamprocess)
 
-        headers = {}
         timestamps = {}
         values = {}
-        for th in self._getRawTrimHeaders(bp, param, start, end):
-            contextSettings = self.settingService.findContextSettings(bp, param, th.createdDate)
-            for pp in param:
-              value = contextSettings.getParameterSettings(pp).getSetting(bp).getScalarValue().getDouble()
-              headers.setdefault(pp.getName(),[]).append(_build_TrimHeader(th))
+        for th in self._getRawTrimHeaders(bp, parameterList, start, end):
+            contextSettings = self.settingService.findContextSettings(bp, parameterList, th.createdDate)
+            for pp in parameterList:
+              parameterSetting = contextSettings.getParameterSettings(pp)
+              if parameterSetting is None:
+                continue
+
+              setting = parameterSetting.getSetting(bp)
+              if type(setting) is ScalarSetting:
+                value = setting.getScalarValue().getDouble()
+              elif type(setting) is FunctionSetting:
+                df = setting.getFunctionValue()
+                value = np.array([df.toXArray()[:], df.toYArray()[:]])
+              else:
+                # for now, return the java type (to be extended)
+                value = setting
+                   
               timestamps.setdefault(pp.getName(),[]).append(th.createdDate.getTime()/1000)
               values.setdefault(pp.getName(),[]).append(value)
-        out={}
+        out={ }
         for name in values:
-            out[name]=(timestamps[name],values[name],headers[name])
+            out[name]=TrimTuple(time=timestamps[name], data=values[name])
         return out
 
     def getOpticTable(self, beamprocess):
