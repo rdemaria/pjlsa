@@ -57,7 +57,7 @@ def _build_TrimHeader(th):
             clientInfo = th.clientInfo)
 OpticTableItem = namedtuple('OpticTableItem', ['time', 'id', 'name'])
 
-TrimTuple = namedtuple('TrimTuple', ['time', 'data', 'trim_headers'])
+TrimTuple = namedtuple('TrimTuple', ['time', 'data', 'trimHeaders'])
 
 def _toJavaDate(t):
     Date = java.util.Date
@@ -134,32 +134,29 @@ class LSAClient(object):
             raw_headers = [th for th in raw_headers if th.createdDate.before(_toJavaDate(end))]
         return raw_headers
 
-    def getTrimHeaders(self, beamprocess, parameter, start=None, end=None):
-        if type(parameter) is str:
+    def _buildParameterList(self, parameter):
+        if type(parameter) in [str,BeamProcess]:
             param = self.getParameter(parameter)
             param = java.util.Collections.singleton(param)
-        elif type(parameter) in [list,tuple]:
+        else:
             param = java.util.LinkedList()
             for pp in parameter:
                 param.add(self.getParameter(pp))
-        return [_build_TrimHeader(th) for th in self._getRawTrimHeaders(beamprocess, param, start, end)]
+        return param
+
+    def getTrimHeaders(self, beamprocess, parameter, start=None, end=None):
+        return [_build_TrimHeader(th) for th in self._getRawTrimHeaders(beamprocess, self._buildParameterList(parameter), start, end)]
 
     def getTrims(self, beamprocess, parameter, start=None, end=None):
-        if type(parameter) is str:
-            param = self.getParameter(parameter)
-            param = java.util.Collections.singleton(param)
-        elif type(parameter) in [list,tuple]:
-            param = java.util.LinkedList()
-            for pp in parameter:
-                param.add(self.getParameter(pp))
+        parameterList = self._buildParameterList(parameter)
         bp = self.getBeamProcess(beamprocess)
 
         headers = {}
         timestamps = {}
         values = {}
-        for th in self._getRawTrimHeaders(bp, param, start, end):
-            contextSettings = self.settingService.findContextSettings(bp, param, th.createdDate)
-            for pp in param:
+        for th in self._getRawTrimHeaders(bp, parameterList, start, end):
+            contextSettings = self.settingService.findContextSettings(bp, parameterList, th.createdDate)
+            for pp in parameterList:
               parameterSetting = contextSettings.getParameterSettings(pp)
               if parameterSetting is None:
                 continue
@@ -179,7 +176,7 @@ class LSAClient(object):
               values.setdefault(pp.getName(),[]).append(value)
         out={}
         for name in values:
-            out[name]=TrimTuple(time=timestamps[name],data=values[name],trim_headers=headers[name])
+            out[name]=TrimTuple(time=timestamps[name], data=values[name], trimHeaders=headers[name])
         return out
 
     def getOpticTable(self, beamprocess):
