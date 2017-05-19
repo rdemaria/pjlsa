@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
-import os
+import os, re
 from collections import namedtuple
-import cmmnbuild_dep_manager
-import numpy as np
 import datetime
+
+import numpy as np
 import six
+
+import cmmnbuild_dep_manager
 
 
 # Use mgr.class_hints('LhcService')
@@ -45,16 +47,19 @@ ScalarSetting        =cern.lsa.domain.settings.spi.ScalarSetting
 ParametersRequestBuilder = cern.lsa.domain.settings.factory.ParametersRequestBuilder
 Device                   = cern.lsa.domain.devices.Device
 
-CalibrationFunctionTypes=cern.lsa.domain.optics.CalibrationFunctionTypes;
+CalibrationFunctionTypes=cern.lsa.domain.optics.CalibrationFunctionTypes
 
-TrimHeader = namedtuple('TrimHeader', ['id','beamProcesses','createdDate','description','clientInfo'])
+TrimHeader = namedtuple('TrimHeader',
+           ['id','beamProcesses','createdDate','description','clientInfo'])
+
 def _build_TrimHeader(th):
     return TrimHeader(
             id = th.id,
             beamProcesses = [str(bp) for bp in th.beamProcesses],
-            createdDate = datetime.datetime.fromtimestamp(th.createdDate.getTime()/1000),
+            createdDate = datetime.datetime.fromtimestamp(
+                              th.createdDate.getTime()/1000),
             description = th.description,
-            clientInfo = th.clientInfo)
+            clientInfo = th.clientInfo )
 OpticTableItem = namedtuple('OpticTableItem', ['time', 'id', 'name'])
 
 TrimTuple = namedtuple('TrimTuple', ['time', 'data'])
@@ -72,11 +77,15 @@ def _toJavaDate(t):
     else:
         return Date(int(t*1000))
 
+accelerators={
+        'lhc': cern.accsoft.commons.domain.CernAccelerator.LHC,
+        }
+
 class LSAClient(object):
-    def __init__(self,server='lhc'):
+    def __init__(self,server='lhc',accelerator="LHC"):
         System.setProperty("lsa.server", server)
         System.setProperty("lsa.mode", "3")
-        System.setProperty("accelerator", "LHC")
+        System.setProperty("accelerator", accelerator)
         self.contextService = ServiceLocator.getService(ContextService)
         self.trimService = ServiceLocator.getService(TrimService)
         self.settingService = ServiceLocator.getService(SettingService)
@@ -89,6 +98,12 @@ class LSAClient(object):
 
     def findHyperCycles(self):
         return [str(c) for c in self.contextService.findHyperCycles()]
+
+    def findBeamProcesses(self,regexp='.*',accelerator='lhc'):
+        acc=accelerators.get(accelerator,accelerator)
+        bps = self.contextService.findStandAloneBeamProcesses(acc)
+        reg=re.compile(regexp)
+        return [str(bp) for bp in bps if reg.match(str(bp))]
 
     def getHyperCycle(self,hypercycle=None):
         if hypercycle is None:
@@ -145,7 +160,10 @@ class LSAClient(object):
         return param
 
     def getTrimHeaders(self, beamprocess, parameter, start=None, end=None):
-        return [_build_TrimHeader(th) for th in self._getRawTrimHeaders(beamprocess, self._buildParameterList(parameter), start, end)]
+        return [_build_TrimHeader(th) for th in
+                   self._getRawTrimHeaders(
+                            beamprocess,
+                            self._buildParameterList(parameter), start, end)]
 
     def getTrims(self, beamprocess, parameter, start=None, end=None):
         parameterList = self._buildParameterList(parameter)
@@ -154,7 +172,9 @@ class LSAClient(object):
         timestamps = {}
         values = {}
         for th in self._getRawTrimHeaders(bp, parameterList, start, end):
-            contextSettings = self.settingService.findContextSettings(bp, parameterList, th.createdDate)
+            contextSettings =  \
+                    self.settingService.findContextSettings(bp,
+                            parameterList, th.createdDate)
             for pp in parameterList:
               parameterSetting = contextSettings.getParameterSettings(pp)
               if parameterSetting is None:
@@ -169,13 +189,17 @@ class LSAClient(object):
               else:
                 # for now, return the java type (to be extended)
                 value = setting
-                   
-              timestamps.setdefault(pp.getName(),[]).append(th.createdDate.getTime()/1000)
+
+              timestamps.setdefault(pp.getName(),[]).append(
+                                          th.createdDate.getTime()/1000)
               values.setdefault(pp.getName(),[]).append(value)
         out={ }
         for name in values:
             out[name]=TrimTuple(time=timestamps[name], data=values[name])
         return out
+    def getLastTrim(self,beamprocess, parameter):
+        res=self.getTrims(beamprocess,parameter)[parameter]
+        return res.time[-1],res.data[-1]
 
     def getOpticTable(self, beamprocess):
         bp = self.getBeamProcess(beamprocess)
@@ -189,21 +213,29 @@ class LSAClient(object):
         factors = list(k.getKnobFactors().getFactorsForOptic(optic))
         return { f.getComponentName(): f.getFactor() for f in factors }
 
+    def getOpticsStrength(self,optic):
+        if not hasattr(optic,'name'):
+           optic=self.opticService.findOpticByName(optic)
+        out=  [ (st.logicalHWName,st.strength)
+                for st in optic.getOpticStrengths() ]
+        return dict(out)
+
     def getParameterList(self,deviceName):
         req=ParametersRequestBuilder().setDeviceName(deviceName)
         lst=self.parameterService.findParameters(req.build())
         return lst
 
-    def getParameterNames(self,deviceName):
+    def getParameterNames(self,deviceName,regexp=''):
         req=ParametersRequestBuilder().setDeviceName(deviceName)
         lst=self.parameterService.findParameters(req.build())
-        return [pp.getName() for pp in lst]
+        reg=re.compile(regexp,re.IGNORECASE)
+        return filter(reg.search,[pp.getName() for pp in lst ])
 
 class Fidel(object):
-    def __init__(self,server='lhc'):
+    def __init__(self,server='lhc',accelerator="LHC"):
         System.setProperty("lsa.server", server)
         System.setProperty("lsa.mode", "3")
-        System.setProperty("accelerator", "LHC")
+        System.setProperty("accelerator", accelerator)
         self.fidelService = ServiceLocator.getService(FidelService)
     def dump_calibrations(outdir='calib'):
         os.mkdir(outdir)
