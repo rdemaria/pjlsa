@@ -99,11 +99,11 @@ class LSAClient(object):
     def findHyperCycles(self):
         return [str(c) for c in self.contextService.findHyperCycles()]
 
-    def findBeamProcesses(self,regexp='.*',accelerator='lhc'):
+    def findBeamProcesses(self,regexp='',accelerator='lhc'):
         acc=accelerators.get(accelerator,accelerator)
         bps = self.contextService.findStandAloneBeamProcesses(acc)
-        reg=re.compile(regexp)
-        return [str(bp) for bp in bps if reg.match(str(bp))]
+        reg=re.compile(regexp,re.IGNORECASE)
+        return filter(reg.search,[str(bp) for bp in bps])
 
     def getHyperCycle(self,hypercycle=None):
         if hypercycle is None:
