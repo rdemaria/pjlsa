@@ -146,9 +146,9 @@ class LSAClient(object):
                                                        _toJavaDate(start))
         raw_headers = list(raw_headers)
         if start is not None:
-            raw_headers = [th for th in raw_headers if th.createdDate.after(_toJavaDate(start))]
+            raw_headers = [th for th in raw_headers if not th.createdDate.before(_toJavaDate(start))]
         if end is not None:
-            raw_headers = [th for th in raw_headers if th.createdDate.before(_toJavaDate(end))]
+            raw_headers = [th for th in raw_headers if not th.createdDate.after(_toJavaDate(end))]
         return raw_headers
 
     def _buildParameterList(self, parameter):
@@ -215,9 +215,11 @@ class LSAClient(object):
         for name in values:
             out[name]=TrimTuple(time=timestamps[name], data=values[name])
         return out
+
     def getLastTrim(self,beamprocess, parameter, part='value'):
-        res=self.getTrims(beamprocess,parameter,part=part)[parameter]
-        return res.time[-1],res.data[-1]
+        th = self.getTrimHeaders(beamprocess,parameter)[-1]
+        res = self.getTrims(beamprocess, parameter, part=part, start=th.createdDate)[parameter]
+        return TrimTuple(res.time[-1],res.data[-1])
 
     def getOpticTable(self, beamprocess):
         bp = self.getBeamProcess(beamprocess)
