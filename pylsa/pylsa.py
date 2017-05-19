@@ -165,7 +165,7 @@ class LSAClient(object):
                             beamprocess,
                             self._buildParameterList(parameter), start, end)]
 
-    def getTrims(self, beamprocess, parameter, start=None, end=None):
+    def getTrims(self, beamprocess, parameter, start=None, end=None, part='value'):
         parameterList = self._buildParameterList(parameter)
         bp = self.getBeamProcess(beamprocess)
 
@@ -182,9 +182,23 @@ class LSAClient(object):
 
               setting = parameterSetting.getSetting(bp)
               if type(setting) is ScalarSetting:
-                value = setting.getScalarValue().getDouble()
+                if part == 'value':
+                  value = setting.getScalarValue().getDouble()
+                elif part == 'target':
+                  value = setting.getTargetScalarValue().getDouble()
+                elif part == 'correction':
+                  value = setting.getCorrectionScalarValue().getDouble()
+                else:
+                  raise ValueError('Invalid Setting Part: ' + part)
               elif type(setting) is FunctionSetting:
-                df = setting.getFunctionValue()
+                if part == 'value':
+                  df = setting.getFunctionValue()
+                elif part == 'target':
+                  df = setting.getTargetFunctionValue()
+                elif part == 'correction':
+                  df = setting.getCorrectionFunctionValue()
+                else:
+                  raise ValueError('Invalid Setting Part: ' + part)
                 value = np.array([df.toXArray()[:], df.toYArray()[:]])
               else:
                 # for now, return the java type (to be extended)
