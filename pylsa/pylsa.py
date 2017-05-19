@@ -32,6 +32,7 @@ LhcService       =cern.lsa.client.LhcService
 FidelService     =cern.lsa.client.FidelService
 KnobService      =cern.lsa.client.KnobService
 OpticService     =cern.lsa.client.OpticService
+DeviceService    =cern.lsa.client.DeviceService
 
 BeamProcess          =cern.lsa.domain.settings.BeamProcess
 ContextSettings      =cern.lsa.domain.settings.ContextSettings
