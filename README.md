@@ -6,15 +6,15 @@ Limited use for the time being
 ## Extract trims for a particular beamProcess, parameter, and time window
 ```python
 import pylsa
-lsaClient = pylsa.LSAClient()
+lsa = pylsa.LSAClient()
 t1='2015-11-22 00:00:00'
 t2='2015-11-23 00:00:00'
-trims = lsaClient.getTrims(beamprocess="PHYSICS-2.51TeV-4m-2015_V1@90_[END]", parameter="LHCBEAM2/IP1_SEPSCAN_Y_MM", start=t1, end=t2)
+trims = lsa.getTrims(beamprocess="PHYSICS-2.51TeV-4m-2015_V1@90_[END]", parameter="LHCBEAM2/IP1_SEPSCAN_Y_MM", start=t1, end=t2)
 ```
 
 ## Get optics tables
 ```
-In [1]: ot = lsaClient.getOpticTable('RAMP-SQUEEZE-6.5TeV-ATS-1m-2017_V1')
+In [1]: ot = lsa.getOpticTable('RAMP-SQUEEZE-6.5TeV-ATS-1m-2017_V3_V1')
 
 In [2]: ot
 Out[2]: 
@@ -43,8 +43,8 @@ Out[2]:
 
 ## Get knob factors
 ```python
-ot = lsaClient.getOpticTable('PHYSICS-2.51TeV-4m-2015_V1@90_[END]')
-f = lsaClient.getKnobFactors('LHCBEAM2/IP1_SEPSCAN_Y_MM', ot[0])
+ot = lsa.getOpticTable('PHYSICS-2.51TeV-4m-2015_V1@90_[END]')
+f = lsa.getKnobFactors('LHCBEAM2/IP1_SEPSCAN_Y_MM', ot[0])
 ```
 ```
 {'RCBCV5.R1B2/KICK': -8.138696574e-05,
@@ -62,15 +62,23 @@ lsa.getParameterNames('LHCBEAM','mom')
 ```
 
 ```python
-lsa.getLastTrim('RAMP-SQUEEZE-6.5TeV-ATS-1m-2017_V3_V1','LHCBEAM/MOMENTUM')
+ts,(steps,val)=lsa.getLastTrim('RAMP-SQUEEZE-6.5TeV-ATS-1m-2017_V3_V1','LHCBEAM/MOMENTUM')
 (1493433699L,
  array([[  0.00000000e+00,   1.00000000e+00,   2.00000000e+00, ...,
            1.20591610e+03,   1.20611610e+03,   1.21000000e+03],
         [  4.50000000e+02,   4.50010000e+02,   4.50040000e+02, ...,
            6.49999200e+03,   6.49999970e+03,   6.50000000e+03]]))
+tvalue=[opt.time for opt in ot]
+mom=np.interp(tvalue,steps,val)
+for vv,opt in zip(mom,ot):
+  print(vv,ot.name)
 ```
-## Parameter
+## PowerConverterInfo
 
 ```python
- dev=lsa.deviceService.findPowerConverterInfo('RPHGA.RR57.RQ7.R5B1')
- ```
+dev=lsa.deviceService.findPowerConverterInfo('RPHGA.RR57.RQ7.R5B1')
+print(dev.getDidtMin())
+print(dev.getInom())
+```
+
+
