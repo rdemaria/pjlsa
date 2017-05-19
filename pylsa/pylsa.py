@@ -96,6 +96,7 @@ class LSAClient(object):
         self.hyperCycleService = ServiceLocator.getService(HyperCycleService)
         self.knobService = ServiceLocator.getService(KnobService)
         self.opticService = ServiceLocator.getService(OpticService)
+        self.deviceService = ServiceLocator.getService(DeviceService)
 
     def findHyperCycles(self):
         return [str(c) for c in self.contextService.findHyperCycles()]
@@ -182,28 +183,30 @@ class LSAClient(object):
                 continue
 
               setting = parameterSetting.getSetting(bp)
-              if type(setting) is ScalarSetting:
-                if part == 'value':
-                  value = setting.getScalarValue().getDouble()
-                elif part == 'target':
-                  value = setting.getTargetScalarValue().getDouble()
-                elif part == 'correction':
-                  value = setting.getCorrectionScalarValue().getDouble()
+              value = setting
+              if part is not None:
+                if type(setting) is ScalarSetting:
+                  if part == 'value':
+                    value = setting.getScalarValue().getDouble()
+                  elif part == 'target':
+                    value = setting.getTargetScalarValue().getDouble()
+                  elif part == 'correction':
+                    value = setting.getCorrectionScalarValue().getDouble()
+                  else:
+                    raise ValueError('Invalid Setting Part: ' + part)
+                elif type(setting) is FunctionSetting:
+                  if part == 'value':
+                    df = setting.getFunctionValue()
+                  elif part == 'target':
+                    df = setting.getTargetFunctionValue()
+                  elif part == 'correction':
+                    df = setting.getCorrectionFunctionValue()
+                  else:
+                    raise ValueError('Invalid Setting Part: ' + part)
+                  value = np.array([df.toXArray()[:], df.toYArray()[:]])
                 else:
-                  raise ValueError('Invalid Setting Part: ' + part)
-              elif type(setting) is FunctionSetting:
-                if part == 'value':
-                  df = setting.getFunctionValue()
-                elif part == 'target':
-                  df = setting.getTargetFunctionValue()
-                elif part == 'correction':
-                  df = setting.getCorrectionFunctionValue()
-                else:
-                  raise ValueError('Invalid Setting Part: ' + part)
-                value = np.array([df.toXArray()[:], df.toYArray()[:]])
-              else:
-                # for now, return the java type (to be extended)
-                value = setting
+                  # for now, return the java type (to be extended)
+                  value = setting
 
               timestamps.setdefault(pp.getName(),[]).append(
                                           th.createdDate.getTime()/1000)
@@ -212,14 +215,16 @@ class LSAClient(object):
         for name in values:
             out[name]=TrimTuple(time=timestamps[name], data=values[name])
         return out
-    def getLastTrim(self,beamprocess, parameter):
-        res=self.getTrims(beamprocess,parameter)[parameter]
+    def getLastTrim(self,beamprocess, parameter, part='value'):
+        res=self.getTrims(beamprocess,parameter,part=part)[parameter]
         return res.time[-1],res.data[-1]
 
     def getOpticTable(self, beamprocess):
         bp = self.getBeamProcess(beamprocess)
         opticTable = list(self.opticService.findContextOpticsTables(bp))[0].getOpticsTableItems()
-        return [ OpticTableItem(time=o.getTime(), id=o.getOpticId(), name=o.getOpticName()) for o in opticTable ]
+        return [ OpticTableItem(time=o.getTime(),
+                 id=o.getOpticId(),
+                 name=o.getOpticName()) for o in opticTable ]
 
     def getKnobFactors(self, knob, optic):
         if isinstance(optic, OpticTableItem):
@@ -228,12 +233,15 @@ class LSAClient(object):
         factors = list(k.getKnobFactors().getFactorsForOptic(optic))
         return { f.getComponentName(): f.getFactor() for f in factors }
 
-    def getOpticsStrength(self,optic):
+    def getOpticStrength(self,optic):
         if not hasattr(optic,'name'):
            optic=self.opticService.findOpticByName(optic)
         out=  [ (st.logicalHWName,st.strength)
                 for st in optic.getOpticStrengths() ]
         return dict(out)
+
+    def getOptics(self,name):
+        return self.opticService.findOpticByName(name)
 
     def getParameterList(self,deviceName):
         req=ParametersRequestBuilder().setDeviceName(deviceName)
