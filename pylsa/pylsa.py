@@ -61,7 +61,7 @@ def _build_TrimHeader(th):
                               th.createdDate.getTime()/1000),
             description = th.description,
             clientInfo = th.clientInfo )
-OpticTableItem = namedtuple('OpticTableItem', ['time', 'id', 'name', 'obj'])
+OpticTableItem = namedtuple('OpticTableItem', ['time', 'id', 'name'])
 
 TrimTuple = namedtuple('TrimTuple', ['time', 'data'])
 
@@ -224,8 +224,7 @@ class LSAClient(object):
         opticTable = list(self.opticService.findContextOpticsTables(bp))[0].getOpticsTableItems()
         return [ OpticTableItem(time=o.getTime(),
                  id=o.getOpticId(),
-                 name=o.getOpticName(),
-                 obj=o) for o in opticTable ]
+                 name=o.getOpticName() ) for o in opticTable ]
 
     def getKnobFactors(self, knob, optic):
         if isinstance(optic, OpticTableItem):
