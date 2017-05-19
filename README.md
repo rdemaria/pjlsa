@@ -69,3 +69,8 @@ lsa.getLastTrim('RAMP-SQUEEZE-6.5TeV-ATS-1m-2017_V3_V1','LHCBEAM/MOMENTUM')
         [  4.50000000e+02,   4.50010000e+02,   4.50040000e+02, ...,
            6.49999200e+03,   6.49999970e+03,   6.50000000e+03]]))
 ```
+## Parameter
+
+```python
+ dev=lsa.deviceService.findPowerConverterInfo('RPHGA.RR57.RQ7.R5B1')
+ ```
