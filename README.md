@@ -54,3 +54,18 @@ f = lsaClient.getKnobFactors('LHCBEAM2/IP1_SEPSCAN_Y_MM', ot[0])
  'RCBYVS4.L1B2/KICK': 5.584873181e-05,
  'RCBYVS4.R1B2/KICK': 0.0001292294752}
 ```
+
+## Get parameter factors
+```python
+lsa.getParameterNames('LHCBEAM','mom')
+[u'LHCBEAM/MOMENTUM-TRIM', u'LHCBEAM/MOMENTUM']
+```
+
+```python
+lsa.getLastTrim('RAMP-SQUEEZE-6.5TeV-ATS-1m-2017_V3_V1','LHCBEAM/MOMENTUM')
+(1493433699L,
+ array([[  0.00000000e+00,   1.00000000e+00,   2.00000000e+00, ...,
+           1.20591610e+03,   1.20611610e+03,   1.21000000e+03],
+        [  4.50000000e+02,   4.50010000e+02,   4.50040000e+02, ...,
+           6.49999200e+03,   6.49999970e+03,   6.50000000e+03]]))
+```
