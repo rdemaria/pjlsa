@@ -250,11 +250,11 @@ class LSAClient(object):
         lst=self.parameterService.findParameters(req.build())
         return lst
 
-    def getParameterNames(self,deviceName,regexp=''):
+    def findParameterNames(self,deviceName,regexp=''):
         req=ParametersRequestBuilder().setDeviceName(deviceName)
         lst=self.parameterService.findParameters(req.build())
         reg=re.compile(regexp,re.IGNORECASE)
-        return filter(reg.search,[pp.getName() for pp in lst ])
+        return sorted(filter(reg.search,[pp.getName() for pp in lst ]))
 
 class Fidel(object):
     def __init__(self,server='lhc',accelerator="LHC"):
