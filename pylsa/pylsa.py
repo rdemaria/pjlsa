@@ -105,7 +105,7 @@ class LSAClient(object):
         acc=accelerators.get(accelerator,accelerator)
         bps = self.contextService.findStandAloneBeamProcesses(acc)
         reg=re.compile(regexp,re.IGNORECASE)
-        return filter(reg.search,[str(bp) for bp in bps])
+        return sorted(filter(reg.search,[str(bp) for bp in bps]))
 
     def getHyperCycle(self,hypercycle=None):
         if hypercycle is None:
@@ -115,7 +115,7 @@ class LSAClient(object):
 
     def getUsers(self,hypercycle=None):
         hp=self.getHyperCycle(hypercycle=hypercycle)
-        return [str(u) for u in hp.getUsers()]
+        return sorted([str(u) for u in hp.getUsers()])
 
     def getBeamProcess(self, bp):
         if isinstance(bp, BeamProcess):
