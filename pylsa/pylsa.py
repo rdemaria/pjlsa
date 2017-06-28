@@ -48,6 +48,10 @@ ScalarSetting        =cern.lsa.domain.settings.spi.ScalarSetting
 ParametersRequestBuilder = cern.lsa.domain.settings.factory.ParametersRequestBuilder
 Device                   = cern.lsa.domain.devices.Device
 
+ParameterTreesRequestBuilder       = cern.lsa.domain.settings.factory.ParameterTreesRequestBuilder
+ParameterTreesRequest              = cern.lsa.domain.settings.ParameterTreesRequest
+ParameterTreesRequestTreeDirection = jpype.JClass('cern.lsa.domain.settings.ParameterTreesRequest$TreeDirection')
+
 CalibrationFunctionTypes=cern.lsa.domain.optics.CalibrationFunctionTypes
 
 TrimHeader = namedtuple('TrimHeader',
@@ -234,7 +238,23 @@ class LSAClient(object):
         k = self.knobService.findKnob(knob)
         factors = list(k.getKnobFactors().getFactorsForOptic(optic))
         return { f.getComponentName(): f.getFactor() for f in factors }
-
+        
+    def getParameterHierarchy(self, parameter, direction='dependent'):
+        req = ParameterTreesRequestBuilder()
+        if direction=='dependent':
+            req.setTreeDirection(ParameterTreesRequestTreeDirection.DEPENDENT_TREE)
+        elif direction=='source':
+            req.setTreeDirection(ParameterTreesRequestTreeDirection.SOURCE_TREE)
+        else:
+            raise ValueError('invalid direction, expecting "dependent" or "source"')
+        req.setParameter(self.getParameter(parameter))
+        tree = self.parameterService.findParameterTrees(req.build())
+        params = {}
+        for t in tree:
+            for p in t.getParameters():
+                params.setdefault(str(p.getParameterType()),[]).append(str(p))
+        return params
+        
     def getOpticStrength(self,optic):
         if not hasattr(optic,'name'):
            optic=self.opticService.findOpticByName(optic)

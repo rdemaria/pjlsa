@@ -97,7 +97,7 @@ f = lsa.getKnobFactors('LHCBEAM2/IP1_SEPSCAN_Y_MM', ot[0])
  'RCBYVS4.R1B2/KICK': 0.0001292294752}
 ```
 
-## Get parameter factors
+## search parameter names
 ```python
 lsa.getParameterNames('LHCBEAM','mom')
 [u'LHCBEAM/MOMENTUM-TRIM', u'LHCBEAM/MOMENTUM']
@@ -113,4 +113,28 @@ print(dev.getDidtMin())
 print(dev.getInom())
 ```
 
+## Get the parameter hierarchy tree for a parameter
+```lsa.getParameterHierarchy('LHCBEAM1/IP1_SEPSCAN_X_MM')
+{'I': ['RCBCH6.L1B1/I',
+  'RCBYHS4.R1B1/I',
+  'RCBYH4.L1B1/I',
+  'RCBYHS4.L1B1/I',
+  'RCBCH5.R1B1/I'],
+ 'IREF': ['RPLB.RR13.RCBCH6.L1B1/IREF',
+  'RPLB.RR17.RCBYHS4.R1B1/IREF',
+  'RPLB.RR13.RCBYH4.L1B1/IREF',
+  'RPLB.RR13.RCBYHS4.L1B1/IREF',
+  'RPLB.RR17.RCBCH5.R1B1/IREF'],
+ 'K': ['RCBCH6.L1B1/KICK',
+  'RCBYHS4.R1B1/KICK',
+  'RCBYH4.L1B1/KICK',
+  'RCBYHS4.L1B1/KICK',
+  'RCBCH5.R1B1/KICK'],
+ 'KNOB': ['LHCBEAM1/IP1_SEPSCAN_X_MM'],
+ 'K_SMOOTH': ['RCBCH6.L1B1/K_SMOOTH',
+  'RCBYHS4.R1B1/K_SMOOTH',
+  'RCBYH4.L1B1/K_SMOOTH',
+  'RCBYHS4.L1B1/K_SMOOTH',
+  'RCBCH5.R1B1/K_SMOOTH']}
+```
 
