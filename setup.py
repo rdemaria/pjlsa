@@ -26,8 +26,8 @@ setuptools.setup(
     url='https://github.com/rdemaria/pylsa',
     packages=['pylsa'],
     package_dir={'pylsa': 'pylsa'},
-    install_requires=['JPype1>=0.6.1',
-                      'cmmnbuild-dep-manager>=2.1.0' ],
+    install_requires=['JPype1>=0.6.2',
+                      'cmmnbuild-dep-manager>=2.1.2' ],
     cmdclass={ 'install': install },
 )
 
