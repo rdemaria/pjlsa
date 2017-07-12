@@ -103,7 +103,7 @@ class LSAClient(object):
         self.deviceService = ServiceLocator.getService(DeviceService)
 
     def findHyperCycles(self):
-        return [str(c) for c in self.contextService.findHyperCycles()]
+        return [str(c) for c in self.hyperCycleService.findHyperCycles()]
 
     def findBeamProcesses(self,regexp='',accelerator='lhc'):
         acc=accelerators.get(accelerator,accelerator)
@@ -145,9 +145,12 @@ class LSAClient(object):
 
     def _getRawTrimHeaders(self, beamprocess, param, start=None, end=None):
         bp = self.getBeamProcess(beamprocess)
-        raw_headers = self.trimService.findTrimHeaders(java.util.Collections.singleton(bp),
-                                                       param,
-                                                       _toJavaDate(start))
+        thrb = cern.lsa.domain.settings.TrimHeadersRequestBuilder()
+        thrb.beamProcesses(java.util.Collections.singleton(bp))
+        thrb.parameters(param)
+        thrb.startingFrom(_toJavaDate(start).toInstant())
+        trimHeadersRequest = thrb.build()
+        raw_headers = self.trimService.findTrimHeaders(trimHeadersRequest)
         raw_headers = list(raw_headers)
         if start is not None:
             raw_headers = [th for th in raw_headers if not th.createdDate.before(_toJavaDate(start))]
@@ -178,9 +181,11 @@ class LSAClient(object):
         timestamps = {}
         values = {}
         for th in self._getRawTrimHeaders(bp, parameterList, start, end):
-            contextSettings =  \
-                    self.settingService.findContextSettings(bp,
-                            parameterList, th.createdDate)
+            csrb = cern.lsa.domain.settings.ContextSettingsRequestBuilder()
+            csrb.standAloneContext(bp)
+            csrb.parameters(parameterList)
+            csrb.at(th.createdDate.toInstant())
+            contextSettings =  self.settingService.findContextSettings(csrb.build())
             for pp in parameterList:
               parameterSetting = contextSettings.getParameterSettings(pp)
               if parameterSetting is None:
@@ -238,7 +243,7 @@ class LSAClient(object):
         k = self.knobService.findKnob(knob)
         factors = list(k.getKnobFactors().getFactorsForOptic(optic))
         return { f.getComponentName(): f.getFactor() for f in factors }
-        
+
     def getParameterHierarchy(self, parameter, direction='dependent'):
         req = ParameterTreesRequestBuilder()
         if direction=='dependent':
@@ -254,7 +259,7 @@ class LSAClient(object):
             for p in t.getParameters():
                 params.setdefault(str(p.getParameterType()),[]).append(str(p))
         return params
-        
+
     def getOpticStrength(self,optic):
         if not hasattr(optic,'name'):
            optic=self.opticService.findOpticByName(optic)
