@@ -282,9 +282,9 @@ class Fidel(object):
         System.setProperty("lsa.mode", "3")
         System.setProperty("accelerator", accelerator)
         self.fidelService = ServiceLocator.getService(FidelService)
-    def dump_calibrations(outdir='calib'):
+    def dump_calibrations(self, outdir='calib'):
         os.mkdir(outdir)
-        cals=fidelService.findAllCalibrations();
+        cals=self.fidelService.findAllCalibrations();
         for cc in cals:
           name=cc.getName()
           ff=cc.getCalibrationFunctionByType(CalibrationFunctionTypes.B_FIELD)
