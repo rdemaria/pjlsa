@@ -47,6 +47,7 @@ check_lsa_version()
 mgr = cmmnbuild_dep_manager.Manager('pylsa')
 jpype=mgr.start_jpype_jvm()
 
+
 cern=jpype.JPackage('cern')
 org=jpype.JPackage('org')
 java=jpype.JPackage('java')
@@ -55,9 +56,7 @@ System=java.lang.System
 null=org.apache.log4j.varia.NullAppender()
 org.apache.log4j.BasicConfigurator.configure(null)
 
-if type(cern.lsa.client.ContextService) is jpype._jpackage.JPackage:
-    raise ImportError("LSA jars not (yet) installed")
-
+# Java classes
 ContextService   =cern.lsa.client.ContextService
 HyperCycleService=cern.lsa.client.HyperCycleService
 ParameterService =cern.lsa.client.ParameterService
@@ -90,8 +89,25 @@ ParameterTreesRequestTreeDirection = jpype.JClass('cern.lsa.domain.settings.Para
 
 CalibrationFunctionTypes=cern.lsa.domain.optics.CalibrationFunctionTypes
 
+LHC =cern.accsoft.commons.domain.CernAccelerator.LHC
+PS  =cern.accsoft.commons.domain.CernAccelerator.PS
+SPS =cern.accsoft.commons.domain.CernAccelerator.SPS
+LEIR=cern.accsoft.commons.domain.CernAccelerator.LEIR
+PSB =cern.accsoft.commons.domain.CernAccelerator.PSB
+
+
+# Python data descriptors
 TrimHeader = namedtuple('TrimHeader',
            ['id','beamProcesses','createdDate','description','clientInfo'])
+OpticTableItem = namedtuple('OpticTableItem', ['time', 'id', 'name'])
+TrimTuple = namedtuple('TrimTuple', ['time', 'data'])
+
+
+#
+Accelerators={
+        'lhc':  LHC, 'ps':   PS, 'sps':  SPS,
+        'lear': LEIR, 'psb':  PSB, }
+
 
 def _build_TrimHeader(th):
     return TrimHeader(
@@ -101,11 +117,10 @@ def _build_TrimHeader(th):
                               th.createdDate.getTime()/1000),
             description = th.description,
             clientInfo = th.clientInfo )
-OpticTableItem = namedtuple('OpticTableItem', ['time', 'id', 'name'])
-
-TrimTuple = namedtuple('TrimTuple', ['time', 'data'])
 
 def _toJavaDate(t):
+    """Date from string, datetime, unixtimestamp to java date
+    """
     Date = java.util.Date
     if isinstance(t, six.string_types):
         return java.sql.Timestamp.valueOf(t)
@@ -118,47 +133,43 @@ def _toJavaDate(t):
     else:
         return Date(int(t*1000))
 
-accelerators={
-        'lhc': cern.accsoft.commons.domain.CernAccelerator.LHC,
-        }
 
-def jlist(lst):
+def _toJavaList(lst):
     res=java.util.LinkedList()
     for ii in lst:
         res.add(ii)
     return res
 
-
 class LSAClient(object):
-    def __init__(self,server='gpn',accelerator="LHC"):
+    def __init__(self,server='gpn'):
         System.setProperty("lsa.server", server)
         System.setProperty("lsa.mode", "3")
-        System.setProperty("accelerator", accelerator)
-        self.contextService = ServiceLocator.getService(ContextService)
-        self.trimService = ServiceLocator.getService(TrimService)
-        self.settingService = ServiceLocator.getService(SettingService)
-        self.parameterService = ServiceLocator.getService(ParameterService)
-        self.contextService = ServiceLocator.getService(ContextService)
-        self.lhcService = ServiceLocator.getService(LhcService)
-        self.hyperCycleService = ServiceLocator.getService(HyperCycleService)
-        self.knobService = ServiceLocator.getService(KnobService)
-        self.opticService = ServiceLocator.getService(OpticService)
-        self.deviceService = ServiceLocator.getService(DeviceService)
+        self._contextService = ServiceLocator.getService(ContextService)
+        self._trimService = ServiceLocator.getService(TrimService)
+        self._settingService = ServiceLocator.getService(SettingService)
+        self._parameterService = ServiceLocator.getService(ParameterService)
+        self._contextService = ServiceLocator.getService(ContextService)
+        self._lhcService = ServiceLocator.getService(LhcService)
+        self._hyperCycleService = ServiceLocator.getService(HyperCycleService)
+        self._knobService = ServiceLocator.getService(KnobService)
+        self._opticService = ServiceLocator.getService(OpticService)
+        self._deviceService = ServiceLocator.getService(DeviceService)
+        self._fidelService = ServiceLocator.getService(FidelService)
 
     def findHyperCycles(self):
-        return [str(c) for c in self.hyperCycleService.findHyperCycles()]
+        return [str(c) for c in self._hyperCycleService.findHyperCycles()]
 
     def findBeamProcesses(self,regexp='',accelerator='lhc'):
         acc=accelerators.get(accelerator,accelerator)
-        bps = self.contextService.findStandAloneBeamProcesses(acc)
+        bps = self._contextService.findStandAloneBeamProcesses(acc)
         reg=re.compile(regexp,re.IGNORECASE)
         return sorted(filter(reg.search,[str(bp) for bp in bps]))
 
     def getHyperCycle(self,hypercycle=None):
         if hypercycle is None:
-            return self.hyperCycleService.findActiveHyperCycle()
+            return self._hyperCycleService.findActiveHyperCycle()
         else:
-            return self.hyperCycleService.findHyperCycle(hypercycle)
+            return self._hyperCycleService.findHyperCycle(hypercycle)
 
     def getUsers(self,hypercycle=None):
         hp=self.getHyperCycle(hypercycle=hypercycle)
@@ -168,13 +179,13 @@ class LSAClient(object):
         if isinstance(bp, BeamProcess):
             return bp
         else:
-            return self.contextService.findStandAloneBeamProcess(bp)
+            return self._contextService.findStandAloneBeamProcess(bp)
 
     def getParameter(self, param):
         if isinstance(param, Parameter):
             return param
         else:
-            return self.parameterService.findParameterByName(param)
+            return self._parameterService.findParameterByName(param)
 
     def getBeamProcessByUser(self,user, hypercycle=None):
         hp=self.getHyperCycle(hypercycle=hypercycle)
@@ -191,9 +202,10 @@ class LSAClient(object):
         thrb = cern.lsa.domain.settings.TrimHeadersRequestBuilder()
         thrb.beamProcesses(java.util.Collections.singleton(bp))
         thrb.parameters(param)
-        thrb.startingFrom(_toJavaDate(start).toInstant())
+        if start is not None:
+           thrb.startingFrom(_toJavaDate(start).toInstant())
         trimHeadersRequest = thrb.build()
-        raw_headers = self.trimService.findTrimHeaders(trimHeadersRequest)
+        raw_headers = self._trimService.findTrimHeaders(trimHeadersRequest)
         raw_headers = list(raw_headers)
         if start is not None:
             raw_headers = [th for th in raw_headers if not th.createdDate.before(_toJavaDate(start))]
@@ -228,7 +240,7 @@ class LSAClient(object):
             csrb.standAloneContext(bp)
             csrb.parameters(parameterList)
             csrb.at(th.createdDate.toInstant())
-            contextSettings =  self.settingService.findContextSettings(csrb.build())
+            contextSettings =  self._settingService.findContextSettings(csrb.build())
             for pp in parameterList:
               parameterSetting = contextSettings.getParameterSettings(pp)
               if parameterSetting is None:
@@ -275,7 +287,7 @@ class LSAClient(object):
 
     def getOpticTable(self, beamprocess):
         bp = self.getBeamProcess(beamprocess)
-        opticTable = list(self.opticService.findContextOpticsTables(bp))[0].getOpticsTableItems()
+        opticTable = list(self._opticService.findContextOpticsTables(bp))[0].getOpticsTableItems()
         return [ OpticTableItem(time=o.getTime(),
                  id=o.getOpticId(),
                  name=o.getOpticName() ) for o in opticTable ]
@@ -283,7 +295,7 @@ class LSAClient(object):
     def getKnobFactors(self, knob, optic):
         if isinstance(optic, OpticTableItem):
             optic = optic.name
-        k = self.knobService.findKnob(knob)
+        k = self._knobService.findKnob(knob)
         factors = list(k.getKnobFactors().getFactorsForOptic(optic))
         return { f.getComponentName(): f.getFactor() for f in factors }
 
@@ -296,7 +308,7 @@ class LSAClient(object):
         else:
             raise ValueError('invalid direction, expecting "dependent" or "source"')
         req.setParameter(self.getParameter(parameter))
-        tree = self.parameterService.findParameterTrees(req.build())
+        tree = self._parameterService.findParameterTrees(req.build())
         params = {}
         for t in tree:
             for p in t.getParameters():
@@ -305,35 +317,30 @@ class LSAClient(object):
 
     def getOpticStrength(self,optic):
         if not hasattr(optic,'name'):
-           optic=self.opticService.findOpticByName(optic)
+           optic=self._opticService.findOpticByName(optic)
         out=  [ (st.logicalHWName,st.strength)
                 for st in optic.getOpticStrengths() ]
         return dict(out)
 
     def getOptics(self,name):
-        return self.opticService.findOpticByName(name)
+        return self._opticService.findOpticByName(name)
 
     def getParameterList(self,deviceName):
         req=ParametersRequestBuilder().setDeviceName(deviceName)
-        lst=self.parameterService.findParameters(req.build())
+        lst=self._parameterService.findParameters(req.build())
         return lst
 
     def findParameterNames(self,deviceName,regexp=''):
         req=ParametersRequestBuilder().setDeviceName(deviceName)
-        lst=self.parameterService.findParameters(req.build())
+        lst=self._parameterService.findParameters(req.build())
         reg=re.compile(regexp,re.IGNORECASE)
         return sorted(filter(reg.search,[pp.getName() for pp in lst ]))
 
-
-class Fidel(object):
-    def __init__(self,server='lhc',accelerator="LHC"):
-        System.setProperty("lsa.server", server)
-        System.setProperty("lsa.mode", "3")
-        System.setProperty("accelerator", accelerator)
-        self.fidelService = ServiceLocator.getService(FidelService)
     def dump_calibrations(self, outdir='calib'):
+        """ Dump all calibration in directory <outdir>
+        """
         os.mkdir(outdir)
-        cals=self.fidelService.findAllCalibrations();
+        cals=self._fidelService.findAllCalibrations();
         for cc in cals:
           name=cc.getName()
           ff=cc.getCalibrationFunctionByType(CalibrationFunctionTypes.B_FIELD)

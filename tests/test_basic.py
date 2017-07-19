@@ -11,7 +11,7 @@ def test_hypercycle():
     assert len(hyperlist)>3
 
 def test_parameter():
-   names=lsa.getParameterNames('LHCBEAM1')
+   names=lsa.findParameterNames('LHCBEAM1')
    assert len(names)>10
 
 def test_trim():
@@ -29,7 +29,7 @@ def test_trim_function():
     assert len(func) > 0
     assert type(func[0]) is np.ndarray
     assert func[0].shape == (2,575)
-    
+
 
 def test_optics():
    optics_list=lsa.getOpticTable('RAMP-SQUEEZE-6.5TeV-ATS-1m-2017_V1')
