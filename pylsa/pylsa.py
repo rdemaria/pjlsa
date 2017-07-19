@@ -44,6 +44,7 @@ def check_lsa_version():
            raise ImportError("LSA jar: %s older than PRO version %s. Please update"%(jar,version2))
 
 check_lsa_version()
+
 mgr = cmmnbuild_dep_manager.Manager('pylsa')
 jpype=mgr.start_jpype_jvm()
 
@@ -143,7 +144,7 @@ def _toJavaList(lst):
 class LSAClient(object):
     def __init__(self,server='gpn'):
         System.setProperty("lsa.server", server)
-        System.setProperty("lsa.mode", "3")
+        #System.setProperty("lsa.mode", "3")
         self._contextService = ServiceLocator.getService(ContextService)
         self._trimService = ServiceLocator.getService(TrimService)
         self._settingService = ServiceLocator.getService(SettingService)
@@ -156,49 +157,63 @@ class LSAClient(object):
         self._deviceService = ServiceLocator.getService(DeviceService)
         self._fidelService = ServiceLocator.getService(FidelService)
 
+    def _findHyperCycles(self):
+        return list(self._hyperCycleService.findHyperCycles())
+
     def findHyperCycles(self):
-        return [str(c) for c in self._hyperCycleService.findHyperCycles()]
+        return map(str,self._findHyperCycles())
 
-    def findBeamProcesses(self,regexp='',accelerator='lhc'):
-        acc=accelerators.get(accelerator,accelerator)
-        bps = self._contextService.findStandAloneBeamProcesses(acc)
-        reg=re.compile(regexp,re.IGNORECASE)
-        return sorted(filter(reg.search,[str(bp) for bp in bps]))
-
-    def getHyperCycle(self,hypercycle=None):
+    def _getHyperCycle(self,hypercycle=None):
         if hypercycle is None:
             return self._hyperCycleService.findActiveHyperCycle()
         else:
             return self._hyperCycleService.findHyperCycle(hypercycle)
 
     def getUsers(self,hypercycle=None):
-        hp=self.getHyperCycle(hypercycle=hypercycle)
+        hp=self._getHyperCycle(hypercycle=hypercycle)
         return sorted([str(u) for u in hp.getUsers()])
 
-    def getBeamProcess(self, bp):
+    def findBeamProcesses(self,regexp='',accelerator='lhc'):
+        acc=Accelerators.get(accelerator,accelerator)
+        bps=self._contextService.findStandAloneBeamProcesses(acc)
+        reg=re.compile(regexp,re.IGNORECASE)
+        return sorted(filter(reg.search,[str(bp) for bp in bps]))
+
+    def _getBeamProcess(self, bp):
         if isinstance(bp, BeamProcess):
             return bp
         else:
             return self._contextService.findStandAloneBeamProcess(bp)
 
-    def getParameter(self, param):
+    def _getBeamProcessByUser(self,user, hypercycle=None):
+        hp=self._getHyperCycle(hypercycle=hypercycle)
+        return hp.getBeamProcessByUser(user)
+
+    def getResidentBeamProcess(self, category):
+        return str(self._getHyperCycle().getResidentBeamProcess(category))
+
+    def getResidentBeamProcesses(self):
+        return [str(p) for p in list(self._getHyperCycle().getResidentBeamProcesses())]
+
+    def findParameterNames(self,deviceName,regexp=''):
+        req=ParametersRequestBuilder().setDeviceName(deviceName)
+        lst=self._parameterService.findParameters(req.build())
+        reg=re.compile(regexp,re.IGNORECASE)
+        return sorted(filter(reg.search,[pp.getName() for pp in lst ]))
+
+    def _getParameter(self, param):
         if isinstance(param, Parameter):
             return param
         else:
             return self._parameterService.findParameterByName(param)
 
-    def getBeamProcessByUser(self,user, hypercycle=None):
-        hp=self.getHyperCycle(hypercycle=hypercycle)
-        return hp.getBeamProcessByUser(user)
-
-    def getResidentBeamProcess(self, category):
-        return str(self.getHyperCycle().getResidentBeamProcess(category))
-
-    def getResidentBeamProcesses(self):
-        return [str(p) for p in list(self.getHyperCycle().getResidentBeamProcesses())]
+    def _getParameterList(self,deviceName):
+        req=ParametersRequestBuilder().setDeviceName(deviceName)
+        lst=self._parameterService.findParameters(req.build())
+        return lst
 
     def _getRawTrimHeaders(self, beamprocess, param, start=None, end=None):
-        bp = self.getBeamProcess(beamprocess)
+        bp = self._getBeamProcess(beamprocess)
         thrb = cern.lsa.domain.settings.TrimHeadersRequestBuilder()
         thrb.beamProcesses(java.util.Collections.singleton(bp))
         thrb.parameters(param)
@@ -215,12 +230,12 @@ class LSAClient(object):
 
     def _buildParameterList(self, parameter):
         if type(parameter) in [str,BeamProcess]:
-            param = self.getParameter(parameter)
+            param = self._getParameter(parameter)
             param = java.util.Collections.singleton(param)
         else:
             param = java.util.LinkedList()
             for pp in parameter:
-                param.add(self.getParameter(pp))
+                param.add(self._getParameter(pp))
         return param
 
     def getTrimHeaders(self, beamprocess, parameter, start=None, end=None):
@@ -231,7 +246,7 @@ class LSAClient(object):
 
     def getTrims(self, beamprocess, parameter, start=None, end=None, part='value'):
         parameterList = self._buildParameterList(parameter)
-        bp = self.getBeamProcess(beamprocess)
+        bp = self._getBeamProcess(beamprocess)
 
         timestamps = {}
         values = {}
@@ -286,7 +301,7 @@ class LSAClient(object):
         return TrimTuple(res.time[-1],res.data[-1])
 
     def getOpticTable(self, beamprocess):
-        bp = self.getBeamProcess(beamprocess)
+        bp = self._getBeamProcess(beamprocess)
         opticTable = list(self._opticService.findContextOpticsTables(bp))[0].getOpticsTableItems()
         return [ OpticTableItem(time=o.getTime(),
                  id=o.getOpticId(),
@@ -307,7 +322,7 @@ class LSAClient(object):
             req.setTreeDirection(ParameterTreesRequestTreeDirection.SOURCE_TREE)
         else:
             raise ValueError('invalid direction, expecting "dependent" or "source"')
-        req.setParameter(self.getParameter(parameter))
+        req.setParameter(self._getParameter(parameter))
         tree = self._parameterService.findParameterTrees(req.build())
         params = {}
         for t in tree:
@@ -325,16 +340,6 @@ class LSAClient(object):
     def getOptics(self,name):
         return self._opticService.findOpticByName(name)
 
-    def getParameterList(self,deviceName):
-        req=ParametersRequestBuilder().setDeviceName(deviceName)
-        lst=self._parameterService.findParameters(req.build())
-        return lst
-
-    def findParameterNames(self,deviceName,regexp=''):
-        req=ParametersRequestBuilder().setDeviceName(deviceName)
-        lst=self._parameterService.findParameters(req.build())
-        reg=re.compile(regexp,re.IGNORECASE)
-        return sorted(filter(reg.search,[pp.getName() for pp in lst ]))
 
     def dump_calibrations(self, outdir='calib'):
         """ Dump all calibration in directory <outdir>

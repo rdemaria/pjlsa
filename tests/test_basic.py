@@ -6,9 +6,13 @@ import numpy as np
 
 lsa=pylsa.LSAClient()
 
-def test_hypercycle():
-    hyperlist=lsa.findHyperCycles()
-    assert len(hyperlist)>3
+def test_findHyperCycles():
+    lst=lsa.findHyperCycles()
+    assert len(lst)>3
+
+def test_findBeamProcesses():
+    lst=lsa.findBeamProcesses()
+    assert len(lst)>3
 
 def test_parameter():
    names=lsa.findParameterNames('LHCBEAM1')
