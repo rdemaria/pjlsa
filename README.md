@@ -99,7 +99,7 @@ f = lsa.getKnobFactors('LHCBEAM2/IP1_SEPSCAN_Y_MM', ot[0])
 
 ## search parameter names
 ```python
-lsa.getParameterNames('LHCBEAM','mom')
+lsa.findParameterNames('LHCBEAM','mom')
 [u'LHCBEAM/MOMENTUM-TRIM', u'LHCBEAM/MOMENTUM']
 ```
 
