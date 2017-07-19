@@ -110,7 +110,7 @@ class LSAClient(object):
         self.deviceService = ServiceLocator.getService(DeviceService)
 
     def findHyperCycles(self):
-        return [str(c) for c in self.contextService.findHyperCycles()]
+        return [str(c) for c in self.hyperCycleService.findHyperCycles()]
 
     def findBeamProcesses(self,regexp='',accelerator='lhc'):
         acc=accelerators.get(accelerator,accelerator)
@@ -152,9 +152,12 @@ class LSAClient(object):
 
     def _getRawTrimHeaders(self, beamprocess, param, start=None, end=None):
         bp = self.getBeamProcess(beamprocess)
-        raw_headers = self.trimService.findTrimHeaders(java.util.Collections.singleton(bp),
-                                                       param,
-                                                       _toJavaDate(start))
+        thrb = cern.lsa.domain.settings.TrimHeadersRequestBuilder()
+        thrb.beamProcesses(java.util.Collections.singleton(bp))
+        thrb.parameters(param)
+        thrb.startingFrom(_toJavaDate(start).toInstant())
+        trimHeadersRequest = thrb.build()
+        raw_headers = self.trimService.findTrimHeaders(trimHeadersRequest)
         raw_headers = list(raw_headers)
         if start is not None:
             raw_headers = [th for th in raw_headers if not th.createdDate.before(_toJavaDate(start))]
@@ -185,9 +188,11 @@ class LSAClient(object):
         timestamps = {}
         values = {}
         for th in self._getRawTrimHeaders(bp, parameterList, start, end):
-            contextSettings =  \
-                    self.settingService.findContextSettings(bp,
-                            parameterList, th.createdDate)
+            csrb = cern.lsa.domain.settings.ContextSettingsRequestBuilder()
+            csrb.standAloneContext(bp)
+            csrb.parameters(parameterList)
+            csrb.at(th.createdDate.toInstant())
+            contextSettings =  self.settingService.findContextSettings(csrb.build())
             for pp in parameterList:
               parameterSetting = contextSettings.getParameterSettings(pp)
               if parameterSetting is None:
@@ -290,9 +295,9 @@ class Fidel(object):
         System.setProperty("lsa.mode", "3")
         System.setProperty("accelerator", accelerator)
         self.fidelService = ServiceLocator.getService(FidelService)
-    def dump_calibrations(outdir='calib'):
+    def dump_calibrations(self, outdir='calib'):
         os.mkdir(outdir)
-        cals=fidelService.findAllCalibrations();
+        cals=self.fidelService.findAllCalibrations();
         for cc in cals:
           name=cc.getName()
           ff=cc.getCalibrationFunctionByType(CalibrationFunctionTypes.B_FIELD)
