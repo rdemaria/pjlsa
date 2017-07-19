@@ -45,8 +45,8 @@ def test_factors():
    assert len(f)>3
 
 def test_beamprocess():
-  bp=lsa.getBeamProcess("PHYSICS-2.51TeV-4m-2015_V1@90_[END]")
-  bp1=lsa.getBeamProcessByUser('LHC.USER.PHYSICS','2.51TeV_2015_CRS')
+  bp=lsa._getBeamProcess("PHYSICS-2.51TeV-4m-2015_V1@90_[END]")
+  bp1=lsa._getBeamProcessByUser('LHC.USER.PHYSICS','2.51TeV_2015_CRS')
   assert (bp==bp1)==1
 
 def test_users():
