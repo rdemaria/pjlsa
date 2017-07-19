@@ -86,6 +86,13 @@ accelerators={
         'lhc': cern.accsoft.commons.domain.CernAccelerator.LHC,
         }
 
+def jlist(lst):
+    res=java.util.LinkedList()
+    for ii in lst:
+        res.add(ii)
+    return res
+
+
 class LSAClient(object):
     def __init__(self,server='lhc',accelerator="LHC"):
         System.setProperty("lsa.server", server)
@@ -238,7 +245,7 @@ class LSAClient(object):
         k = self.knobService.findKnob(knob)
         factors = list(k.getKnobFactors().getFactorsForOptic(optic))
         return { f.getComponentName(): f.getFactor() for f in factors }
-        
+
     def getParameterHierarchy(self, parameter, direction='dependent'):
         req = ParameterTreesRequestBuilder()
         if direction=='dependent':
@@ -254,7 +261,7 @@ class LSAClient(object):
             for p in t.getParameters():
                 params.setdefault(str(p.getParameterType()),[]).append(str(p))
         return params
-        
+
     def getOpticStrength(self,optic):
         if not hasattr(optic,'name'):
            optic=self.opticService.findOpticByName(optic)
@@ -275,6 +282,7 @@ class LSAClient(object):
         lst=self.parameterService.findParameters(req.build())
         reg=re.compile(regexp,re.IGNORECASE)
         return sorted(filter(reg.search,[pp.getName() for pp in lst ]))
+
 
 class Fidel(object):
     def __init__(self,server='lhc',accelerator="LHC"):
