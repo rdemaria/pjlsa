@@ -2,6 +2,7 @@
 import os, re
 from collections import namedtuple
 import datetime
+import urllib
 
 import numpy as np
 import six
@@ -9,8 +10,40 @@ import six
 import cmmnbuild_dep_manager
 
 
-# Use mgr.class_hints('LhcService')
-# put deps in __init__.py
+def ver2num(ver):
+    out=0
+    for ii,vv in enumerate(map(int,reversed(ver.split('.')))):
+        out+=vv*1000**ii
+    return out
+
+def older_jar_than_pro(jars,package):
+    regname=re.compile(r'([a-z\-]+)-([0-9.]+)\.jar')
+    regxml=re.compile(r'name="([a-z\-]+)" version="([0-9.]+)"')
+    url='http://bewww.cern.ch/ap/dist/%s/%s/PRO/product.xml'
+    for jar in jars:
+        #print(jar)
+        name,version=regname.search(jar).groups()
+        #print(name,version)
+        xml=urllib.urlopen(url%(package,name)).read()
+        name2,version2=regxml.search(xml).groups()
+        #print(name2,version2)
+        v1=ver2num(version)
+        v2=ver2num(version2)
+        print("Checking version %s vs PRO=%s"%(os.path.basename(jar),version2))
+        #print(v1,v2)
+        if v1<v2:
+            return True
+    return False
+
+def check_lsa_version():
+    mgr = cmmnbuild_dep_manager.Manager()
+    lsajars=[j for j in mgr.jars() if 'lsa' in j ]
+    if len(lsajars)==0:
+         raise ImportError("LSA jars not (yet) installed")
+    elif older_jar_than_pro(lsajars,'lsa'):
+           raise ImportError("LSA jar: %s older than PRO version %s. Please update"%(jar,version2))
+
+check_lsa_version()
 mgr = cmmnbuild_dep_manager.Manager('pylsa')
 jpype=mgr.start_jpype_jvm()
 
@@ -21,6 +54,9 @@ System=java.lang.System
 
 null=org.apache.log4j.varia.NullAppender()
 org.apache.log4j.BasicConfigurator.configure(null)
+
+if type(cern.lsa.client.ContextService) is jpype._jpackage.JPackage:
+    raise ImportError("LSA jars not (yet) installed")
 
 ContextService   =cern.lsa.client.ContextService
 HyperCycleService=cern.lsa.client.HyperCycleService
@@ -94,7 +130,7 @@ def jlist(lst):
 
 
 class LSAClient(object):
-    def __init__(self,server='lhc',accelerator="LHC"):
+    def __init__(self,server='gpn',accelerator="LHC"):
         System.setProperty("lsa.server", server)
         System.setProperty("lsa.mode", "3")
         System.setProperty("accelerator", accelerator)
