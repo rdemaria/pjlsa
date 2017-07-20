@@ -224,7 +224,8 @@ class LSAClient(object):
         return str(self._getHyperCycle().getResidentBeamProcess(category))
 
     def getResidentBeamProcesses(self):
-        return [str(p) for p in list(self._getHyperCycle().getResidentBeamProcesses())]
+        return [str(p) for p in list(
+            self._getHyperCycle().getResidentBeamProcesses())]
 
     def findParameterNames(self,deviceName,regexp=''):
         req=ParametersRequestBuilder().setDeviceName(deviceName)
@@ -368,8 +369,21 @@ class LSAClient(object):
                 for st in optic.getOpticStrengths() ]
         return dict(out)
 
-    def getOptics(self,name):
+    def _getOptics(self,name):
         return self._opticService.findOpticByName(name)
+
+    def interpolateOpticsParameters(self,beamprocess,parameters):
+        ot = self.getOpticTable(beamprocess)
+        tvalue=[opt.time for opt in ot]
+        pv={}
+        for pn in parameters:
+            try:
+                ts,(steps,val)=self.getLastTrim(beamprocess,pn)
+                pv[pn]=np.interp(tvalue,steps,val)
+            except ValueError as e:
+                print(e)
+        return pv
+
 
 
     def dump_calibrations(self, outdir='calib'):
