@@ -74,16 +74,16 @@ def older_jar_than_pro(jars):
   return result
 
 
-def check_lsa_version():
+def check_lsa():
     mgrjars = cmmnbuild_dep_manager.Manager().jars()
     lsajars=[j for j in mgrjars if 'lsa' in j ]
     if len(lsajars)==0:
          raise ImportError("LSA jars not (yet) installed")
-    elif older_jar_than_pro(mgrjars):
-           print("Installed jar older than PRO version. Please rerun 'python -m cmmnbuild_dep_manager resolve'")
-           raise ImportError("Installed jar older than PRO version.")
+#    elif older_jar_than_pro(mgrjars):
+#           print("Installed jar older than PRO version. Please rerun 'python -m cmmnbuild_dep_manager resolve'")
+#           raise ImportError("Installed jar older than PRO version.")
 
-check_lsa_version()
+check_lsa()
 
 mgr = cmmnbuild_dep_manager.Manager('pylsa')
 jpype=mgr.start_jpype_jvm()

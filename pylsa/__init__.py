@@ -1,7 +1,7 @@
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 
 __cmmnbuild_deps__ = [
-    "lsa-app-suite"
+    "lsa-client"
 ]
 
 # When running setuptools without required dependencies installed
