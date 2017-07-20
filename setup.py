@@ -4,28 +4,28 @@
 import setuptools
 from setuptools.command.install import install as _install
 
-import pylsa
+import pjlsa
 
 class install(_install):
     def run(self):
         try:
             import cmmnbuild_dep_manager
             mgr = cmmnbuild_dep_manager.Manager()
-            mgr.install('pylsa')
-            print('registered pylsa with cmmnbuild_dep_manager')
+            mgr.install('pjlsa')
+            print('registered pjlsa with cmmnbuild_dep_manager')
         except ImportError:
             pass
         _install.run(self)
 
 setuptools.setup(
-    name='pylsa',
-    version=pylsa.__version__,
-    description='A Python wrapping of LSA API',
+    name='pjlsa',
+    version=pjlsa.__version__,
+    description='A Python wrapping of Java LSA API',
     author='Riccardo De Maria',
     author_email='riccardo.de.maria@cern.ch',
-    url='https://github.com/rdemaria/pylsa',
-    packages=['pylsa'],
-    package_dir={'pylsa': 'pylsa'},
+    url='https://github.com/rdemaria/pjlsa',
+    packages=['pjlsa'],
+    package_dir={'pjlsa': 'pjlsa'},
     install_requires=['JPype1>=0.6.2',
                       'cmmnbuild-dep-manager>=2.1.2' ],
     cmdclass={ 'install': install },

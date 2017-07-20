@@ -1,10 +1,10 @@
-import pylsa
+import pjlsa
 import numpy as np
 
 #  %load_ext autoreload
 #  %autoreload 2
 
-lsa=pylsa.LSAClient()
+lsa=pjlsa.LSAClient()
 
 def test_findHyperCycles():
     lst=lsa.findHyperCycles()
