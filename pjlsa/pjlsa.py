@@ -213,6 +213,13 @@ class LSAClient(object):
         hp=self._getHyperCycle(hypercycle=hypercycle)
         return sorted([str(u) for u in hp.getUsers()])
 
+    def findParameterGroups(self,regexp='',accelerator='lhc'):
+        acc=Accelerators.get(accelerator,accelerator)
+        find=self._parameterService.findParameterGroupsByAccelerator
+        grps=[grp.getName() for grp in find(acc)]
+        reg=re.compile(regexp,re.IGNORECASE)
+        return sorted(filter(reg.search,[str(grp) for grp in grps]))
+
     def findBeamProcesses(self,regexp='',accelerator='lhc'):
         acc=Accelerators.get(accelerator,accelerator)
         bps=self._contextService.findStandAloneBeamProcesses(acc)
@@ -236,8 +243,12 @@ class LSAClient(object):
         return [str(p) for p in list(
             self._getHyperCycle().getResidentBeamProcesses())]
 
-    def findParameterNames(self,deviceName,regexp=''):
-        req=ParametersRequestBuilder().setDeviceName(deviceName)
+    def findParameterNames(self,deviceName=None,groupName=None,regexp=''):
+        req=ParametersRequestBuilder()
+        if deviceName is not None:
+            req.setDeviceName(deviceName)
+        if groupName is not None:
+            req.setParameterGroup(groupName)
         lst=self._parameterService.findParameters(req.build())
         reg=re.compile(regexp,re.IGNORECASE)
         return sorted(filter(reg.search,[pp.getName() for pp in lst ]))
