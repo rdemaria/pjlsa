@@ -142,6 +142,8 @@ TrimHeader = namedtuple('TrimHeader',
            ['id','beamProcesses','createdDate','description','clientInfo'])
 OpticTableItem = namedtuple('OpticTableItem', ['time', 'id', 'name'])
 TrimTuple = namedtuple('TrimTuple', ['time', 'data'])
+Calibration = namedtuple('Calibration',
+                       ['field', 'current','fieldtype','name'])
 
 
 #
@@ -404,15 +406,28 @@ class LSAClient(object):
                 print(e)
         return pv
 
+    def getCalibration(self,madname,fieldtype='B_FIELD'):
+        jfieldtype=getattr(CalibrationFunctionTypes,fieldtype)
+        nl=java.util.Collections.singleton(madname)
+        pcs=self._deviceService.findLogicalNamesByMadStrengthNames(nl)
+        pcname=pcs[madname]
+        cal=self._fidelService.findCalibrationByLogicalHardware(pcname)
+        ff=cal.getCalibrationFunctionByType(jfieldtype)
+        if ff is not None:
+            field=list(ff.toXArray())
+            current=list(ff.toYArray())
+            return Calibration(current=current,field=field,
+                               fieldtype=fieldtype,name=pcname)
 
+    def _get_calibration(self):
+        cals=self._fidelService.findAllCalibrations();
+        return dict((cc.getName(),cc) for cc in cals)
 
     def dump_calibrations(self, outdir='calib'):
         """ Dump all calibration in directory <outdir>
         """
         os.mkdir(outdir)
-        cals=self._fidelService.findAllCalibrations();
-        for cc in cals:
-          name=cc.getName()
+        for name, cc in self._get_calibrations():
           ff=cc.getCalibrationFunctionByType(CalibrationFunctionTypes.B_FIELD)
           if ff is not None:
              field=ff.toXArray()
