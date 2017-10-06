@@ -406,11 +406,18 @@ class LSAClient(object):
                 print(e)
         return pv
 
-    def getCalibration(self,madname,fieldtype='B_FIELD'):
-        jfieldtype=getattr(CalibrationFunctionTypes,fieldtype)
+    def findPCNameByMadStrength(self,madname,full=False):
         nl=java.util.Collections.singleton(madname)
         pcs=self._deviceService.findLogicalNamesByMadStrengthNames(nl)
         pcname=pcs[madname]
+        if full==True:
+          nl=java.util.Collections.singleton(pcname)
+          pcs=self._deviceService.findActualDevicesByLogicalHardwareName(nl)
+          pcname=list(pcs[pcname])[0].toString()
+        return pcname
+
+    def getCalibration(self,pcname,fieldtype='B_FIELD'):
+        jfieldtype=getattr(CalibrationFunctionTypes,fieldtype)
         cal=self._fidelService.findCalibrationByLogicalHardware(pcname)
         ff=cal.getCalibrationFunctionByType(jfieldtype)
         if ff is not None:

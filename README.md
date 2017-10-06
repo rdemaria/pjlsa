@@ -110,6 +110,7 @@ lsa.findParameterNames(groupName='ALL MAGNETS',regexp=r'RQTL9\.L7.*/IREF')
 ## PowerConverterInfo
 
 ```python
+pcname=lsa.findPCNameByMadStrength('kq7.r5b1',full=True)
 dev=lsa.deviceService.findPowerConverterInfo('RPHGA.RR57.RQ7.R5B1')
 print(dev.getDidtMin())
 print(dev.getInom())
