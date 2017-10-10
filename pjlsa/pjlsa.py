@@ -144,6 +144,10 @@ OpticTableItem = namedtuple('OpticTableItem', ['time', 'id', 'name'])
 TrimTuple = namedtuple('TrimTuple', ['time', 'data'])
 Calibration = namedtuple('Calibration',
                        ['field', 'current','fieldtype','name'])
+PCInfo = namedtuple('PCInfo', [
+                       'accelerationLimit','decelerationLimit',
+                       'didtMin', 'didtMax', 'iMinOp', 'iNom', 'iPNo',
+                       'iUlt'])
 
 
 #
@@ -444,4 +448,8 @@ class LSAClient(object):
              fh=open(fn,'w')
              fh.write('\n'.join(["%s %s"%(i,f) for i,f in zip(current,field)]))
              fh.close()
+    def getPCInfo(self,pcname):
+        pc=self._deviceService.findPowerConverterInfo(pcname)
+        info=PCInfo(*(getattr(pc,nn) for nn in PCInfo._fields))
+        return info
 
