@@ -94,8 +94,12 @@ org=jpype.JPackage('org')
 java=jpype.JPackage('java')
 System=java.lang.System
 
-null=org.apache.log4j.varia.NullAppender()
-org.apache.log4j.BasicConfigurator.configure(null)
+
+# no java operation at import time because java might not be available and 
+#  mgr.resolve will (silently) fail
+if callable(org.apache.log4j.varia.NullAppender):
+  null=org.apache.log4j.varia.NullAppender()
+  org.apache.log4j.BasicConfigurator.configure(null)
 
 # Java classes
 ContextService   =cern.lsa.client.ContextService
@@ -147,7 +151,7 @@ Calibration = namedtuple('Calibration',
 PCInfo = namedtuple('PCInfo', [
                        'accelerationLimit','decelerationLimit',
                        'didtMin', 'didtMax', 'iMinOp', 'iNom', 'iPNo',
-                       'iUlt'])
+                       'iUlt','polaritySwitch'])
 
 
 #
