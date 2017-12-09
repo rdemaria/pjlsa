@@ -18,13 +18,23 @@ def get_version_from_init():
                 return ast.literal_eval(line.split('=', 1)[1].strip())
 
 
+# Custom install function to install and register with cmmnbuild-dep-manager
 class install(_install):
+    user_options = _install.user_options + [
+        ('no-jars', None, 'do not register with cmmnbuild-dep-manager')
+    ]
+
+    def initialize_options(self):
+        self.no_jars = False
+        _install.initialize_options(self)
+
     def run(self):
-        try:
-            import cmmnbuild_dep_manager
-            mgr = cmmnbuild_dep_manager.Manager()
-            mgr.install('pjlsa')
-            print('registered pjlsa with cmmnbuild_dep_manager')
+        try
+            if not self.no_jars:
+                import cmmnbuild_dep_manager
+                mgr = cmmnbuild_dep_manager.Manager()
+                mgr.install('pjlsa')
+                print('registered pjlsa with cmmnbuild_dep_manager')
         except ImportError:
             pass
         _install.run(self)
