@@ -293,7 +293,7 @@ class LSAClient(object):
         for ts,name in zip(cts.timestamp,cts.name):
             idx=fillnts.searchsorted(ts)-1
             filln=int(fillnv[idx])
-            fills.setdefault(filln,[]).append((ts,name))
+            fills.setdefault(filln,[]).insert(0,(ts,name))
             #print(filln,len(fills[filln]))
         return fills
 
