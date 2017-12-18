@@ -116,6 +116,7 @@ DeviceService    =cern.lsa.client.DeviceService
 
 BeamProcess          =cern.lsa.domain.settings.BeamProcess
 ContextSettings      =cern.lsa.domain.settings.ContextSettings
+ContextFamily        =cern.lsa.domain.settings.ContextFamily
 HyperCycle           =cern.lsa.domain.settings.HyperCycle
 Parameter            =cern.lsa.domain.settings.Parameter
 ParameterSettings    =cern.lsa.domain.settings.ParameterSettings
@@ -140,6 +141,11 @@ SPS =cern.accsoft.commons.domain.CernAccelerator.SPS
 LEIR=cern.accsoft.commons.domain.CernAccelerator.LEIR
 PSB =cern.accsoft.commons.domain.CernAccelerator.PSB
 
+ContextFamilies={
+        'beamprocess':ContextFamily.BEAMPROCESS,
+        'cycle':ContextFamily.CYCLE,
+        'supercycle':ContextFamily.SUPERCYCLE}
+
 
 # Python data descriptors
 TrimHeader = namedtuple('TrimHeader',
@@ -153,6 +159,9 @@ PCInfo = namedtuple('PCInfo', [
                        'didtMin', 'didtMax', 'iMinOp', 'iNom', 'iPNo',
                        'iUlt','polaritySwitch'])
 
+Context = namedtuple('Context', [
+                       'timestamp','name','user']
+                       )
 
 #
 Accelerators={
@@ -262,6 +271,31 @@ class LSAClient(object):
         lst=self._parameterService.findParameters(req.build())
         reg=re.compile(regexp,re.IGNORECASE)
         return sorted(filter(reg.search,[pp.getName() for pp in lst ]))
+
+    def findUserContextMappingHistory(self,t1,t2,
+           accelerator='lhc',contextFamily='beamprocess'):
+        acc=Accelerators.get(accelerator,accelerator)
+        contextFamily=ContextFamilies.get(contextFamily,contextFamily)
+        t1=_toJavaDate(t1).fastTime
+        t2=_toJavaDate(t2).fastTime
+        res=self._contextService.findUserContextMappingHistory(acc,contextFamily,t1,t2)
+        out=[ (ct.mappingTimestamp/1000.,
+               ct.contextName,
+               ct.user) for ct in res]
+        return Context(*map(np.array,zip(*out)))
+
+    def findBeamProcessHistory(self,t1,t2,accelerator='lhc'):
+        cts=self.findUserContextMappingHistory(t1,t2,accelerator=accelerator)
+        import pytimber
+        db=pytimber.LoggingDB()
+        fillnts,fillnv=db.get('HX:FILLN',t1,t2)['HX:FILLN']
+        fills={}
+        for ts,name in zip(cts.timestamp,cts.name):
+            idx=fillnts.searchsorted(ts)-1
+            filln=int(fillnv[idx])
+            fills.setdefault(filln,[]).append((ts,name))
+            #print(filln,len(fills[filln]))
+        return fills
 
     def _getParameter(self, param):
         if isinstance(param, Parameter):
