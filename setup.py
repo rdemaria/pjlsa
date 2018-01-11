@@ -29,7 +29,7 @@ class install(_install):
         _install.initialize_options(self)
 
     def run(self):
-        try
+        try:
             if not self.no_jars:
                 import cmmnbuild_dep_manager
                 mgr = cmmnbuild_dep_manager.Manager()
