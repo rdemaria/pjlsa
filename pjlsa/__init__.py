@@ -1,7 +1,10 @@
-__version__ = "0.0.11"
+__version__ = "0.0.12"
 
 __cmmnbuild_deps__ = [
-    "lsa-client"
+    "lsa-client",
+    "slf4j-log4j12",
+    "slf4j-api",
+    "log4j"
 ]
 
 # When running setuptools without required dependencies installed
