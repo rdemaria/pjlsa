@@ -279,7 +279,7 @@ class LSAClient(object):
           builder.setDeviceGroupName(deviceGroupName)
         req = builder.build()
         deviceList = self._deviceService.findDevices(req)
-        return deviceList
+        return list(deviceList)
 
     def findDevices(self,deviceGroupName=None):
         deviceList=self.deviceList(deviceGroupName=deviceGroupName)
