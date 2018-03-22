@@ -128,6 +128,7 @@ ScalarSetting        =cern.lsa.domain.settings.spi.ScalarSetting
 
 ParametersRequestBuilder = cern.lsa.domain.settings.factory.ParametersRequestBuilder
 Device                   = cern.lsa.domain.devices.Device
+DeviceRequestBuilder = cern.lsa.domain.devices.factory.DevicesRequestBuilder
 
 ParameterTreesRequestBuilder       = cern.lsa.domain.settings.factory.ParameterTreesRequestBuilder
 ParameterTreesRequest              = cern.lsa.domain.settings.ParameterTreesRequest
@@ -271,6 +272,18 @@ class LSAClient(object):
         lst=self._parameterService.findParameters(req.build())
         reg=re.compile(regexp,re.IGNORECASE)
         return sorted(filter(reg.search,[pp.getName() for pp in lst ]))
+
+    def _findDevices(self,deviceGroupName=None):
+        builder=DeviceRequestBuilder()
+        if deviceGroupName is not None:
+          builder.setDeviceGroupName(deviceGroupName)
+        req = builder.build()
+        deviceList = self._deviceService.findDevices(req)
+        return deviceList
+
+    def findDevices(self,deviceGroupName=None):
+        deviceList=self.deviceList(deviceGroupName=deviceGroupName)
+        return map(str,deviceList)
 
     def findUserContextMappingHistory(self,t1,t2,
            accelerator='lhc',contextFamily='beamprocess'):

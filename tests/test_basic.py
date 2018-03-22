@@ -53,4 +53,7 @@ def test_users():
   users=lsa.getUsers('6.5TeV_2017')
   assert len(users)>5
 
+def test_device():
+  devices=lsa._findDevices(deviceGroupName = "COLLIMATORS")
+  assert len(devices)>1
 
