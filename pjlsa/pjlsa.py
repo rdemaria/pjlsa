@@ -282,8 +282,8 @@ class LSAClient(object):
         return list(deviceList)
 
     def findDevices(self,deviceGroupName=None):
-        deviceList=self.deviceList(deviceGroupName=deviceGroupName)
-        return map(str,deviceList)
+        deviceList=self._findDevices(deviceGroupName=deviceGroupName)
+        return list(map(str,deviceList))
 
     def findUserContextMappingHistory(self,t1,t2,
            accelerator='lhc',contextFamily='beamprocess'):
