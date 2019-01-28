@@ -221,7 +221,7 @@ class LSAClient(object):
         return list(self._hyperCycleService.findHyperCycles())
 
     def findHyperCycles(self):
-        return map(str,self._findHyperCycles())
+        return [str(c) for c in self._findHyperCycles()]
 
     def _getHyperCycle(self,hypercycle=None):
         if hypercycle is None:
