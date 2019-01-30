@@ -411,6 +411,8 @@ class LSAClient(object):
 
     def getOpticTable(self, beamprocess):
         bp = self._getBeamProcess(beamprocess)
+        if bp is None:
+            raise ValueError("Beamprocess '%s' not found"%beamprocess)
         opticTable = list(self._opticService.findContextOpticsTables(bp))[0].getOpticsTableItems()
         return [ OpticTableItem(time=o.getTime(),
                  id=o.getOpticId(),
@@ -458,7 +460,11 @@ class LSAClient(object):
                 ts,(steps,val)=self.getLastTrim(beamprocess,pn)
                 pv[pn]=np.interp(tvalue,steps,val)
             except ValueError as e:
-                print(e)
+                print("Error extracting parameter '%s': %s"%(pn,e))
+            except IndexError as e:
+                print("Error extracting parameter '%s': %s"%(pn,e))
+            except :
+                print("Error extracting parameter '%s': potential Java Exception"%(pn))
         return pv
 
     def findPCNameByMadStrength(self,madname,full=False):
