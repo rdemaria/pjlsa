@@ -1,4 +1,4 @@
-__version__ = "0.0.14"
+__version__ = "0.1.0"
 
 __cmmnbuild_deps__ = [
     "lsa-client",
@@ -11,7 +11,7 @@ __cmmnbuild_deps__ = [
 # we need to be able to access __version__, so print a warning but
 # continue
 try:
-    from .pjlsa import *
+    from .lsa_client import LsaClient
 except ImportError:
     import logging
     logging.basicConfig()
