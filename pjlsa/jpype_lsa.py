@@ -37,3 +37,17 @@ TimingService = cern.lsa.client.TimingService
 TransactionService = cern.lsa.client.TransactionService
 TrimService = cern.lsa.client.TrimService
 WorkingSetService = cern.lsa.client.WorkingSetService
+
+# Contexts
+ContextFamily = cern.lsa.domain.settings.ContextFamily
+Context = cern.lsa.domain.settings.Context
+StandAloneBeamProcess = cern.lsa.domain.settings.StandAloneBeamProcess
+StandAloneContext = cern.lsa.domain.settings.StandAloneContext
+StandAloneCycle = cern.lsa.domain.settings.StandAloneCycle
+BeamProcess = cern.lsa.domain.settings.BeamProcess
+BeamProcessType = cern.lsa.domain.settings.type.BeamProcessType
+BeamProcessPurpose = cern.lsa.domain.settings.type.BeamProcessPurpose
+ActualBeamProcessInfo = cern.lsa.domain.settings.ActualBeamProcessInfo
+UserContextMapping = cern.lsa.domain.settings.UserContextMapping
+AcceleratorUser = cern.lsa.domain.settings.AcceleratorUser
+AcceleratorUserGroup = cern.lsa.domain.settings.AcceleratorUserGroup

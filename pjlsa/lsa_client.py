@@ -31,8 +31,7 @@ Authors:
     G. Trad            <georges.trad@cern.ch>
 '''
 
-import reprlib
-from typing import Iterable, Union, Optional
+from typing import Iterable, Union, Optional, List
 from .jpype_lsa import *
 from .util import *
 
@@ -63,7 +62,7 @@ class LsaContextService(object):
     def findStandAloneBeamProcesses(self, *, names: Union[str, Iterable[str], None] = None,
                                     ids: Union[int, Iterable[int], None] = None,
                                     accelerator: Optional[str] = None, resident: Optional[bool] = None,
-                                    multiplexed: Optional[bool] = None):
+                                    multiplexed: Optional[bool] = None) -> List[StandAloneBeamProcess]:
         request = cern.lsa.domain.settings.StandAloneBeamProcessesRequest.builder()
         if names is not None:
             request.addAllBeamProcessNames(toJavaList(names))
@@ -80,45 +79,104 @@ class LsaContextService(object):
 
     def findStandAloneBeamProcess(self, *, name: Optional[str] = None, id: Optional[int] = None,
                                   accelerator: Optional[str] = None, resident: Optional[bool] = None,
-                                  multiplexed: Optional[bool] = None):
+                                  multiplexed: Optional[bool] = None) -> StandAloneBeamProcess:
         bps = self.findStandAloneBeamProcesses(names=name, ids=id, accelerator=accelerator,
                                                resident=resident, multiplexed=multiplexed)
-        if len(bps) != 1:
-            raise ValueError('Expected 1 matching StandAloneBeamProcess but found %s'
-                             % reprlib.repr([bp.name for bp in bps]))
-        return bps[0]
+        return onlyElementOf(bps)
 
-    def findStandAloneCycles(self):
-        pass
+    def findStandAloneCycles(self, *, names: Union[str, Iterable[str], None] = None,
+                             ids: Union[int, Iterable[int], None] = None,
+                             accelerator: Optional[str] = None, resident: Optional[bool] = None,
+                             multiplexed: Optional[bool] = None) -> List[StandAloneCycle]:
+        request = cern.lsa.domain.settings.StandAloneCyclesRequest.builder()
+        if names is not None:
+            request.addAllCycleNames(toJavaList(names))
+        if ids is not None:
+            request.addAllIds(toJavaList(ids))
+        if accelerator is not None:
+            request.accelerator(toAccelerator(accelerator))
+        if resident is not None:
+            request.resident(java.lang.Boolean(resident))
+        if multiplexed is not None:
+            request.multiplexed(java.lang.Boolean(multiplexed))
+        contexts = self._lsa._contextService.findStandAloneCycles(request.build())
+        return [ctx for ctx in contexts]
 
-    def findStandAloneCycle(self):
-        pass
+    def findStandAloneCycle(self, *, name: Optional[str] = None, id: Optional[int] = None,
+                            accelerator: Optional[str] = None, resident: Optional[bool] = None,
+                            multiplexed: Optional[bool] = None) -> StandAloneCycle:
+        bps = self.findStandAloneBeamProcesses(names=name, ids=id, accelerator=accelerator,
+                                               resident=resident, multiplexed=multiplexed)
+        return onlyElementOf(bps)
 
-    def findStandAloneContexts(self):
-        pass
+    def findStandAloneContexts(self, *, names: Union[str, Iterable[str], None] = None,
+                               ids: Union[int, Iterable[int], None] = None,
+                               accelerator: Optional[str] = None, resident: Optional[bool] = None,
+                               multiplexed: Optional[bool] = None) -> List[StandAloneContext]:
+        request = cern.lsa.domain.settings.StandAloneContextsRequest.builder()
+        if names is not None:
+            request.addAllContextNames(toJavaList(names))
+        if ids is not None:
+            request.addAllIds(toJavaList(ids))
+        if accelerator is not None:
+            request.accelerator(toAccelerator(accelerator))
+        if resident is not None:
+            request.resident(java.lang.Boolean(resident))
+        if multiplexed is not None:
+            request.multiplexed(java.lang.Boolean(multiplexed))
+        contexts = self._lsa._contextService.findStandAloneContexts(request.build())
+        return [ctx for ctx in contexts]
 
-    def findResidentContexts(self, accelerator):
-        pass
+    def findResidentContexts(self, accelerator: str) -> List[StandAloneContext]:
+        return self.findStandAloneContexts(accelerator=accelerator, resident=True)
 
-    def findResidentNonMultiplexedContext(self, accelerator):
-        pass
+    def findResidentNonMultiplexedContext(self, accelerator: str) -> StandAloneContext:
+        return self._lsa._contextService.findResidentNonMultiplexedContext(toAccelerator(accelerator))
 
-    def findUserContextMappingHistory(self, accelerator, contextFamily, fromTime, toTime):
-        pass
+    def findUserContextMappingHistory(self, accelerator: str, contextFamily: str,
+                                      fromTime: Union[int, str, datetime],
+                                      toTime: Union[int, str, datetime]) -> List[UserContextMapping]:
+        mappings = self._lsa._contextService.findUserContextMappingHistory(toAccelerator(accelerator),
+                                                                           toEnum(contextFamily, ContextFamily),
+                                                                           toJavaDate(fromTime).getTime(),
+                                                                           toJavaDate(toTime).getTime())
+        return [m for m in mappings]
 
-    def findAcceleratorUsers(self):
-        pass
+    def findAcceleratorUsers(self, *, names: Union[str, Iterable[str], None] = None,
+                             ids: Union[int, Iterable[int], None] = None,
+                             accelerator: Optional[str] = None, userGroup: Optional[str] = None,
+                             multiplexed: Optional[bool] = None) -> List[AcceleratorUser]:
 
-    def findAcceleratorUser(self):
-        pass
+        request = cern.lsa.domain.settings.AcceleratorUsersRequest.builder()
+        if names is not None:
+            request.addAllContextNames(toJavaList(names))
+        if ids is not None:
+            request.addAllIds(toJavaList(ids))
+        if accelerator is not None:
+            request.accelerator(toAccelerator(accelerator))
+        if userGroup is not None:
+            request.acceleratorUserGroupName(userGroup)
+        if multiplexed is not None:
+            request.multiplexed(java.lang.Boolean(multiplexed))
+        users = self._lsa._contextService.findAcceleratorUsers(request.build())
+        return [u for u in users]
 
-    def updateContext(self, context):
-        pass
+    def findAcceleratorUser(self, *, name: Optional[str] = None, id: Optional[int] = None,
+                            accelerator: Optional[str] = None, userGroup: Optional[str] = None,
+                            multiplexed: Optional[bool] = None) -> AcceleratorUser:
+        users = self.findAcceleratorUsers(names=name, ids=id, accelerator=accelerator, userGroup=userGroup,
+                                          multiplexed=multiplexed)
+        return onlyElementOf(users)
 
-    def findContextByAcceleratorUser(self, user):
-        pass
+    def updateContext(self, context: Context) -> None:
+        self._lsa._contextService.updateContext(context)
 
-    def saveContextToUserMapping(self, contexts):
+    def findContextByAcceleratorUser(self, user: Union[AcceleratorUser, str]) -> StandAloneContext:
+        if isinstance(user, str):
+            user = self.findAcceleratorUser(name=user)
+        self._lsa._contextService.findContextByAcceleratorUser(user)
+
+    def saveContextToUserMapping(self, contexts: Iterable[Context]):
         pass
 
     def findContextCategories(self):
@@ -127,8 +185,8 @@ class LsaContextService(object):
     def findDefaultContextCategory(self):
         pass
 
-    def findBeamProcessPurposes(self, accelerator):
+    def findBeamProcessPurposes(self, accelerator: str):
         pass
 
-    def findDefaultBeamProcessPurpose(self, accelerator):
+    def findDefaultBeamProcessPurpose(self, accelerator: str):
         pass
