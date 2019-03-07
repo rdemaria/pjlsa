@@ -105,9 +105,9 @@ class LsaContextService(object):
     def findStandAloneCycle(self, *, name: Optional[str] = None, id: Optional[int] = None,
                             accelerator: Optional[str] = None, resident: Optional[bool] = None,
                             multiplexed: Optional[bool] = None) -> StandAloneCycle:
-        bps = self.findStandAloneBeamProcesses(names=name, ids=id, accelerator=accelerator,
-                                               resident=resident, multiplexed=multiplexed)
-        return onlyElementOf(bps)
+        cycles = self.findStandAloneCycles(names=name, ids=id, accelerator=accelerator,
+                                           resident=resident, multiplexed=multiplexed)
+        return onlyElementOf(cycles)
 
     def findStandAloneContexts(self, *, names: Union[str, Iterable[str], None] = None,
                                ids: Union[int, Iterable[int], None] = None,
@@ -149,7 +149,7 @@ class LsaContextService(object):
 
         request = cern.lsa.domain.settings.AcceleratorUsersRequest.builder()
         if names is not None:
-            request.addAllContextNames(toJavaList(names))
+            request.addAllAcceleratorUserNames(toJavaList(names))
         if ids is not None:
             request.addAllIds(toJavaList(ids))
         if accelerator is not None:
