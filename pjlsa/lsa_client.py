@@ -31,15 +31,10 @@ Authors:
     G. Trad            <georges.trad@cern.ch>
 '''
 
-import os, re, reprlib
-import numpy as np
-import cmmnbuild_dep_manager
+import reprlib
 from typing import Iterable, Union, Optional
 from .jpype_lsa import *
 from .util import *
-
-mgr = cmmnbuild_dep_manager.Manager('pjlsa')
-jpype = mgr.start_jpype_jvm()
 
 
 class LsaClient(object):

@@ -1,4 +1,7 @@
-import jpype
+import cmmnbuild_dep_manager
+
+mgr = cmmnbuild_dep_manager.Manager('pjlsa')
+jpype = mgr.start_jpype_jvm()
 
 cern = jpype.JPackage('cern')
 org = jpype.JPackage('org')
