@@ -1,8 +1,27 @@
 import cmmnbuild_dep_manager
 
+# ------ JPype SETUP ------
 mgr = cmmnbuild_dep_manager.Manager('pjlsa')
 jpype = mgr.start_jpype_jvm()
 
+
+# Monkey-Patcher for LSA Java Domain Objects
+class LsaCustomizer(object):
+    _PATCHES = {
+        '__repr__': lambda self: self.__str__()
+    }
+
+    def canCustomize(self, name, jc):
+        return name.startswith('cern.lsa.domain.') or name.startswith('cern.accsoft.commons.domain.')
+
+    def customize(self, name, jc, bases, members):
+        members.update(LsaCustomizer._PATCHES)
+
+
+jpype._jclass.registerClassCustomizer(LsaCustomizer())
+
+
+# ------ IMPORTS ------
 cern = jpype.JPackage('cern')
 org = jpype.JPackage('org')
 java = jpype.JPackage('java')
