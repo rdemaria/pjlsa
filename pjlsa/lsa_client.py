@@ -174,7 +174,7 @@ class LsaContextService(object):
     def findContextByAcceleratorUser(self, user: Union[AcceleratorUser, str]) -> StandAloneContext:
         if isinstance(user, str):
             user = self.findAcceleratorUser(name=user)
-        self._lsa._contextService.findContextByAcceleratorUser(user)
+        self._lsa._contextService.findStandAloneContextByAcceleratorUser(user)
 
     def saveContextToUserMapping(self, contexts: Iterable[Context]):
         pass
