@@ -35,12 +35,11 @@ import os, re, reprlib
 import numpy as np
 import cmmnbuild_dep_manager
 from typing import Iterable, Union, Optional
+from .jpype_lsa import *
+from .util import *
 
 mgr = cmmnbuild_dep_manager.Manager('pjlsa')
 jpype = mgr.start_jpype_jvm()
-
-from .jpype_lsa import *
-from .util import *
 
 
 class LsaClient(object):
@@ -138,4 +137,3 @@ class LsaContextService(object):
 
     def findDefaultBeamProcessPurpose(self, accelerator):
         pass
-
