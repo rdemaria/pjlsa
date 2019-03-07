@@ -1,5 +1,6 @@
 from .jpype_lsa import *
-import typing
+import typing, datetime
+
 
 def toJavaDate(t):
     Date = java.util.Date
@@ -12,18 +13,20 @@ def toJavaDate(t):
     elif isinstance(t, Date):
         return t
     else:
-        return Date(int(t*1000))
+        return Date(int(t * 1000))
 
-def toJavaList(list):
+
+def toJavaList(lst):
     res = java.util.ArrayList()
-    if isinstance(list, typing.List) or isinstance(list, typing.Set) or isinstance(list, typing.Tuple):
-        for item in list:
+    if isinstance(lst, typing.List) or isinstance(lst, typing.Set) or isinstance(lst, typing.Tuple):
+        for item in lst:
             res.add(item)
-    elif isinstance(list, java.util.Collection):
-        res.addAll(list)
+    elif isinstance(lst, java.util.Collection):
+        res.addAll(lst)
     else:
-        res.add(list)
+        res.add(lst)
     return res
+
 
 def setupLog4j(logLevel):
     log4j = org.apache.log4j
@@ -33,6 +36,7 @@ def setupLog4j(logLevel):
         log4j.Logger.getRootLogger().setLevel(log4j.Level.toLevel(logLevel))
     else:
         log4j.Logger.getRootLogger().setLevel(log4j.Level.WARN)
+
 
 def toAccelerator(accelerator):
     Accelerator = cern.accsoft.commons.domain.Accelerator
@@ -45,4 +49,4 @@ def toAccelerator(accelerator):
         except jpype.JavaException:
             cernAccelerators = [str(a) for a in cern.accsoft.commons.domain.CernAccelerator.values()]
             raise ValueError('"%s" is not a valid accelerator. Supported accelerators = [%s]'
-                              % (accelerator, ', '.join(cernAccelerators)))
+                             % (accelerator, ', '.join(cernAccelerators)))

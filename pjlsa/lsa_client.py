@@ -31,7 +31,6 @@ Authors:
     G. Trad            <georges.trad@cern.ch>
 '''
 
-
 import os, re, reprlib
 import numpy as np
 import cmmnbuild_dep_manager
@@ -42,6 +41,7 @@ jpype = mgr.start_jpype_jvm()
 
 from .jpype_lsa import *
 from .util import *
+
 
 class LsaClient(object):
     def __init__(self, server='gpn', logLevel='INFO'):
@@ -58,16 +58,18 @@ class LsaClient(object):
         self._opticService = ServiceLocator.getService(OpticService)
         self._deviceService = ServiceLocator.getService(DeviceService)
         self._fidelService = ServiceLocator.getService(FidelService)
-        
+
         self.contextService = LsaContextService(self)
+
 
 class LsaContextService(object):
     def __init__(self, lsa_client):
         self._lsa = lsa_client
 
-    def findStandAloneBeamProcesses(self, *, names:Union[str,Iterable[str],None]=None, ids:Union[int,Iterable[int],None]=None,
-                                    accelerator:Optional[str]=None, resident:Optional[bool]=None,
-                                    multiplexed:Optional[bool]=None):
+    def findStandAloneBeamProcesses(self, *, names: Union[str, Iterable[str], None] = None,
+                                    ids: Union[int, Iterable[int], None] = None,
+                                    accelerator: Optional[str] = None, resident: Optional[bool] = None,
+                                    multiplexed: Optional[bool] = None):
         request = cern.lsa.domain.settings.StandAloneBeamProcessesRequest.builder()
         if names is not None:
             request.addAllBeamProcessNames(toJavaList(names))
@@ -82,9 +84,9 @@ class LsaContextService(object):
         contexts = self._lsa._contextService.findStandAloneBeamProcesses(request.build())
         return [ctx for ctx in contexts]
 
-    def findStandAloneBeamProcess(self, *, name:Optional[str]=None, id:Optional[int]=None,
-                                    accelerator:Optional[str]=None, resident:Optional[bool]=None,
-                                    multiplexed:Optional[bool]=None): 
+    def findStandAloneBeamProcess(self, *, name: Optional[str] = None, id: Optional[int] = None,
+                                  accelerator: Optional[str] = None, resident: Optional[bool] = None,
+                                  multiplexed: Optional[bool] = None):
         bps = self.findStandAloneBeamProcesses(names=name, ids=id, accelerator=accelerator,
                                                resident=resident, multiplexed=multiplexed)
         if len(bps) != 1:
@@ -92,49 +94,48 @@ class LsaContextService(object):
                              % reprlib.repr([bp.name for bp in bps]))
         return bps[0]
 
-    def findStandAloneCycles():
+    def findStandAloneCycles(self):
         pass
 
-    def findStandAloneCycle():
+    def findStandAloneCycle(self):
         pass
 
-    def findStandAloneContexts():
+    def findStandAloneContexts(self):
         pass
 
-    def findResidentContexts(accelerator):
+    def findResidentContexts(self, accelerator):
         pass
 
-    def findResidentNonMultiplexedContext(accelerator):
+    def findResidentNonMultiplexedContext(self, accelerator):
         pass
 
-    def findUserContextMappingHistory(accelerator, contextFamily, fromTime, toTime):
+    def findUserContextMappingHistory(self, accelerator, contextFamily, fromTime, toTime):
         pass
 
-    def findAcceleratorUsers():
+    def findAcceleratorUsers(self):
         pass
 
-    def findAcceleratorUser():
+    def findAcceleratorUser(self):
         pass
 
-    def updateContext(context):
+    def updateContext(self, context):
         pass
 
-    def findContextByAcceleratorUser(user):
+    def findContextByAcceleratorUser(self, user):
         pass
 
-    def saveContextToUserMapping(contexts):
+    def saveContextToUserMapping(self, contexts):
         pass
 
-    def findContextCategories():
+    def findContextCategories(self):
         pass
 
-    def findDefaultContextCategory():
+    def findDefaultContextCategory(self):
         pass
 
-    def findBeamProcessPurposes(accelerator):
+    def findBeamProcessPurposes(self, accelerator):
         pass
 
-    def findDefaultBeamProcessPurpose(accelerator):
+    def findDefaultBeamProcessPurpose(self, accelerator):
         pass
-
 
