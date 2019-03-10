@@ -12,8 +12,8 @@ __cmmnbuild_deps__ = [
 # continue
 try:
     from .lsa_client import LsaClient
-except ImportError:
+except (ImportError, TypeError) as ex:
     import logging
     logging.basicConfig()
     log = logging.getLogger(__name__)
-    log.warn("required dependencies are not installed")
+    log.warning("required dependencies are not yet installed: {0}".format(ex))

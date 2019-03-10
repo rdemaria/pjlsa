@@ -6,7 +6,7 @@ jpype = mgr.start_jpype_jvm()
 
 
 # Monkey-Patcher for LSA Java Domain Objects
-class LsaCustomizer(object):
+class LsaCustomizer(jpype._jclass.JClassCustomizer):
     _PATCHES = {
         '__repr__': lambda self: self.__str__()
     }
@@ -14,7 +14,7 @@ class LsaCustomizer(object):
     def canCustomize(self, name, jc):
         return name.startswith('cern.lsa.domain.') or name.startswith('cern.accsoft.commons.domain.')
 
-    def customize(self, name, jc, bases, members):
+    def customize(self, name, jc, bases, members, fields):
         members.update(LsaCustomizer._PATCHES)
 
 

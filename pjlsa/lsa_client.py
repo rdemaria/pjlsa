@@ -32,8 +32,8 @@ Authors:
 '''
 
 from typing import Iterable, Union, Optional, List
-from .jpype_lsa import *
 from .util import *
+from .jpype_lsa import *
 
 
 class LsaClient(object):
