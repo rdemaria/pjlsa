@@ -1,4 +1,6 @@
 import cmmnbuild_dep_manager
+import re
+from typing import Set, List, Tuple, Mapping
 
 # ------ JPype SETUP ------
 mgr = cmmnbuild_dep_manager.Manager('pjlsa')
@@ -16,10 +18,47 @@ class LsaCustomizer(jpype._jclass.JClassCustomizer):
 
     def customize(self, name, jc, bases, members, fields):
         members.update(LsaCustomizer._PATCHES)
+        # delete accessors to fields
+        for k in [k for k in members.keys() if type(members[k]) is property]:
+            del members[k]
+        # inline enum constants (also for pseudo-enum pojos)
+        if 'values' in members and 'valueOf' in members:
+            members.update({f: v for f, v in fields.items() if f not in ['$VALUES', 'mro', 'class_']})
+        # expose getters and setters in a more pythonic way
+        getters = {re.sub('^(get|is)(.)(.*)', lambda g: g.group(2).lower() + g.group(3), k): k
+                   for k in members.keys() if k.startswith('get') or k.startswith('is')}
+        setters = {re.sub('^(set)(.)(.*)', lambda g: g.group(2).lower() + g.group(3), k): k
+                   for k in members.keys() if k.startswith('set')}
+        for m, getter in getters.items():
+            setter = setters[m] if m in setters else None
+            wrapped_getter = LsaCustomizer._from_java(members[getter])
+            wrapped_setter = LsaCustomizer._to_java(members[setter]) if setter is not None else None
+            members[m] = property(wrapped_getter, wrapped_setter)
+            del members[getter]
+            if setter is not None:
+                del members[setter]
+
+    @classmethod
+    def _from_java(cls, accessor):
+        def convert(value):
+            if isinstance(value, java.util.Set):
+                return set(value)
+            return value
+        return lambda *args: convert(accessor(*args))
+
+    @classmethod
+    def _to_java(cls, accessor):
+        def convert(value):
+            if isinstance(value, Set):
+                hs = java.util.HashSet()
+                for v in value:
+                    hs.put(v)
+                return hs
+            return value
+        return lambda *args: accessor(*[convert(a) for a in args])
 
 
 jpype._jclass.registerClassCustomizer(LsaCustomizer())
-
 
 # ------ IMPORTS ------
 cern = jpype.JPackage('cern')

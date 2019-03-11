@@ -59,7 +59,7 @@ class LsaContextService(object):
     def __init__(self, lsa_client):
         self._lsa = lsa_client
 
-    def findStandAloneBeamProcesses(self, *, names: Union[str, Iterable[str], None] = None,
+    def findStandAloneBeamProcesses(self, names: Union[str, Iterable[str], None] = None, *,
                                     ids: Union[int, Iterable[int], None] = None,
                                     accelerator: Optional[str] = None, resident: Optional[bool] = None,
                                     multiplexed: Optional[bool] = None) -> List[StandAloneBeamProcess]:
@@ -77,14 +77,14 @@ class LsaContextService(object):
         contexts = self._lsa._contextService.findStandAloneBeamProcesses(request.build())
         return [ctx for ctx in contexts]
 
-    def findStandAloneBeamProcess(self, *, name: Optional[str] = None, id: Optional[int] = None,
+    def findStandAloneBeamProcess(self, name: Optional[str] = None, id: Optional[int] = None, *,
                                   accelerator: Optional[str] = None, resident: Optional[bool] = None,
                                   multiplexed: Optional[bool] = None) -> StandAloneBeamProcess:
         bps = self.findStandAloneBeamProcesses(names=name, ids=id, accelerator=accelerator,
                                                resident=resident, multiplexed=multiplexed)
         return onlyElementOf(bps)
 
-    def findStandAloneCycles(self, *, names: Union[str, Iterable[str], None] = None,
+    def findStandAloneCycles(self, names: Union[str, Iterable[str], None] = None, *,
                              ids: Union[int, Iterable[int], None] = None,
                              accelerator: Optional[str] = None, resident: Optional[bool] = None,
                              multiplexed: Optional[bool] = None) -> List[StandAloneCycle]:
@@ -102,14 +102,14 @@ class LsaContextService(object):
         contexts = self._lsa._contextService.findStandAloneCycles(request.build())
         return [ctx for ctx in contexts]
 
-    def findStandAloneCycle(self, *, name: Optional[str] = None, id: Optional[int] = None,
+    def findStandAloneCycle(self, name: Optional[str] = None, id: Optional[int] = None, *,
                             accelerator: Optional[str] = None, resident: Optional[bool] = None,
                             multiplexed: Optional[bool] = None) -> StandAloneCycle:
         cycles = self.findStandAloneCycles(names=name, ids=id, accelerator=accelerator,
                                            resident=resident, multiplexed=multiplexed)
         return onlyElementOf(cycles)
 
-    def findStandAloneContexts(self, *, names: Union[str, Iterable[str], None] = None,
+    def findStandAloneContexts(self, names: Union[str, Iterable[str], None] = None, *,
                                ids: Union[int, Iterable[int], None] = None,
                                accelerator: Optional[str] = None, resident: Optional[bool] = None,
                                multiplexed: Optional[bool] = None) -> List[StandAloneContext]:
@@ -142,7 +142,7 @@ class LsaContextService(object):
                                                                            toJavaDate(toTime).getTime())
         return [m for m in mappings]
 
-    def findAcceleratorUsers(self, *, names: Union[str, Iterable[str], None] = None,
+    def findAcceleratorUsers(self, names: Union[str, Iterable[str], None] = None, *,
                              ids: Union[int, Iterable[int], None] = None,
                              accelerator: Optional[str] = None, userGroup: Optional[str] = None,
                              multiplexed: Optional[bool] = None) -> List[AcceleratorUser]:
@@ -161,7 +161,7 @@ class LsaContextService(object):
         users = self._lsa._contextService.findAcceleratorUsers(request.build())
         return [u for u in users]
 
-    def findAcceleratorUser(self, *, name: Optional[str] = None, id: Optional[int] = None,
+    def findAcceleratorUser(self, name: Optional[str] = None, *, id: Optional[int] = None,
                             accelerator: Optional[str] = None, userGroup: Optional[str] = None,
                             multiplexed: Optional[bool] = None) -> AcceleratorUser:
         users = self.findAcceleratorUsers(names=name, ids=id, accelerator=accelerator, userGroup=userGroup,
