@@ -75,7 +75,7 @@ def _pythonToJava(value):
     if isinstance(value, Set):
         hs = java.util.HashSet()
         for v in value:
-            hs.put(_pythonToJava(v))
+            hs.add(_pythonToJava(v))
         return hs
     if isinstance(value, List):
         hs = java.util.ArrayList()
