@@ -1,5 +1,6 @@
 import cmmnbuild_dep_manager
 import re
+from datetime import datetime
 from typing import Set, List, Tuple, Mapping
 
 # ------ JPype SETUP ------
@@ -65,6 +66,8 @@ def _javaToPython(value):
         return {i.getKey(): i.getValue() for i in value.entrySet()}
     if isinstance(value, java.util.Optional):
         return value.orElse(None)
+    if isinstance(value, java.sql.Timestamp):
+        return datetime.fromtimestamp(value.getTime() / 1000)
     return value
 
 
@@ -84,6 +87,8 @@ def _pythonToJava(value):
         for k, v in value.items():
             hs.put(_pythonToJava(k), _pythonToJava(v))
         return hs
+    if isinstance(value, datetime):
+        return java.sql.Timestamp(int(value.timestamp() * 1000))
     return value
 
 
