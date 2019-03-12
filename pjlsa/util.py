@@ -23,6 +23,7 @@ def onlyElementOf(collection):
 
     return collection[0]
 
+
 def toJavaDate(value):
     Date = java.util.Date
     if isinstance(value, str):

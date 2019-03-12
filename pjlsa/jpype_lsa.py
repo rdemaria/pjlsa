@@ -30,35 +30,67 @@ class LsaCustomizer(jpype._jclass.JClassCustomizer):
         setters = {re.sub('^(set)(.)(.*)', lambda g: g.group(2).lower() + g.group(3), k): k
                    for k in members.keys() if k.startswith('set')}
         for m, getter in getters.items():
-            if not '=> EXACT' in members[getter].matchReport(jc):
+            if '=> EXACT' not in members[getter].matchReport(jc):
                 continue
             setter = setters[m] if m in setters else None
-            wrapped_getter = LsaCustomizer._from_java(jc, members[getter])
-            wrapped_setter = LsaCustomizer._to_java(jc, members[setter]) if setter is not None else None
+            wrapped_getter = LsaCustomizer._from_java(members[getter])
+            wrapped_setter = LsaCustomizer._to_java(members[setter]) if setter is not None else None
             members[m] = property(wrapped_getter, wrapped_setter)
             del members[getter]
             if setter is not None:
                 del members[setter]
+        for methodName in members.keys():
+            if isinstance(members[methodName], jpype._jclass._jpype._JavaMethod):
+                members[methodName] = LsaCustomizer._from_to_java(members[methodName])
 
     @classmethod
-    def _from_java(cls, jc, accessor):
-        def convert(value):
-            if isinstance(value, java.util.Set):
-                return set(value)
-            return value
-        return lambda *args: convert(accessor(*args))
+    def _from_to_java(cls, accessor):
+        return lambda *args: _javaToPython(accessor(*[_pythonToJava(a) for a in args]))
 
     @classmethod
-    def _to_java(cls, jc, accessor):
-        def convert(value):
-            if isinstance(value, Set):
-                hs = java.util.HashSet()
-                for v in value:
-                    hs.put(v)
-                return hs
-            return value
-        return lambda *args: accessor(*[convert(a) for a in args])
+    def _from_java(cls, accessor):
+        return lambda *args: _javaToPython(accessor(*args))
 
+    @classmethod
+    def _to_java(cls, accessor):
+        return lambda *args: accessor(*[_pythonToJava(a) for a in args])
+
+
+def _javaToPython(value):
+    if isinstance(value, java.util.Set):
+        return set(value)
+    if isinstance(value, java.util.List):
+        return list(value)
+    if isinstance(value, java.util.Map):
+        return {i.getKey(): i.getValue() for i in value.entrySet()}
+    if isinstance(value, java.util.Optional):
+        return value.orElse(None)
+    return value
+
+
+def _pythonToJava(value):
+    if isinstance(value, Set):
+        hs = java.util.HashSet()
+        for v in value:
+            hs.put(_pythonToJava(v))
+        return hs
+    if isinstance(value, List):
+        hs = java.util.ArrayList()
+        for v in value:
+            hs.add(_pythonToJava(v))
+        return hs
+    if isinstance(value, Mapping):
+        hs = java.util.HashMap()
+        for k, v in value.items():
+            hs.put(_pythonToJava(k), _pythonToJava(v))
+        return hs
+    return value
+
+
+# possible future - even more opportunistic - conversion
+# overloads = [m for m in jpype.java.lang.Class.forName(jc.getName()).getMethods() if m.getName()==accessor.getName()]
+# params = overloads[0].getParameterTypes()
+# params[0].isAssignableFrom(java.lang.String)
 
 jpype._jclass.registerClassCustomizer(LsaCustomizer())
 
