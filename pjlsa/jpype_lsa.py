@@ -30,16 +30,18 @@ class LsaCustomizer(jpype._jclass.JClassCustomizer):
         setters = {re.sub('^(set)(.)(.*)', lambda g: g.group(2).lower() + g.group(3), k): k
                    for k in members.keys() if k.startswith('set')}
         for m, getter in getters.items():
+            if not '=> EXACT' in members[getter].matchReport(jc):
+                continue
             setter = setters[m] if m in setters else None
-            wrapped_getter = LsaCustomizer._from_java(members[getter])
-            wrapped_setter = LsaCustomizer._to_java(members[setter]) if setter is not None else None
+            wrapped_getter = LsaCustomizer._from_java(jc, members[getter])
+            wrapped_setter = LsaCustomizer._to_java(jc, members[setter]) if setter is not None else None
             members[m] = property(wrapped_getter, wrapped_setter)
             del members[getter]
             if setter is not None:
                 del members[setter]
 
     @classmethod
-    def _from_java(cls, accessor):
+    def _from_java(cls, jc, accessor):
         def convert(value):
             if isinstance(value, java.util.Set):
                 return set(value)
@@ -47,7 +49,7 @@ class LsaCustomizer(jpype._jclass.JClassCustomizer):
         return lambda *args: convert(accessor(*args))
 
     @classmethod
-    def _to_java(cls, accessor):
+    def _to_java(cls, jc, accessor):
         def convert(value):
             if isinstance(value, Set):
                 hs = java.util.HashSet()
