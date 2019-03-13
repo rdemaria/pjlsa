@@ -1,6 +1,8 @@
 import cmmnbuild_dep_manager
 import re
 from datetime import datetime
+from enum import Enum
+import numpy as np
 from typing import Set, List, Tuple, Mapping
 
 # ------ JPype SETUP ------
@@ -68,6 +70,10 @@ def _javaToPython(value):
         return value.orElse(None)
     if isinstance(value, java.sql.Timestamp):
         return datetime.fromtimestamp(value.getTime() / 1000)
+    if isinstance(type(value), jpype._jarray._JavaArray):
+        return np.array(value[:])
+    if type(value) in _pyEnumMapping:
+        return _pyEnumMapping[type(value)](value)
     return value
 
 
@@ -89,6 +95,8 @@ def _pythonToJava(value):
         return hs
     if isinstance(value, datetime):
         return java.sql.Timestamp(int(value.timestamp() * 1000))
+    if isinstance(value, Enum):
+        return value.value
     return value
 
 
@@ -98,6 +106,75 @@ def _pythonToJava(value):
 # params[0].isAssignableFrom(java.lang.String)
 
 jpype._jclass.registerClassCustomizer(LsaCustomizer())
+
+_pyEnumMapping = {}
+
+
+def _pyEnum(jc):
+    global _pyEnumMapping
+    if jc in _pyEnumMapping:
+        return _pyEnumMapping[jc]
+    name = jc.__javaclass__.getName().split('.')[-1]
+    enum = Enum(name, {str(e): e for e in jc.values()})
+    enum.__javaclass__ = jc
+    _pyEnumMapping[jc] = enum
+    return enum
+
+
+def toJavaDate(value):
+    Date = java.util.Date
+    if isinstance(value, str):
+        return java.sql.Timestamp.valueOf(value)
+    elif isinstance(value, datetime):
+        return java.sql.Timestamp.valueOf(value.strftime('%Y-%m-%d %H:%M:%S.%f'))
+    elif value is None:
+        return None
+    elif isinstance(value, Date):
+        return value
+    else:
+        return Date(int(value * 1000))
+
+
+def toJavaList(value):
+    res = java.util.ArrayList()
+    if isinstance(value, List) or isinstance(value, Set) or isinstance(value, Tuple):
+        for item in value:
+            res.add(item)
+    elif isinstance(value, java.util.Collection):
+        res.addAll(value)
+    else:
+        res.add(value)
+    return res
+
+
+def toAccelerator(value):
+    CernAccelerator = cern.accsoft.commons.domain.CernAccelerator
+    return toEnum(value, CernAccelerator)
+
+
+def toEnum(value, enumClass):
+    if isinstance(value, enumClass):
+        return value
+    elif isinstance(value, Enum):
+        return value.value
+    else:
+        try:
+            return enumClass.valueOf(value.upper())
+        except jpype.JavaException:
+            validItems = [str(a) for a in enumClass.values()]
+            raise ValueError('"%s" is not a valid %s. Available: [%s]'
+                             % (value, enumClass.__javaclass__.getName().split('.')[-1], ', '.join(validItems)))
+
+
+def setupLog4j(logLevel):
+    log4j = org.apache.log4j
+    if log4j.BasicConfigurator is not None and callable(log4j.BasicConfigurator.configure):
+        log4j.BasicConfigurator.configure()
+    if logLevel is not None:
+        log4j.Logger.getRootLogger().setLevel(log4j.Level.toLevel(logLevel))
+    else:
+        log4j.Logger.getRootLogger().setLevel(log4j.Level.WARN)
+
 
 # ------ IMPORTS ------
 cern = jpype.JPackage('cern')
@@ -134,17 +211,3 @@ TimingService = cern.lsa.client.TimingService
 TransactionService = cern.lsa.client.TransactionService
 TrimService = cern.lsa.client.TrimService
 WorkingSetService = cern.lsa.client.WorkingSetService
-
-# Contexts
-ContextFamily = cern.lsa.domain.settings.ContextFamily
-Context = cern.lsa.domain.settings.Context
-StandAloneBeamProcess = cern.lsa.domain.settings.StandAloneBeamProcess
-StandAloneContext = cern.lsa.domain.settings.StandAloneContext
-StandAloneCycle = cern.lsa.domain.settings.StandAloneCycle
-BeamProcess = cern.lsa.domain.settings.BeamProcess
-BeamProcessType = cern.lsa.domain.settings.type.BeamProcessType
-BeamProcessPurpose = cern.lsa.domain.settings.type.BeamProcessPurpose
-ActualBeamProcessInfo = cern.lsa.domain.settings.ActualBeamProcessInfo
-UserContextMapping = cern.lsa.domain.settings.UserContextMapping
-AcceleratorUser = cern.lsa.domain.settings.AcceleratorUser
-AcceleratorUserGroup = cern.lsa.domain.settings.AcceleratorUserGroup

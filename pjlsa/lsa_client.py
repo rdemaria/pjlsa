@@ -33,24 +33,26 @@ Authors:
 
 from typing import Iterable, Union, Optional, List
 from .util import *
-from .jpype_lsa import *
+from . import jpype_lsa as _jp
+from .lsa_domain import *
+from datetime import datetime
 
 
 class LsaClient(object):
     def __init__(self, server='gpn', logLevel='INFO'):
-        System.setProperty('lsa.server', server)
-        setupLog4j(logLevel)
-        self._contextService = ServiceLocator.getService(ContextService)
-        self._trimService = ServiceLocator.getService(TrimService)
-        self._settingService = ServiceLocator.getService(SettingService)
-        self._parameterService = ServiceLocator.getService(ParameterService)
-        self._contextService = ServiceLocator.getService(ContextService)
-        self._lhcService = ServiceLocator.getService(LhcService)
-        self._hyperCycleService = ServiceLocator.getService(HyperCycleService)
-        self._knobService = ServiceLocator.getService(KnobService)
-        self._opticService = ServiceLocator.getService(OpticService)
-        self._deviceService = ServiceLocator.getService(DeviceService)
-        self._fidelService = ServiceLocator.getService(FidelService)
+        _jp.System.setProperty('lsa.server', server)
+        _jp.setupLog4j(logLevel)
+        self._contextService = _jp.ServiceLocator.getService(_jp.ContextService)
+        self._trimService = _jp.ServiceLocator.getService(_jp.TrimService)
+        self._settingService = _jp.ServiceLocator.getService(_jp.SettingService)
+        self._parameterService = _jp.ServiceLocator.getService(_jp.ParameterService)
+        self._contextService = _jp.ServiceLocator.getService(_jp.ContextService)
+        self._lhcService = _jp.ServiceLocator.getService(_jp.LhcService)
+        self._hyperCycleService = _jp.ServiceLocator.getService(_jp.HyperCycleService)
+        self._knobService = _jp.ServiceLocator.getService(_jp.KnobService)
+        self._opticService = _jp.ServiceLocator.getService(_jp.OpticService)
+        self._deviceService = _jp.ServiceLocator.getService(_jp.DeviceService)
+        self._fidelService = _jp.ServiceLocator.getService(_jp.FidelService)
 
         self.contextService = LsaContextService(self)
 
@@ -63,17 +65,17 @@ class LsaContextService(object):
                                     ids: Union[int, Iterable[int], None] = None,
                                     accelerator: Optional[str] = None, resident: Optional[bool] = None,
                                     multiplexed: Optional[bool] = None) -> List[StandAloneBeamProcess]:
-        request = cern.lsa.domain.settings.StandAloneBeamProcessesRequest.builder()
+        request = _jp.cern.lsa.domain.settings.StandAloneBeamProcessesRequest.builder()
         if names is not None:
-            request.addAllBeamProcessNames(toJavaList(names))
+            request.addAllBeamProcessNames(_jp.toJavaList(names))
         if ids is not None:
-            request.addAllIds(toJavaList(ids))
+            request.addAllIds(_jp.toJavaList(ids))
         if accelerator is not None:
-            request.accelerator(toAccelerator(accelerator))
+            request.accelerator(_jp.toAccelerator(accelerator))
         if resident is not None:
-            request.resident(java.lang.Boolean(resident))
+            request.resident(_jp.java.lang.Boolean(resident))
         if multiplexed is not None:
-            request.multiplexed(java.lang.Boolean(multiplexed))
+            request.multiplexed(_jp.java.lang.Boolean(multiplexed))
         contexts = self._lsa._contextService.findStandAloneBeamProcesses(request.build())
         return [ctx for ctx in contexts]
 
@@ -88,17 +90,17 @@ class LsaContextService(object):
                              ids: Union[int, Iterable[int], None] = None,
                              accelerator: Optional[str] = None, resident: Optional[bool] = None,
                              multiplexed: Optional[bool] = None) -> List[StandAloneCycle]:
-        request = cern.lsa.domain.settings.StandAloneCyclesRequest.builder()
+        request = _jp.cern.lsa.domain.settings.StandAloneCyclesRequest.builder()
         if names is not None:
-            request.addAllCycleNames(toJavaList(names))
+            request.addAllCycleNames(_jp.toJavaList(names))
         if ids is not None:
-            request.addAllIds(toJavaList(ids))
+            request.addAllIds(_jp.toJavaList(ids))
         if accelerator is not None:
-            request.accelerator(toAccelerator(accelerator))
+            request.accelerator(_jp.toAccelerator(accelerator))
         if resident is not None:
-            request.resident(java.lang.Boolean(resident))
+            request.resident(_jp.java.lang.Boolean(resident))
         if multiplexed is not None:
-            request.multiplexed(java.lang.Boolean(multiplexed))
+            request.multiplexed(_jp.java.lang.Boolean(multiplexed))
         contexts = self._lsa._contextService.findStandAloneCycles(request.build())
         return [ctx for ctx in contexts]
 
@@ -113,17 +115,17 @@ class LsaContextService(object):
                                ids: Union[int, Iterable[int], None] = None,
                                accelerator: Optional[str] = None, resident: Optional[bool] = None,
                                multiplexed: Optional[bool] = None) -> List[StandAloneContext]:
-        request = cern.lsa.domain.settings.StandAloneContextsRequest.builder()
+        request = _jp.cern.lsa.domain.settings.StandAloneContextsRequest.builder()
         if names is not None:
-            request.addAllContextNames(toJavaList(names))
+            request.addAllContextNames(_jp.toJavaList(names))
         if ids is not None:
-            request.addAllIds(toJavaList(ids))
+            request.addAllIds(_jp.toJavaList(ids))
         if accelerator is not None:
-            request.accelerator(toAccelerator(accelerator))
+            request.accelerator(_jp.toAccelerator(accelerator))
         if resident is not None:
-            request.resident(java.lang.Boolean(resident))
+            request.resident(_jp.java.lang.Boolean(resident))
         if multiplexed is not None:
-            request.multiplexed(java.lang.Boolean(multiplexed))
+            request.multiplexed(_jp.java.lang.Boolean(multiplexed))
         contexts = self._lsa._contextService.findStandAloneContexts(request.build())
         return [ctx for ctx in contexts]
 
@@ -131,15 +133,15 @@ class LsaContextService(object):
         return self.findStandAloneContexts(accelerator=accelerator, resident=True)
 
     def findResidentNonMultiplexedContext(self, accelerator: str) -> StandAloneContext:
-        return self._lsa._contextService.findResidentNonMultiplexedContext(toAccelerator(accelerator))
+        return self._lsa._contextService.findResidentNonMultiplexedContext(_jp.toAccelerator(accelerator))
 
     def findUserContextMappingHistory(self, accelerator: str, contextFamily: str,
                                       fromTime: Union[int, str, datetime],
                                       toTime: Union[int, str, datetime]) -> List[UserContextMapping]:
-        mappings = self._lsa._contextService.findUserContextMappingHistory(toAccelerator(accelerator),
-                                                                           toEnum(contextFamily, ContextFamily),
-                                                                           toJavaDate(fromTime).getTime(),
-                                                                           toJavaDate(toTime).getTime())
+        mappings = self._lsa._contextService.findUserContextMappingHistory(_jp.toAccelerator(accelerator),
+                                                                           _jp.toEnum(contextFamily, ContextFamily),
+                                                                           _jp.toJavaDate(fromTime).getTime(),
+                                                                           _jp.toJavaDate(toTime).getTime())
         return [m for m in mappings]
 
     def findAcceleratorUsers(self, names: Union[str, Iterable[str], None] = None, *,
@@ -147,17 +149,17 @@ class LsaContextService(object):
                              accelerator: Optional[str] = None, userGroup: Optional[str] = None,
                              multiplexed: Optional[bool] = None) -> List[AcceleratorUser]:
 
-        request = cern.lsa.domain.settings.AcceleratorUsersRequest.builder()
+        request = _jp.cern.lsa.domain.settings.AcceleratorUsersRequest.builder()
         if names is not None:
-            request.addAllAcceleratorUserNames(toJavaList(names))
+            request.addAllAcceleratorUserNames(_jp.toJavaList(names))
         if ids is not None:
-            request.addAllIds(toJavaList(ids))
+            request.addAllIds(_jp.toJavaList(ids))
         if accelerator is not None:
-            request.accelerator(toAccelerator(accelerator))
+            request.accelerator(_jp.toAccelerator(accelerator))
         if userGroup is not None:
             request.acceleratorUserGroupName(userGroup)
         if multiplexed is not None:
-            request.multiplexed(java.lang.Boolean(multiplexed))
+            request.multiplexed(_jp.java.lang.Boolean(multiplexed))
         users = self._lsa._contextService.findAcceleratorUsers(request.build())
         return [u for u in users]
 

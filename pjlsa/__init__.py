@@ -12,6 +12,7 @@ __cmmnbuild_deps__ = [
 # continue
 try:
     from .lsa_client import LsaClient
+    from .lsa_domain import *
 except (ImportError, TypeError) as ex:
     import logging
     logging.basicConfig()
