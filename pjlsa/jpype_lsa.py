@@ -24,9 +24,6 @@ class LsaCustomizer(jpype._jclass.JClassCustomizer):
         # delete accessors to fields
         for k in [k for k in members.keys() if type(members[k]) is property]:
             del members[k]
-        # inline enum constants (also for pseudo-enum pojos)
-        if 'values' in members and 'valueOf' in members:
-            members.update({f: v for f, v in fields.items() if f not in ['$VALUES', 'mro', 'class_']})
         # expose getters and setters in a more pythonic way
         getters = {re.sub('^(get|is)(.)(.*)', lambda g: g.group(2).lower() + g.group(3), k): k
                    for k in members.keys() if k.startswith('get') or k.startswith('is')}
@@ -61,19 +58,19 @@ class LsaCustomizer(jpype._jclass.JClassCustomizer):
 
 def _javaToPython(value):
     if isinstance(value, java.util.Set):
-        return set(value)
+        return set([_javaToPython(v) for v in value])
     if isinstance(value, java.util.List):
-        return list(value)
+        return list([_javaToPython(v) for v in value])
     if isinstance(value, java.util.Map):
-        return {i.getKey(): i.getValue() for i in value.entrySet()}
+        return {_javaToPython(i.getKey()): _javaToPython(i.getValue()) for i in value.entrySet()}
     if isinstance(value, java.util.Optional):
-        return value.orElse(None)
+        return _javaToPython(value.orElse(None))
     if isinstance(value, java.sql.Timestamp):
         return datetime.fromtimestamp(value.getTime() / 1000)
     if isinstance(type(value), jpype._jarray._JavaArray):
         return np.array(value[:])
     if type(value) in _pyEnumMapping:
-        return _pyEnumMapping[type(value)](value)
+        return _pyEnumMapping[type(value)]._from_java(value)
     return value
 
 
@@ -96,7 +93,7 @@ def _pythonToJava(value):
     if isinstance(value, datetime):
         return java.sql.Timestamp(int(value.timestamp() * 1000))
     if isinstance(value, Enum):
-        return value.value
+        return value.__javavalue__
     return value
 
 
@@ -115,8 +112,13 @@ def _pyEnum(jc):
     if jc in _pyEnumMapping:
         return _pyEnumMapping[jc]
     name = jc.__javaclass__.getName().split('.')[-1]
-    enum = Enum(name, {str(e): e for e in jc.values()})
+    java_values = {str(e): e for e in jc.values()}
+    enum = Enum(name, {v: v for v in java_values.keys()})
     enum.__javaclass__ = jc
+    enum.__repr__ = enum.__str__
+    enum._from_java = lambda v: [e for e in enum if e.__javavalue__ == v][0]
+    for e in enum:
+        e.__javavalue__ = java_values[e.name]
     _pyEnumMapping[jc] = enum
     return enum
 
@@ -155,8 +157,8 @@ def toAccelerator(value):
 def toEnum(value, enumClass):
     if isinstance(value, enumClass):
         return value
-    elif isinstance(value, Enum):
-        return value.value
+    elif isinstance(value, Enum) and hasattr(value, '__javavalue__'):
+        return value.__javavalue__
     else:
         try:
             return enumClass.valueOf(value.upper())
