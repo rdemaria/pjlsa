@@ -4,7 +4,8 @@ __cmmnbuild_deps__ = [
     "lsa-client",
     "slf4j-log4j12",
     "slf4j-api",
-    "log4j"
+    "log4j",
+    "mockito-core"
 ]
 
 # When running setuptools without required dependencies installed
