@@ -151,10 +151,10 @@ def toJavaList(value):
 
 def toAccelerator(value):
     CernAccelerator = cern.accsoft.commons.domain.CernAccelerator
-    return toEnum(value, CernAccelerator)
+    return toJavaEnum(value, CernAccelerator)
 
 
-def toEnum(value, enumClass):
+def toJavaEnum(value, enumClass):
     if isinstance(value, enumClass):
         return value
     elif isinstance(value, Enum) and hasattr(value, '__javavalue__'):

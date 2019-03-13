@@ -139,7 +139,7 @@ class LsaContextService(object):
                                       fromTime: Union[int, str, datetime],
                                       toTime: Union[int, str, datetime]) -> List[UserContextMapping]:
         mappings = self._lsa._contextService.findUserContextMappingHistory(_jp.toAccelerator(accelerator),
-                                                                           _jp.toEnum(contextFamily, ContextFamily),
+                                                                           _jp.toJavaEnum(contextFamily, ContextFamily),
                                                                            _jp.toJavaDate(fromTime).getTime(),
                                                                            _jp.toJavaDate(toTime).getTime())
         return [m for m in mappings]
@@ -179,12 +179,6 @@ class LsaContextService(object):
         return self._lsa._contextService.findStandAloneContextByAcceleratorUser(user)
 
     def saveContextToUserMapping(self, contexts: Iterable[Context]):
-        pass
-
-    def findContextCategories(self):
-        pass
-
-    def findDefaultContextCategory(self):
         pass
 
     def findBeamProcessPurposes(self, accelerator: str):
