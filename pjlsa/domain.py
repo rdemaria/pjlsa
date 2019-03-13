@@ -1,4 +1,4 @@
-from . import jpype_lsa as _jp
+from . import _jpype as _jp
 
 # Contexts
 Context = _jp.cern.lsa.domain.settings.Context

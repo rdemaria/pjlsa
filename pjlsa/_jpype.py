@@ -13,7 +13,7 @@ jpype = mgr.start_jpype_jvm()
 # Monkey-Patcher for LSA Java Domain Objects
 class LsaCustomizer(jpype._jclass.JClassCustomizer):
     _PATCHES = {
-        '__repr__': lambda self: self.__str__()
+        '__repr__': lambda self: '<' + self.__str__() + '>'
     }
 
     def canCustomize(self, name, jc):
