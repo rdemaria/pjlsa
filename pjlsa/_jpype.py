@@ -152,22 +152,15 @@ def toJavaList(value):
 
 
 def toAccelerator(value):
-    CernAccelerator = cern.accsoft.commons.domain.CernAccelerator
-    return toJavaEnum(value, CernAccelerator)
+    from .domain import CernAccelerator
+    return toJavaEnum(CernAccelerator(value))
 
 
-def toJavaEnum(value, enumClass):
-    if isinstance(value, enumClass):
-        return value
-    elif isinstance(value, Enum) and hasattr(value, '__javavalue__'):
+def toJavaEnum(value):
+    if isinstance(value, Enum) and hasattr(value, '__javavalue__'):
         return value.__javavalue__
     else:
-        try:
-            return enumClass.valueOf(value.upper())
-        except jpype.JavaException:
-            validItems = [str(a) for a in enumClass.values()]
-            raise ValueError('"%s" is not a valid %s. Available: [%s]'
-                             % (value, enumClass.__javaclass__.getName().split('.')[-1], ', '.join(validItems)))
+        raise ValueError('"{}" is not a (java) compatible enum - missing __javavalue__')
 
 
 def setupLog4j(logLevel):

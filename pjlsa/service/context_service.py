@@ -65,11 +65,11 @@ class LsaContextService(object):
                                            resident=resident, multiplexed=multiplexed)
         return onlyElementOf(cycles)
 
-    def findUserContextMappingHistory(self, accelerator: str, contextFamily: str,
+    def findUserContextMappingHistory(self, accelerator: str, contextFamily: Union[str, ContextFamily],
                                       fromTime: Union[int, str, datetime],
                                       toTime: Union[int, str, datetime]) -> List[UserContextMapping]:
         mappings = self._lsa._contextService.findUserContextMappingHistory(_jp.toAccelerator(accelerator),
-                                                                           _jp.toJavaEnum(contextFamily, ContextFamily),
+                                                                           _jp.toJavaEnum(ContextFamily(contextFamily)),
                                                                            _jp.toJavaDate(fromTime).getTime(),
                                                                            _jp.toJavaDate(toTime).getTime())
         return [m for m in mappings]
@@ -110,11 +110,12 @@ class LsaContextService(object):
             user = self.findAcceleratorUser(name=user)
         return self._lsa._contextService.findStandAloneContextByAcceleratorUser(user)
 
-    def saveContextToUserMapping(self, contexts: Iterable[Context]):
-        pass
+    def saveContextToUserMapping(self, contexts: Iterable[Context]) -> None:
+        self._lsa._contextService.saveContextToUserMapping(_jp.toJavaList(contexts))
 
-    def findBeamProcessPurposes(self, accelerator: str):
-        pass
+    def findBeamProcessPurposes(self, accelerator: Union[str, CernAccelerator]) -> BeamProcessPurpose:
+        purposes = self._lsa._contextService.findBeamProcessPurposes(_jp.toAccelerator(accelerator))
+        return [p for p in purposes]
 
-    def findDefaultBeamProcessPurpose(self, accelerator: str):
-        pass
+    def findDefaultBeamProcessPurpose(self, accelerator: Union[str, CernAccelerator]) -> BeamProcessPurpose:
+        return  self._lsa._contextService.findDefaultBeamProcessPurpose(_jp.toAccelerator(accelerator))

@@ -17,7 +17,7 @@ def test_findStandAloneBeamProcess_findingMultipleBps_throws(lsa_client):
     bp1, bp2 = JMock(StandAloneBeamProcess), JMock(StandAloneBeamProcess)
     lsa_client.jmock_contextService.findStandAloneBeamProcesses = JStub(returns={bp1, bp2})
     with pytest.raises(ValueError) as error:
-        lsa_client.contextService.findStandAloneBeamProcess(accelerator=CernAccelerator.LHC)
+        lsa_client.contextService.findStandAloneBeamProcess(accelerator='LHC')
     assert 'Expected 1 matching' in str(error)
     java_args = lsa_client.jmock_contextService.findStandAloneBeamProcesses.assert_called_once()
     assert java_args[0].accelerator == CernAccelerator.LHC
@@ -35,7 +35,7 @@ def test_findStandAloneBeamProcesses_byAccelerator_returns(lsa_client):
 def test_findStandAloneBeamProcesses_byAcceleratorAndMultiplexityAndResidency_returns(lsa_client):
     bp = JMock(StandAloneBeamProcess)
     lsa_client.jmock_contextService.findStandAloneBeamProcesses = JStub(returns={bp})
-    ret = lsa_client.contextService.findStandAloneBeamProcesses(accelerator=CernAccelerator.LHC, multiplexed=False,
+    ret = lsa_client.contextService.findStandAloneBeamProcesses(accelerator='LHC', multiplexed=False,
                                                                 resident=True)
     assert ret == [bp()]
     java_args = lsa_client.jmock_contextService.findStandAloneBeamProcesses.assert_called_once()
@@ -91,7 +91,7 @@ def test_findStandAloneCycles_byAccelerator_returns(lsa_client):
 def test_findStandAloneCycles_byAcceleratorAndMultiplexityAndResidency_returns(lsa_client):
     cyc = JMock(StandAloneCycle)
     lsa_client.jmock_contextService.findStandAloneCycles = JStub(returns={cyc})
-    ret = lsa_client.contextService.findStandAloneCycles(accelerator=CernAccelerator.PSB, multiplexed=False,
+    ret = lsa_client.contextService.findStandAloneCycles(accelerator='PSB', multiplexed=False,
                                                          resident=True)
     assert ret == [cyc()]
     java_args = lsa_client.jmock_contextService.findStandAloneCycles.assert_called_once()
