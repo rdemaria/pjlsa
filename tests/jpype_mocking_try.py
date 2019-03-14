@@ -21,6 +21,5 @@ print(ctxSvcMock.findLoggingHistory.calls())
 
 assert len(result) == 1
 assert result[0] == user()
-calls = ctxSvcMock.findAcceleratorUsers.calls()
-assert len(calls) == 1
-assert calls[0][0].acceleratorUserNames == {'LHC.USER.ALL'}
+arguments = ctxSvcMock.findAcceleratorUsers.assert_called_once()
+assert arguments[0].acceleratorUserNames == {'LHC.USER.ALL'}
