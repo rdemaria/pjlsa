@@ -67,6 +67,8 @@ def _javaToPython(value):
         return _javaToPython(value.orElse(None))
     if isinstance(value, java.sql.Timestamp):
         return datetime.fromtimestamp(value.getTime() / 1000)
+    if isinstance(value, java.lang.Boolean):
+        return value.booleanValue()
     if isinstance(type(value), jpype._jarray._JavaArray):
         return np.array(value[:])
     if type(value) in _pyEnumMapping:

@@ -65,31 +65,6 @@ class LsaContextService(object):
                                            resident=resident, multiplexed=multiplexed)
         return onlyElementOf(cycles)
 
-    def findStandAloneContexts(self, names: Union[str, Iterable[str], None] = None, *,
-                               ids: Union[int, Iterable[int], None] = None,
-                               accelerator: Union[str, CernAccelerator, None] = None,
-                               resident: Optional[bool] = None,
-                               multiplexed: Optional[bool] = None) -> List[StandAloneContext]:
-        request = _jp.cern.lsa.domain.settings.StandAloneContextsRequest.builder()
-        if names is not None:
-            request.addAllContextNames(_jp.toJavaList(names))
-        if ids is not None:
-            request.addAllIds(_jp.toJavaList(ids))
-        if accelerator is not None:
-            request.accelerator(_jp.toAccelerator(accelerator))
-        if resident is not None:
-            request.resident(_jp.java.lang.Boolean(resident))
-        if multiplexed is not None:
-            request.multiplexed(_jp.java.lang.Boolean(multiplexed))
-        contexts = self._lsa._contextService.findStandAloneContexts(request.build())
-        return [ctx for ctx in contexts]
-
-    def findResidentContexts(self, accelerator: str) -> List[StandAloneContext]:
-        return self.findStandAloneContexts(accelerator=accelerator, resident=True)
-
-    def findResidentNonMultiplexedContext(self, accelerator: str) -> StandAloneContext:
-        return self._lsa._contextService.findResidentNonMultiplexedContext(_jp.toAccelerator(accelerator))
-
     def findUserContextMappingHistory(self, accelerator: str, contextFamily: str,
                                       fromTime: Union[int, str, datetime],
                                       toTime: Union[int, str, datetime]) -> List[UserContextMapping]:
