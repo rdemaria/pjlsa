@@ -108,7 +108,10 @@ class LsaContextService(object):
 
     def findContextByAcceleratorUser(self, user: Union[AcceleratorUser, str]) -> StandAloneContext:
         if isinstance(user, str):
-            user = self.findAcceleratorUser(name=user)
+            user_name = user
+            user = self.findAcceleratorUser(name=user_name)
+            if user is None:
+                raise ValueError('User {0} not found.'.format(user_name))
         return self._lsa._contextService.findStandAloneContextByAcceleratorUser(user)
 
     def saveContextToUserMapping(self, contexts: Iterable[Context]) -> None:

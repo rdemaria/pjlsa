@@ -126,7 +126,7 @@ def test_findUserContextMappingHistory_withStrings_returns(lsa_client):
                                                                   toTime='2018-09-10 00:00:00')
     assert ret == [ucm1(), ucm2()]
     java_args = lsa_client.jmock_contextService.findUserContextMappingHistory.assert_called_once()
-    assert java_args == (CernAccelerator.SPS.__javavalue__, ContextFamily.CYCLE.__javavalue__,
+    assert java_args == (to_java(CernAccelerator.SPS), to_java(ContextFamily.CYCLE),
                          datetime(2018, 8, 1, 0, 0, 0).timestamp() * 1000,
                          datetime(2018, 9, 10, 0, 0, 0).timestamp() * 1000)
 
@@ -142,6 +142,142 @@ def test_findUserContextMappingHistory_withObjects_returns(lsa_client):
                                                                   toTime=to_time)
     assert ret == [ucm1(), ucm2()]
     java_args = lsa_client.jmock_contextService.findUserContextMappingHistory.assert_called_once()
-    assert java_args == (CernAccelerator.PSB.__javavalue__, ContextFamily.CYCLE.__javavalue__,
+    assert java_args == (to_java(CernAccelerator.PSB), to_java(ContextFamily.CYCLE),
                          from_time.timestamp() * 1000,
                          to_time.timestamp() * 1000)
+
+
+def test_findUserContextMappingHistory_withTimestampsAndEmptyResponse_returns(lsa_client):
+    lsa_client.jmock_contextService.findUserContextMappingHistory = JStub(returns=[])
+    ret = lsa_client.contextService.findUserContextMappingHistory(accelerator=CernAccelerator.PS,
+                                                                  contextFamily=ContextFamily.CYCLE,
+                                                                  fromTime=123456789,
+                                                                  toTime=123456999)
+    assert ret == []
+    java_args = lsa_client.jmock_contextService.findUserContextMappingHistory.assert_called_once()
+    assert java_args == (to_java(CernAccelerator.PS), to_java(ContextFamily.CYCLE),
+                         123456789000,
+                         123456999000)
+
+
+def test_findAcceleratorUser_byName_returns(lsa_client):
+    user = JMock(AcceleratorUser)
+    lsa_client.jmock_contextService.findAcceleratorUsers = JStub(returns={user})
+    ret = lsa_client.contextService.findAcceleratorUser('LHC.USER.TEST')
+    assert ret == user()
+    java_args = lsa_client.jmock_contextService.findAcceleratorUsers.assert_called_once()
+    assert java_args[0].acceleratorUserNames == {'LHC.USER.TEST'}
+
+
+def test_findAcceleratorUser_findsTwoUsers_throws(lsa_client):
+    user1, user2 = JMock(AcceleratorUser), JMock(AcceleratorUser)
+    lsa_client.jmock_contextService.findAcceleratorUsers = JStub(returns={user1, user2})
+    with pytest.raises(ValueError) as error:
+        lsa_client.contextService.findAcceleratorUser(accelerator=CernAccelerator.PS, multiplexed=True)
+    assert 'Expected 1 matching' in str(error)
+    java_args = lsa_client.jmock_contextService.findAcceleratorUsers.assert_called_once()
+    assert java_args[0].accelerator == CernAccelerator.PS
+    assert java_args[0].multiplexed == True
+
+
+def test_findAcceleratorUsers_findsTwoUsers_returns(lsa_client):
+    user1, user2 = JMock(AcceleratorUser), JMock(AcceleratorUser)
+    lsa_client.jmock_contextService.findAcceleratorUsers = JStub(returns={user1, user2})
+    ret = lsa_client.contextService.findAcceleratorUsers(accelerator=CernAccelerator.PS, multiplexed=True)
+    assert set(ret) == {user1(), user2()}
+    java_args = lsa_client.jmock_contextService.findAcceleratorUsers.assert_called_once()
+    assert java_args[0].accelerator == CernAccelerator.PS
+    assert java_args[0].multiplexed == True
+
+
+def test_findAcceleratorUsers_byIds_returns(lsa_client):
+    user1, user2, user3 = JMock(AcceleratorUser), JMock(AcceleratorUser), JMock(AcceleratorUser)
+    lsa_client.jmock_contextService.findAcceleratorUsers = JStub(returns={user1, user2, user3})
+    ret = lsa_client.contextService.findAcceleratorUsers(ids=[1, 2, 3])
+    assert set(ret) == {user1(), user2(), user3()}
+    java_args = lsa_client.jmock_contextService.findAcceleratorUsers.assert_called_once()
+    assert java_args[0].ids == {1, 2, 3}
+
+
+def test_findAcceleratorUsers_byAcceleratorAndMultiplexed_returns(lsa_client):
+    user = JMock(AcceleratorUser)
+    lsa_client.jmock_contextService.findAcceleratorUsers = JStub(returns={user})
+    ret = lsa_client.contextService.findAcceleratorUsers(accelerator='LHC', multiplexed=False)
+    assert set(ret) == {user()}
+    java_args = lsa_client.jmock_contextService.findAcceleratorUsers.assert_called_once()
+    assert java_args[0].accelerator == CernAccelerator.LHC
+    assert java_args[0].multiplexed == False
+
+
+def test_updateContext(lsa_client):
+    cycle = JMock(StandAloneCycle)
+    lsa_client.jmock_contextService.updateContext = JStub()
+    lsa_client.contextService.updateContext(cycle())
+    java_args = lsa_client.jmock_contextService.updateContext.assert_called_once()
+    assert java_args[0] == cycle()
+
+
+def test_findContextByAcceleratorUser_withAcceleratorUser_returns(lsa_client):
+    user = JMock(AcceleratorUser)
+    ctx = JMock(StandAloneCycle)
+    lsa_client.jmock_contextService.findStandAloneContextByAcceleratorUser = JStub(returns=ctx)
+    ret = lsa_client.contextService.findContextByAcceleratorUser(user())
+    assert ret == ctx()
+    java_args = lsa_client.jmock_contextService.findStandAloneContextByAcceleratorUser.assert_called_once()
+    assert java_args[0] == user()
+
+
+def test_findContextByAcceleratorUser_withString_looksUpUser(lsa_client):
+    user = JMock(AcceleratorUser)
+    ctx = JMock(StandAloneCycle)
+    lsa_client.jmock_contextService.findAcceleratorUsers = JStub(returns={user})
+    lsa_client.jmock_contextService.findStandAloneContextByAcceleratorUser = JStub(returns=ctx)
+    ret = lsa_client.contextService.findContextByAcceleratorUser('SPS.USER.FOOBAR')
+    assert ret == ctx()
+    user_lookup_args = lsa_client.jmock_contextService.findAcceleratorUsers.assert_called_once()
+    assert user_lookup_args[0].acceleratorUserNames == {'SPS.USER.FOOBAR'}
+    ctx_lookup_args = lsa_client.jmock_contextService.findStandAloneContextByAcceleratorUser.assert_called_once()
+    assert ctx_lookup_args[0] == user()
+
+
+def test_findContextByAcceleratorUser_withStringOfUnknownUser_throws(lsa_client):
+    lsa_client.jmock_contextService.findAcceleratorUsers = JStub(returns=set())
+    with pytest.raises(ValueError) as error:
+        lsa_client.contextService.findContextByAcceleratorUser('LHC.USER.NOBODY')
+    assert 'LHC.USER.NOBODY not found' in str(error)
+    user_lookup_args = lsa_client.jmock_contextService.findAcceleratorUsers.assert_called_once()
+    assert user_lookup_args[0].acceleratorUserNames == {'LHC.USER.NOBODY'}
+
+
+def test_saveContextToUserMapping_oneCycle(lsa_client):
+    cycle = JMock(StandAloneCycle)
+    lsa_client.jmock_contextService.saveContextToUserMapping = JStub()
+    lsa_client.contextService.saveContextToUserMapping(cycle())
+    java_args = lsa_client.jmock_contextService.saveContextToUserMapping.assert_called_once()
+    assert java_args[0] == to_java([cycle()])
+
+
+def test_saveContextToUserMapping_twoBeamProcesses(lsa_client):
+    bp1, bp2 = JMock(StandAloneBeamProcess), JMock(StandAloneBeamProcess)
+    lsa_client.jmock_contextService.saveContextToUserMapping = JStub()
+    lsa_client.contextService.saveContextToUserMapping([bp1(), bp2()])
+    java_args = lsa_client.jmock_contextService.saveContextToUserMapping.assert_called_once()
+    assert java_args[0] == to_java([bp1(), bp2()])
+
+
+def test_findBeamProcessPurposes_returnsTwo(lsa_client):
+    bp1, bp2 = JMock(BeamProcessPurpose), JMock(BeamProcessPurpose)
+    lsa_client.jmock_contextService.findBeamProcessPurposes = JStub(returns={bp1, bp2})
+    ret = lsa_client.contextService.findBeamProcessPurposes('LHC')
+    assert set(ret) == {bp1(), bp2()}
+    java_args = lsa_client.jmock_contextService.findBeamProcessPurposes.assert_called_once()
+    assert java_args[0] == to_java(CernAccelerator.LHC)
+
+
+def test_findDefaultBeamProcessPurpose_returnsOne(lsa_client):
+    bp = JMock(BeamProcessPurpose)
+    lsa_client.jmock_contextService.findDefaultBeamProcessPurpose = JStub(returns=bp)
+    ret = lsa_client.contextService.findDefaultBeamProcessPurpose('ELENA')
+    assert ret == bp()
+    java_args = lsa_client.jmock_contextService.findDefaultBeamProcessPurpose.assert_called_once()
+    assert java_args[0] == to_java(CernAccelerator.ELENA)
