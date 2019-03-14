@@ -2,6 +2,7 @@ from lsa_test_util import *
 from jpype_test import *
 from pjlsa.domain import *
 import pytest
+from datetime import datetime
 
 
 def test_findStandAloneBeamProcess_byName_returns(lsa_client):
@@ -114,3 +115,33 @@ def test_findStandAloneCycles_multipleNames_returns(lsa_client):
     assert ret == []
     java_args = lsa_client.jmock_contextService.findStandAloneCycles.assert_called_once()
     assert java_args[0].cycleNames == {'CYC1', 'CYC2'}
+
+
+def test_findUserContextMappingHistory_withStrings_returns(lsa_client):
+    ucm1, ucm2 = JMock(UserContextMapping), JMock(UserContextMapping)
+    lsa_client.jmock_contextService.findUserContextMappingHistory = JStub(returns=[ucm1, ucm2])
+    ret = lsa_client.contextService.findUserContextMappingHistory(accelerator='SPS',
+                                                                  contextFamily='CYCLE',
+                                                                  fromTime='2018-08-01 00:00:00',
+                                                                  toTime='2018-09-10 00:00:00')
+    assert ret == [ucm1(), ucm2()]
+    java_args = lsa_client.jmock_contextService.findUserContextMappingHistory.assert_called_once()
+    assert java_args == (CernAccelerator.SPS.__javavalue__, ContextFamily.CYCLE.__javavalue__,
+                         datetime(2018, 8, 1, 0, 0, 0).timestamp() * 1000,
+                         datetime(2018, 9, 10, 0, 0, 0).timestamp() * 1000)
+
+
+def test_findUserContextMappingHistory_withObjects_returns(lsa_client):
+    ucm1, ucm2 = JMock(UserContextMapping), JMock(UserContextMapping)
+    from_time = datetime(2018, 5, 1, 0, 0, 42)
+    to_time = datetime(2018, 5, 23, 0, 0, 42)
+    lsa_client.jmock_contextService.findUserContextMappingHistory = JStub(returns=[ucm1, ucm2])
+    ret = lsa_client.contextService.findUserContextMappingHistory(accelerator=CernAccelerator.PSB,
+                                                                  contextFamily=ContextFamily.CYCLE,
+                                                                  fromTime=from_time,
+                                                                  toTime=to_time)
+    assert ret == [ucm1(), ucm2()]
+    java_args = lsa_client.jmock_contextService.findUserContextMappingHistory.assert_called_once()
+    assert java_args == (CernAccelerator.PSB.__javavalue__, ContextFamily.CYCLE.__javavalue__,
+                         from_time.timestamp() * 1000,
+                         to_time.timestamp() * 1000)

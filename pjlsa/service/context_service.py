@@ -57,7 +57,7 @@ class LsaContextService(object):
         contexts = self._lsa._contextService.findStandAloneCycles(request.build())
         return [ctx for ctx in contexts]
 
-    def findStandAloneCycle(self, name: Optional[str] = None, id: Optional[int] = None, *,
+    def findStandAloneCycle(self, name: Optional[str] = None, *, id: Optional[int] = None,
                             accelerator: Union[str, CernAccelerator, None] = None,
                             resident: Optional[bool] = None,
                             multiplexed: Optional[bool] = None) -> StandAloneCycle:
@@ -65,7 +65,8 @@ class LsaContextService(object):
                                            resident=resident, multiplexed=multiplexed)
         return onlyElementOf(cycles)
 
-    def findUserContextMappingHistory(self, accelerator: str, contextFamily: Union[str, ContextFamily],
+    def findUserContextMappingHistory(self, *, accelerator: Union[CernAccelerator, str],
+                                      contextFamily: Union[str, ContextFamily],
                                       fromTime: Union[int, str, datetime],
                                       toTime: Union[int, str, datetime]) -> List[UserContextMapping]:
         mappings = self._lsa._contextService.findUserContextMappingHistory(_jp.toAccelerator(accelerator),
@@ -118,4 +119,4 @@ class LsaContextService(object):
         return [p for p in purposes]
 
     def findDefaultBeamProcessPurpose(self, accelerator: Union[str, CernAccelerator]) -> BeamProcessPurpose:
-        return  self._lsa._contextService.findDefaultBeamProcessPurpose(_jp.toAccelerator(accelerator))
+        return self._lsa._contextService.findDefaultBeamProcessPurpose(_jp.toAccelerator(accelerator))
