@@ -13,5 +13,5 @@ def lsa_client():
         mock = getattr(lsa_client, t)
         if isinstance(mock, JMock):
             setattr(lsa_client, t, mock())
-            setattr(lsa_client, 'mock' + t, mock)
+            setattr(lsa_client, 'jmock' + t, mock)
     return lsa_client
