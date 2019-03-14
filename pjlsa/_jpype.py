@@ -80,7 +80,7 @@ def _pythonToJava(value):
         for v in value:
             hs.add(_pythonToJava(v))
         return hs
-    if isinstance(value, List):
+    if isinstance(value, List) or isinstance(value, Tuple):
         hs = java.util.ArrayList()
         for v in value:
             hs.add(_pythonToJava(v))
