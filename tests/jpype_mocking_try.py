@@ -42,7 +42,7 @@ class JavaClassMock(object):
         mock.overloads = overloads
         for method in overloads:
             param_types = method.getParameterTypes()
-            stubber = getattr(Mockito.doReturn(mock.return_value, None).when(self._mock), method_name)
+            stubber = getattr(Mockito.doReturn(mock.return_value, mock.return_value).when(self._mock), method_name)
             stubber(*[Mockito.any(t) for t in param_types])
 
     def __call__(self, *args, **kwargs):
@@ -61,7 +61,7 @@ lsa = pjlsa.LsaClient()
 lsa._contextService = ctxSvcMock()
 
 print(ctxSvcMock().findLoggingHistory(1, 1, pjlsa.domain.CernAccelerator.LHC.__javavalue__))
-print(ctxSvcMock().findLoggingHistory(2, 4, pjlsa.domain.CernAccelerator.SPS.__javavalue__))
+print(ctxSvcMock().findLoggingHistory(2, 2, pjlsa.domain.CernAccelerator.SPS.__javavalue__))
 print(ctxSvcMock().findLoggingHistory(7, 5, pjlsa.domain.CernAccelerator.AD.__javavalue__))
 
 result = lsa.contextService.findAcceleratorUsers('LHC.USER.ALL')
