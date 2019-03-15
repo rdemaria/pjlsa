@@ -33,7 +33,7 @@ class LsaContextService(object):
     def findStandAloneBeamProcess(self, name: Optional[str] = None, id: Optional[int] = None, *,
                                   accelerator: Union[str, CernAccelerator, None] = None,
                                   resident: Optional[bool] = None,
-                                  multiplexed: Optional[bool] = None) -> StandAloneBeamProcess:
+                                  multiplexed: Optional[bool] = None) -> Optional[StandAloneBeamProcess]:
         bps = self.findStandAloneBeamProcesses(names=name, ids=id, accelerator=accelerator,
                                                resident=resident, multiplexed=multiplexed)
         return onlyElementOf(bps)
@@ -60,7 +60,7 @@ class LsaContextService(object):
     def findStandAloneCycle(self, name: Optional[str] = None, *, id: Optional[int] = None,
                             accelerator: Union[str, CernAccelerator, None] = None,
                             resident: Optional[bool] = None,
-                            multiplexed: Optional[bool] = None) -> StandAloneCycle:
+                            multiplexed: Optional[bool] = None) -> Optional[StandAloneCycle]:
         cycles = self.findStandAloneCycles(names=name, ids=id, accelerator=accelerator,
                                            resident=resident, multiplexed=multiplexed)
         return onlyElementOf(cycles)

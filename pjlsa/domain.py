@@ -1,4 +1,6 @@
 from . import _jpype as _jp
+import typing as _typing
+from enum import Enum as _Enum
 
 # Contexts
 Context = _jp.cern.lsa.domain.settings.Context
@@ -12,6 +14,15 @@ ActualBeamProcessInfo = _jp.cern.lsa.domain.settings.ActualBeamProcessInfo
 UserContextMapping = _jp.cern.lsa.domain.settings.UserContextMapping
 AcceleratorUser = _jp.cern.lsa.domain.settings.AcceleratorUser
 AcceleratorUserGroup = _jp.cern.lsa.domain.settings.AcceleratorUserGroup
+
+# Parameters
+Parameter = _jp.cern.lsa.domain.settings.Parameter
+ParameterAttributes = _jp.cern.lsa.domain.settings.ParameterAttributes
+ParameterForEditing = _jp.cern.lsa.domain.settings.ParameterForEditing
+ParameterGroup = _jp.cern.lsa.domain.settings.ParameterGroup
+ParameterTreeNode = _jp.cern.lsa.domain.settings.ParameterTreeNode
+ParameterType = _jp.cern.lsa.domain.settings.ParameterType
+ParameterTypeGroup = _jp.cern.lsa.domain.settings.ParameterTypeGroup
 
 # ============== Enums ==============
 # cern.lsa.domain.settings
@@ -51,47 +62,53 @@ TimingParticleType = _jp._pyEnum(_jp.cern.lsa.domain.cern.timing.enums.PARTICLE_
 CernAccelerator = _jp._pyEnum(_jp.cern.accsoft.commons.domain.CernAccelerator)
 CernTimingDomain = _jp._pyEnum(_jp.cern.accsoft.commons.domain.CernTimingDomain)
 
-AdParticleTransfer = _jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.AdParticleTransfer)
-CtfParticleTransfer = _jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.CtfParticleTransfer)
-ElenaParticleTransfer = _jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer)
-IsoldeParticleTransfer = _jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.IsoldeParticleTransfer)
-LeirParticleTransfer = _jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.LeirParticleTransfer)
-LhcParticleTransfer = _jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.LhcParticleTransfer)
-Linac4ParticleTransfer = _jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.Linac4ParticleTransfer)
-NorthParticleTransfer = _jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer)
-ParticleTransferType = _jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.ParticleTransferType)
-PsParticleTransfer = _jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.PsParticleTransfer)
-PsbParticleTransfer = _jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer)
-SpsParticleTransfer = _jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer)
+ParticleTransfer = _typing.NewType('ParticleTransfer', _Enum)
+AdParticleTransfer = ParticleTransfer(_jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.AdParticleTransfer))
+CtfParticleTransfer = ParticleTransfer(_jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.CtfParticleTransfer))
+ElenaParticleTransfer = ParticleTransfer(_jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer))
+IsoldeParticleTransfer = ParticleTransfer(_jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.IsoldeParticleTransfer))
+LeirParticleTransfer = ParticleTransfer(_jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.LeirParticleTransfer))
+LhcParticleTransfer = ParticleTransfer(_jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.LhcParticleTransfer))
+Linac4ParticleTransfer = ParticleTransfer(_jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.Linac4ParticleTransfer))
+NorthParticleTransfer = ParticleTransfer(_jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer))
+ParticleTransferType = ParticleTransfer(_jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.ParticleTransferType))
+PsParticleTransfer = ParticleTransfer(_jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.PsParticleTransfer))
+PsbParticleTransfer = ParticleTransfer(_jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer))
+SpsParticleTransfer = ParticleTransfer(_jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer))
 
-AdAcceleratorZone = _jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.AdAcceleratorZone)
-CtfAcceleratorZone = _jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.CtfAcceleratorZone)
-ElenaAcceleratorZone = _jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.ElenaAcceleratorZone)
-IsoldeAcceleratorZone = _jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.IsoldeAcceleratorZone)
-LeirAcceleratorZone = _jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.LeirAcceleratorZone)
-LhcAcceleratorZone = _jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.LhcAcceleratorZone)
-Linac4AcceleratorZone = _jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.Linac4AcceleratorZone)
-NorthAcceleratorZone = _jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.NorthAcceleratorZone)
-PsAcceleratorZone = _jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.PsAcceleratorZone)
-PsbAcceleratorZone = _jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.PsbAcceleratorZone)
-SpsAcceleratorZone = _jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.SpsAcceleratorZone)
+AcceleratorZone = _typing.NewType('AcceleratorZone', _Enum)
+AdAcceleratorZone = AcceleratorZone(_jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.AdAcceleratorZone))
+CtfAcceleratorZone = AcceleratorZone(_jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.CtfAcceleratorZone))
+ElenaAcceleratorZone = AcceleratorZone(_jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.ElenaAcceleratorZone))
+IsoldeAcceleratorZone = AcceleratorZone(_jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.IsoldeAcceleratorZone))
+LeirAcceleratorZone = AcceleratorZone(_jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.LeirAcceleratorZone))
+LhcAcceleratorZone = AcceleratorZone(_jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.LhcAcceleratorZone))
+Linac4AcceleratorZone = AcceleratorZone(_jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.Linac4AcceleratorZone))
+NorthAcceleratorZone = AcceleratorZone(_jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.NorthAcceleratorZone))
+PsAcceleratorZone = AcceleratorZone(_jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.PsAcceleratorZone))
+PsbAcceleratorZone = AcceleratorZone(_jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.PsbAcceleratorZone))
+SpsAcceleratorZone = AcceleratorZone(_jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.SpsAcceleratorZone))
 
-ElenaBeam = _jp._pyEnum(_jp.cern.accsoft.commons.domain.beams.ElenaBeam)
-SpsBeam = _jp._pyEnum(_jp.cern.accsoft.commons.domain.beams.SpsBeam)
-LeirBeam = _jp._pyEnum(_jp.cern.accsoft.commons.domain.beams.LeirBeam)
-PsbBeam = _jp._pyEnum(_jp.cern.accsoft.commons.domain.beams.PsbBeam)
-PsBeam = _jp._pyEnum(_jp.cern.accsoft.commons.domain.beams.PsBeam)
-AdBeam = _jp._pyEnum(_jp.cern.accsoft.commons.domain.beams.AdBeam)
-LhcBeam = _jp._pyEnum(_jp.cern.accsoft.commons.domain.beams.LhcBeam)
-Linac4Beam = _jp._pyEnum(_jp.cern.accsoft.commons.domain.beams.Linac4Beam)
+Beam = _typing.NewType('Beam', _Enum)
+ElenaBeam = Beam(_jp._pyEnum(_jp.cern.accsoft.commons.domain.beams.ElenaBeam))
+SpsBeam = Beam(_jp._pyEnum(_jp.cern.accsoft.commons.domain.beams.SpsBeam))
+LeirBeam = Beam(_jp._pyEnum(_jp.cern.accsoft.commons.domain.beams.LeirBeam))
+PsbBeam = Beam(_jp._pyEnum(_jp.cern.accsoft.commons.domain.beams.PsbBeam))
+PsBeam = Beam(_jp._pyEnum(_jp.cern.accsoft.commons.domain.beams.PsBeam))
+AdBeam = Beam(_jp._pyEnum(_jp.cern.accsoft.commons.domain.beams.AdBeam))
+LhcBeam = Beam(_jp._pyEnum(_jp.cern.accsoft.commons.domain.beams.LhcBeam))
+Linac4Beam = Beam(_jp._pyEnum(_jp.cern.accsoft.commons.domain.beams.Linac4Beam))
 
-PsbAcceleratorMode = _jp._pyEnum(_jp.cern.accsoft.commons.domain.modes.PsbAcceleratorMode)
-LhcAcceleratorMode = _jp._pyEnum(_jp.cern.accsoft.commons.domain.modes.LhcAcceleratorMode)
-SpsAcceleratorMode = _jp._pyEnum(_jp.cern.accsoft.commons.domain.modes.SpsAcceleratorMode)
-PsAcceleratorMode = _jp._pyEnum(_jp.cern.accsoft.commons.domain.modes.PsAcceleratorMode)
-LeirAcceleratorMode = _jp._pyEnum(_jp.cern.accsoft.commons.domain.modes.LeirAcceleratorMode)
+AcceleratorMode = _typing.NewType('AcceleratorMode', _Enum)
+PsbAcceleratorMode = AcceleratorMode(_jp._pyEnum(_jp.cern.accsoft.commons.domain.modes.PsbAcceleratorMode))
+LhcAcceleratorMode = AcceleratorMode(_jp._pyEnum(_jp.cern.accsoft.commons.domain.modes.LhcAcceleratorMode))
+SpsAcceleratorMode = AcceleratorMode(_jp._pyEnum(_jp.cern.accsoft.commons.domain.modes.SpsAcceleratorMode))
+PsAcceleratorMode = AcceleratorMode(_jp._pyEnum(_jp.cern.accsoft.commons.domain.modes.PsAcceleratorMode))
+LeirAcceleratorMode = AcceleratorMode(_jp._pyEnum(_jp.cern.accsoft.commons.domain.modes.LeirAcceleratorMode))
+
 LhcBeamMode = _jp._pyEnum(_jp.cern.accsoft.commons.domain.modes.LhcBeamMode)
 ParticleType = _jp._pyEnum(_jp.cern.accsoft.commons.domain.ParticleType)
+
 SpsLhcB2EndPoint = _jp._pyEnum(_jp.cern.accsoft.commons.domain.beamdestinations.SpsLhcB2EndPoint)
 SpsLhcB1EndPoint = _jp._pyEnum(_jp.cern.accsoft.commons.domain.beamdestinations.SpsLhcB1EndPoint)
 SpsAwakeEndPoint = _jp._pyEnum(_jp.cern.accsoft.commons.domain.beamdestinations.SpsAwakeEndPoint)
