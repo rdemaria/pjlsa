@@ -1,13 +1,15 @@
-from typing import Iterable, Union, Optional, List
+from typing import Iterable, Union, Optional, List, Mapping
 from ..util import *
 from .. import _jpype as _jp
 from ..domain import *
-from datetime import datetime
 
 __all__ = ['LsaParameterService']
 
 
 class LsaParameterService(object):
+    def __init__(self, lsa_client):
+        self._lsa = lsa_client
+
     def findParameters(self, names: Union[str, Iterable[str], None] = None, *,
                        accelerator: Union[str, CernAccelerator, None] = None,
                        acceleratorZones: Union[
@@ -76,48 +78,42 @@ class LsaParameterService(object):
     def saveParameters(self, parameterAttributes: Union[ParameterAttributes, Iterable[ParameterAttributes]]) -> None:
         pass
 
-    def saveParameterRelations(self):
+    def saveParameterRelations(self, relations: Mapping[Union[Parameter, str], Iterable[Union[Parameter, str]]], *,
+                               hierarchy: str = 'DEFAULT') -> None:
         pass
 
-    def saveParameterTypes(self):
+    def saveParameterTypes(self, types: Union[ParameterType, Iterable[ParameterType]]) -> None:
         pass
 
-    def deleteParameterTypes(self):
+    def deleteParameterTypes(self, types: Union[ParameterType, Iterable[ParameterType]]) -> None:
         pass
 
-    def deleteParameters(self):
+    def deleteParameters(self, parameters: Union[Parameter, Iterable[Parameter]]) -> None:
         pass
 
-    def saveCriticalProperty(self):
+    def findParameterGroups(self, accelerator: Union[str, CernAccelerator]) -> List[ParameterGroup]:
         pass
 
-    def deleteCriticalProperty(self):
+    def saveParameterGroup(self, parameterGroup: ParameterGroup) -> None:
         pass
 
-    def findParameterGroups(self):
+    def deleteParameterGroup(self, parameterGroup: ParameterGroup) -> None:
         pass
 
-    def saveParameterGroup(self):
+    def addParametersToParameterGroup(self, parameterGroup: ParameterGroup,
+                                      parameters=Union[str, Parameter, Iterable[Union[str, Parameter]]]) -> None:
         pass
 
-    def deleteParameterGroup(self):
+    def removeParametersFromParameterGroup(self, parameterGroup: ParameterGroup,
+                                           parameters=Union[str, Parameter, Iterable[Union[str, Parameter]]]) -> None:
         pass
 
-    def addParametersToParameterGroup(self):
+    def findMakeRuleForParameterRelation(self, *, source=Union[str, Parameter],
+                                         dependent=Union[str, Parameter]) -> MakeRuleConfigStatus:
         pass
 
-    def removeParametersFromParameterGroup(self):
+    def findSourceParameterTree(self, parameter=Union[str, Parameter]) -> List[ParameterTreeNode]:
         pass
 
-    def findMakeRuleForParameterRelation(self):
+    def findDependentParameterTree(self, parameter=Union[str, Parameter]) -> List[ParameterTreeNode]:
         pass
-
-    def findParameterTrees(self):
-        pass
-
-    def getMaxDelta(self):
-        pass
-
-
-ps = LsaParameterService()
-ps.findParameter()

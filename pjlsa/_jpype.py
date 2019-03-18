@@ -110,10 +110,12 @@ _pyEnumMapping = {}
 
 
 def _pyEnum(jc):
+    if isinstance(jc, str):
+        jc = jpype.JClass(jc)
     global _pyEnumMapping
     if jc in _pyEnumMapping:
         return _pyEnumMapping[jc]
-    name = jc.__javaclass__.getName().split('.')[-1]
+    name = jc.__javaclass__.getName().split('.')[-1].split('$')[0]
     java_values = {str(e): e for e in jc.values()}
     enum = Enum(name, {v: v for v in java_values.keys()})
     enum.__javaclass__ = jc

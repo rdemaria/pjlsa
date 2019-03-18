@@ -52,3 +52,4 @@ class LsaClient(object):
         self._fidelService = _jp.ServiceLocator.getService(_jp.FidelService)
 
         self.contextService = _svc.LsaContextService(self)
+        self.parameterService = _svc.LsaParameterService(self)

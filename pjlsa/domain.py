@@ -24,6 +24,11 @@ ParameterTreeNode = _jp.cern.lsa.domain.settings.ParameterTreeNode
 ParameterType = _jp.cern.lsa.domain.settings.ParameterType
 ParameterTypeGroup = _jp.cern.lsa.domain.settings.ParameterTypeGroup
 
+# Make Rules
+MakeRuleForParameterRelation = _jp.cern.lsa.domain.settings.parameter.relation.MakeRuleForParameterRelation
+MakeRuleClassInfo = _jp.cern.lsa.domain.trim.rules.makerule.MakeRuleClassInfo
+MakeRuleInfo = _jp.cern.lsa.domain.trim.rules.makerule.MakeRuleInfo
+
 # ============== Enums ==============
 # cern.lsa.domain.settings
 ContextFamily = _jp._pyEnum(_jp.cern.lsa.domain.settings.ContextFamily)
@@ -34,6 +39,7 @@ PropertyAccessMode = _jp._pyEnum(_jp.cern.lsa.domain.settings.PropertyAccessMode
 SettingPartEnum = _jp._pyEnum(_jp.cern.lsa.domain.settings.SettingPartEnum)
 BeamProcessTypeCategory = _jp._pyEnum(_jp.cern.lsa.domain.settings.type.BeamProcessTypeCategory)
 CernContextCategory = _jp._pyEnum(_jp.cern.lsa.domain.cern.settings.CernContextCategory)
+MakeRuleConfigStatus = _jp._pyEnum('cern.lsa.domain.settings.parameter.relation.MakeRuleForParameterRelation$MakeRuleConfigStatus')
 
 # cern.lsa.domain.optics
 CalibrationFunctionTypes = _jp._pyEnum(_jp.cern.lsa.domain.optics.CalibrationFunctionTypes)
