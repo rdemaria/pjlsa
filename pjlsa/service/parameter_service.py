@@ -27,7 +27,14 @@ class LsaParameterService(object):
                        readable: Optional[bool] = None,
                        namePattern: Optional[str] = None,
                        critical: Optional[bool] = None) -> List[Parameter]:
-        pass
+        builder = _jp.cern.lsa.domain.settings.ParametersRequest.builder()
+        if names is not None:
+            builder.parameterNames(_jp.toJavaList(names))
+        if accelerator is not None:
+            builder.accelerator(_jp.toAccelerator(accelerator))
+
+        params = self._lsa._contextService.findParameters(builder.build)
+        return list(params)
 
     def findParameter(self, name: Optional[str] = None, *,
                       accelerator: Union[str, CernAccelerator, None] = None,
