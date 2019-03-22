@@ -3,7 +3,7 @@ import re
 from datetime import datetime
 from enum import Enum
 import numpy as np
-from typing import Set, List, Tuple, Mapping
+from typing import Set, List, Tuple, Mapping, Type, TypeVar
 
 # ------ JPype SETUP ------
 mgr = cmmnbuild_dep_manager.Manager('pjlsa')
@@ -108,8 +108,10 @@ jpype._jclass.registerClassCustomizer(LsaCustomizer())
 
 _pyEnumMapping = {}
 
+T = TypeVar('T')
 
-def _pyEnum(jc):
+
+def _pyEnum(jc, base: Type[T] = None) -> T:
     if isinstance(jc, str):
         jc = jpype.JClass(jc)
     global _pyEnumMapping
@@ -117,7 +119,7 @@ def _pyEnum(jc):
         return _pyEnumMapping[jc]
     name = jc.__javaclass__.getName().split('.')[-1].split('$')[0]
     java_values = {str(e): e for e in jc.values()}
-    enum = Enum(name, {v: v for v in java_values.keys()})
+    enum = Enum(name, {v: v for v in java_values.keys()}, type=base)
     enum.__javaclass__ = jc
     enum.__repr__ = enum.__str__
     enum._from_java = lambda v: [e for e in enum if e.__javavalue__ == v][0]
@@ -141,15 +143,15 @@ def toJavaDate(value):
         return Date(int(value * 1000))
 
 
-def toJavaList(value):
+def toJavaList(value, converter=lambda x: x):
     res = java.util.ArrayList()
     if isinstance(value, List) or isinstance(value, Set) or isinstance(value, Tuple):
         for item in value:
-            res.add(item)
+            res.add(_pythonToJava(converter(item)))
     elif isinstance(value, java.util.Collection):
         res.addAll(value)
     else:
-        res.add(value)
+        res.add(_pythonToJava(converter(value)))
     return res
 
 

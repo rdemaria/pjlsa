@@ -29,11 +29,35 @@ class LsaParameterService(object):
                        critical: Optional[bool] = None) -> List[Parameter]:
         builder = _jp.cern.lsa.domain.settings.ParametersRequest.builder()
         if names is not None:
-            builder.parameterNames(_jp.toJavaList(names))
+            builder.setParameterNames(_jp.toJavaList(names))
         if accelerator is not None:
-            builder.accelerator(_jp.toAccelerator(accelerator))
+            builder.setAccelerator(_jp.toAccelerator(accelerator))
+        if acceleratorZones is not None:
+            builder.setAcceleratorZones(_jp.toJavaList(acceleratorZones, converter=AcceleratorZone.of))
+        if particleTransfers is not None:
+            builder.setParticleTransfers(_jp.toJavaList(particleTransfers, converter=ParticleTransfer.of))
+        if parameterTypes is not None:
+            builder.setParameterTypes(_jp.toJavaList(parameterTypes, converter=str))
+        if parameterGroups is not None:
+            builder.setParameterGroups(_jp.toJavaList(parameterGroups, converter=str))
+        if devices is not None:
+            builder.setDeviceNames(_jp.toJavaList(devices))
+        if properties is not None:
+            builder.setPropertyNames(_jp.toJavaList(properties))
+        if multiplexed is not None:
+            builder.setMultiplexed(_jp.java.lang.Boolean(multiplexed))
+        if virtual is not None:
+            builder.setVirtual(_jp.java.lang.Boolean(virtual))
+        if writable is not None:
+            builder.setWritable(_jp.java.lang.Boolean(writable))
+        if readable is not None:
+            builder.setReadable(_jp.java.lang.Boolean(readable))
+        if critical is not None:
+            builder.setCritical(_jp.java.lang.Boolean(critical))
+        if namePattern is not None:
+            builder.setParameterNamePattern(namePattern)
 
-        params = self._lsa._contextService.findParameters(builder.build)
+        params = self._lsa._parameterService.findParameters(builder.build())
         return list(params)
 
     def findParameter(self, name: Optional[str] = None, *,
