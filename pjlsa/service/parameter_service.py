@@ -74,7 +74,12 @@ class LsaParameterService(object):
                       readable: Optional[bool] = None,
                       namePattern: Optional[str] = None,
                       critical: Optional[bool] = None) -> Optional[Parameter]:
-        pass
+        params = self.findParameters(names=name, accelerator=accelerator, acceleratorZones=acceleratorZone,
+                                     particleTransfers=particleTransfer, parameterTypes=parameterType,
+                                     parameterGroups=parameterGroup, devices=device, properties=property,
+                                     multiplexed=multiplexed, virtual=virtual, writable=writable, readable=readable,
+                                     namePattern=namePattern, critical=critical)
+        return onlyElementOf(params)
 
     def findParametersForEditing(self, names: Union[str, Iterable[str], None] = None, *,
                                  accelerator: Union[str, CernAccelerator, None] = None,
