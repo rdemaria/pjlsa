@@ -99,7 +99,38 @@ class LsaParameterService(object):
                                  readable: Optional[bool] = None,
                                  namePattern: Optional[str] = None,
                                  critical: Optional[bool] = None) -> List[ParameterForEditing]:
-        pass
+        builder = _jp.cern.lsa.domain.settings.ParametersRequest.builder()
+        if names is not None:
+            builder.setParameterNames(_jp.toJavaList(names))
+        if accelerator is not None:
+            builder.setAccelerator(_jp.toAccelerator(accelerator))
+        if acceleratorZones is not None:
+            builder.setAcceleratorZones(_jp.toJavaList(acceleratorZones, converter=AcceleratorZone.of))
+        if particleTransfers is not None:
+            builder.setParticleTransfers(_jp.toJavaList(particleTransfers, converter=ParticleTransfer.of))
+        if parameterTypes is not None:
+            builder.setParameterTypes(_jp.toJavaList(parameterTypes, converter=str))
+        if parameterGroups is not None:
+            builder.setParameterGroups(_jp.toJavaList(parameterGroups, converter=str))
+        if devices is not None:
+            builder.setDeviceNames(_jp.toJavaList(devices))
+        if properties is not None:
+            builder.setPropertyNames(_jp.toJavaList(properties))
+        if multiplexed is not None:
+            builder.setMultiplexed(_jp.java.lang.Boolean(multiplexed))
+        if virtual is not None:
+            builder.setVirtual(_jp.java.lang.Boolean(virtual))
+        if writable is not None:
+            builder.setWritable(_jp.java.lang.Boolean(writable))
+        if readable is not None:
+            builder.setReadable(_jp.java.lang.Boolean(readable))
+        if critical is not None:
+            builder.setCritical(_jp.java.lang.Boolean(critical))
+        if namePattern is not None:
+            builder.setParameterNamePattern(namePattern)
+
+        params = self._lsa._parameterService.findParametersForEditing(builder.build())
+        return list(params)
 
     def findParameterTypes(self, names: Union[str, Iterable[str], None] = None, *,
                            deviceTypes: Union[str, Iterable[str], None] = None) -> List[ParameterType]:
