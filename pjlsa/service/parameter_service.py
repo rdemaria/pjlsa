@@ -134,38 +134,54 @@ class LsaParameterService(object):
 
     def findParameterTypes(self, names: Union[str, Iterable[str], None] = None, *,
                            deviceTypes: Union[str, Iterable[str], None] = None) -> List[ParameterType]:
-        pass
+        builder = _jp.cern.lsa.domain.settings.ParameterTypesRequest.builder()
+        if names is None and deviceTypes is None:
+            builder.setAllParameterTypesRequested(True)
+        if names is not None:
+            builder.setParameterTypeNames(_jp.toJavaList(names))
+        if names is not None:
+            builder.setDeviceTypeNames(_jp.toJavaList(deviceTypes))
+        param_types = self._lsa._parameterService.findParameterTypes(builder.build())
+        return list(param_types)
 
     def findParameterType(self, name: str) -> Optional[ParameterType]:
-        pass
+        return onlyElementOf(self.findParameterTypes(name))
 
-    def findHierarchies(self, parameters: Union[str, Iterable[str], Parameter, Iterable[Parameter]]) -> str:
-        pass
+    def findHierarchies(self, parameters: Union[str, Iterable[str], Parameter, Iterable[Parameter]]) -> List[str]:
+        if isinstance(parameters, str) or isinstance(parameters, Parameter):
+            parameters = [parameters]
+        parameters = set(parameters)
+        param_names = {p for p in parameters if isinstance(p, str)}
+        parameters -= param_names
+        found_params = self.findParameterTypes(names=param_names)
+        parameters.update(found_params)
+        hierarchies = self._lsa._parameterService.findHierarchyNames(_jp.toJavaList(parameters))
+        return list(hierarchies)
 
     def saveParameters(self, parameterAttributes: Union[ParameterAttributes, Iterable[ParameterAttributes]]) -> None:
-        pass
+        self._lsa.saveParameters(_jp.toJavaList(parameterAttributes))
 
     def saveParameterRelations(self, relations: Mapping[Union[Parameter, str], Iterable[Union[Parameter, str]]], *,
                                hierarchy: str = 'DEFAULT') -> None:
         pass
 
     def saveParameterTypes(self, types: Union[ParameterType, Iterable[ParameterType]]) -> None:
-        pass
+        self._lsa._parameterService.saveParameterTypes(_jp.toJavaList(types))
 
     def deleteParameterTypes(self, types: Union[ParameterType, Iterable[ParameterType]]) -> None:
-        pass
+        self._lsa._parameterService.deleteParameterTypes(_jp.toJavaList(types))
 
     def deleteParameters(self, parameters: Union[Parameter, Iterable[Parameter]]) -> None:
-        pass
+        self._lsa._parameterService.deleteParameters(_jp.toJavaList(parameters))
 
     def findParameterGroups(self, accelerator: Union[str, CernAccelerator]) -> List[ParameterGroup]:
         pass
 
     def saveParameterGroup(self, parameterGroup: ParameterGroup) -> None:
-        pass
+        self._lsa.saveParameterGroup(parameterGroup)
 
     def deleteParameterGroup(self, parameterGroup: ParameterGroup) -> None:
-        pass
+        self._lsa.deleteParameterGroup(parameterGroup)
 
     def addParametersToParameterGroup(self, parameterGroup: ParameterGroup,
                                       parameters=Union[str, Parameter, Iterable[Union[str, Parameter]]]) -> None:
