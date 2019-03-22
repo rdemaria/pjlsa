@@ -1,5 +1,5 @@
 from . import _jpype as _jp
-from .util import enum_super as _enum_super
+from .util import super_enum as _super_enum
 
 # Contexts
 Context = _jp.cern.lsa.domain.settings.Context
@@ -68,7 +68,7 @@ CernAccelerator = _jp._pyEnum(_jp.cern.accsoft.commons.domain.CernAccelerator)
 CernTimingDomain = _jp._pyEnum(_jp.cern.accsoft.commons.domain.CernTimingDomain)
 
 
-ParticleTransfer = _enum_super('ParticleTransfer')
+ParticleTransfer = _super_enum('ParticleTransfer')
 AdParticleTransfer = _jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.AdParticleTransfer, ParticleTransfer)
 CtfParticleTransfer = _jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.CtfParticleTransfer, ParticleTransfer)
 ElenaParticleTransfer = _jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer, ParticleTransfer)
@@ -82,7 +82,7 @@ PsParticleTransfer = _jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfe
 PsbParticleTransfer = _jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer, ParticleTransfer)
 SpsParticleTransfer = _jp._pyEnum(_jp.cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer, ParticleTransfer)
 
-AcceleratorZone = _enum_super('AcceleratorZone')
+AcceleratorZone = _super_enum('AcceleratorZone')
 AdAcceleratorZone = _jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.AdAcceleratorZone, AcceleratorZone)
 CtfAcceleratorZone = _jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.CtfAcceleratorZone, AcceleratorZone)
 ElenaAcceleratorZone = _jp._pyEnum(_jp.cern.accsoft.commons.domain.zones.ElenaAcceleratorZone, AcceleratorZone)
@@ -104,7 +104,7 @@ AdBeam = _jp._pyEnum(_jp.cern.accsoft.commons.domain.beams.AdBeam)
 LhcBeam = _jp._pyEnum(_jp.cern.accsoft.commons.domain.beams.LhcBeam)
 Linac4Beam = _jp._pyEnum(_jp.cern.accsoft.commons.domain.beams.Linac4Beam)
 
-AcceleratorMode = _enum_super('AcceleratorMode')
+AcceleratorMode = _super_enum('AcceleratorMode')
 PsbAcceleratorMode = _jp._pyEnum(_jp.cern.accsoft.commons.domain.modes.PsbAcceleratorMode, AcceleratorMode)
 LhcAcceleratorMode = _jp._pyEnum(_jp.cern.accsoft.commons.domain.modes.LhcAcceleratorMode, AcceleratorMode)
 SpsAcceleratorMode = _jp._pyEnum(_jp.cern.accsoft.commons.domain.modes.SpsAcceleratorMode, AcceleratorMode)
