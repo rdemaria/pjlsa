@@ -45,26 +45,26 @@ class LsaCustomizer(jpype._jclass.JClassCustomizer):
 
     @classmethod
     def _from_to_java(cls, accessor):
-        return lambda *args: _javaToPython(accessor(*[_pythonToJava(a) for a in args]))
+        return lambda *args: javaToPython(accessor(*[pythonToJava(a) for a in args]))
 
     @classmethod
     def _from_java(cls, accessor):
-        return lambda *args: _javaToPython(accessor(*args))
+        return lambda *args: javaToPython(accessor(*args))
 
     @classmethod
     def _to_java(cls, accessor):
-        return lambda *args: accessor(*[_pythonToJava(a) for a in args])
+        return lambda *args: accessor(*[pythonToJava(a) for a in args])
 
 
-def _javaToPython(value):
+def javaToPython(value):
     if isinstance(value, java.util.Set):
-        return set([_javaToPython(v) for v in value])
+        return set([javaToPython(v) for v in value])
     if isinstance(value, java.util.List):
-        return list([_javaToPython(v) for v in value])
+        return list([javaToPython(v) for v in value])
     if isinstance(value, java.util.Map):
-        return {_javaToPython(i.getKey()): _javaToPython(i.getValue()) for i in value.entrySet()}
+        return {javaToPython(i.getKey()): javaToPython(i.getValue()) for i in value.entrySet()}
     if isinstance(value, java.util.Optional):
-        return _javaToPython(value.orElse(None))
+        return javaToPython(value.orElse(None))
     if isinstance(value, java.sql.Timestamp):
         return datetime.fromtimestamp(value.getTime() / 1000)
     if isinstance(value, java.lang.Boolean):
@@ -76,21 +76,21 @@ def _javaToPython(value):
     return value
 
 
-def _pythonToJava(value):
+def pythonToJava(value):
     if isinstance(value, Set):
         hs = java.util.HashSet()
         for v in value:
-            hs.add(_pythonToJava(v))
+            hs.add(pythonToJava(v))
         return hs
     if isinstance(value, List) or isinstance(value, Tuple):
         hs = java.util.ArrayList()
         for v in value:
-            hs.add(_pythonToJava(v))
+            hs.add(pythonToJava(v))
         return hs
     if isinstance(value, Mapping):
         hs = java.util.HashMap()
         for k, v in value.items():
-            hs.put(_pythonToJava(k), _pythonToJava(v))
+            hs.put(pythonToJava(k), pythonToJava(v))
         return hs
     if isinstance(value, datetime):
         return java.sql.Timestamp(int(value.timestamp() * 1000))
@@ -111,7 +111,7 @@ _pyEnumMapping = {}
 T = TypeVar('T')
 
 
-def _pyEnum(jc, base: Type[T] = None) -> T:
+def pyEnum(jc, base: Type[T] = None) -> T:
     if isinstance(jc, str):
         jc = jpype.JClass(jc)
     global _pyEnumMapping
@@ -147,11 +147,11 @@ def toJavaList(value, converter=lambda x: x):
     res = java.util.ArrayList()
     if isinstance(value, List) or isinstance(value, Set) or isinstance(value, Tuple):
         for item in value:
-            res.add(_pythonToJava(converter(item)))
+            res.add(pythonToJava(converter(item)))
     elif isinstance(value, java.util.Collection):
         res.addAll(value)
     else:
-        res.add(_pythonToJava(converter(value)))
+        res.add(pythonToJava(converter(value)))
     return res
 
 
