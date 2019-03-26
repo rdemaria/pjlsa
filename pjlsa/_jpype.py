@@ -45,52 +45,52 @@ class LsaCustomizer(jpype._jclass.JClassCustomizer):
 
     @classmethod
     def _from_to_java(cls, accessor):
-        return lambda *args: javaToPython(accessor(*[pythonToJava(a) for a in args]))
+        return lambda *args: java_to_python(accessor(*[python_to_java(a) for a in args]))
 
     @classmethod
     def _from_java(cls, accessor):
-        return lambda *args: javaToPython(accessor(*args))
+        return lambda *args: java_to_python(accessor(*args))
 
     @classmethod
     def _to_java(cls, accessor):
-        return lambda *args: accessor(*[pythonToJava(a) for a in args])
+        return lambda *args: accessor(*[python_to_java(a) for a in args])
 
 
-def javaToPython(value):
+def java_to_python(value):
     if isinstance(value, java.util.Set):
-        return set([javaToPython(v) for v in value])
+        return set([java_to_python(v) for v in value])
     if isinstance(value, java.util.List):
-        return list([javaToPython(v) for v in value])
+        return list([java_to_python(v) for v in value])
     if isinstance(value, java.util.Map):
-        return {javaToPython(i.getKey()): javaToPython(i.getValue()) for i in value.entrySet()}
+        return {java_to_python(i.getKey()): java_to_python(i.getValue()) for i in value.entrySet()}
     if isinstance(value, java.util.Optional):
-        return javaToPython(value.orElse(None))
+        return java_to_python(value.orElse(None))
     if isinstance(value, java.sql.Timestamp):
         return datetime.fromtimestamp(value.getTime() / 1000)
     if isinstance(value, java.lang.Boolean):
         return value.booleanValue()
     if isinstance(type(value), jpype._jarray._JavaArray):
         return np.array(value[:])
-    if type(value) in _pyEnumMapping:
-        return _pyEnumMapping[type(value)]._from_java(value)
+    if type(value) in _py_enum_mapping:
+        return _py_enum_mapping[type(value)]._from_java(value)
     return value
 
 
-def pythonToJava(value):
+def python_to_java(value):
     if isinstance(value, Set):
         hs = java.util.HashSet()
         for v in value:
-            hs.add(pythonToJava(v))
+            hs.add(python_to_java(v))
         return hs
     if isinstance(value, List) or isinstance(value, Tuple):
         hs = java.util.ArrayList()
         for v in value:
-            hs.add(pythonToJava(v))
+            hs.add(python_to_java(v))
         return hs
     if isinstance(value, Mapping):
         hs = java.util.HashMap()
         for k, v in value.items():
-            hs.put(pythonToJava(k), pythonToJava(v))
+            hs.put(python_to_java(k), python_to_java(v))
         return hs
     if isinstance(value, datetime):
         return java.sql.Timestamp(int(value.timestamp() * 1000))
@@ -106,17 +106,17 @@ def pythonToJava(value):
 
 jpype._jclass.registerClassCustomizer(LsaCustomizer())
 
-_pyEnumMapping = {}
+_py_enum_mapping = {}
 
 T = TypeVar('T')
 
 
-def pyEnum(jc, base: Type[T] = None) -> T:
+def wrap_enum(jc, base: Type[T] = None) -> T:
     if isinstance(jc, str):
         jc = jpype.JClass(jc)
-    global _pyEnumMapping
-    if jc in _pyEnumMapping:
-        return _pyEnumMapping[jc]
+    global _py_enum_mapping
+    if jc in _py_enum_mapping:
+        return _py_enum_mapping[jc]
     name = jc.__javaclass__.getName().split('.')[-1].split('$')[0]
     java_values = {str(e): e for e in jc.values()}
     enum = Enum(name, {v: v for v in java_values.keys()}, type=base)
@@ -125,11 +125,11 @@ def pyEnum(jc, base: Type[T] = None) -> T:
     enum._from_java = lambda v: [e for e in enum if e.__javavalue__ == v][0]
     for e in enum:
         e.__javavalue__ = java_values[e.name]
-    _pyEnumMapping[jc] = enum
+    _py_enum_mapping[jc] = enum
     return enum
 
 
-def toJavaDate(value):
+def to_java_date(value):
     Date = java.util.Date
     if isinstance(value, str):
         return java.sql.Timestamp.valueOf(value)
@@ -143,31 +143,31 @@ def toJavaDate(value):
         return Date(int(value * 1000))
 
 
-def toJavaList(value, converter=lambda x: x):
+def to_java_list(value, converter=lambda x: x):
     res = java.util.ArrayList()
     if isinstance(value, List) or isinstance(value, Set) or isinstance(value, Tuple):
         for item in value:
-            res.add(pythonToJava(converter(item)))
+            res.add(python_to_java(converter(item)))
     elif isinstance(value, java.util.Collection):
         res.addAll(value)
     else:
-        res.add(pythonToJava(converter(value)))
+        res.add(python_to_java(converter(value)))
     return res
 
 
-def toAccelerator(value):
+def to_accelerator(value):
     from .domain import CernAccelerator
-    return toJavaEnum(CernAccelerator(value))
+    return to_java_enum(CernAccelerator(value))
 
 
-def toJavaEnum(value):
+def to_java_enum(value):
     if isinstance(value, Enum) and hasattr(value, '__javavalue__'):
         return value.__javavalue__
     else:
         raise ValueError('"{}" is not a (java) compatible enum - missing __javavalue__')
 
 
-def setupLog4j(logLevel):
+def setup_log4j(logLevel):
     log4j = org.apache.log4j
     if log4j.BasicConfigurator is not None and callable(log4j.BasicConfigurator.configure):
         log4j.BasicConfigurator.configure()

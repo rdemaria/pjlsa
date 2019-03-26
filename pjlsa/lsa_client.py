@@ -38,7 +38,7 @@ from . import service as _svc
 class LsaClient(object):
     def __init__(self, server='gpn', logLevel='INFO'):
         _jp.System.setProperty('lsa.server', server)
-        _jp.setupLog4j(logLevel)
+        _jp.setup_log4j(logLevel)
         self._contextService = _jp.ServiceLocator.getService(_jp.ContextService)
         self._trimService = _jp.ServiceLocator.getService(_jp.TrimService)
         self._settingService = _jp.ServiceLocator.getService(_jp.SettingService)

@@ -29,21 +29,21 @@ class LsaParameterService(object):
                        critical: Optional[bool] = None) -> List[Parameter]:
         builder = _jp.cern.lsa.domain.settings.ParametersRequest.builder()
         if names is not None:
-            builder.setParameterNames(_jp.toJavaList(names))
+            builder.setParameterNames(_jp.to_java_list(names))
         if accelerator is not None:
-            builder.setAccelerator(_jp.toAccelerator(accelerator))
+            builder.setAccelerator(_jp.to_accelerator(accelerator))
         if acceleratorZones is not None:
-            builder.setAcceleratorZones(_jp.toJavaList(acceleratorZones, converter=AcceleratorZone.of))
+            builder.setAcceleratorZones(_jp.to_java_list(acceleratorZones, converter=AcceleratorZone.of))
         if particleTransfers is not None:
-            builder.setParticleTransfers(_jp.toJavaList(particleTransfers, converter=ParticleTransfer.of))
+            builder.setParticleTransfers(_jp.to_java_list(particleTransfers, converter=ParticleTransfer.of))
         if parameterTypes is not None:
-            builder.setParameterTypes(_jp.toJavaList(parameterTypes, converter=str))
+            builder.setParameterTypes(_jp.to_java_list(parameterTypes, converter=str))
         if parameterGroups is not None:
-            builder.setParameterGroups(_jp.toJavaList(parameterGroups, converter=str))
+            builder.setParameterGroups(_jp.to_java_list(parameterGroups, converter=str))
         if devices is not None:
-            builder.setDeviceNames(_jp.toJavaList(devices))
+            builder.setDeviceNames(_jp.to_java_list(devices))
         if properties is not None:
-            builder.setPropertyNames(_jp.toJavaList(properties))
+            builder.setPropertyNames(_jp.to_java_list(properties))
         if multiplexed is not None:
             builder.setMultiplexed(_jp.java.lang.Boolean(multiplexed))
         if virtual is not None:
@@ -79,7 +79,7 @@ class LsaParameterService(object):
                                      parameterGroups=parameterGroup, devices=device, properties=property,
                                      multiplexed=multiplexed, virtual=virtual, writable=writable, readable=readable,
                                      namePattern=namePattern, critical=critical)
-        return onlyElementOf(params)
+        return only_element(params)
 
     def findParametersForEditing(self, names: Union[str, Iterable[str], None] = None, *,
                                  accelerator: Union[str, CernAccelerator, None] = None,
@@ -101,21 +101,21 @@ class LsaParameterService(object):
                                  critical: Optional[bool] = None) -> List[ParameterForEditing]:
         builder = _jp.cern.lsa.domain.settings.ParametersRequest.builder()
         if names is not None:
-            builder.setParameterNames(_jp.toJavaList(names))
+            builder.setParameterNames(_jp.to_java_list(names))
         if accelerator is not None:
-            builder.setAccelerator(_jp.toAccelerator(accelerator))
+            builder.setAccelerator(_jp.to_accelerator(accelerator))
         if acceleratorZones is not None:
-            builder.setAcceleratorZones(_jp.toJavaList(acceleratorZones, converter=AcceleratorZone.of))
+            builder.setAcceleratorZones(_jp.to_java_list(acceleratorZones, converter=AcceleratorZone.of))
         if particleTransfers is not None:
-            builder.setParticleTransfers(_jp.toJavaList(particleTransfers, converter=ParticleTransfer.of))
+            builder.setParticleTransfers(_jp.to_java_list(particleTransfers, converter=ParticleTransfer.of))
         if parameterTypes is not None:
-            builder.setParameterTypes(_jp.toJavaList(parameterTypes, converter=str))
+            builder.setParameterTypes(_jp.to_java_list(parameterTypes, converter=str))
         if parameterGroups is not None:
-            builder.setParameterGroups(_jp.toJavaList(parameterGroups, converter=str))
+            builder.setParameterGroups(_jp.to_java_list(parameterGroups, converter=str))
         if devices is not None:
-            builder.setDeviceNames(_jp.toJavaList(devices))
+            builder.setDeviceNames(_jp.to_java_list(devices))
         if properties is not None:
-            builder.setPropertyNames(_jp.toJavaList(properties))
+            builder.setPropertyNames(_jp.to_java_list(properties))
         if multiplexed is not None:
             builder.setMultiplexed(_jp.java.lang.Boolean(multiplexed))
         if virtual is not None:
@@ -138,14 +138,14 @@ class LsaParameterService(object):
         if names is None and deviceTypes is None:
             builder.setAllParameterTypesRequested(True)
         if names is not None:
-            builder.setParameterTypeNames(_jp.toJavaList(names))
+            builder.setParameterTypeNames(_jp.to_java_list(names))
         if names is not None:
-            builder.setDeviceTypeNames(_jp.toJavaList(deviceTypes))
+            builder.setDeviceTypeNames(_jp.to_java_list(deviceTypes))
         param_types = self._lsa._parameterService.findParameterTypes(builder.build())
         return list(param_types)
 
     def findParameterType(self, name: str) -> Optional[ParameterType]:
-        return onlyElementOf(self.findParameterTypes(name))
+        return only_element(self.findParameterTypes(name))
 
     def _lookup_params(self, parameters: Union[str, Iterable[str], Parameter, Iterable[Parameter]]) -> Set[Parameter]:
         if isinstance(parameters, str) or isinstance(parameters, Parameter):
@@ -167,7 +167,7 @@ class LsaParameterService(object):
         return list(hierarchies)
 
     def saveParameters(self, parameterAttributes: Union[ParameterAttributes, Iterable[ParameterAttributes]]) -> None:
-        self._lsa.saveParameters(_jp.toJavaList(parameterAttributes))
+        self._lsa.saveParameters(_jp.to_java_list(parameterAttributes))
 
     def saveParameterRelations(self, relations: Mapping[Union[Parameter, str], Iterable[Union[Parameter, str]]], *,
                                hierarchy: str = 'DEFAULT') -> None:
@@ -179,19 +179,19 @@ class LsaParameterService(object):
         param_lookup = {p.name: p for p in resolved_params}
         param_lookup.update({p: p for p in resolved_params})
         resolved_relations = {param_lookup[p]: [param_lookup[dp] for dp in pr] for p, pr in relations}
-        self._lsa._parameterService.saveParameterRelations(_jp.pythonToJava(resolved_relations), hierarchy)
+        self._lsa._parameterService.saveParameterRelations(_jp.python_to_java(resolved_relations), hierarchy)
 
     def saveParameterTypes(self, types: Union[ParameterType, Iterable[ParameterType]]) -> None:
-        self._lsa._parameterService.saveParameterTypes(_jp.toJavaList(types))
+        self._lsa._parameterService.saveParameterTypes(_jp.to_java_list(types))
 
     def deleteParameterTypes(self, types: Union[ParameterType, Iterable[ParameterType]]) -> None:
-        self._lsa._parameterService.deleteParameterTypes(_jp.toJavaList(types))
+        self._lsa._parameterService.deleteParameterTypes(_jp.to_java_list(types))
 
     def deleteParameters(self, parameters: Union[Parameter, Iterable[Parameter]]) -> None:
-        self._lsa._parameterService.deleteParameters(_jp.toJavaList(parameters))
+        self._lsa._parameterService.deleteParameters(_jp.to_java_list(parameters))
 
     def findParameterGroups(self, accelerator: Union[str, CernAccelerator]) -> List[ParameterGroup]:
-        param_groups = self._lsa._parameterService.findParameterGroups(_jp.toAccelerator(accelerator))
+        param_groups = self._lsa._parameterService.findParameterGroups(_jp.to_accelerator(accelerator))
         return list(param_groups)
 
     def saveParameterGroup(self, parameterGroup: ParameterGroup) -> None:
@@ -217,7 +217,7 @@ class LsaParameterService(object):
                                 hierarchy: str = 'DEFAULT') -> List[ParameterTreeNode]:
         builder = _jp.cern.lsa.domain.settings.factory.ParameterTreesRequestBuilder
         req = builder.byParameterAndHierarchyFindSourceTrees(str(parameter), hierarchy)
-        return onlyElementOf(list(self._lsa._parameterService.findParameterTrees(req)))
+        return only_element(list(self._lsa._parameterService.findParameterTrees(req)))
 
 
 
@@ -225,4 +225,4 @@ class LsaParameterService(object):
                                    hierarchy: str = 'DEFAULT') -> List[ParameterTreeNode]:
         builder = _jp.cern.lsa.domain.settings.factory.ParameterTreesRequestBuilder
         req = builder.byParameterAndHierarchyFindDependentTrees(str(parameter), hierarchy)
-        return onlyElementOf(list(self._lsa._parameterService.findParameterTrees(req)))
+        return only_element(list(self._lsa._parameterService.findParameterTrees(req)))

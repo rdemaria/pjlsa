@@ -2,7 +2,7 @@ import reprlib
 import enum
 
 
-def onlyElementOf(collection):
+def only_element(collection):
     if len(collection) > 1:
         raise ValueError('Expected 1 matching item but found %s'
                          % reprlib.repr([str(item) for item in collection]))
