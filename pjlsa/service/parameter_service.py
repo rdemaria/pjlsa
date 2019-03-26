@@ -1,5 +1,5 @@
 from typing import Iterable, Union, Optional, List, Set, Mapping
-from ..util import *
+from .._util import *
 from .. import _jpype as _jp
 from ..domain import *
 

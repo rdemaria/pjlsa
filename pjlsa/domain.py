@@ -1,5 +1,5 @@
 from . import _jpype as _jp
-from .util import super_enum as _super_enum
+from ._util import super_enum as _super_enum
 
 # Contexts
 Context = _jp.cern.lsa.domain.settings.Context
