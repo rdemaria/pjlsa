@@ -1,4 +1,4 @@
-from typing import Iterable, Union, Optional, List, Mapping
+from typing import Iterable, Union, Optional, List, Set, Mapping
 from ..util import *
 from .. import _jpype as _jp
 from ..domain import *
@@ -147,15 +147,23 @@ class LsaParameterService(object):
     def findParameterType(self, name: str) -> Optional[ParameterType]:
         return onlyElementOf(self.findParameterTypes(name))
 
-    def findHierarchies(self, parameters: Union[str, Iterable[str], Parameter, Iterable[Parameter]]) -> List[str]:
+    def _lookup_params(self, parameters: Union[str, Iterable[str], Parameter, Iterable[Parameter]]) -> Set[Parameter]:
         if isinstance(parameters, str) or isinstance(parameters, Parameter):
             parameters = [parameters]
-        parameters = set(parameters)
+        parameters = {p for p in parameters if isinstance(p, Parameter)}
         param_names = {p for p in parameters if not isinstance(p, Parameter)}
-        parameters -= param_names
         found_params = self.findParameterTypes(names=param_names)
         parameters.update(found_params)
-        hierarchies = self._lsa._parameterService.findHierarchyNames(_jp.toJavaList(parameters))
+        return parameters
+
+    def _lookup_param(self, parameter: Union[str, Parameter]) -> Parameter:
+        if isinstance(parameter, Parameter):
+            return parameter
+        else:
+            return self.findParameter(parameter)
+
+    def findHierarchies(self, parameters: Union[str, Iterable[str], Parameter, Iterable[Parameter]]) -> List[str]:
+        hierarchies = self._lsa._parameterService.findHierarchyNames(self._lookup_params(parameters))
         return list(hierarchies)
 
     def saveParameters(self, parameterAttributes: Union[ParameterAttributes, Iterable[ParameterAttributes]]) -> None:
@@ -194,18 +202,27 @@ class LsaParameterService(object):
 
     def addParametersToParameterGroup(self, parameterGroup: ParameterGroup,
                                       parameters: Union[str, Parameter, Iterable[Union[str, Parameter]]]) -> None:
-        pass
+        self._lsa._parameterService.addParametersToParameterGroup(parameterGroup, self._lookup_params(parameters))
 
     def removeParametersFromParameterGroup(self, parameterGroup: ParameterGroup,
                                            parameters: Union[str, Parameter, Iterable[Union[str, Parameter]]]) -> None:
-        pass
+        self._lsa._parameterService.removeParametersFromParameterGroup(parameterGroup, self._lookup_params(parameters))
 
     def findMakeRuleForParameterRelation(self, *, source: Union[str, Parameter],
                                          dependent: Union[str, Parameter]) -> MakeRuleConfigStatus:
-        pass
+        return self._lsa._parameterService.findMakeRuleForParameterRelation(self._lookup_params(source),
+                                                                            self._lookup_params(dependent))
 
-    def findSourceParameterTree(self, parameter: Union[str, Parameter]) -> List[ParameterTreeNode]:
-        pass
+    def findSourceParameterTree(self, parameter: Union[str, Parameter], *,
+                                hierarchy: str = 'DEFAULT') -> List[ParameterTreeNode]:
+        builder = _jp.cern.lsa.domain.settings.factory.ParameterTreesRequestBuilder
+        req = builder.byParameterAndHierarchyFindSourceTrees(str(parameter), hierarchy)
+        return onlyElementOf(list(self._lsa._parameterService.findParameterTrees(req)))
 
-    def findDependentParameterTree(self, parameter=Union[str, Parameter]) -> List[ParameterTreeNode]:
-        pass
+
+
+    def findDependentParameterTree(self, parameter=Union[str, Parameter],
+                                   hierarchy: str = 'DEFAULT') -> List[ParameterTreeNode]:
+        builder = _jp.cern.lsa.domain.settings.factory.ParameterTreesRequestBuilder
+        req = builder.byParameterAndHierarchyFindDependentTrees(str(parameter), hierarchy)
+        return onlyElementOf(list(self._lsa._parameterService.findParameterTrees(req)))
