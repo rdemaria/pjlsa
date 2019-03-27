@@ -37,7 +37,7 @@ class LsaParameterService(object):
         if particleTransfers is not None:
             builder.setParticleTransfers(_jp.to_java_list(particleTransfers, converter=ParticleTransfer.of))
         if parameterTypes is not None:
-            builder.setParameterTypes(_jp.to_java_list(parameterTypes, converter=str))
+            builder.setParameterTypeNames(_jp.to_java_list(parameterTypes, converter=str))
         if parameterGroups is not None:
             builder.setParameterGroups(_jp.to_java_list(parameterGroups, converter=str))
         if devices is not None:
