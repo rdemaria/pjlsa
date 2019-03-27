@@ -109,7 +109,7 @@ class LsaParameterService(object):
         if particleTransfers is not None:
             builder.setParticleTransfers(_jp.to_java_list(particleTransfers, converter=ParticleTransfer.of))
         if parameterTypes is not None:
-            builder.setParameterTypes(_jp.to_java_list(parameterTypes, converter=str))
+            builder.setParameterTypeNames(_jp.to_java_list(parameterTypes, converter=str))
         if parameterGroups is not None:
             builder.setParameterGroups(_jp.to_java_list(parameterGroups, converter=str))
         if devices is not None:
@@ -136,12 +136,15 @@ class LsaParameterService(object):
                            deviceTypes: Union[str, Iterable[str], None] = None) -> List[ParameterType]:
         builder = _jp.cern.lsa.domain.settings.ParameterTypesRequest.builder()
         if names is None and deviceTypes is None:
-            builder.setAllParameterTypesRequested(True)
-        if names is not None:
+            param_types = self._lsa._parameterService.findParameterTypes(builder.ALL_PARAMETER_TYPES)
+        elif names is not None:
             builder.setParameterTypeNames(_jp.to_java_list(names))
-        if names is not None:
+            param_types = self._lsa._parameterService.findParameterTypes(builder.build())
+        elif deviceTypes is not None:
             builder.setDeviceTypeNames(_jp.to_java_list(deviceTypes))
-        param_types = self._lsa._parameterService.findParameterTypes(builder.build())
+            param_types = self._lsa._parameterService.findParameterTypes(builder.build())
+        else:
+            raise ValueError("Invalid arguments")
         return list(param_types)
 
     def findParameterType(self, name: str) -> Optional[ParameterType]:
@@ -150,11 +153,11 @@ class LsaParameterService(object):
     def _lookup_params(self, parameters: Union[str, Iterable[str], Parameter, Iterable[Parameter]]) -> Set[Parameter]:
         if isinstance(parameters, str) or isinstance(parameters, Parameter):
             parameters = [parameters]
-        parameters = {p for p in parameters if isinstance(p, Parameter)}
+        param_objs = {p for p in parameters if isinstance(p, Parameter)}
         param_names = {p for p in parameters if not isinstance(p, Parameter)}
-        found_params = self.findParameterTypes(names=param_names)
-        parameters.update(found_params)
-        return parameters
+        found_params = self.findParameters(names=param_names) if len(param_names) > 0 else []
+        param_objs.update(found_params)
+        return _jp.to_java_list(param_objs)
 
     def _lookup_param(self, parameter: Union[str, Parameter]) -> Parameter:
         if isinstance(parameter, Parameter):
@@ -167,18 +170,18 @@ class LsaParameterService(object):
         return list(hierarchies)
 
     def saveParameters(self, parameterAttributes: Union[ParameterAttributes, Iterable[ParameterAttributes]]) -> None:
-        self._lsa.saveParameters(_jp.to_java_list(parameterAttributes))
+        self._lsa._parameterService.saveParameters(_jp.to_java_list(parameterAttributes))
 
     def saveParameterRelations(self, relations: Mapping[Union[Parameter, str], Iterable[Union[Parameter, str]]], *,
                                hierarchy: str = 'DEFAULT') -> None:
-        resolved_params = {p for p in relations.keys() if isinstance(p, Parameter)}
-        resolved_params.update({p for pr in relations.values() for p in pr if isinstance(p, Parameter)})
-        unresolved_params = {p for p in relations.keys() if not isinstance(p, Parameter)}
-        unresolved_params.update({p for pr in relations.values() for p in pr if not isinstance(p, Parameter)})
-        resolved_params.update(self.findParameterTypes(names=unresolved_params))
-        param_lookup = {p.name: p for p in resolved_params}
-        param_lookup.update({p: p for p in resolved_params})
-        resolved_relations = {param_lookup[p]: [param_lookup[dp] for dp in pr] for p, pr in relations}
+        param_objs = {p for p in relations.keys() if isinstance(p, Parameter)}
+        param_objs.update({p for pr in relations.values() for p in pr if isinstance(p, Parameter)})
+        param_names = {p for p in relations.keys() if not isinstance(p, Parameter)}
+        param_names.update({p for pr in relations.values() for p in pr if not isinstance(p, Parameter)})
+        param_objs.update(self.findParameters(names=param_names))
+        param_lookup = {p.name: p for p in param_objs}
+        param_lookup.update({p: p for p in param_objs})
+        resolved_relations = {param_lookup[p]: [param_lookup[dp] for dp in pr] for p, pr in relations.items()}
         self._lsa._parameterService.saveParameterRelations(_jp.python_to_java(resolved_relations), hierarchy)
 
     def saveParameterTypes(self, types: Union[ParameterType, Iterable[ParameterType]]) -> None:
@@ -191,38 +194,46 @@ class LsaParameterService(object):
         self._lsa._parameterService.deleteParameters(_jp.to_java_list(parameters))
 
     def findParameterGroups(self, accelerator: Union[str, CernAccelerator]) -> List[ParameterGroup]:
-        param_groups = self._lsa._parameterService.findParameterGroups(_jp.to_accelerator(accelerator))
+        param_groups = self._lsa._parameterService.findParameterGroupsByAccelerator(_jp.to_accelerator(accelerator))
         return list(param_groups)
 
     def saveParameterGroup(self, parameterGroup: ParameterGroup) -> None:
-        self._lsa.saveParameterGroup(parameterGroup)
+        self._lsa._parameterService.saveParameterGroup(parameterGroup)
 
     def deleteParameterGroup(self, parameterGroup: ParameterGroup) -> None:
-        self._lsa.deleteParameterGroup(parameterGroup)
+        self._lsa._parameterService.deleteParameterGroup(parameterGroup.id)
 
     def addParametersToParameterGroup(self, parameterGroup: ParameterGroup,
                                       parameters: Union[str, Parameter, Iterable[Union[str, Parameter]]]) -> None:
-        self._lsa._parameterService.addParametersToParameterGroup(parameterGroup, self._lookup_params(parameters))
+        if isinstance(parameters, str) or isinstance(parameters, Parameter):
+            parameters = [parameters]
+        parameters = [p.name if isinstance(p, Parameter) else p for p in parameters]
+        self._lsa._parameterService.addParametersToParameterGroup(parameterGroup, _jp.to_java_list(parameters))
 
     def removeParametersFromParameterGroup(self, parameterGroup: ParameterGroup,
                                            parameters: Union[str, Parameter, Iterable[Union[str, Parameter]]]) -> None:
-        self._lsa._parameterService.removeParametersFromParameterGroup(parameterGroup, self._lookup_params(parameters))
+        if isinstance(parameters, str) or isinstance(parameters, Parameter):
+            parameters = [parameters]
+        parameters = [p.name if isinstance(p, Parameter) else p for p in parameters]
+        self._lsa._parameterService.removeParametersFromParameterGroup(parameterGroup, _jp.to_java_list(parameters))
 
     def findMakeRuleForParameterRelation(self, *, source: Union[str, Parameter],
-                                         dependent: Union[str, Parameter]) -> MakeRuleConfigStatus:
-        return self._lsa._parameterService.findMakeRuleForParameterRelation(self._lookup_params(source),
-                                                                            self._lookup_params(dependent))
+                                         dependent: Union[str, Parameter]) -> MakeRuleForParameterRelation:
+        builder = _jp.cern.lsa.domain.settings.parameter.relation.MakeRuleForParameterRelationRequest.builder()
+        builder.sourceParameterName(source.name if isinstance(source, Parameter) else source)
+        builder.dependentParameterName(dependent.name if isinstance(dependent, Parameter) else dependent)
+        return self._lsa._parameterService.findMakeRuleForParameterRelation(builder.build())
 
     def findSourceParameterTree(self, parameter: Union[str, Parameter], *,
                                 hierarchy: str = 'DEFAULT') -> List[ParameterTreeNode]:
         builder = _jp.cern.lsa.domain.settings.factory.ParameterTreesRequestBuilder
-        req = builder.byParameterAndHierarchyFindSourceTrees(str(parameter), hierarchy)
+        param_name = parameter.name if isinstance(parameter, Parameter) else parameter
+        req = builder.byParameterAndHierarchyFindSourceTrees(param_name, hierarchy)
         return only_element(list(self._lsa._parameterService.findParameterTrees(req)))
-
-
 
     def findDependentParameterTree(self, parameter=Union[str, Parameter],
                                    hierarchy: str = 'DEFAULT') -> List[ParameterTreeNode]:
         builder = _jp.cern.lsa.domain.settings.factory.ParameterTreesRequestBuilder
-        req = builder.byParameterAndHierarchyFindDependentTrees(str(parameter), hierarchy)
+        param_name = parameter.name if isinstance(parameter, Parameter) else parameter
+        req = builder.byParameterAndHierarchyFindDependentTrees(param_name, hierarchy)
         return only_element(list(self._lsa._parameterService.findParameterTrees(req)))

@@ -36,11 +36,14 @@ class LsaCustomizer(jpype._jclass.JClassCustomizer):
             wrapped_getter = LsaCustomizer._from_java(members[getter])
             wrapped_setter = LsaCustomizer._to_java(members[setter]) if setter is not None else None
             members[m] = property(wrapped_getter, wrapped_setter)
+            members['_' + getter] = members[getter]
             del members[getter]
             if setter is not None:
+                members['_' + setter] = members[setter]
                 del members[setter]
-        for methodName in members.keys():
-            if isinstance(members[methodName], jpype._jclass._jpype._JavaMethod):
+        for methodName in list(members.keys()):
+            if isinstance(members[methodName], jpype._jclass._jpype._JavaMethod) and not methodName.startswith('_'):
+                members['_' + methodName] = members[methodName]
                 members[methodName] = LsaCustomizer._from_to_java(members[methodName])
 
     @classmethod
@@ -94,7 +97,7 @@ def python_to_java(value):
         return hs
     if isinstance(value, datetime):
         return java.sql.Timestamp(int(value.timestamp() * 1000))
-    if isinstance(value, Enum):
+    if hasattr(value, '__javavalue__'):
         return value.__javavalue__
     return value
 
