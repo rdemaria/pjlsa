@@ -70,7 +70,8 @@ class LsaContextService(object):
                                       fromTime: Union[int, str, datetime],
                                       toTime: Union[int, str, datetime]) -> List[UserContextMapping]:
         mappings = self._lsa._contextService.findUserContextMappingHistory(_jp.to_accelerator(accelerator),
-                                                                           _jp.to_java_enum(ContextFamily(contextFamily)),
+                                                                           _jp.to_java_enum(
+                                                                               ContextFamily(contextFamily)),
                                                                            _jp.to_java_date(fromTime).getTime(),
                                                                            _jp.to_java_date(toTime).getTime())
         return [m for m in mappings]
@@ -107,12 +108,7 @@ class LsaContextService(object):
         self._lsa._contextService.updateContext(context)
 
     def findContextByAcceleratorUser(self, user: Union[AcceleratorUser, str]) -> StandAloneContext:
-        if isinstance(user, str):
-            user_name = user
-            user = self.findAcceleratorUser(name=user_name)
-            if user is None:
-                raise ValueError('User {0} not found.'.format(user_name))
-        return self._lsa._contextService.findStandAloneContextByAcceleratorUser(user)
+        return self._lsa._contextService.findStandAloneContextByAcceleratorUser(self._resolve_user(user))
 
     def saveContextToUserMapping(self, contexts: Iterable[Context]) -> None:
         self._lsa._contextService.saveContextToUserMapping(_jp.to_java_list(contexts))
@@ -123,3 +119,40 @@ class LsaContextService(object):
 
     def findDefaultBeamProcessPurpose(self, accelerator: Union[str, CernAccelerator]) -> BeamProcessPurpose:
         return self._lsa._contextService.findDefaultBeamProcessPurpose(_jp.to_accelerator(accelerator))
+
+    def _resolve_user(self, user: Union[str, AcceleratorUser]):
+        if isinstance(user, AcceleratorUser):
+            return user
+        acc_user = self.findAcceleratorUser(name=user)
+        if acc_user is None:
+            raise ValueError('User {0} not found.'.format(user))
+        else:
+            return acc_user
+
+    def _resolve_contexts(self, ctxs: Union[str, Iterable[str], Context, Iterable[Context]]):
+        if isinstance(ctxs, str) or isinstance(ctxs, Context):
+            ctxs = [ctxs]
+        ctx_objs = {p for p in ctxs if isinstance(p, Context)}
+        ctx_names = {p for p in ctxs if not isinstance(p, Context)}
+        found_bps = self.findStandAloneBeamProcesses(names=ctx_names) if len(ctx_names) > 0 else set()
+        found_cycles = self.findStandAloneCycles(names=ctx_names) if len(ctx_names) > 0 else set()
+        found_ctxs = found_cycles | found_bps
+        if len(found_ctxs) < len(ctx_names):
+            found_ctx_names = {p.name for p in found_ctxs}
+            missing_ctx_names = ctx_names - found_ctx_names
+            raise ValueError('Contexts [{0}] not found.'.format(','.join(missing_ctx_names)))
+        ctx_objs.update(found_ctxs)
+        return _jp.to_java_list(ctx_objs)
+
+    def _resolve_context(self, ctx: Union[str, Context]):
+        if isinstance(ctx, Context):
+            return ctx
+        else:
+            cycle = self.findStandAloneCycle(ctx)
+            bp = self.findStandAloneBeamProcess(ctx)
+            if bp is None and cycle is None:
+                raise ValueError('Context {0} not found.'.format(ctx))
+            elif bp is not None:
+                return bp
+            else:
+                return ctx

@@ -150,23 +150,8 @@ class LsaParameterService(object):
     def findParameterType(self, name: str) -> Optional[ParameterType]:
         return only_element(self.findParameterTypes(name))
 
-    def _lookup_params(self, parameters: Union[str, Iterable[str], Parameter, Iterable[Parameter]]) -> Set[Parameter]:
-        if isinstance(parameters, str) or isinstance(parameters, Parameter):
-            parameters = [parameters]
-        param_objs = {p for p in parameters if isinstance(p, Parameter)}
-        param_names = {p for p in parameters if not isinstance(p, Parameter)}
-        found_params = self.findParameters(names=param_names) if len(param_names) > 0 else []
-        param_objs.update(found_params)
-        return _jp.to_java_list(param_objs)
-
-    def _lookup_param(self, parameter: Union[str, Parameter]) -> Parameter:
-        if isinstance(parameter, Parameter):
-            return parameter
-        else:
-            return self.findParameter(parameter)
-
     def findHierarchies(self, parameters: Union[str, Iterable[str], Parameter, Iterable[Parameter]]) -> List[str]:
-        hierarchies = self._lsa._parameterService.findHierarchyNames(self._lookup_params(parameters))
+        hierarchies = self._lsa._parameterService.findHierarchyNames(self._resolve_params(parameters))
         return list(hierarchies)
 
     def saveParameters(self, parameterAttributes: Union[ParameterAttributes, Iterable[ParameterAttributes]]) -> None:
@@ -237,3 +222,26 @@ class LsaParameterService(object):
         param_name = parameter.name if isinstance(parameter, Parameter) else parameter
         req = builder.byParameterAndHierarchyFindDependentTrees(param_name, hierarchy)
         return only_element(list(self._lsa._parameterService.findParameterTrees(req)))
+
+    def _resolve_params(self, parameters: Union[str, Iterable[str], Parameter, Iterable[Parameter]]):
+        if isinstance(parameters, str) or isinstance(parameters, Parameter):
+            parameters = [parameters]
+        param_objs = {p for p in parameters if isinstance(p, Parameter)}
+        param_names = {p for p in parameters if not isinstance(p, Parameter)}
+        found_params = self.findParameters(names=param_names) if len(param_names) > 0 else []
+        if len(found_params) < len(param_names):
+            found_param_names = {p.name for p in found_params}
+            missing_param_names = param_names - found_param_names
+            raise ValueError('Parameters [{0}] not found.'.format(','.join(missing_param_names)))
+        param_objs.update(found_params)
+        return _jp.to_java_list(param_objs)
+
+    def _resolve_param(self, parameter: Union[str, Parameter]):
+        if isinstance(parameter, Parameter):
+            return parameter
+        else:
+            param = self.findParameter(parameter)
+            if param is None:
+                raise ValueError('Parameter {0} not found.'.format(parameter))
+            else:
+                return param

@@ -28,6 +28,10 @@ MakeRuleForParameterRelation = _jp.cern.lsa.domain.settings.parameter.relation.M
 MakeRuleClassInfo = _jp.cern.lsa.domain.trim.rules.makerule.MakeRuleClassInfo
 MakeRuleInfo = _jp.cern.lsa.domain.trim.rules.makerule.MakeRuleInfo
 
+# Settings
+ContextSettings = _jp.cern.lsa.domain.settings.ContextSettings
+ParameterSettings = _jp.cern.lsa.domain.settings.ParameterSettings
+
 # ============== Enums ==============
 # cern.lsa.domain.settings
 ContextFamily = _jp.wrap_enum(_jp.cern.lsa.domain.settings.ContextFamily)
