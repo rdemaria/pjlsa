@@ -1,8 +1,9 @@
-from typing import Iterable, Union, Optional, List
-from .._util import *
-from .. import _jpype as _jp
-from ..domain import *
 from datetime import datetime
+from typing import Iterable, Union, Optional, List
+
+from .. import _jpype as _jp
+from .._util import *
+from ..domain import *
 
 __all__ = ['LsaContextService']
 
