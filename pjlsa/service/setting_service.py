@@ -24,7 +24,8 @@ class LsaSettingService(object):
         return self._lsa._settingService.findContextSettings(builder.build())
 
     def findNotIncorporatedParameters(self, *, sourceBp: Union[str, StandAloneBeamProcess], sourcePoint: int,
-                                      destinationBp: Union[str, BeamProcess], destinationPoint: int = 0):
+                                      destinationBp: Union[str, BeamProcess],
+                                      destinationPoint: int = 0) -> NotIncorporatedParameters:
         return self._lsa._settingService.findNotIncorporatedParameters(
             self._lsa.contextService._resolve_context(sourceBp), sourcePoint,
             self._lsa.contextService._resolve_context(destinationBp), destinationPoint)

@@ -31,6 +31,7 @@ MakeRuleInfo = _jp.cern.lsa.domain.trim.rules.makerule.MakeRuleInfo
 # Settings
 ContextSettings = _jp.cern.lsa.domain.settings.ContextSettings
 ParameterSettings = _jp.cern.lsa.domain.settings.ParameterSettings
+NotIncorporatedParameters = _jp.cern.lsa.domain.settings.NotIncorporatedParameters
 
 # ============== Enums ==============
 # cern.lsa.domain.settings
