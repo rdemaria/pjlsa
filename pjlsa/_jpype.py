@@ -121,7 +121,7 @@ def wrap_enum(jc, base: Type[T] = None) -> T:
     if jc in _py_enum_mapping:
         return _py_enum_mapping[jc]
     name = jc.__javaclass__.getName().split('.')[-1].split('$')[0]
-    java_values = {str(e): e for e in jc.values()}
+    java_values = {str(e).replace(' ', '_'): e for e in jc.values()}
     enum = Enum(name, {v: v for v in java_values.keys()}, type=base)
     enum.__javaclass__ = jc
     enum.__repr__ = enum.__str__
