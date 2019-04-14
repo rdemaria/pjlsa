@@ -28,8 +28,15 @@ def super_enum(name):
                 raise ValueError('"{0}" is not a valid {1}. Valid values: [{2}]'
                                  .format(n, name, ",".join(cls.enum_values.keys())))
 
+    import inspect
+    try:
+        frm = inspect.stack()[1]
+        mod = inspect.getmodule(frm[0]).__name__
+    except:
+        mod = super_enum.__module__.__name__
     cls = type(name, (), {
         '__init__': add_enum,
+        '__module__': mod
     })
     cls.of = retrieve_element
     cls.enum_values = {}
