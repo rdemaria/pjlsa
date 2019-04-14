@@ -3,12 +3,15 @@ from ._util import super_enum as _super_enum
 
 # Contexts
 Context = _jp.cern.lsa.domain.settings.Context
+ContextType = _jp.cern.lsa.domain.settings.type.ContextType
 StandAloneBeamProcess = _jp.cern.lsa.domain.settings.StandAloneBeamProcess
 StandAloneContext = _jp.cern.lsa.domain.settings.StandAloneContext
 StandAloneCycle = _jp.cern.lsa.domain.settings.StandAloneCycle
 BeamProcess = _jp.cern.lsa.domain.settings.BeamProcess
 BeamProcessType = _jp.cern.lsa.domain.settings.type.BeamProcessType
 BeamProcessPurpose = _jp.cern.lsa.domain.settings.type.BeamProcessPurpose
+CycleType = _jp.cern.lsa.domain.settings.type.CycleType
+CycleIntersections = _jp.cern.lsa.domain.settings.CycleIntersections
 ActualBeamProcessInfo = _jp.cern.lsa.domain.settings.ActualBeamProcessInfo
 UserContextMapping = _jp.cern.lsa.domain.settings.UserContextMapping
 AcceleratorUser = _jp.cern.lsa.domain.settings.AcceleratorUser
