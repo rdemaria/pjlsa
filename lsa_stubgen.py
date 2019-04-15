@@ -33,7 +33,7 @@ class_infos = []
 for name, jc in jpype_classes.items():
     jsuper = jc.class_.getSuperclass()
     superclass = jsuper.getName() if jsuper else None
-    interfaces = [t.getName() for t in mod.BeamProcessType.class_.getInterfaces()]
+    interfaces = [t.getName() for t in jc.class_.getInterfaces()]
     methods = jpype.reflect.getMethods(jc)
     method_infos = []
     for method in methods:
@@ -68,7 +68,9 @@ for name, enum in wrapped_enums.items():
 
 print('###### Enum SuperClasses ######', file=stub)
 for enum_superclass in set(e.superclass for e in enum_infos if e.superclass is not None):
-    print('class {0}: pass'.format(enum_superclass), file=stub)
+    print('class {0}:'.format(enum_superclass), file=stub)
+    print('    @classmethod', file=stub)
+    print('    def of(cls, item: Union[{0}, str]) -> {0}: ...'.format(enum_superclass), file=stub)
     print('\n', file=stub)
 
 
