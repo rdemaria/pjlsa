@@ -36,6 +36,8 @@ ContextSettings = _jp.cern.lsa.domain.settings.ContextSettings
 ParameterSettings = _jp.cern.lsa.domain.settings.ParameterSettings
 NotIncorporatedParameters = _jp.cern.lsa.domain.settings.NotIncorporatedParameters
 
+Accelerator = _jp.cern.accsoft.commons.domain.Accelerator
+
 # ============== Enums ==============
 # cern.lsa.domain.settings
 ContextFamily = _jp.wrap_enum(_jp.cern.lsa.domain.settings.ContextFamily)

@@ -24,7 +24,7 @@ EnumInfo = namedtuple('EnumInfo', 'name superclass items')
 def jtype(jt):
     if hasattr(jt, 'getRawType'):
         return TypeInfo(name=jt.getRawType().getName(),
-                        arguments=[t.getName() if hasattr(t, 'getName') else None for t in jt.getActualTypeArguments()])
+                        arguments=[jtype(t) if hasattr(t, 'getName') else None for t in jt.getActualTypeArguments()])
     else:
         return TypeInfo(name=jt.getName(), arguments=None)
 
@@ -51,14 +51,41 @@ builtins = {'java.lang.Boolean': bool, 'boolean': bool,
             'java.lang.String': str, 'void': None}
 
 class_aliases = {v.class_.getName(): v for k, v in jpype_classes.items()}
+wrapped_enums = dict(inspect.getmembers(mod, lambda x: hasattr(x, '__members__')))
+enum_superclasses = {}
 
-print(class_infos)
+enum_infos = []
+for name, enum in wrapped_enums.items():
+    mro = inspect.getmro(enum)
+    if mro[-2] is not Enum:
+        continue
+    superclass = None if mro[1] is Enum else mro[1].__name__
+    items = list(enum.__members__.keys())
+    enum_infos.append(EnumInfo(name, superclass, items))
+
+print('###### Enum SuperClasses ######', file=stub)
+for enum_superclass in set(e.superclass for e in enum_infos if e.superclass is not None):
+    enum_superclasses[enum_superclass] = getattr(mod, enum_superclass)
+    print('class {0}:'.format(enum_superclass), file=stub)
+    print('    @classmethod', file=stub)
+    print('    def of(cls, item: Union[{0}, str]) -> {0}: ...'.format(enum_superclass), file=stub)
+    print('\n', file=stub)
+
+print('###### Enums ######', file=stub)
+for enum_info in enum_infos:
+    sc = ['Enum']
+    if enum_info.superclass is not None:
+        sc.append(enum_info.superclass)
+    print('class {0}({1}):'.format(enum_info.name, ', '.join(sc)), file=stub)
+    for item in enum_info.items:
+        print('    {0}: {1} = ...'.format(item, enum_info.name), file=stub)
+    print('\n', file=stub)
 
 
 def resolve_type_info(tinfo: TypeInfo, extra_mappings={}, extra_mappings_generic={}) -> Type:
     if tinfo.arguments:
         if tinfo.name in extra_mappings_generic:
-            return extra_mappings_generic.__getitem__(*tinfo.arguments)
+            return extra_mappings_generic.__getitem__(*[resolve_type_info(i) for i in tinfo.arguments])
     else:
         if tinfo.name in class_aliases:
             return class_aliases[tinfo.name]
@@ -94,38 +121,8 @@ def post_process(ji: JClassInfo) -> JClassInfo:
             ji.methods.append(setters[fn]._replace(name='_' + getters[fn].name))
         fieldtype = resolve_type_info(getter.returntype, extra_mappings_generic=mapped_types_gen)
         properties.append(FieldInfo(name=fn, type=fieldtype, writable=has_setter))
-
+    print(ji.name)
     print(properties)
 
 
 post_process(class_infos[0])
-
-wrapped_enums = dict(inspect.getmembers(mod, lambda x: hasattr(x, '__members__')))
-
-enum_infos = []
-for name, enum in wrapped_enums.items():
-    mro = inspect.getmro(enum)
-    if mro[-2] is not Enum:
-        continue
-    superclass = None if mro[1] is Enum else mro[1].__name__
-    items = list(enum.__members__.keys())
-    enum_infos.append(EnumInfo(name, superclass, items))
-
-print('###### Enum SuperClasses ######', file=stub)
-for enum_superclass in set(e.superclass for e in enum_infos if e.superclass is not None):
-    print('class {0}:'.format(enum_superclass), file=stub)
-    print('    @classmethod', file=stub)
-    print('    def of(cls, item: Union[{0}, str]) -> {0}: ...'.format(enum_superclass), file=stub)
-    print('\n', file=stub)
-
-print('###### Enums ######', file=stub)
-for enum_info in enum_infos:
-    sc = ['Enum']
-    if enum_info.superclass is not None:
-        sc.append(enum_info.superclass)
-    print('class {0}({1}):'.format(enum_info.name, ', '.join(sc)), file=stub)
-    for item in enum_info.items:
-        print('    {0}: {1} = ...'.format(item, enum_info.name), file=stub)
-    print('\n', file=stub)
-
-print(enum_infos)
