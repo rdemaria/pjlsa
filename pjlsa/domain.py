@@ -37,6 +37,9 @@ ParameterSettings = _jp.cern.lsa.domain.settings.ParameterSettings
 NotIncorporatedParameters = _jp.cern.lsa.domain.settings.NotIncorporatedParameters
 
 Accelerator = _jp.cern.accsoft.commons.domain.Accelerator
+TimingDomain = _jp.cern.accsoft.commons.domain.TimingDomain
+
+Beam = _jp.cern.accsoft.commons.domain.beams.Beam
 
 # ============== Enums ==============
 # cern.lsa.domain.settings
@@ -74,8 +77,8 @@ TimingBeamType = _jp.wrap_enum(_jp.cern.lsa.domain.cern.timing.enums.BEAM_TYPE)
 TimingParticleType = _jp.wrap_enum(_jp.cern.lsa.domain.cern.timing.enums.PARTICLE_TYPE)
 
 # cern.accsoft.commons
-CernAccelerator = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.CernAccelerator)
-CernTimingDomain = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.CernTimingDomain)
+CernAccelerator = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.CernAccelerator, javabase=Accelerator)
+CernTimingDomain = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.CernTimingDomain, javabase=TimingDomain)
 
 
 ParticleTransfer = _super_enum('ParticleTransfer')
@@ -105,14 +108,14 @@ PsAcceleratorZone = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.zones.PsAccele
 PsbAcceleratorZone = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.zones.PsbAcceleratorZone, AcceleratorZone)
 SpsAcceleratorZone = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.zones.SpsAcceleratorZone, AcceleratorZone)
 
-ElenaBeam = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.beams.ElenaBeam)
-SpsBeam = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.beams.SpsBeam)
-LeirBeam = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.beams.LeirBeam)
-PsbBeam = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.beams.PsbBeam)
-PsBeam = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.beams.PsBeam)
-AdBeam = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.beams.AdBeam)
-LhcBeam = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.beams.LhcBeam)
-Linac4Beam = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.beams.Linac4Beam)
+ElenaBeam = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.beams.ElenaBeam, javabase=Beam)
+SpsBeam = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.beams.SpsBeam, javabase=Beam)
+LeirBeam = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.beams.LeirBeam, javabase=Beam)
+PsbBeam = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.beams.PsbBeam, javabase=Beam)
+PsBeam = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.beams.PsBeam, javabase=Beam)
+AdBeam = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.beams.AdBeam, javabase=Beam)
+LhcBeam = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.beams.LhcBeam, javabase=Beam)
+Linac4Beam = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.beams.Linac4Beam, javabase=Beam)
 
 AcceleratorMode = _super_enum('AcceleratorMode')
 PsbAcceleratorMode = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.modes.PsbAcceleratorMode, AcceleratorMode)

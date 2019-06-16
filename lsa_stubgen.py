@@ -18,7 +18,7 @@ TypeInfo = namedtuple('TypeInfo', 'name arguments')
 MethodInfo = namedtuple('MethodInfo', 'name returntype paramtypes')
 FieldInfo = namedtuple('FieldInfo', 'name type writable')
 JClassInfo = namedtuple('JClassInfo', 'name superclass interfaces methods fields')
-EnumInfo = namedtuple('EnumInfo', 'name superclass items')
+EnumInfo = namedtuple('EnumInfo', 'name superclass javainterface items')
 
 
 def jtype(jt):
@@ -50,7 +50,8 @@ builtins = {'java.lang.Boolean': bool, 'boolean': bool,
             'java.lang.Float': float, 'java.lang.Double': float, 'float': float, 'double': float,
             'java.lang.String': str, 'void': None}
 
-class_aliases = {v.class_.getName(): v for k, v in jpype_classes.items()}
+class_aliases = {jc.class_.getName(): alias for alias, jc in jpype_classes.items()}
+imported_classes = {v.class_.getName(): v for k, v in jpype_classes.items()}
 wrapped_enums = dict(inspect.getmembers(mod, lambda x: hasattr(x, '__members__')))
 enum_superclasses = {}
 
@@ -60,8 +61,9 @@ for name, enum in wrapped_enums.items():
     if mro[-2] is not Enum:
         continue
     superclass = None if mro[1] is Enum else mro[1].__name__
+    javainterface = class_aliases[enum.__javabase__.class_.getName()] if enum.__javabase__ is not None else None
     items = list(enum.__members__.keys())
-    enum_infos.append(EnumInfo(name, superclass, items))
+    enum_infos.append(EnumInfo(name, superclass, javainterface, items))
 
 print('###### Enum SuperClasses ######', file=stub)
 for enum_superclass in set(e.superclass for e in enum_infos if e.superclass is not None):
@@ -76,6 +78,8 @@ for enum_info in enum_infos:
     sc = ['Enum']
     if enum_info.superclass is not None:
         sc.append(enum_info.superclass)
+    if enum_info.javainterface is not None:
+        sc.append(enum_info.javainterface)
     print('class {0}({1}):'.format(enum_info.name, ', '.join(sc)), file=stub)
     for item in enum_info.items:
         print('    {0}: {1} = ...'.format(item, enum_info.name), file=stub)
@@ -85,10 +89,10 @@ for enum_info in enum_infos:
 def resolve_type_info(tinfo: TypeInfo, extra_mappings={}, extra_mappings_generic={}) -> Type:
     if tinfo.arguments:
         if tinfo.name in extra_mappings_generic:
-            return extra_mappings_generic.__getitem__(*[resolve_type_info(i) for i in tinfo.arguments])
+            return extra_mappings_generic[tinfo.name].__getitem__(*[resolve_type_info(i) for i in tinfo.arguments])
     else:
-        if tinfo.name in class_aliases:
-            return class_aliases[tinfo.name]
+        if tinfo.name in imported_classes:
+            return imported_classes[tinfo.name]
         elif tinfo.name in builtins:
             return builtins[tinfo.name]
         elif tinfo.name in extra_mappings:
@@ -121,8 +125,17 @@ def post_process(ji: JClassInfo) -> JClassInfo:
             ji.methods.append(setters[fn]._replace(name='_' + getters[fn].name))
         fieldtype = resolve_type_info(getter.returntype, extra_mappings_generic=mapped_types_gen)
         properties.append(FieldInfo(name=fn, type=fieldtype, writable=has_setter))
-    print(ji.name)
-    print(properties)
+
+    methods = []
+    for method in ji.methods:
+        returntype = resolve_type_info(method.returntype)
+        paramtypes = [resolve_type_info(t) for t in method.paramtypes]
+        methods.append(MethodInfo(name=method.name, returntype=returntype, paramtypes=paramtypes))
+
+    processed_ji = JClassInfo(name=ji.name, superclass=ji.superclass, interfaces=ji.interfaces, methods=methods,
+                              fields=properties)
+    print(processed_ji)
+    return processed_ji
 
 
-post_process(class_infos[0])
+post_process(class_infos[3])

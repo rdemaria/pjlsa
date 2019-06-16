@@ -121,7 +121,7 @@ def _jenum_value_name(jv):
         return str(jv).replace(' ', '_').replace('-', '_')
 
 
-def wrap_enum(jc, base: Type[T] = None) -> T:
+def wrap_enum(jc, base = None, javabase=None):
     if isinstance(jc, str):
         jc = jpype.JClass(jc)
     global _py_enum_mapping
@@ -130,6 +130,7 @@ def wrap_enum(jc, base: Type[T] = None) -> T:
     name = jc.__javaclass__.getName().split('.')[-1].split('$')[0]
     java_values = {_jenum_value_name(e): e for e in jc.values()}
     enum = Enum(name, {v: v for v in java_values.keys()}, type=base)
+    enum.__javabase__ = javabase
     enum.__javaclass__ = jc
     enum.__repr__ = enum.__str__
     enum._from_java = lambda v: [e for e in enum if e.__javavalue__ == v][0]
