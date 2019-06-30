@@ -4,59 +4,59 @@ from datetime import datetime
 from enum import Enum
 import numpy as np
 from typing import Set, List, Tuple, Mapping, Type, TypeVar
-
+from jpype import _jcustomizer
 # ------ JPype SETUP ------
 mgr = cmmnbuild_dep_manager.Manager('pjlsa')
 jpype = mgr.start_jpype_jvm()
 
 
 # Monkey-Patcher for LSA Java Domain Objects
-class LsaCustomizer(jpype._jclass.JClassCustomizer):
-    _PATCHES = {
-        '__repr__': lambda self: '<' + self.__str__() + '>'
-    }
+def can_customize_class(name):
+    return name.startswith('cern.lsa.domain.') or name.startswith('cern.accsoft.commons.domain.')
 
-    def canCustomize(self, name, jc):
-        return name.startswith('cern.lsa.domain.') or name.startswith('cern.accsoft.commons.domain.')
+def can_customize_method(name):
+    return not (name.startswith('_') or name == 'getClass')
 
-    def customize(self, name, jc, bases, members, fields):
-        members.update(LsaCustomizer._PATCHES)
-        # delete accessors to fields
-        for k in [k for k in members.keys() if type(members[k]) is property]:
-            del members[k]
+def accessor_from_to_java(accessor):
+    return lambda *args: java_to_python(accessor(*[python_to_java(a) for a in args]))
+
+def accessor_from_java(accessor):
+    return lambda *args: java_to_python(accessor(*args))
+
+def accessor_to_java(accessor):
+    return lambda *args: accessor(*[python_to_java(a) for a in args])
+
+@_jcustomizer.JImplementationFor("java.lang.Object")
+class _LsaCustomizer(object):
+    def __jclass_init__(cls):
+        if not can_customize_class(cls.class_.getName()):
+            return
+        type.__setattr__(cls, '__repr__', lambda self: '<' + self.__str__() + '>')
+
+        members = cls.__dict__
         # expose getters and setters in a more pythonic way
         getters = {re.sub('^(get|is)(.)(.*)', lambda g: g.group(2).lower() + g.group(3), k): k
                    for k in members.keys() if k.startswith('get') or k.startswith('is')}
         setters = {re.sub('^(set)(.)(.*)', lambda g: g.group(2).lower() + g.group(3), k): k
                    for k in members.keys() if k.startswith('set')}
+        del getters['class']
         for m, getter in getters.items():
-            if '=> EXACT' not in members[getter].matchReport(jc):
-                continue
+#            if '=> EXACT' not in members[getter].matchReport(jc):
+#                continue
             setter = setters[m] if m in setters else None
-            wrapped_getter = LsaCustomizer._from_java(members[getter])
-            wrapped_setter = LsaCustomizer._to_java(members[setter]) if setter is not None else None
-            members[m] = property(wrapped_getter, wrapped_setter)
-            members['_' + getter] = members[getter]
-            del members[getter]
+            wrapped_getter = accessor_from_java(members[getter])
+            wrapped_setter = accessor_to_java(members[setter]) if setter is not None else None
+            type.__setattr__(cls, m, property(wrapped_getter, wrapped_setter))
+            type.__setattr__(cls, '_' + getter, members[getter])
+            type.__delattr__(cls, getter)
             if setter is not None:
-                members['_' + setter] = members[setter]
-                del members[setter]
-        for methodName in list(members.keys()):
-            if isinstance(members[methodName], jpype._jclass._jpype._JavaMethod) and not methodName.startswith('_'):
-                members['_' + methodName] = members[methodName]
-                members[methodName] = LsaCustomizer._from_to_java(members[methodName])
-
-    @classmethod
-    def _from_to_java(cls, accessor):
-        return lambda *args: java_to_python(accessor(*[python_to_java(a) for a in args]))
-
-    @classmethod
-    def _from_java(cls, accessor):
-        return lambda *args: java_to_python(accessor(*args))
-
-    @classmethod
-    def _to_java(cls, accessor):
-        return lambda *args: accessor(*[python_to_java(a) for a in args])
+                type.__setattr__(cls, '_' + setter, members[setter])
+                type.__delattr__(cls, setter)
+        methods = [m for m in members.keys()
+                   if isinstance(members[m], jpype._jclass._jpype.PyJPMethod) and can_customize_method(m)]
+        for methodName in methods:
+            type.__setattr__(cls, '_' + methodName, members[methodName])
+            type.__setattr__(cls, methodName, accessor_from_to_java(members[methodName]))
 
 
 def java_to_python(value):
@@ -72,7 +72,7 @@ def java_to_python(value):
         return datetime.fromtimestamp(value.getTime() / 1000)
     if isinstance(value, java.lang.Boolean):
         return value.booleanValue()
-    if isinstance(type(value), jpype._jarray._JavaArray):
+    if isinstance(value, jpype.JArray):
         return np.array(value[:])
     if type(value) in _py_enum_mapping:
         return _py_enum_mapping[type(value)]._from_java(value)
@@ -107,7 +107,7 @@ def python_to_java(value):
 # params = overloads[0].getParameterTypes()
 # params[0].isAssignableFrom(java.lang.String)
 
-jpype._jclass.registerClassCustomizer(LsaCustomizer())
+#jpype._jclass.registerClassCustomizer(LsaCustomizer())
 
 _py_enum_mapping = {}
 
@@ -127,7 +127,7 @@ def wrap_enum(jc, base = None, javabase=None):
     global _py_enum_mapping
     if jc in _py_enum_mapping:
         return _py_enum_mapping[jc]
-    name = jc.__javaclass__.getName().split('.')[-1].split('$')[0]
+    name = jc.class_.getSimpleName().split('$')[0]
     java_values = {_jenum_value_name(e): e for e in jc.values()}
     enum = Enum(name, {v: v for v in java_values.keys()}, type=base)
     enum.__javabase__ = javabase
