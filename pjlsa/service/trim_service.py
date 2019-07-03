@@ -40,7 +40,7 @@ class LsaTrimService(object):
         if since is not None:
             builder.at(_jp.to_java_date(since))
 
-        return self._lsa._trimService.findTrimHeaders(builder.build())
+        return list(self._lsa._trimService.findTrimHeaders(builder.build()))
 
     def findTrimmedParameters(self):
         pass
