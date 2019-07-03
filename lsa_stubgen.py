@@ -36,7 +36,7 @@ for name, jc in jpype_classes.items():
     jsuper = jc.class_.getSuperclass()
     superclass = jsuper.getName() if jsuper else None
     interfaces = [t.getName() for t in jc.class_.getInterfaces()]
-    methods = jc.class_.getMethods()
+    methods = jpype.reflect.getMethods(jc)
     method_infos = []
     for method in methods:
         m_name = method.getName()
@@ -138,4 +138,4 @@ def post_process(ji: JClassInfo) -> JClassInfo:
     return processed_ji
 
 
-post_process(class_infos[10])
+post_process(class_infos[3])
