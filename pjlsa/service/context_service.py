@@ -135,8 +135,8 @@ class LsaContextService(object):
             ctxs = [ctxs]
         ctx_objs = {p for p in ctxs if isinstance(p, Context)}
         ctx_names = {p for p in ctxs if not isinstance(p, Context)}
-        found_bps = self.findStandAloneBeamProcesses(names=ctx_names) if len(ctx_names) > 0 else set()
-        found_cycles = self.findStandAloneCycles(names=ctx_names) if len(ctx_names) > 0 else set()
+        found_bps = set(self.findStandAloneBeamProcesses(names=ctx_names)) if len(ctx_names) > 0 else set()
+        found_cycles = set(self.findStandAloneCycles(names=ctx_names)) if len(ctx_names) > 0 else set()
         found_ctxs = found_cycles | found_bps
         if len(found_ctxs) < len(ctx_names):
             found_ctx_names = {p.name for p in found_ctxs}
