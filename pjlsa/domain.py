@@ -94,7 +94,6 @@ ElenaParticleTransfer = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.particletr
 IsoldeParticleTransfer = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.particletransfers.IsoldeParticleTransfer, ParticleTransfer)
 LeirParticleTransfer = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.particletransfers.LeirParticleTransfer, ParticleTransfer)
 LhcParticleTransfer = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.particletransfers.LhcParticleTransfer, ParticleTransfer)
-Linac4ParticleTransfer = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.particletransfers.Linac4ParticleTransfer, ParticleTransfer)
 NorthParticleTransfer = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer, ParticleTransfer)
 ParticleTransferType = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.particletransfers.ParticleTransferType, ParticleTransfer)
 PsParticleTransfer = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.particletransfers.PsParticleTransfer, ParticleTransfer)
@@ -108,7 +107,6 @@ ElenaAcceleratorZone = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.zones.Elena
 IsoldeAcceleratorZone = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.zones.IsoldeAcceleratorZone, AcceleratorZone)
 LeirAcceleratorZone = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.zones.LeirAcceleratorZone, AcceleratorZone)
 LhcAcceleratorZone = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.zones.LhcAcceleratorZone, AcceleratorZone)
-Linac4AcceleratorZone = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.zones.Linac4AcceleratorZone, AcceleratorZone)
 NorthAcceleratorZone = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.zones.NorthAcceleratorZone, AcceleratorZone)
 PsAcceleratorZone = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.zones.PsAcceleratorZone, AcceleratorZone)
 PsbAcceleratorZone = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.zones.PsbAcceleratorZone, AcceleratorZone)
@@ -121,7 +119,6 @@ PsbBeam = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.beams.PsbBeam, javabase=
 PsBeam = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.beams.PsBeam, javabase=Beam)
 AdBeam = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.beams.AdBeam, javabase=Beam)
 LhcBeam = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.beams.LhcBeam, javabase=Beam)
-Linac4Beam = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.beams.Linac4Beam, javabase=Beam)
 
 AcceleratorMode = _super_enum('AcceleratorMode')
 PsbAcceleratorMode = _jp.wrap_enum(_jp.cern.accsoft.commons.domain.modes.PsbAcceleratorMode, AcceleratorMode)
