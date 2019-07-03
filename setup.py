@@ -48,7 +48,7 @@ setuptools.setup(
     url='https://github.com/rdemaria/pjlsa',
     packages=['pjlsa'],
     package_dir={'pjlsa': 'pjlsa'},
-    install_requires=['JPype1>=0.6.2',
+    install_requires=['JPype1==0.6.3',
                       'cmmnbuild-dep-manager>=2.1.2',
                       'jpype-ext-testing>=0.0.1'],
     cmdclass={ 'install': install },

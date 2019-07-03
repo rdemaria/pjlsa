@@ -36,10 +36,16 @@ ContextSettings = _jp.cern.lsa.domain.settings.ContextSettings
 ParameterSettings = _jp.cern.lsa.domain.settings.ParameterSettings
 NotIncorporatedParameters = _jp.cern.lsa.domain.settings.NotIncorporatedParameters
 
+# Trims
+TrimHeader = _jp.cern.lsa.domain.settings.TrimHeader
+TrimResponse = _jp.cern.lsa.domain.settings.TrimResponse
+
 Accelerator = _jp.cern.accsoft.commons.domain.Accelerator
 TimingDomain = _jp.cern.accsoft.commons.domain.TimingDomain
 
 Beam = _jp.cern.accsoft.commons.domain.beams.Beam
+
+
 
 # ============== Enums ==============
 # cern.lsa.domain.settings
