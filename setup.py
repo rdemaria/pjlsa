@@ -49,8 +49,7 @@ setuptools.setup(
     packages=['pjlsa'],
     package_dir={'pjlsa': 'pjlsa'},
     install_requires=['JPype1==0.6.3',
-                      'cmmnbuild-dep-manager>=2.1.2',
-                      'jpype-ext-testing>=0.0.1'],
+                      'cmmnbuild-dep-manager>=2.1.2'],
     cmdclass={ 'install': install },
 )
 
