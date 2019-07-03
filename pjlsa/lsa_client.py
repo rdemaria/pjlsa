@@ -54,3 +54,4 @@ class LsaClient(object):
         self.contextService = _svc.LsaContextService(self)
         self.parameterService = _svc.LsaParameterService(self)
         self.settingService = _svc.LsaSettingService(self)
+        self.trimService = _svc.LsaTrimService(self)
