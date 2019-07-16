@@ -156,4 +156,4 @@ class LsaContextService(object):
             elif bp is not None:
                 return bp
             else:
-                return ctx
+                return cycle
