@@ -189,10 +189,10 @@ def from_accsoft_value(value):
     primitives = ['BOOLEAN', 'BYTE', 'DOUBLE', 'FLOAT', 'LONG', 'INT', 'SHORT', 'STRING']
     vtype = str(value.getType())
     if vtype == 'FUNCTION':
-        return np.array(value.getXArray()[:], value.getYArray()[:])
+        return np.array(value.toXArray()[:], value.toYArray()[:])
 
     if vtype == 'FUNCTION_LIST':
-        return [np.array(e.getXArray()[:], e.getYArray()[:]) for e in value.getFunctions()]
+        return [np.array(e.toXArray()[:], e.toYArray()[:]) for e in value.getFunctions()]
 
     if vtype == 'TEXT_DOCUMENT':
         return value.getString()
