@@ -115,6 +115,7 @@ OpticService     =cern.lsa.client.OpticService
 DeviceService    =cern.lsa.client.DeviceService
 
 BeamProcess          =cern.lsa.domain.settings.BeamProcess
+Cycle                =cern.lsa.domain.settings.Cycle
 ContextSettings      =cern.lsa.domain.settings.ContextSettings
 ContextFamily        =cern.lsa.domain.settings.ContextFamily
 HyperCycle           =cern.lsa.domain.settings.HyperCycle
@@ -251,6 +252,12 @@ class LSAClient(object):
             return bp
         else:
             return self._contextService.findStandAloneBeamProcess(bp)
+        
+    def _getCycle(self, cy):
+        if isinstance(cy, Cycle):
+            return cy
+        else:
+            return self._contextService.findStandAloneCycle(cy)
 
     def _getBeamProcessByUser(self,user, hypercycle=None):
         hp=self._getHyperCycle(hypercycle=hypercycle)
@@ -336,6 +343,22 @@ class LSAClient(object):
         if end is not None:
             raw_headers = [th for th in raw_headers if not th.createdDate.after(_toJavaDate(end))]
         return raw_headers
+    
+    def _getRawTrimHeadersByCycle(self, cycle, param, start=None, end=None):
+        cy = self._getCycle(cycle)
+        thrb = cern.lsa.domain.settings.TrimHeadersRequestBuilder()
+        thrb.beamProcesses(cy.getBeamProcesses())
+        thrb.parameters(param)
+        if start is not None:
+           thrb.startingFrom(_toJavaDate(start).toInstant())
+        trimHeadersRequest = thrb.build()
+        raw_headers = self._trimService.findTrimHeaders(trimHeadersRequest)
+        raw_headers = list(raw_headers)
+        if start is not None:
+            raw_headers = [th for th in raw_headers if not th.createdDate.before(_toJavaDate(start))]
+        if end is not None:
+            raw_headers = [th for th in raw_headers if not th.createdDate.after(_toJavaDate(end))]
+        return raw_headers
 
     def _buildParameterList(self, parameter):
         if type(parameter) in [str,BeamProcess]:
@@ -352,6 +375,12 @@ class LSAClient(object):
                    self._getRawTrimHeaders(
                             beamprocess,
                             self._buildParameterList(parameter), start, end)]
+    
+    def getTrimHeadersByCycle(self, cycle, parameter, start=None, end=None):
+        return [_build_TrimHeader(th) for th in
+                   self._getRawTrimHeadersByCycle(
+                            cycle,
+                            self._buildParameterList(parameter), start, end)]
 
     def getTrims(self, beamprocess, parameter, start=None, end=None, part='value'):
         parameterList = self._buildParameterList(parameter)
@@ -366,39 +395,39 @@ class LSAClient(object):
             csrb.at(th.createdDate.toInstant())
             contextSettings =  self._settingService.findContextSettings(csrb.build())
             for pp in parameterList:
-              parameterSetting = contextSettings.getParameterSettings(pp)
-              if parameterSetting is None:
-                continue
+                parameterSetting = contextSettings.getParameterSettings(pp)
+                if parameterSetting is None:
+                    continue
+                
+                setting = parameterSetting.getSetting(bp)
+                value = setting
+                if part is not None:
+                    if type(setting) is ScalarSetting:
+                        if part == 'value':
+                            value = setting.getScalarValue().getDouble()
+                        elif part == 'target':
+                            value = setting.getTargetScalarValue().getDouble()
+                        elif part == 'correction':
+                            value = setting.getCorrectionScalarValue().getDouble()
+                        else:
+                            raise ValueError('Invalid Setting Part: ' + part)
+                    elif type(setting) is FunctionSetting:
+                        if part == 'value':
+                            df = setting.getFunctionValue()
+                        elif part == 'target':
+                            df = setting.getTargetFunctionValue()
+                        elif part == 'correction':
+                            df = setting.getCorrectionFunctionValue()
+                        else:
+                            raise ValueError('Invalid Setting Part: ' + part)
+                        value = np.array([df.toXArray()[:], df.toYArray()[:]])
+                    else:
+                        # for now, return the java type (to be extended)
+                        value = setting
 
-              setting = parameterSetting.getSetting(bp)
-              value = setting
-              if part is not None:
-                if type(setting) is ScalarSetting:
-                  if part == 'value':
-                    value = setting.getScalarValue().getDouble()
-                  elif part == 'target':
-                    value = setting.getTargetScalarValue().getDouble()
-                  elif part == 'correction':
-                    value = setting.getCorrectionScalarValue().getDouble()
-                  else:
-                    raise ValueError('Invalid Setting Part: ' + part)
-                elif type(setting) is FunctionSetting:
-                  if part == 'value':
-                    df = setting.getFunctionValue()
-                  elif part == 'target':
-                    df = setting.getTargetFunctionValue()
-                  elif part == 'correction':
-                    df = setting.getCorrectionFunctionValue()
-                  else:
-                    raise ValueError('Invalid Setting Part: ' + part)
-                  value = np.array([df.toXArray()[:], df.toYArray()[:]])
-                else:
-                  # for now, return the java type (to be extended)
-                  value = setting
-
-              timestamps.setdefault(pp.getName(),[]).append(
+                timestamps.setdefault(pp.getName(),[]).append(
                                           th.createdDate.getTime()/1000)
-              values.setdefault(pp.getName(),[]).append(value)
+                values.setdefault(pp.getName(),[]).append(value)
         out={ }
         for name in values:
             out[name]=TrimTuple(time=timestamps[name], data=values[name])
@@ -409,6 +438,76 @@ class LSAClient(object):
         res = self.getTrims(beamprocess, parameter, part=part, start=th.createdDate)[parameter]
         return TrimTuple(res.time[-1],res.data[-1])
 
+    def getLastTrimValue(self,beamprocess, parameter, part='value'):
+        th = self.getTrimHeaders(beamprocess,parameter)[-1]
+        res = self.getTrims(beamprocess, parameter, part=part, start=th.createdDate)[parameter]
+        return res.data[-1]
+
+    def getTrimsByCycle(self, cycle, parameter, start=None, end=None, part='value'):
+        parameterList = self._buildParameterList(parameter)
+        cy = self._getCycle(cycle)
+        
+        timestamps = {}
+        values = {}
+        for th in self._getRawTrimHeadersByCycle(cy, parameterList, start, end):
+            csrb = cern.lsa.domain.settings.ContextSettingsRequestBuilder()
+            csrb.standAloneContext(cy)
+            csrb.parameters(parameterList)
+            csrb.at(th.createdDate.toInstant())
+            contextSettings =  self._settingService.findContextSettings(csrb.build())
+            for pp in parameterList:
+                parameterSetting = contextSettings.getParameterSettings(pp)
+                if parameterSetting is None:
+                    continue
+                settingIterator = parameterSetting.getSettings().iterator()                
+                setting = []
+                while settingIterator.hasNext():
+                    setting.append(settingIterator.next())
+                if len(setting) == 1:
+                    setting = setting[0]
+                value = setting
+                if part is not None:
+                    if type(setting) is ScalarSetting:
+                        if part == 'value':
+                            value = setting.getScalarValue().getDouble()
+                        elif part == 'target':
+                            value = setting.getTargetScalarValue().getDouble()
+                        elif part == 'correction':
+                            value = setting.getCorrectionScalarValue().getDouble()
+                        else:
+                            raise ValueError('Invalid Setting Part: ' + part)
+                    elif type(setting) is FunctionSetting:
+                        if part == 'value':
+                            df = setting.getFunctionValue()
+                        elif part == 'target':
+                            df = setting.getTargetFunctionValue()
+                        elif part == 'correction':
+                            df = setting.getCorrectionFunctionValue()
+                        else:
+                            raise ValueError('Invalid Setting Part: ' + part)
+                        value = np.array([df.toXArray()[:], df.toYArray()[:]])
+                    else:
+                        # for now, return the java type (to be extended)
+                        value = setting
+
+                timestamps.setdefault(pp.getName(),[]).append(
+                                            th.createdDate.getTime()/1000)
+                values.setdefault(pp.getName(),[]).append(value)
+        out={ }
+        for name in values:
+            out[name]=TrimTuple(time=timestamps[name], data=values[name])
+        return out
+    
+    def getLastTrimByCycle(self, cycle, parameter, part='value'):
+        th = self.getTrimHeadersByCycle(cycle,parameter)[-1]
+        res = self.getTrimsByCycle(cycle, parameter, part=part, start=th.createdDate)[parameter]
+        return TrimTuple(res.time[-1],res.data[-1])
+    
+    def getLastTrimValueByCycle(self, cycle, parameter, part='value'):
+        th = self.getTrimHeadersByCycle(cycle,parameter)[-1]
+        res = self.getTrimsByCycle(cycle, parameter, part=part, start=th.createdDate)[parameter]
+        return res.data[-1]
+    
     def getOpticTable(self, beamprocess):
         bp = self._getBeamProcess(beamprocess)
         if bp is None:
@@ -510,3 +609,4 @@ class LSAClient(object):
         info=PCInfo(*(getattr(pc,nn) for nn in PCInfo._fields))
         return info
 
+    
