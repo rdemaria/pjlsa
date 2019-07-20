@@ -188,12 +188,12 @@ def to_accsoft_value(value, parameter, context):
 def from_accsoft_value(value):
     primitives = ['BOOLEAN', 'BYTE', 'DOUBLE', 'FLOAT', 'LONG', 'INT', 'SHORT', 'STRING']
     vtype = str(value.getType())
-    '''
+
     if vtype == 'FUNCTION':
-        return np.array(value.toXArray()[:], value.toYArray()[:])
+        return np.array([value.toXArray()[:], value.toYArray()[:]])
 
     if vtype == 'FUNCTION_LIST':
-        return [np.array(e.toXArray()[:], e.toYArray()[:]) for e in value.getFunctions()]
+        return [np.array([e.toXArray()[:], e.toYArray()[:]]) for e in value.getFunctions()]
 
     if vtype == 'TEXT_DOCUMENT':
         return value.getString()
@@ -203,10 +203,10 @@ def from_accsoft_value(value):
             if vtype == primitive:
                 return getattr(value, 'get'+primitive.title())()
             elif vtype == (primitive + '_ARRAY'):
-                return getattr(value, 'get'+primitive.title()+'s')()[:]
+                return np.array(getattr(value, 'get'+primitive.title()+'s')()[:])
             elif vtype == (primitive + '_ARRAY_2D'):
                 pass
-    '''
+
     warnings.warn("Can not convert value of type " + vtype + " -> " + str(value))
     return value
 
