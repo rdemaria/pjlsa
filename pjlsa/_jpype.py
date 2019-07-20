@@ -4,6 +4,7 @@ from datetime import datetime
 from enum import Enum
 import numpy as np
 from typing import Set, List, Tuple, Mapping, Type, TypeVar
+import warnings
 
 # ------ JPype SETUP ------
 mgr = cmmnbuild_dep_manager.Manager('pjlsa')
@@ -74,6 +75,8 @@ def java_to_python(value):
         return value.booleanValue()
     if isinstance(type(value), jpype._jarray._JavaArray):
         return np.array(value[:])
+    if isinstance(value, cern.accsoft.commons.value.ImmutableValue):
+        return from_accsoft_value(value)
     if type(value) in _py_enum_mapping:
         return _py_enum_mapping[type(value)]._from_java(value)
     return value
@@ -121,7 +124,7 @@ def _jenum_value_name(jv):
         return str(jv).replace(' ', '_').replace('-', '_')
 
 
-def wrap_enum(jc, base = None, javabase=None):
+def wrap_enum(jc, base=None, javabase=None):
     if isinstance(jc, str):
         jc = jpype.JClass(jc)
     global _py_enum_mapping
@@ -176,6 +179,35 @@ def to_java_enum(value):
         return value.__javavalue__
     else:
         raise ValueError('"{}" is not a (java) compatible enum - missing __javavalue__')
+
+
+def to_accsoft_value(value, parameter, context):
+    pass
+
+
+def from_accsoft_value(value):
+    primitives = ['BOOLEAN', 'BYTE', 'DOUBLE', 'FLOAT', 'LONG', 'INT', 'SHORT', 'STRING']
+    vtype = str(value.getType())
+    if vtype == 'FUNCTION':
+        return np.array(value.getXArray()[:], value.getYArray()[:])
+
+    if vtype == 'FUNCTION_LIST':
+        return [np.array(e.getXArray()[:], e.getYArray()[:]) for e in value.getFunctions()]
+
+    if vtype == 'TEXT_DOCUMENT':
+        return value.getString()
+
+    for primitive in primitives:
+        if vtype.startswith(primitive):
+            if vtype == primitive:
+                return getattr(value, 'get'+primitive.title())()
+            elif vtype == (primitive + '_ARRAY'):
+                return getattr(value, 'get'+primitive.title()+'s')()[:]
+            elif vtype == (primitive + '_ARRAY_2D'):
+                pass
+
+    warnings.warn("Can not convert value of type " + vtype + " -> " + str(value))
+    return value
 
 
 def setup_log4j(logLevel):

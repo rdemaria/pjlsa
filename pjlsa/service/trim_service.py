@@ -16,7 +16,11 @@ class LsaTrimService(object):
                      persist: bool = True, propagateToChildren: bool = True, ignoreErrors: bool = False,
                      lenientDrive: bool = False, commit: bool = True, forceDrive: bool = False,
                      description: Optional[str] = None, attributes: Optional[Mapping[str, str]] = None):
-        pass
+        resolved_ctx = self._lsa.contextService._resolve_context(context)
+        resolved_params = {p: self._lsa.parameterService._resolve_param(p) for p in settings.keys()}
+        resolved_settings = {resolved_params[p]:_jp.to_accsoft_value(v, resolved_params[p], resolved_ctx)
+                             for p,v in settings.items()}
+
 
     def revertTrim(self):
         pass
