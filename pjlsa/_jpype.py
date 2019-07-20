@@ -186,6 +186,7 @@ def to_accsoft_value(value, parameter, context):
 
 
 def from_accsoft_value(value):
+    '''
     primitives = ['BOOLEAN', 'BYTE', 'DOUBLE', 'FLOAT', 'LONG', 'INT', 'SHORT', 'STRING']
     vtype = str(value.getType())
     if vtype == 'FUNCTION':
@@ -205,7 +206,7 @@ def from_accsoft_value(value):
                 return getattr(value, 'get'+primitive.title()+'s')()[:]
             elif vtype == (primitive + '_ARRAY_2D'):
                 pass
-
+    '''
     warnings.warn("Can not convert value of type " + vtype + " -> " + str(value))
     return value
 
