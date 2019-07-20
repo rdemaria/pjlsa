@@ -186,9 +186,9 @@ def to_accsoft_value(value, parameter, context):
 
 
 def from_accsoft_value(value):
-    '''
     primitives = ['BOOLEAN', 'BYTE', 'DOUBLE', 'FLOAT', 'LONG', 'INT', 'SHORT', 'STRING']
     vtype = str(value.getType())
+    '''
     if vtype == 'FUNCTION':
         return np.array(value.toXArray()[:], value.toYArray()[:])
 
