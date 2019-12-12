@@ -194,24 +194,6 @@ def test_saveParameters_delegates(lsa_client):
     assert java_args[0] == to_java([pa()])
 
 
-def test_saveParameterRelations_delegates(lsa_client):
-    top_param1, dep_param1_by_name, dep_param1 = JMock(Parameter), JMock(Parameter), JMock(Parameter)
-    dep_param1_by_name._getName = JStub(returns='DP1/byName')
-    top_param2_by_name, dep_param2_by_name, dep_param2 = JMock(Parameter), JMock(Parameter), JMock(Parameter)
-    top_param2_by_name._getName = JStub(returns='TP2/byName')
-    dep_param2_by_name._getName = JStub(returns='DP2/byName')
-    lsa_client.jmock_parameterService.findParameters = JStub(returns={dep_param1_by_name, top_param2_by_name,
-                                                                      dep_param2_by_name})
-    lsa_client.jmock_parameterService.saveParameterRelations = JStub()
-    lsa_client.parameterService.saveParameterRelations({top_param1(): ['DP1/byName', dep_param1()],
-                                                        'TP2/byName': ['DP2/byName', dep_param2()]})
-    param_lookup_args = lsa_client.jmock_parameterService.findParameters.assert_called_once()
-    assert param_lookup_args[0].parameterNames == {'TP2/byName', 'DP1/byName', 'DP2/byName'}
-    java_args = lsa_client.jmock_parameterService.saveParameterRelations.assert_called_once()
-    assert java_args[0].get(top_param1()).containsAll(to_java([dep_param1(), dep_param1_by_name()]))
-    assert java_args[0].get(top_param2_by_name()).containsAll(to_java([dep_param2(), dep_param2_by_name()]))
-
-
 def test_saveParameterTypes_delegates(lsa_client):
     pt1, pt2 = JMock(ParameterType), JMock(ParameterType)
     lsa_client.jmock_parameterService.saveParameterTypes = JStub()
@@ -286,12 +268,15 @@ def test_removeParametersFromParameterGroup_delegates(lsa_client):
 def test_findMakeRuleForParameterRelation_returns(lsa_client):
     sp = JMock(Parameter)
     sp._getName = JStub(returns='SP/Foo')
-    mr = JMock(MakeRuleForParameterRelation)
+    dp_by_name = JMock(Parameter)
+    dp_by_name._getName = JStub(returns='DP/Test')
+    mr = JMock(MakeRuleClassInfo)
+    lsa_client.jmock_parameterService.findParameters = JStub(returns={dp_by_name})
     lsa_client.jmock_parameterService.findMakeRuleForParameterRelation = JStub(returns=mr())
     lsa_client.parameterService.findMakeRuleForParameterRelation(source=sp(), dependent='DP/Test')
     java_args = lsa_client.jmock_parameterService.findMakeRuleForParameterRelation.assert_called_once()
-    assert java_args[0].sourceParameterName == 'SP/Foo'
-    assert java_args[0].dependentParameterName == 'DP/Test'
+    assert java_args[0].sourceParameter == sp()
+    assert java_args[0].dependentParameter == dp_by_name()
 
 
 def test_findSourceParameterTree_returns(lsa_client):

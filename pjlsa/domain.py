@@ -25,9 +25,10 @@ ParameterGroup = _jp.cern.lsa.domain.settings.ParameterGroup
 ParameterTreeNode = _jp.cern.lsa.domain.settings.ParameterTreeNode
 ParameterType = _jp.cern.lsa.domain.settings.ParameterType
 ParameterTypeGroup = _jp.cern.lsa.domain.settings.ParameterTypeGroup
+ParameterRelation = _jp.cern.lsa.domain.settings.parameter.relation.ParameterRelation
 
 # Make Rules
-MakeRuleForParameterRelation = _jp.cern.lsa.domain.settings.parameter.relation.MakeRuleForParameterRelation
+MakeRuleConfigInfo = _jp.cern.lsa.domain.trim.rules.makerule.MakeRuleConfigInfo
 MakeRuleClassInfo = _jp.cern.lsa.domain.trim.rules.makerule.MakeRuleClassInfo
 MakeRuleInfo = _jp.cern.lsa.domain.trim.rules.makerule.MakeRuleInfo
 
@@ -57,7 +58,7 @@ PropertyAccessMode = _jp.wrap_enum(_jp.cern.lsa.domain.settings.PropertyAccessMo
 SettingPartEnum = _jp.wrap_enum(_jp.cern.lsa.domain.settings.SettingPartEnum)
 BeamProcessTypeCategory = _jp.wrap_enum(_jp.cern.lsa.domain.settings.type.BeamProcessTypeCategory)
 CernContextCategory = _jp.wrap_enum(_jp.cern.lsa.domain.cern.settings.CernContextCategory)
-MakeRuleConfigStatus = _jp.wrap_enum('cern.lsa.domain.settings.parameter.relation.MakeRuleForParameterRelation$MakeRuleConfigStatus')
+MakeRuleConfigStatus = _jp.wrap_enum('cern.lsa.domain.trim.rules.makerule.MakeRuleConfigInfo$MakeRuleConfigStatus')
 
 # cern.lsa.domain.optics
 CalibrationFunctionTypes = _jp.wrap_enum(_jp.cern.lsa.domain.optics.CalibrationFunctionTypes)

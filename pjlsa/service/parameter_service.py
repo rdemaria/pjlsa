@@ -158,18 +158,6 @@ class LsaParameterService(object):
     def saveParameters(self, parameterAttributes: Union[ParameterAttributes, Iterable[ParameterAttributes]]) -> None:
         self._lsa._parameterService.saveParameters(_jp.to_java_list(parameterAttributes))
 
-    def saveParameterRelations(self, relations: Mapping[Union[Parameter, str], Iterable[Union[Parameter, str]]], *,
-                               hierarchy: str = 'DEFAULT') -> None:
-        param_objs = {p for p in relations.keys() if isinstance(p, Parameter)}
-        param_objs.update({p for pr in relations.values() for p in pr if isinstance(p, Parameter)})
-        param_names = {p for p in relations.keys() if not isinstance(p, Parameter)}
-        param_names.update({p for pr in relations.values() for p in pr if not isinstance(p, Parameter)})
-        param_objs.update(self.findParameters(names=param_names))
-        param_lookup = {p.name: p for p in param_objs}
-        param_lookup.update({p: p for p in param_objs})
-        resolved_relations = {param_lookup[p]: [param_lookup[dp] for dp in pr] for p, pr in relations.items()}
-        self._lsa._parameterService.saveParameterRelations(_jp.python_to_java(resolved_relations), hierarchy)
-
     def saveParameterTypes(self, types: Union[ParameterType, Iterable[ParameterType]]) -> None:
         self._lsa._parameterService.saveParameterTypes(_jp.to_java_list(types))
 
@@ -204,10 +192,10 @@ class LsaParameterService(object):
         self._lsa._parameterService.removeParametersFromParameterGroup(parameterGroup, _jp.to_java_list(parameters))
 
     def findMakeRuleForParameterRelation(self, *, source: Union[str, Parameter],
-                                         dependent: Union[str, Parameter]) -> MakeRuleForParameterRelation:
-        builder = _jp.cern.lsa.domain.settings.parameter.relation.MakeRuleForParameterRelationRequest.builder()
-        builder.sourceParameterName(source.name if isinstance(source, Parameter) else source)
-        builder.dependentParameterName(dependent.name if isinstance(dependent, Parameter) else dependent)
+                                         dependent: Union[str, Parameter]) -> MakeRuleClassInfo:
+        builder = _jp.cern.lsa.domain.settings.parameter.relation.ParameterRelation.builder()
+        builder.sourceParameter(self._resolve_param(source))
+        builder.dependentParameter(self._resolve_param(dependent))
         return self._lsa._parameterService.findMakeRuleForParameterRelation(builder.build())
 
     def findSourceParameterTree(self, parameter: Union[str, Parameter], *,
