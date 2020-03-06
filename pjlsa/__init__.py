@@ -2,9 +2,9 @@ __version__ = "0.0.14"
 
 __cmmnbuild_deps__ = [
     "lsa-client",
-    "slf4j-log4j12",
-    "slf4j-api",
-    "log4j"
+#    "slf4j-log4j12",
+#    "slf4j-api",
+#    "log4j"
 ]
 
 # When running setuptools without required dependencies installed
@@ -12,8 +12,9 @@ __cmmnbuild_deps__ = [
 # continue
 try:
     from .pjlsa import *
-except ImportError:
+except ImportError as e:
     import logging
     logging.basicConfig()
     log = logging.getLogger(__name__)
+    log.warn(str(e))
     log.warn("required dependencies are not installed")
