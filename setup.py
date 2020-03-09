@@ -5,7 +5,17 @@ import ast
 import os
 import setuptools
 
-from setuptools.command.install import install as _install
+ 
+REQUIREMENTS: dict = {
+    'core': [
+        'cmmnbuild-dep-manager>=2.4.0',
+        'jpype1>=0.7.1',
+    ],
+    'test': [
+        'pytest',
+    ],
+}
+
 
 
 def get_version_from_init():
@@ -29,12 +39,21 @@ setuptools.setup(
     url='https://github.com/rdemaria/pjlsa',
     packages=['pjlsa'],
     package_dir={'pjlsa': 'pjlsa'},
-    install_requires=['JPype1>=0.7.1',
-                      'cmmnbuild-dep-manager>=2.4.0' ],
-    extras_require={"dev": ["pytest"]},
-     entry_points={
+
+    install_requires=REQUIREMENTS['core'],
+    extras_require={
+        **REQUIREMENTS,
+        # The 'dev' extra is the union of 'test' and 'doc', with an option
+        # to have explicit development dependencies listed.
+        'dev': [req
+                for extra in ['dev', 'test', 'doc']
+                for req in REQUIREMENTS.get(extra, [])],
+        # The 'all' extra is the union of all requirements.
+        'all': [req for reqs in REQUIREMENTS.values() for req in reqs],
+    },
+    entry_points={
          # Register with cmmnbuild_dep_manager.
          'cmmnbuild_dep_manager': [f'pytimber={VERSION}'],
-        },
+    },
 )
 
