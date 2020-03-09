@@ -170,7 +170,7 @@ def _toJavaList(lst):
 
 class LSAClient(object):
     def __init__(self, server="gpn"):
-        self._mgr = cmmnbuild_dep_manager.Manager()
+        self._mgr = cmmnbuild_dep_manager.Manager('pjlsa')
         self._jpype = self._mgr.start_jpype_jvm()
 
         # basic Java packages

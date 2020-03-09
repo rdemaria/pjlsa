@@ -1,0 +1,85 @@
+include:
+  - project: 'acc-co/devops/python/acc-py-devtools'
+    file: 'acc_py_devtools/templates/gitlab-ci/python.yml'
+
+variables:
+  project_name: pjlsa
+
+
+# A push of the source distribution to the acc-py PyPI, only on git tag.
+release_sdist:
+  extends: .acc_py_release_sdist
+
+
+.base_dev_test:
+  variables:
+    env_spec: INSERT_CONDA_REQUIREMENTS
+  image: continuumio/miniconda3
+  script:
+    - conda create -n test_env --yes --quiet -c conda-forge pip $env_spec
+    - source activate test_env
+
+    - mkdir not-the-source-dir && cd not-the-source-dir
+    - pip install -e ..
+    - python -c "import pjlsa; print(pjlsa.__version__)"
+    - pip install -e ..[test]
+    - pytest ../pjlsa ../tests
+
+
+# We only really need a single dev test to ensure that we can actually use
+# PjLSA in development mode.
+tests_dev_py36_jdk11_jp07:
+  extends:
+    .base_dev_test
+  variables:
+    env_spec: python=3.6 openjdk=11 JPype1=0.7
+
+
+.base_wheel_test:
+  image: continuumio/miniconda3
+  variables:
+    env_spec: INSERT_CONDA_REQUIREMENTS
+  script:
+    - conda create -n py36 --yes --quiet -c conda-forge pip $env_spec
+    - source activate py36
+
+    - mkdir not-the-source-dir && cd not-the-source-dir
+    - pip install "$(ls ../wheelhouse/*.whl)"
+    # Check that we can actually use PjLSA without the test dependencies.
+    - python -c "import pjlsa; print(pjlsa.__version__)"
+    # Now install the test dependencies.
+    - pip install "$(ls ../wheelhouse/*.whl)[test]"
+    - pytest ../tests
+
+tests_whl_py36_jdk8_jp07:
+  extends:
+    .base_wheel_test
+  variables:
+    env_spec: python=3.6 openjdk=8 JPype1=0.7
+
+tests_whl_py36_jdk11_jp07:
+  extends:
+    .base_wheel_test
+  variables:
+    env_spec: python=3.6 openjdk=11 JPype1=0.7
+
+tests_whl_py38_jdk8_jp07:
+  extends:
+    .base_wheel_test
+  variables:
+    env_spec: python=3.8 openjdk=8 JPype1=0.7
+
+tests_whl_py38_jdk11_jp07:
+  extends:
+    .base_wheel_test
+  variables:
+    env_spec: python=3.8 openjdk=11 JPype1=0.7
+
+
+build_wheel:
+  extends:
+    - .acc_py_build_wheel
+
+
+release_wheel:
+  extends: .acc_py_release_wheel
