@@ -447,13 +447,13 @@ class LSAClient(object):
             raw_headers = [
                 th
                 for th in raw_headers
-                if not th.createdDate.before(_toJavaDate(start))
+                if not th.getCreatedDate().before(_toJavaDate(start))
             ]
         if end is not None:
             raw_headers = [
                 th
                 for th in raw_headers
-                if not th.createdDate.after(_toJavaDate(end))
+                if not th.getCreatedDate().after(_toJavaDate(end))
             ]
         return raw_headers
 
@@ -553,7 +553,7 @@ class LSAClient(object):
     def getLastTrimValue(self, beamprocess, parameter, part="value"):
         th = self.getTrimHeaders(beamprocess, parameter)[-1]
         res = self.getTrims(
-            beamprocess, parameter, part=part, start=th.createdDate
+            beamprocess, parameter, part=part, start=th.getCreatedDate()
         )[parameter]
         return res.data[-1]
 
@@ -571,7 +571,7 @@ class LSAClient(object):
             csrb = self._domain.settings.ContextSettingsRequestBuilder()
             csrb.standAloneContext(cy)
             csrb.parameters(parameterList)
-            csrb.at(th.createdDate.toInstant())
+            csrb.at(th.getCreatedDate().toInstant())
             contextSettings = self._settingService.findContextSettings(
                 csrb.build()
             )
@@ -613,7 +613,7 @@ class LSAClient(object):
                         value = setting
 
                 timestamps.setdefault(pp.getName(), []).append(
-                    th.createdDate.getTime() / 1000
+                    th.getCreatedDate().getTime() / 1000
                 )
                 values.setdefault(pp.getName(), []).append(value)
         out = {}
@@ -624,14 +624,14 @@ class LSAClient(object):
     def getLastTrimByCycle(self, cycle, parameter, part="value"):
         th = self.getTrimHeadersByCycle(cycle, parameter)[-1]
         res = self.getTrimsByCycle(
-            cycle, parameter, part=part, start=th.createdDate
+            cycle, parameter, part=part, start=th.getCreatedDate()
         )[parameter]
         return TrimTuple(res.time[-1], res.data[-1])
 
     def getLastTrimValueByCycle(self, cycle, parameter, part="value"):
         th = self.getTrimHeadersByCycle(cycle, parameter)[-1]
         res = self.getTrimsByCycle(
-            cycle, parameter, part=part, start=th.createdDate
+            cycle, parameter, part=part, start=th.getCreatedDate()
         )[parameter]
         return res.data[-1]
 

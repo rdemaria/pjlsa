@@ -53,7 +53,7 @@ setuptools.setup(
     },
     entry_points={
          # Register with cmmnbuild_dep_manager.
-         'cmmnbuild_dep_manager': [f'pytimber={VERSION}'],
+         'cmmnbuild_dep_manager': [f'pjlsa={VERSION}'],
     },
 )
 
