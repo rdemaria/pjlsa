@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-'''
+"""
 PJLSA -- A Python wrapping of Java LSA API
 
 Copyright (c) CERN 2015-2017
@@ -27,196 +27,268 @@ Authors:
 R. De Maria     <riccardo.de.maria@cern.ch>
 M. Hostettler   <michi.hostettler@cern.ch>
 V. Baggiolini   <vito.baggiolini@cern.ch>
-'''
 
 
-import os, re
+Code conventions:
+*   methods uses camelCase
+*   Classes uses Capital
+
+*   _<method> returns java types and return java types
+*   <method> take python types or java types and return python types
+"""
+
+
+import os
+import re
 from collections import namedtuple
 import datetime
 import urllib
 
 import numpy as np
 import six
+import jpype
 
 import cmmnbuild_dep_manager
 
-jarname=re.compile(r'([a-z\-]+)-([0-9.]+)\.jar')
+jarname = re.compile(r"([a-z\-]+)-([0-9.]+)\.jar")
+
 
 def ver2num(ver):
-    out=0
-    for ii,vv in enumerate(map(int,reversed(ver.split('.')))):
-        out+=vv*1000**ii
+    out = 0
+    for ii, vv in enumerate(map(int, reversed(ver.split(".")))):
+        out += vv * 1000 ** ii
     return out
+
 
 def get_jarversion(jars):
-    out={}
+    out = {}
     for jar in jars:
-        res=jarname.search(jar)
+        res = jarname.search(jar)
         if res:
-            name,version=res.groups()
-            out[name]=version
+            name, version = res.groups()
+            out[name] = version
     return out
 
+
 def older_jar_than_pro(jars):
-  jar_mgr=get_jarversion(jars)
-  #del jar_mgr['cmw-directory-client']
-  url="http://bewww.cern.ch/ap/deployments/applications/cern/lsa/lsa-app-suite/PRO/lsa-app-suite.jnlp"
-  jar_pro=get_jarversion(urllib.urlopen(url).readlines())
-  result=False
-  for jar in set(jar_mgr).intersection(jar_pro):
-          v1=jar_mgr[jar]
-          v2=jar_pro[jar]
-          vv1=ver2num(jar_mgr[jar])
-          vv2=ver2num(jar_pro[jar])
-          if vv1<vv2:
-              print("Checking %-30s: USED=%-6s < PRO=%-6s"%(jar,v1,v2))
-              result=True
-  return result
+    jar_mgr = get_jarversion(jars)
+    # del jar_mgr['cmw-directory-client']
+    url = "http://bewww.cern.ch/ap/deployments/applications/cern/lsa/lsa-app-suite/PRO/lsa-app-suite.jnlp"
+    jar_pro = get_jarversion(urllib.urlopen(url).readlines())
+    result = False
+    for jar in set(jar_mgr).intersection(jar_pro):
+        v1 = jar_mgr[jar]
+        v2 = jar_pro[jar]
+        vv1 = ver2num(jar_mgr[jar])
+        vv2 = ver2num(jar_pro[jar])
+        if vv1 < vv2:
+            print("Checking %-30s: USED=%-6s < PRO=%-6s" % (jar, v1, v2))
+            result = True
+    return result
 
 
 def check_lsa():
     mgrjars = cmmnbuild_dep_manager.Manager().jars()
-    lsajars=[j for j in mgrjars if 'lsa' in j ]
-    if len(lsajars)==0:
-         raise ImportError("LSA jars not (yet) installed")
+    lsajars = [j for j in mgrjars if "lsa" in j]
+    if len(lsajars) == 0:
+        raise ImportError("LSA jars not (yet) installed")
+
+
 #    elif older_jar_than_pro(mgrjars):
 #           print("Installed jar older than PRO version. Please rerun 'python -m cmmnbuild_dep_manager resolve'")
 #           raise ImportError("Installed jar older than PRO version.")
 
-check_lsa()
-
-mgr = cmmnbuild_dep_manager.Manager('pjlsa')
-jpype=mgr.start_jpype_jvm()
-
-
-cern=jpype.JPackage('cern')
-org=jpype.JPackage('org')
-java=jpype.JPackage('java')
-System=java.lang.System
-
-
-# no java operation at import time because java might not be available and 
-#  mgr.resolve will (silently) fail
-if callable(org.apache.log4j.varia.NullAppender):
-  null=org.apache.log4j.varia.NullAppender()
-  org.apache.log4j.BasicConfigurator.configure(null)
-
-# Java classes
-ContextService   =cern.lsa.client.ContextService
-HyperCycleService=cern.lsa.client.HyperCycleService
-ParameterService =cern.lsa.client.ParameterService
-ServiceLocator   =cern.lsa.client.ServiceLocator
-SettingService   =cern.lsa.client.SettingService
-TrimService      =cern.lsa.client.TrimService
-LhcService       =cern.lsa.client.LhcService
-FidelService     =cern.lsa.client.FidelService
-KnobService      =cern.lsa.client.KnobService
-OpticService     =cern.lsa.client.OpticService
-DeviceService    =cern.lsa.client.DeviceService
-
-BeamProcess          =cern.lsa.domain.settings.BeamProcess
-Cycle                =cern.lsa.domain.settings.Cycle
-ContextSettings      =cern.lsa.domain.settings.ContextSettings
-ContextFamily        =cern.lsa.domain.settings.ContextFamily
-HyperCycle           =cern.lsa.domain.settings.HyperCycle
-Parameter            =cern.lsa.domain.settings.Parameter
-ParameterSettings    =cern.lsa.domain.settings.ParameterSettings
-Setting              =cern.lsa.domain.settings.Setting
-StandAloneBeamProcess=cern.lsa.domain.settings.StandAloneBeamProcess
-Knob                 =cern.lsa.domain.settings.Knob
-FunctionSetting      =cern.lsa.domain.settings.spi.FunctionSetting
-ScalarSetting        =cern.lsa.domain.settings.spi.ScalarSetting
-
-ParametersRequestBuilder = cern.lsa.domain.settings.factory.ParametersRequestBuilder
-Device                   = cern.lsa.domain.devices.Device
-DeviceRequestBuilder = cern.lsa.domain.devices.factory.DevicesRequestBuilder
-
-ParameterTreesRequestBuilder       = cern.lsa.domain.settings.factory.ParameterTreesRequestBuilder
-ParameterTreesRequest              = cern.lsa.domain.settings.ParameterTreesRequest
-ParameterTreesRequestTreeDirection = jpype.JClass('cern.lsa.domain.settings.ParameterTreesRequest$TreeDirection')
-
-CalibrationFunctionTypes=cern.lsa.domain.optics.CalibrationFunctionTypes
-
-LHC =cern.accsoft.commons.domain.CernAccelerator.LHC
-PS  =cern.accsoft.commons.domain.CernAccelerator.PS
-SPS =cern.accsoft.commons.domain.CernAccelerator.SPS
-LEIR=cern.accsoft.commons.domain.CernAccelerator.LEIR
-PSB =cern.accsoft.commons.domain.CernAccelerator.PSB
-
-ContextFamilies={
-        'beamprocess':ContextFamily.BEAMPROCESS,
-        'cycle':ContextFamily.CYCLE,
-        'supercycle':ContextFamily.SUPERCYCLE}
+# check_lsa()
 
 
 # Python data descriptors
-TrimHeader = namedtuple('TrimHeader',
-           ['id','beamProcesses','createdDate','description','clientInfo'])
-OpticTableItem = namedtuple('OpticTableItem', ['time', 'id', 'name'])
-TrimTuple = namedtuple('TrimTuple', ['time', 'data'])
-Calibration = namedtuple('Calibration',
-                       ['field', 'current','fieldtype','name'])
-PCInfo = namedtuple('PCInfo', [
-                       'accelerationLimit','decelerationLimit',
-                       'didtMin', 'didtMax', 'iMinOp', 'iNom', 'iPNo',
-                       'iUlt','polaritySwitch'])
+TrimHeader = namedtuple(
+    "TrimHeader",
+    ["id", "beamProcesses", "createdDate", "description", "clientInfo"],
+)
+OpticTableItem = namedtuple("OpticTableItem", ["time", "id", "name"])
+TrimTuple = namedtuple("TrimTuple", ["time", "data"])
+Calibration = namedtuple(
+    "Calibration", ["field", "current", "fieldtype", "name"]
+)
+PCInfo = namedtuple(
+    "PCInfo",
+    [
+        "accelerationLimit",
+        "decelerationLimit",
+        "didtMin",
+        "didtMax",
+        "iMinOp",
+        "iNom",
+        "iPNo",
+        "iUlt",
+        "polaritySwitch",
+    ],
+)
 
-Context = namedtuple('Context', [
-                       'timestamp','name','user']
-                       )
+Context = namedtuple("Context", ["timestamp", "name", "user"])
 
 #
-Accelerators={
-        'lhc':  LHC, 'ps':   PS, 'sps':  SPS,
-        'lear': LEIR, 'psb':  PSB, }
 
 
 def _build_TrimHeader(th):
     return TrimHeader(
-            id = th.id,
-            beamProcesses = [str(bp) for bp in th.beamProcesses],
-            createdDate = datetime.datetime.fromtimestamp(
-                              th.createdDate.getTime()/1000),
-            description = th.description,
-            clientInfo = th.clientInfo )
+        id=th.getId(),
+        beamProcesses=[str(bp) for bp in th.getBeamProcesses()],
+        createdDate=datetime.datetime.fromtimestamp(
+            th.getCreatedDate().getTime() / 1000
+        ),
+        description=th.getDescription(),
+        clientInfo=th.getClientInfo(),
+    )
+
 
 def _toJavaDate(t):
     """Date from string, datetime, unixtimestamp to java date
     """
-    Date = java.util.Date
+    Date = jpype.java.util.Date
     if isinstance(t, six.string_types):
-        return java.sql.Timestamp.valueOf(t)
+        return jpype.java.sql.Timestamp.valueOf(t)
     elif isinstance(t, datetime.datetime):
-        return java.sql.Timestamp.valueOf(t.strftime('%Y-%m-%d %H:%M:%S.%f'))
+        return jpype.java.sql.Timestamp.valueOf(
+            t.strftime("%Y-%m-%d %H:%M:%S.%f")
+        )
     elif t is None:
         return None
-    elif isinstance(t,Date):
+    elif isinstance(t, Date):
         return t
     else:
-        return Date(int(t*1000))
+        return Date(int(t * 1000))
 
 
 def _toJavaList(lst):
-    res=java.util.LinkedList()
+    res = jpype.java.util.LinkedList()
     for ii in lst:
         res.add(ii)
     return res
 
+
 class LSAClient(object):
-    def __init__(self,server='gpn'):
-        System.setProperty("lsa.server", server)
-        #System.setProperty("lsa.mode", "3")
-        self._contextService = ServiceLocator.getService(ContextService)
-        self._trimService = ServiceLocator.getService(TrimService)
-        self._settingService = ServiceLocator.getService(SettingService)
-        self._parameterService = ServiceLocator.getService(ParameterService)
-        self._contextService = ServiceLocator.getService(ContextService)
-        self._lhcService = ServiceLocator.getService(LhcService)
-        self._hyperCycleService = ServiceLocator.getService(HyperCycleService)
-        self._knobService = ServiceLocator.getService(KnobService)
-        self._opticService = ServiceLocator.getService(OpticService)
-        self._deviceService = ServiceLocator.getService(DeviceService)
-        self._fidelService = ServiceLocator.getService(FidelService)
+    def __init__(self, server="gpn"):
+        self._mgr = cmmnbuild_dep_manager.Manager('pjlsa')
+        self._jpype = self._mgr.start_jpype_jvm()
+
+        # basic Java packages
+        self._cern = jpype.JPackage("cern")
+        self._org = jpype.JPackage("org")
+        self._java = jpype.JPackage("java")
+        self._System = self._java.lang.System
+
+        # no java operation at import time because java might not be available and
+        #  mgr.resolve will (silently) fail
+        if callable(self._org.apache.log4j.varia.NullAppender):
+            null = self._org.apache.log4j.varia.NullAppender()
+            self._org.apache.log4j.BasicConfigurator.configure(null)
+
+        # System.setProperty("lsa.mode", "3")
+
+        self._lsa = self._cern.lsa
+        self._client = self._lsa.client
+        self._domain = self._lsa.domain
+
+        # Java classes
+        self._ContextService = self._client.ContextService
+        self._HyperCycleService = self._client.HyperCycleService
+        self._ParameterService = self._client.ParameterService
+        self._ServiceLocator = self._client.ServiceLocator
+        self._SettingService = self._client.SettingService
+        self._TrimService = self._client.TrimService
+        self._LhcService = self._client.LhcService
+        self._FidelService = self._client.FidelService
+        self._KnobService = self._client.KnobService
+        self._OpticService = self._client.OpticService
+        self._DeviceService = self._client.DeviceService
+
+        self._BeamProcess = self._domain.settings.BeamProcess
+        self._Cycle = self._domain.settings.Cycle
+        self._ContextSettings = self._domain.settings.ContextSettings
+        self._ContextFamily = self._domain.settings.ContextFamily
+        self._HyperCycle = self._domain.settings.HyperCycle
+        self._Parameter = self._domain.settings.Parameter
+        self._ParameterSettings = self._domain.settings.ParameterSettings
+        self._Setting = self._domain.settings.Setting
+        self._StandAloneBeamProcess = (
+            self._domain.settings.StandAloneBeamProcess
+        )
+        self._Knob = self._domain.settings.Knob
+        self._FunctionSetting = self._domain.settings.spi.FunctionSetting
+        self._ScalarSetting = self._domain.settings.spi.ScalarSetting
+
+        self._ParametersRequestBuilder = (
+            self._domain.settings.factory.ParametersRequestBuilder
+        )
+        self._Device = self._domain.devices.Device
+        self._DeviceRequestBuilder = (
+            self._domain.devices.factory.DevicesRequestBuilder
+        )
+
+        self._ParameterTreesRequestBuilder = (
+            self._domain.settings.factory.ParameterTreesRequestBuilder
+        )
+        self._ParameterTreesRequest = (
+            self._domain.settings.ParameterTreesRequest
+        )
+        self._ParameterTreesRequestTreeDirection = (
+            self._ParameterTreesRequest.TreeDirection
+        )
+
+        self._CalibrationFunctionTypes = (
+            self._domain.optics.CalibrationFunctionTypes
+        )
+
+        # non lsa classes
+
+        self._CernAccelerator = (
+            self._cern.accsoft.commons.domain.CernAccelerator
+        )
+
+        # starting services
+        self._System.setProperty("lsa.server", server)
+
+        self._contextService = self._ServiceLocator.getService(
+            self._ContextService
+        )
+        self._trimService = self._ServiceLocator.getService(self._TrimService)
+        self._settingService = self._ServiceLocator.getService(
+            self._SettingService
+        )
+        self._parameterService = self._ServiceLocator.getService(
+            self._ParameterService
+        )
+        self._contextService = self._ServiceLocator.getService(
+            self._ContextService
+        )
+        self._lhcService = self._ServiceLocator.getService(self._LhcService)
+        self._hyperCycleService = self._ServiceLocator.getService(
+            self._HyperCycleService
+        )
+        self._knobService = self._ServiceLocator.getService(self._KnobService)
+        self._opticService = self._ServiceLocator.getService(
+            self._OpticService
+        )
+        self._deviceService = self._ServiceLocator.getService(
+            self._DeviceService
+        )
+        self._fidelService = self._ServiceLocator.getService(
+            self._FidelService
+        )
+
+    def _getContextFamily(self, name):
+        if isinstance(name, str):
+            return getattr(self._ContextFamily, name.upper())
+        else:
+            return name
+
+    def _getAccelerator(self, name):
+        if isinstance(name, str):
+            return getattr(self._CernAccelerator, name.upper())
+        else:
+            return name
 
     def _findHyperCycles(self):
         return list(self._hyperCycleService.findHyperCycles())
@@ -224,242 +296,288 @@ class LSAClient(object):
     def findHyperCycles(self):
         return [str(c) for c in self._findHyperCycles()]
 
-    def _getHyperCycle(self,hypercycle=None):
+    def _getHyperCycle(self, hypercycle=None):
         if hypercycle is None:
             return self._hyperCycleService.findActiveHyperCycle()
         else:
             return self._hyperCycleService.findHyperCycle(hypercycle)
 
-    def getUsers(self,hypercycle=None):
-        hp=self._getHyperCycle(hypercycle=hypercycle)
+    def getUsers(self, hypercycle=None):
+        hp = self._getHyperCycle(hypercycle=hypercycle)
         return sorted([str(u) for u in hp.getUsers()])
 
-    def findParameterGroups(self,regexp='',accelerator='lhc'):
-        acc=Accelerators.get(accelerator,accelerator)
-        find=self._parameterService.findParameterGroupsByAccelerator
-        grps=[grp.getName() for grp in find(acc)]
-        reg=re.compile(regexp,re.IGNORECASE)
-        return sorted(filter(reg.search,[str(grp) for grp in grps]))
+    def findParameterGroups(self, regexp="", accelerator="lhc"):
+        acc = self._getAccelerator(accelerator)
+        find = self._parameterService.findParameterGroupsByAccelerator
+        grps = [grp.getName() for grp in find(acc)]
+        reg = re.compile(regexp, re.IGNORECASE)
+        return sorted(filter(reg.search, [str(grp) for grp in grps]))
 
-    def findBeamProcesses(self,regexp='',accelerator='lhc'):
-        acc=Accelerators.get(accelerator,accelerator)
-        bps=self._contextService.findStandAloneBeamProcesses(acc)
-        reg=re.compile(regexp,re.IGNORECASE)
-        return sorted(filter(reg.search,[str(bp) for bp in bps]))
+    def findBeamProcesses(self, regexp="", accelerator="lhc"):
+        acc = self._getAccelerator(accelerator)
+        bps = self._contextService.findStandAloneBeamProcesses(acc)
+        reg = re.compile(regexp, re.IGNORECASE)
+        return sorted(filter(reg.search, [str(bp) for bp in bps]))
 
     def _getBeamProcess(self, bp):
-        if isinstance(bp, BeamProcess):
+        if isinstance(bp, self._BeamProcess):
             return bp
         else:
             return self._contextService.findStandAloneBeamProcess(bp)
-        
+
     def _getCycle(self, cy):
-        if isinstance(cy, Cycle):
+        if isinstance(cy, self._Cycle):
             return cy
         else:
             return self._contextService.findStandAloneCycle(cy)
 
-    def _getBeamProcessByUser(self,user, hypercycle=None):
-        hp=self._getHyperCycle(hypercycle=hypercycle)
+    def _getBeamProcessByUser(self, user, hypercycle=None):
+        hp = self._getHyperCycle(hypercycle=hypercycle)
         return hp.getBeamProcessByUser(user)
 
     def getResidentBeamProcess(self, category):
         return str(self._getHyperCycle().getResidentBeamProcess(category))
 
     def getResidentBeamProcesses(self):
-        return [str(p) for p in list(
-            self._getHyperCycle().getResidentBeamProcesses())]
+        return [
+            str(p)
+            for p in list(self._getHyperCycle().getResidentBeamProcesses())
+        ]
 
-    def findParameterNames(self,deviceName=None,groupName=None,regexp=''):
-        req=ParametersRequestBuilder()
+    def findParameterNames(self, deviceName=None, groupName=None, regexp=""):
+        req = self._ParametersRequestBuilder()
         if deviceName is not None:
             req.setDeviceName(deviceName)
         if groupName is not None:
             req.setParameterGroup(groupName)
-        lst=self._parameterService.findParameters(req.build())
-        reg=re.compile(regexp,re.IGNORECASE)
-        return sorted(filter(reg.search,[pp.getName() for pp in lst ]))
+        lst = self._parameterService.findParameters(req.build())
+        reg = re.compile(regexp, re.IGNORECASE)
+        return sorted(filter(reg.search, [pp.getName() for pp in lst]))
 
-    def _findDevices(self,deviceGroupName=None):
-        builder=DeviceRequestBuilder()
+    def _findDevices(self, deviceGroupName=None):
+        builder = self._DeviceRequestBuilder()
         if deviceGroupName is not None:
-          builder.setDeviceGroupName(deviceGroupName)
+            builder.setDeviceGroupName(deviceGroupName)
         req = builder.build()
         deviceList = self._deviceService.findDevices(req)
         return list(deviceList)
 
-    def findDevices(self,deviceGroupName=None):
-        deviceList=self._findDevices(deviceGroupName=deviceGroupName)
-        return list(map(str,deviceList))
+    def findDevices(self, deviceGroupName=None):
+        deviceList = self._findDevices(deviceGroupName=deviceGroupName)
+        return list(map(str, deviceList))
 
-    def findUserContextMappingHistory(self,t1,t2,
-           accelerator='lhc',contextFamily='beamprocess'):
-        acc=Accelerators.get(accelerator,accelerator)
-        contextFamily=ContextFamilies.get(contextFamily,contextFamily)
-        t1=_toJavaDate(t1).fastTime
-        t2=_toJavaDate(t2).fastTime
-        res=self._contextService.findUserContextMappingHistory(acc,contextFamily,t1,t2)
-        out=[ (ct.mappingTimestamp/1000.,
-               ct.contextName,
-               ct.user) for ct in res]
-        return Context(*map(np.array,zip(*out)))
+    def findUserContextMappingHistory(
+        self, t1, t2, accelerator="lhc", contextFamily="beamprocess"
+    ):
+        acc = self._getAccelerator(accelerator)
+        contextFamily = self._getContextFamily(contextFamily)
+        t1 = _toJavaDate(t1).fastTime
+        t2 = _toJavaDate(t2).fastTime
+        res = self._contextService.findUserContextMappingHistory(
+            acc, contextFamily, t1, t2
+        )
+        out = [
+            (ct.mappingTimestamp / 1000.0, ct.contextName, ct.user)
+            for ct in res
+        ]
+        return Context(*map(np.array, zip(*out)))
 
-    def findBeamProcessHistory(self,t1,t2,accelerator='lhc'):
-        cts=self.findUserContextMappingHistory(t1,t2,accelerator=accelerator)
+    def findBeamProcessHistory(self, t1, t2, accelerator="lhc"):
+        cts = self.findUserContextMappingHistory(
+            t1, t2, accelerator=accelerator
+        )
         import pytimber
-        db=pytimber.LoggingDB()
-        fillnts,fillnv=db.get('HX:FILLN',t1,t2)['HX:FILLN']
-        fills={}
-        for ts,name in zip(cts.timestamp,cts.name):
-            idx=fillnts.searchsorted(ts)-1
-            filln=int(fillnv[idx])
-            fills.setdefault(filln,[]).insert(0,(ts,name))
-            #print(filln,len(fills[filln]))
+
+        db = pytimber.LoggingDB()
+        fillnts, fillnv = db.get("HX:FILLN", t1, t2)["HX:FILLN"]
+        fills = {}
+        for ts, name in zip(cts.timestamp, cts.name):
+            idx = fillnts.searchsorted(ts) - 1
+            filln = int(fillnv[idx])
+            fills.setdefault(filln, []).insert(0, (ts, name))
+            # print(filln,len(fills[filln]))
         return fills
 
     def _getParameter(self, param):
-        if isinstance(param, Parameter):
+        if isinstance(param, self._Parameter):
             return param
         else:
             return self._parameterService.findParameterByName(param)
 
-    def _getParameterList(self,deviceName):
-        req=ParametersRequestBuilder().setDeviceName(deviceName)
-        lst=self._parameterService.findParameters(req.build())
+    def _getParameterList(self, deviceName):
+        req = self._ParametersRequestBuilder().setDeviceName(deviceName)
+        lst = self._parameterService.findParameters(req.build())
         return lst
 
-    def _getRawTrimHeaders(self, beamprocess, param, start=None, end=None):
+    def _getRawTrimHeadersByBeamprocess(self, beamprocess, param, start=None, end=None):
         bp = self._getBeamProcess(beamprocess)
-        thrb = cern.lsa.domain.settings.TrimHeadersRequestBuilder()
-        thrb.beamProcesses(java.util.Collections.singleton(bp))
+        thrb = self._cern.lsa.domain.settings.TrimHeadersRequestBuilder()
+        thrb.beamProcesses(self._java.util.Collections.singleton(bp))
         thrb.parameters(param)
         if start is not None:
-           thrb.startingFrom(_toJavaDate(start).toInstant())
+            thrb.startingFrom(_toJavaDate(start).toInstant())
         trimHeadersRequest = thrb.build()
         raw_headers = self._trimService.findTrimHeaders(trimHeadersRequest)
         raw_headers = list(raw_headers)
         if start is not None:
-            raw_headers = [th for th in raw_headers if not th.createdDate.before(_toJavaDate(start))]
+            raw_headers = [
+                th
+                for th in raw_headers
+                if not th.getCreatedDate().before(_toJavaDate(start))
+            ]
         if end is not None:
-            raw_headers = [th for th in raw_headers if not th.createdDate.after(_toJavaDate(end))]
+            raw_headers = [
+                th
+                for th in raw_headers
+                if not th.getCreatedDate().after(_toJavaDate(end))
+            ]
         return raw_headers
-    
+
     def _getRawTrimHeadersByCycle(self, cycle, param, start=None, end=None):
         cy = self._getCycle(cycle)
-        thrb = cern.lsa.domain.settings.TrimHeadersRequestBuilder()
+        thrb = self._cern.lsa.domain.settings.TrimHeadersRequestBuilder()
         thrb.beamProcesses(cy.getBeamProcesses())
         thrb.parameters(param)
         if start is not None:
-           thrb.startingFrom(_toJavaDate(start).toInstant())
+            thrb.startingFrom(_toJavaDate(start).toInstant())
         trimHeadersRequest = thrb.build()
         raw_headers = self._trimService.findTrimHeaders(trimHeadersRequest)
         raw_headers = list(raw_headers)
         if start is not None:
-            raw_headers = [th for th in raw_headers if not th.createdDate.before(_toJavaDate(start))]
+            raw_headers = [
+                th
+                for th in raw_headers
+                if not th.getCreatedDate().before(_toJavaDate(start))
+            ]
         if end is not None:
-            raw_headers = [th for th in raw_headers if not th.createdDate.after(_toJavaDate(end))]
+            raw_headers = [
+                th
+                for th in raw_headers
+                if not th.getCreatedDate().after(_toJavaDate(end))
+            ]
         return raw_headers
 
     def _buildParameterList(self, parameter):
-        if type(parameter) in [str,BeamProcess]:
+        if type(parameter) in [str, self._BeamProcess]:
             param = self._getParameter(parameter)
-            param = java.util.Collections.singleton(param)
+            param = self._java.util.Collections.singleton(param)
         else:
-            param = java.util.LinkedList()
+            param = self._java.util.LinkedList()
             for pp in parameter:
                 param.add(self._getParameter(pp))
         return param
 
-    def getTrimHeaders(self, beamprocess, parameter, start=None, end=None):
-        return [_build_TrimHeader(th) for th in
-                   self._getRawTrimHeaders(
-                            beamprocess,
-                            self._buildParameterList(parameter), start, end)]
-    
-    def getTrimHeadersByCycle(self, cycle, parameter, start=None, end=None):
-        return [_build_TrimHeader(th) for th in
-                   self._getRawTrimHeadersByCycle(
-                            cycle,
-                            self._buildParameterList(parameter), start, end)]
+    def _getTrimHeadersByBeamprocess(self, beamprocess, parameter, start=None, end=None):
+        return [
+            _build_TrimHeader(th)
+            for th in self._getRawTrimHeadersByBeamprocess(
+                beamprocess, self._buildParameterList(parameter), start, end
+            )
+        ]
 
-    def getTrims(self, beamprocess, parameter, start=None, end=None, part='value'):
+    def _getTrimHeadersByCycle(self, cycle, parameter, start=None, end=None):
+        return [
+            _build_TrimHeader(th)
+            for th in self._getRawTrimHeadersByCycle(
+                cycle, self._buildParameterList(parameter), start, end
+            )
+        ]
+        
+    def getTrimHeaders(
+        self, beamprocess=None, cycle=None, parameter=None, start=None, end=None
+    ):
+        if beamprocess is not None:
+            return self._getTrimHeadersByBeamprocess(beamprocess=beamprocess,
+                                                     parameter=parameter,
+                                                     start=start, end=end)
+        else:
+            return self._getTrimHeadersByCycle(cycle=cycle,
+                                               parameter=parameter,
+                                               start=start, end=end)
+
+    def _getTrimsByBeamprocess(
+        self, beamprocess, parameter, start=None, end=None, part="value"
+    ):
         parameterList = self._buildParameterList(parameter)
         bp = self._getBeamProcess(beamprocess)
 
         timestamps = {}
         values = {}
-        for th in self._getRawTrimHeaders(bp, parameterList, start, end):
-            csrb = cern.lsa.domain.settings.ContextSettingsRequestBuilder()
+        for th in self._getRawTrimHeadersByBeamprocess(bp, parameterList, start, end):
+            csrb = (
+                self._cern.lsa.domain.settings.ContextSettingsRequestBuilder()
+            )
             csrb.standAloneContext(bp)
             csrb.parameters(parameterList)
-            csrb.at(th.createdDate.toInstant())
-            contextSettings =  self._settingService.findContextSettings(csrb.build())
+            csrb.at(th.getCreatedDate().toInstant())
+            contextSettings = self._settingService.findContextSettings(
+                csrb.build()
+            )
             for pp in parameterList:
                 parameterSetting = contextSettings.getParameterSettings(pp)
                 if parameterSetting is None:
                     continue
-                
+
                 setting = parameterSetting.getSetting(bp)
                 value = setting
                 if part is not None:
-                    if type(setting) is ScalarSetting:
-                        if part == 'value':
+                    if type(setting) is self._ScalarSetting:
+                        if part == "value":
                             value = setting.getScalarValue().getDouble()
-                        elif part == 'target':
+                        elif part == "target":
                             value = setting.getTargetScalarValue().getDouble()
-                        elif part == 'correction':
-                            value = setting.getCorrectionScalarValue().getDouble()
+                        elif part == "correction":
+                            value = (
+                                setting.getCorrectionScalarValue().getDouble()
+                            )
                         else:
-                            raise ValueError('Invalid Setting Part: ' + part)
-                    elif type(setting) is FunctionSetting:
-                        if part == 'value':
+                            raise ValueError("Invalid Setting Part: " + part)
+                    elif type(setting) is self._FunctionSetting:
+                        if part == "value":
                             df = setting.getFunctionValue()
-                        elif part == 'target':
+                        elif part == "target":
                             df = setting.getTargetFunctionValue()
-                        elif part == 'correction':
+                        elif part == "correction":
                             df = setting.getCorrectionFunctionValue()
                         else:
-                            raise ValueError('Invalid Setting Part: ' + part)
+                            raise ValueError("Invalid Setting Part: " + part)
                         value = np.array([df.toXArray()[:], df.toYArray()[:]])
                     else:
                         # for now, return the java type (to be extended)
                         value = setting
 
-                timestamps.setdefault(pp.getName(),[]).append(
-                                          th.createdDate.getTime()/1000)
-                values.setdefault(pp.getName(),[]).append(value)
-        out={ }
+                timestamps.setdefault(pp.getName(), []).append(
+                    th.getCreatedDate().getTime() / 1000
+                )
+                values.setdefault(pp.getName(), []).append(value)
+        out = {}
         for name in values:
-            out[name]=TrimTuple(time=timestamps[name], data=values[name])
+            out[name] = TrimTuple(time=timestamps[name], data=values[name])
         return out
 
-    def getLastTrim(self,beamprocess, parameter, part='value'):
-        th = self.getTrimHeaders(beamprocess,parameter)[-1]
-        res = self.getTrims(beamprocess, parameter, part=part, start=th.createdDate)[parameter]
-        return TrimTuple(res.time[-1],res.data[-1])
-
-    def getLastTrimValue(self,beamprocess, parameter, part='value'):
-        th = self.getTrimHeaders(beamprocess,parameter)[-1]
-        res = self.getTrims(beamprocess, parameter, part=part, start=th.createdDate)[parameter]
-        return res.data[-1]
-
-    def getTrimsByCycle(self, cycle, parameter, start=None, end=None, part='value'):
+    def _getTrimsByCycle(
+        self, cycle, parameter, start=None, end=None, part="value"
+    ):
         parameterList = self._buildParameterList(parameter)
         cy = self._getCycle(cycle)
-        
+
         timestamps = {}
         values = {}
-        for th in self._getRawTrimHeadersByCycle(cy, parameterList, start, end):
-            csrb = cern.lsa.domain.settings.ContextSettingsRequestBuilder()
+        for th in self._getRawTrimHeadersByCycle(
+            cy, parameterList, start, end
+        ):
+            csrb = self._domain.settings.ContextSettingsRequestBuilder()
             csrb.standAloneContext(cy)
             csrb.parameters(parameterList)
-            csrb.at(th.createdDate.toInstant())
-            contextSettings =  self._settingService.findContextSettings(csrb.build())
+            csrb.at(th.getCreatedDate().toInstant())
+            contextSettings = self._settingService.findContextSettings(
+                csrb.build()
+            )
             for pp in parameterList:
                 parameterSetting = contextSettings.getParameterSettings(pp)
                 if parameterSetting is None:
                     continue
-                settingIterator = parameterSetting.getSettings().iterator()                
+                settingIterator = parameterSetting.getSettings().iterator()
                 setting = []
                 while settingIterator.hasNext():
                     setting.append(settingIterator.next())
@@ -467,146 +585,225 @@ class LSAClient(object):
                     setting = setting[0]
                 value = setting
                 if part is not None:
-                    if type(setting) is ScalarSetting:
-                        if part == 'value':
+                    if type(setting) is self._ScalarSetting:
+                        if part == "value":
                             value = setting.getScalarValue().getDouble()
-                        elif part == 'target':
+                        elif part == "target":
                             value = setting.getTargetScalarValue().getDouble()
-                        elif part == 'correction':
-                            value = setting.getCorrectionScalarValue().getDouble()
+                        elif part == "correction":
+                            value = (
+                                setting.getCorrectionScalarValue().getDouble()
+                            )
                         else:
-                            raise ValueError('Invalid Setting Part: ' + part)
-                    elif type(setting) is FunctionSetting:
-                        if part == 'value':
+                            raise ValueError("Invalid Setting Part: " + part)
+                    elif type(setting) is self._FunctionSetting:
+                        if part == "value":
                             df = setting.getFunctionValue()
-                        elif part == 'target':
+                        elif part == "target":
                             df = setting.getTargetFunctionValue()
-                        elif part == 'correction':
+                        elif part == "correction":
                             df = setting.getCorrectionFunctionValue()
                         else:
-                            raise ValueError('Invalid Setting Part: ' + part)
+                            raise ValueError("Invalid Setting Part: " + part)
                         value = np.array([df.toXArray()[:], df.toYArray()[:]])
                     else:
                         # for now, return the java type (to be extended)
                         value = setting
 
-                timestamps.setdefault(pp.getName(),[]).append(
-                                            th.createdDate.getTime()/1000)
-                values.setdefault(pp.getName(),[]).append(value)
-        out={ }
+                timestamps.setdefault(pp.getName(), []).append(
+                    th.getCreatedDate().getTime() / 1000
+                )
+                values.setdefault(pp.getName(), []).append(value)
+        out = {}
         for name in values:
-            out[name]=TrimTuple(time=timestamps[name], data=values[name])
+            out[name] = TrimTuple(time=timestamps[name], data=values[name])
         return out
     
-    def getLastTrimByCycle(self, cycle, parameter, part='value'):
-        th = self.getTrimHeadersByCycle(cycle,parameter)[-1]
-        res = self.getTrimsByCycle(cycle, parameter, part=part, start=th.createdDate)[parameter]
-        return TrimTuple(res.time[-1],res.data[-1])
+    def getTrims(
+        self, beamprocess=None, cycle=None, parameter=None, start=None, end=None, part="value"
+    ):
+        if beamprocess is not None:
+            return self._getTrimsByBeamprocess(beamprocess=beamprocess,
+                                              parameter=parameter,
+                                              start=start, end=end,
+                                              part=part)
+        else:
+            return self._getTrimsByCycle(cycle=cycle,
+                                        parameter=parameter,
+                                        start=start, end=end,
+                                        part=part)
+                
+    def _getLastTrimByBeamprocess(self, beamprocess, parameter, part="value"):
+        th = self._getTrimHeadersByBeamprocess(beamprocess, parameter)[-1]
+        res = self._getTrimsByBeamprocess(
+            beamprocess, parameter, part=part, start=th.createdDate
+        )[parameter]
+        return TrimTuple(res.time[-1], res.data[-1])
+
+    def _getLastTrimByCycle(self, cycle, parameter, part="value"):
+        th = self._getTrimHeadersByCycle(cycle, parameter)[-1]
+        res = self._getTrimsByCycle(
+            cycle, parameter, part=part, start=th.createdDate
+        )[parameter]
+        return TrimTuple(res.time[-1], res.data[-1])
     
-    def getLastTrimValueByCycle(self, cycle, parameter, part='value'):
-        th = self.getTrimHeadersByCycle(cycle,parameter)[-1]
-        res = self.getTrimsByCycle(cycle, parameter, part=part, start=th.createdDate)[parameter]
+    def getLastTrim(
+        self, beamprocess=None, cycle=None, parameter=None, part="value"
+    ):
+        if beamprocess is not None:
+            return self._getLastTrimByBeamprocess(beamprocess=beamprocess, 
+                                                  parameter=parameter,
+                                                  part=part)
+        else:
+            return self._getLastTrimByCycle(cycle=cycle, 
+                                            parameter=parameter,
+                                            part=part)
+
+    def _getLastTrimValueByBeamprocess(self, beamprocess, parameter, part="value"):
+        th = self._getTrimHeadersByBeamprocess(beamprocess, parameter)[-1]
+        res = self._getTrimsByBeamprocess(
+            beamprocess, parameter, part=part, start=th.createdDate
+        )[parameter]
+        return res.data[-1]
+
+    def _getLastTrimValueByCycle(self, cycle, parameter, part="value"):
+        th = self._getTrimHeadersByCycle(cycle, parameter)[-1]
+        res = self._getTrimsByCycle(
+            cycle, parameter, part=part, start=th.createdDate
+        )[parameter]
         return res.data[-1]
     
+    def getLastTrimValue(
+        self, beamprocess=None, cycle=None, parameter=None, part="value"
+    ):
+        if beamprocess is not None:
+            return self._getLastTrimValueByBeamprocess(beamprocess=beamprocess, 
+                                                       parameter=parameter,
+                                                       part=part)
+        else:
+            return self._getLastTrimValueByCycle(cycle=cycle, 
+                                                 parameter=parameter,
+                                                 part=part)
+            
     def getOpticTable(self, beamprocess):
         bp = self._getBeamProcess(beamprocess)
         if bp is None:
-            raise ValueError("Beamprocess '%s' not found"%beamprocess)
-        opticTable = list(self._opticService.findContextOpticsTables(bp))[0].getOpticsTableItems()
-        return [ OpticTableItem(time=o.getTime(),
-                 id=o.getOpticId(),
-                 name=o.getOpticName() ) for o in opticTable ]
+            raise ValueError("Beamprocess '%s' not found" % beamprocess)
+        opticTable = list(self._opticService.findContextOpticsTables(bp))[
+            0
+        ].getOpticsTableItems()
+        return [
+            OpticTableItem(
+                time=o.getTime(), id=o.getOpticId(), name=o.getOpticName()
+            )
+            for o in opticTable
+        ]
 
     def getKnobFactors(self, knob, optic):
         if isinstance(optic, OpticTableItem):
             optic = optic.name
         k = self._knobService.findKnob(knob)
         factors = list(k.getKnobFactors().getFactorsForOptic(optic))
-        return { f.getComponentName(): f.getFactor() for f in factors }
+        return {f.getComponentName(): f.getFactor() for f in factors}
 
-    def getParameterHierarchy(self, parameter, direction='dependent'):
-        req = ParameterTreesRequestBuilder()
-        if direction=='dependent':
-            req.setTreeDirection(ParameterTreesRequestTreeDirection.DEPENDENT_TREE)
-        elif direction=='source':
-            req.setTreeDirection(ParameterTreesRequestTreeDirection.SOURCE_TREE)
+    def getParameterHierarchy(self, parameter, direction="dependent"):
+        req = self._ParameterTreesRequestBuilder()
+        if direction == "dependent":
+            req.setTreeDirection(
+                self._ParameterTreesRequestTreeDirection.DEPENDENT_TREE
+            )
+        elif direction == "source":
+            req.setTreeDirection(
+                self._ParameterTreesRequestTreeDirection.SOURCE_TREE
+            )
         else:
-            raise ValueError('invalid direction, expecting "dependent" or "source"')
+            raise ValueError(
+                'invalid direction, expecting "dependent" or "source"'
+            )
         req.setParameter(self._getParameter(parameter))
         tree = self._parameterService.findParameterTrees(req.build())
         params = {}
         for t in tree:
             for p in t.getParameters():
-                params.setdefault(str(p.getParameterType()),[]).append(str(p))
+                params.setdefault(str(p.getParameterType()), []).append(str(p))
         return params
 
-    def getOpticStrength(self,optic):
-        if not hasattr(optic,'name'):
-           optic=self._opticService.findOpticByName(optic)
-        out=  [ (st.logicalHWName,st.strength)
-                for st in optic.getOpticStrengths() ]
+    def getOpticStrength(self, optic):
+        if not hasattr(optic, "name"):
+            optic = self._opticService.findOpticByName(optic)
+        out = [
+            (st.logicalHWName, st.strength) for st in optic.getOpticStrengths()
+        ]
         return dict(out)
 
-    def _getOptics(self,name):
+    def _getOptics(self, name):
         return self._opticService.findOpticByName(name)
 
-    def interpolateOpticsParameters(self,beamprocess,parameters):
+    def interpolateOpticsParameters(self, beamprocess, parameters):
         ot = self.getOpticTable(beamprocess)
-        tvalue=[opt.time for opt in ot]
-        pv={}
+        tvalue = [opt.time for opt in ot]
+        pv = {}
         for pn in parameters:
             try:
-                ts,(steps,val)=self.getLastTrim(beamprocess,pn)
-                pv[pn]=np.interp(tvalue,steps,val)
-            except ValueError as e:
-                print("Error extracting parameter '%s': %s"%(pn,e))
-            except IndexError as e:
-                print("Error extracting parameter '%s': %s"%(pn,e))
-            except :
-                print("Error extracting parameter '%s': potential Java Exception"%(pn))
+                ts, (steps, val) = self.getLastTrim(beamprocess, pn)
+                pv[pn] = np.interp(tvalue, steps, val)
+            except ValueError as ex:
+                print("Error extracting parameter '%s': %s" % (pn, ex))
+            except IndexError as ex:
+                print("Error extracting parameter '%s': %s" % (pn, ex))
+            except jpype.JException as ex:
+                print("Error extracting parameter '%s': %s" % (pn, ex))
         return pv
 
-    def findPCNameByMadStrength(self,madname,full=False):
-        nl=java.util.Collections.singleton(madname)
-        pcs=self._deviceService.findLogicalNamesByMadStrengthNames(nl)
-        pcname=pcs[madname]
-        if full==True:
-          nl=java.util.Collections.singleton(pcname)
-          pcs=self._deviceService.findActualDevicesByLogicalHardwareName(nl)
-          pcname=list(pcs[pcname])[0].toString()
+    def findPCNameByMadStrength(self, madname, full=False):
+        nl = self._java.util.Collections.singleton(madname)
+        pcs = self._deviceService.findLogicalNamesByMadStrengthNames(nl)
+        pcname = pcs[madname]
+        if full is True:
+            nl = self._java.util.Collections.singleton(pcname)
+            pcs = self._deviceService.findActualDevicesByLogicalHardwareName(
+                nl
+            )
+            pcname = list(pcs[pcname])[0].toString()
         return pcname
 
-    def getCalibration(self,pcname,fieldtype='B_FIELD'):
-        jfieldtype=getattr(CalibrationFunctionTypes,fieldtype)
-        cal=self._fidelService.findCalibrationByLogicalHardware(pcname)
-        ff=cal.getCalibrationFunctionByType(jfieldtype)
+    def getCalibration(self, pcname, fieldtype="B_FIELD"):
+        jfieldtype = getattr(self._CalibrationFunctionTypes, fieldtype)
+        cal = self._fidelService.findCalibrationByLogicalHardware(pcname)
+        ff = cal.getCalibrationFunctionByType(jfieldtype)
         if ff is not None:
-            field=list(ff.toXArray())
-            current=list(ff.toYArray())
-            return Calibration(current=current,field=field,
-                               fieldtype=fieldtype,name=pcname)
+            field = list(ff.toXArray())
+            current = list(ff.toYArray())
+            return Calibration(
+                current=current, field=field, fieldtype=fieldtype, name=pcname
+            )
 
     def _get_calibration(self):
-        cals=self._fidelService.findAllCalibrations();
-        return dict((cc.getName(),cc) for cc in cals)
+        cals = self._fidelService.findAllCalibrations()
+        return dict((cc.getName(), cc) for cc in cals)
 
-    def dump_calibrations(self, outdir='calib'):
+    def dump_calibrations(self, outdir="calib"):
         """ Dump all calibration in directory <outdir>
         """
         os.mkdir(outdir)
         for name, cc in self._get_calibrations():
-          ff=cc.getCalibrationFunctionByType(CalibrationFunctionTypes.B_FIELD)
-          if ff is not None:
-             field=ff.toXArray()
-             current=ff.toYArray()
-             fn=os.path.join(outdir,'%s.txt'%name)
-             print(fn)
-             fh=open(fn,'w')
-             fh.write('\n'.join(["%s %s"%(i,f) for i,f in zip(current,field)]))
-             fh.close()
-    def getPCInfo(self,pcname):
-        pc=self._deviceService.findPowerConverterInfo(pcname)
-        info=PCInfo(*(getattr(pc,nn) for nn in PCInfo._fields))
-        return info
+            ff = cc.getCalibrationFunctionByType(
+                self._CalibrationFunctionTypes.B_FIELD
+            )
+            if ff is not None:
+                field = ff.toXArray()
+                current = ff.toYArray()
+                fn = os.path.join(outdir, "%s.txt" % name)
+                print(fn)
+                fh = open(fn, "w")
+                fh.write(
+                    "\n".join(
+                        ["%s %s" % (i, f) for i, f in zip(current, field)]
+                    )
+                )
+                fh.close()
 
-    
+    def getPCInfo(self, pcname):
+        pc = self._deviceService.findPowerConverterInfo(pcname)
+        info = PCInfo(*(getattr(pc, nn) for nn in PCInfo._fields))
+        return info
