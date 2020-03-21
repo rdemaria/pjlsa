@@ -133,13 +133,13 @@ Context = namedtuple("Context", ["timestamp", "name", "user"])
 
 def _build_TrimHeader(th):
     return TrimHeader(
-        id=th.id,
-        beamProcesses=[str(bp) for bp in th.beamProcesses],
+        id=th.getId(),
+        beamProcesses=[str(bp) for bp in th.getBeamProcesses()],
         createdDate=datetime.datetime.fromtimestamp(
             th.getCreatedDate().getTime() / 1000
         ),
-        description=th.description,
-        clientInfo=th.clientInfo,
+        description=th.getDescription(),
+        clientInfo=th.getClientInfo(),
     )
 
 
@@ -409,7 +409,7 @@ class LSAClient(object):
         lst = self._parameterService.findParameters(req.build())
         return lst
 
-    def _getRawTrimHeaders(self, beamprocess, param, start=None, end=None):
+    def _getRawTrimHeadersByBeamprocess(self, beamprocess, param, start=None, end=None):
         bp = self._getBeamProcess(beamprocess)
         thrb = self._cern.lsa.domain.settings.TrimHeadersRequestBuilder()
         thrb.beamProcesses(self._java.util.Collections.singleton(bp))
@@ -467,23 +467,35 @@ class LSAClient(object):
                 param.add(self._getParameter(pp))
         return param
 
-    def getTrimHeaders(self, beamprocess, parameter, start=None, end=None):
+    def _getTrimHeadersByBeamprocess(self, beamprocess, parameter, start=None, end=None):
         return [
             _build_TrimHeader(th)
-            for th in self._getRawTrimHeaders(
+            for th in self._getRawTrimHeadersByBeamprocess(
                 beamprocess, self._buildParameterList(parameter), start, end
             )
         ]
 
-    def getTrimHeadersByCycle(self, cycle, parameter, start=None, end=None):
+    def _getTrimHeadersByCycle(self, cycle, parameter, start=None, end=None):
         return [
             _build_TrimHeader(th)
             for th in self._getRawTrimHeadersByCycle(
                 cycle, self._buildParameterList(parameter), start, end
             )
         ]
+        
+    def getTrimHeaders(
+        self, beamprocess=None, cycle=None, parameter=None, start=None, end=None
+    ):
+        if beamprocess is not None:
+            return self._getTrimHeadersByBeamprocess(beamprocess=beamprocess,
+                                                     parameter=parameter,
+                                                     start=start, end=end)
+        else:
+            return self._getTrimHeadersByCycle(cycle=cycle,
+                                               parameter=parameter,
+                                               start=start, end=end)
 
-    def getTrims(
+    def _getTrimsByBeamprocess(
         self, beamprocess, parameter, start=None, end=None, part="value"
     ):
         parameterList = self._buildParameterList(parameter)
@@ -491,7 +503,7 @@ class LSAClient(object):
 
         timestamps = {}
         values = {}
-        for th in self._getRawTrimHeaders(bp, parameterList, start, end):
+        for th in self._getRawTrimHeadersByBeamprocess(bp, parameterList, start, end):
             csrb = (
                 self._cern.lsa.domain.settings.ContextSettingsRequestBuilder()
             )
@@ -543,21 +555,7 @@ class LSAClient(object):
             out[name] = TrimTuple(time=timestamps[name], data=values[name])
         return out
 
-    def getLastTrim(self, beamprocess, parameter, part="value"):
-        th = self.getTrimHeaders(beamprocess, parameter)[-1]
-        res = self.getTrims(
-            beamprocess, parameter, part=part, start=th.getCreatedDate()
-        )[parameter]
-        return TrimTuple(res.time[-1], res.data[-1])
-
-    def getLastTrimValue(self, beamprocess, parameter, part="value"):
-        th = self.getTrimHeaders(beamprocess, parameter)[-1]
-        res = self.getTrims(
-            beamprocess, parameter, part=part, start=th.getCreatedDate()
-        )[parameter]
-        return res.data[-1]
-
-    def getTrimsByCycle(
+    def _getTrimsByCycle(
         self, cycle, parameter, start=None, end=None, part="value"
     ):
         parameterList = self._buildParameterList(parameter)
@@ -620,21 +618,73 @@ class LSAClient(object):
         for name in values:
             out[name] = TrimTuple(time=timestamps[name], data=values[name])
         return out
-
-    def getLastTrimByCycle(self, cycle, parameter, part="value"):
-        th = self.getTrimHeadersByCycle(cycle, parameter)[-1]
-        res = self.getTrimsByCycle(
-            cycle, parameter, part=part, start=th.getCreatedDate()
+    
+    def getTrims(
+        self, beamprocess=None, cycle=None, parameter=None, start=None, end=None, part="value"
+    ):
+        if beamprocess is not None:
+            return self._getTrimsByBeamprocess(beamprocess=beamprocess,
+                                              parameter=parameter,
+                                              start=start, end=end,
+                                              part=part)
+        else:
+            return self._getTrimsByCycle(cycle=cycle,
+                                        parameter=parameter,
+                                        start=start, end=end,
+                                        part=part)
+                
+    def _getLastTrimByBeamprocess(self, beamprocess, parameter, part="value"):
+        th = self._getTrimHeadersByBeamprocess(beamprocess, parameter)[-1]
+        res = self._getTrimsByBeamprocess(
+            beamprocess, parameter, part=part, start=th.createdDate
         )[parameter]
         return TrimTuple(res.time[-1], res.data[-1])
 
-    def getLastTrimValueByCycle(self, cycle, parameter, part="value"):
-        th = self.getTrimHeadersByCycle(cycle, parameter)[-1]
-        res = self.getTrimsByCycle(
-            cycle, parameter, part=part, start=th.getCreatedDate()
+    def _getLastTrimByCycle(self, cycle, parameter, part="value"):
+        th = self._getTrimHeadersByCycle(cycle, parameter)[-1]
+        res = self._getTrimsByCycle(
+            cycle, parameter, part=part, start=th.createdDate
+        )[parameter]
+        return TrimTuple(res.time[-1], res.data[-1])
+    
+    def getLastTrim(
+        self, beamprocess=None, cycle=None, parameter=None, part="value"
+    ):
+        if beamprocess is not None:
+            return self._getLastTrimByBeamprocess(beamprocess=beamprocess, 
+                                                  parameter=parameter,
+                                                  part=part)
+        else:
+            return self._getLastTrimByCycle(cycle=cycle, 
+                                            parameter=parameter,
+                                            part=part)
+
+    def _getLastTrimValueByBeamprocess(self, beamprocess, parameter, part="value"):
+        th = self._getTrimHeadersByBeamprocess(beamprocess, parameter)[-1]
+        res = self._getTrimsByBeamprocess(
+            beamprocess, parameter, part=part, start=th.createdDate
         )[parameter]
         return res.data[-1]
 
+    def _getLastTrimValueByCycle(self, cycle, parameter, part="value"):
+        th = self._getTrimHeadersByCycle(cycle, parameter)[-1]
+        res = self._getTrimsByCycle(
+            cycle, parameter, part=part, start=th.createdDate
+        )[parameter]
+        return res.data[-1]
+    
+    def getLastTrimValue(
+        self, beamprocess=None, cycle=None, parameter=None, part="value"
+    ):
+        if beamprocess is not None:
+            return self._getLastTrimValueByBeamprocess(beamprocess=beamprocess, 
+                                                       parameter=parameter,
+                                                       part=part)
+        else:
+            return self._getLastTrimValueByCycle(cycle=cycle, 
+                                                 parameter=parameter,
+                                                 part=part)
+            
     def getOpticTable(self, beamprocess):
         bp = self._getBeamProcess(beamprocess)
         if bp is None:

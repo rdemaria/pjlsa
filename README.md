@@ -3,6 +3,9 @@ A Python wrapping of LSA API
 
 Limited use for the time being
 
+Added methods: _getRawTrimHeadersByCycle, getTrimHeadersByCycle, getTrimsByCycle,
+                getLastTrimByCycle, getLastTrimValue, getLastTrimValueByCycle
+
 ## Extract trims for a particular beamProcess, parameter, and time window
 ```python
 import pjlsa
