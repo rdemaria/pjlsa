@@ -103,14 +103,11 @@ def check_lsa():
 
 # Python data descriptors
 TrimHeader = namedtuple(
-    "TrimHeader",
-    ["id", "beamProcesses", "createdDate", "description", "clientInfo"],
+    "TrimHeader", ["id", "beamProcesses", "createdDate", "description", "clientInfo"],
 )
 OpticTableItem = namedtuple("OpticTableItem", ["time", "id", "name"])
 TrimTuple = namedtuple("TrimTuple", ["time", "data"])
-Calibration = namedtuple(
-    "Calibration", ["field", "current", "fieldtype", "name"]
-)
+Calibration = namedtuple("Calibration", ["field", "current", "fieldtype", "name"])
 PCInfo = namedtuple(
     "PCInfo",
     [
@@ -150,9 +147,7 @@ def _toJavaDate(t):
     if isinstance(t, six.string_types):
         return jpype.java.sql.Timestamp.valueOf(t)
     elif isinstance(t, datetime.datetime):
-        return jpype.java.sql.Timestamp.valueOf(
-            t.strftime("%Y-%m-%d %H:%M:%S.%f")
-        )
+        return jpype.java.sql.Timestamp.valueOf(t.strftime("%Y-%m-%d %H:%M:%S.%f"))
     elif t is None:
         return None
     elif isinstance(t, Date):
@@ -170,7 +165,7 @@ def _toJavaList(lst):
 
 class LSAClient(object):
     def __init__(self, server="gpn"):
-        self._mgr = cmmnbuild_dep_manager.Manager('pjlsa')
+        self._mgr = cmmnbuild_dep_manager.Manager("pjlsa")
         self._jpype = self._mgr.start_jpype_jvm()
 
         # basic Java packages
@@ -212,9 +207,7 @@ class LSAClient(object):
         self._Parameter = self._domain.settings.Parameter
         self._ParameterSettings = self._domain.settings.ParameterSettings
         self._Setting = self._domain.settings.Setting
-        self._StandAloneBeamProcess = (
-            self._domain.settings.StandAloneBeamProcess
-        )
+        self._StandAloneBeamProcess = self._domain.settings.StandAloneBeamProcess
         self._Knob = self._domain.settings.Knob
         self._FunctionSetting = self._domain.settings.spi.FunctionSetting
         self._ScalarSetting = self._domain.settings.spi.ScalarSetting
@@ -223,60 +216,38 @@ class LSAClient(object):
             self._domain.settings.factory.ParametersRequestBuilder
         )
         self._Device = self._domain.devices.Device
-        self._DeviceRequestBuilder = (
-            self._domain.devices.factory.DevicesRequestBuilder
-        )
+        self._DeviceRequestBuilder = self._domain.devices.factory.DevicesRequestBuilder
 
         self._ParameterTreesRequestBuilder = (
             self._domain.settings.factory.ParameterTreesRequestBuilder
         )
-        self._ParameterTreesRequest = (
-            self._domain.settings.ParameterTreesRequest
-        )
+        self._ParameterTreesRequest = self._domain.settings.ParameterTreesRequest
         self._ParameterTreesRequestTreeDirection = (
             self._ParameterTreesRequest.TreeDirection
         )
 
-        self._CalibrationFunctionTypes = (
-            self._domain.optics.CalibrationFunctionTypes
-        )
+        self._CalibrationFunctionTypes = self._domain.optics.CalibrationFunctionTypes
 
         # non lsa classes
 
-        self._CernAccelerator = (
-            self._cern.accsoft.commons.domain.CernAccelerator
-        )
+        self._CernAccelerator = self._cern.accsoft.commons.domain.CernAccelerator
 
         # starting services
         self._System.setProperty("lsa.server", server)
 
-        self._contextService = self._ServiceLocator.getService(
-            self._ContextService
-        )
+        self._contextService = self._ServiceLocator.getService(self._ContextService)
         self._trimService = self._ServiceLocator.getService(self._TrimService)
-        self._settingService = self._ServiceLocator.getService(
-            self._SettingService
-        )
-        self._parameterService = self._ServiceLocator.getService(
-            self._ParameterService
-        )
-        self._contextService = self._ServiceLocator.getService(
-            self._ContextService
-        )
+        self._settingService = self._ServiceLocator.getService(self._SettingService)
+        self._parameterService = self._ServiceLocator.getService(self._ParameterService)
+        self._contextService = self._ServiceLocator.getService(self._ContextService)
         self._lhcService = self._ServiceLocator.getService(self._LhcService)
         self._hyperCycleService = self._ServiceLocator.getService(
             self._HyperCycleService
         )
         self._knobService = self._ServiceLocator.getService(self._KnobService)
-        self._opticService = self._ServiceLocator.getService(
-            self._OpticService
-        )
-        self._deviceService = self._ServiceLocator.getService(
-            self._DeviceService
-        )
-        self._fidelService = self._ServiceLocator.getService(
-            self._FidelService
-        )
+        self._opticService = self._ServiceLocator.getService(self._OpticService)
+        self._deviceService = self._ServiceLocator.getService(self._DeviceService)
+        self._fidelService = self._ServiceLocator.getService(self._FidelService)
 
     def _getContextFamily(self, name):
         if isinstance(name, str):
@@ -339,10 +310,7 @@ class LSAClient(object):
         return str(self._getHyperCycle().getResidentBeamProcess(category))
 
     def getResidentBeamProcesses(self):
-        return [
-            str(p)
-            for p in list(self._getHyperCycle().getResidentBeamProcesses())
-        ]
+        return [str(p) for p in list(self._getHyperCycle().getResidentBeamProcesses())]
 
     def findParameterNames(self, deviceName=None, groupName=None, regexp=""):
         req = self._ParametersRequestBuilder()
@@ -376,16 +344,11 @@ class LSAClient(object):
         res = self._contextService.findUserContextMappingHistory(
             acc, contextFamily, t1, t2
         )
-        out = [
-            (ct.mappingTimestamp / 1000.0, ct.contextName, ct.user)
-            for ct in res
-        ]
+        out = [(ct.mappingTimestamp / 1000.0, ct.contextName, ct.user) for ct in res]
         return Context(*map(np.array, zip(*out)))
 
     def findBeamProcessHistory(self, t1, t2, accelerator="lhc"):
-        cts = self.findUserContextMappingHistory(
-            t1, t2, accelerator=accelerator
-        )
+        cts = self.findUserContextMappingHistory(t1, t2, accelerator=accelerator)
         import pytimber
 
         db = pytimber.LoggingDB()
@@ -467,7 +430,9 @@ class LSAClient(object):
                 param.add(self._getParameter(pp))
         return param
 
-    def _getTrimHeadersByBeamprocess(self, beamprocess, parameter, start=None, end=None):
+    def _getTrimHeadersByBeamprocess(
+        self, beamprocess, parameter, start=None, end=None
+    ):
         return [
             _build_TrimHeader(th)
             for th in self._getRawTrimHeadersByBeamprocess(
@@ -482,18 +447,18 @@ class LSAClient(object):
                 cycle, self._buildParameterList(parameter), start, end
             )
         ]
-        
+
     def getTrimHeaders(
         self, beamprocess=None, cycle=None, parameter=None, start=None, end=None
     ):
         if beamprocess is not None:
-            return self._getTrimHeadersByBeamprocess(beamprocess=beamprocess,
-                                                     parameter=parameter,
-                                                     start=start, end=end)
+            return self._getTrimHeadersByBeamprocess(
+                beamprocess=beamprocess, parameter=parameter, start=start, end=end
+            )
         else:
-            return self._getTrimHeadersByCycle(cycle=cycle,
-                                               parameter=parameter,
-                                               start=start, end=end)
+            return self._getTrimHeadersByCycle(
+                cycle=cycle, parameter=parameter, start=start, end=end
+            )
 
     def _getTrimsByBeamprocess(
         self, beamprocess, parameter, start=None, end=None, part="value"
@@ -504,15 +469,11 @@ class LSAClient(object):
         timestamps = {}
         values = {}
         for th in self._getRawTrimHeadersByBeamprocess(bp, parameterList, start, end):
-            csrb = (
-                self._cern.lsa.domain.settings.ContextSettingsRequestBuilder()
-            )
+            csrb = self._cern.lsa.domain.settings.ContextSettingsRequestBuilder()
             csrb.standAloneContext(bp)
             csrb.parameters(parameterList)
             csrb.at(th.getCreatedDate().toInstant())
-            contextSettings = self._settingService.findContextSettings(
-                csrb.build()
-            )
+            contextSettings = self._settingService.findContextSettings(csrb.build())
             for pp in parameterList:
                 parameterSetting = contextSettings.getParameterSettings(pp)
                 if parameterSetting is None:
@@ -527,9 +488,7 @@ class LSAClient(object):
                         elif part == "target":
                             value = setting.getTargetScalarValue().getDouble()
                         elif part == "correction":
-                            value = (
-                                setting.getCorrectionScalarValue().getDouble()
-                            )
+                            value = setting.getCorrectionScalarValue().getDouble()
                         else:
                             raise ValueError("Invalid Setting Part: " + part)
                     elif type(setting) is self._FunctionSetting:
@@ -555,24 +514,18 @@ class LSAClient(object):
             out[name] = TrimTuple(time=timestamps[name], data=values[name])
         return out
 
-    def _getTrimsByCycle(
-        self, cycle, parameter, start=None, end=None, part="value"
-    ):
+    def _getTrimsByCycle(self, cycle, parameter, start=None, end=None, part="value"):
         parameterList = self._buildParameterList(parameter)
         cy = self._getCycle(cycle)
 
         timestamps = {}
         values = {}
-        for th in self._getRawTrimHeadersByCycle(
-            cy, parameterList, start, end
-        ):
+        for th in self._getRawTrimHeadersByCycle(cy, parameterList, start, end):
             csrb = self._domain.settings.ContextSettingsRequestBuilder()
             csrb.standAloneContext(cy)
             csrb.parameters(parameterList)
             csrb.at(th.getCreatedDate().toInstant())
-            contextSettings = self._settingService.findContextSettings(
-                csrb.build()
-            )
+            contextSettings = self._settingService.findContextSettings(csrb.build())
             for pp in parameterList:
                 parameterSetting = contextSettings.getParameterSettings(pp)
                 if parameterSetting is None:
@@ -591,9 +544,7 @@ class LSAClient(object):
                         elif part == "target":
                             value = setting.getTargetScalarValue().getDouble()
                         elif part == "correction":
-                            value = (
-                                setting.getCorrectionScalarValue().getDouble()
-                            )
+                            value = setting.getCorrectionScalarValue().getDouble()
                         else:
                             raise ValueError("Invalid Setting Part: " + part)
                     elif type(setting) is self._FunctionSetting:
@@ -618,21 +569,29 @@ class LSAClient(object):
         for name in values:
             out[name] = TrimTuple(time=timestamps[name], data=values[name])
         return out
-    
+
     def getTrims(
-        self, beamprocess=None, cycle=None, parameter=None, start=None, end=None, part="value"
+        self,
+        beamprocess=None,
+        cycle=None,
+        parameter=None,
+        start=None,
+        end=None,
+        part="value",
     ):
         if beamprocess is not None:
-            return self._getTrimsByBeamprocess(beamprocess=beamprocess,
-                                              parameter=parameter,
-                                              start=start, end=end,
-                                              part=part)
+            return self._getTrimsByBeamprocess(
+                beamprocess=beamprocess,
+                parameter=parameter,
+                start=start,
+                end=end,
+                part=part,
+            )
         else:
-            return self._getTrimsByCycle(cycle=cycle,
-                                        parameter=parameter,
-                                        start=start, end=end,
-                                        part=part)
-                
+            return self._getTrimsByCycle(
+                cycle=cycle, parameter=parameter, start=start, end=end, part=part
+            )
+
     def _getLastTrimByBeamprocess(self, beamprocess, parameter, part="value"):
         th = self._getTrimHeadersByBeamprocess(beamprocess, parameter)[-1]
         res = self._getTrimsByBeamprocess(
@@ -642,22 +601,18 @@ class LSAClient(object):
 
     def _getLastTrimByCycle(self, cycle, parameter, part="value"):
         th = self._getTrimHeadersByCycle(cycle, parameter)[-1]
-        res = self._getTrimsByCycle(
-            cycle, parameter, part=part, start=th.createdDate
-        )[parameter]
+        res = self._getTrimsByCycle(cycle, parameter, part=part, start=th.createdDate)[
+            parameter
+        ]
         return TrimTuple(res.time[-1], res.data[-1])
-    
-    def getLastTrim(
-        self, beamprocess=None, cycle=None, parameter=None, part="value"
-    ):
+
+    def getLastTrim(self, beamprocess=None, cycle=None, parameter=None, part="value"):
         if beamprocess is not None:
-            return self._getLastTrimByBeamprocess(beamprocess=beamprocess, 
-                                                  parameter=parameter,
-                                                  part=part)
+            return self._getLastTrimByBeamprocess(
+                beamprocess=beamprocess, parameter=parameter, part=part
+            )
         else:
-            return self._getLastTrimByCycle(cycle=cycle, 
-                                            parameter=parameter,
-                                            part=part)
+            return self._getLastTrimByCycle(cycle=cycle, parameter=parameter, part=part)
 
     def _getLastTrimValueByBeamprocess(self, beamprocess, parameter, part="value"):
         th = self._getTrimHeadersByBeamprocess(beamprocess, parameter)[-1]
@@ -668,23 +623,23 @@ class LSAClient(object):
 
     def _getLastTrimValueByCycle(self, cycle, parameter, part="value"):
         th = self._getTrimHeadersByCycle(cycle, parameter)[-1]
-        res = self._getTrimsByCycle(
-            cycle, parameter, part=part, start=th.createdDate
-        )[parameter]
+        res = self._getTrimsByCycle(cycle, parameter, part=part, start=th.createdDate)[
+            parameter
+        ]
         return res.data[-1]
-    
+
     def getLastTrimValue(
         self, beamprocess=None, cycle=None, parameter=None, part="value"
     ):
         if beamprocess is not None:
-            return self._getLastTrimValueByBeamprocess(beamprocess=beamprocess, 
-                                                       parameter=parameter,
-                                                       part=part)
+            return self._getLastTrimValueByBeamprocess(
+                beamprocess=beamprocess, parameter=parameter, part=part
+            )
         else:
-            return self._getLastTrimValueByCycle(cycle=cycle, 
-                                                 parameter=parameter,
-                                                 part=part)
-            
+            return self._getLastTrimValueByCycle(
+                cycle=cycle, parameter=parameter, part=part
+            )
+
     def getOpticTable(self, beamprocess):
         bp = self._getBeamProcess(beamprocess)
         if bp is None:
@@ -693,9 +648,7 @@ class LSAClient(object):
             0
         ].getOpticsTableItems()
         return [
-            OpticTableItem(
-                time=o.getTime(), id=o.getOpticId(), name=o.getOpticName()
-            )
+            OpticTableItem(time=o.getTime(), id=o.getOpticId(), name=o.getOpticName())
             for o in opticTable
         ]
 
@@ -713,13 +666,9 @@ class LSAClient(object):
                 self._ParameterTreesRequestTreeDirection.DEPENDENT_TREE
             )
         elif direction == "source":
-            req.setTreeDirection(
-                self._ParameterTreesRequestTreeDirection.SOURCE_TREE
-            )
+            req.setTreeDirection(self._ParameterTreesRequestTreeDirection.SOURCE_TREE)
         else:
-            raise ValueError(
-                'invalid direction, expecting "dependent" or "source"'
-            )
+            raise ValueError('invalid direction, expecting "dependent" or "source"')
         req.setParameter(self._getParameter(parameter))
         tree = self._parameterService.findParameterTrees(req.build())
         params = {}
@@ -731,9 +680,7 @@ class LSAClient(object):
     def getOpticStrength(self, optic):
         if not hasattr(optic, "name"):
             optic = self._opticService.findOpticByName(optic)
-        out = [
-            (st.logicalHWName, st.strength) for st in optic.getOpticStrengths()
-        ]
+        out = [(st.logicalHWName, st.strength) for st in optic.getOpticStrengths()]
         return dict(out)
 
     def _getOptics(self, name):
@@ -761,9 +708,7 @@ class LSAClient(object):
         pcname = pcs[madname]
         if full is True:
             nl = self._java.util.Collections.singleton(pcname)
-            pcs = self._deviceService.findActualDevicesByLogicalHardwareName(
-                nl
-            )
+            pcs = self._deviceService.findActualDevicesByLogicalHardwareName(nl)
             pcname = list(pcs[pcname])[0].toString()
         return pcname
 
@@ -787,20 +732,14 @@ class LSAClient(object):
         """
         os.mkdir(outdir)
         for name, cc in self._get_calibrations():
-            ff = cc.getCalibrationFunctionByType(
-                self._CalibrationFunctionTypes.B_FIELD
-            )
+            ff = cc.getCalibrationFunctionByType(self._CalibrationFunctionTypes.B_FIELD)
             if ff is not None:
                 field = ff.toXArray()
                 current = ff.toYArray()
                 fn = os.path.join(outdir, "%s.txt" % name)
                 print(fn)
                 fh = open(fn, "w")
-                fh.write(
-                    "\n".join(
-                        ["%s %s" % (i, f) for i, f in zip(current, field)]
-                    )
-                )
+                fh.write("\n".join(["%s %s" % (i, f) for i, f in zip(current, field)]))
                 fh.close()
 
     def getPCInfo(self, pcname):
