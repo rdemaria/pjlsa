@@ -6,3 +6,5 @@ __cmmnbuild_deps__ = [
 ]
 
 from .pjlsa import LSAClient
+
+__all__ = ["LSAClient"]
