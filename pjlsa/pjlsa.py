@@ -37,7 +37,6 @@ Code conventions:
 *   <method> take python types or java types and return python types
 """
 
-
 import os
 import re
 from collections import namedtuple
@@ -127,6 +126,7 @@ PCInfo = namedtuple(
 )
 
 Context = namedtuple("Context", ["timestamp", "name", "user"])
+
 
 #
 
@@ -302,6 +302,23 @@ class LSAClient(object):
         else:
             return self._hyperCycleService.findHyperCycle(hypercycle)
 
+    def findOperationalCycles(self, accelerator='sps'):
+        accelerator = self._getAccelerator(accelerator)
+        cycles = self._contextService.findStandAloneCycles(accelerator)
+        cycles = filter(lambda cyc: str(cyc.getContextCategory) == 'OPERATIONAL', cycles)
+
+        return sorted(map(str, cycles))
+
+    def findResidentCycles(self, accelerator='sps'):
+        accelerator = self._getAccelerator(accelerator)
+        cycles = self._contextService.findResidentContexts(accelerator)
+        return sorted(map(str, cycles))
+
+    def findActiveCycles(self, accelerator='sps'):
+        accelerator = self._getAccelerator(accelerator)
+        cycles = self._contextService.findActiveContexts(accelerator)
+        return sorted(map(str, cycles))
+
     def getUsers(self, hypercycle=None):
         hp = self._getHyperCycle(hypercycle=hypercycle)
         return sorted([str(u) for u in hp.getUsers()])
@@ -367,7 +384,7 @@ class LSAClient(object):
         return list(map(str, deviceList))
 
     def findUserContextMappingHistory(
-        self, t1, t2, accelerator="lhc", contextFamily="beamprocess"
+            self, t1, t2, accelerator="lhc", contextFamily="beamprocess"
     ):
         acc = self._getAccelerator(accelerator)
         contextFamily = self._getContextFamily(contextFamily)
@@ -484,7 +501,7 @@ class LSAClient(object):
         ]
 
     def getTrims(
-        self, beamprocess, parameter, start=None, end=None, part="value"
+            self, beamprocess, parameter, start=None, end=None, part="value"
     ):
         parameterList = self._buildParameterList(parameter)
         bp = self._getBeamProcess(beamprocess)
@@ -558,7 +575,7 @@ class LSAClient(object):
         return res.data[-1]
 
     def getTrimsByCycle(
-        self, cycle, parameter, start=None, end=None, part="value"
+            self, cycle, parameter, start=None, end=None, part="value"
     ):
         parameterList = self._buildParameterList(parameter)
         cy = self._getCycle(cycle)
@@ -566,7 +583,7 @@ class LSAClient(object):
         timestamps = {}
         values = {}
         for th in self._getRawTrimHeadersByCycle(
-            cy, parameterList, start, end
+                cy, parameterList, start, end
         ):
             csrb = self._domain.settings.ContextSettingsRequestBuilder()
             csrb.standAloneContext(cy)
