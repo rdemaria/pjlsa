@@ -302,19 +302,19 @@ class LSAClient(object):
         else:
             return self._hyperCycleService.findHyperCycle(hypercycle)
 
-    def findOperationalCycles(self, accelerator='sps'):
+    def findOperationalCycles(self, accelerator: str = 'sps'):
         accelerator = self._getAccelerator(accelerator)
         cycles = self._contextService.findStandAloneCycles(accelerator)
         cycles = filter(lambda cyc: str(cyc.getContextCategory) == 'OPERATIONAL', cycles)
 
         return sorted(map(str, cycles))
 
-    def findResidentCycles(self, accelerator='sps'):
+    def findResidentCycles(self, accelerator: str = 'sps'):
         accelerator = self._getAccelerator(accelerator)
         cycles = self._contextService.findResidentContexts(accelerator)
         return sorted(map(str, cycles))
 
-    def findActiveCycles(self, accelerator='sps'):
+    def findActiveCycles(self, accelerator: str = 'sps'):
         accelerator = self._getAccelerator(accelerator)
         cycles = self._contextService.findActiveContexts(accelerator)
         return sorted(map(str, cycles))
