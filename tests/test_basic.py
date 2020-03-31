@@ -38,7 +38,8 @@ def test_trim():
 def test_trim_function():
     name = "RQ5.L1B1/I"
     trims = lsa.getTrims(
-        "PC_INTERLOCK_REF-SQUEEZE-6.5TeV-3m-40cm-2016_V1", name
+        beamprocess="PC_INTERLOCK_REF-SQUEEZE-6.5TeV-3m-40cm-2016_V1",
+        parameter=name
     )
     func = trims[name].data
     assert len(func) > 0
