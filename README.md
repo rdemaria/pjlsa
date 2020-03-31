@@ -12,8 +12,8 @@ import pjlsa
 lsa = pjlsa.LSAClient()
 t1='2015-11-22 00:00:00'
 t2='2015-11-23 00:00:00'
-trims = lsa.getTrims(beamprocess="PHYSICS-2.51TeV-4m-2015_V1@90_[END]",
-                     parameter="LHCBEAM2/IP1_SEPSCAN_Y_MM",
+trims = lsa.getTrims(parameter="LHCBEAM2/IP1_SEPSCAN_Y_MM",
+                     beamprocess="PHYSICS-2.51TeV-4m-2015_V1@90_[END]",
                      start=t1, end=t2)
 ```
 
@@ -45,7 +45,8 @@ Out[2]:
  OpticTableItem(time=1121, id=3788, name='R2017a_A100C100A10mL300'),
  OpticTableItem(time=1210, id=3788, name='R2017a_A100C100A10mL300')]
 
-ts,(steps,val)=lsa.getLastTrim('RAMP-SQUEEZE-6.5TeV-ATS-1m-2017_V3_V1','LHCBEAM/MOMENTUM')
+ts,(steps,val)=lsa.getLastTrim(parameter='LHCBEAM/MOMENTUM',
+                               beamprocess='RAMP-SQUEEZE-6.5TeV-ATS-1m-2017_V3_V1')
  (1493433699L,
  array([[  0.00000000e+00,   1.00000000e+00,   2.00000000e+00, ...,
            1.20591610e+03,   1.20611610e+03,   1.21000000e+03],
