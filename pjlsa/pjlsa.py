@@ -174,11 +174,8 @@ class LSAClient(object):
         self._java = jpype.JPackage("java")
         self._System = self._java.lang.System
 
-        # no java operation at import time because java might not be available and
-        #  mgr.resolve will (silently) fail
-        if callable(self._org.apache.log4j.varia.NullAppender):
-            null = self._org.apache.log4j.varia.NullAppender()
-            self._org.apache.log4j.BasicConfigurator.configure(null)
+        null = self._org.apache.log4j.varia.NullAppender()
+        self._org.apache.log4j.BasicConfigurator.configure(null)
 
         # System.setProperty("lsa.mode", "3")
 
