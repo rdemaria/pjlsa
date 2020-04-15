@@ -86,20 +86,6 @@ def older_jar_than_pro(jars):
     return result
 
 
-def check_lsa():
-    mgrjars = cmmnbuild_dep_manager.Manager().jars()
-    lsajars = [j for j in mgrjars if "lsa" in j]
-    if len(lsajars) == 0:
-        raise ImportError("LSA jars not (yet) installed")
-
-
-#    elif older_jar_than_pro(mgrjars):
-#           print("Installed jar older than PRO version. Please rerun 'python -m cmmnbuild_dep_manager resolve'")
-#           raise ImportError("Installed jar older than PRO version.")
-
-# check_lsa()
-
-
 # Python data descriptors
 TrimHeader = namedtuple(
     "TrimHeader", ["id", "beamProcesses", "createdDate", "description", "clientInfo"],
@@ -174,11 +160,8 @@ class LSAClient(object):
         self._java = jpype.JPackage("java")
         self._System = self._java.lang.System
 
-        # no java operation at import time because java might not be available and
-        #  mgr.resolve will (silently) fail
-        if callable(self._org.apache.log4j.varia.NullAppender):
-            null = self._org.apache.log4j.varia.NullAppender()
-            self._org.apache.log4j.BasicConfigurator.configure(null)
+        null = self._org.apache.log4j.varia.NullAppender()
+        self._org.apache.log4j.BasicConfigurator.configure(null)
 
         # System.setProperty("lsa.mode", "3")
 
