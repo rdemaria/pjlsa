@@ -8,21 +8,42 @@ import importlib
 import inspect
 import os.path
 import re
-from typing import List, Dict, Tuple, Optional, Mapping, Any, Set
+from typing import List, Dict, Tuple, Optional, Mapping, Any, Set, NamedTuple, TypeVar
 from types import ModuleType
 
-from mypy.moduleinspect import is_c_module
-from mypy.stubdoc import (
-    infer_sig_from_docstring, infer_prop_type_from_docstring, ArgSig,
-    infer_arg_sig_from_docstring, FunctionSig
-)
+from mypy.stubdoc import is_valid_type
+
+_TypeStr = TypeVar('_TypeStr', bound='TypeStr')
 
 
-def generate_stub_for_c_module(module_name: str,
-                               target: str,
-                               sigs: Optional[Dict[str, str]] = None,
-                               class_sigs: Optional[Dict[str, str]] = None) -> None:
-    """Generate stub for C module.
+class TypeStr:
+    __slots__ = ('name', 'type_args')
+
+    def __init__(self, name: str, type_args: Optional[List[_TypeStr]] = None):
+        if name and not is_valid_type(name):
+            raise ValueError("Invalid type: " + name)
+        self.name = name
+        self.type_args = list(type_args or [])
+
+    def __repr__(self) -> str:
+        return "TypeStr(name={}, type_args={})".format(repr(self.name), repr(self.type_args))
+
+
+ArgSig = NamedTuple('ArgSig', [
+    ('name', str),
+    ('type', Optional[TypeStr])
+])
+
+JavaFunctionSig = NamedTuple('JavaFunctionSig', [
+    ('name', str),
+    ('static', bool),
+    ('args', List[ArgSig]),
+    ('ret_type', TypeStr)
+])
+
+
+def generate_stub_for_java_module(module_name: str, target: str) -> None:
+    """Generate stub for a Java module/package.
 
     This combines simple runtime introspection (looking for docstrings and attributes
     with simple builtin types) and signatures inferred from .rst documentation (if given).
@@ -31,45 +52,26 @@ def generate_stub_for_c_module(module_name: str,
     will be overwritten.
     """
     module = importlib.import_module(module_name)
-    assert is_c_module(module), '%s is not a C module' % module_name
     subdir = os.path.dirname(target)
     if subdir and not os.path.isdir(subdir):
         os.makedirs(subdir)
     imports = []  # type: List[str]
-    functions = []  # type: List[str]
-    done = set()
+    forward_decls = [] # type: List[str]
+    done = set() # type: Set[str]
     items = sorted(module.__dict__.items(), key=lambda x: x[0])
-    for name, obj in items:
-        if is_c_function(obj):
-            generate_c_function_stub(module, name, obj, functions, imports=imports, sigs=sigs)
-            done.add(name)
-    types = []  # type: List[str]
+    classes = []  # type: List[str]
     for name, obj in items:
         if name.startswith('__') and name.endswith('__'):
             continue
-        if is_c_type(obj):
-            generate_c_type_stub(module, name, obj, types, imports=imports, sigs=sigs,
-                                 class_sigs=class_sigs)
+        if is_java_class(obj):
+            generate_java_class_stub(module, name, obj, done=done, output=classes, imports=imports, forward_decls=forward_decls)
             done.add(name)
-    variables = []
-    for name, obj in items:
-        if name.startswith('__') and name.endswith('__'):
-            continue
-        if name not in done and not inspect.ismodule(obj):
-            type_str = type(obj).__name__
-            if type_str not in ('int', 'str', 'bytes', 'float', 'bool'):
-                type_str = 'Any'
-            variables.append('%s: %s' % (name, type_str))
+
     output = []
     for line in sorted(set(imports)):
         output.append(line)
-    for line in variables:
-        output.append(line)
-    if output and functions:
-        output.append('')
-    for line in functions:
-        output.append(line)
-    for line in types:
+    output.append('')
+    for line in classes:
         if line.startswith('class') and output and output[-1]:
             output.append('')
         output.append(line)
@@ -91,12 +93,8 @@ def add_typing_import(output: List[str]) -> List[str]:
         return output[:]
 
 
-def is_j_class(obj: object) -> bool:
-    return hasattr(obj, 'class_')
-
-
-def is_c_function(obj: object) -> bool:
-    return inspect.isbuiltin(obj) or type(obj) is type(ord)
+def is_java_class(obj: object) -> bool:
+    return inspect.isclass(obj) and hasattr(obj, 'class_')
 
 
 def is_java_method(obj: object) -> bool:
@@ -106,72 +104,81 @@ def is_java_method(obj: object) -> bool:
                                                             jpype.JMethod)
 
 
-def is_java_classmethod(obj: object, matching_overloads: List[Any]) -> bool:
+def is_java_static(java_overload: Any) -> bool:
     from java.lang.reflect import Modifier
-    return is_java_method(obj) and any([ol.getModifiers() & Modifier.STATIC > 0 for ol in matching_overloads])
+    return java_overload.getModifiers() & Modifier.STATIC > 0
 
 
-def is_c_property(obj: object) -> bool:
-    return inspect.isdatadescriptor(obj) and hasattr(obj, 'fget')
+def infer_typename(jtype: Any) -> TypeStr:
+    if jtype is None:
+        return TypeStr('None')
+    if jtype.isArray():
+        return TypeStr('List', [infer_typename(jtype.getComponentType())])
+    typename = jtype.getName()
+
+    if jtype.isPrimitive():
+        if typename == 'void':
+            return TypeStr('None')
+        if typename in ('byte', 'short', 'int', 'long'):
+            return TypeStr('int')
+        if typename == 'boolean':
+            return TypeStr('bool')
+        if typename in ('double', 'float'):
+            return TypeStr('float')
+    if typename == 'java.lang.String':
+        return TypeStr('str')
+    return TypeStr(typename.replace('$', '__'))
 
 
-def is_c_property_readonly(prop: Any) -> bool:
-    return prop.fset is None
+def infer_argname(jtype: Any, prev_args: List[ArgSig]) -> str:
+    import keyword
+    if jtype is None:
+        return 'arg%d' % len(prev_args)
+    typename = jtype.getSimpleName().split('$')[-1].replace('[]', 'Array')
+    typename = typename[:1].lower() + typename[1:]
+    if keyword.iskeyword(typename):
+        typename = 'java' + typename.capitalize()
+    prev_args_of_type = sum([bool(re.match(typename + '\\d*', prev.name)) for prev in prev_args])
+    if prev_args_of_type == 0:
+        return typename
+    else:
+        return typename + str(prev_args_of_type + 1)
 
 
-def is_c_type(obj: object) -> bool:
-    return inspect.isclass(obj) or type(obj) is type(int)
-
-
-def generate_c_function_stub(module: ModuleType,
-                             name: str,
-                             obj: object,
-                             output: List[str],
-                             imports: List[str],
-                             self_var: Optional[str] = None,
-                             sigs: Optional[Dict[str, str]] = None,
-                             class_name: Optional[str] = None,
-                             class_sigs: Optional[Dict[str, str]] = None) -> None:
-    """Generate stub for a single function or method.
+def generate_java_method_stub(module: ModuleType,
+                              name: str,
+                              obj: object,
+                              overloads: List[Any],
+                              output: List[str],
+                              imports: List[str]) -> None:
+    """Generate stub for a single method.
 
     The result (always a single line) will be appended to 'output'.
     If necessary, any required names will be added to 'imports'.
-    The 'class_name' is used to find signature of __init__ or __new__ in
-    'class_sigs'.
     """
-    if sigs is None:
-        sigs = {}
-    if class_sigs is None:
-        class_sigs = {}
 
-    ret_type = 'None' if name == '__init__' and class_name else 'Any'
+    signatures = []
+    for overload in overloads:
+        j_return_type = overload.getReturnType()
+        j_args = overload.getParameterTypes()
+        static = is_java_static(overload)
+        args = [ArgSig(name='cls' if static else 'self', type=None)]
+        for arg_num, j_arg in enumerate(j_args):
+            args.append(ArgSig(name=infer_argname(j_arg, args), type=infer_typename(j_arg)))
 
-    if (name in ('__new__', '__init__') and name not in sigs and class_name and
-            class_name in class_sigs):
-        inferred = [FunctionSig(name=name,
-                                args=infer_arg_sig_from_docstring(class_sigs[class_name]),
-                                ret_type=ret_type)]  # type: Optional[List[FunctionSig]]
-    else:
-        docstr = getattr(obj, '__doc__', None)
-        inferred = infer_sig_from_docstring(docstr, name)
-        if not inferred:
-            if class_name and name not in sigs:
-                inferred = [FunctionSig(name, args=infer_method_sig(name), ret_type=ret_type)]
-            else:
-                inferred = [FunctionSig(name=name,
-                                        args=infer_arg_sig_from_docstring(
-                                            sigs.get(name, '(*args, **kwargs)')),
-                                        ret_type=ret_type)]
+        signatures.append(JavaFunctionSig(name, args=args, ret_type=infer_typename(j_return_type), static=static))
 
-    is_overloaded = len(inferred) > 1 if inferred else False
+    is_overloaded = len(signatures) > 1 if signatures else False
     if is_overloaded:
         imports.append('from typing import overload')
-    if inferred:
-        for signature in inferred:
+    if signatures:
+        for signature in signatures:
+            if signature.static:
+                output.append('@classmethod')
             sig = []
             for arg in signature.args:
-                if arg.name == self_var:
-                    arg_def = self_var
+                if arg.name in ('self', 'cls'):
+                    arg_def = arg.name
                 else:
                     arg_def = arg.name
                     if arg_def == 'None':
@@ -179,9 +186,6 @@ def generate_c_function_stub(module: ModuleType,
 
                     if arg.type:
                         arg_def += ": " + strip_or_import(arg.type, module, imports)
-
-                    if arg.default:
-                        arg_def += " = ..."
 
                 sig.append(arg_def)
 
@@ -194,60 +198,42 @@ def generate_c_function_stub(module: ModuleType,
             ))
 
 
-def strip_or_import(typ: str, module: ModuleType, imports: List[str]) -> str:
-    """Strips unnecessary module names from typ.
+def strip_or_import(type_name: TypeStr, module: ModuleType, imports: List[str]) -> str:
+    """Strips unnecessary module names from type_name.
 
     If typ represents a type that is inside module or is a type coming from builtins, remove
     module declaration from it. Return stripped name of the type.
 
     Arguments:
-        typ: name of the type
+        type_name: name of the type
         module: in which this type is used
         imports: list of import statements (may be modified during the call)
     """
-    stripped_type = typ
-    if module and typ.startswith(module.__name__ + '.'):
-        stripped_type = typ[len(module.__name__) + 1:]
-    elif '.' in typ:
-        arg_module = typ[:typ.rindex('.')]
-        if arg_module == 'builtins':
-            stripped_type = typ[len('builtins') + 1:]
+    stripped_type = type_name.name
+    if '.' in stripped_type:
+        arg_module = stripped_type[:stripped_type.rindex('.')]
+        if arg_module in ('builtins', module.__name__):
+            stripped_type = stripped_type[len(arg_module) + 1:]
         else:
             imports.append('import %s' % (arg_module,))
-    return stripped_type
+    if type_name.type_args:
+        return stripped_type + "[" + ", ".join([strip_or_import(t, module, imports) for t in type_name.type_args]) + "]"
+    else:
+        return stripped_type
 
 
-def generate_c_property_stub(name: str, obj: object, output: List[str], readonly: bool) -> None:
-    """Generate property stub using introspection of 'obj'.
-
-    Try to infer type from docstring, append resulting lines to 'output'.
-    """
-    docstr = getattr(obj, '__doc__', None)
-    inferred = infer_prop_type_from_docstring(docstr)
-    if not inferred:
-        inferred = 'Any'
-
-    output.append('@property')
-    output.append('def {}(self) -> {}: ...'.format(name, inferred))
-    if not readonly:
-        output.append('@{}.setter'.format(name))
-        output.append('def {}(self, val: {}) -> None: ...'.format(name, inferred))
-
-
-def generate_c_type_stub(module: ModuleType,
-                         class_name: str,
-                         obj: type,
-                         output: List[str],
-                         imports: List[str],
-                         sigs: Optional[Dict[str, str]] = None,
-                         class_sigs: Optional[Dict[str, str]] = None) -> None:
+def generate_java_class_stub(module: ModuleType,
+                             class_name: str,
+                             obj: type,
+                             done: Set[str],
+                             output: List[str],
+                             imports: List[str],
+                             forward_decls: List[str]) -> None:
     """Generate stub for a single class using runtime introspection.
 
     The result lines will be appended to 'output'. If necessary, any
     required names will be added to 'imports'.
     """
-    # typeshed gives obj.__dict__ the not quite correct type Dict[str, Any]
-    # (it could be a mappingproxy!), which makes mypyc mad, so obfuscate it.
     obj_dict = getattr(obj, '__dict__')  # type: Mapping[str, Any]  # noqa
     items = sorted(obj_dict.items(), key=lambda x: method_name_sort_key(x[0]))
     methods = []  # type: List[str]
@@ -256,28 +242,10 @@ def generate_c_type_stub(module: ModuleType,
     overloads = obj.class_.getMethods()
     for attr, value in items:
         if is_java_method(value):
-            matching_overloads = [ov for ov in overloads if ov.getName() == attr]
             done.add(attr)
             if not is_skipped_attribute(attr):
-                if attr == '__new__':
-                    # TODO: We should support __new__.
-                    if '__init__' in obj_dict:
-                        # Avoid duplicate functions if both are present.
-                        # But is there any case where .__new__() has a
-                        # better signature than __init__() ?
-                        continue
-                    attr = '__init__'
-                if is_java_classmethod(value, matching_overloads):
-                    methods.append('@classmethod')
-                    self_var = 'cls'
-                else:
-                    self_var = 'self'
-                generate_c_function_stub(module, attr, value, methods, imports=imports,
-                                         self_var=self_var, sigs=sigs, class_name=class_name,
-                                         class_sigs=class_sigs)
-        elif is_c_property(value):
-            done.add(attr)
-            generate_c_property_stub(attr, value, properties, is_c_property_readonly(value))
+                matching_overloads = [ov for ov in overloads if ov.getName() == attr]
+                generate_java_method_stub(module, attr, value, matching_overloads, output=methods, imports=imports)
 
     variables = []
     for attr, value in items:
@@ -287,7 +255,6 @@ def generate_c_type_stub(module: ModuleType,
             variables.append('%s: Any = ...' % attr)
     all_bases = list(obj.mro())
     if all_bases[-1] is object:
-        # TODO: Is this always object?
         del all_bases[-1]
     # remove pybind11_object. All classes generated by pybind11 have pybind11_object in their MRO,
     # which only overrides a few functions in object type
@@ -303,7 +270,7 @@ def generate_c_type_stub(module: ModuleType,
     if bases:
         bases_str = '(%s)' % ', '.join(
             strip_or_import(
-                get_type_fullname(base),
+                type_to_typestr(base),
                 module,
                 imports
             ) for base in bases
@@ -322,8 +289,12 @@ def generate_c_type_stub(module: ModuleType,
             output.append('    %s' % prop)
 
 
-def get_type_fullname(typ: type) -> str:
-    return '%s.%s' % (typ.__module__, typ.__name__)
+def type_to_typestr(typ: type) -> TypeStr:
+    if typ.__module__ == '_jpype' and typ.__name__ == '_JObject':
+        return TypeStr('')
+    if typ.__module__ == 'jpype._jclass':
+        return TypeStr(typ.__name__)
+    return TypeStr('%s.%s' % (typ.__module__, typ.__name__))
 
 
 def method_name_sort_key(name: str) -> Tuple[int, str]:
@@ -346,55 +317,3 @@ def is_skipped_attribute(attr: str) -> bool:
                     '__dict__',
                     '__module__',
                     '__weakref__')  # For pickling
-
-
-def infer_method_sig(name: str) -> List[ArgSig]:
-    args = None  # type: Optional[List[ArgSig]]
-    if name.startswith('__') and name.endswith('__'):
-        name = name[2:-2]
-        if name in ('hash', 'iter', 'next', 'sizeof', 'copy', 'deepcopy', 'reduce', 'getinitargs',
-                    'int', 'float', 'trunc', 'complex', 'bool', 'abs', 'bytes', 'dir', 'len',
-                    'reversed', 'round', 'index', 'enter'):
-            args = []
-        elif name == 'getitem':
-            args = [ArgSig(name='index')]
-        elif name == 'setitem':
-            args = [ArgSig(name='index'),
-                    ArgSig(name='object')]
-        elif name in ('delattr', 'getattr'):
-            args = [ArgSig(name='name')]
-        elif name == 'setattr':
-            args = [ArgSig(name='name'),
-                    ArgSig(name='value')]
-        elif name == 'getstate':
-            args = []
-        elif name == 'setstate':
-            args = [ArgSig(name='state')]
-        elif name in ('eq', 'ne', 'lt', 'le', 'gt', 'ge',
-                      'add', 'radd', 'sub', 'rsub', 'mul', 'rmul',
-                      'mod', 'rmod', 'floordiv', 'rfloordiv', 'truediv', 'rtruediv',
-                      'divmod', 'rdivmod', 'pow', 'rpow',
-                      'xor', 'rxor', 'or', 'ror', 'and', 'rand', 'lshift', 'rlshift',
-                      'rshift', 'rrshift',
-                      'contains', 'delitem',
-                      'iadd', 'iand', 'ifloordiv', 'ilshift', 'imod', 'imul', 'ior',
-                      'ipow', 'irshift', 'isub', 'itruediv', 'ixor'):
-            args = [ArgSig(name='other')]
-        elif name in ('neg', 'pos', 'invert'):
-            args = []
-        elif name == 'get':
-            args = [ArgSig(name='instance'),
-                    ArgSig(name='owner')]
-        elif name == 'set':
-            args = [ArgSig(name='instance'),
-                    ArgSig(name='value')]
-        elif name == 'reduce_ex':
-            args = [ArgSig(name='protocol')]
-        elif name == 'exit':
-            args = [ArgSig(name='type'),
-                    ArgSig(name='value'),
-                    ArgSig(name='traceback')]
-    if args is None:
-        args = [ArgSig(name='*args'),
-                ArgSig(name='**kwargs')]
-    return [ArgSig(name='self')] + args
