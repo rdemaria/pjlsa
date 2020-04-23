@@ -49,43 +49,6 @@ import jpype
 
 import cmmnbuild_dep_manager
 
-jarname = re.compile(r"([a-z\-]+)-([0-9.]+)\.jar")
-
-
-def ver2num(ver):
-    out = 0
-    for ii, vv in enumerate(map(int, reversed(ver.split(".")))):
-        out += vv * 1000 ** ii
-    return out
-
-
-def get_jarversion(jars):
-    out = {}
-    for jar in jars:
-        res = jarname.search(jar)
-        if res:
-            name, version = res.groups()
-            out[name] = version
-    return out
-
-
-def older_jar_than_pro(jars):
-    jar_mgr = get_jarversion(jars)
-    # del jar_mgr['cmw-directory-client']
-    url = "http://bewww.cern.ch/ap/deployments/applications/cern/lsa/lsa-app-suite/PRO/lsa-app-suite.jnlp"
-    jar_pro = get_jarversion(urllib.urlopen(url).readlines())
-    result = False
-    for jar in set(jar_mgr).intersection(jar_pro):
-        v1 = jar_mgr[jar]
-        v2 = jar_pro[jar]
-        vv1 = ver2num(jar_mgr[jar])
-        vv2 = ver2num(jar_pro[jar])
-        if vv1 < vv2:
-            print("Checking %-30s: USED=%-6s < PRO=%-6s" % (jar, v1, v2))
-            result = True
-    return result
-
-
 # Python data descriptors
 TrimHeader = namedtuple(
     "TrimHeader", ["id", "beamProcesses", "createdDate", "description", "clientInfo"],
@@ -109,9 +72,6 @@ PCInfo = namedtuple(
 )
 
 Context = namedtuple("Context", ["timestamp", "name", "user"])
-
-
-#
 
 
 def _build_TrimHeader(th):
