@@ -56,19 +56,23 @@ def generate_stub_for_java_module(module_name: str, target: str) -> None:
     if subdir and not os.path.isdir(subdir):
         os.makedirs(subdir)
     imports = []  # type: List[str]
-    forward_decls = [] # type: List[str]
-    done = set() # type: Set[str]
+    forward_decls = dict()  # type: Dict[str, str]
+    done = set()  # type: Set[str]
     items = sorted(module.__dict__.items(), key=lambda x: x[0])
     classes = []  # type: List[str]
     for name, obj in items:
         if name.startswith('__') and name.endswith('__'):
             continue
         if is_java_class(obj):
-            generate_java_class_stub(module, name, obj, done=done, output=classes, imports=imports, forward_decls=forward_decls)
+            generate_java_class_stub(module, name, obj, classes_done=done, output=classes, imports=imports,
+                                     forward_decls=forward_decls)
             done.add(name)
 
     output = []
     for line in sorted(set(imports)):
+        output.append(line)
+    output.append('')
+    for line in sorted(set(forward_decls.values())):
         output.append(line)
     output.append('')
     for line in classes:
@@ -84,7 +88,7 @@ def generate_stub_for_java_module(module_name: str, target: str) -> None:
 def add_typing_import(output: List[str]) -> List[str]:
     """Add typing imports for collections/types that occur in the generated stub."""
     names = []
-    for name in ['Any', 'Union', 'Tuple', 'Optional', 'List', 'Dict']:
+    for name in ['Any', 'Union', 'Tuple', 'Optional', 'List', 'Dict', 'TypeVar']:
         if any(re.search(r'\b%s\b' % name, line) for line in output):
             names.append(name)
     if names:
@@ -149,8 +153,10 @@ def generate_java_method_stub(module: ModuleType,
                               name: str,
                               obj: object,
                               overloads: List[Any],
+                              types_done: Set[str],
                               output: List[str],
-                              imports: List[str]) -> None:
+                              imports: List[str],
+                              forward_decls: Dict[str, str]) -> None:
     """Generate stub for a single method.
 
     The result (always a single line) will be appended to 'output'.
@@ -185,7 +191,7 @@ def generate_java_method_stub(module: ModuleType,
                         arg_def = '_none'  # None is not a valid argument name
 
                     if arg.type:
-                        arg_def += ": " + strip_or_import(arg.type, module, imports)
+                        arg_def += ": " + to_annotated_type(arg.type, module, types_done, imports, forward_decls)
 
                 sig.append(arg_def)
 
@@ -194,30 +200,31 @@ def generate_java_method_stub(module: ModuleType,
             output.append('def {function}({args}) -> {ret}: ...'.format(
                 function=name,
                 args=", ".join(sig),
-                ret=strip_or_import(signature.ret_type, module, imports)
+                ret=to_annotated_type(signature.ret_type, module, types_done, imports, forward_decls)
             ))
 
 
-def strip_or_import(type_name: TypeStr, module: ModuleType, imports: List[str]) -> str:
-    """Strips unnecessary module names from type_name.
-
-    If typ represents a type that is inside module or is a type coming from builtins, remove
-    module declaration from it. Return stripped name of the type.
-
-    Arguments:
-        type_name: name of the type
-        module: in which this type is used
-        imports: list of import statements (may be modified during the call)
-    """
+def to_annotated_type(type_name: TypeStr, module: ModuleType, types_done: Set[str], imports: List[str],
+                      forward_decls: Dict[str, str]) -> str:
     stripped_type = type_name.name
     if '.' in stripped_type:
         arg_module = stripped_type[:stripped_type.rindex('.')]
-        if arg_module in ('builtins', module.__name__):
+        if arg_module == 'builtins':
             stripped_type = stripped_type[len(arg_module) + 1:]
+        elif arg_module == module.__name__:
+            stripped_type = stripped_type[len(arg_module) + 1:]
+            if stripped_type not in types_done:
+                forward_name = '___' + stripped_type
+                if forward_name not in forward_decls:
+                    forward_decls[forward_name] = "%s = TypeVar('%s', bound='%s')" % \
+                                                  (forward_name, forward_name, stripped_type)
+                stripped_type = forward_name
+
         else:
             imports.append('import %s' % (arg_module,))
     if type_name.type_args:
-        return stripped_type + "[" + ", ".join([strip_or_import(t, module, imports) for t in type_name.type_args]) + "]"
+        return stripped_type + "[" + ", ".join(
+            [to_annotated_type(t, module, types_done, imports, forward_decls) for t in type_name.type_args]) + "]"
     else:
         return stripped_type
 
@@ -225,10 +232,10 @@ def strip_or_import(type_name: TypeStr, module: ModuleType, imports: List[str]) 
 def generate_java_class_stub(module: ModuleType,
                              class_name: str,
                              obj: type,
-                             done: Set[str],
+                             classes_done: Set[str],
                              output: List[str],
                              imports: List[str],
-                             forward_decls: List[str]) -> None:
+                             forward_decls: Dict[str, str]) -> None:
     """Generate stub for a single class using runtime introspection.
 
     The result lines will be appended to 'output'. If necessary, any
@@ -245,7 +252,9 @@ def generate_java_class_stub(module: ModuleType,
             done.add(attr)
             if not is_skipped_attribute(attr):
                 matching_overloads = [ov for ov in overloads if ov.getName() == attr]
-                generate_java_method_stub(module, attr, value, matching_overloads, output=methods, imports=imports)
+                generate_java_method_stub(module, attr, value, matching_overloads, types_done=classes_done,
+                                          output=methods,
+                                          imports=imports, forward_decls=forward_decls)
 
     variables = []
     for attr, value in items:
@@ -269,10 +278,12 @@ def generate_java_class_stub(module: ModuleType,
             bases.append(base)
     if bases:
         bases_str = '(%s)' % ', '.join(
-            strip_or_import(
+            to_annotated_type(
                 type_to_typestr(base),
                 module,
-                imports
+                classes_done,
+                imports,
+                forward_decls
             ) for base in bases
         )
     else:
