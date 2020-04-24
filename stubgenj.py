@@ -56,24 +56,24 @@ def generate_stub_for_java_module(module_name: str, target: str) -> None:
     if subdir and not os.path.isdir(subdir):
         os.makedirs(subdir)
     imports = []  # type: List[str]
-    forward_decls = dict()  # type: Dict[str, str]
     done = set()  # type: Set[str]
-    items = sorted(module.__dict__.items(), key=lambda x: x[0])
+    java_classes = {name: cls for name, cls in module.__dict__.items()
+                    if not is_internal(name) and is_java_class(cls)}
     classes = []  # type: List[str]
-    for name, obj in items:
-        if name.startswith('__') and name.endswith('__'):
-            continue
-        if is_java_class(obj):
-            generate_java_class_stub(module, name, obj, classes_done=done, output=classes, imports=imports,
-                                     forward_decls=forward_decls)
+
+    while java_classes:
+        java_classes_to_generate = classes_with_satisfied_dependencies(module, java_classes, done)
+        if not java_classes_to_generate:
+            raise RuntimeError("Could not resolve inheritance dependencies for classes %s" % java_classes)
+        for name, obj in sorted(java_classes_to_generate.items(), key=lambda x: x[0]):
+            generate_java_class_stub(module, name, obj, classes_done=done, output=classes, imports=imports)
             done.add(name)
+            del java_classes[name]
 
     output = []
     for line in sorted(set(imports)):
         output.append(line)
-    output.append('')
-    for line in sorted(set(forward_decls.values())):
-        output.append(line)
+
     output.append('')
     for line in classes:
         if line.startswith('class') and output and output[-1]:
@@ -83,6 +83,26 @@ def generate_stub_for_java_module(module_name: str, target: str) -> None:
     with open(target, 'w') as file:
         for line in output:
             file.write('%s\n' % line)
+
+
+def is_internal(name: str) -> bool:
+    return name.startswith('__') and name.endswith('__')
+
+
+def classes_with_satisfied_dependencies(module: ModuleType, cls: Dict[str, type], done: Set[str]) -> Dict[str, type]:
+    return {name: cls for name, cls in cls.items() if dependencies_satisfied(module, cls, done)}
+
+
+def dependencies_satisfied(module: ModuleType, cls: type, done: Set[str]):
+    bases = [type_to_typestr(b) for b in cls.mro()][1:]
+    for base in bases:
+        base_name = base.name
+        base_module = base_name[:base_name.rindex('.')]
+        if base_module == module.__name__:
+            base_local_name = base_name[len(base_module) + 1:]
+            if base_local_name not in done:
+                return False
+    return True
 
 
 def add_typing_import(output: List[str]) -> List[str]:
@@ -155,8 +175,7 @@ def generate_java_method_stub(module: ModuleType,
                               overloads: List[Any],
                               types_done: Set[str],
                               output: List[str],
-                              imports: List[str],
-                              forward_decls: Dict[str, str]) -> None:
+                              imports: List[str]) -> None:
     """Generate stub for a single method.
 
     The result (always a single line) will be appended to 'output'.
@@ -191,7 +210,7 @@ def generate_java_method_stub(module: ModuleType,
                         arg_def = '_none'  # None is not a valid argument name
 
                     if arg.type:
-                        arg_def += ": " + to_annotated_type(arg.type, module, types_done, imports, forward_decls)
+                        arg_def += ": " + to_annotated_type(arg.type, module, types_done, imports)
 
                 sig.append(arg_def)
 
@@ -200,33 +219,29 @@ def generate_java_method_stub(module: ModuleType,
             output.append('def {function}({args}) -> {ret}: ...'.format(
                 function=name,
                 args=", ".join(sig),
-                ret=to_annotated_type(signature.ret_type, module, types_done, imports, forward_decls)
+                ret=to_annotated_type(signature.ret_type, module, types_done, imports)
             ))
 
 
 def to_annotated_type(type_name: TypeStr, module: ModuleType, types_done: Set[str], imports: List[str],
-                      forward_decls: Dict[str, str]) -> str:
-    stripped_type = type_name.name
-    if '.' in stripped_type:
-        arg_module = stripped_type[:stripped_type.rindex('.')]
+                      can_be_deferred: bool = True) -> str:
+    atype = type_name.name
+    if '.' in atype:
+        arg_module = atype[:atype.rindex('.')]
         if arg_module == 'builtins':
-            stripped_type = stripped_type[len(arg_module) + 1:]
+            atype = atype[len(arg_module) + 1:]
         elif arg_module == module.__name__:
-            stripped_type = stripped_type[len(arg_module) + 1:]
-            if stripped_type not in types_done:
-                forward_name = '___' + stripped_type
-                if forward_name not in forward_decls:
-                    forward_decls[forward_name] = "%s = TypeVar('%s', bound='%s')" % \
-                                                  (forward_name, forward_name, stripped_type)
-                stripped_type = forward_name
+            atype = atype[len(arg_module) + 1:]
+            if can_be_deferred and atype not in types_done:
+                atype = '\'%s\'' % atype
 
         else:
             imports.append('import %s' % (arg_module,))
     if type_name.type_args:
-        return stripped_type + "[" + ", ".join(
-            [to_annotated_type(t, module, types_done, imports, forward_decls) for t in type_name.type_args]) + "]"
+        return atype + "[" + ", ".join(
+            [to_annotated_type(t, module, types_done, imports) for t in type_name.type_args]) + "]"
     else:
-        return stripped_type
+        return atype
 
 
 def generate_java_class_stub(module: ModuleType,
@@ -234,8 +249,7 @@ def generate_java_class_stub(module: ModuleType,
                              obj: type,
                              classes_done: Set[str],
                              output: List[str],
-                             imports: List[str],
-                             forward_decls: Dict[str, str]) -> None:
+                             imports: List[str]) -> None:
     """Generate stub for a single class using runtime introspection.
 
     The result lines will be appended to 'output'. If necessary, any
@@ -253,8 +267,7 @@ def generate_java_class_stub(module: ModuleType,
             if not is_skipped_attribute(attr):
                 matching_overloads = [ov for ov in overloads if ov.getName() == attr]
                 generate_java_method_stub(module, attr, value, matching_overloads, types_done=classes_done,
-                                          output=methods,
-                                          imports=imports, forward_decls=forward_decls)
+                                          output=methods, imports=imports)
 
     variables = []
     for attr, value in items:
@@ -265,9 +278,9 @@ def generate_java_class_stub(module: ModuleType,
     all_bases = list(obj.mro())
     if all_bases[-1] is object:
         del all_bases[-1]
-    # remove pybind11_object. All classes generated by pybind11 have pybind11_object in their MRO,
-    # which only overrides a few functions in object type
-    if all_bases and all_bases[-1].__name__ == 'pybind11_object':
+    if all_bases[-1].__module__ == '_jpype' and all_bases[-1].__name__ == '_JObject':
+        del all_bases[-1]
+    if 'java.lang.Object' in all_bases[-1].__name__:
         del all_bases[-1]
     # remove the class itself
     all_bases = all_bases[1:]
@@ -283,7 +296,7 @@ def generate_java_class_stub(module: ModuleType,
                 module,
                 classes_done,
                 imports,
-                forward_decls
+                can_be_deferred=False
             ) for base in bases
         )
     else:
@@ -301,8 +314,6 @@ def generate_java_class_stub(module: ModuleType,
 
 
 def type_to_typestr(typ: type) -> TypeStr:
-    if typ.__module__ == '_jpype' and typ.__name__ == '_JObject':
-        return TypeStr('')
     if typ.__module__ == 'jpype._jclass':
         return TypeStr(typ.__name__)
     return TypeStr('%s.%s' % (typ.__module__, typ.__name__))

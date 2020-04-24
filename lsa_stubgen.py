@@ -19,9 +19,3 @@ for cls in classes:
 
 
 stubgenj.generate_stub_for_java_module('cern.lsa.domain.settings', 'pyi/cern/lsa/domain/settings/__init__.pyi')
-
-#from cern.lsa.domain.settings import StandAloneBeamProcess
-
-#sabp = StandAloneBeamProcess()
-#sabp.getCategory()
-
