@@ -1,16 +1,11 @@
 import pjlsa
 import jpype.imports
 import stubgenj
-import sys
 import importlib
 
 lsa = pjlsa.LSAClient()
 
 jpype.imports.registerDomain("cern")
-jpype_importer = sys.meta_path[-1]
-del sys.meta_path[-1]
-sys.meta_path.insert(0, jpype_importer)
-
 
 def imp(pack):
     classes = [c for c in lsa._mgr.class_search(pack + '.')]
