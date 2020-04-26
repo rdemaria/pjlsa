@@ -116,7 +116,7 @@ def dependencies_satisfied(module: ModuleType, jclass: jpype.JClass, done: Set[s
 def add_typing_import(output: List[str]) -> List[str]:
     """Add typing imports for collections/types that occur in the generated stub."""
     names = []
-    for name in ['Any', 'Union', 'Tuple', 'Optional', 'List', 'Dict', 'TypeVar']:
+    for name in ['Any', 'Union', 'Tuple', 'Optional', 'List', 'Dict', 'TypeVar', 'Type']:
         if any(re.search(r'\b%s\b' % name, line) for line in output):
             names.append(name)
     if names:
@@ -149,6 +149,8 @@ def infer_typename(jtype: Any) -> TypeStr:
             return TypeStr('float')
     if typename == 'java.lang.String':
         return TypeStr('str')
+    if typename == 'java.lang.Class':
+        return TypeStr('Type')
     return TypeStr(typename)
 
 

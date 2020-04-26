@@ -2,10 +2,12 @@ import pjlsa
 import jpype.imports
 import stubgenj
 import importlib
+import fileinput
 
 lsa = pjlsa.LSAClient()
 
 jpype.imports.registerDomain("cern")
+
 
 def imp(pack):
     classes = [c for c in lsa._mgr.class_search(pack + '.')]
@@ -14,7 +16,9 @@ def imp(pack):
         importlib.import_module(cls)
 
 
-for pkg in ['cern.lsa.domain.settings',
+for pkg in ['cern.lsa.client',
+            'cern.lsa.client.common',
+            'cern.lsa.domain.settings',
             'cern.lsa.domain.settings.type',
             'cern.lsa.domain.settings.spi',
             'cern.lsa.domain.settings.factory']:
