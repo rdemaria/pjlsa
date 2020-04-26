@@ -8,18 +8,14 @@ import importlib
 import inspect
 import os.path
 import re
-from typing import List, Dict, Tuple, Optional, Mapping, Any, Set, NamedTuple
+from typing import List, Tuple, Optional, Mapping, Any, Set, NamedTuple
 from types import ModuleType
-
-from mypy.stubdoc import is_valid_type
 
 
 class TypeStr:
     __slots__ = ('name', 'type_args')
 
     def __init__(self, name: str, type_args: Optional[List['TypeStr']] = None):
-        if name and not is_valid_type(name):
-            raise ValueError("Invalid type: " + name)
         self.name = name
         self.type_args = list(type_args or [])
 
@@ -56,13 +52,13 @@ def generate_stub_for_java_module(module_name: str, target: str) -> None:
     import_output = []  # type: List[str]
     class_output = []  # type: List[str]
     java_classes = [cls for name, cls in module.__dict__.items() if
-                    not is_internal(name) and is_java_class(cls)] # type: List[jpype.JClass]
+                    not is_internal(name) and is_java_class(cls)]  # type: List[jpype.JClass]
 
     done = set()  # type: Set[str]
     while java_classes:
         java_classes_to_generate = [c for c in java_classes if dependencies_satisfied(module, c, done)]
         if not java_classes_to_generate:
-            raise RuntimeError("Could not resolve inheritance dependencies for classes %s" % java_classes)
+            java_classes_to_generate = java_classes  # raise RuntimeError("Could not resolve inheritance dependencies for classes %s" % java_classes)
         for cls in sorted(java_classes_to_generate, key=lambda c: c.__name__):
             generate_java_class_stub(module.__name__, cls, classes_done=done,
                                      output=class_output, imports=import_output)
@@ -129,13 +125,6 @@ def add_typing_import(output: List[str]) -> List[str]:
         return output[:]
 
 
-def is_java_method(obj: object) -> bool:
-    return inspect.ismethoddescriptor(obj) or type(obj) in (type(str.index),
-                                                            type(str.__add__),
-                                                            type(str.__new__),
-                                                            jpype.JMethod)
-
-
 def is_java_static(java_overload: Any) -> bool:
     # noinspection PyUnresolvedReferences
     from java.lang.reflect import Modifier
@@ -160,7 +149,7 @@ def infer_typename(jtype: Any) -> TypeStr:
             return TypeStr('float')
     if typename == 'java.lang.String':
         return TypeStr('str')
-    return TypeStr(typename.replace('$', '.'))
+    return TypeStr(typename)
 
 
 def infer_argname(jtype: Any, prev_args: List[ArgSig]) -> str:
@@ -233,19 +222,24 @@ def generate_java_method_stub(parent_name: str,
 
 
 def to_annotated_type(type_name: TypeStr, parent_name: str, types_done: Set[str], imports: List[str],
-                      can_be_deferred: bool = True) -> str:
+                      can_be_deferred: bool = True, force_short: bool = False) -> str:
     atype = type_name.name
+    if atype.startswith(parent_name + '$'):
+        atype = atype[len(parent_name) + 1:]
     if '.' in atype:
         arg_module = atype[:atype.rindex('.')]
         if arg_module == 'builtins':
             atype = atype[len(arg_module) + 1:]
         elif arg_module == parent_name:
-            atype = atype[len(arg_module) + 1:]
-            if can_be_deferred and atype not in types_done:
-                atype = '\'%s\'' % atype
+            short_type = atype[len(arg_module) + 1:]
+            if short_type in types_done or force_short:
+                atype = short_type
+            elif can_be_deferred:
+                atype = '\'%s\'' % short_type
 
         else:
             imports.append('import %s' % (arg_module,))
+    atype = atype.replace('$', '.')
     if type_name.type_args:
         return atype + "[" + ", ".join(
             [to_annotated_type(t, parent_name, types_done, imports) for t in type_name.type_args]) + "]"
@@ -258,7 +252,7 @@ def generate_java_class_stub(package_name: str,
                              classes_done: Set[str],
                              output: List[str],
                              imports: List[str],
-                             parent_class: type = None) -> None:
+                             parent_class: jpype.JClass = None) -> None:
     """Generate stub for a single class using runtime introspection.
 
     The result lines will be appended to 'output'. If necessary, any
@@ -277,7 +271,7 @@ def generate_java_class_stub(package_name: str,
     methods = []  # type: List[str]
     overloads = jclass.class_.getMethods()
     for attr, value in items:
-        if is_java_method(value):
+        if isinstance(value, jpype.JMethod):
             done.add(attr)
             matching_overloads = [ov for ov in overloads if ov.getName() == attr]
             generate_java_method_stub(package_name, attr, value, matching_overloads, types_done=classes_done,
@@ -299,7 +293,7 @@ def generate_java_class_stub(package_name: str,
     # remove the class itself
     all_bases = all_bases[1:]
     # Remove base classes of other bases as redundant.
-    bases = []  # type: List[type]
+    bases = []  # type: List[jpype.JClass]
     for base in all_bases:
         if not any(issubclass(b, base) for b in bases) and is_java_class(base):
             bases.append(base)
@@ -320,7 +314,7 @@ def generate_java_class_stub(package_name: str,
         parent_class.class_.getName() if parent_class else package_name,
         classes_done,
         imports,
-        can_be_deferred=False
+        force_short=True
     )
     if not methods and not variables and not nested_classes:
         output.append('class %s%s: ...' % (class_name, bases_str))
