@@ -12,6 +12,7 @@ from typing import List, Tuple, Optional, Mapping, Any, Set, NamedTuple, Dict
 from types import ModuleType
 import pathlib
 
+
 class TypeStr:
     __slots__ = ('name', 'type_args')
 
