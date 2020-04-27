@@ -10,7 +10,7 @@ import os.path
 import re
 from typing import List, Tuple, Optional, Mapping, Any, Set, NamedTuple, Dict
 from types import ModuleType
-
+import pathlib
 
 class TypeStr:
     __slots__ = ('name', 'type_args')
@@ -61,12 +61,22 @@ def generate_java_stubs(pkg_prefixes: List[str], output_dir_prefix: str = 'pyi')
             except ImportError:
                 print(">> skipping class %s" % cls)
                 classes.remove(cls)
-        generate_stubs_for_java_package(pkg, '%s/%s/__init__.pyi' % (output_dir_prefix, pkg.replace('.', '/')))
+        path_parts = pkg.split(".")
+        path = pathlib.Path(output_dir_prefix)
+        for path_part in path_parts:
+            path = path / path_part
+            if not path.is_dir():
+                os.makedirs(path)
+            init_file = path / '__init__.pyi'
+            if not init_file.exists():
+                open(init_file, "w").close()
+
+        generate_stubs_for_java_package(pkg, path / '__init__.pyi')
 
 
-def generate_stubs_for_java_package(package_name: str, target: str) -> None:
+def generate_stubs_for_java_package(package_name: str, output_file: str) -> None:
     module = importlib.import_module(package_name)
-    subdir = os.path.dirname(target)
+    subdir = os.path.dirname(output_file)
     if subdir and not os.path.isdir(subdir):
         os.makedirs(subdir)
     import_output = []  # type: List[str]
@@ -94,7 +104,7 @@ def generate_stubs_for_java_package(package_name: str, target: str) -> None:
             output.append('')
         output.append(line)
     output = add_typing_import(output)
-    with open(target, 'w') as file:
+    with open(output_file, 'w') as file:
         for line in output:
             file.write('%s\n' % line)
 
