@@ -1,26 +1,13 @@
 import pjlsa
-import jpype.imports
 import stubgenj
-import importlib
-import fileinput
 
 lsa = pjlsa.LSAClient()
 
-jpype.imports.registerDomain("cern")
+prefixes = ["java",
+            "cern.lsa",
+            "cern.accsoft.commons",
+            "cern.rbac.common",
+            "cern.japc.core", "cern.japc.value"]
 
 
-def imp(pack):
-    classes = [c for c in lsa._mgr.class_search(pack + '.')]
-    importlib.import_module(pack)
-    for cls in classes:
-        importlib.import_module(cls)
-
-
-for pkg in ['cern.lsa.client',
-            'cern.lsa.client.common',
-            'cern.lsa.domain.settings',
-            'cern.lsa.domain.settings.type',
-            'cern.lsa.domain.settings.spi',
-            'cern.lsa.domain.settings.factory']:
-    imp(pkg)
-    stubgenj.generate_stub_for_java_module(pkg, 'pyi/%s/__init__.pyi' % pkg.replace('.', '/'))
+stubgenj.generate_java_stubs(prefixes, 'pyi')

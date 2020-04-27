@@ -8,7 +8,7 @@ import importlib
 import inspect
 import os.path
 import re
-from typing import List, Tuple, Optional, Mapping, Any, Set, NamedTuple
+from typing import List, Tuple, Optional, Mapping, Any, Set, NamedTuple, Dict
 from types import ModuleType
 
 
@@ -36,16 +36,36 @@ JavaFunctionSig = NamedTuple('JavaFunctionSig', [
 ])
 
 
-def generate_stub_for_java_module(module_name: str, target: str) -> None:
-    """Generate stub for a Java module/package.
+def generate_java_stubs(prefixes: List[str], prefix: str = 'pyi') -> None:
+    packages = {}  # type: Dict[str, List[str]]
 
-    This combines simple runtime introspection (looking for docstrings and attributes
-    with simple builtin types) and signatures inferred from .rst documentation (if given).
+    all_classes = find_all_classes()
 
-    If directory for target doesn't exist it will be created. Existing stub
-    will be overwritten.
-    """
-    module = importlib.import_module(module_name)
+    for prefix in prefixes:
+        for cls_name in all_classes:
+            if not cls_name.startswith(prefix + '.'):
+                continue
+            pkg_name = cls_name[:cls_name.rfind('.')]
+            packages.setdefault(pkg_name, []).append(cls_name)
+
+    for pkg, classes in packages.items():
+        print('Generating stubs for %s (%d classes)' % (pkg, len(classes)))
+        if '.' in pkg:
+            pkg_domain = pkg[:pkg.find('.')]
+            if pkg_domain not in jpype.imports._JDOMAINS.keys():
+                jpype.imports.registerDomain(pkg_domain)
+        importlib.import_module(pkg)
+        for cls in classes:
+            try:
+                importlib.import_module(cls)
+            except ImportError:
+                print(">> skipping class %s" % cls)
+                classes.remove(cls)
+        generate_stubs_for_java_package(pkg, '%s/%s/__init__.pyi' % (prefix, pkg.replace('.', '/')))
+
+
+def generate_stubs_for_java_package(package_name: str, target: str) -> None:
+    module = importlib.import_module(package_name)
     subdir = os.path.dirname(target)
     if subdir and not os.path.isdir(subdir):
         os.makedirs(subdir)
@@ -58,7 +78,7 @@ def generate_stub_for_java_module(module_name: str, target: str) -> None:
     while java_classes:
         java_classes_to_generate = [c for c in java_classes if dependencies_satisfied(module, c, done)]
         if not java_classes_to_generate:
-            java_classes_to_generate = java_classes  # raise RuntimeError("Could not resolve inheritance dependencies for classes %s" % java_classes)
+            java_classes_to_generate = java_classes  # some inner class cases - will generate them with full names
         for cls in sorted(java_classes_to_generate, key=lambda c: c.__name__):
             generate_java_class_stub(module.__name__, cls, classes_done=done,
                                      output=class_output, imports=import_output)
@@ -84,13 +104,16 @@ def is_internal(name: str) -> bool:
         return True  # python internal
     if '$' in name:
         return True  # inner class: will be generated recursively
+    if '-' in name:
+        return True  # package-info et al
     return False
 
 
 def is_java_class(obj: type) -> bool:
     if not isinstance(obj, jpype.JClass) or not hasattr(obj, 'class_') or not inspect.isclass(obj):
         return False
-    if obj.class_.isAnonymousClass() or obj.class_.isLocalClass() or obj.class_.isSynthetic():
+    # noinspection
+    if obj.class_.isAnonymousClass() or obj.class_.isLocalClass() or obj.class_.isSynthetic():  # noqa
         return False
     return True
 
@@ -114,7 +137,6 @@ def dependencies_satisfied(module: ModuleType, jclass: jpype.JClass, done: Set[s
 
 
 def add_typing_import(output: List[str]) -> List[str]:
-    """Add typing imports for collections/types that occur in the generated stub."""
     names = []
     for name in ['Any', 'Union', 'Tuple', 'Optional', 'List', 'Dict', 'TypeVar', 'Type']:
         if any(re.search(r'\b%s\b' % name, line) for line in output):
@@ -125,9 +147,8 @@ def add_typing_import(output: List[str]) -> List[str]:
         return output[:]
 
 
-def is_java_static(java_overload: Any) -> bool:
-    # noinspection PyUnresolvedReferences
-    from java.lang.reflect import Modifier
+def is_static(java_overload: Any) -> bool:
+    from java.lang.reflect import Modifier  # noqa
     return java_overload.getModifiers() & Modifier.STATIC > 0
 
 
@@ -147,6 +168,8 @@ def infer_typename(jtype: Any) -> TypeStr:
             return TypeStr('bool')
         if typename in ('double', 'float'):
             return TypeStr('float')
+        if typename == 'char':
+            return TypeStr('str')  # 1-character string
     if typename == 'java.lang.String':
         return TypeStr('str')
     if typename == 'java.lang.Class':
@@ -171,22 +194,15 @@ def infer_argname(jtype: Any, prev_args: List[ArgSig]) -> str:
 
 def generate_java_method_stub(parent_name: str,
                               name: str,
-                              obj: object,
                               overloads: List[Any],
                               types_done: Set[str],
                               output: List[str],
                               imports: List[str]) -> None:
-    """Generate stub for a single method.
-
-    The result (always a single line) will be appended to 'output'.
-    If necessary, any required names will be added to 'imports'.
-    """
-
     signatures = []
     for overload in overloads:
         j_return_type = overload.getReturnType()
         j_args = overload.getParameterTypes()
-        static = is_java_static(overload)
+        static = is_static(overload)
         args = [ArgSig(name='cls' if static else 'self', type=None)]
         for arg_num, j_arg in enumerate(j_args):
             args.append(ArgSig(name=infer_argname(j_arg, args), type=infer_typename(j_arg)))
@@ -276,15 +292,15 @@ def generate_java_class_stub(package_name: str,
         if isinstance(value, jpype.JMethod):
             done.add(attr)
             matching_overloads = [ov for ov in overloads if ov.getName() == attr]
-            generate_java_method_stub(package_name, attr, value, matching_overloads, types_done=classes_done,
+            generate_java_method_stub(package_name, attr, matching_overloads, types_done=classes_done,
                                       output=methods, imports=imports)
 
-    variables = []
+    fields = []
     for attr, value in items:
-        if is_skipped_attribute(attr):
+        if is_skipped_member(attr):
             continue
         if attr not in done:
-            variables.append('%s: Any = ...' % attr)
+            fields.append('%s: Any = ...' % attr)
     all_bases = list(jclass.mro())
     if all_bases[-1] is object:
         del all_bases[-1]
@@ -318,11 +334,11 @@ def generate_java_class_stub(package_name: str,
         imports,
         force_short=True
     )
-    if not methods and not variables and not nested_classes:
+    if not methods and not fields and not nested_classes:
         output.append('class %s%s: ...' % (class_name, bases_str))
     else:
         output.append('class %s%s:' % (class_name, bases_str))
-        for variable in variables:
+        for variable in fields:
             output.append('    %s' % variable)
         for method in methods:
             output.append('    %s' % method)
@@ -332,10 +348,6 @@ def generate_java_class_stub(package_name: str,
 
 
 def method_name_sort_key(name: str) -> Tuple[int, str]:
-    """Sort methods in classes in a typical order.
-
-    I.e.: constructor, normal methods, special methods.
-    """
     if name in ('__new__', '__init__'):
         return 0, name
     if name.startswith('__') and name.endswith('__'):
@@ -343,7 +355,7 @@ def method_name_sort_key(name: str) -> Tuple[int, str]:
     return 1, name
 
 
-def is_skipped_attribute(attr: str) -> bool:
+def is_skipped_member(attr: str) -> bool:
     return attr in ('__getattribute__',
                     '__str__',
                     '__repr__',
@@ -351,3 +363,25 @@ def is_skipped_attribute(attr: str) -> bool:
                     '__dict__',
                     '__module__',
                     '__weakref__')  # For pickling
+
+
+def find_all_classes() -> List[str]:
+    from java.nio.file import Paths  # noqa
+    from java.net import URI  # noqa
+    from java.lang import ClassLoader  # noqa
+    import zipfile
+    class_loader = ClassLoader.getSystemClassLoader()
+    jars = [str(Paths.get(u.toURI())) for u in class_loader.getURLs()]  # noqa
+    jruntime = str(class_loader.getResource("java/lang/String.class").toURI())
+    if jruntime:
+        jruntime_uri = URI.create(str(jruntime[4:jruntime.index("!")]))
+        jars.append(str(Paths.get(jruntime_uri)))
+    classes = []
+    for jar in jars:
+        if not jar.endswith(".jar"):
+            continue
+        names = zipfile.ZipFile(jar).namelist()
+        for name in names:
+            if name.endswith('.class') and '$' not in name:
+                classes.append(name[:-6].replace('/', '.'))
+    return classes
