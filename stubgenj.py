@@ -36,12 +36,12 @@ JavaFunctionSig = NamedTuple('JavaFunctionSig', [
 ])
 
 
-def generate_java_stubs(prefixes: List[str], prefix: str = 'pyi') -> None:
+def generate_java_stubs(pkg_prefixes: List[str], output_dir_prefix: str = 'pyi') -> None:
     packages = {}  # type: Dict[str, List[str]]
 
     all_classes = find_all_classes()
 
-    for prefix in prefixes:
+    for prefix in pkg_prefixes:
         for cls_name in all_classes:
             if not cls_name.startswith(prefix + '.'):
                 continue
@@ -61,7 +61,7 @@ def generate_java_stubs(prefixes: List[str], prefix: str = 'pyi') -> None:
             except ImportError:
                 print(">> skipping class %s" % cls)
                 classes.remove(cls)
-        generate_stubs_for_java_package(pkg, '%s/%s/__init__.pyi' % (prefix, pkg.replace('.', '/')))
+        generate_stubs_for_java_package(pkg, '%s/%s/__init__.pyi' % (output_dir_prefix, pkg.replace('.', '/')))
 
 
 def generate_stubs_for_java_package(package_name: str, target: str) -> None:
