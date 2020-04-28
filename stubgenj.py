@@ -4,6 +4,7 @@
 
 import jpype
 import jpype.imports
+from jpype._pykeywords import pysafe
 import importlib
 import inspect
 import os.path
@@ -65,7 +66,7 @@ def generate_java_stubs(pkg_prefixes: List[str], output_dir_prefix: str = 'pyi')
         path_parts = pkg.split(".")
         path = pathlib.Path(output_dir_prefix)
         for path_part in path_parts:
-            path = path / path_part
+            path = path / pysafe(path_part)
             if not path.is_dir():
                 os.makedirs(path)
             init_file = path / '__init__.pyi'
@@ -215,17 +216,18 @@ def infer_typename(jtype: Any) -> TypeStr:
         return TypeStr('List', [infer_typename(jtype.getComponentType())])
     typename = jtype.getName()
 
-    if jtype.isPrimitive():
-        if typename == 'void':
-            return TypeStr('None')
-        if typename in ('byte', 'short', 'int', 'long'):
-            return TypeStr('int')
-        if typename == 'boolean':
-            return TypeStr('bool')
-        if typename in ('double', 'float'):
-            return TypeStr('float')
-        if typename == 'char':
-            return TypeStr('str')  # 1-character string
+    if typename in ('void', 'java.lang.Void'):
+        return TypeStr('None')
+    if typename in ('byte', 'short', 'int', 'long', 'java.lang.Byte', 'java.lang.Short',
+                    'java.lang.Integer', 'java.lang.Long'):
+        return TypeStr('int')
+    if typename in ('boolean', 'java.lang.Boolean'):
+        return TypeStr('bool')
+    if typename in ('double', 'float', 'java.lang.Double', 'java.lang.Float'):
+        return TypeStr('float')
+    if typename in ('char', 'java.lang.Character'):
+        return TypeStr('str')  # 1-character string
+
     if typename == 'java.lang.String' and convert_strings():
         return TypeStr('str')
     if typename == 'java.lang.Class':
@@ -289,9 +291,7 @@ def generate_java_method_stub(parent_name: str,
             if arg.name in ('self', 'cls'):
                 arg_def = arg.name
             else:
-                arg_def = arg.name
-                if arg_def == 'None':
-                    arg_def = '_none'  # None is not a valid argument name
+                arg_def = pysafe(arg.name)
 
                 if arg.type:
                     arg_def += ": " + to_annotated_type(arg.type, parent_name, types_done, imports)
@@ -301,7 +301,7 @@ def generate_java_method_stub(parent_name: str,
         if is_overloaded:
             output.append('@overload')
         output.append('def {function}({args}) -> {ret}: ...'.format(
-            function=name,
+            function=pysafe(signature.name),
             args=", ".join(sig),
             ret=to_annotated_type(signature.ret_type, parent_name, types_done, imports)
         ))
@@ -325,6 +325,7 @@ def generate_java_field_stub(parent_name: str,
 def to_annotated_type(type_name: TypeStr, parent_name: str, types_done: Set[str], imports: List[str],
                       can_be_deferred: bool = True, force_short: bool = False) -> str:
     atype = type_name.name
+    is_java_type = '.' in atype
     if atype.startswith(parent_name + '$'):
         atype = atype[len(parent_name) + 1:]
     if '.' in atype:
@@ -341,6 +342,8 @@ def to_annotated_type(type_name: TypeStr, parent_name: str, types_done: Set[str]
         else:
             imports.append('import %s' % (arg_module,))
     atype = atype.replace('$', '.')
+    if is_java_type:
+        atype = ".".join([pysafe(p) for p in atype.split(".")])
     if type_name.type_args:
         return atype + "[" + ", ".join(
             [to_annotated_type(t, parent_name, types_done, imports) for t in type_name.type_args]) + "]"
