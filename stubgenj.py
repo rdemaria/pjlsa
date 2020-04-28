@@ -227,7 +227,7 @@ def infer_typename(jtype: Any) -> TypeStr:
         return TypeStr('List', [infer_typename(raw_type.getComponentType())])
     typename = raw_type.getName()
 
-    if typename in 'void':
+    if typename == 'void':
         return TypeStr('None')
     if typename in ('byte', 'short', 'int', 'long', 'java.lang.Byte', 'java.lang.Short',
                     'java.lang.Integer', 'java.lang.Long'):
