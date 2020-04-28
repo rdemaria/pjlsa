@@ -8,7 +8,7 @@ import importlib
 import inspect
 import os.path
 import re
-from typing import List, Tuple, Optional, Mapping, Any, Set, NamedTuple, Dict
+from typing import List, Optional, Mapping, Any, Set, NamedTuple, Dict
 from types import ModuleType
 import pathlib
 
@@ -75,6 +75,28 @@ def generate_java_stubs(pkg_prefixes: List[str], output_dir_prefix: str = 'pyi')
         generate_stubs_for_java_package(pkg, path / '__init__.pyi')
 
 
+def find_all_classes() -> List[str]:
+    from java.nio.file import Paths  # noqa
+    from java.net import URI  # noqa
+    from java.lang import ClassLoader  # noqa
+    import zipfile
+    class_loader = ClassLoader.getSystemClassLoader()
+    jars = [str(Paths.get(u.toURI())) for u in class_loader.getURLs()]  # noqa
+    jruntime = str(class_loader.getResource("java/lang/String.class").toURI())
+    if jruntime:
+        jruntime_uri = URI.create(str(jruntime[4:jruntime.index("!")]))
+        jars.append(str(Paths.get(jruntime_uri)))
+    classes = []
+    for jar in jars:
+        if not jar.endswith(".jar"):
+            continue
+        names = zipfile.ZipFile(jar).namelist()
+        for name in names:
+            if name.endswith('.class') and '$' not in name:
+                classes.append(name[:-6].replace('/', '.'))
+    return classes
+
+
 def generate_stubs_for_java_package(package_name: str, output_file: str) -> None:
     module = importlib.import_module(package_name)
     subdir = os.path.dirname(output_file)
@@ -133,6 +155,8 @@ def dependencies_satisfied(module: ModuleType, jclass: jpype.JClass, done: Set[s
     bases = [infer_typename(b.class_) for b in jclass.mro() if is_java_class(b)][1:]
     for base in bases:
         base_name = base.name
+        if '.' not in base_name:
+            continue
         base_module = base_name[:base_name.rindex('.')]
         if base_module == module.__name__:
             base_local_name = base_name[len(base_module) + 1:]
@@ -190,6 +214,8 @@ def infer_typename(jtype: Any) -> TypeStr:
         return TypeStr('str')
     if typename == 'java.lang.Class':
         return TypeStr('Type')
+    if typename == 'java.lang.Object':
+        return TypeStr('Any')
     return TypeStr(typename)
 
 
@@ -239,31 +265,30 @@ def generate_java_method_stub(parent_name: str,
     is_overloaded = len(signatures) > 1 if signatures else False
     if is_overloaded:
         imports.append('from typing import overload')
-    if signatures:
-        for signature in signatures:
-            if signature.static:
-                output.append('@classmethod')
-            sig = []
-            for arg in signature.args:
-                if arg.name in ('self', 'cls'):
-                    arg_def = arg.name
-                else:
-                    arg_def = arg.name
-                    if arg_def == 'None':
-                        arg_def = '_none'  # None is not a valid argument name
+    for signature in signatures:
+        if signature.static:
+            output.append('@classmethod')
+        sig = []
+        for arg in signature.args:
+            if arg.name in ('self', 'cls'):
+                arg_def = arg.name
+            else:
+                arg_def = arg.name
+                if arg_def == 'None':
+                    arg_def = '_none'  # None is not a valid argument name
 
-                    if arg.type:
-                        arg_def += ": " + to_annotated_type(arg.type, parent_name, types_done, imports)
+                if arg.type:
+                    arg_def += ": " + to_annotated_type(arg.type, parent_name, types_done, imports)
 
-                sig.append(arg_def)
+            sig.append(arg_def)
 
-            if is_overloaded:
-                output.append('@overload')
-            output.append('def {function}({args}) -> {ret}: ...'.format(
-                function=name,
-                args=", ".join(sig),
-                ret=to_annotated_type(signature.ret_type, parent_name, types_done, imports)
-            ))
+        if is_overloaded:
+            output.append('@overload')
+        output.append('def {function}({args}) -> {ret}: ...'.format(
+            function=name,
+            args=", ".join(sig),
+            ret=to_annotated_type(signature.ret_type, parent_name, types_done, imports)
+        ))
 
 
 def generate_java_field_stub(parent_name: str,
@@ -319,7 +344,7 @@ def generate_java_class_stub(package_name: str,
     required names will be added to 'imports'.
     """
     obj_dict = getattr(jclass, '__dict__')  # type: Mapping[str, Any]  # noqa
-    items = sorted(obj_dict.items(), key=lambda x: method_name_sort_key(x[0]))
+    items = sorted(obj_dict.items(), key=lambda x: x[0])
     nested_classes_output = []  # type: List[str]
     for attr, value in items:
         if is_java_class(value):
@@ -339,7 +364,7 @@ def generate_java_class_stub(package_name: str,
             generate_java_method_stub(package_name, attr, matching_overloads, types_done=classes_done,
                                       output=methods_output, imports=imports_output)
 
-    fields_output = []
+    fields_output = []  # type: List[str]
     fields = jclass.class_.getDeclaredFields()
     for field in fields:
         generate_java_field_stub(package_name, field, types_done=classes_done,
@@ -382,52 +407,12 @@ def generate_java_class_stub(package_name: str,
         output.append('class %s%s: ...' % (class_name, bases_str))
     else:
         output.append('class %s%s:' % (class_name, bases_str))
-        for line in constructors_output:
-            output.append('    %s' % line)
         for line in fields_output:
+            output.append('    %s' % line)
+        for line in constructors_output:
             output.append('    %s' % line)
         for line in methods_output:
             output.append('    %s' % line)
         for line in nested_classes_output:
             output.append('    %s' % line)
     classes_done.add(class_name)
-
-
-def method_name_sort_key(name: str) -> Tuple[int, str]:
-    if name in ('__new__', '__init__'):
-        return 0, name
-    if name.startswith('__') and name.endswith('__'):
-        return 2, name
-    return 1, name
-
-
-def is_skipped_member(attr: str) -> bool:
-    return attr in ('__getattribute__',
-                    '__str__',
-                    '__repr__',
-                    '__doc__',
-                    '__dict__',
-                    '__module__',
-                    '__weakref__')  # For pickling
-
-
-def find_all_classes() -> List[str]:
-    from java.nio.file import Paths  # noqa
-    from java.net import URI  # noqa
-    from java.lang import ClassLoader  # noqa
-    import zipfile
-    class_loader = ClassLoader.getSystemClassLoader()
-    jars = [str(Paths.get(u.toURI())) for u in class_loader.getURLs()]  # noqa
-    jruntime = str(class_loader.getResource("java/lang/String.class").toURI())
-    if jruntime:
-        jruntime_uri = URI.create(str(jruntime[4:jruntime.index("!")]))
-        jars.append(str(Paths.get(jruntime_uri)))
-    classes = []
-    for jar in jars:
-        if not jar.endswith(".jar"):
-            continue
-        names = zipfile.ZipFile(jar).namelist()
-        for name in names:
-            if name.endswith('.class') and '$' not in name:
-                classes.append(name[:-6].replace('/', '.'))
-    return classes
