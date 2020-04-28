@@ -285,11 +285,13 @@ def generate_java_method_stub(parent_name: str,
     signatures = []
     for overload in overloads:
         j_return_type = None if is_constructor else overload.getGenericReturnType()
-        j_args = overload.getGenericParameterTypes()
+        j_args = overload.getParameters()
         static = False if is_constructor else is_static(overload)
         args = [ArgSig(name='cls' if static else 'self', type=None)]
-        for arg_num, j_arg in enumerate(j_args):
-            args.append(ArgSig(name=infer_argname(j_arg, args), type=infer_typename(j_arg)))
+        for j_arg in j_args:
+            j_arg_type = j_arg.getParameterizedType()
+            j_arg_name = j_arg.getName() if j_arg.isNamePresent() else infer_argname(j_arg_type, args)
+            args.append(ArgSig(name=j_arg_name, type=infer_typename(j_arg_type)))
 
         signatures.append(JavaFunctionSig(name, args=args, ret_type=infer_typename(j_return_type), static=static))
 
@@ -313,11 +315,14 @@ def generate_java_method_stub(parent_name: str,
 
         if is_overloaded:
             output.append('@overload')
-        output.append('def {function}({args}) -> {ret}: ...'.format(
-            function=pysafe(signature.name),
-            args=", ".join(sig),
-            ret=to_annotated_type(signature.ret_type, parent_name, types_done, imports)
-        ))
+        if is_constructor:
+            output.append('def __init__({args}): ...'.format(args=", ".join(sig)))
+        else:
+            output.append('def {function}({args}) -> {ret}: ...'.format(
+                function=pysafe(signature.name),
+                args=", ".join(sig),
+                ret=to_annotated_type(signature.ret_type, parent_name, types_done, imports)
+            ))
 
 
 def generate_java_field_stub(parent_name: str,
