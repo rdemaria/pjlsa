@@ -319,7 +319,7 @@ def generate_java_field_stub(parent_name: str,
     field_type_annotation = to_annotated_type(field_type, parent_name, types_done, imports, True)
     if is_static(field):
         field_type_annotation = 'ClassVar[%s]' % field_type_annotation
-    output.append('%s: %s = ...' % (field_name, field_type_annotation))
+    output.append('%s: %s = ...' % (pysafe(field_name), field_type_annotation))
 
 
 def to_annotated_type(type_name: TypeStr, parent_name: str, types_done: Set[str], imports: List[str],
