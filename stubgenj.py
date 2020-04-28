@@ -320,11 +320,9 @@ def generate_java_class_stub(package_name: str,
     """
     obj_dict = getattr(jclass, '__dict__')  # type: Mapping[str, Any]  # noqa
     items = sorted(obj_dict.items(), key=lambda x: method_name_sort_key(x[0]))
-    done = set()  # type: Set[str]
     nested_classes_output = []  # type: List[str]
     for attr, value in items:
         if is_java_class(value):
-            done.add(attr)
             generate_java_class_stub(package_name, value, classes_done, output=nested_classes_output,
                                      imports_output=imports_output, parent_class=jclass)
 
@@ -332,13 +330,11 @@ def generate_java_class_stub(package_name: str,
     constructors = jclass.class_.getConstructors()
     generate_java_method_stub(package_name, '__init__', constructors, types_done=classes_done,
                               output=constructors_output, imports=imports_output)
-    done.add('__init__')
 
     methods_output = []  # type: List[str]
     overloads = jclass.class_.getMethods()
     for attr, value in items:
         if isinstance(value, jpype.JMethod):
-            done.add(attr)
             matching_overloads = [ov for ov in overloads if ov.getName() == attr]
             generate_java_method_stub(package_name, attr, matching_overloads, types_done=classes_done,
                                       output=methods_output, imports=imports_output)
