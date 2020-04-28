@@ -152,11 +152,9 @@ def is_java_class(obj: type) -> bool:
 
 
 def dependencies_satisfied(module: ModuleType, jclass: jpype.JClass, done: Set[str]):
-    bases = [infer_typename(b.class_) for b in jclass.mro() if is_java_class(b)][1:]
+    bases = [infer_typename(b.class_) for b in java_base_classes(jclass)]
     for base in bases:
         base_name = base.name
-        if '.' not in base_name:
-            continue
         base_module = base_name[:base_name.rindex('.')]
         if base_module == module.__name__:
             base_local_name = base_name[len(base_module) + 1:]
@@ -169,6 +167,24 @@ def dependencies_satisfied(module: ModuleType, jclass: jpype.JClass, done: Set[s
             if not dependencies_satisfied(module, member, done):
                 return False
     return True
+
+
+def java_base_classes(jclass: jpype.JClass) -> List[jpype.JClass]:
+    all_bases = list(jclass.mro())
+    if all_bases[-1] is object:
+        del all_bases[-1]
+    if all_bases[-1].__module__ == '_jpype' and all_bases[-1].__name__ == '_JObject':
+        del all_bases[-1]
+    if 'java.lang.Object' in all_bases[-1].__name__:
+        del all_bases[-1]
+    # remove the class itself
+    all_bases = all_bases[1:]
+    # Remove base classes of other bases as redundant.
+    bases = []  # type: List[jpype.JClass]
+    for base in all_bases:
+        if not any(issubclass(b, base) for b in bases) and is_java_class(base):
+            bases.append(base)
+    return bases
 
 
 def add_typing_import(output: List[str]) -> List[str]:
@@ -370,20 +386,7 @@ def generate_java_class_stub(package_name: str,
         generate_java_field_stub(package_name, field, types_done=classes_done,
                                  output=fields_output, imports=imports_output)
 
-    all_bases = list(jclass.mro())
-    if all_bases[-1] is object:
-        del all_bases[-1]
-    if all_bases[-1].__module__ == '_jpype' and all_bases[-1].__name__ == '_JObject':
-        del all_bases[-1]
-    if 'java.lang.Object' in all_bases[-1].__name__:
-        del all_bases[-1]
-    # remove the class itself
-    all_bases = all_bases[1:]
-    # Remove base classes of other bases as redundant.
-    bases = []  # type: List[jpype.JClass]
-    for base in all_bases:
-        if not any(issubclass(b, base) for b in bases) and is_java_class(base):
-            bases.append(base)
+    bases = java_base_classes(jclass)
     if bases:
         bases_str = '(%s)' % ', '.join(
             to_annotated_type(
