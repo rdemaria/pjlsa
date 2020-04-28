@@ -149,18 +149,13 @@ def dependencies_satisfied(module: ModuleType, jclass: jpype.JClass, done: Set[s
 
 def add_typing_import(output: List[str]) -> List[str]:
     names = []
-    for name in ['Any', 'Union', 'Tuple', 'Optional', 'List', 'Dict', 'TypeVar', 'Type']:
+    for name in ['Any', 'Union', 'Tuple', 'Optional', 'List', 'Dict', 'TypeVar', 'Type', 'ClassVar']:
         if any(re.search(r'\b%s\b' % name, line) for line in output):
             names.append(name)
     if names:
         return ['from typing import %s' % ', '.join(names), ''] + output
     else:
         return output[:]
-
-
-def is_static(java_overload: Any) -> bool:
-    from java.lang.reflect import Modifier  # noqa
-    return java_overload.getModifiers() & Modifier.STATIC > 0
 
 
 def convert_strings() -> bool:
@@ -213,6 +208,16 @@ def infer_argname(jtype: Any, prev_args: List[ArgSig]) -> str:
         return typename + str(prev_args_of_type + 1)
 
 
+def is_static(java_overload: Any) -> bool:
+    from java.lang.reflect import Modifier  # noqa
+    return java_overload.getModifiers() & Modifier.STATIC > 0
+
+
+def is_public(member: Any) -> bool:
+    from java.lang.reflect import Modifier  # noqa
+    return member.getModifiers() & Modifier.PUBLIC > 0
+
+
 def generate_java_method_stub(parent_name: str,
                               name: str,
                               overloads: List[Any],
@@ -259,6 +264,21 @@ def generate_java_method_stub(parent_name: str,
                 args=", ".join(sig),
                 ret=to_annotated_type(signature.ret_type, parent_name, types_done, imports)
             ))
+
+
+def generate_java_field_stub(parent_name: str,
+                             field: Any,
+                             types_done: Set[str],
+                             output: List[str],
+                             imports: List[str]) -> None:
+    if not is_public(field):
+        return  # private field
+    field_name = field.getName()
+    field_type = infer_typename(field.getType())
+    field_type_annotation = to_annotated_type(field_type, parent_name, types_done, imports, True)
+    if is_static(field):
+        field_type_annotation = 'ClassVar[%s]' % field_type_annotation
+    output.append('%s: %s = ...' % (field_name, field_type_annotation))
 
 
 def to_annotated_type(type_name: TypeStr, parent_name: str, types_done: Set[str], imports: List[str],
@@ -324,11 +344,11 @@ def generate_java_class_stub(package_name: str,
                                       output=methods_output, imports=imports_output)
 
     fields_output = []
-    for attr, value in items:
-        if is_skipped_member(attr):
-            continue
-        if attr not in done:
-            fields_output.append('%s: Any = ...' % attr)
+    fields = jclass.class_.getDeclaredFields()
+    for field in fields:
+        generate_java_field_stub(package_name, field, types_done=classes_done,
+                                 output=fields_output, imports=imports_output)
+
     all_bases = list(jclass.mro())
     if all_bases[-1] is object:
         del all_bases[-1]
