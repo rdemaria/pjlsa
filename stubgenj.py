@@ -92,7 +92,7 @@ def generate_stubs_for_java_package(package_name: str, output_file: str) -> None
             java_classes_to_generate = java_classes  # some inner class cases - will generate them with full names
         for cls in sorted(java_classes_to_generate, key=lambda c: c.__name__):
             generate_java_class_stub(module.__name__, cls, classes_done=done,
-                                     output=class_output, imports=import_output)
+                                     output=class_output, imports_output=import_output)
             java_classes.remove(cls)
 
     output = []
@@ -163,6 +163,16 @@ def is_static(java_overload: Any) -> bool:
     return java_overload.getModifiers() & Modifier.STATIC > 0
 
 
+def convert_strings() -> bool:
+    if convert_strings.jpype_flag is None:
+        from java.lang import String  # noqa
+        convert_strings.jpype_flag = isinstance(String().trim(), str)
+    return convert_strings.jpype_flag
+
+
+convert_strings.jpype_flag = None
+
+
 def infer_typename(jtype: Any) -> TypeStr:
     if jtype is None:
         return TypeStr('None')
@@ -181,7 +191,7 @@ def infer_typename(jtype: Any) -> TypeStr:
             return TypeStr('float')
         if typename == 'char':
             return TypeStr('str')  # 1-character string
-    if typename == 'java.lang.String':
+    if typename == 'java.lang.String' and convert_strings():
         return TypeStr('str')
     if typename == 'java.lang.Class':
         return TypeStr('Type')
@@ -209,11 +219,12 @@ def generate_java_method_stub(parent_name: str,
                               types_done: Set[str],
                               output: List[str],
                               imports: List[str]) -> None:
+    is_constructor = name == '__init__'
     signatures = []
     for overload in overloads:
-        j_return_type = overload.getReturnType()
+        j_return_type = None if is_constructor else overload.getReturnType()
         j_args = overload.getParameterTypes()
-        static = is_static(overload)
+        static = False if is_constructor else is_static(overload)
         args = [ArgSig(name='cls' if static else 'self', type=None)]
         for arg_num, j_arg in enumerate(j_args):
             args.append(ArgSig(name=infer_argname(j_arg, args), type=infer_typename(j_arg)))
@@ -280,7 +291,7 @@ def generate_java_class_stub(package_name: str,
                              jclass: jpype.JClass,
                              classes_done: Set[str],
                              output: List[str],
-                             imports: List[str],
+                             imports_output: List[str],
                              parent_class: jpype.JClass = None) -> None:
     """Generate stub for a single class using runtime introspection.
 
@@ -290,28 +301,34 @@ def generate_java_class_stub(package_name: str,
     obj_dict = getattr(jclass, '__dict__')  # type: Mapping[str, Any]  # noqa
     items = sorted(obj_dict.items(), key=lambda x: method_name_sort_key(x[0]))
     done = set()  # type: Set[str]
-    nested_classes = []  # type: List[str]
+    nested_classes_output = []  # type: List[str]
     for attr, value in items:
         if is_java_class(value):
             done.add(attr)
-            generate_java_class_stub(package_name, value, classes_done, output=nested_classes, imports=imports,
-                                     parent_class=jclass)
+            generate_java_class_stub(package_name, value, classes_done, output=nested_classes_output,
+                                     imports_output=imports_output, parent_class=jclass)
 
-    methods = []  # type: List[str]
+    constructors_output = []  # type: List[str]
+    constructors = jclass.class_.getConstructors()
+    generate_java_method_stub(package_name, '__init__', constructors, types_done=classes_done,
+                              output=constructors_output, imports=imports_output)
+    done.add('__init__')
+
+    methods_output = []  # type: List[str]
     overloads = jclass.class_.getMethods()
     for attr, value in items:
         if isinstance(value, jpype.JMethod):
             done.add(attr)
             matching_overloads = [ov for ov in overloads if ov.getName() == attr]
             generate_java_method_stub(package_name, attr, matching_overloads, types_done=classes_done,
-                                      output=methods, imports=imports)
+                                      output=methods_output, imports=imports_output)
 
-    fields = []
+    fields_output = []
     for attr, value in items:
         if is_skipped_member(attr):
             continue
         if attr not in done:
-            fields.append('%s: Any = ...' % attr)
+            fields_output.append('%s: Any = ...' % attr)
     all_bases = list(jclass.mro())
     if all_bases[-1] is object:
         del all_bases[-1]
@@ -332,7 +349,7 @@ def generate_java_class_stub(package_name: str,
                 infer_typename(base.class_),
                 package_name,
                 classes_done,
-                imports,
+                imports_output,
                 can_be_deferred=False
             ) for base in bases
         )
@@ -342,19 +359,21 @@ def generate_java_class_stub(package_name: str,
         infer_typename(jclass.class_),
         parent_class.class_.getName() if parent_class else package_name,
         classes_done,
-        imports,
+        imports_output,
         force_short=True
     )
-    if not methods and not fields and not nested_classes:
+    if not constructors_output and not methods_output and not fields_output and not nested_classes_output:
         output.append('class %s%s: ...' % (class_name, bases_str))
     else:
         output.append('class %s%s:' % (class_name, bases_str))
-        for variable in fields:
-            output.append('    %s' % variable)
-        for method in methods:
-            output.append('    %s' % method)
-        for nested in nested_classes:
-            output.append('    %s' % nested)
+        for line in constructors_output:
+            output.append('    %s' % line)
+        for line in fields_output:
+            output.append('    %s' % line)
+        for line in methods_output:
+            output.append('    %s' % line)
+        for line in nested_classes_output:
+            output.append('    %s' % line)
     classes_done.add(class_name)
 
 
