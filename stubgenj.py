@@ -210,13 +210,24 @@ convert_strings.jpype_flag = None
 
 
 def infer_typename(jtype: Any) -> TypeStr:
+    from java.lang.reflect import GenericArrayType, ParameterizedType, TypeVariable, WildcardType  # noqa
     if jtype is None:
         return TypeStr('None')
-    if jtype.isArray():
-        return TypeStr('List', [infer_typename(jtype.getComponentType())])
-    typename = jtype.getName()
+    if isinstance(jtype, ParameterizedType):
+        raw_type = jtype.getRawType()
+    elif isinstance(jtype, TypeVariable):
+        return infer_typename(jtype.getBounds()[0])
+    elif isinstance(jtype, WildcardType):
+        return infer_typename(jtype.getUpperBounds()[0])
+    elif isinstance(jtype, GenericArrayType):
+        return TypeStr('List', [infer_typename(jtype.getGenericComponentType())])
+    else:
+        raw_type = jtype
+    if raw_type.isArray():
+        return TypeStr('List', [infer_typename(raw_type.getComponentType())])
+    typename = raw_type.getName()
 
-    if typename in ('void', 'java.lang.Void'):
+    if typename in 'void':
         return TypeStr('None')
     if typename in ('byte', 'short', 'int', 'long', 'java.lang.Byte', 'java.lang.Short',
                     'java.lang.Integer', 'java.lang.Long'):
@@ -238,13 +249,15 @@ def infer_typename(jtype: Any) -> TypeStr:
 
 
 def infer_argname(jtype: Any, prev_args: List[ArgSig]) -> str:
-    import keyword
     if jtype is None:
         return 'arg%d' % len(prev_args)
-    typename = jtype.getSimpleName().split('$')[-1].replace('[]', 'Array')
+
+    typename = str(jtype.getTypeName())
+    is_array = typename.endswith('[]')
+    typename = typename.split('<')[0].split('$')[-1].split('.')[-1].replace('[]', '')
     typename = typename[:1].lower() + typename[1:]
-    if keyword.iskeyword(typename):
-        typename = 'java' + typename.capitalize()
+    if is_array:
+        typename += 'Array'
     prev_args_of_type = sum([bool(re.match(typename + '\\d*', prev.name)) for prev in prev_args])
     if prev_args_of_type == 0:
         return typename
@@ -271,8 +284,8 @@ def generate_java_method_stub(parent_name: str,
     is_constructor = name == '__init__'
     signatures = []
     for overload in overloads:
-        j_return_type = None if is_constructor else overload.getReturnType()
-        j_args = overload.getParameterTypes()
+        j_return_type = None if is_constructor else overload.getGenericReturnType()
+        j_args = overload.getGenericParameterTypes()
         static = False if is_constructor else is_static(overload)
         args = [ArgSig(name='cls' if static else 'self', type=None)]
         for arg_num, j_arg in enumerate(j_args):
@@ -403,7 +416,7 @@ def generate_java_class_stub(package_name: str,
     else:
         bases_str = ''
     class_name = to_annotated_type(
-        infer_typename(jclass.class_),
+        TypeStr(jclass.class_.getSimpleName()),  # do not use infer_typename to avoid mangling java.lang classes
         parent_class.class_.getName() if parent_class else package_name,
         classes_done,
         imports_output,
