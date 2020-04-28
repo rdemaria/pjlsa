@@ -313,7 +313,7 @@ def generate_java_field_stub(parent_name: str,
                              output: List[str],
                              imports: List[str]) -> None:
     if not is_public(field):
-        return  # private field
+        return
     field_name = field.getName()
     field_type = infer_typename(field.getType())
     field_type_annotation = to_annotated_type(field_type, parent_name, types_done, imports, True)
