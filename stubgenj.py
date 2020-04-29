@@ -131,8 +131,6 @@ def generate_stubs_for_java_package(package_name: str, output_file: str) -> None
 
     output.append('')
     for line in class_output:
-        if line.startswith('class') and output and output[-1]:
-            output.append('')
         output.append(line)
     output = add_typing_import(output)
     with open(output_file, 'w') as file:
@@ -160,7 +158,7 @@ def is_java_class(obj: type) -> bool:
 
 
 def dependencies_satisfied(module: ModuleType, jclass: jpype.JClass, done: Set[str]):
-    bases = [python_type(b.class_) for b in java_base_classes(jclass)]
+    bases = [python_type(b) for b in java_super_types(jclass.class_)]
     for base in bases:
         base_name = base.name
         base_module = base_name[:base_name.rindex('.')]
@@ -177,31 +175,20 @@ def dependencies_satisfied(module: ModuleType, jclass: jpype.JClass, done: Set[s
     return True
 
 
-def java_base_classes(jclass: jpype.JClass) -> List[jpype.JClass]:
-    all_bases = list(jclass.mro())
-    if all_bases[-1] is object:
-        del all_bases[-1]
-    if all_bases[-1].__module__ == '_jpype' and all_bases[-1].__name__ == '_JObject':
-        del all_bases[-1]
-    if 'java.lang.Object' in all_bases[-1].__name__:
-        del all_bases[-1]
-    # remove the class itself
-    all_bases = all_bases[1:]
-    # Remove base classes of other bases as redundant.
-    bases = []  # type: List[jpype.JClass]
-    for base in all_bases:
-        if not any(issubclass(b, base) for b in bases) and is_java_class(base):
-            bases.append(base)
-    return bases
+def java_super_types(j_class: Any) -> List[Any]:
+    super_types = [j_class.getGenericSuperclass()] + list(j_class.getGenericInterfaces())
+    if super_types[0] is None or super_types[0].getTypeName() == 'java.lang.Object':
+        del super_types[0]
+    return super_types
 
 
 def add_typing_import(output: List[str]) -> List[str]:
     names = []
-    for name in ['Any', 'Union', 'Tuple', 'Optional', 'List', 'Dict', 'TypeVar', 'Type', 'ClassVar']:
-        if any(re.search(r'\b%s\b' % name, line) for line in output):
+    for name in ['Any', 'Union', 'List', 'TypeVar', 'Type', 'ClassVar', 'Generic', 'Set', 'Collection', 'Mapping']:
+        if any(re.search(r'\b_py_%s\b' % name, line) for line in output):
             names.append(name)
     if names:
-        return ['from typing import %s' % ', '.join(names), ''] + output
+        return ['from typing import {ti} as _py_{ti}'.format(ti=ti_name) for ti_name in names] + output
     else:
         return output[:]
 
@@ -232,9 +219,9 @@ def translate_type_name(typename: str, type_args: Optional[List[TypeStr]] = None
     if typename == 'java.lang.String' and convert_strings():
         return TypeStr('str')
     if typename == 'java.lang.Class':
-        return TypeStr('Type', type_args)
+        return TypeStr('_py_Type', type_args)
     if typename == 'java.lang.Object':
-        return TypeStr('Any')
+        return TypeStr('_py_Any')
     return TypeStr(typename, type_args)
 
 
@@ -262,11 +249,11 @@ def python_type(j_type: Any, type_vars: Optional[List[TypeVarStr]] = None) -> Ty
             j_bound = j_bound.getRawType()
         return python_type(j_bound, type_vars)
     elif isinstance(j_type, GenericArrayType):
-        return TypeStr('List', [python_type(j_type.getGenericComponentType(), type_vars)])
+        return TypeStr('_py_List', [python_type(j_type.getGenericComponentType(), type_vars)])
     else:
         j_raw_type = j_type
         if j_raw_type.isArray():
-            return TypeStr('List', [python_type(j_raw_type.getComponentType(), type_vars)])
+            return TypeStr('_py_List', [python_type(j_raw_type.getComponentType(), type_vars)])
         return translate_type_name(j_raw_type.getName())
 
 
@@ -278,10 +265,10 @@ def python_type_var(j_type: Any, uniq_scope_id: str) -> TypeVarStr:
     if isinstance(j_bound, ParameterizedType):
         j_bound = j_bound.getRawType()
     bound = python_type(j_bound)
-    if bound.name == 'Any':
+    if bound.name == '_py_Any':
         bound = None  # unbounded
     java_name = j_type.getName()
-    return TypeVarStr(java_name=java_name, python_name='__%s__%s' % (uniq_scope_id, java_name), bound=bound)
+    return TypeVarStr(java_name=java_name, python_name='_%s__%s' % (uniq_scope_id, java_name), bound=bound)
 
 
 def infer_argname(j_type: Any, prev_args: List[ArgSig]) -> str:
@@ -317,7 +304,7 @@ def generate_java_method_stub(parent_name: str,
                               types_done: Set[str],
                               class_type_vars: List[TypeVarStr],
                               output: List[str],
-                              imports: List[str]) -> None:
+                              imports_output: List[str]) -> None:
     is_constructor = name == '__init__'
     is_overloaded = len(j_overloads) > 1
     signatures = []  # type: List[JavaFunctionSig]
@@ -338,20 +325,10 @@ def generate_java_method_stub(parent_name: str,
                                           static=static, type_vars=method_type_vars))
 
     if is_overloaded:
-        imports.append('from typing import overload')
+        imports_output.append('from typing import overload')
     for signature in signatures:
         for type_var in signature.type_vars:
-            if type_var.bound is not None:
-                output.append('{pyname} = TypeVar(\'{pyname}\', bound={bound})  # <{jname}>'.format(
-                    pyname=type_var.python_name,
-                    bound=to_annotated_type(type_var.bound, parent_name, types_done, imports),
-                    jname=type_var.java_name
-                ))
-            else:
-                output.append('{pyname} = TypeVar(\'{pyname}\')  # <{jname}>'.format(
-                    pyname=type_var.python_name,
-                    jname=type_var.java_name
-                ))
+            output.append(to_type_var_declaration(type_var, parent_name, types_done, imports_output))
         if signature.static:
             output.append('@classmethod')
         sig = []
@@ -362,7 +339,7 @@ def generate_java_method_stub(parent_name: str,
                 arg_def = pysafe(arg.name)
 
                 if arg.type:
-                    arg_def += ": " + to_annotated_type(arg.type, parent_name, types_done, imports)
+                    arg_def += ": " + to_annotated_type(arg.type, parent_name, types_done, imports_output)
 
             sig.append(arg_def)
 
@@ -374,22 +351,25 @@ def generate_java_method_stub(parent_name: str,
             output.append('def {function}({args}) -> {ret}: ...'.format(
                 function=pysafe(signature.name),
                 args=", ".join(sig),
-                ret=to_annotated_type(signature.ret_type, parent_name, types_done, imports)
+                ret=to_annotated_type(signature.ret_type, parent_name, types_done, imports_output)
             ))
 
 
 def generate_java_field_stub(parent_name: str,
                              j_field: Any,
                              types_done: Set[str],
+                             class_type_vars: List[TypeVarStr],
                              output: List[str],
-                             imports: List[str]) -> None:
+                             imports_output: List[str]) -> None:
     if not is_public(j_field):
         return
+    static = is_static(j_field)
     field_name = j_field.getName()
-    field_type = python_type(j_field.getType())
-    field_type_annotation = to_annotated_type(field_type, parent_name, types_done, imports, True)
-    if is_static(j_field):
-        field_type_annotation = 'ClassVar[%s]' % field_type_annotation
+    field_type = python_type(j_field.getType(), class_type_vars if not static else None)
+    field_type_annotation = to_annotated_type(field_type, parent_name, types_done, imports_output,
+                                              can_be_deferred=True)
+    if static:
+        field_type_annotation = '_py_ClassVar[%s]' % field_type_annotation
     output.append('%s: %s = ...' % (pysafe(field_name), field_type_annotation))
 
 
@@ -422,29 +402,68 @@ def to_annotated_type(type_name: TypeStr, parent_name: str, types_done: Set[str]
         return atype
 
 
+def to_type_var_declaration(type_var: TypeVarStr, parent_name: str, types_done: Set[str], imports: List[str]) -> str:
+    if type_var.bound is not None:
+        return '{pyname} = _py_TypeVar(\'{pyname}\', bound={bound})  # <{jname}>'.format(
+            pyname=type_var.python_name,
+            bound=to_annotated_type(type_var.bound, parent_name, types_done, imports),
+            jname=type_var.java_name
+        )
+    else:
+        return '{pyname} = _py_TypeVar(\'{pyname}\')  # <{jname}>'.format(
+            pyname=type_var.python_name,
+            jname=type_var.java_name
+        )
+
+
+def extra_super_types(class_name: str, class_type_vars: List[TypeVarStr]) -> List[str]:
+    if class_name == 'java.util.Map':
+        return ['_py_Mapping[%s, %s]' % (class_type_vars[0].python_name, class_type_vars[1].python_name)]
+    elif class_name == 'java.util.Collection':
+        return ['_py_Collection[%s]' % class_type_vars[0].python_name]
+    elif class_name == 'java.util.Set':
+        return ['_py_Set[%s]' % class_type_vars[0].python_name]
+    elif class_name == 'java.util.List':
+        return ['_py_List[%s]' % class_type_vars[0].python_name]
+    return []
+
+
 def generate_java_class_stub(package_name: str,
                              jclass: jpype.JClass,
                              classes_done: Set[str],
                              output: List[str],
                              imports_output: List[str],
-                             parent_class: jpype.JClass = None) -> None:
-    """Generate stub for a single class using runtime introspection.
-
-    The result lines will be appended to 'output'. If necessary, any
-    required names will be added to 'imports'.
-    """
+                             type_var_output: List[str] = None,
+                             parent_class: jpype.JClass = None,
+                             parent_class_type_vars: List[TypeVarStr] = None) -> None:
     obj_dict = getattr(jclass, '__dict__')  # type: Mapping[str, Any]  # noqa
     items = sorted(obj_dict.items(), key=lambda x: x[0])
+
+    write_type_vars_to_output = False
+    if type_var_output is None:
+        write_type_vars_to_output = True
+        type_var_output = []  # type: List[str]
+
+    class_uniq_prefix = jclass.class_.getName().replace(package_name + '.', '').replace('.', '_').replace('$', '__')
+    class_type_vars = [python_type_var(j_tp, uniq_scope_id=class_uniq_prefix)
+                       for j_tp in jclass.class_.getTypeParameters()]
+    if parent_class_type_vars is None or is_static(jclass.class_):
+        usable_type_vars = class_type_vars
+    else:
+        usable_type_vars = parent_class_type_vars + class_type_vars
+    jclass.class_.getTypeParameters()
     nested_classes_output = []  # type: List[str]
     for attr, value in items:
         if is_java_class(value):
             generate_java_class_stub(package_name, value, classes_done, output=nested_classes_output,
-                                     imports_output=imports_output, parent_class=jclass)
+                                     type_var_output=type_var_output, imports_output=imports_output,
+                                     parent_class=jclass, parent_class_type_vars=usable_type_vars)
 
     constructors_output = []  # type: List[str]
     constructors = jclass.class_.getConstructors()
     generate_java_method_stub(package_name, '__init__', constructors, types_done=classes_done,
-                              class_type_vars=[], output=constructors_output, imports=imports_output)
+                              class_type_vars=usable_type_vars,
+                              output=constructors_output, imports_output=imports_output)
 
     methods_output = []  # type: List[str]
     j_overloads = jclass.class_.getMethods()
@@ -452,27 +471,32 @@ def generate_java_class_stub(package_name: str,
         if isinstance(value, jpype.JMethod):
             matching_j_overloads = [j_ov for j_ov in j_overloads if j_ov.getName() == attr]
             generate_java_method_stub(package_name, attr, matching_j_overloads, types_done=classes_done,
-                                      class_type_vars=[], output=methods_output, imports=imports_output)
+                                      class_type_vars=usable_type_vars,
+                                      output=methods_output, imports_output=imports_output)
 
     fields_output = []  # type: List[str]
     j_fields = jclass.class_.getDeclaredFields()
     for j_field in j_fields:
         generate_java_field_stub(package_name, j_field, types_done=classes_done,
-                                 output=fields_output, imports=imports_output)
+                                 class_type_vars=usable_type_vars, output=fields_output, imports_output=imports_output)
 
-    bases = java_base_classes(jclass)
-    if bases:
-        bases_str = '(%s)' % ', '.join(
-            to_annotated_type(
-                python_type(base.class_),
-                package_name,
-                classes_done,
-                imports_output,
-                can_be_deferred=False
-            ) for base in bases
-        )
-    else:
-        bases_str = ''
+    super_types = []
+    for super in java_super_types(jclass.class_):
+        super_types.append(to_annotated_type(
+            python_type(super, usable_type_vars),
+            package_name,
+            classes_done,
+            imports_output,
+            can_be_deferred=False
+        ))
+    if class_type_vars:
+        super_types.append('_py_Generic[%s]' % ', '.join([tv.python_name for tv in class_type_vars]))
+    super_types = super_types + extra_super_types(jclass.class_.getName(), class_type_vars)
+    for type_var in class_type_vars:
+        type_var_output.append(to_type_var_declaration(type_var, package_name, classes_done, imports_output))
+
+    bases_str = '(%s)' % ', '.join(super_types) if super_types else ''
+
     class_name = to_annotated_type(
         TypeStr(jclass.class_.getSimpleName()),  # do not use infer_typename to avoid mangling java.lang classes
         parent_class.class_.getName() if parent_class else package_name,
@@ -480,6 +504,11 @@ def generate_java_class_stub(package_name: str,
         imports_output,
         force_short=True
     )
+
+    if write_type_vars_to_output:
+        output.append('')
+        output += type_var_output
+
     if not constructors_output and not methods_output and not fields_output and not nested_classes_output:
         output.append('class %s%s: ...' % (class_name, bases_str))
     else:
