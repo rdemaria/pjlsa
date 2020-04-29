@@ -25,6 +25,12 @@ class TypeStr:
         return "TypeStr(name={}, type_args={})".format(repr(self.name), repr(self.type_args))
 
 
+TypeVarStr = NamedTuple('TypeVarStr', [
+    ('java_name', str),
+    ('python_name', str),
+    ('bound', Optional[TypeStr])
+])
+
 ArgSig = NamedTuple('ArgSig', [
     ('name', str),
     ('type', Optional[TypeStr])
@@ -34,7 +40,8 @@ JavaFunctionSig = NamedTuple('JavaFunctionSig', [
     ('name', str),
     ('static', bool),
     ('args', List[ArgSig]),
-    ('ret_type', TypeStr)
+    ('ret_type', TypeStr),
+    ('type_vars', List[TypeVarStr])
 ])
 
 
@@ -153,7 +160,7 @@ def is_java_class(obj: type) -> bool:
 
 
 def dependencies_satisfied(module: ModuleType, jclass: jpype.JClass, done: Set[str]):
-    bases = [infer_typename(b.class_) for b in java_base_classes(jclass)]
+    bases = [python_type(b.class_) for b in java_base_classes(jclass)]
     for base in bases:
         base_name = base.name
         base_module = base_name[:base_name.rindex('.')]
@@ -209,24 +216,7 @@ def convert_strings() -> bool:
 convert_strings.jpype_flag = None
 
 
-def infer_typename(jtype: Any) -> TypeStr:
-    from java.lang.reflect import GenericArrayType, ParameterizedType, TypeVariable, WildcardType  # noqa
-    if jtype is None:
-        return TypeStr('None')
-    if isinstance(jtype, ParameterizedType):
-        raw_type = jtype.getRawType()
-    elif isinstance(jtype, TypeVariable):
-        return infer_typename(jtype.getBounds()[0])
-    elif isinstance(jtype, WildcardType):
-        return infer_typename(jtype.getUpperBounds()[0])
-    elif isinstance(jtype, GenericArrayType):
-        return TypeStr('List', [infer_typename(jtype.getGenericComponentType())])
-    else:
-        raw_type = jtype
-    if raw_type.isArray():
-        return TypeStr('List', [infer_typename(raw_type.getComponentType())])
-    typename = raw_type.getName()
-
+def translate_type_name(typename: str, type_args: Optional[List[TypeStr]] = None) -> TypeStr:
     if typename == 'void':
         return TypeStr('None')
     if typename in ('byte', 'short', 'int', 'long', 'java.lang.Byte', 'java.lang.Short',
@@ -242,17 +232,63 @@ def infer_typename(jtype: Any) -> TypeStr:
     if typename == 'java.lang.String' and convert_strings():
         return TypeStr('str')
     if typename == 'java.lang.Class':
-        return TypeStr('Type')
+        return TypeStr('Type', type_args)
     if typename == 'java.lang.Object':
         return TypeStr('Any')
-    return TypeStr(typename)
+    return TypeStr(typename, type_args)
 
 
-def infer_argname(jtype: Any, prev_args: List[ArgSig]) -> str:
-    if jtype is None:
+def python_type(j_type: Any, type_vars: Optional[List[TypeVarStr]] = None) -> TypeStr:
+    from java.lang.reflect import GenericArrayType, ParameterizedType, TypeVariable, WildcardType  # noqa
+    if j_type is None:
+        return TypeStr('None')
+    if type_vars is None:
+        type_vars = []
+    if isinstance(j_type, ParameterizedType):
+        return translate_type_name(j_type.getRawType().getTypeName(),
+                                   type_args=[python_type(arg, type_vars) for arg in j_type.getActualTypeArguments()])
+    elif isinstance(j_type, TypeVariable):
+        j_var_name = j_type.getName()
+        matching_vars = [tv for tv in type_vars if tv.java_name == j_var_name]
+        if len(matching_vars) == 1:
+            return TypeStr(matching_vars[0].python_name)
+        j_bound = j_type.getBounds()[0]
+        if isinstance(j_bound, ParameterizedType):
+            j_bound = j_bound.getRawType()
+        return python_type(j_bound, type_vars)
+    elif isinstance(j_type, WildcardType):
+        j_bound = j_type.getUpperBounds()[0]
+        if isinstance(j_bound, ParameterizedType):
+            j_bound = j_bound.getRawType()
+        return python_type(j_bound, type_vars)
+    elif isinstance(j_type, GenericArrayType):
+        return TypeStr('List', [python_type(j_type.getGenericComponentType(), type_vars)])
+    else:
+        j_raw_type = j_type
+        if j_raw_type.isArray():
+            return TypeStr('List', [python_type(j_raw_type.getComponentType(), type_vars)])
+        return translate_type_name(j_raw_type.getName())
+
+
+def python_type_var(j_type: Any, uniq_scope_id: str) -> TypeVarStr:
+    from java.lang.reflect import TypeVariable, ParameterizedType  # noqa
+    if not isinstance(j_type, TypeVariable):
+        raise RuntimeError("FIXME: can not convert to type var " + str(j_type))
+    j_bound = j_type.getBounds()[0]
+    if isinstance(j_bound, ParameterizedType):
+        j_bound = j_bound.getRawType()
+    bound = python_type(j_bound)
+    if bound.name == 'Any':
+        bound = None  # unbounded
+    java_name = j_type.getName()
+    return TypeVarStr(java_name=java_name, python_name='__%s__%s' % (uniq_scope_id, java_name), bound=bound)
+
+
+def infer_argname(j_type: Any, prev_args: List[ArgSig]) -> str:
+    if j_type is None:
         return 'arg%d' % len(prev_args)
 
-    typename = str(jtype.getTypeName())
+    typename = str(j_type.getTypeName())
     is_array = typename.endswith('[]')
     typename = typename.split('<')[0].split('$')[-1].split('.')[-1].replace('[]', '')
     typename = typename[:1].lower() + typename[1:]
@@ -265,9 +301,9 @@ def infer_argname(jtype: Any, prev_args: List[ArgSig]) -> str:
         return typename + str(prev_args_of_type + 1)
 
 
-def is_static(java_overload: Any) -> bool:
+def is_static(member: Any) -> bool:
     from java.lang.reflect import Modifier  # noqa
-    return java_overload.getModifiers() & Modifier.STATIC > 0
+    return member.getModifiers() & Modifier.STATIC > 0
 
 
 def is_public(member: Any) -> bool:
@@ -277,28 +313,45 @@ def is_public(member: Any) -> bool:
 
 def generate_java_method_stub(parent_name: str,
                               name: str,
-                              overloads: List[Any],
+                              j_overloads: List[Any],
                               types_done: Set[str],
+                              class_type_vars: List[TypeVarStr],
                               output: List[str],
                               imports: List[str]) -> None:
     is_constructor = name == '__init__'
-    signatures = []
-    for overload in overloads:
-        j_return_type = None if is_constructor else overload.getGenericReturnType()
-        j_args = overload.getParameters()
-        static = False if is_constructor else is_static(overload)
+    is_overloaded = len(j_overloads) > 1
+    signatures = []  # type: List[JavaFunctionSig]
+    for i, j_overload in enumerate(j_overloads):
+        j_return_type = None if is_constructor else j_overload.getGenericReturnType()
+        j_args = j_overload.getParameters()
+        static = False if is_constructor else is_static(j_overload)
+        method_type_vars = [python_type_var(j_tp, uniq_scope_id='%s_%d' % (name, i) if is_overloaded else name)
+                            for j_tp in j_overload.getTypeParameters()]
+        usable_type_vars = method_type_vars + class_type_vars if not static else method_type_vars
         args = [ArgSig(name='cls' if static else 'self', type=None)]
         for j_arg in j_args:
             j_arg_type = j_arg.getParameterizedType()
             j_arg_name = j_arg.getName() if j_arg.isNamePresent() else infer_argname(j_arg_type, args)
-            args.append(ArgSig(name=j_arg_name, type=infer_typename(j_arg_type)))
+            args.append(ArgSig(name=j_arg_name, type=python_type(j_arg_type, usable_type_vars)))
 
-        signatures.append(JavaFunctionSig(name, args=args, ret_type=infer_typename(j_return_type), static=static))
+        signatures.append(JavaFunctionSig(name, args=args, ret_type=python_type(j_return_type, usable_type_vars),
+                                          static=static, type_vars=method_type_vars))
 
-    is_overloaded = len(signatures) > 1 if signatures else False
     if is_overloaded:
         imports.append('from typing import overload')
     for signature in signatures:
+        for type_var in signature.type_vars:
+            if type_var.bound is not None:
+                output.append('{pyname} = TypeVar(\'{pyname}\', bound={bound})  # <{jname}>'.format(
+                    pyname=type_var.python_name,
+                    bound=to_annotated_type(type_var.bound, parent_name, types_done, imports),
+                    jname=type_var.java_name
+                ))
+            else:
+                output.append('{pyname} = TypeVar(\'{pyname}\')  # <{jname}>'.format(
+                    pyname=type_var.python_name,
+                    jname=type_var.java_name
+                ))
         if signature.static:
             output.append('@classmethod')
         sig = []
@@ -326,16 +379,16 @@ def generate_java_method_stub(parent_name: str,
 
 
 def generate_java_field_stub(parent_name: str,
-                             field: Any,
+                             j_field: Any,
                              types_done: Set[str],
                              output: List[str],
                              imports: List[str]) -> None:
-    if not is_public(field):
+    if not is_public(j_field):
         return
-    field_name = field.getName()
-    field_type = infer_typename(field.getType())
+    field_name = j_field.getName()
+    field_type = python_type(j_field.getType())
     field_type_annotation = to_annotated_type(field_type, parent_name, types_done, imports, True)
-    if is_static(field):
+    if is_static(j_field):
         field_type_annotation = 'ClassVar[%s]' % field_type_annotation
     output.append('%s: %s = ...' % (pysafe(field_name), field_type_annotation))
 
@@ -391,27 +444,27 @@ def generate_java_class_stub(package_name: str,
     constructors_output = []  # type: List[str]
     constructors = jclass.class_.getConstructors()
     generate_java_method_stub(package_name, '__init__', constructors, types_done=classes_done,
-                              output=constructors_output, imports=imports_output)
+                              class_type_vars=[], output=constructors_output, imports=imports_output)
 
     methods_output = []  # type: List[str]
-    overloads = jclass.class_.getMethods()
+    j_overloads = jclass.class_.getMethods()
     for attr, value in items:
         if isinstance(value, jpype.JMethod):
-            matching_overloads = [ov for ov in overloads if ov.getName() == attr]
-            generate_java_method_stub(package_name, attr, matching_overloads, types_done=classes_done,
-                                      output=methods_output, imports=imports_output)
+            matching_j_overloads = [j_ov for j_ov in j_overloads if j_ov.getName() == attr]
+            generate_java_method_stub(package_name, attr, matching_j_overloads, types_done=classes_done,
+                                      class_type_vars=[], output=methods_output, imports=imports_output)
 
     fields_output = []  # type: List[str]
-    fields = jclass.class_.getDeclaredFields()
-    for field in fields:
-        generate_java_field_stub(package_name, field, types_done=classes_done,
+    j_fields = jclass.class_.getDeclaredFields()
+    for j_field in j_fields:
+        generate_java_field_stub(package_name, j_field, types_done=classes_done,
                                  output=fields_output, imports=imports_output)
 
     bases = java_base_classes(jclass)
     if bases:
         bases_str = '(%s)' % ', '.join(
             to_annotated_type(
-                infer_typename(base.class_),
+                python_type(base.class_),
                 package_name,
                 classes_done,
                 imports_output,
