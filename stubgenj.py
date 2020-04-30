@@ -72,7 +72,7 @@ def generate_java_stubs(pkg_prefixes: List[str], use_stub_suffix: bool = True, o
                 classes.remove(cls)
         path_parts = pkg.split(".")
         if use_stub_suffix:
-            path_parts[0] = path_parts[0] + "-stubs"
+            path_parts[0] += "-stubs"
         path = pathlib.Path(output_dir)
         for path_part in path_parts:
             path = path / pysafe(path_part)
