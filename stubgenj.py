@@ -45,7 +45,7 @@ JavaFunctionSig = NamedTuple('JavaFunctionSig', [
 ])
 
 
-def generate_java_stubs(pkg_prefixes: List[str], output_dir_prefix: str = 'pyi') -> None:
+def generate_java_stubs(pkg_prefixes: List[str], use_stub_suffix: bool = True, output_dir: str = '.') -> None:
     packages = {}  # type: Dict[str, List[str]]
 
     all_classes = find_all_classes()
@@ -71,7 +71,9 @@ def generate_java_stubs(pkg_prefixes: List[str], output_dir_prefix: str = 'pyi')
                 print(">> skipping class %s" % cls)
                 classes.remove(cls)
         path_parts = pkg.split(".")
-        path = pathlib.Path(output_dir_prefix)
+        if use_stub_suffix:
+            path_parts[0] = path_parts[0] + "-stubs"
+        path = pathlib.Path(output_dir)
         for path_part in path_parts:
             path = path / pysafe(path_part)
             if not path.is_dir():
@@ -245,8 +247,10 @@ def python_type(j_type: Any, type_vars: Optional[List[TypeVarStr]] = None) -> Ty
         return python_type(j_bound, type_vars)
     elif isinstance(j_type, WildcardType):
         j_bound = j_type.getUpperBounds()[0]
-        if isinstance(j_bound, ParameterizedType):
-            j_bound = j_bound.getRawType()
+        if j_bound.getTypeName() == 'java.lang.Object':
+            j_lower_bounds = j_type.getLowerBounds()
+            if j_lower_bounds:
+                j_bound = j_lower_bounds[0]
         return python_type(j_bound, type_vars)
     elif isinstance(j_type, GenericArrayType):
         return TypeStr('_py_List', [python_type(j_type.getGenericComponentType(), type_vars)])
