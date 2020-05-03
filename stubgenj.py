@@ -563,4 +563,4 @@ if __name__ == '__main__':
     jpype.startJVM(jvmpath=args.jvmpath, classpath=classpath, convertStrings=args.convert_strings)
 
     generate_java_stubs(args.prefixes, use_stubs_suffix=args.stubs_suffix, output_dir=args.output_dir)
-    print(args)
+    print("Generation done.")
