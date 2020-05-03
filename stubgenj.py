@@ -13,6 +13,8 @@ from typing import List, Optional, Mapping, Any, Set, NamedTuple, Dict
 from types import ModuleType
 import pathlib
 
+__all__ = ["generate_java_stubs", "generateJavaStubs"]
+
 
 class TypeStr:
     __slots__ = ('name', 'type_args')
@@ -45,7 +47,7 @@ JavaFunctionSig = NamedTuple('JavaFunctionSig', [
 ])
 
 
-def generate_java_stubs(pkg_prefixes: List[str], use_stub_suffix: bool = True, output_dir: str = '.') -> None:
+def generate_java_stubs(pkg_prefixes: List[str], use_stubs_suffix: bool = True, output_dir: str = '.') -> None:
     packages = {}  # type: Dict[str, List[str]]
 
     all_classes = find_all_classes()
@@ -71,7 +73,7 @@ def generate_java_stubs(pkg_prefixes: List[str], use_stub_suffix: bool = True, o
                 print(">> skipping class %s" % cls)
                 classes.remove(cls)
         path_parts = pkg.split(".")
-        if use_stub_suffix:
+        if use_stubs_suffix:
             path_parts[0] += "-stubs"
         path = pathlib.Path(output_dir)
         for path_part in path_parts:
@@ -105,6 +107,9 @@ def find_all_classes() -> List[str]:
             if name.endswith('.class') and '$' not in name:
                 classes.append(name[:-6].replace('/', '.'))
     return classes
+
+
+generateJavaStubs = generate_java_stubs
 
 
 def generate_stubs_for_java_package(package_name: str, output_file: str) -> None:
@@ -234,7 +239,7 @@ def python_type(j_type: Any, type_vars: Optional[List[TypeVarStr]] = None) -> Ty
     if type_vars is None:
         type_vars = []
     if isinstance(j_type, ParameterizedType):
-        return translate_type_name(j_type.getRawType().getTypeName(),
+        return translate_type_name(str(j_type.getRawType().getTypeName()),
                                    type_args=[python_type(arg, type_vars) for arg in j_type.getActualTypeArguments()])
     elif isinstance(j_type, TypeVariable):
         j_var_name = j_type.getName()
@@ -258,7 +263,7 @@ def python_type(j_type: Any, type_vars: Optional[List[TypeVarStr]] = None) -> Ty
         j_raw_type = j_type
         if j_raw_type.isArray():
             return TypeStr('_py_List', [python_type(j_raw_type.getComponentType(), type_vars)])
-        return translate_type_name(j_raw_type.getName())
+        return translate_type_name(str(j_raw_type.getName()))
 
 
 def python_type_var(j_type: Any, uniq_scope_id: str) -> TypeVarStr:
@@ -322,7 +327,7 @@ def generate_java_method_stub(parent_name: str,
         args = [ArgSig(name='cls' if static else 'self', type=None)]
         for j_arg in j_args:
             j_arg_type = j_arg.getParameterizedType()
-            j_arg_name = j_arg.getName() if j_arg.isNamePresent() else infer_argname(j_arg_type, args)
+            j_arg_name = str(j_arg.getName()) if j_arg.isNamePresent() else infer_argname(j_arg_type, args)
             args.append(ArgSig(name=j_arg_name, type=python_type(j_arg_type, usable_type_vars)))
 
         signatures.append(JavaFunctionSig(name, args=args, ret_type=python_type(j_return_type, usable_type_vars),
@@ -448,8 +453,8 @@ def generate_java_class_stub(package_name: str,
         write_type_vars_to_output = True
         type_var_output = []  # type: List[str]
 
-    class_uniq_prefix = jclass.class_.getName().replace(package_name + '.', '').replace('.', '_').replace('$', '__')
-    class_type_vars = [python_type_var(j_tp, uniq_scope_id=class_uniq_prefix)
+    class_prefix = str(jclass.class_.getName()).replace(package_name + '.', '').replace('.', '_').replace('$', '__')
+    class_type_vars = [python_type_var(j_tp, uniq_scope_id=class_prefix)
                        for j_tp in jclass.class_.getTypeParameters()]
     if parent_class_type_vars is None or is_static(jclass.class_):
         usable_type_vars = class_type_vars
@@ -502,8 +507,8 @@ def generate_java_class_stub(package_name: str,
     bases_str = '(%s)' % ', '.join(super_types) if super_types else ''
 
     class_name = to_annotated_type(
-        TypeStr(jclass.class_.getSimpleName()),  # do not use infer_typename to avoid mangling java.lang classes
-        parent_class.class_.getName() if parent_class else package_name,
+        TypeStr(str(jclass.class_.getSimpleName())),  # do not use python_typename to avoid mangling classes
+        str(parent_class.class_.getName()) if parent_class else package_name,
         classes_done,
         imports_output,
         force_short=True
@@ -526,3 +531,36 @@ def generate_java_class_stub(package_name: str,
         for line in nested_classes_output:
             output.append('    %s' % line)
     classes_done.add(class_name)
+
+
+if __name__ == '__main__':
+    import argparse
+    from glob import glob
+
+    parser = argparse.ArgumentParser(description='Generate Python Type Stubs for Java classes.')
+    parser.add_argument('prefixes', type=str, nargs='+',
+                        help='package prefixes to generate stubs for (e.g. org.myproject)')
+    parser.add_argument('--jvmpath', type=str,
+                        help='path to the JVM ("libjvm.so", "jvm.dll", ...) (default: use system default JVM)')
+    parser.add_argument('--classpath', type=str,
+                        help='java class path to use, separated by ":". '
+                             'glob-like expressions (e.g. dir/*.jar) are supported (default: .)')
+    parser.add_argument('--output-dir', type=str,
+                        help='path to write stubs to (default: .)')
+    parser.add_argument('--convert-strings', dest='convert_strings', action='store_true')
+    parser.add_argument('--no-convert-strings', dest='convert_strings', action='store_false',
+                        help='whether to convert java.lang.String to python str in return types. '
+                             'consult the JPype documentation on the convertStrings flag for details (default: False)')
+    parser.add_argument('--stubs-suffix', dest='stubs_suffix', action='store_true')
+    parser.add_argument('--no-stubs-suffix', dest='stubs_suffix', action='store_false',
+                        help='whether to use PEP-561 "-stubs" suffix for top-level packages (default: True)')
+
+    parser.set_defaults(stubs_suffix=True, classpath='.', output_dir='.', convert_strings=False)
+
+    args = parser.parse_args()
+    classpath = [c for c_in in args.classpath.split(':') for c in glob(c_in)]
+    print("Starting JPype JVM with classpath " + str(classpath))
+    jpype.startJVM(jvmpath=args.jvmpath, classpath=classpath, convertStrings=args.convert_strings)
+
+    generate_java_stubs(args.prefixes, use_stubs_suffix=args.stubs_suffix, output_dir=args.output_dir)
+    print(args)
