@@ -7,7 +7,7 @@ import setuptools
 
 
 REQUIREMENTS: dict = {
-    "core": ["cmmnbuild-dep-manager>=2.4.0", "jpype1>=0.7.1","numpy"],
+    "core": ["cmmnbuild-dep-manager>=2.4.0", "jpype1>=0.7.3", "numpy"],
     "test": ["pytest",],
 }
 
@@ -30,7 +30,7 @@ setuptools.setup(
     author_email="riccardo.de.maria@cern.ch",
     url="https://github.com/rdemaria/pjlsa",
     packages=["pjlsa"],
-    package_dir={"pjlsa": "pjlsa"},
+    package_dir={"pjlsa": "pjlsa", "cern-stubs": "cern-stubs", "com-stubs": "com-stubs", "java-stubs": "java-stubs"},
     install_requires=REQUIREMENTS["core"],
     extras_require={
         **REQUIREMENTS,

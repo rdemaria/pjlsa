@@ -1,0 +1,13 @@
+from typing import List as _py_List
+from typing import ClassVar as _py_ClassVar
+import cern.cmw.directory.client
+import java.util
+
+
+class ServerInfoUtil:
+    MAX_SERVICE_URL_LENGTH: _py_ClassVar[int] = ...
+    def __init__(self): ...
+    @classmethod
+    def getProperties(cls, serverInfo: cern.cmw.directory.client.ServerInfo) -> _py_List[java.util.Properties]: ...
+    @classmethod
+    def getServerInfo(cls, propertiesArray: _py_List[java.util.Properties]) -> cern.cmw.directory.client.ServerInfo: ...

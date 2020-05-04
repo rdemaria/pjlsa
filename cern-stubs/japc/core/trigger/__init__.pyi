@@ -1,0 +1,13 @@
+from typing import TypeVar as _py_TypeVar
+from typing import Generic as _py_Generic
+import cern.accsoft.commons.util.trigger
+import cern.accsoft.commons.util.trigger.impl
+import cern.japc.core.factory
+
+
+_AbstractJapcTrigger__E = _py_TypeVar('_AbstractJapcTrigger__E', bound=cern.accsoft.commons.util.trigger.TriggerEvent)  # <E>
+class AbstractJapcTrigger(cern.accsoft.commons.util.trigger.impl.AbstractTrigger[_AbstractJapcTrigger__E], _py_Generic[_AbstractJapcTrigger__E]):
+    def __init__(self, string: str): ...
+    def init(self) -> None: ...
+    def setParameterFactory(self, parameterFactory: cern.japc.core.factory.ParameterFactory) -> None: ...
+    def setTriggerSelector(self, string: str) -> None: ...
