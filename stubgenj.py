@@ -313,7 +313,7 @@ def generateJavaMethodStub(parentName: str,
     isConstructor = name == '__init__'
     isOverloaded = len(jOverloads) > 1
     signatures = []  # type: List[JavaFunctionSig]
-    for i, jOverload in enumerate(jOverloads):
+    for i, jOverload in enumerate(sorted(list(jOverloads), key=str)):
         jReturnType = None if isConstructor else jOverload.getGenericReturnType()
         jArgs = jOverload.getParameters()
         static = False if isConstructor else isStatic(jOverload)
