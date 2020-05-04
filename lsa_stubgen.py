@@ -4,6 +4,7 @@ import stubgenj
 lsa = pjlsa.LSAClient()
 prefixes = ["java",
             "com.google.common.collect",
+            "com.google.common.base",
             "cern.lsa",
             "cern.accsoft.commons",
             "cern.rbac.common",
