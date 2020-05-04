@@ -114,6 +114,10 @@ class LSAClient(object):
         self._mgr = cmmnbuild_dep_manager.Manager("pjlsa")
         self._jpype = self._mgr.start_jpype_jvm()
 
+        # enable JPype import system
+        import jpype.imports
+        jpype.imports.registerDomain("cern")
+
         # basic Java packages
         self._cern = jpype.JPackage("cern")
         self._org = jpype.JPackage("org")
