@@ -10,4 +10,4 @@ prefixes = ["java",
             "cern.rbac.common",
             "cern.japc.core", "cern.japc.value"]
 
-stubgenj.generate_java_stubs(prefixes, use_stubs_suffix=True, output_dir='.')
+stubgenj.generateJavaStubs(prefixes, useStubsSuffix=True, outputDir='.')
