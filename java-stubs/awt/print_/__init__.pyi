@@ -4,8 +4,8 @@ from typing import ClassVar as _py_ClassVar
 from typing import overload
 import java.io
 import java.lang
-import javax.print
-import javax.print.attribute
+import javax.print_
+import javax.print_.attribute
 
 
 class PageFormat(java.lang.Cloneable):

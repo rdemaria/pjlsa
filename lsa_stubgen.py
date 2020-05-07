@@ -9,5 +9,5 @@ prefixes = ["java",
             "cern.accsoft.commons",
             "cern.rbac.common",
             "cern.japc.core", "cern.japc.value"]
-
+#prefixes = ["cern.accsoft.commons.remoting"]
 stubgenj.generateJavaStubs(prefixes, useStubsSuffix=True, outputDir='.')

@@ -109,6 +109,19 @@ def findAllClasses() -> List[str]:
     return classes
 
 
+def typesInPackage(packageName: str, types: Set[str]) -> Set[str]:
+    localTypes = set()  # type: Set[str]
+    for typ in types:
+        lastDot = typ.rindex('.')
+        tPackage = typ[:lastDot]
+        if tPackage != packageName:
+            continue
+        localName = typ[lastDot + 1:]
+        if not isInternal(localName):
+            localTypes.add(localName)
+    return localTypes
+
+
 def generateStubsForJavaPackage(packageName: str, outputFile: str) -> None:
     module = importlib.import_module(packageName)
     subdir = os.path.dirname(outputFile)
@@ -119,15 +132,29 @@ def generateStubsForJavaPackage(packageName: str, outputFile: str) -> None:
     javaClasses = [cls for name, cls in module.__dict__.items() if
                    not isInternal(name) and isJavaClass(cls)]  # type: List[jpype.JClass]
 
-    done = set()  # type: Set[str]
+    typesDone = set()  # type: Set[str]
+    typesUsed = set()  # type: Set[str]
     while javaClasses:
-        javaClassesToGenerate = [c for c in javaClasses if dependenciesSatisfied(module, c, done)]
+        javaClassesToGenerate = [c for c in javaClasses if dependenciesSatisfied(module, c, typesDone)]
         if not javaClassesToGenerate:
             javaClassesToGenerate = javaClasses  # some inner class cases - will generate them with full names
         for cls in sorted(javaClassesToGenerate, key=lambda c: c.__name__):
-            generateJavaClassStub(module.__name__, cls, classesDone=done,
+            generateJavaClassStub(packageName, cls, typesDone=typesDone, typesUsed=typesUsed,
                                   output=classOutput, importsOutput=importOutput)
             javaClasses.remove(cls)
+        missingPrivateClasses = typesInPackage(packageName, typesUsed) - typesDone
+        for missingPrivateClass in missingPrivateClasses:
+            cls = None
+            try:
+                cls = getattr(module, missingPrivateClass)
+            except ImportError:
+                pass
+            if cls is not None:
+                if cls not in javaClasses:
+                    javaClasses.append(cls)
+            else:
+                print(">> reference to missing class %s - generating empty stub" % missingPrivateClass)
+                generateEmptyClassStub(missingPrivateClass, typesDone=typesDone, output=classOutput)
 
     output = []
     for line in sorted(set(importOutput)):
@@ -155,7 +182,6 @@ def isInternal(name: str) -> bool:
 def isJavaClass(obj: type) -> bool:
     if not isinstance(obj, jpype.JClass) or not hasattr(obj, 'class_') or not inspect.isclass(obj):
         return False
-    # noinspection
     if obj.class_.isAnonymousClass() or obj.class_.isLocalClass() or obj.class_.isSynthetic():  # noqa
         return False
     return True
@@ -307,6 +333,7 @@ def generateJavaMethodStub(parentName: str,
                            name: str,
                            jOverloads: List[Any],
                            typesDone: Set[str],
+                           typesUsed: Set[str],
                            classTypeVars: List[TypeVarStr],
                            output: List[str],
                            importsOutput: List[str]) -> None:
@@ -333,7 +360,7 @@ def generateJavaMethodStub(parentName: str,
         importsOutput.append('from typing import overload')
     for signature in signatures:
         for typeVar in signature.typeVars:
-            output.append(toTypeVarDeclaration(typeVar, parentName, typesDone, importsOutput))
+            output.append(toTypeVarDeclaration(typeVar, parentName, typesDone, typesUsed, importsOutput))
         if signature.static:
             output.append('@classmethod')
         sig = []
@@ -344,7 +371,7 @@ def generateJavaMethodStub(parentName: str,
                 argDef = pysafe(arg.name)
 
                 if arg.type:
-                    argDef += ": " + toAnnotatedType(arg.type, parentName, typesDone, importsOutput)
+                    argDef += ": " + toAnnotatedType(arg.type, parentName, typesDone, typesUsed, importsOutput)
 
             sig.append(argDef)
 
@@ -356,13 +383,14 @@ def generateJavaMethodStub(parentName: str,
             output.append('def {function}({args}) -> {ret}: ...'.format(
                 function=pysafe(signature.name),
                 args=", ".join(sig),
-                ret=toAnnotatedType(signature.retType, parentName, typesDone, importsOutput)
+                ret=toAnnotatedType(signature.retType, parentName, typesDone, typesUsed, importsOutput)
             ))
 
 
 def generateJavaFieldStub(parentName: str,
                           jField: Any,
                           typesDone: Set[str],
+                          typesUsed: Set[str],
                           classTypeVars: List[TypeVarStr],
                           output: List[str],
                           importsOutput: List[str]) -> None:
@@ -371,47 +399,50 @@ def generateJavaFieldStub(parentName: str,
     static = isStatic(jField)
     fieldName = jField.getName()
     fieldType = pythonType(jField.getType(), classTypeVars if not static else None)
-    fieldTypeAnnotation = toAnnotatedType(fieldType, parentName, typesDone, importsOutput,
+    fieldTypeAnnotation = toAnnotatedType(fieldType, parentName, typesDone, typesUsed, importsOutput,
                                           canBeDeferred=True)
     if static:
         fieldTypeAnnotation = '_py_ClassVar[%s]' % fieldTypeAnnotation
     output.append('%s: %s = ...' % (pysafe(fieldName), fieldTypeAnnotation))
 
 
-def toAnnotatedType(typeName: TypeStr, parentName: str, typesDone: Set[str], imports: List[str],
-                    canBeDeferred: bool = True, forceShort: bool = False) -> str:
+def pysafePackagePath(packagePath: str) -> str:
+    return ".".join([pysafe(p) for p in packagePath.split(".")])
+
+
+def toAnnotatedType(typeName: TypeStr, packageName: str, typesDone: Set[str], typesUsed: Set[str],
+                    importsOutput: List[str], canBeDeferred: bool = True, forceShort: bool = False) -> str:
     aType = typeName.name
-    isJavaType = '.' in aType
-    if aType.startswith(parentName + '$'):
-        aType = aType[len(parentName) + 1:]
-    if '.' in aType:
-        module = aType[:aType.rindex('.')]
-        if module == 'builtins':
-            aType = aType[len(module) + 1:]
-        elif module == parentName:
-            shortType = aType[len(module) + 1:]
-            if shortType in typesDone or forceShort:
+    if '.' in aType:  # is Java Type
+        aType = pysafePackagePath(aType)
+        typesUsed.add(aType)
+        aTypeParent = aType[:aType.rindex('.')]
+        aType = aType.replace('$', '.')
+        if aTypeParent == 'builtins':
+            aType = aType[len(aTypeParent) + 1:]
+        elif aTypeParent == pysafePackagePath(packageName):
+            shortType = aType[len(aTypeParent) + 1:]
+            if shortType in typesDone:
                 aType = shortType
             elif canBeDeferred:
                 aType = '\'%s\'' % shortType
-
+        elif forceShort:
+            aType = aType[len(aTypeParent) + 1:]
         else:
-            imports.append('import %s' % (module,))
-    aType = aType.replace('$', '.')
-    if isJavaType:
-        aType = ".".join([pysafe(p) for p in aType.split(".")])
+            importsOutput.append('import %s' % (aTypeParent,))
     if typeName.typeArgs:
         return aType + "[" + ", ".join(
-            [toAnnotatedType(t, parentName, typesDone, imports) for t in typeName.typeArgs]) + "]"
+            [toAnnotatedType(t, packageName, typesDone, typesUsed, importsOutput) for t in typeName.typeArgs]) + "]"
     else:
         return aType
 
 
-def toTypeVarDeclaration(typeVar: TypeVarStr, parentName: str, typesDone: Set[str], imports: List[str]) -> str:
+def toTypeVarDeclaration(typeVar: TypeVarStr, parentName: str, typesDone: Set[str], typesUsed: Set[str],
+                         importsOutput: List[str]) -> str:
     if typeVar.bound is not None:
         return '{pyname} = _py_TypeVar(\'{pyname}\', bound={bound})  # <{jname}>'.format(
             pyname=typeVar.pythonName,
-            bound=toAnnotatedType(typeVar.bound, parentName, typesDone, imports),
+            bound=toAnnotatedType(typeVar.bound, parentName, typesDone, typesUsed, importsOutput),
             jname=typeVar.javaName
         )
     else:
@@ -435,11 +466,11 @@ def extraSuperTypes(className: str, classTypeVars: List[TypeVarStr]) -> List[str
 
 def generateJavaClassStub(packageName: str,
                           jClass: jpype.JClass,
-                          classesDone: Set[str],
+                          typesDone: Set[str],
+                          typesUsed: Set[str],
                           output: List[str],
                           importsOutput: List[str],
                           typeVarOutput: List[str] = None,
-                          parentClass: jpype.JClass = None,
                           parentClassTypeVars: List[TypeVarStr] = None) -> None:
     objDict = getattr(jClass, '__dict__')  # type: Mapping[str, Any]  # noqa
     items = sorted(objDict.items(), key=lambda x: x[0])
@@ -459,29 +490,27 @@ def generateJavaClassStub(packageName: str,
     nestedClassesOutput = []  # type: List[str]
     for attr, value in items:
         if isJavaClass(value):
-            generateJavaClassStub(packageName, value, classesDone, output=nestedClassesOutput,
+            generateJavaClassStub(packageName, value, typesDone, typesUsed, output=nestedClassesOutput,
                                   typeVarOutput=typeVarOutput, importsOutput=importsOutput,
-                                  parentClass=jClass, parentClassTypeVars=usableTypeVars)
+                                  parentClassTypeVars=usableTypeVars)
 
     constructorsOutput = []  # type: List[str]
     constructors = jClass.class_.getConstructors()
-    generateJavaMethodStub(packageName, '__init__', constructors, typesDone=classesDone,
-                           classTypeVars=usableTypeVars,
-                           output=constructorsOutput, importsOutput=importsOutput)
+    generateJavaMethodStub(packageName, '__init__', constructors, typesDone=typesDone, typesUsed=typesUsed,
+                           classTypeVars=usableTypeVars, output=constructorsOutput, importsOutput=importsOutput)
 
     methodsOutput = []  # type: List[str]
     jOverloads = jClass.class_.getMethods()
     for attr, value in items:
         if isinstance(value, jpype.JMethod):
             matchingOverloads = [o for o in jOverloads if o.getName() == attr]
-            generateJavaMethodStub(packageName, attr, matchingOverloads, typesDone=classesDone,
-                                   classTypeVars=usableTypeVars,
-                                   output=methodsOutput, importsOutput=importsOutput)
+            generateJavaMethodStub(packageName, attr, matchingOverloads, typesDone=typesDone, typesUsed=typesUsed,
+                                   classTypeVars=usableTypeVars, output=methodsOutput, importsOutput=importsOutput)
 
     fieldsOutput = []  # type: List[str]
     jFields = jClass.class_.getDeclaredFields()
     for jField in jFields:
-        generateJavaFieldStub(packageName, jField, typesDone=classesDone,
+        generateJavaFieldStub(packageName, jField, typesDone=typesDone, typesUsed=typesUsed,
                               classTypeVars=usableTypeVars, output=fieldsOutput, importsOutput=importsOutput)
 
     superTypes = []
@@ -489,7 +518,8 @@ def generateJavaClassStub(packageName: str,
         superTypes.append(toAnnotatedType(
             pythonType(superType, usableTypeVars),
             packageName,
-            classesDone,
+            typesDone,
+            typesUsed,
             importsOutput,
             canBeDeferred=False
         ))
@@ -497,14 +527,15 @@ def generateJavaClassStub(packageName: str,
         superTypes.append('_py_Generic[%s]' % ', '.join([tv.pythonName for tv in classTypeVars]))
     superTypes = superTypes + extraSuperTypes(jClass.class_.getName(), classTypeVars)
     for type_var in classTypeVars:
-        typeVarOutput.append(toTypeVarDeclaration(type_var, packageName, classesDone, importsOutput))
+        typeVarOutput.append(toTypeVarDeclaration(type_var, packageName, typesDone, typesUsed, importsOutput))
 
     superTypeStr = '(%s)' % ', '.join(superTypes) if superTypes else ''
 
     className = toAnnotatedType(
         TypeStr(str(jClass.class_.getSimpleName())),  # do not use python_typename to avoid mangling classes
-        str(parentClass.class_.getName()) if parentClass else packageName,
-        classesDone,
+        packageName,
+        typesDone,
+        typesUsed,
         importsOutput,
         forceShort=True
     )
@@ -525,7 +556,12 @@ def generateJavaClassStub(packageName: str,
             output.append('    %s' % line)
         for line in nestedClassesOutput:
             output.append('    %s' % line)
-    classesDone.add(className)
+    typesDone.add(className)
+
+
+def generateEmptyClassStub(className: str, typesDone: Set[str], output: List[str]):
+    typesDone.add(className)
+    output.append('class %s: ...' % className)
 
 
 if __name__ == '__main__':
