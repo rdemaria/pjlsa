@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Stub generator for Java modules, originally based on mypy stubgenc
-"""
+'''Stub generator for Java modules, originally based on mypy stubgenc
+'''
 
 import jpype
 import jpype.imports
@@ -13,7 +13,7 @@ from typing import List, Optional, Mapping, Any, Set, NamedTuple, Dict
 from types import ModuleType
 import pathlib
 
-__all__ = ["generateJavaStubs"]
+__all__ = ['generateJavaStubs']
 
 
 class TypeStr:
@@ -24,7 +24,7 @@ class TypeStr:
         self.typeArgs = list(typeArgs or [])
 
     def __repr__(self) -> str:
-        return "TypeStr(name={}, typeArgs={})".format(repr(self.name), repr(self.typeArgs))
+        return 'TypeStr(name={}, typeArgs={})'.format(repr(self.name), repr(self.typeArgs))
 
 
 TypeVarStr = NamedTuple('TypeVarStr', [
@@ -61,20 +61,19 @@ def generateJavaStubs(pkgPrefixes: List[str], useStubsSuffix: bool = True, outpu
 
     for pkg, classes in packages.items():
         print('Generating stubs for %s (%d classes)' % (pkg, len(classes)))
-        if '.' in pkg:
-            pkgDomain = pkg[:pkg.find('.')]
-            if pkgDomain not in jpype.imports._JDOMAINS.keys():
-                jpype.imports.registerDomain(pkgDomain)
+        pkgDomain = packageDomain(pkg)
+        if pkgDomain not in jpype.imports._JDOMAINS.keys():
+            jpype.imports.registerDomain(pkgDomain)
         importlib.import_module(pkg)
         for cls in classes:
             try:
                 importlib.import_module(cls)
             except ImportError:
-                print(">> skipping class %s" % cls)
+                print('>> skipping class %s' % cls)
                 classes.remove(cls)
-        pathParts = pkg.split(".")
+        pathParts = pkg.split('.')
         if useStubsSuffix:
-            pathParts[0] += "-stubs"
+            pathParts[0] += '-stubs'
         path = pathlib.Path(outputDir)
         for pathPart in pathParts:
             path = path / pysafe(pathPart)
@@ -82,7 +81,7 @@ def generateJavaStubs(pkgPrefixes: List[str], useStubsSuffix: bool = True, outpu
                 os.makedirs(path)
             initFile = path / '__init__.pyi'
             if not initFile.exists():
-                open(initFile, "w").close()
+                open(initFile, 'w').close()
 
         generateStubsForJavaPackage(pkg, path / '__init__.pyi')
 
@@ -94,13 +93,13 @@ def findAllClasses() -> List[str]:
     import zipfile
     classLoader = ClassLoader.getSystemClassLoader()
     jars = [str(Paths.get(u.toURI())) for u in classLoader.getURLs()]  # noqa
-    jRuntime = str(classLoader.getResource("java/lang/String.class").toURI())
+    jRuntime = str(classLoader.getResource('java/lang/String.class').toURI())
     if jRuntime:
-        jRuntimeUri = URI.create(str(jRuntime[4:jRuntime.index("!")]))
+        jRuntimeUri = URI.create(str(jRuntime[4:jRuntime.index('!')]))
         jars.append(str(Paths.get(jRuntimeUri)))
     classes = []
     for jar in jars:
-        if not jar.endswith(".jar"):
+        if not jar.endswith('.jar'):
             continue
         names = zipfile.ZipFile(jar).namelist()
         for name in names:
@@ -139,7 +138,7 @@ def generateStubsForJavaPackage(packageName: str, outputFile: str) -> None:
         if not javaClassesToGenerate:
             javaClassesToGenerate = javaClasses  # some inner class cases - will generate them with full names
         for cls in sorted(javaClassesToGenerate, key=lambda c: c.__name__):
-            generateJavaClassStub(packageName, cls, typesDone=typesDone, typesUsed=typesUsed,
+            generateJavaClassStub(module, cls, typesDone=typesDone, typesUsed=typesUsed,
                                   output=classOutput, importsOutput=importOutput)
             javaClasses.remove(cls)
         missingPrivateClasses = typesInPackage(packageName, typesUsed) - typesDone
@@ -153,7 +152,7 @@ def generateStubsForJavaPackage(packageName: str, outputFile: str) -> None:
                 if cls not in javaClasses:
                     javaClasses.append(cls)
             else:
-                print(">> reference to missing class %s - generating empty stub" % missingPrivateClass)
+                print('>> reference to missing class %s - generating empty stub' % missingPrivateClass)
                 generateEmptyClassStub(missingPrivateClass, typesDone=typesDone, output=classOutput)
 
     output = []
@@ -167,6 +166,13 @@ def generateStubsForJavaPackage(packageName: str, outputFile: str) -> None:
     with open(outputFile, 'w') as file:
         for line in output:
             file.write('%s\n' % line)
+
+
+def packageDomain(pkg: str) -> str:
+    if '.' in pkg:
+        return pkg[:pkg.find('.')]
+    else:
+        return pkg
 
 
 def isInternal(name: str) -> bool:
@@ -291,7 +297,7 @@ def pythonType(jType: Any, typeVars: Optional[List[TypeVarStr]] = None) -> TypeS
 def pythonTypeVar(jType: Any, uniqScopeId: str) -> TypeVarStr:
     from java.lang.reflect import TypeVariable, ParameterizedType  # noqa
     if not isinstance(jType, TypeVariable):
-        raise RuntimeError("Can not convert to type var %s (%s)" % (str(jType), repr(jType)))
+        raise RuntimeError('Can not convert to type var %s (%s)' % (str(jType), repr(jType)))
     jBound = jType.getBounds()[0]
     if isinstance(jBound, ParameterizedType):
         jBound = jBound.getRawType()
@@ -371,18 +377,18 @@ def generateJavaMethodStub(parentName: str,
                 argDef = pysafe(arg.name)
 
                 if arg.type:
-                    argDef += ": " + toAnnotatedType(arg.type, parentName, typesDone, typesUsed, importsOutput)
+                    argDef += ': ' + toAnnotatedType(arg.type, parentName, typesDone, typesUsed, importsOutput)
 
             sig.append(argDef)
 
         if isOverloaded:
             output.append('@overload')
         if isConstructor:
-            output.append('def __init__({args}): ...'.format(args=", ".join(sig)))
+            output.append('def __init__({args}): ...'.format(args=', '.join(sig)))
         else:
             output.append('def {function}({args}) -> {ret}: ...'.format(
                 function=pysafe(signature.name),
-                args=", ".join(sig),
+                args=', '.join(sig),
                 ret=toAnnotatedType(signature.retType, parentName, typesDone, typesUsed, importsOutput)
             ))
 
@@ -407,11 +413,11 @@ def generateJavaFieldStub(parentName: str,
 
 
 def pysafePackagePath(packagePath: str) -> str:
-    return ".".join([pysafe(p) for p in packagePath.split(".")])
+    return '.'.join([pysafe(p) for p in packagePath.split('.')])
 
 
 def toAnnotatedType(typeName: TypeStr, packageName: str, typesDone: Set[str], typesUsed: Set[str],
-                    importsOutput: List[str], canBeDeferred: bool = True, forceShort: bool = False) -> str:
+                    importsOutput: List[str], canBeDeferred: bool = True) -> str:
     aType = typeName.name
     if '.' in aType:  # is Java Type
         aType = pysafePackagePath(aType)
@@ -426,13 +432,14 @@ def toAnnotatedType(typeName: TypeStr, packageName: str, typesDone: Set[str], ty
                 aType = shortType
             elif canBeDeferred:
                 aType = '\'%s\'' % shortType
-        elif forceShort:
-            aType = aType[len(aTypeParent) + 1:]
+            else:
+                # use fully qualified name - add import to our own domain
+                importsOutput.append('import %s' % packageDomain(aType))
         else:
-            importsOutput.append('import %s' % (aTypeParent,))
+            importsOutput.append('import %s' % aTypeParent)
     if typeName.typeArgs:
-        return aType + "[" + ", ".join(
-            [toAnnotatedType(t, packageName, typesDone, typesUsed, importsOutput) for t in typeName.typeArgs]) + "]"
+        return aType + '[' + ', '.join(
+            [toAnnotatedType(t, packageName, typesDone, typesUsed, importsOutput) for t in typeName.typeArgs]) + ']'
     else:
         return aType
 
@@ -464,7 +471,7 @@ def extraSuperTypes(className: str, classTypeVars: List[TypeVarStr]) -> List[str
     return []
 
 
-def generateJavaClassStub(packageName: str,
+def generateJavaClassStub(module: ModuleType,
                           jClass: jpype.JClass,
                           typesDone: Set[str],
                           typesUsed: Set[str],
@@ -472,6 +479,7 @@ def generateJavaClassStub(packageName: str,
                           importsOutput: List[str],
                           typeVarOutput: List[str] = None,
                           parentClassTypeVars: List[TypeVarStr] = None) -> None:
+    packageName = module.__name__
     objDict = getattr(jClass, '__dict__')  # type: Mapping[str, Any]  # noqa
     items = sorted(objDict.items(), key=lambda x: x[0])
 
@@ -486,13 +494,6 @@ def generateJavaClassStub(packageName: str,
         usableTypeVars = classTypeVars
     else:
         usableTypeVars = parentClassTypeVars + classTypeVars
-    jClass.class_.getTypeParameters()
-    nestedClassesOutput = []  # type: List[str]
-    for attr, value in items:
-        if isJavaClass(value):
-            generateJavaClassStub(packageName, value, typesDone, typesUsed, output=nestedClassesOutput,
-                                  typeVarOutput=typeVarOutput, importsOutput=importsOutput,
-                                  parentClassTypeVars=usableTypeVars)
 
     constructorsOutput = []  # type: List[str]
     constructors = jClass.class_.getConstructors()
@@ -513,6 +514,39 @@ def generateJavaClassStub(packageName: str,
         generateJavaFieldStub(packageName, jField, typesDone=typesDone, typesUsed=typesUsed,
                               classTypeVars=usableTypeVars, output=fieldsOutput, importsOutput=importsOutput)
 
+    nestedClassesOutput = []  # type: List[str]
+    typesDoneInNestedClasses = set()  # type: Set[str]
+    for attr, value in items:
+        if isJavaClass(value):
+            typesDoneInNestedClass = set(typesDone)
+            generateJavaClassStub(module, value, typesDoneInNestedClass, typesUsed, output=nestedClassesOutput,
+                                  typeVarOutput=typeVarOutput, importsOutput=importsOutput,
+                                  parentClassTypeVars=usableTypeVars)
+            typesDoneInNestedClasses |= typesDoneInNestedClass
+
+    while True:
+        usedNestedClasses = {t.split('.')[-1].replace('$', '.') for t in typesUsed if
+                             t.startswith(jClass.class_.getName() + '$')}
+        missingPrivateNestedClasses = usedNestedClasses - (typesDone | typesDoneInNestedClasses)
+        if not missingPrivateNestedClasses:
+            break
+        for missingPrivateClass in missingPrivateNestedClasses:
+            cls = None
+            try:
+                cls = getattr(module, missingPrivateClass.replace('.', '$'))
+            except ImportError:
+                pass
+            if cls is not None:
+                typesDoneInNestedClass = set(typesDone)
+                generateJavaClassStub(module, cls, typesDoneInNestedClass, typesUsed, output=nestedClassesOutput,
+                                      typeVarOutput=typeVarOutput, importsOutput=importsOutput,
+                                      parentClassTypeVars=usableTypeVars)
+                typesDoneInNestedClasses |= typesDoneInNestedClass
+            else:
+                print('>> reference to missing inner class %s - generating empty stub' % missingPrivateClass)
+                generateEmptyClassStub(missingPrivateClass, typesDone=typesDoneInNestedClasses,
+                                       output=nestedClassesOutput)
+
     superTypes = []
     for superType in javaSuperTypes(jClass.class_):
         superTypes.append(toAnnotatedType(
@@ -531,14 +565,7 @@ def generateJavaClassStub(packageName: str,
 
     superTypeStr = '(%s)' % ', '.join(superTypes) if superTypes else ''
 
-    className = toAnnotatedType(
-        TypeStr(str(jClass.class_.getSimpleName())),  # do not use python_typename to avoid mangling classes
-        packageName,
-        typesDone,
-        typesUsed,
-        importsOutput,
-        forceShort=True
-    )
+    className = str(jClass.class_.getSimpleName())  # do not use python_typename to avoid mangling classes
 
     if writeTypeVarsToOutput:
         output.append('')
@@ -556,7 +583,8 @@ def generateJavaClassStub(packageName: str,
             output.append('    %s' % line)
         for line in nestedClassesOutput:
             output.append('    %s' % line)
-    typesDone.add(className)
+    typesDone |= typesDoneInNestedClasses
+    typesDone.add(str(jClass.class_.getName().split('.')[-1].replace('$', '.')))
 
 
 def generateEmptyClassStub(className: str, typesDone: Set[str], output: List[str]):
@@ -590,8 +618,8 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     classpath = [c for c_in in args.classpath.split(':') for c in glob(c_in)]
-    print("Starting JPype JVM with classpath " + str(classpath))
+    print('Starting JPype JVM with classpath ' + str(classpath))
     jpype.startJVM(jvmpath=args.jvmpath, classpath=classpath, convertStrings=args.convert_strings)
 
     generateJavaStubs(args.prefixes, useStubsSuffix=args.stubs_suffix, outputDir=args.output_dir)
-    print("Generation done.")
+    print('Generation done.')

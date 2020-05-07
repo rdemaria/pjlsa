@@ -2,6 +2,7 @@ from typing import Any as _py_Any
 from typing import List as _py_List
 from typing import ClassVar as _py_ClassVar
 from typing import overload
+import java
 import java.awt
 import java.io
 import java.lang

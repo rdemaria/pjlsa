@@ -1,5 +1,6 @@
 from typing import List as _py_List
 from typing import overload
+import cern
 import cern.japc.core
 import cern.japc.core.group
 import cern.japc.core.spi.transaction

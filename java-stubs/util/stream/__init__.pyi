@@ -5,6 +5,7 @@ from typing import Type as _py_Type
 from typing import ClassVar as _py_ClassVar
 from typing import Generic as _py_Generic
 from typing import overload
+import java
 import java.lang
 import java.util
 import java.util.concurrent
@@ -281,6 +282,19 @@ class MatchOps:
     _makeRef__T = _py_TypeVar('_makeRef__T')  # <T>
     @classmethod
     def makeRef(cls, predicate: java.util.function.Predicate[_makeRef__T], matchKind: 'MatchOps.MatchKind') -> 'TerminalOp'[_makeRef__T, bool]: ...
+    class MatchKind(java.lang.Enum['MatchOps.MatchKind']):
+        ANY: _py_ClassVar['MatchOps.MatchKind'] = ...
+        ALL: _py_ClassVar['MatchOps.MatchKind'] = ...
+        NONE: _py_ClassVar['MatchOps.MatchKind'] = ...
+        _valueOf_0__T = _py_TypeVar('_valueOf_0__T', bound=java.lang.Enum)  # <T>
+        @classmethod
+        @overload
+        def valueOf(cls, class_: _py_Type[_valueOf_0__T], string: str) -> _valueOf_0__T: ...
+        @classmethod
+        @overload
+        def valueOf(cls, string: str) -> 'MatchOps.MatchKind': ...
+        @classmethod
+        def values(cls) -> _py_List['MatchOps.MatchKind']: ...
 
 class Nodes:
     _collect__P_IN = _py_TypeVar('_collect__P_IN')  # <P_IN>

@@ -5,6 +5,7 @@ from typing import Type as _py_Type
 from typing import ClassVar as _py_ClassVar
 from typing import Generic as _py_Generic
 from typing import overload
+import cern
 import java.awt
 import java.beans
 import java.io
@@ -1104,6 +1105,9 @@ _Filters__FilterSourceAndDestCollectionHolder__T = _py_TypeVar('_Filters__Filter
 _Filters__FilterSourceAndDestCollectionHolder__D = _py_TypeVar('_Filters__FilterSourceAndDestCollectionHolder__D', bound=java.util.Collection)  # <D>
 _Filters__FilterSourceCollectionHolder__T = _py_TypeVar('_Filters__FilterSourceCollectionHolder__T')  # <T>
 _Filters__FilterSourceCollectionHolder__C = _py_TypeVar('_Filters__FilterSourceCollectionHolder__C', bound=java.util.Collection)  # <C>
+_Filters__FilterCollectionHolder__T = _py_TypeVar('_Filters__FilterCollectionHolder__T')  # <T>
+_Filters__FilterCollectionHolder__S = _py_TypeVar('_Filters__FilterCollectionHolder__S', bound=java.util.Collection)  # <S>
+_Filters__FilterCollectionHolder__D = _py_TypeVar('_Filters__FilterCollectionHolder__D', bound=java.util.Collection)  # <D>
 class Filters:
     def __init__(self): ...
     _filter_0__T = _py_TypeVar('_filter_0__T')  # <T>
@@ -1128,6 +1132,9 @@ class Filters:
         def having(self, filter: 'Filters.Filter') -> java.util.Collection: ...
         _to__D = _py_TypeVar('_to__D', bound=java.util.Collection)  # <D>
         def to(self, d: _to__D) -> 'Filters.FilterSourceAndDestCollectionHolder'[_Filters__FilterSourceCollectionHolder__T, _to__D]: ...
+    class FilterCollectionHolder(_py_Generic[_Filters__FilterCollectionHolder__T, _Filters__FilterCollectionHolder__S, _Filters__FilterCollectionHolder__D]):
+        def being(self, filter: 'Filters.Filter'[_Filters__FilterCollectionHolder__T]) -> _Filters__FilterCollectionHolder__D: ...
+        def having(self, filter: 'Filters.Filter'[_Filters__FilterCollectionHolder__T]) -> _Filters__FilterCollectionHolder__D: ...
 
 _Mappers__FlatMapSourceAndDestCollectionHolder__S = _py_TypeVar('_Mappers__FlatMapSourceAndDestCollectionHolder__S')  # <S>
 _Mappers__FlatMapSourceAndDestCollectionHolder__D = _py_TypeVar('_Mappers__FlatMapSourceAndDestCollectionHolder__D')  # <D>
@@ -1144,6 +1151,7 @@ _Mappers__MapToSourceAndDestCollectionHolder__D = _py_TypeVar('_Mappers__MapToSo
 _Mappers__MapToSourceAndDestCollectionHolder__C = _py_TypeVar('_Mappers__MapToSourceAndDestCollectionHolder__C', bound=java.util.Collection)  # <C>
 _Mappers__Mapper__S = _py_TypeVar('_Mappers__Mapper__S')  # <S>
 _Mappers__Mapper__D = _py_TypeVar('_Mappers__Mapper__D')  # <D>
+_Mappers__SourceCollectionHolder__S = _py_TypeVar('_Mappers__SourceCollectionHolder__S')  # <S>
 class Mappers:
     def __init__(self): ...
     _flatMap__S = _py_TypeVar('_flatMap__S')  # <S>
@@ -1198,3 +1206,4 @@ class Mappers:
         def of(self, mapper: 'Mappers.Mapper'[_Mappers__MapToSourceAndDestCollectionHolder__S, _Mappers__MapToSourceAndDestCollectionHolder__D]) -> _Mappers__MapToSourceAndDestCollectionHolder__C: ...
     class Mapper(_py_Generic[_Mappers__Mapper__S, _Mappers__Mapper__D]):
         def map(self, s2: _Mappers__Mapper__S) -> _Mappers__Mapper__D: ...
+    class SourceCollectionHolder(_py_Generic[_Mappers__SourceCollectionHolder__S]): ...

@@ -5,6 +5,7 @@ from typing import Type as _py_Type
 from typing import ClassVar as _py_ClassVar
 from typing import Generic as _py_Generic
 from typing import overload
+import java
 import java.io
 import java.lang.annotation
 import java.lang.reflect
@@ -3212,7 +3213,7 @@ class Character(java.io.Serializable, Comparable[str]):
         @classmethod
         def values(cls) -> _py_List['Character.UnicodeScript']: ...
 
-class ThreadGroup(java.lang.Thread.UncaughtExceptionHandler):
+class ThreadGroup(Thread.UncaughtExceptionHandler):
     @overload
     def __init__(self, string: str): ...
     @overload

@@ -4,6 +4,7 @@ from typing import TypeVar as _py_TypeVar
 from typing import ClassVar as _py_ClassVar
 from typing import Generic as _py_Generic
 from typing import overload
+import cern
 import cern.accsoft.commons.domain
 import cern.accsoft.commons.domain.particletransfers
 import cern.accsoft.commons.domain.zones

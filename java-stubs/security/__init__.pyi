@@ -5,6 +5,7 @@ from typing import Type as _py_Type
 from typing import ClassVar as _py_ClassVar
 from typing import Generic as _py_Generic
 from typing import overload
+import java
 import java.io
 import java.lang
 import java.net
@@ -1008,7 +1009,7 @@ class KeyStore:
         def getTrustedCertificate(self) -> java.security.cert.Certificate: ...
         def toString(self) -> str: ...
 
-class PKCS12Attribute(java.security.KeyStore.Entry.Attribute):
+class PKCS12Attribute(KeyStore.Entry.Attribute):
     @overload
     def __init__(self, byteArray: _py_List[int]): ...
     @overload
@@ -1020,6 +1021,6 @@ class PKCS12Attribute(java.security.KeyStore.Entry.Attribute):
     def hashCode(self) -> int: ...
     def toString(self) -> str: ...
 
-class URIParameter(java.security.Policy.Parameters, javax.security.auth.login.Configuration.Parameters):
+class URIParameter(Policy.Parameters, javax.security.auth.login.Configuration.Parameters):
     def __init__(self, uRI: java.net.URI): ...
     def getURI(self) -> java.net.URI: ...

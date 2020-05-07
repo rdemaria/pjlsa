@@ -5,6 +5,7 @@ from typing import Type as _py_Type
 from typing import ClassVar as _py_ClassVar
 from typing import Generic as _py_Generic
 from typing import overload
+import com
 import java.io
 import java.lang
 import java.lang.ref

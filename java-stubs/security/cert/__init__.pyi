@@ -4,6 +4,7 @@ from typing import TypeVar as _py_TypeVar
 from typing import Type as _py_Type
 from typing import ClassVar as _py_ClassVar
 from typing import overload
+import java
 import java.io
 import java.lang
 import java.math
@@ -636,7 +637,7 @@ class CertPathValidatorException(java.security.GeneralSecurityException):
         def values(cls) -> _py_List['CertPathValidatorException.BasicReason']: ...
     class Reason(java.io.Serializable): ...
 
-class PKIXReason(java.lang.Enum['PKIXReason'], java.security.cert.CertPathValidatorException.Reason):
+class PKIXReason(java.lang.Enum['PKIXReason'], CertPathValidatorException.Reason):
     NAME_CHAINING: _py_ClassVar['PKIXReason'] = ...
     INVALID_KEY_USAGE: _py_ClassVar['PKIXReason'] = ...
     INVALID_POLICY: _py_ClassVar['PKIXReason'] = ...
