@@ -1,5 +1,6 @@
 import pjlsa
 import numpy as np
+import pytest
 
 #  %load_ext autoreload
 #  %autoreload 2
@@ -72,3 +73,22 @@ def test_users():
 def test_device():
     devices = lsa._findDevices(deviceGroupName="COLLIMATORS")
     assert len(devices) > 1
+
+
+def test_runWithLsa():
+    lsa_loaded = False
+
+    def lsa_universe():
+        nonlocal lsa_loaded
+        from cern.lsa.client import ServiceLocator
+        lsa_loaded = hasattr(ServiceLocator, 'getService')
+
+    # assert jpype import system not available
+    with pytest.raises(ImportError):
+        lsa_universe()
+    # assert LSA and JPype import system was loaded
+    lsa.runWithLSA(lsa_universe)
+    assert lsa_loaded
+    # assert clean-up happened
+    with pytest.raises(ImportError):
+        lsa_universe()

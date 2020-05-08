@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-'''Stub generator for Java modules, originally based on mypy stubgenc
-'''
+"""
+Stub generator for Java modules, originally based on mypy stubgenc
+"""
 
 import jpype
 import jpype.imports
