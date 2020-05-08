@@ -193,6 +193,16 @@ class LSAClient(object):
         self._fidelService = self._ServiceLocator.getService(self._FidelService)
 
     def runWithLSA(self, entry_point):
+        """Run code with the access to the LSA Java universe through JPype imports.
+        After the import/execution returns, the original python import behavior is restored.
+
+        This method is typically called from a launcher module, e.g.:
+            `pjlsa.LSAClient(server=...).runWithLSA('my_main_module')`
+
+        Args:
+            entry_point (str or Callable): The name of the module to load or the Callable to invoke
+                with the JPype import system enabled.
+        """
         import sys
         import importlib
         old_sys_meta_path = list(sys.meta_path)
