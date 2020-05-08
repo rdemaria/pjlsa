@@ -204,10 +204,9 @@ class LSAClient(object):
         else:
             entry_point()
         sys.meta_path = old_sys_meta_path
-        actual_modules = set(sys.modules.keys())
-        for mod in actual_modules:
-            if mod not in old_modules:
-                del sys.modules[mod]
+        added_modules = set(sys.modules.keys()) - old_modules
+        for mod in added_modules:
+            del sys.modules[mod]
         importlib.invalidate_caches()
 
     def _getContextFamily(self, name):
