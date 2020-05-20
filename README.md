@@ -5,10 +5,11 @@ A Python module providing access to the LSA API
 Low-level access to the full Java LSA API is provided through the JPype import system.
 
 The recommended way use it is to create a launcher module (e.g. `my_launcher.py`) which creates `LSAClient` and calls
- the `runWithLSA()` method:
+ the `java_api()` context manager:
 ```python
 import pjlsa
-pjlsa.LSAClient(server='sps').runWithLSA('my_main_module')
+with pjlsa.LSAClient(server='sps').java_api():
+    import my_main_module
 ```
 This simple launcher will import the module `my_main_module.py` - which should contain your actual code entry point - 
 with the JPype import system enabled.

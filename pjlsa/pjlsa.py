@@ -41,7 +41,7 @@ import os
 import re
 from collections import namedtuple
 import datetime
-import urllib
+from contextlib import contextmanager
 
 import numpy as np
 import six
@@ -192,32 +192,16 @@ class LSAClient(object):
         self._deviceService = self._ServiceLocator.getService(self._DeviceService)
         self._fidelService = self._ServiceLocator.getService(self._FidelService)
 
-    def runWithLSA(self, entry_point):
+    @contextmanager
+    def java_api(self):
         """Run code with the access to the LSA Java universe through JPype imports.
         After the import/execution returns, the original python import behavior is restored.
 
         This method is typically called from a launcher module, e.g.:
-            `pjlsa.LSAClient(server=...).runWithLSA('my_main_module')`
-
-        Args:
-            entry_point (str or Callable): The name of the module to load or the Callable to invoke
-                with the JPype import system enabled.
+            `with pjlsa.LSAClient(server=...).java_api(): import my_main_module`
         """
-        import sys
-        import importlib
-        old_sys_meta_path = list(sys.meta_path)
-        old_modules = set(sys.modules.keys())
-        import jpype.imports
-        jpype.imports.registerDomain("cern")
-        if isinstance(entry_point, str):
-            importlib.import_module(entry_point)
-        else:
-            entry_point()
-        sys.meta_path = old_sys_meta_path
-        added_modules = set(sys.modules.keys()) - old_modules
-        for mod in added_modules:
-            del sys.modules[mod]
-        importlib.invalidate_caches()
+        with self._mgr.imports():
+            yield
 
     def _getContextFamily(self, name):
         if isinstance(name, str):

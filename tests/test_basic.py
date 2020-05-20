@@ -75,20 +75,16 @@ def test_device():
     assert len(devices) > 1
 
 
-def test_runWithLsa():
-    lsa_loaded = False
-
-    def lsa_universe():
-        nonlocal lsa_loaded
-        from cern.lsa.client import ServiceLocator
-        lsa_loaded = hasattr(ServiceLocator, 'getService')
-
+def test_java_api():
     # assert jpype import system not available
     with pytest.raises(ImportError):
-        lsa_universe()
+        from cern.lsa.client import ServiceLocator
+
     # assert LSA and JPype import system was loaded
-    lsa.runWithLSA(lsa_universe)
-    assert lsa_loaded
+    with lsa.java_api():
+        from cern.lsa.client import ServiceLocator
+        assert hasattr(ServiceLocator, 'getService')
+
     # assert clean-up happened
     with pytest.raises(ImportError):
-        lsa_universe()
+        from cern.lsa.client import ServiceLocator
