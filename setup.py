@@ -7,7 +7,7 @@ import setuptools
 
 
 REQUIREMENTS: dict = {
-    "core": ["cmmnbuild-dep-manager>=2.4.0", "jpype1>=0.7.3", "numpy"],
+    "core": ["cmmnbuild-dep-manager>=2.5.0,<2.6.0", "jpype1>=0.7.3,<0.8.0", "numpy"],
     "test": ["pytest",],
 }
 
@@ -26,9 +26,9 @@ setuptools.setup(
     name="pjlsa",
     version=VERSION,
     description="A Python wrapping of Java LSA API",
-    author="Riccardo De Maria",
-    author_email="riccardo.de.maria@cern.ch",
-    url="https://github.com/rdemaria/pjlsa",
+    author="LSA / InCA team",
+    author_email="inca-support@cern.ch",
+    url="https://gitlab.cern.ch/scripting-tools/pjlsa",
     packages=["pjlsa"],
     package_dir={"pjlsa": "pjlsa", "cern-stubs": "cern-stubs", "com-stubs": "com-stubs", "java-stubs": "java-stubs"},
     install_requires=REQUIREMENTS["core"],

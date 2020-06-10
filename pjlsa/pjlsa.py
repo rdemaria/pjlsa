@@ -201,6 +201,12 @@ class LSAClient(object):
             `with pjlsa.LSAClient(server=...).java_api(): import my_main_module`
         """
         with self._mgr.imports():
+            # work-around to fire up JPypes forward converters - TODO: remove me in JPype 0.8!
+            from java.util import HashSet, HashMap, ArrayList, Date
+            ArrayList()
+            HashMap()
+            HashSet()
+            Date()
             yield
 
     def _getContextFamily(self, name):
