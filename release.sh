@@ -1,20 +1,7 @@
 #!/bin/bash
-set -euo pipefail; IFS=$'\n\t'
 
-NAME=$( python setup.py --name | tail -1 )
-VER=$( python setup.py --version | tail -1 )
-
-echo "========================================================================"
-echo "Tagging $NAME v$VER"
-echo "========================================================================"
-
-git tag -a v$VER
-git push origin v$VER
-
-echo "========================================================================"
-echo "Releasing $NAME v$VER on PyPI"
-echo "========================================================================"
-
-python setup.py sdist
+mkdir dist
+pip download -i https://acc-py-repo.cern.ch/repository/vr-py-releases/simple --trusted-host acc-py-repo.cern.ch --no-deps --only-binary=:all: --dest=dist pjlsa
+pip download -i https://acc-py-repo.cern.ch/repository/vr-py-releases/simple --trusted-host acc-py-repo.cern.ch --no-deps --no-binary=:all: --dest=dist pjlsa
 twine upload dist/*
-rm -r dist/ *.egg-info
+rm -rf dist
