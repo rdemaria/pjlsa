@@ -29,7 +29,7 @@ setuptools.setup(
     author="LSA / InCA team",
     author_email="inca-support@cern.ch",
     url="https://gitlab.cern.ch/scripting-tools/pjlsa",
-    packages=["pjlsa"],
+    packages=["pjlsa", "cern-stubs", "com-stubs", "java-stubs"],
     package_dir={"pjlsa": "pjlsa", "cern-stubs": "cern-stubs", "com-stubs": "com-stubs", "java-stubs": "java-stubs"},
     install_requires=REQUIREMENTS["core"],
     extras_require={
