@@ -1,12 +1,107 @@
 # pjlsa
-A Python wrapping of LSA API
+A Python module providing access to the LSA API
 
+## Low-Level access to the Java LSA API
+Low-level access to the full Java LSA API is provided through the JPype import system.
+
+The recommended way use it is to create a launcher module (e.g. `my_launcher.py`) which creates `LSAClient` and calls
+ the `java_api()` context manager:
+```python
+import pjlsa
+with pjlsa.LSAClient(server='sps').java_api():
+    import my_main_module
+```
+This simple launcher will import the module `my_main_module.py` - which should contain your actual code entry point - 
+with the JPype import system enabled.
+
+In `my_main_module.py`, you can then use `import` statements to import LSA Java objects, e.g.:
+```python
+from cern.lsa.client import ServiceLocator, ParameterService
+
+parameterService = ServiceLocator.getService(ParameterService)
+
+parameter = parameterService.findParameterByName("SPSBEAM/MOMENTUM")
+```
+
+For your convenience, pjLSA ships with python type stubs for the commonly used Java APIs, which provide static type
+checking and auto-completion in IDEs like PyCharm and VSCode.
+
+### Examples
+_The launcher code - see above - is omitted in the following examples._
+#### Accessing Cycle settings
+```python
+from cern.lsa.client import ServiceLocator, ContextService, ParameterService, SettingService
+from cern.lsa.domain.settings import ContextSettingsRequest, Settings
+from java.util import Collections
+
+contextService = ServiceLocator.getService(ContextService)
+parameterService = ServiceLocator.getService(ParameterService)
+settingService = ServiceLocator.getService(SettingService)
+
+parameter = parameterService.findParameterByName("SPSBEAM/MOMENTUM")
+cycle = contextService.findStandAloneCycle("SFT_PRO_MTE_L4780_2018_V1")
+cycleSettings = settingService.findContextSettings(
+    ContextSettingsRequest.byStandAloneContextAndParameters(cycle, Collections.singleton(parameter)))
+function = Settings.getFunction(cycleSettings, parameter)
+print(function)
+```
+
+#### Accessing Optics Information and Twiss Data
+```python
+from cern.lsa.client import ServiceLocator, ContextService, OpticService
+from cern.accsoft.commons.domain.particletransfers import SpsParticleTransfer
+from cern.lsa.domain.optics.factory import TwissesRequestBuilder
+
+contextService = ServiceLocator.getService(ContextService)
+opticService = ServiceLocator.getService(OpticService)
+
+cycle = contextService.findStandAloneCycle("SFT_PRO_MTE_L4780_2018_V1")
+spsFunctionBpType = cycle.getIntersections() \
+    .getIntersectedFunctionBeamProcess(SpsParticleTransfer.SPSRING, 0.0) \
+    .getBeamProcess().getTypeName()
+opticsTables = opticService.findContextOpticsTables(cycle)
+spsRingOpticTable = [ot for ot in opticsTables if ot.getBeamProcessTypeName() == spsFunctionBpType][0]
+
+
+opticsTableItems = spsRingOpticTable.getOpticsTableItems()
+firstOptic = opticsTableItems[0]
+print(firstOptic)
+
+twisses = opticService.findTwisses(TwissesRequestBuilder.byOpticName(firstOptic.getOpticName()))
+print(twisses)
+```
+
+#### Performing a Trim
+```python
+from cern.lsa.client import ServiceLocator, ContextService, ParameterService, TrimService
+from cern.accsoft.commons.value import ValueFactory
+from cern.lsa.domain.settings import TrimRequest
+
+trimService = ServiceLocator.getService(TrimService)
+parameterService = ServiceLocator.getService(ParameterService)
+contextService = ServiceLocator.getService(ContextService)
+
+cycle = contextService.findStandAloneCycle("SFT_PRO_MTE_L4780_2018_test_Michi_V2")
+parameter = parameterService.findParameterByName("logical.MDV.11705/K")
+function = ValueFactory.createFunction(
+    [0.0, 5000.0, 6000.0, 7000.0, 9240.0],
+    [0.0, 0.0, 1e-5, -1e-5, 0.0]
+)
+trimRequest = TrimRequest.builder() \
+    .setContext(cycle) \
+    .addFunction(parameter, function) \
+    .setDescription("Description for trim history") \
+    .build()
+trimService.trimSettings(trimRequest)
+```
+
+## High-Level python API (mostly for data analysis)
 Limited use for the time being
 
 Added methods: _getRawTrimHeadersByCycle, getTrimHeadersByCycle, getTrimsByCycle,
                 getLastTrimByCycle, getLastTrimValue, getLastTrimValueByCycle
 
-## Extract trims for a particular beamProcess, parameter, and time window
+### Extract trims for a particular beamProcess, parameter, and time window
 ```python
 import pjlsa
 lsa = pjlsa.LSAClient()
@@ -17,7 +112,7 @@ trims = lsa.getTrims(parameter="LHCBEAM2/IP1_SEPSCAN_Y_MM",
                      start=t1, end=t2)
 ```
 
-## Get optics tables
+### Get optics tables
 ```
 In [1]: ot = lsa.getOpticTable('RAMP-SQUEEZE-6.5TeV-ATS-1m-2017_V3_V1')
 
@@ -87,7 +182,7 @@ for vv,opt in zip(mom,ot):
 
 ```
 
-## Get knob factors
+### Get knob factors
 ```python
 ot = lsa.getOpticTable('PHYSICS-2.51TeV-4m-2015_V1@90_[END]')
 f = lsa.getKnobFactors('LHCBEAM2/IP1_SEPSCAN_Y_MM', ot[0])
@@ -101,7 +196,7 @@ f = lsa.getKnobFactors('LHCBEAM2/IP1_SEPSCAN_Y_MM', ot[0])
  'RCBYVS4.R1B2/KICK': 0.0001292294752}
 ```
 
-## search parameter names
+### search parameter names
 ```python
 lsa.findParameterNames(deviceName='LHCBEAM',regexp=r'mom')
 [u'LHCBEAM/MOMENTUM-TRIM', u'LHCBEAM/MOMENTUM']
@@ -111,7 +206,7 @@ lsa.findParameterNames(groupName='ALL MAGNETS',regexp=r'RQTL9\.L7.*/IREF')
 
 ```python
 ```
-## PowerConverterInfo
+### PowerConverterInfo
 
 ```python
 pcname=lsa.findPCNameByMadStrength('kq7.r5b1',full=True)
@@ -120,7 +215,7 @@ print(dev.getDidtMin())
 print(dev.getInom())
 ```
 
-## Get the parameter hierarchy tree for a parameter
+### Get the parameter hierarchy tree for a parameter
 ```lsa.getParameterHierarchy('LHCBEAM1/IP1_SEPSCAN_X_MM')
 {'I': ['RCBCH6.L1B1/I',
   'RCBYHS4.R1B1/I',

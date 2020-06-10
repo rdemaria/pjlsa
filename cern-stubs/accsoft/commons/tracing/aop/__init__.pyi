@@ -1,0 +1,6 @@
+import cern.accsoft.commons.tracing.requests
+
+
+class TracingAspect:
+    def after(self, clientRequestInfo: cern.accsoft.commons.tracing.requests.ClientRequestInfo) -> None: ...
+    def before(self, clientRequestInfo: cern.accsoft.commons.tracing.requests.ClientRequestInfo) -> None: ...

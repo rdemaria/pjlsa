@@ -41,50 +41,13 @@ import os
 import re
 from collections import namedtuple
 import datetime
-import urllib
+from contextlib import contextmanager
 
 import numpy as np
 import six
 import jpype
 
 import cmmnbuild_dep_manager
-
-jarname = re.compile(r"([a-z\-]+)-([0-9.]+)\.jar")
-
-
-def ver2num(ver):
-    out = 0
-    for ii, vv in enumerate(map(int, reversed(ver.split(".")))):
-        out += vv * 1000 ** ii
-    return out
-
-
-def get_jarversion(jars):
-    out = {}
-    for jar in jars:
-        res = jarname.search(jar)
-        if res:
-            name, version = res.groups()
-            out[name] = version
-    return out
-
-
-def older_jar_than_pro(jars):
-    jar_mgr = get_jarversion(jars)
-    # del jar_mgr['cmw-directory-client']
-    url = "http://bewww.cern.ch/ap/deployments/applications/cern/lsa/lsa-app-suite/PRO/lsa-app-suite.jnlp"
-    jar_pro = get_jarversion(urllib.urlopen(url).readlines())
-    result = False
-    for jar in set(jar_mgr).intersection(jar_pro):
-        v1 = jar_mgr[jar]
-        v2 = jar_pro[jar]
-        vv1 = ver2num(jar_mgr[jar])
-        vv2 = ver2num(jar_pro[jar])
-        if vv1 < vv2:
-            print("Checking %-30s: USED=%-6s < PRO=%-6s" % (jar, v1, v2))
-            result = True
-    return result
-
 
 # Python data descriptors
 TrimHeader = namedtuple(
@@ -109,9 +72,6 @@ PCInfo = namedtuple(
 )
 
 Context = namedtuple("Context", ["timestamp", "name", "user"])
-
-
-#
 
 
 def _build_TrimHeader(th):
@@ -231,6 +191,23 @@ class LSAClient(object):
         self._opticService = self._ServiceLocator.getService(self._OpticService)
         self._deviceService = self._ServiceLocator.getService(self._DeviceService)
         self._fidelService = self._ServiceLocator.getService(self._FidelService)
+
+    @contextmanager
+    def java_api(self):
+        """Run code with the access to the LSA Java universe through JPype imports.
+        After the import/execution returns, the original python import behavior is restored.
+
+        This method is typically called from a launcher module, e.g.:
+            `with pjlsa.LSAClient(server=...).java_api(): import my_main_module`
+        """
+        with self._mgr.imports():
+            # work-around to fire up JPypes forward converters - TODO: remove me in JPype 0.8!
+            from java.util import HashSet, HashMap, ArrayList, Date
+            ArrayList()
+            HashMap()
+            HashSet()
+            Date()
+            yield
 
     def _getContextFamily(self, name):
         if isinstance(name, str):
@@ -440,7 +417,7 @@ class LSAClient(object):
         return [
             _build_TrimHeader(th)
             for th in self._getRawTrimHeadersByBeamprocess(
-                    self._buildParameterList(parameter), beamprocess, start, end
+                self._buildParameterList(parameter), beamprocess, start, end
             )
         ]
 
@@ -451,9 +428,9 @@ class LSAClient(object):
                 self._buildParameterList(parameter), cycle, start, end
             )
         ]
-        
+
     def getTrimHeaders(
-        self, parameter, beamprocess=None, cycle=None, start=None, end=None
+            self, parameter, beamprocess=None, cycle=None, start=None, end=None
     ):
         if beamprocess is not None:
             return self._getTrimHeadersByBeamprocess(parameter,
@@ -465,7 +442,7 @@ class LSAClient(object):
                                                start=start, end=end)
 
     def _getTrimsByBeamprocess(
-        self, parameter, beamprocess, start=None, end=None, part="value"
+            self, parameter, beamprocess, start=None, end=None, part="value"
     ):
         parameterList = self._buildParameterList(parameter)
         bp = self._getBeamProcess(beamprocess)
@@ -521,7 +498,7 @@ class LSAClient(object):
         return out
 
     def _getTrimsByCycle(
-        self, parameter, cycle, start=None, end=None, part="value"
+            self, parameter, cycle, start=None, end=None, part="value"
     ):
         parameterList = self._buildParameterList(parameter)
         cy = self._getCycle(cycle)
@@ -529,7 +506,7 @@ class LSAClient(object):
         timestamps = {}
         values = {}
         for th in self._getRawTrimHeadersByCycle(
-            parameterList, cy, start, end
+                parameterList, cy, start, end
         ):
             csrb = self._domain.settings.ContextSettingsRequestBuilder()
             csrb.standAloneContext(cy)
@@ -579,8 +556,9 @@ class LSAClient(object):
         for name in values:
             out[name] = TrimTuple(time=timestamps[name], data=values[name])
         return out
+
     def getTrims(
-        self, parameter, beamprocess=None, cycle=None, start=None, end=None, part="value"
+            self, parameter, beamprocess=None, cycle=None, start=None, end=None, part="value"
     ):
         if beamprocess is not None:
             return self._getTrimsByBeamprocess(parameter,
@@ -606,17 +584,17 @@ class LSAClient(object):
             parameter, cycle, part=part, start=th.createdDate
         )[parameter]
         return TrimTuple(res.time[-1], res.data[-1])
-    
+
     def getLastTrim(
-        self, parameter, beamprocess=None, cycle=None, part="value"
+            self, parameter, beamprocess=None, cycle=None, part="value"
     ):
         if beamprocess is not None:
             return self._getLastTrimByBeamprocess(parameter,
-                                                  beamprocess=beamprocess, 
+                                                  beamprocess=beamprocess,
                                                   part=part)
         else:
             return self._getLastTrimByCycle(parameter,
-                                            cycle=cycle, 
+                                            cycle=cycle,
                                             part=part)
 
     def _getLastTrimValueByBeamprocess(self, parameter, beamprocess, part="value"):
@@ -632,19 +610,19 @@ class LSAClient(object):
             parameter, cycle, part=part, start=th.createdDate
         )[parameter]
         return res.data[-1]
-    
+
     def getLastTrimValue(
-        self, parameter, beamprocess=None, cycle=None, part="value"
+            self, parameter, beamprocess=None, cycle=None, part="value"
     ):
         if beamprocess is not None:
             return self._getLastTrimValueByBeamprocess(parameter,
-                                                       beamprocess=beamprocess, 
+                                                       beamprocess=beamprocess,
                                                        part=part)
         else:
             return self._getLastTrimValueByCycle(parameter,
-                                                 cycle=cycle, 
+                                                 cycle=cycle,
                                                  part=part)
-            
+
     def getOpticTable(self, beamprocess):
         bp = self._getBeamProcess(beamprocess)
         if bp is None:
@@ -724,7 +702,7 @@ class LSAClient(object):
             pcname = list(pcs[pcname])[0].toString()
         nl = self._java.util.Collections.singleton(pcname)
         madnames = self._deviceService.findMadStrengthNamesByLogicalNames(nl)
-        madname = madnames[pcname]    
+        madname = madnames[pcname]
         return madname
 
     def getCalibration(self, pcname, fieldtype="B_FIELD"):

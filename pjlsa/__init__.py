@@ -1,4 +1,4 @@
-__version__ = "0.0.16"
+__version__ = "0.2.0"
 
 __cmmnbuild_deps__ = [
     "log4j",
