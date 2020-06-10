@@ -5,10 +5,9 @@ import ast
 import os
 import setuptools
 
-
 REQUIREMENTS: dict = {
     "core": ["cmmnbuild-dep-manager>=2.5.0,<2.6.0", "jpype1>=0.7.3,<0.8.0", "numpy"],
-    "test": ["pytest",],
+    "test": ["pytest", ],
 }
 
 
@@ -20,6 +19,8 @@ def get_version_from_init():
                 return ast.literal_eval(line.split("=", 1)[1].strip())
 
 
+ALL_PYI = [('*/' * depth) + '*.pyi' for depth in range(0, 10)]
+
 VERSION = get_version_from_init()
 
 setuptools.setup(
@@ -30,7 +31,7 @@ setuptools.setup(
     author_email="inca-support@cern.ch",
     url="https://gitlab.cern.ch/scripting-tools/pjlsa",
     packages=["pjlsa", "cern-stubs", "com-stubs", "java-stubs"],
-    package_dir={"pjlsa": "pjlsa", "cern-stubs":"cern-stubs", "com-stubs":"com-stubs", "java-stubs":"java-stubs"},
+    package_dir={"pjlsa": "pjlsa", "cern-stubs": "cern-stubs", "com-stubs": "com-stubs", "java-stubs": "java-stubs"},
     install_requires=REQUIREMENTS["core"],
     extras_require={
         **REQUIREMENTS,
@@ -48,5 +49,5 @@ setuptools.setup(
         # Register with cmmnbuild_dep_manager.
         "cmmnbuild_dep_manager": [f"pjlsa={VERSION}"],
     },
-    package_data={'cern-stubs': ['**/*.pyi','*.pyi'], 'java-stubs':['**/*.pyi','*.pyi'], 'com-stubs':['**/*.pyi','*.pyi']},
+    package_data={'cern-stubs': ALL_PYI, 'java-stubs': ALL_PYI, 'com-stubs': ALL_PYI},
 )
