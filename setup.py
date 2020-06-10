@@ -30,7 +30,7 @@ setuptools.setup(
     author_email="inca-support@cern.ch",
     url="https://gitlab.cern.ch/scripting-tools/pjlsa",
     packages=["pjlsa", "cern-stubs", "com-stubs", "java-stubs"],
-    package_dir={"pjlsa": "pjlsa", "cern-stubs": "cern-stubs", "com-stubs": "com-stubs", "java-stubs": "java-stubs"},
+    package_dir={"pjlsa": "pjlsa", "cern-stubs":"cern-stubs", "com-stubs":"com-stubs", "java-stubs":"java-stubs"},
     install_requires=REQUIREMENTS["core"],
     extras_require={
         **REQUIREMENTS,
@@ -48,4 +48,5 @@ setuptools.setup(
         # Register with cmmnbuild_dep_manager.
         "cmmnbuild_dep_manager": [f"pjlsa={VERSION}"],
     },
+    package_data={'cern-stubs': ['**/*.pyi','*.pyi'], 'java-stubs':['**/*.pyi','*.pyi'], 'com-stubs':['**/*.pyi','*.pyi']},
 )
