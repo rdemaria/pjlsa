@@ -24,11 +24,11 @@ def test_parameter():
 
 
 def test_trim():
-    t1 = "2015-11-22 00:00:00"
-    t2 = "2015-11-23 00:00:00"
+    t1 = "2018-09-22 00:00:00"
+    t2 = "2018-09-23 00:00:00"
     name = "LHCBEAM2/IP1_SEPSCAN_Y_MM"
     trims = lsa.getTrims(
-        beamprocess="PHYSICS-2.51TeV-4m-2015_V1@90_[END]",
+        beamprocess="PHYSICS-6.5TeV-30cm-120s-2018_V1@120_[END]",
         parameter=name,
         start=t1,
         end=t2,
@@ -39,13 +39,13 @@ def test_trim():
 def test_trim_function():
     name = "RQ5.L1B1/I"
     trims = lsa.getTrims(
-        beamprocess="PC_INTERLOCK_REF-SQUEEZE-6.5TeV-3m-40cm-2016_V1",
+        beamprocess="PC_INTERLOCK_REF-SQUEEZE-6.5TeV-ATS-1m-30cm-2018_V1",
         parameter=name
     )
     func = trims[name].data
     assert len(func) > 0
     assert type(func[0]) is np.ndarray
-    assert func[0].shape == (2, 575)
+    assert func[0].shape == (2, 329)
 
 
 def test_optics():
@@ -54,14 +54,14 @@ def test_optics():
 
 
 def test_factors():
-    ot = lsa.getOpticTable("PHYSICS-2.51TeV-4m-2015_V1@90_[END]")
+    ot = lsa.getOpticTable("PHYSICS-6.5TeV-30cm-120s-2018_V1@120_[END]")
     f = lsa.getKnobFactors("LHCBEAM2/IP1_SEPSCAN_Y_MM", ot[0])
     assert len(f) > 3
 
 
 def test_beamprocess():
-    bp = lsa._getBeamProcess("PHYSICS-2.51TeV-4m-2015_V1@90_[END]")
-    bp1 = lsa._getBeamProcessByUser("LHC.USER.PHYSICS", "2.51TeV_2015_CRS")
+    bp = lsa._getBeamProcess("PHYSICS-6.5TeV-30cm-120s-2018_V1@120_[END]")
+    bp1 = lsa._getBeamProcessByUser("LHC.USER.PHYSICS", "6.5TeV_2018_PELP_RAMP")
     assert (bp == bp1) == 1
 
 
