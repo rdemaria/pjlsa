@@ -95,6 +95,17 @@ trimRequest = TrimRequest.builder() \
 trimService.trimSettings(trimRequest)
 ```
 
+### Find calibrations
+```python
+from cern.lsa.client import DeviceService, ServiceLocator
+from cern.lsa.domain.devices import CalibrationsRequest
+from cern.lsa.domain.optics import CalibrationFunctionTypes
+
+deviceService = ServiceLocator.getService(DeviceService)
+calibration = deviceService.findCalibration(CalibrationsRequest.byLogicalHardwareName("logical.BR1.QFO"))
+calib = calibration.getCalibrationFunctionByType(CalibrationFunctionTypes.BL_FIELD)
+```
+
 ## High-Level python API (mostly for data analysis)
 Limited use for the time being
 
