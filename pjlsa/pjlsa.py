@@ -176,7 +176,12 @@ class LSAClient(object):
         self._CernAccelerator = self._cern.accsoft.commons.domain.CernAccelerator
 
         # starting services
-        self._System.setProperty("lsa.server", server)
+        configuredServer = self._System.getProperty("lsa.server")
+        if configuredServer is None:
+            self._System.setProperty("lsa.server", server)
+        elif configuredServer != server:
+            raise RuntimeError("LSA is already configured to connect to server '%s'. "
+                               "Please restart python to change server to '%s'." % (configuredServer, server))
 
         self._contextService = self._ServiceLocator.getService(self._ContextService)
         self._trimService = self._ServiceLocator.getService(self._TrimService)
