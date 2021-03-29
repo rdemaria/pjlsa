@@ -6,7 +6,7 @@ import os
 import setuptools
 
 REQUIREMENTS: dict = {
-    "core": ["cmmnbuild-dep-manager>=2.5.0,<3.*", "jpype1>=1.0.2,<2.*", "numpy"],
+    "core": ["cmmnbuild-dep-manager>=2.5.0,<3.*", "jpype1>=1.2.1,<2.*", "numpy"],
     "test": ["pytest", ],
 }
 
