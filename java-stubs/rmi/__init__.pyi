@@ -1,47 +1,43 @@
-from typing import Any as _py_Any
-from typing import List as _py_List
-from typing import TypeVar as _py_TypeVar
-from typing import Generic as _py_Generic
-from typing import overload
 import java.io
 import java.lang
+import typing
 
 
 class AlreadyBoundException(java.lang.Exception):
-    @overload
+    @typing.overload
     def __init__(self): ...
-    @overload
+    @typing.overload
     def __init__(self, string: str): ...
 
-_MarshalledObject__T = _py_TypeVar('_MarshalledObject__T')  # <T>
-class MarshalledObject(java.io.Serializable, _py_Generic[_MarshalledObject__T]):
+_MarshalledObject__T = typing.TypeVar('_MarshalledObject__T')  # <T>
+class MarshalledObject(java.io.Serializable, typing.Generic[_MarshalledObject__T]):
     def __init__(self, t: _MarshalledObject__T): ...
-    def equals(self, object: _py_Any) -> bool: ...
+    def equals(self, object: typing.Any) -> bool: ...
     def get(self) -> _MarshalledObject__T: ...
     def hashCode(self) -> int: ...
 
 class Naming:
-    @classmethod
-    def bind(cls, string: str, remote: 'Remote') -> None: ...
-    @classmethod
-    def list(cls, string: str) -> _py_List[str]: ...
-    @classmethod
-    def lookup(cls, string: str) -> 'Remote': ...
-    @classmethod
-    def rebind(cls, string: str, remote: 'Remote') -> None: ...
-    @classmethod
-    def unbind(cls, string: str) -> None: ...
+    @staticmethod
+    def bind(string: str, remote: 'Remote') -> None: ...
+    @staticmethod
+    def list(string: str) -> typing.List[str]: ...
+    @staticmethod
+    def lookup(string: str) -> 'Remote': ...
+    @staticmethod
+    def rebind(string: str, remote: 'Remote') -> None: ...
+    @staticmethod
+    def unbind(string: str) -> None: ...
 
 class NotBoundException(java.lang.Exception):
-    @overload
+    @typing.overload
     def __init__(self): ...
-    @overload
+    @typing.overload
     def __init__(self, string: str): ...
 
 class RMISecurityException(java.lang.SecurityException):
-    @overload
+    @typing.overload
     def __init__(self, string: str): ...
-    @overload
+    @typing.overload
     def __init__(self, string: str, string2: str): ...
 
 class RMISecurityManager(java.lang.SecurityManager):
@@ -51,37 +47,37 @@ class Remote: ...
 
 class RemoteException(java.io.IOException):
     detail: java.lang.Throwable = ...
-    @overload
+    @typing.overload
     def __init__(self): ...
-    @overload
+    @typing.overload
     def __init__(self, string: str): ...
-    @overload
+    @typing.overload
     def __init__(self, string: str, throwable: java.lang.Throwable): ...
     def getCause(self) -> java.lang.Throwable: ...
     def getMessage(self) -> str: ...
 
 class AccessException(RemoteException):
-    @overload
+    @typing.overload
     def __init__(self, string: str): ...
-    @overload
+    @typing.overload
     def __init__(self, string: str, exception: java.lang.Exception): ...
 
 class ConnectException(RemoteException):
-    @overload
+    @typing.overload
     def __init__(self, string: str): ...
-    @overload
+    @typing.overload
     def __init__(self, string: str, exception: java.lang.Exception): ...
 
 class ConnectIOException(RemoteException):
-    @overload
+    @typing.overload
     def __init__(self, string: str): ...
-    @overload
+    @typing.overload
     def __init__(self, string: str, exception: java.lang.Exception): ...
 
 class MarshalException(RemoteException):
-    @overload
+    @typing.overload
     def __init__(self, string: str): ...
-    @overload
+    @typing.overload
     def __init__(self, string: str, exception: java.lang.Exception): ...
 
 class NoSuchObjectException(RemoteException):
@@ -91,34 +87,34 @@ class ServerError(RemoteException):
     def __init__(self, string: str, error: java.lang.Error): ...
 
 class ServerException(RemoteException):
-    @overload
+    @typing.overload
     def __init__(self, string: str): ...
-    @overload
+    @typing.overload
     def __init__(self, string: str, exception: java.lang.Exception): ...
 
 class ServerRuntimeException(RemoteException):
     def __init__(self, string: str, exception: java.lang.Exception): ...
 
 class StubNotFoundException(RemoteException):
-    @overload
+    @typing.overload
     def __init__(self, string: str): ...
-    @overload
+    @typing.overload
     def __init__(self, string: str, exception: java.lang.Exception): ...
 
 class UnexpectedException(RemoteException):
-    @overload
+    @typing.overload
     def __init__(self, string: str): ...
-    @overload
+    @typing.overload
     def __init__(self, string: str, exception: java.lang.Exception): ...
 
 class UnknownHostException(RemoteException):
-    @overload
+    @typing.overload
     def __init__(self, string: str): ...
-    @overload
+    @typing.overload
     def __init__(self, string: str, exception: java.lang.Exception): ...
 
 class UnmarshalException(RemoteException):
-    @overload
+    @typing.overload
     def __init__(self, string: str): ...
-    @overload
+    @typing.overload
     def __init__(self, string: str, exception: java.lang.Exception): ...

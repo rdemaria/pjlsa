@@ -1,49 +1,53 @@
-from typing import Any as _py_Any
-from typing import TypeVar as _py_TypeVar
-from typing import Generic as _py_Generic
-from typing import overload
+import java.lang
+import java.util.concurrent
+import typing
 
 
-class FinalizerHistogram: ...
+class Cleaner:
+    @typing.overload
+    @staticmethod
+    def create() -> 'Cleaner': ...
+    @typing.overload
+    @staticmethod
+    def create(threadFactory: java.util.concurrent.ThreadFactory) -> 'Cleaner': ...
+    def register(self, object: typing.Any, runnable: typing.Union[java.lang.Runnable, typing.Callable]) -> 'Cleaner.Cleanable': ...
+    class Cleanable:
+        def clean(self) -> None: ...
 
-_Reference__T = _py_TypeVar('_Reference__T')  # <T>
-class Reference(_py_Generic[_Reference__T]):
+_Reference__T = typing.TypeVar('_Reference__T')  # <T>
+class Reference(typing.Generic[_Reference__T]):
     def clear(self) -> None: ...
     def enqueue(self) -> bool: ...
     def get(self) -> _Reference__T: ...
     def isEnqueued(self) -> bool: ...
+    @staticmethod
+    def reachabilityFence(object: typing.Any) -> None: ...
 
-_ReferenceQueue__T = _py_TypeVar('_ReferenceQueue__T')  # <T>
-class ReferenceQueue(_py_Generic[_ReferenceQueue__T]):
+_ReferenceQueue__T = typing.TypeVar('_ReferenceQueue__T')  # <T>
+class ReferenceQueue(typing.Generic[_ReferenceQueue__T]):
     def __init__(self): ...
     def poll(self) -> Reference[_ReferenceQueue__T]: ...
-    @overload
+    @typing.overload
     def remove(self) -> Reference[_ReferenceQueue__T]: ...
-    @overload
+    @typing.overload
     def remove(self, long: int) -> Reference[_ReferenceQueue__T]: ...
 
-_FinalReference__T = _py_TypeVar('_FinalReference__T')  # <T>
-class FinalReference(Reference[_FinalReference__T], _py_Generic[_FinalReference__T]):
-    def __init__(self, t: _FinalReference__T, referenceQueue: ReferenceQueue[_FinalReference__T]): ...
-
-_PhantomReference__T = _py_TypeVar('_PhantomReference__T')  # <T>
-class PhantomReference(Reference[_PhantomReference__T], _py_Generic[_PhantomReference__T]):
+_PhantomReference__T = typing.TypeVar('_PhantomReference__T')  # <T>
+class PhantomReference(Reference[_PhantomReference__T], typing.Generic[_PhantomReference__T]):
     def __init__(self, t: _PhantomReference__T, referenceQueue: ReferenceQueue[_PhantomReference__T]): ...
     def get(self) -> _PhantomReference__T: ...
 
-_SoftReference__T = _py_TypeVar('_SoftReference__T')  # <T>
-class SoftReference(Reference[_SoftReference__T], _py_Generic[_SoftReference__T]):
-    @overload
+_SoftReference__T = typing.TypeVar('_SoftReference__T')  # <T>
+class SoftReference(Reference[_SoftReference__T], typing.Generic[_SoftReference__T]):
+    @typing.overload
     def __init__(self, t: _SoftReference__T): ...
-    @overload
+    @typing.overload
     def __init__(self, t: _SoftReference__T, referenceQueue: ReferenceQueue[_SoftReference__T]): ...
     def get(self) -> _SoftReference__T: ...
 
-_WeakReference__T = _py_TypeVar('_WeakReference__T')  # <T>
-class WeakReference(Reference[_WeakReference__T], _py_Generic[_WeakReference__T]):
-    @overload
+_WeakReference__T = typing.TypeVar('_WeakReference__T')  # <T>
+class WeakReference(Reference[_WeakReference__T], typing.Generic[_WeakReference__T]):
+    @typing.overload
     def __init__(self, t: _WeakReference__T): ...
-    @overload
+    @typing.overload
     def __init__(self, t: _WeakReference__T, referenceQueue: ReferenceQueue[_WeakReference__T]): ...
-
-class Finalizer(FinalReference[_py_Any]): ...

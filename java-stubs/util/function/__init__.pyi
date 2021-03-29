@@ -1,46 +1,44 @@
-from typing import Any as _py_Any
-from typing import TypeVar as _py_TypeVar
-from typing import Generic as _py_Generic
 import java.util
+import typing
 
 
-_BiConsumer__T = _py_TypeVar('_BiConsumer__T')  # <T>
-_BiConsumer__U = _py_TypeVar('_BiConsumer__U')  # <U>
-class BiConsumer(_py_Generic[_BiConsumer__T, _BiConsumer__U]):
+_BiConsumer__T = typing.TypeVar('_BiConsumer__T')  # <T>
+_BiConsumer__U = typing.TypeVar('_BiConsumer__U')  # <U>
+class BiConsumer(typing.Generic[_BiConsumer__T, _BiConsumer__U]):
     def accept(self, t: _BiConsumer__T, u: _BiConsumer__U) -> None: ...
-    def andThen(self, biConsumer: 'BiConsumer'[_BiConsumer__T, _BiConsumer__U]) -> 'BiConsumer'[_BiConsumer__T, _BiConsumer__U]: ...
+    def andThen(self, biConsumer: typing.Union['BiConsumer'[_BiConsumer__T, _BiConsumer__U], typing.Callable[[_BiConsumer__T, _BiConsumer__U], None]]) -> 'BiConsumer'[_BiConsumer__T, _BiConsumer__U]: ...
 
-_BiFunction__T = _py_TypeVar('_BiFunction__T')  # <T>
-_BiFunction__U = _py_TypeVar('_BiFunction__U')  # <U>
-_BiFunction__R = _py_TypeVar('_BiFunction__R')  # <R>
-class BiFunction(_py_Generic[_BiFunction__T, _BiFunction__U, _BiFunction__R]):
-    _andThen__V = _py_TypeVar('_andThen__V')  # <V>
-    def andThen(self, function: 'Function'[_BiFunction__R, _andThen__V]) -> 'BiFunction'[_BiFunction__T, _BiFunction__U, _andThen__V]: ...
+_BiFunction__T = typing.TypeVar('_BiFunction__T')  # <T>
+_BiFunction__U = typing.TypeVar('_BiFunction__U')  # <U>
+_BiFunction__R = typing.TypeVar('_BiFunction__R')  # <R>
+class BiFunction(typing.Generic[_BiFunction__T, _BiFunction__U, _BiFunction__R]):
+    _andThen__V = typing.TypeVar('_andThen__V')  # <V>
+    def andThen(self, function: typing.Union['Function'[_BiFunction__R, _andThen__V], typing.Callable[[_BiFunction__R], _andThen__V]]) -> 'BiFunction'[_BiFunction__T, _BiFunction__U, _andThen__V]: ...
     def apply(self, t: _BiFunction__T, u: _BiFunction__U) -> _BiFunction__R: ...
 
-_BiPredicate__T = _py_TypeVar('_BiPredicate__T')  # <T>
-_BiPredicate__U = _py_TypeVar('_BiPredicate__U')  # <U>
-class BiPredicate(_py_Generic[_BiPredicate__T, _BiPredicate__U]):
+_BiPredicate__T = typing.TypeVar('_BiPredicate__T')  # <T>
+_BiPredicate__U = typing.TypeVar('_BiPredicate__U')  # <U>
+class BiPredicate(typing.Generic[_BiPredicate__T, _BiPredicate__U]):
     def negate(self) -> 'BiPredicate'[_BiPredicate__T, _BiPredicate__U]: ...
     def test(self, t: _BiPredicate__T, u: _BiPredicate__U) -> bool: ...
 
 class BooleanSupplier:
     def getAsBoolean(self) -> bool: ...
 
-_Consumer__T = _py_TypeVar('_Consumer__T')  # <T>
-class Consumer(_py_Generic[_Consumer__T]):
+_Consumer__T = typing.TypeVar('_Consumer__T')  # <T>
+class Consumer(typing.Generic[_Consumer__T]):
     def accept(self, t: _Consumer__T) -> None: ...
-    def andThen(self, consumer: 'Consumer'[_Consumer__T]) -> 'Consumer'[_Consumer__T]: ...
+    def andThen(self, consumer: typing.Union['Consumer'[_Consumer__T], typing.Callable[[_Consumer__T], None]]) -> 'Consumer'[_Consumer__T]: ...
 
 class DoubleBinaryOperator:
     def applyAsDouble(self, double: float, double2: float) -> float: ...
 
 class DoubleConsumer:
     def accept(self, double: float) -> None: ...
-    def andThen(self, doubleConsumer: 'DoubleConsumer') -> 'DoubleConsumer': ...
+    def andThen(self, doubleConsumer: typing.Union['DoubleConsumer', typing.Callable]) -> 'DoubleConsumer': ...
 
-_DoubleFunction__R = _py_TypeVar('_DoubleFunction__R')  # <R>
-class DoubleFunction(_py_Generic[_DoubleFunction__R]):
+_DoubleFunction__R = typing.TypeVar('_DoubleFunction__R')  # <R>
+class DoubleFunction(typing.Generic[_DoubleFunction__R]):
     def apply(self, double: float) -> _DoubleFunction__R: ...
 
 class DoublePredicate:
@@ -57,33 +55,33 @@ class DoubleToLongFunction:
     def applyAsLong(self, double: float) -> int: ...
 
 class DoubleUnaryOperator:
-    def andThen(self, doubleUnaryOperator: 'DoubleUnaryOperator') -> 'DoubleUnaryOperator': ...
+    def andThen(self, doubleUnaryOperator: typing.Union['DoubleUnaryOperator', typing.Callable]) -> 'DoubleUnaryOperator': ...
     def applyAsDouble(self, double: float) -> float: ...
-    def compose(self, doubleUnaryOperator: 'DoubleUnaryOperator') -> 'DoubleUnaryOperator': ...
-    @classmethod
-    def identity(cls) -> 'DoubleUnaryOperator': ...
+    def compose(self, doubleUnaryOperator: typing.Union['DoubleUnaryOperator', typing.Callable]) -> 'DoubleUnaryOperator': ...
+    @staticmethod
+    def identity() -> 'DoubleUnaryOperator': ...
 
-_Function__T = _py_TypeVar('_Function__T')  # <T>
-_Function__R = _py_TypeVar('_Function__R')  # <R>
-class Function(_py_Generic[_Function__T, _Function__R]):
-    _andThen__V = _py_TypeVar('_andThen__V')  # <V>
-    def andThen(self, function: 'Function'[_Function__R, _andThen__V]) -> 'Function'[_Function__T, _andThen__V]: ...
+_Function__T = typing.TypeVar('_Function__T')  # <T>
+_Function__R = typing.TypeVar('_Function__R')  # <R>
+class Function(typing.Generic[_Function__T, _Function__R]):
+    _andThen__V = typing.TypeVar('_andThen__V')  # <V>
+    def andThen(self, function: typing.Union['Function'[_Function__R, _andThen__V], typing.Callable[[_Function__R], _andThen__V]]) -> 'Function'[_Function__T, _andThen__V]: ...
     def apply(self, t: _Function__T) -> _Function__R: ...
-    _compose__V = _py_TypeVar('_compose__V')  # <V>
-    def compose(self, function: 'Function'[_compose__V, _Function__T]) -> 'Function'[_compose__V, _Function__R]: ...
-    _identity__T = _py_TypeVar('_identity__T')  # <T>
-    @classmethod
-    def identity(cls) -> 'Function'[_identity__T, _identity__T]: ...
+    _compose__V = typing.TypeVar('_compose__V')  # <V>
+    def compose(self, function: typing.Union['Function'[_compose__V, _Function__T], typing.Callable[[_compose__V], _Function__T]]) -> 'Function'[_compose__V, _Function__R]: ...
+    _identity__T = typing.TypeVar('_identity__T')  # <T>
+    @staticmethod
+    def identity() -> 'Function'[_identity__T, _identity__T]: ...
 
 class IntBinaryOperator:
     def applyAsInt(self, int: int, int2: int) -> int: ...
 
 class IntConsumer:
     def accept(self, int: int) -> None: ...
-    def andThen(self, intConsumer: 'IntConsumer') -> 'IntConsumer': ...
+    def andThen(self, intConsumer: typing.Union['IntConsumer', typing.Callable]) -> 'IntConsumer': ...
 
-_IntFunction__R = _py_TypeVar('_IntFunction__R')  # <R>
-class IntFunction(_py_Generic[_IntFunction__R]):
+_IntFunction__R = typing.TypeVar('_IntFunction__R')  # <R>
+class IntFunction(typing.Generic[_IntFunction__R]):
     def apply(self, int: int) -> _IntFunction__R: ...
 
 class IntPredicate:
@@ -100,21 +98,21 @@ class IntToLongFunction:
     def applyAsLong(self, int: int) -> int: ...
 
 class IntUnaryOperator:
-    def andThen(self, intUnaryOperator: 'IntUnaryOperator') -> 'IntUnaryOperator': ...
+    def andThen(self, intUnaryOperator: typing.Union['IntUnaryOperator', typing.Callable]) -> 'IntUnaryOperator': ...
     def applyAsInt(self, int: int) -> int: ...
-    def compose(self, intUnaryOperator: 'IntUnaryOperator') -> 'IntUnaryOperator': ...
-    @classmethod
-    def identity(cls) -> 'IntUnaryOperator': ...
+    def compose(self, intUnaryOperator: typing.Union['IntUnaryOperator', typing.Callable]) -> 'IntUnaryOperator': ...
+    @staticmethod
+    def identity() -> 'IntUnaryOperator': ...
 
 class LongBinaryOperator:
     def applyAsLong(self, long: int, long2: int) -> int: ...
 
 class LongConsumer:
     def accept(self, long: int) -> None: ...
-    def andThen(self, longConsumer: 'LongConsumer') -> 'LongConsumer': ...
+    def andThen(self, longConsumer: typing.Union['LongConsumer', typing.Callable]) -> 'LongConsumer': ...
 
-_LongFunction__R = _py_TypeVar('_LongFunction__R')  # <R>
-class LongFunction(_py_Generic[_LongFunction__R]):
+_LongFunction__R = typing.TypeVar('_LongFunction__R')  # <R>
+class LongFunction(typing.Generic[_LongFunction__R]):
     def apply(self, long: int) -> _LongFunction__R: ...
 
 class LongPredicate:
@@ -131,74 +129,74 @@ class LongToIntFunction:
     def applyAsInt(self, long: int) -> int: ...
 
 class LongUnaryOperator:
-    def andThen(self, longUnaryOperator: 'LongUnaryOperator') -> 'LongUnaryOperator': ...
+    def andThen(self, longUnaryOperator: typing.Union['LongUnaryOperator', typing.Callable]) -> 'LongUnaryOperator': ...
     def applyAsLong(self, long: int) -> int: ...
-    def compose(self, longUnaryOperator: 'LongUnaryOperator') -> 'LongUnaryOperator': ...
-    @classmethod
-    def identity(cls) -> 'LongUnaryOperator': ...
+    def compose(self, longUnaryOperator: typing.Union['LongUnaryOperator', typing.Callable]) -> 'LongUnaryOperator': ...
+    @staticmethod
+    def identity() -> 'LongUnaryOperator': ...
 
-_ObjDoubleConsumer__T = _py_TypeVar('_ObjDoubleConsumer__T')  # <T>
-class ObjDoubleConsumer(_py_Generic[_ObjDoubleConsumer__T]):
+_ObjDoubleConsumer__T = typing.TypeVar('_ObjDoubleConsumer__T')  # <T>
+class ObjDoubleConsumer(typing.Generic[_ObjDoubleConsumer__T]):
     def accept(self, t: _ObjDoubleConsumer__T, double: float) -> None: ...
 
-_ObjIntConsumer__T = _py_TypeVar('_ObjIntConsumer__T')  # <T>
-class ObjIntConsumer(_py_Generic[_ObjIntConsumer__T]):
+_ObjIntConsumer__T = typing.TypeVar('_ObjIntConsumer__T')  # <T>
+class ObjIntConsumer(typing.Generic[_ObjIntConsumer__T]):
     def accept(self, t: _ObjIntConsumer__T, int: int) -> None: ...
 
-_ObjLongConsumer__T = _py_TypeVar('_ObjLongConsumer__T')  # <T>
-class ObjLongConsumer(_py_Generic[_ObjLongConsumer__T]):
+_ObjLongConsumer__T = typing.TypeVar('_ObjLongConsumer__T')  # <T>
+class ObjLongConsumer(typing.Generic[_ObjLongConsumer__T]):
     def accept(self, t: _ObjLongConsumer__T, long: int) -> None: ...
 
-_Predicate__T = _py_TypeVar('_Predicate__T')  # <T>
-class Predicate(_py_Generic[_Predicate__T]):
-    _isEqual__T = _py_TypeVar('_isEqual__T')  # <T>
-    @classmethod
-    def isEqual(cls, object: _py_Any) -> 'Predicate'[_isEqual__T]: ...
+_Predicate__T = typing.TypeVar('_Predicate__T')  # <T>
+class Predicate(typing.Generic[_Predicate__T]):
+    _isEqual__T = typing.TypeVar('_isEqual__T')  # <T>
+    @staticmethod
+    def isEqual(object: typing.Any) -> 'Predicate'[_isEqual__T]: ...
     def negate(self) -> 'Predicate'[_Predicate__T]: ...
     def test(self, t: _Predicate__T) -> bool: ...
 
-_Supplier__T = _py_TypeVar('_Supplier__T')  # <T>
-class Supplier(_py_Generic[_Supplier__T]):
+_Supplier__T = typing.TypeVar('_Supplier__T')  # <T>
+class Supplier(typing.Generic[_Supplier__T]):
     def get(self) -> _Supplier__T: ...
 
-_ToDoubleBiFunction__T = _py_TypeVar('_ToDoubleBiFunction__T')  # <T>
-_ToDoubleBiFunction__U = _py_TypeVar('_ToDoubleBiFunction__U')  # <U>
-class ToDoubleBiFunction(_py_Generic[_ToDoubleBiFunction__T, _ToDoubleBiFunction__U]):
+_ToDoubleBiFunction__T = typing.TypeVar('_ToDoubleBiFunction__T')  # <T>
+_ToDoubleBiFunction__U = typing.TypeVar('_ToDoubleBiFunction__U')  # <U>
+class ToDoubleBiFunction(typing.Generic[_ToDoubleBiFunction__T, _ToDoubleBiFunction__U]):
     def applyAsDouble(self, t: _ToDoubleBiFunction__T, u: _ToDoubleBiFunction__U) -> float: ...
 
-_ToDoubleFunction__T = _py_TypeVar('_ToDoubleFunction__T')  # <T>
-class ToDoubleFunction(_py_Generic[_ToDoubleFunction__T]):
+_ToDoubleFunction__T = typing.TypeVar('_ToDoubleFunction__T')  # <T>
+class ToDoubleFunction(typing.Generic[_ToDoubleFunction__T]):
     def applyAsDouble(self, t: _ToDoubleFunction__T) -> float: ...
 
-_ToIntBiFunction__T = _py_TypeVar('_ToIntBiFunction__T')  # <T>
-_ToIntBiFunction__U = _py_TypeVar('_ToIntBiFunction__U')  # <U>
-class ToIntBiFunction(_py_Generic[_ToIntBiFunction__T, _ToIntBiFunction__U]):
+_ToIntBiFunction__T = typing.TypeVar('_ToIntBiFunction__T')  # <T>
+_ToIntBiFunction__U = typing.TypeVar('_ToIntBiFunction__U')  # <U>
+class ToIntBiFunction(typing.Generic[_ToIntBiFunction__T, _ToIntBiFunction__U]):
     def applyAsInt(self, t: _ToIntBiFunction__T, u: _ToIntBiFunction__U) -> int: ...
 
-_ToIntFunction__T = _py_TypeVar('_ToIntFunction__T')  # <T>
-class ToIntFunction(_py_Generic[_ToIntFunction__T]):
+_ToIntFunction__T = typing.TypeVar('_ToIntFunction__T')  # <T>
+class ToIntFunction(typing.Generic[_ToIntFunction__T]):
     def applyAsInt(self, t: _ToIntFunction__T) -> int: ...
 
-_ToLongBiFunction__T = _py_TypeVar('_ToLongBiFunction__T')  # <T>
-_ToLongBiFunction__U = _py_TypeVar('_ToLongBiFunction__U')  # <U>
-class ToLongBiFunction(_py_Generic[_ToLongBiFunction__T, _ToLongBiFunction__U]):
+_ToLongBiFunction__T = typing.TypeVar('_ToLongBiFunction__T')  # <T>
+_ToLongBiFunction__U = typing.TypeVar('_ToLongBiFunction__U')  # <U>
+class ToLongBiFunction(typing.Generic[_ToLongBiFunction__T, _ToLongBiFunction__U]):
     def applyAsLong(self, t: _ToLongBiFunction__T, u: _ToLongBiFunction__U) -> int: ...
 
-_ToLongFunction__T = _py_TypeVar('_ToLongFunction__T')  # <T>
-class ToLongFunction(_py_Generic[_ToLongFunction__T]):
+_ToLongFunction__T = typing.TypeVar('_ToLongFunction__T')  # <T>
+class ToLongFunction(typing.Generic[_ToLongFunction__T]):
     def applyAsLong(self, t: _ToLongFunction__T) -> int: ...
 
-_BinaryOperator__T = _py_TypeVar('_BinaryOperator__T')  # <T>
-class BinaryOperator(BiFunction[_BinaryOperator__T, _BinaryOperator__T, _BinaryOperator__T], _py_Generic[_BinaryOperator__T]):
-    _maxBy__T = _py_TypeVar('_maxBy__T')  # <T>
-    @classmethod
-    def maxBy(cls, comparator: java.util.Comparator[_maxBy__T]) -> 'BinaryOperator'[_maxBy__T]: ...
-    _minBy__T = _py_TypeVar('_minBy__T')  # <T>
-    @classmethod
-    def minBy(cls, comparator: java.util.Comparator[_minBy__T]) -> 'BinaryOperator'[_minBy__T]: ...
+_BinaryOperator__T = typing.TypeVar('_BinaryOperator__T')  # <T>
+class BinaryOperator(BiFunction[_BinaryOperator__T, _BinaryOperator__T, _BinaryOperator__T], typing.Generic[_BinaryOperator__T]):
+    _maxBy__T = typing.TypeVar('_maxBy__T')  # <T>
+    @staticmethod
+    def maxBy(comparator: typing.Union[java.util.Comparator[_maxBy__T], typing.Callable[[_maxBy__T, _maxBy__T], int]]) -> 'BinaryOperator'[_maxBy__T]: ...
+    _minBy__T = typing.TypeVar('_minBy__T')  # <T>
+    @staticmethod
+    def minBy(comparator: typing.Union[java.util.Comparator[_minBy__T], typing.Callable[[_minBy__T, _minBy__T], int]]) -> 'BinaryOperator'[_minBy__T]: ...
 
-_UnaryOperator__T = _py_TypeVar('_UnaryOperator__T')  # <T>
-class UnaryOperator(Function[_UnaryOperator__T, _UnaryOperator__T], _py_Generic[_UnaryOperator__T]):
-    _identity__T = _py_TypeVar('_identity__T')  # <T>
-    @classmethod
-    def identity(cls) -> 'UnaryOperator'[_identity__T]: ...
+_UnaryOperator__T = typing.TypeVar('_UnaryOperator__T')  # <T>
+class UnaryOperator(Function[_UnaryOperator__T, _UnaryOperator__T], typing.Generic[_UnaryOperator__T]):
+    _identity__T = typing.TypeVar('_identity__T')  # <T>
+    @staticmethod
+    def identity() -> 'UnaryOperator'[_identity__T]: ...

@@ -1,13 +1,8 @@
-import pjlsa
-import stubgenj
+import cmmnbuild_dep_manager
+import logging
 
-lsa = pjlsa.LSAClient()
-prefixes = ["java",
-            "com.google.common.collect",
-            "com.google.common.base",
-            "cern.lsa",
-            "cern.accsoft.commons",
-            "cern.rbac.common",
-            "cern.japc.core", "cern.japc.value"]
-#prefixes = ["cern.accsoft.commons.remoting"]
-stubgenj.generateJavaStubs(prefixes, useStubsSuffix=True, outputDir='.')
+logging.basicConfig(level='INFO')
+
+manager = cmmnbuild_dep_manager.Manager()
+
+manager.stubgen(output_dir='.')

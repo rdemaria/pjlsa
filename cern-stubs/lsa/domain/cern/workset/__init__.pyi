@@ -1,22 +1,20 @@
-from typing import TypeVar as _py_TypeVar
-from typing import ClassVar as _py_ClassVar
-from typing import Generic as _py_Generic
 import cern.accsoft.commons.util
 import cern.lsa.domain.commons
 import cern.lsa.domain.devices
 import cern.lsa.domain.settings
 import java.util
+import typing
 
 
 class Cell:
     def isEmpty(self) -> bool: ...
 
-_Knob__P = _py_TypeVar('_Knob__P', bound='KnobPage')  # <P>
-class Knob(cern.lsa.domain.commons.IdentifiedEntity, cern.accsoft.commons.util.Named, _py_Generic[_Knob__P]):
+_Knob__P = typing.TypeVar('_Knob__P', bound='KnobPage')  # <P>
+class Knob(cern.lsa.domain.commons.IdentifiedEntity, cern.accsoft.commons.util.Named, typing.Generic[_Knob__P]):
     def getPages(self) -> java.util.List[_Knob__P]: ...
 
-_KnobPage__C = _py_TypeVar('_KnobPage__C', bound=Cell)  # <C>
-class KnobPage(_py_Generic[_KnobPage__C]):
+_KnobPage__C = typing.TypeVar('_KnobPage__C', bound=Cell)  # <C>
+class KnobPage(typing.Generic[_KnobPage__C]):
     def getCell(self, int: int, int2: int) -> _KnobPage__C: ...
     def getColumnCount(self) -> int: ...
     def getRowCount(self) -> int: ...
@@ -30,8 +28,8 @@ class WorkingSetDeviceGroups:
 class WorkingSetInstance(cern.accsoft.commons.util.Named):
     def getTables(self) -> java.util.List['WorkingSetTableInstance']: ...
 
-_WorkingSetTable__C = _py_TypeVar('_WorkingSetTable__C', bound='WorkingSetTableCell')  # <C>
-class WorkingSetTable(_py_Generic[_WorkingSetTable__C]):
+_WorkingSetTable__C = typing.TypeVar('_WorkingSetTable__C', bound='WorkingSetTableCell')  # <C>
+class WorkingSetTable(typing.Generic[_WorkingSetTable__C]):
     def getCell(self, int: int, int2: int) -> _WorkingSetTable__C: ...
     def getColumnCount(self) -> int: ...
     def getColumnHeader(self, int: int) -> str: ...
@@ -68,4 +66,4 @@ class WorkingSetTableInstanceCell(WorkingSetTableCell, ParameterCell):
     def getDevice(self) -> cern.lsa.domain.devices.Device: ...
 
 class WorkingSetTableLayoutCell(WorkingSetTableCell, ParameterTypeCell):
-    MACRO_DEVICE_NAME: _py_ClassVar[str] = ...
+    MACRO_DEVICE_NAME: typing.ClassVar[str] = ...

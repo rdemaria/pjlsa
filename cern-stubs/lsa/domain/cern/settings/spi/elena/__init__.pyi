@@ -1,5 +1,3 @@
-from typing import Any as _py_Any
-from typing import overload
 import cern.accsoft.commons.domain
 import cern.lsa.domain.cern.settings.elena
 import cern.lsa.domain.cern.timing
@@ -8,6 +6,7 @@ import java.io
 import java.time
 import java.util
 import javax.xml.bind.annotation.adapters
+import typing
 
 
 class AbstractElenaCycleSegment(cern.lsa.domain.cern.settings.elena.ElenaCycleSegment, java.io.Serializable):
@@ -42,9 +41,9 @@ class ElenaCycleSerializer:
     def unmarshal(self, string: str) -> 'ElenaCycleStructureImpl': ...
 
 class ElenaCycleStructureImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedEntity['ElenaCycleStructureImpl'], cern.lsa.domain.cern.settings.elena.ElenaCycleStructure, java.io.Serializable):
-    @overload
+    @typing.overload
     def __init__(self): ...
-    @overload
+    @typing.overload
     def __init__(self, list: java.util.List[cern.lsa.domain.cern.settings.elena.ElenaCycleSegment], particleType: cern.accsoft.commons.domain.ParticleType, injectionMode: cern.lsa.domain.cern.settings.elena.InjectionMode): ...
     def getId(self) -> int: ...
     def getInjectionMode(self) -> cern.lsa.domain.cern.settings.elena.InjectionMode: ...
@@ -63,19 +62,13 @@ class ElenaCycleStructureImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedEnti
 
 class ParticleTypeToStringAdapter(javax.xml.bind.annotation.adapters.XmlAdapter[str, cern.accsoft.commons.domain.ParticleType]):
     def __init__(self): ...
-    @overload
-    def marshal(self, object: _py_Any) -> _py_Any: ...
-    @overload
     def marshal(self, particleType: cern.accsoft.commons.domain.ParticleType) -> str: ...
-    @overload
     def unmarshal(self, string: str) -> cern.accsoft.commons.domain.ParticleType: ...
-    @overload
-    def unmarshal(self, object: _py_Any) -> _py_Any: ...
 
 class FlatSegmentImpl(AbstractElenaCycleSegment, cern.lsa.domain.cern.settings.elena.FlatSegment):
-    @overload
+    @typing.overload
     def __init__(self): ...
-    @overload
+    @typing.overload
     def __init__(self, string: str, duration: java.time.Duration): ...
     def getEndMomentum(self) -> int: ...
     def getNumberOfExtractions(self) -> int: ...

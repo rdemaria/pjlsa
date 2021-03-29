@@ -1,29 +1,27 @@
-from typing import Any as _py_Any
-from typing import List as _py_List
-from typing import overload
 import java.lang.reflect
 import java.util.concurrent
+import typing
 
 
 class MethodInvoker:
-    def invoke(self, objectArray: _py_List[_py_Any], method: java.lang.reflect.Method, objectArray2: _py_List[_py_Any]) -> _py_List[_py_Any]: ...
+    def invoke(self, objectArray: typing.List[typing.Any], method: java.lang.reflect.Method, objectArray2: typing.List[typing.Any]) -> typing.List[typing.Any]: ...
 
 class AbstractMethodInvoker(MethodInvoker):
     def __init__(self): ...
-    def invoke(self, objectArray: _py_List[_py_Any], method: java.lang.reflect.Method, objectArray2: _py_List[_py_Any]) -> _py_List[_py_Any]: ...
+    def invoke(self, objectArray: typing.List[typing.Any], method: java.lang.reflect.Method, objectArray2: typing.List[typing.Any]) -> typing.List[typing.Any]: ...
 
 class ExecutorServiceMethodInvoker(AbstractMethodInvoker):
-    @overload
+    @typing.overload
     def __init__(self): ...
-    @overload
+    @typing.overload
     def __init__(self, executorService: java.util.concurrent.ExecutorService, long: int): ...
     def getExecutorService(self) -> java.util.concurrent.ExecutorService: ...
     def getMethodInvocationTimeout(self) -> int: ...
 
 class SameThreadMethodInvoker(AbstractMethodInvoker):
-    @overload
+    @typing.overload
     def __init__(self): ...
-    @overload
+    @typing.overload
     def __init__(self, boolean: bool): ...
 
 class SwingThreadMethodInvoker(AbstractMethodInvoker):
