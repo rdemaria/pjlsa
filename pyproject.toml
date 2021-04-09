@@ -1,0 +1,4 @@
+[tool.pytest.ini_options]
+# -p no:faulthandler to ensure that the JVM is cleanly shutdown without segfault.
+# See https://github.com/jpype-project/jpype/pull/886 for details.
+addopts = "--doctest-modules -p no:faulthandler"
