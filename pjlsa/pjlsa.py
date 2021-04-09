@@ -44,7 +44,6 @@ import datetime
 from contextlib import contextmanager
 
 import numpy as np
-import six
 import jpype
 
 import cmmnbuild_dep_manager
@@ -90,7 +89,7 @@ def _toJavaDate(t):
     """Date from string, datetime, unixtimestamp to java date
     """
     Date = jpype.java.util.Date
-    if isinstance(t, six.string_types):
+    if isinstance(t, str):
         return jpype.java.sql.Timestamp.valueOf(t)
     elif isinstance(t, datetime.datetime):
         return jpype.java.sql.Timestamp.valueOf(t.strftime("%Y-%m-%d %H:%M:%S.%f"))
