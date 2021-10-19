@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 """
 PJLSA -- A Python wrapping of Java LSA API
 
-Copyright (c) CERN 2015-2017
+Copyright (c) CERN 2015-2021
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -110,8 +109,8 @@ def _toJavaList(lst):
 
 class LSAClient(object):
     def __init__(self, server="gpn"):
-        self._mgr = cmmnbuild_dep_manager.Manager("pjlsa")
-        self._jpype = self._mgr.start_jpype_jvm()
+        self._mgr = cmmnbuild_dep_manager.Manager()
+        self._mgr.jvm_required()
 
         # basic Java packages
         self._cern = jpype.JPackage("cern")
