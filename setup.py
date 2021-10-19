@@ -32,7 +32,7 @@ setuptools.setup(
     url="https://gitlab.cern.ch/scripting-tools/pjlsa",
     packages=["pjlsa", "cern-stubs", "com-stubs", "java-stubs"],
     package_dir={"pjlsa": "pjlsa", "cern-stubs": "cern-stubs", "com-stubs": "com-stubs", "java-stubs": "java-stubs"},
-    python_requires='~=3.5',
+    python_requires='~=3.7',
     classifiers=[
         "Programming Language :: Python :: 3",
         "Operating System :: OS Independent",

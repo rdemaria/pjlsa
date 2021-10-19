@@ -28,11 +28,11 @@ release_sdist:
 
 # We only really need a single dev test to ensure that we can actually use
 # PjLSA in development mode.
-tests_dev_py36_jdk11_jp12:
+tests_dev_py37_jdk11_jp12:
   extends:
     .base_dev_test
   variables:
-    env_spec: python=3.6 openjdk=11 JPype1=1.2.1
+    env_spec: python=3.7 openjdk=11 JPype1=1.2.1
 
 
 .base_wheel_test:
@@ -40,8 +40,8 @@ tests_dev_py36_jdk11_jp12:
   variables:
     env_spec: INSERT_CONDA_REQUIREMENTS
   script:
-    - conda create -n py36 --yes --quiet -c conda-forge pip $env_spec
-    - source activate py36
+    - conda create -n py37 --yes --quiet -c conda-forge pip $env_spec
+    - source activate py37
 
     - mkdir not-the-source-dir && cd not-the-source-dir
     - pip install "$(ls ../wheelhouse/*.whl)"
@@ -51,29 +51,29 @@ tests_dev_py36_jdk11_jp12:
     - pip install "$(ls ../wheelhouse/*.whl)[test]"
     - pytest ../tests
 
-tests_whl_py36_jdk8_jp12:
+tests_whl_py37_jdk8_jp12:
   extends:
     .base_wheel_test
   variables:
-    env_spec: python=3.6 openjdk=8 JPype1=1.2.1
+    env_spec: python=3.7 openjdk=8 JPype1=1.2.1
 
-tests_whl_py36_jdk11_jp12:
+tests_whl_py37_jdk11_jp12:
   extends:
     .base_wheel_test
   variables:
-    env_spec: python=3.6 openjdk=11 JPype1=1.2.1
+    env_spec: python=3.7 openjdk=11 JPype1=1.2.1
 
-tests_whl_py38_jdk8_jp12:
+tests_whl_py39_jdk8_jp12:
   extends:
     .base_wheel_test
   variables:
-    env_spec: python=3.8 openjdk=8 JPype1=1.2.1
+    env_spec: python=3.9 openjdk=8 JPype1=1.2.1
 
-tests_whl_py38_jdk11_jp12:
+tests_whl_py39_jdk11_jp12:
   extends:
     .base_wheel_test
   variables:
-    env_spec: python=3.8 openjdk=11 JPype1=1.2.1
+    env_spec: python=3.9 openjdk=11 JPype1=1.2.1
 
 
 build_wheel:
