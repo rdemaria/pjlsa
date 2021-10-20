@@ -16,6 +16,6 @@ __stubgen_packages__ = [
     "cern.japc.value"
 ]
 
-from .pjlsa import LSAClient
+from ._pjlsa import LSAClient
 
 __all__ = ["LSAClient"]
