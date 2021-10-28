@@ -1,4 +1,5 @@
 import cern.japc.value
+import cern.japc.value.spi.value.core
 import cern.japc.value.spi.value.simple
 import java.io
 import java.lang
@@ -6,13 +7,31 @@ import java.util
 import typing
 
 
+
 class BooleanItemData:
+    """
+    Java class 'cern.japc.value.spi.value.BooleanItemData'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * BooleanItemData(boolean, cern.japc.value.SimpleValueStandardMeaning)
+    
+    """
     def __init__(self, boolean: bool, simpleValueStandardMeaning: cern.japc.value.SimpleValueStandardMeaning): ...
     def getStandardMeaning(self) -> cern.japc.value.SimpleValueStandardMeaning: ...
     def getValue(self) -> bool: ...
     def toString(self) -> str: ...
 
 class BooleanTypeRegistry:
+    """
+    Java class 'cern.japc.value.spi.value.BooleanTypeRegistry'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def clearAll() -> None: ...
     @typing.overload
@@ -33,6 +52,17 @@ class BooleanTypeRegistry:
     def registerBooleanTypeIfUnknown(string: str, booleanItemData: BooleanItemData, booleanItemData2: BooleanItemData) -> cern.japc.value.BooleanType: ...
 
 class EnumItemData:
+    """
+    Java class 'cern.japc.value.spi.value.EnumItemData'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * EnumItemData(long, java.lang.String)
+        * EnumItemData(long, java.lang.String, cern.japc.value.SimpleValueStandardMeaning, boolean)
+    
+    """
     @typing.overload
     def __init__(self, long: int, string: str): ...
     @typing.overload
@@ -44,6 +74,21 @@ class EnumItemData:
     def toString(self) -> str: ...
 
 class EnumItemSetImpl(java.util.AbstractSet[cern.japc.value.EnumItem], cern.japc.value.EnumItemSet, java.io.Serializable):
+    """
+    Java class 'cern.japc.value.spi.value.EnumItemSetImpl'
+    
+        Extends:
+            java.util.AbstractSet
+    
+        Interfaces:
+            cern.japc.value.EnumItemSet, java.io.Serializable
+    
+      Constructors:
+        * EnumItemSetImpl(cern.japc.value.EnumType, cern.japc.value.EnumItem[])
+        * EnumItemSetImpl(cern.japc.value.EnumItem, cern.japc.value.EnumItem[])
+        * EnumItemSetImpl(cern.japc.value.EnumType, long)
+    
+    """
     @typing.overload
     def __init__(self, enumItem: cern.japc.value.EnumItem, enumItemArray: typing.List[cern.japc.value.EnumItem]): ...
     @typing.overload
@@ -79,6 +124,13 @@ class EnumItemSetImpl(java.util.AbstractSet[cern.japc.value.EnumItem], cern.japc
     def toString(self) -> str: ...
 
 class EnumerationRegistry:
+    """
+    Java class 'cern.japc.value.spi.value.EnumerationRegistry'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def clearAll() -> None: ...
     @typing.overload
@@ -99,6 +151,16 @@ class EnumerationRegistry:
     def registerEnumTypeIfUnknown(string: str, enumTypeBitSize: cern.japc.value.EnumTypeBitSize, set: java.util.Set[EnumItemData]) -> cern.japc.value.EnumType: ...
 
 class InternalDiscreteFunctionFactory:
+    """
+    Java class 'cern.japc.value.spi.value.InternalDiscreteFunctionFactory'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * InternalDiscreteFunctionFactory()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def newDiscreteFunction(doubleArray: typing.List[float], doubleArray2: typing.List[float]) -> cern.japc.value.DiscreteFunction: ...
@@ -106,6 +168,20 @@ class InternalDiscreteFunctionFactory:
     def newDiscreteFunctionList(discreteFunctionArray: typing.List[cern.japc.value.DiscreteFunction]) -> cern.japc.value.DiscreteFunctionList: ...
 
 class SimpleParameterValueImpl(cern.japc.value.spi.value.simple.AbstractMapSimpleValue, java.lang.Cloneable, java.io.Serializable):
+    """
+    Java class 'cern.japc.value.spi.value.SimpleParameterValueImpl'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractMapSimpleValue
+    
+        Interfaces:
+            java.lang.Cloneable, java.io.Serializable
+    
+      Constructors:
+        * SimpleParameterValueImpl()
+        * SimpleParameterValueImpl(cern.japc.value.SimpleParameterValue)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -512,3 +588,17 @@ class SimpleParameterValueImpl(cern.japc.value.spi.value.simple.AbstractMapSimpl
     def setStrings2D(self, string: str, stringArray: typing.List[str], intArray: typing.List[int]) -> None: ...
     def setValueStatus(self, simpleValueStatus: cern.japc.value.SimpleValueStatus) -> None: ...
     def toString(self) -> str: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.japc.value.spi.value")``.
+
+    BooleanItemData: typing.Type[BooleanItemData]
+    BooleanTypeRegistry: typing.Type[BooleanTypeRegistry]
+    EnumItemData: typing.Type[EnumItemData]
+    EnumItemSetImpl: typing.Type[EnumItemSetImpl]
+    EnumerationRegistry: typing.Type[EnumerationRegistry]
+    InternalDiscreteFunctionFactory: typing.Type[InternalDiscreteFunctionFactory]
+    SimpleParameterValueImpl: typing.Type[SimpleParameterValueImpl]
+    core: cern.japc.value.spi.value.core.__module_protocol__
+    simple: cern.japc.value.spi.value.simple.__module_protocol__

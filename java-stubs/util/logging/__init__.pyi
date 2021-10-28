@@ -8,7 +8,26 @@ import java.util.function
 import typing
 
 
+
 class ErrorManager:
+    """
+    Java class 'java.util.logging.ErrorManager'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ErrorManager()
+    
+      Attributes:
+        GENERIC_FAILURE (int): final static field
+        WRITE_FAILURE (int): final static field
+        FLUSH_FAILURE (int): final static field
+        CLOSE_FAILURE (int): final static field
+        OPEN_FAILURE (int): final static field
+        FORMAT_FAILURE (int): final static field
+    
+    """
     GENERIC_FAILURE: typing.ClassVar[int] = ...
     WRITE_FAILURE: typing.ClassVar[int] = ...
     FLUSH_FAILURE: typing.ClassVar[int] = ...
@@ -19,15 +38,33 @@ class ErrorManager:
     def error(self, string: str, exception: java.lang.Exception, int: int) -> None: ...
 
 class Filter:
+    """
+    Java class 'java.util.logging.Filter'
+    
+    """
     def isLoggable(self, logRecord: 'LogRecord') -> bool: ...
 
 class Formatter:
+    """
+    Java class 'java.util.logging.Formatter'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     def format(self, logRecord: 'LogRecord') -> str: ...
     def formatMessage(self, logRecord: 'LogRecord') -> str: ...
     def getHead(self, handler: 'Handler') -> str: ...
     def getTail(self, handler: 'Handler') -> str: ...
 
 class Handler:
+    """
+    Java class 'java.util.logging.Handler'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     def close(self) -> None: ...
     def flush(self) -> None: ...
     def getEncoding(self) -> str: ...
@@ -44,6 +81,27 @@ class Handler:
     def setLevel(self, level: 'Level') -> None: ...
 
 class Level(java.io.Serializable):
+    """
+    Java class 'java.util.logging.Level'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Attributes:
+        OFF (java.util.logging.Level): final static field
+        SEVERE (java.util.logging.Level): final static field
+        WARNING (java.util.logging.Level): final static field
+        INFO (java.util.logging.Level): final static field
+        CONFIG (java.util.logging.Level): final static field
+        FINE (java.util.logging.Level): final static field
+        FINER (java.util.logging.Level): final static field
+        FINEST (java.util.logging.Level): final static field
+        ALL (java.util.logging.Level): final static field
+    
+    """
     OFF: typing.ClassVar['Level'] = ...
     SEVERE: typing.ClassVar['Level'] = ...
     WARNING: typing.ClassVar['Level'] = ...
@@ -64,6 +122,16 @@ class Level(java.io.Serializable):
     def toString(self) -> str: ...
 
 class LogManager:
+    """
+    Java class 'java.util.logging.LogManager'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        LOGGING_MXBEAN_NAME (java.lang.String): final static field
+    
+    """
     LOGGING_MXBEAN_NAME: typing.ClassVar[str] = ...
     def addConfigurationListener(self, runnable: typing.Union[java.lang.Runnable, typing.Callable]) -> 'LogManager': ...
     def addLogger(self, logger: 'Logger') -> bool: ...
@@ -87,6 +155,19 @@ class LogManager:
     def updateConfiguration(self, function: typing.Union[java.util.function.Function[str, typing.Union[java.util.function.BiFunction[str, str, str], typing.Callable[[str, str], str]]], typing.Callable[[str], typing.Union[java.util.function.BiFunction[str, str, str], typing.Callable[[str, str], str]]]]) -> None: ...
 
 class LogRecord(java.io.Serializable):
+    """
+    Java class 'java.util.logging.LogRecord'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * LogRecord(java.util.logging.Level, java.lang.String)
+    
+    """
     def __init__(self, level: Level, string: str): ...
     def getInstant(self) -> java.time.Instant: ...
     def getLevel(self) -> Level: ...
@@ -116,6 +197,17 @@ class LogRecord(java.io.Serializable):
     def setThrown(self, throwable: java.lang.Throwable) -> None: ...
 
 class Logger:
+    """
+    Java class 'java.util.logging.Logger'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        GLOBAL_LOGGER_NAME (java.lang.String): final static field
+        global (java.util.logging.Logger): final static field
+    
+    """
     GLOBAL_LOGGER_NAME: typing.ClassVar[str] = ...
     global_: typing.ClassVar['Logger'] = ...
     def addHandler(self, handler: Handler) -> None: ...
@@ -231,15 +323,43 @@ class Logger:
     def warning(self, supplier: typing.Union[java.util.function.Supplier[str], typing.Callable[[], str]]) -> None: ...
 
 class LoggingMXBean:
+    """
+    Java class 'java.util.logging.LoggingMXBean'
+    
+    """
     def getLoggerLevel(self, string: str) -> str: ...
     def getLoggerNames(self) -> java.util.List[str]: ...
     def getParentLoggerName(self, string: str) -> str: ...
     def setLoggerLevel(self, string: str, string2: str) -> None: ...
 
 class LoggingPermission(java.security.BasicPermission):
+    """
+    Java class 'java.util.logging.LoggingPermission'
+    
+        Extends:
+            java.security.BasicPermission
+    
+      Constructors:
+        * LoggingPermission(java.lang.String, java.lang.String)
+    
+      Raises:
+        java.lang.IllegalArgumentException: from java
+    
+    """
     def __init__(self, string: str, string2: str): ...
 
 class MemoryHandler(Handler):
+    """
+    Java class 'java.util.logging.MemoryHandler'
+    
+        Extends:
+            java.util.logging.Handler
+    
+      Constructors:
+        * MemoryHandler(java.util.logging.Handler, int, java.util.logging.Level)
+        * MemoryHandler()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -253,10 +373,31 @@ class MemoryHandler(Handler):
     def setPushLevel(self, level: Level) -> None: ...
 
 class SimpleFormatter(Formatter):
+    """
+    Java class 'java.util.logging.SimpleFormatter'
+    
+        Extends:
+            java.util.logging.Formatter
+    
+      Constructors:
+        * SimpleFormatter()
+    
+    """
     def __init__(self): ...
     def format(self, logRecord: LogRecord) -> str: ...
 
 class StreamHandler(Handler):
+    """
+    Java class 'java.util.logging.StreamHandler'
+    
+        Extends:
+            java.util.logging.Handler
+    
+      Constructors:
+        * StreamHandler(java.io.OutputStream, java.util.logging.Formatter)
+        * StreamHandler()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -268,17 +409,56 @@ class StreamHandler(Handler):
     def setEncoding(self, string: str) -> None: ...
 
 class XMLFormatter(Formatter):
+    """
+    Java class 'java.util.logging.XMLFormatter'
+    
+        Extends:
+            java.util.logging.Formatter
+    
+      Constructors:
+        * XMLFormatter()
+    
+    """
     def __init__(self): ...
     def format(self, logRecord: LogRecord) -> str: ...
     def getHead(self, handler: Handler) -> str: ...
     def getTail(self, handler: Handler) -> str: ...
 
 class ConsoleHandler(StreamHandler):
+    """
+    Java class 'java.util.logging.ConsoleHandler'
+    
+        Extends:
+            java.util.logging.StreamHandler
+    
+      Constructors:
+        * ConsoleHandler()
+    
+    """
     def __init__(self): ...
     def close(self) -> None: ...
     def publish(self, logRecord: LogRecord) -> None: ...
 
 class FileHandler(StreamHandler):
+    """
+    Java class 'java.util.logging.FileHandler'
+    
+        Extends:
+            java.util.logging.StreamHandler
+    
+      Constructors:
+        * FileHandler(java.lang.String, int, int)
+        * FileHandler(java.lang.String, int, int, boolean)
+        * FileHandler(java.lang.String)
+        * FileHandler()
+        * FileHandler(java.lang.String, long, int, boolean)
+        * FileHandler(java.lang.String, boolean)
+    
+      Raises:
+        java.io.IOException: from java
+        java.lang.SecurityException: from java
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -295,9 +475,45 @@ class FileHandler(StreamHandler):
     def publish(self, logRecord: LogRecord) -> None: ...
 
 class SocketHandler(StreamHandler):
+    """
+    Java class 'java.util.logging.SocketHandler'
+    
+        Extends:
+            java.util.logging.StreamHandler
+    
+      Constructors:
+        * SocketHandler()
+        * SocketHandler(java.lang.String, int)
+    
+      Raises:
+        java.io.IOException: from java
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str, int: int): ...
     def close(self) -> None: ...
     def publish(self, logRecord: LogRecord) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.util.logging")``.
+
+    ConsoleHandler: typing.Type[ConsoleHandler]
+    ErrorManager: typing.Type[ErrorManager]
+    FileHandler: typing.Type[FileHandler]
+    Filter: typing.Type[Filter]
+    Formatter: typing.Type[Formatter]
+    Handler: typing.Type[Handler]
+    Level: typing.Type[Level]
+    LogManager: typing.Type[LogManager]
+    LogRecord: typing.Type[LogRecord]
+    Logger: typing.Type[Logger]
+    LoggingMXBean: typing.Type[LoggingMXBean]
+    LoggingPermission: typing.Type[LoggingPermission]
+    MemoryHandler: typing.Type[MemoryHandler]
+    SimpleFormatter: typing.Type[SimpleFormatter]
+    SocketHandler: typing.Type[SocketHandler]
+    StreamHandler: typing.Type[StreamHandler]
+    XMLFormatter: typing.Type[XMLFormatter]

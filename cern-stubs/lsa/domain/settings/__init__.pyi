@@ -12,6 +12,7 @@ import cern.lsa.domain.devices.type
 import cern.lsa.domain.exploitation
 import cern.lsa.domain.optics
 import cern.lsa.domain.settings.factory
+import cern.lsa.domain.settings.parameter
 import cern.lsa.domain.settings.spi
 import cern.lsa.domain.settings.type
 import com.google.common.collect
@@ -23,7 +24,16 @@ import java.util
 import typing
 
 
+
 class AcceleratorUser(cern.lsa.domain.commons.IdentifiedEntity, cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.settings.AcceleratorUser'
+    
+        Interfaces:
+            cern.lsa.domain.commons.IdentifiedEntity,
+            cern.accsoft.commons.util.Named
+    
+    """
     @staticmethod
     def builder() -> 'DefaultAcceleratorUser.Builder': ...
     def getAccelerator(self) -> cern.accsoft.commons.domain.Accelerator: ...
@@ -31,11 +41,23 @@ class AcceleratorUser(cern.lsa.domain.commons.IdentifiedEntity, cern.accsoft.com
     def isMultiplexed(self) -> bool: ...
 
 class AcceleratorUserGroup(cern.lsa.domain.commons.IdentifiedEntity, cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.settings.AcceleratorUserGroup'
+    
+        Interfaces:
+            cern.lsa.domain.commons.IdentifiedEntity,
+            cern.accsoft.commons.util.Named
+    
+    """
     @staticmethod
     def builder() -> 'DefaultAcceleratorUserGroup.Builder': ...
     def getDescription(self) -> str: ...
 
 class AcceleratorUsersRequest:
+    """
+    Java class 'cern.lsa.domain.settings.AcceleratorUsersRequest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultAcceleratorUsersRequest.Builder': ...
     @staticmethod
@@ -53,16 +75,35 @@ class AcceleratorUsersRequest:
     def isMultiplexed(self) -> bool: ...
 
 class ActualBeamProcessInfo:
+    """
+    Java class 'cern.lsa.domain.settings.ActualBeamProcessInfo'
+    
+    """
     def getSourceBeamProcess(self) -> 'BeamProcess': ...
     def getSourcePoint(self) -> int: ...
 
 class Archive(cern.lsa.domain.commons.IdentifiedEntity, cern.accsoft.commons.util.Named, java.lang.Comparable['Archive']):
+    """
+    Java class 'cern.lsa.domain.settings.Archive'
+    
+        Interfaces:
+            cern.lsa.domain.commons.IdentifiedEntity,
+            cern.accsoft.commons.util.Named, java.lang.Comparable
+    
+    """
     def getLatestVersion(self) -> 'ArchiveVersion': ...
     def getStandAloneContext(self) -> 'StandAloneContext': ...
     def getVersion(self, double: float) -> 'ArchiveVersion': ...
     def getVersions(self) -> java.util.SortedSet['ArchiveVersion']: ...
 
 class ArchiveVersion(java.lang.Comparable['ArchiveVersion']):
+    """
+    Java class 'cern.lsa.domain.settings.ArchiveVersion'
+    
+        Interfaces:
+            java.lang.Comparable
+    
+    """
     def getArchive(self) -> Archive: ...
     def getCreationDate(self) -> java.util.Date: ...
     def getDescription(self) -> str: ...
@@ -70,6 +111,10 @@ class ArchiveVersion(java.lang.Comparable['ArchiveVersion']):
     def getVersion(self) -> float: ...
 
 class BeamProcessIncorporationRequest:
+    """
+    Java class 'cern.lsa.domain.settings.BeamProcessIncorporationRequest'
+    
+    """
     def getDescription(self) -> str: ...
     def getDestBeamProcess(self) -> 'BeamProcess': ...
     def getDestPointInTime(self) -> float: ...
@@ -82,16 +127,32 @@ class BeamProcessIncorporationRequest:
     def shouldIncorporateAllParameters(self) -> bool: ...
 
 class BeamProcessIntersection:
+    """
+    Java class 'cern.lsa.domain.settings.BeamProcessIntersection'
+    
+    """
     def getBeamProcess(self) -> 'BeamProcess': ...
     def getIntersectionCoordinate(self) -> float: ...
 
 class CompositeContextSettings:
+    """
+    Java class 'cern.lsa.domain.settings.CompositeContextSettings'
+    
+    """
     def getContextSettings(self) -> 'ContextSettings': ...
     def getNonMultiplexedSettings(self) -> 'ContextSettings': ...
     def getParameters(self) -> java.util.Set['Parameter']: ...
     def getValue(self, drivableContext: 'DrivableContext', string: str) -> cern.accsoft.commons.value.ImmutableValue: ...
 
 class Context(cern.lsa.domain.commons.IdentifiedEntity, cern.accsoft.commons.util.Named, java.lang.Comparable['Context']):
+    """
+    Java class 'cern.lsa.domain.settings.Context'
+    
+        Interfaces:
+            cern.lsa.domain.commons.IdentifiedEntity,
+            cern.accsoft.commons.util.Named, java.lang.Comparable
+    
+    """
     def getAccelerator(self) -> cern.accsoft.commons.domain.Accelerator: ...
     def getContextFamily(self) -> 'ContextFamily': ...
     def getCreationDate(self) -> java.util.Date: ...
@@ -106,9 +167,29 @@ class Context(cern.lsa.domain.commons.IdentifiedEntity, cern.accsoft.commons.uti
     def isStandAlone(self) -> bool: ...
 
 class ContextCategory(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.settings.ContextCategory'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def isArchived(self) -> bool: ...
 
 class ContextFamily(java.lang.Enum['ContextFamily']):
+    """
+    Java class 'cern.lsa.domain.settings.ContextFamily'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        CYCLE (cern.lsa.domain.settings.ContextFamily): final static enum constant
+        BEAMPROCESS (cern.lsa.domain.settings.ContextFamily): final static enum constant
+        BEAM_PRODUCTION_CHAIN (cern.lsa.domain.settings.ContextFamily): final static enum constant
+        PATTERN (cern.lsa.domain.settings.ContextFamily): final static enum constant
+    
+    """
     CYCLE: typing.ClassVar['ContextFamily'] = ...
     BEAMPROCESS: typing.ClassVar['ContextFamily'] = ...
     BEAM_PRODUCTION_CHAIN: typing.ClassVar['ContextFamily'] = ...
@@ -128,9 +209,23 @@ class ContextFamily(java.lang.Enum['ContextFamily']):
     def values() -> typing.List['ContextFamily']: ...
 
 class ContextIntersections:
+    """
+    Java class 'cern.lsa.domain.settings.ContextIntersections'
+    
+    """
     def getCycleBeamProcessIntersections(self) -> java.util.SortedSet['CycleBeamProcessIntersection']: ...
 
 class ContextOptics:
+    """
+    Java class 'cern.lsa.domain.settings.ContextOptics'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ContextOptics(cern.lsa.domain.settings.StandAloneContext, java.util.Collection)
+    
+    """
     def __init__(self, standAloneContext: 'StandAloneContext', collection: typing.Union[java.util.Collection[cern.lsa.domain.optics.OpticsTable], typing.Sequence[cern.lsa.domain.optics.OpticsTable]]): ...
     def getActiveOpticName(self, particleTransfer: cern.accsoft.commons.domain.particletransfers.ParticleTransfer, int: int) -> str: ...
     def getBeamProcessOpticsTable(self, beamProcess: 'BeamProcess') -> cern.lsa.domain.optics.OpticsTable: ...
@@ -138,6 +233,10 @@ class ContextOptics:
     def getContextName(self) -> str: ...
 
 class ContextSettings:
+    """
+    Java class 'cern.lsa.domain.settings.ContextSettings'
+    
+    """
     def addAll(self, contextSettings: 'ContextSettings') -> None: ...
     def getContext(self) -> 'StandAloneContext': ...
     def getCurrentBeamProcesses(self) -> java.util.Set['BeamProcess']: ...
@@ -180,6 +279,16 @@ class ContextSettings:
     def updateSetting(self, beamProcess: 'BeamProcess', string: str, immutableValue: cern.accsoft.commons.value.ImmutableValue, settingPartEnum: 'SettingPartEnum') -> None: ...
 
 class ContextSettingsRequest(java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.settings.ContextSettingsRequest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     @staticmethod
     def builder() -> 'ContextSettingsRequestBuilder': ...
     @staticmethod
@@ -193,6 +302,16 @@ class ContextSettingsRequest(java.io.Serializable):
     def getParameters(self) -> java.util.Collection['Parameter']: ...
 
 class ContextSettingsRequestBuilder:
+    """
+    Java class 'cern.lsa.domain.settings.ContextSettingsRequestBuilder'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ContextSettingsRequestBuilder()
+    
+    """
     def __init__(self): ...
     def at(self, instant: typing.Union[java.time.Instant, datetime.datetime]) -> 'ContextSettingsRequestBuilder': ...
     def build(self) -> ContextSettingsRequest: ...
@@ -206,6 +325,19 @@ class ContextSettingsRequestBuilder:
     def standAloneContext(self, standAloneContext: 'StandAloneContext') -> 'ContextSettingsRequestBuilder': ...
 
 class ContextTypeFilter(cern.accsoft.commons.util.Filters.Filter[cern.lsa.domain.settings.type.ContextType]):
+    """
+    Java class 'cern.lsa.domain.settings.ContextTypeFilter'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.accsoft.commons.util.Filters.Filter
+    
+      Constructors:
+        * ContextTypeFilter()
+    
+    """
     def __init__(self): ...
     def accepts(self, contextType: cern.lsa.domain.settings.type.ContextType) -> bool: ...
     @staticmethod
@@ -213,6 +345,19 @@ class ContextTypeFilter(cern.accsoft.commons.util.Filters.Filter[cern.lsa.domain
     def setCategories(self, collection: typing.Union[java.util.Collection[ContextCategory], typing.Sequence[ContextCategory]]) -> 'ContextTypeFilter': ...
 
 class ContextTypes:
+    """
+    Java class 'cern.lsa.domain.settings.ContextTypes'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ContextTypes()
+    
+      Attributes:
+        CATEGORIES (cern.accsoft.commons.util.Mappers$Mapper): final static field
+    
+    """
     CATEGORIES: typing.ClassVar[cern.accsoft.commons.util.Mappers.Mapper] = ...
     def __init__(self): ...
     _getCategories__T = typing.TypeVar('_getCategories__T', bound=cern.lsa.domain.settings.type.ContextType)  # <T>
@@ -220,6 +365,18 @@ class ContextTypes:
     def getCategories(collection: typing.Union[java.util.Collection[_getCategories__T], typing.Sequence[_getCategories__T]]) -> java.util.Set[ContextCategory]: ...
 
 class Contexts:
+    """
+    Java class 'cern.lsa.domain.settings.Contexts'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        PARTICLE_TRANSFERS (cern.accsoft.commons.util.Mappers$Mapper): final static field
+        CATEGORIES (cern.accsoft.commons.util.Mappers$Mapper): final static field
+        SUBCONTEXT_START_TIME_COMPARATOR (java.util.Comparator): final static field
+    
+    """
     PARTICLE_TRANSFERS: typing.ClassVar[cern.accsoft.commons.util.Mappers.Mapper] = ...
     CATEGORIES: typing.ClassVar[cern.accsoft.commons.util.Mappers.Mapper] = ...
     SUBCONTEXT_START_TIME_COMPARATOR: typing.ClassVar[java.util.Comparator] = ...
@@ -363,6 +520,10 @@ class Contexts:
     def sortByStartTime(list: java.util.List[_sortByStartTime__T]) -> None: ...
 
 class CycleBeamProcessIntersection:
+    """
+    Java class 'cern.lsa.domain.settings.CycleBeamProcessIntersection'
+    
+    """
     def getBeamProcess(self) -> 'BeamProcess': ...
     def getCycle(self) -> 'Cycle': ...
     def getEndInBeamProcess(self) -> int: ...
@@ -372,6 +533,10 @@ class CycleBeamProcessIntersection:
     def getStartInCycle(self) -> int: ...
 
 class DevicePropertyParameters:
+    """
+    Java class 'cern.lsa.domain.settings.DevicePropertyParameters'
+    
+    """
     def getDeviceClassName(self) -> str: ...
     def getDeviceName(self) -> str: ...
     def getDevicePropertyName(self) -> str: ...
@@ -388,6 +553,17 @@ class DevicePropertyParameters:
     def isCritical(self) -> bool: ...
 
 class ErrorsAwareContextSettings:
+    """
+    Java class 'cern.lsa.domain.settings.ErrorsAwareContextSettings'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ErrorsAwareContextSettings(cern.lsa.domain.settings.ContextSettings)
+        * ErrorsAwareContextSettings(cern.lsa.domain.settings.ContextSettings, java.util.Map)
+    
+    """
     @typing.overload
     def __init__(self, contextSettings: ContextSettings): ...
     @typing.overload
@@ -396,11 +572,27 @@ class ErrorsAwareContextSettings:
     def getParameter2Exception(self) -> java.util.Map['Parameter', java.lang.Exception]: ...
 
 class FailedParametersStatus:
+    """
+    Java class 'cern.lsa.domain.settings.FailedParametersStatus'
+    
+    """
     def containsFailedParameters(self) -> bool: ...
     def getFailedContexts(self) -> java.util.Set[Context]: ...
     def getFailedParameters(self, context: Context) -> java.util.Map[str, java.lang.Exception]: ...
 
 class GenerationException(cern.lsa.domain.LsaException):
+    """
+    Java class 'cern.lsa.domain.settings.GenerationException'
+    
+        Extends:
+            cern.lsa.domain.LsaException
+    
+      Constructors:
+        * GenerationException(java.lang.String)
+        * GenerationException(java.lang.Exception)
+        * GenerationException(java.lang.String, java.lang.Exception)
+    
+    """
     @typing.overload
     def __init__(self, exception: java.lang.Exception): ...
     @typing.overload
@@ -409,6 +601,14 @@ class GenerationException(cern.lsa.domain.LsaException):
     def __init__(self, string: str, exception: java.lang.Exception): ...
 
 class HyperCycle(cern.accsoft.commons.util.Named, cern.lsa.domain.commons.IdentifiedEntity, java.lang.Comparable['HyperCycle']):
+    """
+    Java class 'cern.lsa.domain.settings.HyperCycle'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named,
+            cern.lsa.domain.commons.IdentifiedEntity, java.lang.Comparable
+    
+    """
     def getBeamProcessByUser(self, string: str) -> 'StandAloneBeamProcess': ...
     def getBeamProcessPosition(self, string: str, standAloneBeamProcess: 'StandAloneBeamProcess') -> int: ...
     def getDescription(self) -> str: ...
@@ -432,12 +632,26 @@ class HyperCycle(cern.accsoft.commons.util.Named, cern.lsa.domain.commons.Identi
     def isActive(self) -> bool: ...
 
 class HyperCycleMapping:
+    """
+    Java class 'cern.lsa.domain.settings.HyperCycleMapping'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultHyperCycleMapping.Builder': ...
     def getBeamProcess(self) -> 'StandAloneBeamProcess': ...
     def getUser(self) -> AcceleratorUser: ...
 
 class IncorporationRanges:
+    """
+    Java class 'cern.lsa.domain.settings.IncorporationRanges'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * IncorporationRanges()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def assertRangesConsistentWithBeamProcessType(list: java.util.List[cern.lsa.domain.settings.type.IncorporationRange], beamProcessType: cern.lsa.domain.settings.type.BeamProcessType) -> None: ...
@@ -445,6 +659,19 @@ class IncorporationRanges:
     def ensureConsistentRanges(collection: typing.Union[java.util.Collection[cern.lsa.domain.settings.type.IncorporationRange], typing.Sequence[cern.lsa.domain.settings.type.IncorporationRange]]) -> None: ...
 
 class IncorporationSetting(java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.settings.IncorporationSetting'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * IncorporationSetting(cern.lsa.domain.settings.Setting, double)
+    
+    """
     def __init__(self, setting: 'Setting', double: float): ...
     def equals(self, object: typing.Any) -> bool: ...
     def getPointInTime(self) -> float: ...
@@ -452,6 +679,17 @@ class IncorporationSetting(java.io.Serializable):
     def hashCode(self) -> int: ...
 
 class Intersections:
+    """
+    Java class 'cern.lsa.domain.settings.Intersections'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        TOLERANCE (double): final static field
+        ERROR_MESSAGE_DISCONTINUITY (java.lang.String): final static field
+    
+    """
     TOLERANCE: typing.ClassVar[float] = ...
     ERROR_MESSAGE_DISCONTINUITY: typing.ClassVar[str] = ...
     @typing.overload
@@ -495,6 +733,19 @@ class Intersections:
     def updateFunctionSetting(standAloneContext: 'StandAloneContext', parameterSettings: 'ParameterSettings', immutableDiscreteFunction: cern.accsoft.commons.value.ImmutableDiscreteFunction, settingPartEnum: 'SettingPartEnum') -> None: ...
 
 class KnobFactor(java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.settings.KnobFactor'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * KnobFactor(java.lang.String, java.lang.String, double)
+    
+    """
     def __init__(self, string: str, string2: str, double: float): ...
     def equals(self, object: typing.Any) -> bool: ...
     def getComponentName(self) -> str: ...
@@ -504,6 +755,10 @@ class KnobFactor(java.io.Serializable):
     def toString(self) -> str: ...
 
 class KnobFactors:
+    """
+    Java class 'cern.lsa.domain.settings.KnobFactors'
+    
+    """
     def containsFactor(self, string: str, string2: str) -> bool: ...
     def getComponentNames(self) -> java.util.Set[str]: ...
     def getFactor(self, string: str, string2: str) -> float: ...
@@ -513,6 +768,31 @@ class KnobFactors:
     def getOpticNames(self) -> java.util.Set[str]: ...
 
 class LinkRuleAttribute(java.lang.Enum['LinkRuleAttribute']):
+    """
+    Java class 'cern.lsa.domain.settings.LinkRuleAttribute'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        START_VALUE (cern.lsa.domain.settings.LinkRuleAttribute): final static enum constant
+        STOP_VALUE (cern.lsa.domain.settings.LinkRuleAttribute): final static enum constant
+        START_DELAY (cern.lsa.domain.settings.LinkRuleAttribute): final static enum constant
+        STOP_DELAY (cern.lsa.domain.settings.LinkRuleAttribute): final static enum constant
+        DEGAUSS_VALUE (cern.lsa.domain.settings.LinkRuleAttribute): final static enum constant
+        START_ROUND (cern.lsa.domain.settings.LinkRuleAttribute): final static enum constant
+        STOP_ROUND (cern.lsa.domain.settings.LinkRuleAttribute): final static enum constant
+        RAMP_SPEED (cern.lsa.domain.settings.LinkRuleAttribute): final static enum constant
+        TIME_UNIT (cern.lsa.domain.settings.LinkRuleAttribute): final static enum constant
+        POINT_DIST (cern.lsa.domain.settings.LinkRuleAttribute): final static enum constant
+        BTOM_AS_PERCENT_IMAX (cern.lsa.domain.settings.LinkRuleAttribute): final static enum constant
+        KEEP_SIGN (cern.lsa.domain.settings.LinkRuleAttribute): final static enum constant
+        LEIR_ETL_BHN10_MIN_PLATEAU_LENGTH (cern.lsa.domain.settings.LinkRuleAttribute): final static enum constant
+        LEIR_ETL_BHN10_MIN_PLATEAU_I (cern.lsa.domain.settings.LinkRuleAttribute): final static enum constant
+        LEIR_ETL_BHN10_MIN_STABILIZATION_LENGTH (cern.lsa.domain.settings.LinkRuleAttribute): final static enum constant
+        LEIR_ETL_BHN10_START_END_CYCLE_I (cern.lsa.domain.settings.LinkRuleAttribute): final static enum constant
+    
+    """
     START_VALUE: typing.ClassVar['LinkRuleAttribute'] = ...
     STOP_VALUE: typing.ClassVar['LinkRuleAttribute'] = ...
     START_DELAY: typing.ClassVar['LinkRuleAttribute'] = ...
@@ -541,13 +821,35 @@ class LinkRuleAttribute(java.lang.Enum['LinkRuleAttribute']):
     def values() -> typing.List['LinkRuleAttribute']: ...
 
 class MisconfiguredParameterException(cern.lsa.domain.LsaException):
+    """
+    Java class 'cern.lsa.domain.settings.MisconfiguredParameterException'
+    
+        Extends:
+            cern.lsa.domain.LsaException
+    
+      Constructors:
+        * MisconfiguredParameterException(cern.lsa.domain.settings.Parameter, cern.lsa.domain.settings.DrivableContext)
+    
+    """
     def __init__(self, parameter: 'Parameter', drivableContext: 'DrivableContext'): ...
 
 class NotIncorporatedParameters:
+    """
+    Java class 'cern.lsa.domain.settings.NotIncorporatedParameters'
+    
+    """
     def getNonCountinueParameters(self) -> java.util.Set[str]: ...
     def getParametersWithSettingsOnlyInFirstContext(self) -> java.util.Set[str]: ...
 
 class Parameter(cern.accsoft.commons.util.Named, cern.lsa.domain.commons.IdentifiedEntity, java.lang.Comparable['Parameter']):
+    """
+    Java class 'cern.lsa.domain.settings.Parameter'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named,
+            cern.lsa.domain.commons.IdentifiedEntity, java.lang.Comparable
+    
+    """
     def belongsToFunctionBeamProcess(self) -> bool: ...
     def getAccelerator(self) -> cern.accsoft.commons.domain.Accelerator: ...
     def getDefaultHierarchy(self) -> str: ...
@@ -560,6 +862,7 @@ class Parameter(cern.accsoft.commons.util.Named, cern.lsa.domain.commons.Identif
     def getValueType(self) -> cern.accsoft.commons.value.Type: ...
     def isCritical(self) -> bool: ...
     def isCycleBound(self) -> bool: ...
+    def isLsaImplementation(self) -> bool: ...
     def isMonitorable(self) -> bool: ...
     def isMultiplexed(self) -> bool: ...
     def isPropertySupportingPartialSet(self) -> bool: ...
@@ -570,6 +873,13 @@ class Parameter(cern.accsoft.commons.util.Named, cern.lsa.domain.commons.Identif
     def isWritable(self) -> bool: ...
 
 class ParameterAttributes(cern.accsoft.commons.util.Named, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.settings.ParameterAttributes'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named, java.io.Serializable
+    
+    """
     def getAbsoluteTolerance(self) -> float: ...
     def getDefaultHierarchy(self) -> str: ...
     def getDevice(self) -> cern.lsa.domain.devices.Device: ...
@@ -599,6 +909,19 @@ class ParameterAttributes(cern.accsoft.commons.util.Named, java.io.Serializable)
     def setYPrecision(self, integer: int) -> None: ...
 
 class ParameterForEditing(cern.accsoft.commons.util.Named, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.settings.ParameterForEditing'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named, java.io.Serializable
+    
+      Constructors:
+        * ParameterForEditing(cern.lsa.domain.settings.Parameter, cern.lsa.domain.settings.ParameterAttributes)
+    
+    """
     def __init__(self, parameter: Parameter, parameterAttributes: ParameterAttributes): ...
     def equals(self, object: typing.Any) -> bool: ...
     def getName(self) -> str: ...
@@ -607,12 +930,33 @@ class ParameterForEditing(cern.accsoft.commons.util.Named, java.io.Serializable)
     def hashCode(self) -> int: ...
 
 class ParameterGroup(cern.accsoft.commons.util.Named, cern.lsa.domain.commons.IdentifiedEntity):
+    """
+    Java class 'cern.lsa.domain.settings.ParameterGroup'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named,
+            cern.lsa.domain.commons.IdentifiedEntity
+    
+    """
     def getAccelerator(self) -> cern.accsoft.commons.domain.Accelerator: ...
     def getCreateDate(self) -> java.util.Date: ...
     def getCreator(self) -> str: ...
     def getDescription(self) -> str: ...
 
 class ParameterNotFoundException(java.lang.RuntimeException):
+    """
+    Java class 'cern.lsa.domain.settings.ParameterNotFoundException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * ParameterNotFoundException(java.lang.Throwable, java.util.Collection)
+        * ParameterNotFoundException(java.util.Collection)
+        * ParameterNotFoundException(java.lang.String)
+        * ParameterNotFoundException(java.lang.String, java.lang.Throwable)
+    
+    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
@@ -624,6 +968,10 @@ class ParameterNotFoundException(java.lang.RuntimeException):
     def getParameterNames(self) -> java.util.SortedSet[str]: ...
 
 class ParameterSettings:
+    """
+    Java class 'cern.lsa.domain.settings.ParameterSettings'
+    
+    """
     def getCurrentBeamProcesses(self) -> java.util.Set['BeamProcess']: ...
     def getCurrentSetting(self, beamProcess: 'BeamProcess') -> 'Setting': ...
     def getCurrentSettings(self) -> java.util.Set['Setting']: ...
@@ -648,6 +996,13 @@ class ParameterSettings:
     def updateSetting(self, beamProcess: 'BeamProcess', setting: 'Setting') -> None: ...
 
 class ParameterTreeNode(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.settings.ParameterTreeNode'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def findNode(self, string: str) -> 'ParameterTreeNode': ...
     def getAllChildren(self) -> java.util.List['ParameterTreeNode']: ...
     def getAllParents(self) -> java.util.List['ParameterTreeNode']: ...
@@ -668,6 +1023,10 @@ class ParameterTreeNode(cern.accsoft.commons.util.Named):
     def isSource(self) -> bool: ...
 
 class ParameterTreesRequest:
+    """
+    Java class 'cern.lsa.domain.settings.ParameterTreesRequest'
+    
+    """
     @staticmethod
     def builder() -> cern.lsa.domain.settings.factory.ParameterTreesRequestBuilder: ...
     def getHierarchy(self) -> str: ...
@@ -675,6 +1034,17 @@ class ParameterTreesRequest:
     def getParameters(self) -> java.util.Set[Parameter]: ...
     def getTreeDirection(self) -> 'ParameterTreesRequest.TreeDirection': ...
     class TreeDirection(java.lang.Enum['ParameterTreesRequest.TreeDirection']):
+        """
+        Java class 'cern.lsa.domain.settings.ParameterTreesRequest$TreeDirection'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            SOURCE_TREE (cern.lsa.domain.settings.ParameterTreesRequest$TreeDirection): final static enum constant
+            DEPENDENT_TREE (cern.lsa.domain.settings.ParameterTreesRequest$TreeDirection): final static enum constant
+        
+        """
         SOURCE_TREE: typing.ClassVar['ParameterTreesRequest.TreeDirection'] = ...
         DEPENDENT_TREE: typing.ClassVar['ParameterTreesRequest.TreeDirection'] = ...
         _valueOf_1__T = typing.TypeVar('_valueOf_1__T', bound=java.lang.Enum)  # <T>
@@ -688,10 +1058,31 @@ class ParameterTreesRequest:
         def values() -> typing.List['ParameterTreesRequest.TreeDirection']: ...
 
 class ParameterType(cern.accsoft.commons.util.Named, cern.lsa.domain.commons.IdentifiedEntity, java.lang.Comparable['ParameterType']):
+    """
+    Java class 'cern.lsa.domain.settings.ParameterType'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named,
+            cern.lsa.domain.commons.IdentifiedEntity, java.lang.Comparable
+    
+    """
     def getCategory(self) -> 'ParameterTypeCategory': ...
     def isLinkRuleApplicable(self) -> bool: ...
 
 class ParameterTypeCategory(java.lang.Enum['ParameterTypeCategory']):
+    """
+    Java class 'cern.lsa.domain.settings.ParameterTypeCategory'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        PHYSICS (cern.lsa.domain.settings.ParameterTypeCategory): final static enum constant
+        HW_MAGNITUDE (cern.lsa.domain.settings.ParameterTypeCategory): final static enum constant
+        HW_SETTINGS (cern.lsa.domain.settings.ParameterTypeCategory): final static enum constant
+        HW_REFERENCE (cern.lsa.domain.settings.ParameterTypeCategory): final static enum constant
+    
+    """
     PHYSICS: typing.ClassVar['ParameterTypeCategory'] = ...
     HW_MAGNITUDE: typing.ClassVar['ParameterTypeCategory'] = ...
     HW_SETTINGS: typing.ClassVar['ParameterTypeCategory'] = ...
@@ -708,9 +1099,29 @@ class ParameterTypeCategory(java.lang.Enum['ParameterTypeCategory']):
     def values() -> typing.List['ParameterTypeCategory']: ...
 
 class ParameterTypeGroup(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.settings.ParameterTypeGroup'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def getParameterTypes(self) -> java.util.Set[ParameterType]: ...
 
 class ParameterTypes:
+    """
+    Java class 'cern.lsa.domain.settings.ParameterTypes'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ParameterTypes()
+    
+      Attributes:
+        PARAMETERS_WITH_META_DATA (cern.accsoft.commons.util.Filters$Filter): final static field
+    
+    """
     PARAMETERS_WITH_META_DATA: typing.ClassVar[cern.accsoft.commons.util.Filters.Filter] = ...
     def __init__(self): ...
     @staticmethod
@@ -719,17 +1130,44 @@ class ParameterTypes:
     def generateParameterTypeName(string: str, string2: str, string3: str) -> str: ...
 
 class ParameterTypesRequest:
+    """
+    Java class 'cern.lsa.domain.settings.ParameterTypesRequest'
+    
+    """
     @staticmethod
     def builder() -> cern.lsa.domain.settings.factory.ParameterTypesRequestBuilder: ...
     def getParameterTypeNames(self) -> java.util.Set[str]: ...
     def isAllParameterTypesRequested(self) -> bool: ...
 
 class Parameters:
+    """
+    Java class 'cern.lsa.domain.settings.Parameters'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        DEFAULT_FIELD_NAME (java.lang.String): final static field
+        DEFAULT_PARAMETER_HIERARCHY (java.lang.String): final static field
+        NOT_SUPPORTING_PARTIAL_SET (cern.accsoft.commons.util.Filters$Filter): final static field
+        NON_LSA_IMPLEMENTATION (cern.accsoft.commons.util.Filters$Filter): final static field
+        LSA_IMPLEMENTATION (cern.accsoft.commons.util.Filters$Filter): final static field
+        SETTING (cern.accsoft.commons.util.Filters$Filter): final static field
+        CRITICAL (cern.accsoft.commons.util.Filters$Filter): final static field
+        READABLE (cern.accsoft.commons.util.Filters$Filter): final static field
+        WRITABLE (cern.accsoft.commons.util.Filters$Filter): final static field
+        MONITORABLE (cern.accsoft.commons.util.Filters$Filter): final static field
+        READABLE_AND_WRITABLE (cern.accsoft.commons.util.Filters$Filter): final static field
+        NON_MULTIPLEXED (cern.accsoft.commons.util.Filters$Filter): final static field
+        FEC_NAME (cern.accsoft.commons.util.Mappers$Mapper): final static field
+        FIELD_NAME (cern.accsoft.commons.util.Mappers$Mapper): final static field
+    
+    """
     DEFAULT_FIELD_NAME: typing.ClassVar[str] = ...
     DEFAULT_PARAMETER_HIERARCHY: typing.ClassVar[str] = ...
     NOT_SUPPORTING_PARTIAL_SET: typing.ClassVar[cern.accsoft.commons.util.Filters.Filter] = ...
-    NON_VIRTUAL: typing.ClassVar[cern.accsoft.commons.util.Filters.Filter] = ...
-    VIRTUAL: typing.ClassVar[cern.accsoft.commons.util.Filters.Filter] = ...
+    NON_LSA_IMPLEMENTATION: typing.ClassVar[cern.accsoft.commons.util.Filters.Filter] = ...
+    LSA_IMPLEMENTATION: typing.ClassVar[cern.accsoft.commons.util.Filters.Filter] = ...
     SETTING: typing.ClassVar[cern.accsoft.commons.util.Filters.Filter] = ...
     CRITICAL: typing.ClassVar[cern.accsoft.commons.util.Filters.Filter] = ...
     READABLE: typing.ClassVar[cern.accsoft.commons.util.Filters.Filter] = ...
@@ -780,11 +1218,13 @@ class Parameters:
     @staticmethod
     def filterLeafNodes(collection: typing.Union[java.util.Collection[ParameterTreeNode], typing.Sequence[ParameterTreeNode]]) -> java.util.Set[ParameterTreeNode]: ...
     @staticmethod
+    def filterLsaImplementationParameters(collection: typing.Union[java.util.Collection[Parameter], typing.Sequence[Parameter]]) -> java.util.Set[Parameter]: ...
+    @staticmethod
     def filterMonitorableParameters(collection: typing.Union[java.util.Collection[Parameter], typing.Sequence[Parameter]]) -> java.util.Set[Parameter]: ...
     @staticmethod
-    def filterNonSignatureParameters(collection: typing.Union[java.util.Collection[Parameter], typing.Sequence[Parameter]]) -> java.util.Set[Parameter]: ...
+    def filterNonLsaImplementationParameters(collection: typing.Union[java.util.Collection[Parameter], typing.Sequence[Parameter]]) -> java.util.Set[Parameter]: ...
     @staticmethod
-    def filterNonVirtualParameters(collection: typing.Union[java.util.Collection[Parameter], typing.Sequence[Parameter]]) -> java.util.Set[Parameter]: ...
+    def filterNonSignatureParameters(collection: typing.Union[java.util.Collection[Parameter], typing.Sequence[Parameter]]) -> java.util.Set[Parameter]: ...
     @staticmethod
     def filterParametersByAccessMode(collection: typing.Union[java.util.Collection[Parameter], typing.Sequence[Parameter]], collection2: typing.Union[java.util.Collection['PropertyAccessMode'], typing.Sequence['PropertyAccessMode']]) -> java.util.Set[Parameter]: ...
     @staticmethod
@@ -817,8 +1257,6 @@ class Parameters:
     def filterRootNodes(collection: typing.Union[java.util.Collection[ParameterTreeNode], typing.Sequence[ParameterTreeNode]]) -> java.util.Set[ParameterTreeNode]: ...
     @staticmethod
     def filterSettingParameters(collection: typing.Union[java.util.Collection[Parameter], typing.Sequence[Parameter]]) -> java.util.Set[Parameter]: ...
-    @staticmethod
-    def filterVirtualParameters(collection: typing.Union[java.util.Collection[Parameter], typing.Sequence[Parameter]]) -> java.util.Set[Parameter]: ...
     @staticmethod
     def filterWritableParameters(collection: typing.Union[java.util.Collection[Parameter], typing.Sequence[Parameter]]) -> java.util.Set[Parameter]: ...
     @staticmethod
@@ -909,6 +1347,10 @@ class Parameters:
     def toArray(collection: typing.Union[java.util.Collection[Parameter], typing.Sequence[Parameter]]) -> typing.List[Parameter]: ...
 
 class ParametersRequest:
+    """
+    Java class 'cern.lsa.domain.settings.ParametersRequest'
+    
+    """
     @staticmethod
     def builder() -> cern.lsa.domain.settings.factory.ParametersRequestBuilder: ...
     def getAccelerator(self) -> cern.accsoft.commons.domain.Accelerator: ...
@@ -925,12 +1367,25 @@ class ParametersRequest:
     def getValueTypes(self) -> java.util.Set[cern.accsoft.commons.value.Type]: ...
     def isCritical(self) -> bool: ...
     def isIncludeSignatures(self) -> bool: ...
+    def isLsaImplementation(self) -> bool: ...
     def isMultiplexed(self) -> bool: ...
     def isReadable(self) -> bool: ...
-    def isVirtual(self) -> bool: ...
     def isWritable(self) -> bool: ...
 
 class PropertyAccessMode(java.lang.Enum['PropertyAccessMode']):
+    """
+    Java class 'cern.lsa.domain.settings.PropertyAccessMode'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        WRITABLE (cern.lsa.domain.settings.PropertyAccessMode): final static enum constant
+        READABLE (cern.lsa.domain.settings.PropertyAccessMode): final static enum constant
+        MONITORABLE (cern.lsa.domain.settings.PropertyAccessMode): final static enum constant
+        MULTIPLEXED (cern.lsa.domain.settings.PropertyAccessMode): final static enum constant
+    
+    """
     WRITABLE: typing.ClassVar['PropertyAccessMode'] = ...
     READABLE: typing.ClassVar['PropertyAccessMode'] = ...
     MONITORABLE: typing.ClassVar['PropertyAccessMode'] = ...
@@ -947,6 +1402,13 @@ class PropertyAccessMode(java.lang.Enum['PropertyAccessMode']):
     def values() -> typing.List['PropertyAccessMode']: ...
 
 class Setting(cern.lsa.domain.commons.IdentifiedEntity):
+    """
+    Java class 'cern.lsa.domain.settings.Setting'
+    
+        Interfaces:
+            cern.lsa.domain.commons.IdentifiedEntity
+    
+    """
     def clone(self) -> 'Setting': ...
     def getArray2DValue(self) -> cern.accsoft.commons.value.ImmutableScalarArray2D: ...
     def getArrayValue(self) -> cern.accsoft.commons.value.ImmutableScalarArray: ...
@@ -973,6 +1435,10 @@ class Setting(cern.lsa.domain.commons.IdentifiedEntity):
     def updateValue(self, setting: 'Setting') -> None: ...
 
 class SettingComparisonParameterResult:
+    """
+    Java class 'cern.lsa.domain.settings.SettingComparisonParameterResult'
+    
+    """
     def getDestinationBeamProcesses(self) -> java.util.List['BeamProcess']: ...
     def getDestinationDetailedException(self, beamProcess: 'BeamProcess') -> java.lang.Exception: ...
     def getDestinationException(self) -> java.lang.Exception: ...
@@ -987,6 +1453,10 @@ class SettingComparisonParameterResult:
     def getSourceSettings(self) -> ParameterSettings: ...
 
 class SettingComparisonRequest:
+    """
+    Java class 'cern.lsa.domain.settings.SettingComparisonRequest'
+    
+    """
     def compareAllParameters(self) -> bool: ...
     def getDestinationBeamProcesses(self) -> java.util.List['BeamProcess']: ...
     def getDestinationSettingsSource(self) -> 'SettingsSource': ...
@@ -998,15 +1468,41 @@ class SettingComparisonRequest:
     def ignoreFlatFunctionsLength(self) -> bool: ...
 
 class SettingComparisonResponse:
+    """
+    Java class 'cern.lsa.domain.settings.SettingComparisonResponse'
+    
+    """
     def getSettingComparisonRequest(self) -> SettingComparisonRequest: ...
     def getSettingComparisonResult(self) -> 'SettingComparisonResult': ...
 
 class SettingComparisonResult:
+    """
+    Java class 'cern.lsa.domain.settings.SettingComparisonResult'
+    
+    """
     def getComparedParameters(self) -> java.util.Set[Parameter]: ...
     def getSettingComparisonParameterResult(self, parameter: Parameter) -> SettingComparisonParameterResult: ...
     def getSettingComparisonParameterResults(self) -> java.util.Map[Parameter, SettingComparisonParameterResult]: ...
 
 class SettingComparisonResultType(java.lang.Enum['SettingComparisonResultType']):
+    """
+    Java class 'cern.lsa.domain.settings.SettingComparisonResultType'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        MATCH (cern.lsa.domain.settings.SettingComparisonResultType): final static enum constant
+        MISMATCH (cern.lsa.domain.settings.SettingComparisonResultType): final static enum constant
+        NO_SETTINGS (cern.lsa.domain.settings.SettingComparisonResultType): final static enum constant
+        NO_SETTINGS_IN_SOURCE (cern.lsa.domain.settings.SettingComparisonResultType): final static enum constant
+        NO_SETTINGS_IN_DEST (cern.lsa.domain.settings.SettingComparisonResultType): final static enum constant
+        NOT_COMPARABLE (cern.lsa.domain.settings.SettingComparisonResultType): final static enum constant
+        ERROR (cern.lsa.domain.settings.SettingComparisonResultType): final static enum constant
+        FILTERED_OUT (cern.lsa.domain.settings.SettingComparisonResultType): final static enum constant
+        UNDEFINED (cern.lsa.domain.settings.SettingComparisonResultType): final static enum constant
+    
+    """
     MATCH: typing.ClassVar['SettingComparisonResultType'] = ...
     MISMATCH: typing.ClassVar['SettingComparisonResultType'] = ...
     NO_SETTINGS: typing.ClassVar['SettingComparisonResultType'] = ...
@@ -1029,6 +1525,13 @@ class SettingComparisonResultType(java.lang.Enum['SettingComparisonResultType'])
     def values() -> typing.List['SettingComparisonResultType']: ...
 
 class SettingFactory:
+    """
+    Java class 'cern.lsa.domain.settings.SettingFactory'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @typing.overload
     @staticmethod
     def newInitialSetting(beamProcess: 'BeamProcess', parameter: Parameter) -> Setting: ...
@@ -1052,6 +1555,22 @@ class SettingFactory:
     def newSetting(type: cern.accsoft.commons.value.Type) -> cern.lsa.domain.settings.spi.AbstractSetting: ...
 
 class SettingPartEnum(java.lang.Enum['SettingPartEnum']):
+    """
+    Java class 'cern.lsa.domain.settings.SettingPartEnum'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        NONE (cern.lsa.domain.settings.SettingPartEnum): final static enum constant
+        CORRECTION (cern.lsa.domain.settings.SettingPartEnum): final static enum constant
+        TARGET (cern.lsa.domain.settings.SettingPartEnum): final static enum constant
+        VALUE (cern.lsa.domain.settings.SettingPartEnum): final static enum constant
+        UPDATE_TARGET_NO_CORRECTION (cern.lsa.domain.settings.SettingPartEnum): final static enum constant
+        TARGET_AND_CORRECTION (cern.lsa.domain.settings.SettingPartEnum): final static enum constant
+        UPDATE_VALUE_ON_TARGET (cern.lsa.domain.settings.SettingPartEnum): final static enum constant
+    
+    """
     NONE: typing.ClassVar['SettingPartEnum'] = ...
     CORRECTION: typing.ClassVar['SettingPartEnum'] = ...
     TARGET: typing.ClassVar['SettingPartEnum'] = ...
@@ -1076,6 +1595,13 @@ class SettingPartEnum(java.lang.Enum['SettingPartEnum']):
     def values() -> typing.List['SettingPartEnum']: ...
 
 class Settings:
+    """
+    Java class 'cern.lsa.domain.settings.Settings'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def computeContextBeamInValue(standAloneContext: 'StandAloneContext', parameterSettings: ParameterSettings, settingPartEnum: SettingPartEnum) -> cern.accsoft.commons.value.ImmutableValue: ...
     @typing.overload
@@ -1144,6 +1670,10 @@ class Settings:
     def valuesAreEqual(immutableValue: cern.accsoft.commons.value.ImmutableValue, immutableValue2: cern.accsoft.commons.value.ImmutableValue) -> bool: ...
 
 class SettingsDeletionRequest:
+    """
+    Java class 'cern.lsa.domain.settings.SettingsDeletionRequest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultSettingsDeletionRequest.Builder': ...
     @staticmethod
@@ -1152,6 +1682,16 @@ class SettingsDeletionRequest:
     def getParameters(self) -> java.util.Set[Parameter]: ...
 
 class SettingsSource(java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.settings.SettingsSource'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     @staticmethod
     def forArchiveVersionSettings(archiveVersion: ArchiveVersion) -> 'SettingsSource': ...
     @staticmethod
@@ -1173,6 +1713,21 @@ class SettingsSource(java.io.Serializable):
     def isValid(self) -> bool: ...
     def toString(self) -> str: ...
     class SettingsSourceType(java.lang.Enum['SettingsSource.SettingsSourceType']):
+        """
+        Java class 'cern.lsa.domain.settings.SettingsSource$SettingsSourceType'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            CURRENT_SETTINGS (cern.lsa.domain.settings.SettingsSource$SettingsSourceType): final static enum constant
+            HISTORICAL_SETTINGS (cern.lsa.domain.settings.SettingsSource$SettingsSourceType): final static enum constant
+            TRIM (cern.lsa.domain.settings.SettingsSource$SettingsSourceType): final static enum constant
+            ARCHIVE_VERSION (cern.lsa.domain.settings.SettingsSource$SettingsSourceType): final static enum constant
+            REFERENCE (cern.lsa.domain.settings.SettingsSource$SettingsSourceType): final static enum constant
+            HARDWARE (cern.lsa.domain.settings.SettingsSource$SettingsSourceType): final static enum constant
+        
+        """
         CURRENT_SETTINGS: typing.ClassVar['SettingsSource.SettingsSourceType'] = ...
         HISTORICAL_SETTINGS: typing.ClassVar['SettingsSource.SettingsSourceType'] = ...
         TRIM: typing.ClassVar['SettingsSource.SettingsSourceType'] = ...
@@ -1190,6 +1745,10 @@ class SettingsSource(java.io.Serializable):
         def values() -> typing.List['SettingsSource.SettingsSourceType']: ...
 
 class StandAloneContextCloneRequest:
+    """
+    Java class 'cern.lsa.domain.settings.StandAloneContextCloneRequest'
+    
+    """
     def getAttributes(self) -> java.util.Set[cern.lsa.domain.commons.Attribute]: ...
     def getCloneName(self) -> str: ...
     def getContextCategory(self) -> ContextCategory: ...
@@ -1200,6 +1759,10 @@ class StandAloneContextCloneRequest:
     def withHistory(self) -> bool: ...
 
 class StandAloneContextCreationRequest:
+    """
+    Java class 'cern.lsa.domain.settings.StandAloneContextCreationRequest'
+    
+    """
     def getAttributes(self) -> java.util.Set[cern.lsa.domain.commons.Attribute]: ...
     def getContextCategory(self) -> ContextCategory: ...
     def getContextType(self) -> cern.lsa.domain.settings.type.ContextType: ...
@@ -1209,6 +1772,19 @@ class StandAloneContextCreationRequest:
     def isMultiplexed(self) -> bool: ...
 
 class StandAloneContextFilter(cern.accsoft.commons.util.Filters.Filter['StandAloneContext']):
+    """
+    Java class 'cern.lsa.domain.settings.StandAloneContextFilter'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.accsoft.commons.util.Filters.Filter
+    
+      Constructors:
+        * StandAloneContextFilter()
+    
+    """
     def __init__(self): ...
     def accepts(self, standAloneContext: 'StandAloneContext') -> bool: ...
     @staticmethod
@@ -1216,6 +1792,18 @@ class StandAloneContextFilter(cern.accsoft.commons.util.Filters.Filter['StandAlo
     def setCategories(self, collection: typing.Union[java.util.Collection[ContextCategory], typing.Sequence[ContextCategory]]) -> 'StandAloneContextFilter': ...
 
 class TrimException(cern.lsa.domain.LsaException):
+    """
+    Java class 'cern.lsa.domain.settings.TrimException'
+    
+        Extends:
+            cern.lsa.domain.LsaException
+    
+      Constructors:
+        * TrimException(java.lang.String)
+        * TrimException(java.lang.Exception)
+        * TrimException(java.lang.String, java.lang.Exception)
+    
+    """
     @typing.overload
     def __init__(self, exception: java.lang.Exception): ...
     @typing.overload
@@ -1224,12 +1812,29 @@ class TrimException(cern.lsa.domain.LsaException):
     def __init__(self, string: str, exception: java.lang.Exception): ...
 
 class TrimHeader(cern.lsa.domain.commons.IdentifiedEntity):
+    """
+    Java class 'cern.lsa.domain.settings.TrimHeader'
+    
+        Interfaces:
+            cern.lsa.domain.commons.IdentifiedEntity
+    
+    """
     def getBeamProcesses(self) -> java.util.List['BeamProcess']: ...
     def getClientInfo(self) -> str: ...
     def getCreatedDate(self) -> java.util.Date: ...
     def getDescription(self) -> str: ...
 
 class TrimHeadersRequest(java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.settings.TrimHeadersRequest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     @staticmethod
     def builder() -> 'TrimHeadersRequestBuilder': ...
     @staticmethod
@@ -1241,6 +1846,16 @@ class TrimHeadersRequest(java.io.Serializable):
     def toString(self) -> str: ...
 
 class TrimHeadersRequestBuilder:
+    """
+    Java class 'cern.lsa.domain.settings.TrimHeadersRequestBuilder'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * TrimHeadersRequestBuilder()
+    
+    """
     def __init__(self): ...
     def beamProcesses(self, collection: typing.Union[java.util.Collection['BeamProcess'], typing.Sequence['BeamProcess']]) -> 'TrimHeadersRequestBuilder': ...
     def build(self) -> TrimHeadersRequest: ...
@@ -1251,8 +1866,16 @@ class TrimHeadersRequestBuilder:
     def startingFrom(self, instant: typing.Union[java.time.Instant, datetime.datetime]) -> 'TrimHeadersRequestBuilder': ...
 
 class TrimRequest:
+    """
+    Java class 'cern.lsa.domain.settings.TrimRequest'
+    
+    """
+    @typing.overload
     @staticmethod
     def builder() -> cern.lsa.domain.settings.factory.TrimRequestBuilder: ...
+    @typing.overload
+    @staticmethod
+    def builder(trimRequest: 'TrimRequest') -> cern.lsa.domain.settings.factory.TrimRequestBuilder: ...
     def getAttribute(self, string: str) -> typing.Any: ...
     def getAttributes(self) -> java.util.Map[str, typing.Any]: ...
     def getChildSettingPart(self) -> SettingPartEnum: ...
@@ -1278,11 +1901,19 @@ class TrimRequest:
     def setSettingPart(self, settingPartEnum: SettingPartEnum) -> None: ...
 
 class TrimResponse:
+    """
+    Java class 'cern.lsa.domain.settings.TrimResponse'
+    
+    """
     def getDriveResult(self) -> cern.lsa.domain.exploitation.DriveResult: ...
     def getTrimResult(self) -> 'TrimResult': ...
     def isDrivePerformed(self) -> bool: ...
 
 class TrimResult:
+    """
+    Java class 'cern.lsa.domain.settings.TrimResult'
+    
+    """
     def getAttribute(self, string: str) -> java.io.Serializable: ...
     def getContext(self) -> 'StandAloneContext': ...
     def getContextSettings(self) -> ContextSettings: ...
@@ -1291,6 +1922,10 @@ class TrimResult:
     def getWarnings(self) -> java.util.List[cern.accsoft.commons.util.value.Pair[str, java.lang.Throwable]]: ...
 
 class UserContextMapping:
+    """
+    Java class 'cern.lsa.domain.settings.UserContextMapping'
+    
+    """
     def equalByName(self, userContextMapping: 'UserContextMapping') -> bool: ...
     def getContextName(self) -> str: ...
     def getContextParent(self) -> str: ...
@@ -1299,6 +1934,18 @@ class UserContextMapping:
     def getUser(self) -> str: ...
     def isResident(self) -> bool: ...
     class OperationType(java.lang.Enum['UserContextMapping.OperationType']):
+        """
+        Java class 'cern.lsa.domain.settings.UserContextMapping$OperationType'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            INSERT (cern.lsa.domain.settings.UserContextMapping$OperationType): final static enum constant
+            DELETE (cern.lsa.domain.settings.UserContextMapping$OperationType): final static enum constant
+            UPDATE (cern.lsa.domain.settings.UserContextMapping$OperationType): final static enum constant
+        
+        """
         INSERT: typing.ClassVar['UserContextMapping.OperationType'] = ...
         DELETE: typing.ClassVar['UserContextMapping.OperationType'] = ...
         UPDATE: typing.ClassVar['UserContextMapping.OperationType'] = ...
@@ -1315,6 +1962,13 @@ class UserContextMapping:
         def values() -> typing.List['UserContextMapping.OperationType']: ...
 
 class CopySettingsRequest(TrimRequest):
+    """
+    Java class 'cern.lsa.domain.settings.CopySettingsRequest'
+    
+        Interfaces:
+            cern.lsa.domain.settings.TrimRequest
+    
+    """
     @staticmethod
     def builder() -> cern.lsa.domain.settings.factory.CopySettingsRequestBuilder: ...
     def getDestinationContexts(self) -> java.util.List[Context]: ...
@@ -1323,6 +1977,18 @@ class CopySettingsRequest(TrimRequest):
     def getSourceContexts(self) -> java.util.List[Context]: ...
 
 class CriticalParameterException(TrimException):
+    """
+    Java class 'cern.lsa.domain.settings.CriticalParameterException'
+    
+        Extends:
+            cern.lsa.domain.settings.TrimException
+    
+      Constructors:
+        * CriticalParameterException(java.lang.String)
+        * CriticalParameterException(java.lang.Exception)
+        * CriticalParameterException(java.lang.String, java.lang.Exception)
+    
+    """
     @typing.overload
     def __init__(self, exception: java.lang.Exception): ...
     @typing.overload
@@ -1331,6 +1997,13 @@ class CriticalParameterException(TrimException):
     def __init__(self, string: str, exception: java.lang.Exception): ...
 
 class CycleIntersections(ContextIntersections):
+    """
+    Java class 'cern.lsa.domain.settings.CycleIntersections'
+    
+        Interfaces:
+            cern.lsa.domain.settings.ContextIntersections
+    
+    """
     def getBeamProcesses(self) -> java.util.Set['BeamProcess']: ...
     def getCycleName(self) -> str: ...
     def getFollowingBeamProcess(self, beamProcess: 'BeamProcess') -> 'BeamProcess': ...
@@ -1342,6 +2015,16 @@ class CycleIntersections(ContextIntersections):
     def size(self) -> int: ...
 
 class DefaultAcceleratorUser(AcceleratorUser, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.settings.DefaultAcceleratorUser'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.settings.AcceleratorUser, java.io.Serializable
+    
+    """
     @staticmethod
     def builder() -> 'DefaultAcceleratorUser.Builder': ...
     @staticmethod
@@ -1360,6 +2043,13 @@ class DefaultAcceleratorUser(AcceleratorUser, java.io.Serializable):
     def withMultiplexed(self, boolean: bool) -> 'DefaultAcceleratorUser': ...
     def withName(self, string: str) -> 'DefaultAcceleratorUser': ...
     class Builder:
+        """
+        Java class 'cern.lsa.domain.settings.DefaultAcceleratorUser$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def accelerator(self, accelerator: cern.accsoft.commons.domain.Accelerator) -> 'DefaultAcceleratorUser.Builder': ...
         def acceleratorUserGroup(self, acceleratorUserGroup: AcceleratorUserGroup) -> 'DefaultAcceleratorUser.Builder': ...
         def build(self) -> 'DefaultAcceleratorUser': ...
@@ -1368,6 +2058,17 @@ class DefaultAcceleratorUser(AcceleratorUser, java.io.Serializable):
         def name(self, string: str) -> 'DefaultAcceleratorUser.Builder': ...
 
 class DefaultAcceleratorUserGroup(AcceleratorUserGroup, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.settings.DefaultAcceleratorUserGroup'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.settings.AcceleratorUserGroup,
+            java.io.Serializable
+    
+    """
     @staticmethod
     def builder() -> 'DefaultAcceleratorUserGroup.Builder': ...
     @staticmethod
@@ -1382,12 +2083,30 @@ class DefaultAcceleratorUserGroup(AcceleratorUserGroup, java.io.Serializable):
     def withId(self, long: int) -> 'DefaultAcceleratorUserGroup': ...
     def withName(self, string: str) -> 'DefaultAcceleratorUserGroup': ...
     class Builder:
+        """
+        Java class 'cern.lsa.domain.settings.DefaultAcceleratorUserGroup$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultAcceleratorUserGroup': ...
         def description(self, string: str) -> 'DefaultAcceleratorUserGroup.Builder': ...
         def id(self, long: int) -> 'DefaultAcceleratorUserGroup.Builder': ...
         def name(self, string: str) -> 'DefaultAcceleratorUserGroup.Builder': ...
 
 class DefaultAcceleratorUsersRequest(AcceleratorUsersRequest, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.settings.DefaultAcceleratorUsersRequest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.settings.AcceleratorUsersRequest,
+            java.io.Serializable
+    
+    """
     @staticmethod
     def builder() -> 'DefaultAcceleratorUsersRequest.Builder': ...
     @staticmethod
@@ -1412,6 +2131,13 @@ class DefaultAcceleratorUsersRequest(AcceleratorUsersRequest, java.io.Serializab
     def withIds(self, longArray: typing.List[int]) -> 'DefaultAcceleratorUsersRequest': ...
     def withMultiplexed(self, boolean: bool) -> 'DefaultAcceleratorUsersRequest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.domain.settings.DefaultAcceleratorUsersRequest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def accelerator(self, accelerator: cern.accsoft.commons.domain.Accelerator) -> 'DefaultAcceleratorUsersRequest.Builder': ...
         def acceleratorUserGroupName(self, string: str) -> 'DefaultAcceleratorUsersRequest.Builder': ...
         def acceleratorUserNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultAcceleratorUsersRequest.Builder': ...
@@ -1426,6 +2152,17 @@ class DefaultAcceleratorUsersRequest(AcceleratorUsersRequest, java.io.Serializab
         def multiplexed(self, boolean: bool) -> 'DefaultAcceleratorUsersRequest.Builder': ...
 
 class DefaultHyperCycleMapping(HyperCycleMapping, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.settings.DefaultHyperCycleMapping'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.settings.HyperCycleMapping,
+            java.io.Serializable
+    
+    """
     @staticmethod
     def builder() -> 'DefaultHyperCycleMapping.Builder': ...
     @staticmethod
@@ -1438,11 +2175,29 @@ class DefaultHyperCycleMapping(HyperCycleMapping, java.io.Serializable):
     def withBeamProcess(self, standAloneBeamProcess: 'StandAloneBeamProcess') -> 'DefaultHyperCycleMapping': ...
     def withUser(self, acceleratorUser: AcceleratorUser) -> 'DefaultHyperCycleMapping': ...
     class Builder:
+        """
+        Java class 'cern.lsa.domain.settings.DefaultHyperCycleMapping$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def beamProcess(self, standAloneBeamProcess: 'StandAloneBeamProcess') -> 'DefaultHyperCycleMapping.Builder': ...
         def build(self) -> 'DefaultHyperCycleMapping': ...
         def user(self, acceleratorUser: AcceleratorUser) -> 'DefaultHyperCycleMapping.Builder': ...
 
 class DefaultSettingsDeletionRequest(SettingsDeletionRequest, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.settings.DefaultSettingsDeletionRequest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.settings.SettingsDeletionRequest,
+            java.io.Serializable
+    
+    """
     @staticmethod
     def builder() -> 'DefaultSettingsDeletionRequest.Builder': ...
     @staticmethod
@@ -1458,6 +2213,13 @@ class DefaultSettingsDeletionRequest(SettingsDeletionRequest, java.io.Serializab
     @typing.overload
     def withParameters(self, iterable: java.lang.Iterable[Parameter]) -> 'DefaultSettingsDeletionRequest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.domain.settings.DefaultSettingsDeletionRequest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def addAllParameters(self, iterable: java.lang.Iterable[Parameter]) -> 'DefaultSettingsDeletionRequest.Builder': ...
         def addParameter(self, parameter: Parameter) -> 'DefaultSettingsDeletionRequest.Builder': ...
         def addParameters(self, parameterArray: typing.List[Parameter]) -> 'DefaultSettingsDeletionRequest.Builder': ...
@@ -1466,66 +2228,171 @@ class DefaultSettingsDeletionRequest(SettingsDeletionRequest, java.io.Serializab
         def parameters(self, iterable: java.lang.Iterable[Parameter]) -> 'DefaultSettingsDeletionRequest.Builder': ...
 
 class DrivableContext(Context):
+    """
+    Java class 'cern.lsa.domain.settings.DrivableContext'
+    
+        Interfaces:
+            cern.lsa.domain.settings.Context
+    
+    """
     def getUser(self) -> str: ...
 
 class IncorporationRequest(TrimRequest):
+    """
+    Java class 'cern.lsa.domain.settings.IncorporationRequest'
+    
+        Interfaces:
+            cern.lsa.domain.settings.TrimRequest
+    
+    """
     @staticmethod
     def builder() -> cern.lsa.domain.settings.factory.IncorporationRequestBuilder: ...
     def getIncorporationSettings(self) -> java.util.Set[IncorporationSetting]: ...
     def shouldIncorporate(self, parameter: Parameter) -> bool: ...
 
 class Knob(Parameter):
+    """
+    Java class 'cern.lsa.domain.settings.Knob'
+    
+        Interfaces:
+            cern.lsa.domain.settings.Parameter
+    
+    """
     def getComponentNames(self) -> java.util.Set[str]: ...
     def getKnobFactors(self) -> KnobFactors: ...
     def getOpticNames(self) -> java.util.Set[str]: ...
 
 class RevertTrimRequest(TrimRequest):
+    """
+    Java class 'cern.lsa.domain.settings.RevertTrimRequest'
+    
+        Interfaces:
+            cern.lsa.domain.settings.TrimRequest
+    
+    """
     @staticmethod
     def builder() -> cern.lsa.domain.settings.factory.RevertTrimRequestBuilder: ...
     def getBeamProcesses(self) -> java.util.Set['BeamProcess']: ...
     def getTrimHeader(self) -> TrimHeader: ...
 
 class SettingsGenerationRequest(TrimRequest):
+    """
+    Java class 'cern.lsa.domain.settings.SettingsGenerationRequest'
+    
+        Interfaces:
+            cern.lsa.domain.settings.TrimRequest
+    
+    """
     @staticmethod
     def builder() -> cern.lsa.domain.settings.factory.SettingsGenerationRequestBuilder: ...
     def getSubContexts(self) -> java.util.Set['SubContext']: ...
     def isGenerateZeroSettings(self) -> bool: ...
 
 class SettingsRestoreStatus(FailedParametersStatus):
+    """
+    Java class 'cern.lsa.domain.settings.SettingsRestoreStatus'
+    
+        Interfaces:
+            cern.lsa.domain.settings.FailedParametersStatus
+    
+    """
     def getSettings(self) -> CompositeContextSettings: ...
 
 class StandAloneContext(Context, cern.lsa.domain.commons.AttributeAware):
+    """
+    Java class 'cern.lsa.domain.settings.StandAloneContext'
+    
+        Interfaces:
+            cern.lsa.domain.settings.Context,
+            cern.lsa.domain.commons.AttributeAware
+    
+    """
     def getBeamProcesses(self) -> java.util.List['BeamProcess']: ...
     def getContextCategory(self) -> ContextCategory: ...
     def getParticleTransfers(self) -> java.util.Set[cern.accsoft.commons.domain.particletransfers.ParticleTransfer]: ...
     def isResident(self) -> bool: ...
 
 class SubContext(Context):
+    """
+    Java class 'cern.lsa.domain.settings.SubContext'
+    
+        Interfaces:
+            cern.lsa.domain.settings.Context
+    
+    """
     def getStartTime(self) -> int: ...
 
 class BeamProcess(SubContext):
+    """
+    Java class 'cern.lsa.domain.settings.BeamProcess'
+    
+        Interfaces:
+            cern.lsa.domain.settings.SubContext
+    
+    """
     def getCategory(self) -> cern.lsa.domain.settings.type.BeamProcessTypeCategory: ...
     def getParticleTransfer(self) -> cern.accsoft.commons.domain.particletransfers.ParticleTransfer: ...
     def getPurpose(self) -> cern.lsa.domain.settings.type.BeamProcessPurpose: ...
 
 class BeamProductionChain(SubContext):
+    """
+    Java class 'cern.lsa.domain.settings.BeamProductionChain'
+    
+        Interfaces:
+            cern.lsa.domain.settings.SubContext
+    
+    """
     def getBeamProcesses(self) -> java.util.List['DrivableBeamProcess']: ...
 
 class Cycle(SubContext, DrivableContext): ...
 
 class Pattern(StandAloneContext):
+    """
+    Java class 'cern.lsa.domain.settings.Pattern'
+    
+        Interfaces:
+            cern.lsa.domain.settings.StandAloneContext
+    
+    """
     def getDrivableBeamProcesses(self) -> java.util.List['DrivableBeamProcess']: ...
 
 class DrivableBeamProcess(BeamProcess, DrivableContext): ...
 
 class StandAloneCycle(StandAloneContext, Cycle):
+    """
+    Java class 'cern.lsa.domain.settings.StandAloneCycle'
+    
+        Interfaces:
+            cern.lsa.domain.settings.StandAloneContext,
+            cern.lsa.domain.settings.Cycle
+    
+    """
     def getIntersections(self) -> CycleIntersections: ...
 
 class StandAloneBeamProcess(StandAloneContext, DrivableBeamProcess):
+    """
+    Java class 'cern.lsa.domain.settings.StandAloneBeamProcess'
+    
+        Interfaces:
+            cern.lsa.domain.settings.StandAloneContext,
+            cern.lsa.domain.settings.DrivableBeamProcess
+    
+    """
     def getActualBeamProcessInfo(self) -> ActualBeamProcessInfo: ...
     def isActual(self) -> bool: ...
 
 class DefaultStandAloneBeamProcessesRequest(cern.lsa.domain.settings.StandAloneBeamProcessesRequest, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.settings.DefaultStandAloneBeamProcessesRequest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.settings.StandAloneBeamProcessesRequest,
+            java.io.Serializable
+    
+    """
     @staticmethod
     def builder() -> 'DefaultStandAloneBeamProcessesRequest.Builder': ...
     @staticmethod
@@ -1550,6 +2417,13 @@ class DefaultStandAloneBeamProcessesRequest(cern.lsa.domain.settings.StandAloneB
     def withMultiplexed(self, boolean: bool) -> 'DefaultStandAloneBeamProcessesRequest': ...
     def withResident(self, boolean: bool) -> 'DefaultStandAloneBeamProcessesRequest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.domain.settings.DefaultStandAloneBeamProcessesRequest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def accelerator(self, accelerator: cern.accsoft.commons.domain.Accelerator) -> 'DefaultStandAloneBeamProcessesRequest.Builder': ...
         def addAllBeamProcessNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultStandAloneBeamProcessesRequest.Builder': ...
         def addAllIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultStandAloneBeamProcessesRequest.Builder': ...
@@ -1564,6 +2438,17 @@ class DefaultStandAloneBeamProcessesRequest(cern.lsa.domain.settings.StandAloneB
         def resident(self, boolean: bool) -> 'DefaultStandAloneBeamProcessesRequest.Builder': ...
 
 class DefaultStandAloneContextsRequest(cern.lsa.domain.settings.StandAloneContextsRequest, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.settings.DefaultStandAloneContextsRequest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.settings.StandAloneContextsRequest,
+            java.io.Serializable
+    
+    """
     @staticmethod
     def builder() -> 'DefaultStandAloneContextsRequest.Builder': ...
     @staticmethod
@@ -1588,6 +2473,13 @@ class DefaultStandAloneContextsRequest(cern.lsa.domain.settings.StandAloneContex
     def withMultiplexed(self, boolean: bool) -> 'DefaultStandAloneContextsRequest': ...
     def withResident(self, boolean: bool) -> 'DefaultStandAloneContextsRequest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.domain.settings.DefaultStandAloneContextsRequest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def accelerator(self, accelerator: cern.accsoft.commons.domain.Accelerator) -> 'DefaultStandAloneContextsRequest.Builder': ...
         def addAllContextNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultStandAloneContextsRequest.Builder': ...
         def addAllIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultStandAloneContextsRequest.Builder': ...
@@ -1602,6 +2494,17 @@ class DefaultStandAloneContextsRequest(cern.lsa.domain.settings.StandAloneContex
         def resident(self, boolean: bool) -> 'DefaultStandAloneContextsRequest.Builder': ...
 
 class DefaultStandAloneCyclesRequest(cern.lsa.domain.settings.StandAloneCyclesRequest, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.settings.DefaultStandAloneCyclesRequest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.settings.StandAloneCyclesRequest,
+            java.io.Serializable
+    
+    """
     @staticmethod
     def builder() -> 'DefaultStandAloneCyclesRequest.Builder': ...
     @staticmethod
@@ -1626,6 +2529,13 @@ class DefaultStandAloneCyclesRequest(cern.lsa.domain.settings.StandAloneCyclesRe
     def withMultiplexed(self, boolean: bool) -> 'DefaultStandAloneCyclesRequest': ...
     def withResident(self, boolean: bool) -> 'DefaultStandAloneCyclesRequest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.domain.settings.DefaultStandAloneCyclesRequest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def accelerator(self, accelerator: cern.accsoft.commons.domain.Accelerator) -> 'DefaultStandAloneCyclesRequest.Builder': ...
         def addAllCycleNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultStandAloneCyclesRequest.Builder': ...
         def addAllIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultStandAloneCyclesRequest.Builder': ...
@@ -1640,6 +2550,13 @@ class DefaultStandAloneCyclesRequest(cern.lsa.domain.settings.StandAloneCyclesRe
         def resident(self, boolean: bool) -> 'DefaultStandAloneCyclesRequest.Builder': ...
 
 class StandAloneBeamProcessesRequest(cern.lsa.domain.settings.BaseStandAloneContextsRequest):
+    """
+    Java class 'cern.lsa.domain.settings.StandAloneBeamProcessesRequest'
+    
+        Interfaces:
+            cern.lsa.domain.settings.BaseStandAloneContextsRequest
+    
+    """
     @staticmethod
     def builder() -> DefaultStandAloneBeamProcessesRequest.Builder: ...
     @staticmethod
@@ -1649,6 +2566,13 @@ class StandAloneBeamProcessesRequest(cern.lsa.domain.settings.BaseStandAloneCont
     def getBeamProcessNames(self) -> java.util.Set[str]: ...
 
 class StandAloneContextsRequest(cern.lsa.domain.settings.BaseStandAloneContextsRequest):
+    """
+    Java class 'cern.lsa.domain.settings.StandAloneContextsRequest'
+    
+        Interfaces:
+            cern.lsa.domain.settings.BaseStandAloneContextsRequest
+    
+    """
     @staticmethod
     def builder() -> DefaultStandAloneContextsRequest.Builder: ...
     @staticmethod
@@ -1658,6 +2582,13 @@ class StandAloneContextsRequest(cern.lsa.domain.settings.BaseStandAloneContextsR
     def getContextNames(self) -> java.util.Set[str]: ...
 
 class StandAloneCyclesRequest(cern.lsa.domain.settings.BaseStandAloneContextsRequest):
+    """
+    Java class 'cern.lsa.domain.settings.StandAloneCyclesRequest'
+    
+        Interfaces:
+            cern.lsa.domain.settings.BaseStandAloneContextsRequest
+    
+    """
     @staticmethod
     def builder() -> DefaultStandAloneCyclesRequest.Builder: ...
     @staticmethod
@@ -1667,3 +2598,115 @@ class StandAloneCyclesRequest(cern.lsa.domain.settings.BaseStandAloneContextsReq
     def getCycleNames(self) -> java.util.Set[str]: ...
 
 class BaseStandAloneContextsRequest: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.settings")``.
+
+    AcceleratorUser: typing.Type[AcceleratorUser]
+    AcceleratorUserGroup: typing.Type[AcceleratorUserGroup]
+    AcceleratorUsersRequest: typing.Type[AcceleratorUsersRequest]
+    ActualBeamProcessInfo: typing.Type[ActualBeamProcessInfo]
+    Archive: typing.Type[Archive]
+    ArchiveVersion: typing.Type[ArchiveVersion]
+    BaseStandAloneContextsRequest: typing.Type[BaseStandAloneContextsRequest]
+    BeamProcess: typing.Type[BeamProcess]
+    BeamProcessIncorporationRequest: typing.Type[BeamProcessIncorporationRequest]
+    BeamProcessIntersection: typing.Type[BeamProcessIntersection]
+    BeamProductionChain: typing.Type[BeamProductionChain]
+    CompositeContextSettings: typing.Type[CompositeContextSettings]
+    Context: typing.Type[Context]
+    ContextCategory: typing.Type[ContextCategory]
+    ContextFamily: typing.Type[ContextFamily]
+    ContextIntersections: typing.Type[ContextIntersections]
+    ContextOptics: typing.Type[ContextOptics]
+    ContextSettings: typing.Type[ContextSettings]
+    ContextSettingsRequest: typing.Type[ContextSettingsRequest]
+    ContextSettingsRequestBuilder: typing.Type[ContextSettingsRequestBuilder]
+    ContextTypeFilter: typing.Type[ContextTypeFilter]
+    ContextTypes: typing.Type[ContextTypes]
+    Contexts: typing.Type[Contexts]
+    CopySettingsRequest: typing.Type[CopySettingsRequest]
+    CriticalParameterException: typing.Type[CriticalParameterException]
+    Cycle: typing.Type[Cycle]
+    CycleBeamProcessIntersection: typing.Type[CycleBeamProcessIntersection]
+    CycleIntersections: typing.Type[CycleIntersections]
+    DefaultAcceleratorUser: typing.Type[DefaultAcceleratorUser]
+    DefaultAcceleratorUserGroup: typing.Type[DefaultAcceleratorUserGroup]
+    DefaultAcceleratorUsersRequest: typing.Type[DefaultAcceleratorUsersRequest]
+    DefaultHyperCycleMapping: typing.Type[DefaultHyperCycleMapping]
+    DefaultSettingsDeletionRequest: typing.Type[DefaultSettingsDeletionRequest]
+    DefaultStandAloneBeamProcessesRequest: typing.Type[DefaultStandAloneBeamProcessesRequest]
+    DefaultStandAloneContextsRequest: typing.Type[DefaultStandAloneContextsRequest]
+    DefaultStandAloneCyclesRequest: typing.Type[DefaultStandAloneCyclesRequest]
+    DevicePropertyParameters: typing.Type[DevicePropertyParameters]
+    DrivableBeamProcess: typing.Type[DrivableBeamProcess]
+    DrivableContext: typing.Type[DrivableContext]
+    ErrorsAwareContextSettings: typing.Type[ErrorsAwareContextSettings]
+    FailedParametersStatus: typing.Type[FailedParametersStatus]
+    GenerationException: typing.Type[GenerationException]
+    HyperCycle: typing.Type[HyperCycle]
+    HyperCycleMapping: typing.Type[HyperCycleMapping]
+    IncorporationRanges: typing.Type[IncorporationRanges]
+    IncorporationRequest: typing.Type[IncorporationRequest]
+    IncorporationSetting: typing.Type[IncorporationSetting]
+    Intersections: typing.Type[Intersections]
+    Knob: typing.Type[Knob]
+    KnobFactor: typing.Type[KnobFactor]
+    KnobFactors: typing.Type[KnobFactors]
+    LinkRuleAttribute: typing.Type[LinkRuleAttribute]
+    MisconfiguredParameterException: typing.Type[MisconfiguredParameterException]
+    NotIncorporatedParameters: typing.Type[NotIncorporatedParameters]
+    Parameter: typing.Type[Parameter]
+    ParameterAttributes: typing.Type[ParameterAttributes]
+    ParameterForEditing: typing.Type[ParameterForEditing]
+    ParameterGroup: typing.Type[ParameterGroup]
+    ParameterNotFoundException: typing.Type[ParameterNotFoundException]
+    ParameterSettings: typing.Type[ParameterSettings]
+    ParameterTreeNode: typing.Type[ParameterTreeNode]
+    ParameterTreesRequest: typing.Type[ParameterTreesRequest]
+    ParameterType: typing.Type[ParameterType]
+    ParameterTypeCategory: typing.Type[ParameterTypeCategory]
+    ParameterTypeGroup: typing.Type[ParameterTypeGroup]
+    ParameterTypes: typing.Type[ParameterTypes]
+    ParameterTypesRequest: typing.Type[ParameterTypesRequest]
+    Parameters: typing.Type[Parameters]
+    ParametersRequest: typing.Type[ParametersRequest]
+    Pattern: typing.Type[Pattern]
+    PropertyAccessMode: typing.Type[PropertyAccessMode]
+    RevertTrimRequest: typing.Type[RevertTrimRequest]
+    Setting: typing.Type[Setting]
+    SettingComparisonParameterResult: typing.Type[SettingComparisonParameterResult]
+    SettingComparisonRequest: typing.Type[SettingComparisonRequest]
+    SettingComparisonResponse: typing.Type[SettingComparisonResponse]
+    SettingComparisonResult: typing.Type[SettingComparisonResult]
+    SettingComparisonResultType: typing.Type[SettingComparisonResultType]
+    SettingFactory: typing.Type[SettingFactory]
+    SettingPartEnum: typing.Type[SettingPartEnum]
+    Settings: typing.Type[Settings]
+    SettingsDeletionRequest: typing.Type[SettingsDeletionRequest]
+    SettingsGenerationRequest: typing.Type[SettingsGenerationRequest]
+    SettingsRestoreStatus: typing.Type[SettingsRestoreStatus]
+    SettingsSource: typing.Type[SettingsSource]
+    StandAloneBeamProcess: typing.Type[StandAloneBeamProcess]
+    StandAloneBeamProcessesRequest: typing.Type[StandAloneBeamProcessesRequest]
+    StandAloneContext: typing.Type[StandAloneContext]
+    StandAloneContextCloneRequest: typing.Type[StandAloneContextCloneRequest]
+    StandAloneContextCreationRequest: typing.Type[StandAloneContextCreationRequest]
+    StandAloneContextFilter: typing.Type[StandAloneContextFilter]
+    StandAloneContextsRequest: typing.Type[StandAloneContextsRequest]
+    StandAloneCycle: typing.Type[StandAloneCycle]
+    StandAloneCyclesRequest: typing.Type[StandAloneCyclesRequest]
+    SubContext: typing.Type[SubContext]
+    TrimException: typing.Type[TrimException]
+    TrimHeader: typing.Type[TrimHeader]
+    TrimHeadersRequest: typing.Type[TrimHeadersRequest]
+    TrimHeadersRequestBuilder: typing.Type[TrimHeadersRequestBuilder]
+    TrimRequest: typing.Type[TrimRequest]
+    TrimResponse: typing.Type[TrimResponse]
+    TrimResult: typing.Type[TrimResult]
+    UserContextMapping: typing.Type[UserContextMapping]
+    factory: cern.lsa.domain.settings.factory.__module_protocol__
+    parameter: cern.lsa.domain.settings.parameter.__module_protocol__
+    spi: cern.lsa.domain.settings.spi.__module_protocol__
+    type: cern.lsa.domain.settings.type.__module_protocol__

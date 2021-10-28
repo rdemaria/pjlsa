@@ -1,5 +1,6 @@
 import cern.accsoft.commons.value
 import cern.accsoft.commons.value.operation
+import cern.accsoft.commons.value.spi.function
 import cern.accsoft.commons.value.spi.operation
 import cern.japc.value
 import cern.japc.value.spi.value.simple
@@ -9,7 +10,18 @@ import jpype.protocol
 import typing
 
 
+
 class AbstractValue(cern.accsoft.commons.value.Value):
+    """
+    Java class 'cern.accsoft.commons.value.spi.AbstractValue'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.accsoft.commons.value.Value
+    
+    """
     def clone(self) -> typing.Any: ...
     @typing.overload
     @staticmethod
@@ -31,6 +43,16 @@ class AbstractValue(cern.accsoft.commons.value.Value):
     def toString(self) -> str: ...
 
 class IOUtils:
+    """
+    Java class 'cern.accsoft.commons.value.spi.IOUtils'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * IOUtils()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def parseCSV(file: typing.Union[java.io.File, jpype.protocol.SupportsPath]) -> java.util.Map[str, cern.accsoft.commons.value.ImmutableValue]: ...
@@ -38,6 +60,19 @@ class IOUtils:
     def toCSV(file: typing.Union[java.io.File, jpype.protocol.SupportsPath], map: typing.Union[java.util.Map[str, cern.accsoft.commons.value.ImmutableValue], typing.Mapping[str, cern.accsoft.commons.value.ImmutableValue]]) -> None: ...
 
 class ValueDescriptorImpl(cern.accsoft.commons.value.ValueDescriptor):
+    """
+    Java class 'cern.accsoft.commons.value.spi.ValueDescriptorImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.accsoft.commons.value.ValueDescriptor
+    
+      Constructors:
+        * ValueDescriptorImpl()
+    
+    """
     def __init__(self): ...
     def clone(self) -> 'ValueDescriptorImpl': ...
     def containsMeanings(self) -> bool: ...
@@ -71,6 +106,19 @@ class ValueDescriptorImpl(cern.accsoft.commons.value.ValueDescriptor):
     def toString(self) -> str: ...
 
 class ScalarArrayView(AbstractValue, cern.accsoft.commons.value.ScalarArray, java.io.Serializable):
+    """
+    Java class 'cern.accsoft.commons.value.spi.ScalarArrayView'
+    
+        Extends:
+            cern.accsoft.commons.value.spi.AbstractValue
+    
+        Interfaces:
+            cern.accsoft.commons.value.ScalarArray, java.io.Serializable
+    
+      Constructors:
+        * ScalarArrayView(cern.accsoft.commons.value.ScalarArray, int, int)
+    
+    """
     def __init__(self, scalarArray: cern.accsoft.commons.value.ScalarArray, int: int, int2: int): ...
     def clone(self) -> typing.Any: ...
     def equals(self, object: typing.Any) -> bool: ...
@@ -210,6 +258,19 @@ class ScalarArrayView(AbstractValue, cern.accsoft.commons.value.ScalarArray, jav
     def toString(self) -> str: ...
 
 class ScalarImpl(AbstractValue, cern.accsoft.commons.value.Scalar):
+    """
+    Java class 'cern.accsoft.commons.value.spi.ScalarImpl'
+    
+        Extends:
+            cern.accsoft.commons.value.spi.AbstractValue
+    
+        Interfaces:
+            cern.accsoft.commons.value.Scalar
+    
+      Constructors:
+        * ScalarImpl(cern.accsoft.commons.value.Type, cern.japc.value.SimpleParameterValue)
+    
+    """
     def __init__(self, type: cern.accsoft.commons.value.Type, simpleParameterValue: cern.japc.value.SimpleParameterValue): ...
     def asMatrix(self, intArray: typing.List[int]) -> cern.accsoft.commons.value.ScalarArray2D: ...
     def asVector(self, int: int) -> cern.accsoft.commons.value.ScalarArray: ...
@@ -242,6 +303,21 @@ class ScalarImpl(AbstractValue, cern.accsoft.commons.value.Scalar):
     def toString(self) -> str: ...
 
 class PointImpl(ScalarImpl, cern.accsoft.commons.value.Point):
+    """
+    Java class 'cern.accsoft.commons.value.spi.PointImpl'
+    
+        Extends:
+            cern.accsoft.commons.value.spi.ScalarImpl
+    
+        Interfaces:
+            cern.accsoft.commons.value.Point
+    
+      Constructors:
+        * PointImpl(cern.accsoft.commons.value.ImmutablePoint)
+        * PointImpl(double, double)
+        * PointImpl()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -260,6 +336,19 @@ class PointImpl(ScalarImpl, cern.accsoft.commons.value.Point):
     def toString(self) -> str: ...
 
 class ScalarArrayImpl(ScalarImpl, cern.accsoft.commons.value.ScalarArray):
+    """
+    Java class 'cern.accsoft.commons.value.spi.ScalarArrayImpl'
+    
+        Extends:
+            cern.accsoft.commons.value.spi.ScalarImpl
+    
+        Interfaces:
+            cern.accsoft.commons.value.ScalarArray
+    
+      Constructors:
+        * ScalarArrayImpl(cern.accsoft.commons.value.Type, cern.japc.value.SimpleParameterValue)
+    
+    """
     def __init__(self, type: cern.accsoft.commons.value.Type, simpleParameterValue: cern.japc.value.SimpleParameterValue): ...
     def asMatrix(self, intArray: typing.List[int]) -> cern.accsoft.commons.value.ScalarArray2D: ...
     def asVector(self, int: int) -> cern.accsoft.commons.value.ScalarArray: ...
@@ -396,6 +485,19 @@ class ScalarArrayImpl(ScalarImpl, cern.accsoft.commons.value.ScalarArray):
     def subArray(self, int: int, int2: int) -> cern.accsoft.commons.value.ScalarArray: ...
 
 class ScalarArray2DImpl(ScalarArrayImpl, cern.accsoft.commons.value.ScalarArray2D):
+    """
+    Java class 'cern.accsoft.commons.value.spi.ScalarArray2DImpl'
+    
+        Extends:
+            cern.accsoft.commons.value.spi.ScalarArrayImpl
+    
+        Interfaces:
+            cern.accsoft.commons.value.ScalarArray2D
+    
+      Constructors:
+        * ScalarArray2DImpl(cern.accsoft.commons.value.Type, cern.japc.value.SimpleParameterValue)
+    
+    """
     def __init__(self, type: cern.accsoft.commons.value.Type, simpleParameterValue: cern.japc.value.SimpleParameterValue): ...
     def equals(self, object: typing.Any) -> bool: ...
     @typing.overload
@@ -418,3 +520,18 @@ class ScalarArray2DImpl(ScalarArrayImpl, cern.accsoft.commons.value.ScalarArray2
     def setObjects2D(self, object: typing.Any, int: int, int2: int) -> None: ...
     def setShorts2D(self, shortArray: typing.List[int], int: int, int2: int) -> None: ...
     def setStrings2D(self, stringArray: typing.List[str], int: int, int2: int) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.accsoft.commons.value.spi")``.
+
+    AbstractValue: typing.Type[AbstractValue]
+    IOUtils: typing.Type[IOUtils]
+    PointImpl: typing.Type[PointImpl]
+    ScalarArray2DImpl: typing.Type[ScalarArray2DImpl]
+    ScalarArrayImpl: typing.Type[ScalarArrayImpl]
+    ScalarArrayView: typing.Type[ScalarArrayView]
+    ScalarImpl: typing.Type[ScalarImpl]
+    ValueDescriptorImpl: typing.Type[ValueDescriptorImpl]
+    function: cern.accsoft.commons.value.spi.function.__module_protocol__
+    operation: cern.accsoft.commons.value.spi.operation.__module_protocol__

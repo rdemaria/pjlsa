@@ -8,18 +8,56 @@ import java.util
 import typing
 
 
+
 class AbstractMathFunction(cern.accsoft.commons.value.MathFunction):
+    """
+    Java class 'cern.accsoft.commons.value.spi.function.AbstractMathFunction'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.accsoft.commons.value.MathFunction
+    
+      Constructors:
+        * AbstractMathFunction()
+    
+    """
     def __init__(self): ...
     def getType(self) -> cern.accsoft.commons.value.Type: ...
     def interpolate(self, double: float) -> float: ...
     def isDiscrete(self) -> bool: ...
 
 class BoundedPolynomialIntervalComparator(java.util.Comparator[cern.accsoft.commons.value.BoundedPolynomial]):
+    """
+    Java class 'cern.accsoft.commons.value.spi.function.BoundedPolynomialIntervalComparator'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.Comparator
+    
+    """
     def compare(self, boundedPolynomial: cern.accsoft.commons.value.BoundedPolynomial, boundedPolynomial2: cern.accsoft.commons.value.BoundedPolynomial) -> int: ...
     @staticmethod
     def getInstance() -> 'BoundedPolynomialIntervalComparator': ...
 
 class BoundedPolynomialSequenceImpl(cern.accsoft.commons.value.spi.AbstractValue, cern.accsoft.commons.value.BoundedPolynomialSequence):
+    """
+    Java class 'cern.accsoft.commons.value.spi.function.BoundedPolynomialSequenceImpl'
+    
+        Extends:
+            cern.accsoft.commons.value.spi.AbstractValue
+    
+        Interfaces:
+            cern.accsoft.commons.value.BoundedPolynomialSequence
+    
+      Constructors:
+        * BoundedPolynomialSequenceImpl(java.util.Collection)
+        * BoundedPolynomialSequenceImpl(cern.accsoft.commons.value.BoundedPolynomial[])
+    
+    """
     @typing.overload
     def __init__(self, boundedPolynomialArray: typing.List[cern.accsoft.commons.value.BoundedPolynomial]): ...
     @typing.overload
@@ -41,6 +79,17 @@ class BoundedPolynomialSequenceImpl(cern.accsoft.commons.value.spi.AbstractValue
     def toString(self) -> str: ...
 
 class DiscreteFunctionImpl(cern.accsoft.commons.value.spi.AbstractValue, cern.accsoft.commons.value.DiscreteFunction, java.io.Serializable):
+    """
+    Java class 'cern.accsoft.commons.value.spi.function.DiscreteFunctionImpl'
+    
+        Extends:
+            cern.accsoft.commons.value.spi.AbstractValue
+    
+        Interfaces:
+            cern.accsoft.commons.value.DiscreteFunction,
+            java.io.Serializable
+    
+    """
     def equals(self, object: typing.Any) -> bool: ...
     @typing.overload
     def execute(self, binaryOperation: cern.accsoft.commons.value.operation.BinaryOperation, immutableValue: cern.accsoft.commons.value.ImmutableValue) -> None: ...
@@ -73,6 +122,21 @@ class DiscreteFunctionImpl(cern.accsoft.commons.value.spi.AbstractValue, cern.ac
     def toString(self) -> str: ...
 
 class DiscreteFunctionsArrayImpl(cern.accsoft.commons.value.spi.AbstractValue, cern.accsoft.commons.value.DiscreteFunctionsArray, java.io.Serializable):
+    """
+    Java class 'cern.accsoft.commons.value.spi.function.DiscreteFunctionsArrayImpl'
+    
+        Extends:
+            cern.accsoft.commons.value.spi.AbstractValue
+    
+        Interfaces:
+            cern.accsoft.commons.value.DiscreteFunctionsArray,
+            java.io.Serializable
+    
+      Constructors:
+        * DiscreteFunctionsArrayImpl()
+        * DiscreteFunctionsArrayImpl(cern.accsoft.commons.value.ImmutableDiscreteFunction[])
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -122,6 +186,13 @@ class DiscreteFunctionsArrayImpl(cern.accsoft.commons.value.spi.AbstractValue, c
     def translate(self, int: int, double: float) -> None: ...
 
 class Discretizer:
+    """
+    Java class 'cern.accsoft.commons.value.spi.function.Discretizer'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @typing.overload
     @staticmethod
     def createArray(int: int, double: float, double2: float) -> typing.List[float]: ...
@@ -142,6 +213,24 @@ class Discretizer:
     def createDiscreteFunction(interpolable: cern.accsoft.commons.value.Interpolable, double: float, int2: int, double2: float, double3: float, integer: int, double4: float, double5: float) -> cern.accsoft.commons.value.DiscreteFunction: ...
 
 class ExpressionBasedFunction(cern.accsoft.commons.value.ContinuousFunction, java.io.Serializable):
+    """
+    Java class 'cern.accsoft.commons.value.spi.function.ExpressionBasedFunction'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.accsoft.commons.value.ContinuousFunction,
+            java.io.Serializable
+    
+      Constructors:
+        * ExpressionBasedFunction(cern.accsoft.commons.value.expression.Expression)
+        * ExpressionBasedFunction(java.lang.String)
+    
+      Raises:
+        cern.accsoft.commons.value.expression.ExpressionSyntaxException: from java
+    
+    """
     @typing.overload
     def __init__(self, expression: cern.accsoft.commons.value.expression.Expression): ...
     @typing.overload
@@ -162,6 +251,23 @@ class ExpressionBasedFunction(cern.accsoft.commons.value.ContinuousFunction, jav
     def toString(self) -> str: ...
 
 class PolynomialImpl(cern.accsoft.commons.value.spi.AbstractValue, cern.accsoft.commons.value.Polynomial, cern.accsoft.commons.value.ImmutableValue):
+    """
+    Java class 'cern.accsoft.commons.value.spi.function.PolynomialImpl'
+    
+        Extends:
+            cern.accsoft.commons.value.spi.AbstractValue
+    
+        Interfaces:
+            cern.accsoft.commons.value.Polynomial,
+            cern.accsoft.commons.value.ImmutableValue
+    
+      Constructors:
+        * PolynomialImpl(java.util.SortedMap)
+        * PolynomialImpl(int, double)
+        * PolynomialImpl(double[])
+        * PolynomialImpl(java.util.Collection)
+    
+    """
     @typing.overload
     def __init__(self, doubleArray: typing.List[float]): ...
     @typing.overload
@@ -184,6 +290,20 @@ class PolynomialImpl(cern.accsoft.commons.value.spi.AbstractValue, cern.accsoft.
     def toString(self) -> str: ...
 
 class BoundedPolynomialImpl(PolynomialImpl, cern.accsoft.commons.value.BoundedPolynomial):
+    """
+    Java class 'cern.accsoft.commons.value.spi.function.BoundedPolynomialImpl'
+    
+        Extends:
+            cern.accsoft.commons.value.spi.function.PolynomialImpl
+    
+        Interfaces:
+            cern.accsoft.commons.value.BoundedPolynomial
+    
+      Constructors:
+        * BoundedPolynomialImpl(cern.accsoft.commons.value.Polynomial, double, double)
+        * BoundedPolynomialImpl(cern.accsoft.commons.value.Polynomial, cern.accsoft.commons.value.Interval)
+    
+    """
     @typing.overload
     def __init__(self, polynomial: cern.accsoft.commons.value.Polynomial, interval: cern.accsoft.commons.value.Interval): ...
     @typing.overload
@@ -202,9 +322,29 @@ class BoundedPolynomialImpl(PolynomialImpl, cern.accsoft.commons.value.BoundedPo
     def toString(self) -> str: ...
 
 class ConstantFunction(ExpressionBasedFunction):
+    """
+    Java class 'cern.accsoft.commons.value.spi.function.ConstantFunction'
+    
+        Extends:
+            cern.accsoft.commons.value.spi.function.ExpressionBasedFunction
+    
+      Constructors:
+        * ConstantFunction(double)
+    
+    """
     def __init__(self, double: float): ...
 
 class CubicSplineFunctionPrototype(AbstractMathFunction):
+    """
+    Java class 'cern.accsoft.commons.value.spi.function.CubicSplineFunctionPrototype'
+    
+        Extends:
+            cern.accsoft.commons.value.spi.function.AbstractMathFunction
+    
+      Constructors:
+        * CubicSplineFunctionPrototype(cern.accsoft.commons.value.ImmutableDiscreteFunction)
+    
+    """
     def __init__(self, immutableDiscreteFunction: cern.accsoft.commons.value.ImmutableDiscreteFunction): ...
     def getAcceleration(self, double: float) -> float: ...
     def getFunction(self) -> cern.accsoft.commons.value.ImmutableDiscreteFunction: ...
@@ -215,6 +355,21 @@ class CubicSplineFunctionPrototype(AbstractMathFunction):
     def toDiscreteFunction(self, double: float, double2: float, int: int) -> cern.accsoft.commons.value.DiscreteFunction: ...
 
 class DiscreteFunctionArrayImpl(DiscreteFunctionImpl, java.io.Serializable):
+    """
+    Java class 'cern.accsoft.commons.value.spi.function.DiscreteFunctionArrayImpl'
+    
+        Extends:
+            cern.accsoft.commons.value.spi.function.DiscreteFunctionImpl
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * DiscreteFunctionArrayImpl(double[], double[], boolean)
+        * DiscreteFunctionArrayImpl(double[], double[])
+        * DiscreteFunctionArrayImpl(int[], double[])
+    
+    """
     @typing.overload
     def __init__(self, doubleArray: typing.List[float], doubleArray2: typing.List[float]): ...
     @typing.overload
@@ -253,6 +408,21 @@ class DiscreteFunctionArrayImpl(DiscreteFunctionImpl, java.io.Serializable):
     def translate(self, double: float) -> None: ...
 
 class DiscreteFunctionListImpl(DiscreteFunctionImpl, cern.accsoft.commons.value.DiscreteFunctionList):
+    """
+    Java class 'cern.accsoft.commons.value.spi.function.DiscreteFunctionListImpl'
+    
+        Extends:
+            cern.accsoft.commons.value.spi.function.DiscreteFunctionImpl
+    
+        Interfaces:
+            cern.accsoft.commons.value.DiscreteFunctionList
+    
+      Constructors:
+        * DiscreteFunctionListImpl(double[], double[], int[])
+        * DiscreteFunctionListImpl(cern.accsoft.commons.value.ImmutableDiscreteFunction[])
+        * DiscreteFunctionListImpl()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -300,6 +470,21 @@ class DiscreteFunctionListImpl(DiscreteFunctionImpl, cern.accsoft.commons.value.
     def translate(self, double: float) -> None: ...
 
 class DiscreteFunctionPointImpl(DiscreteFunctionImpl, cern.accsoft.commons.value.DiscreteFunction, java.io.Serializable):
+    """
+    Java class 'cern.accsoft.commons.value.spi.function.DiscreteFunctionPointImpl'
+    
+        Extends:
+            cern.accsoft.commons.value.spi.function.DiscreteFunctionImpl
+    
+        Interfaces:
+            cern.accsoft.commons.value.DiscreteFunction,
+            java.io.Serializable
+    
+      Constructors:
+        * DiscreteFunctionPointImpl(cern.accsoft.commons.value.ImmutablePoint[])
+        * DiscreteFunctionPointImpl(cern.accsoft.commons.value.Point[])
+    
+    """
     @typing.overload
     def __init__(self, immutablePointArray: typing.List[cern.accsoft.commons.value.ImmutablePoint]): ...
     @typing.overload
@@ -333,3 +518,22 @@ class DiscreteFunctionPointImpl(DiscreteFunctionImpl, cern.accsoft.commons.value
     def toXArray(self) -> typing.List[float]: ...
     def toYArray(self) -> typing.List[float]: ...
     def translate(self, double: float) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.accsoft.commons.value.spi.function")``.
+
+    AbstractMathFunction: typing.Type[AbstractMathFunction]
+    BoundedPolynomialImpl: typing.Type[BoundedPolynomialImpl]
+    BoundedPolynomialIntervalComparator: typing.Type[BoundedPolynomialIntervalComparator]
+    BoundedPolynomialSequenceImpl: typing.Type[BoundedPolynomialSequenceImpl]
+    ConstantFunction: typing.Type[ConstantFunction]
+    CubicSplineFunctionPrototype: typing.Type[CubicSplineFunctionPrototype]
+    DiscreteFunctionArrayImpl: typing.Type[DiscreteFunctionArrayImpl]
+    DiscreteFunctionImpl: typing.Type[DiscreteFunctionImpl]
+    DiscreteFunctionListImpl: typing.Type[DiscreteFunctionListImpl]
+    DiscreteFunctionPointImpl: typing.Type[DiscreteFunctionPointImpl]
+    DiscreteFunctionsArrayImpl: typing.Type[DiscreteFunctionsArrayImpl]
+    Discretizer: typing.Type[Discretizer]
+    ExpressionBasedFunction: typing.Type[ExpressionBasedFunction]
+    PolynomialImpl: typing.Type[PolynomialImpl]

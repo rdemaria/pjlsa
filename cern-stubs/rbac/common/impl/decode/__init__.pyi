@@ -3,11 +3,39 @@ import cern.rbac.common.impl.serialization.decode
 import typing
 
 
+
 class AbstractTokenDecoder(cern.rbac.common.impl.serialization.decode.TokenDecoder):
+    """
+    Java class 'cern.rbac.common.impl.decode.AbstractTokenDecoder'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.rbac.common.impl.serialization.decode.TokenDecoder
+    
+      Constructors:
+        * AbstractTokenDecoder(cern.rbac.common.RbacConfiguration)
+    
+    """
     def __init__(self, rbacConfiguration: cern.rbac.common.RbacConfiguration): ...
     def decode(self, byteArray: typing.List[int]) -> cern.rbac.common.impl.serialization.decode.SerializedTokenFields: ...
 
 class SerializedTokenFieldsImpl(cern.rbac.common.impl.serialization.decode.SerializedTokenFields):
+    """
+    Java class 'cern.rbac.common.impl.decode.SerializedTokenFieldsImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.rbac.common.impl.serialization.decode.SerializedTokenFiel
+            ds
+    
+      Constructors:
+        * SerializedTokenFieldsImpl()
+    
+    """
     def __init__(self): ...
     def getApplicationName(self) -> str: ...
     def getApplicationTimeout(self) -> int: ...
@@ -45,7 +73,36 @@ class SerializedTokenFieldsImpl(cern.rbac.common.impl.serialization.decode.Seria
     def setUserName(self, string: str) -> None: ...
 
 class TestTokenDecoderDecorator(AbstractTokenDecoder):
+    """
+    Java class 'cern.rbac.common.impl.decode.TestTokenDecoderDecorator'
+    
+        Extends:
+            cern.rbac.common.impl.decode.AbstractTokenDecoder
+    
+      Constructors:
+        * TestTokenDecoderDecorator(cern.rbac.common.impl.decode.AbstractTokenDecoder)
+    
+    """
     def __init__(self, abstractTokenDecoder: AbstractTokenDecoder): ...
 
 class TextTokenDecoder(AbstractTokenDecoder):
+    """
+    Java class 'cern.rbac.common.impl.decode.TextTokenDecoder'
+    
+        Extends:
+            cern.rbac.common.impl.decode.AbstractTokenDecoder
+    
+      Constructors:
+        * TextTokenDecoder(cern.rbac.common.RbacConfiguration)
+    
+    """
     def __init__(self, rbacConfiguration: cern.rbac.common.RbacConfiguration): ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.rbac.common.impl.decode")``.
+
+    AbstractTokenDecoder: typing.Type[AbstractTokenDecoder]
+    SerializedTokenFieldsImpl: typing.Type[SerializedTokenFieldsImpl]
+    TestTokenDecoderDecorator: typing.Type[TestTokenDecoderDecorator]
+    TextTokenDecoder: typing.Type[TextTokenDecoder]

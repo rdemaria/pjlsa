@@ -1,18 +1,37 @@
 import cern
+import cern.accsoft.commons.util.userinfo
 import java.io
 import java.util
 import typing
 
 
+
 class ProcUtils:
+    """
+    Java class 'cern.accsoft.commons.util.proc.ProcUtils'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        SYSPROP_APP_NAME (java.lang.String): final static field
+        SYSPROP_APP_VERSION (java.lang.String): final static field
+        UNKNOWN_PROCNAME (java.lang.String): final static field
+        INVALID_PID (int): final static field
+    
+    """
     SYSPROP_APP_NAME: typing.ClassVar[str] = ...
     SYSPROP_APP_VERSION: typing.ClassVar[str] = ...
     UNKNOWN_PROCNAME: typing.ClassVar[str] = ...
     INVALID_PID: typing.ClassVar[int] = ...
     @staticmethod
+    def createClientInformation(string: str) -> cern.accsoft.commons.util.userinfo.ClientInformation: ...
+    @staticmethod
     def get() -> 'ProcUtils': ...
     @staticmethod
     def getApplicationName() -> str: ...
+    @staticmethod
+    def getClientInformation() -> cern.accsoft.commons.util.userinfo.ClientInformation: ...
     @staticmethod
     def getNoJmxInit() -> 'ProcUtils': ...
     @staticmethod
@@ -24,6 +43,10 @@ class ProcUtils:
     @typing.overload
     def getProcessInfo(self, boolean: bool) -> 'ProcessInfo': ...
     class PUMBean:
+        """
+        Java class 'cern.accsoft.commons.util.proc.ProcUtils$PUMBean'
+        
+        """
         def geMainClassName(self) -> str: ...
         def getApplicationName(self) -> str: ...
         def getApplicationOsName(self) -> str: ...
@@ -31,6 +54,16 @@ class ProcUtils:
         def getOfficialApplicationId(self) -> str: ...
 
 class ProcUtilsBean:
+    """
+    Java class 'cern.accsoft.commons.util.proc.ProcUtilsBean'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ProcUtilsBean()
+    
+    """
     def __init__(self): ...
     def getAppName(self) -> str: ...
     def getAppVersion(self) -> str: ...
@@ -42,6 +75,19 @@ class ProcUtilsBean:
     def setAppVersion(self, string: str) -> None: ...
 
 class ProcessInfo(java.io.Serializable):
+    """
+    Java class 'cern.accsoft.commons.util.proc.ProcessInfo'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * ProcessInfo()
+    
+    """
     def __init__(self): ...
     def getApplicationName(self) -> str: ...
     def getAsMap(self) -> java.util.Map[str, typing.Any]: ...
@@ -64,8 +110,28 @@ class ProcessInfo(java.io.Serializable):
     def toString(self) -> str: ...
 
 class JpsImpl(cern.accsoft.commons.util.proc.Jps):
+    """
+    Java class 'cern.accsoft.commons.util.proc.JpsImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.accsoft.commons.util.proc.Jps
+    
+    """
     def findMainClassName(self, int: int) -> str: ...
     @staticmethod
     def get() -> 'Jps': ...
 
 class Jps: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.accsoft.commons.util.proc")``.
+
+    Jps: typing.Type[Jps]
+    JpsImpl: typing.Type[JpsImpl]
+    ProcUtils: typing.Type[ProcUtils]
+    ProcUtilsBean: typing.Type[ProcUtilsBean]
+    ProcessInfo: typing.Type[ProcessInfo]

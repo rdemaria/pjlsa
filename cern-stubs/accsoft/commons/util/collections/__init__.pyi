@@ -1,10 +1,19 @@
+import cern.accsoft.commons.util.collections.tree
 import java.util
 import java.util.function
 import typing
 
 
+
 _CircularBuffer__E = typing.TypeVar('_CircularBuffer__E')  # <E>
 class CircularBuffer(java.util.Queue[_CircularBuffer__E], typing.Generic[_CircularBuffer__E]):
+    """
+    Java class 'cern.accsoft.commons.util.collections.CircularBuffer'
+    
+        Interfaces:
+            java.util.Queue
+    
+    """
     def add(self, e: _CircularBuffer__E) -> bool: ...
     def addAll(self, collection: typing.Union[java.util.Collection[_CircularBuffer__E], typing.Sequence[_CircularBuffer__E]]) -> bool: ...
     def equals(self, object: typing.Any) -> bool: ...
@@ -13,6 +22,13 @@ class CircularBuffer(java.util.Queue[_CircularBuffer__E], typing.Generic[_Circul
     def peekLast(self) -> _CircularBuffer__E: ...
 
 class CircularBuffers:
+    """
+    Java class 'cern.accsoft.commons.util.collections.CircularBuffers'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _synchronizedCircularBuffer__T = typing.TypeVar('_synchronizedCircularBuffer__T')  # <T>
     @staticmethod
     def synchronizedCircularBuffer(circularBuffer: CircularBuffer[_synchronizedCircularBuffer__T]) -> CircularBuffer[_synchronizedCircularBuffer__T]: ...
@@ -20,6 +36,22 @@ class CircularBuffers:
 _MultiValueMap__K = typing.TypeVar('_MultiValueMap__K')  # <K>
 _MultiValueMap__V = typing.TypeVar('_MultiValueMap__V')  # <V>
 class MultiValueMap(typing.Generic[_MultiValueMap__K, _MultiValueMap__V]):
+    """
+    Java class 'cern.accsoft.commons.util.collections.MultiValueMap'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * MultiValueMap(java.lang.Class, boolean)
+        * MultiValueMap(int)
+        * MultiValueMap(int, java.lang.Class)
+        * MultiValueMap(int, java.lang.Class, boolean)
+        * MultiValueMap()
+        * MultiValueMap(java.lang.Class)
+        * MultiValueMap(boolean)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -58,19 +90,48 @@ class MultiValueMap(typing.Generic[_MultiValueMap__K, _MultiValueMap__V]):
 
 _OrderedSet__E = typing.TypeVar('_OrderedSet__E')  # <E>
 class OrderedSet(java.util.Set[_OrderedSet__E], typing.Generic[_OrderedSet__E]):
+    """
+    Java class 'cern.accsoft.commons.util.collections.OrderedSet'
+    
+        Interfaces:
+            java.util.Set
+    
+    """
     def equals(self, object: typing.Any) -> bool: ...
     def hashCode(self) -> int: ...
 
 _ValueCollector__T = typing.TypeVar('_ValueCollector__T')  # <T>
 class ValueCollector(typing.Generic[_ValueCollector__T]):
+    """
+    Java class 'cern.accsoft.commons.util.collections.ValueCollector'
+    
+    """
     def peek(self, valuePeekingStrategy: 'ValuePeekingStrategy'[_ValueCollector__T], long: int) -> java.util.Collection[_ValueCollector__T]: ...
 
 _ValuePeekingStrategy__T = typing.TypeVar('_ValuePeekingStrategy__T')  # <T>
 class ValuePeekingStrategy(typing.Generic[_ValuePeekingStrategy__T]):
+    """
+    Java class 'cern.accsoft.commons.util.collections.ValuePeekingStrategy'
+    
+    """
     def peek(self, circularBuffer: CircularBuffer[_ValuePeekingStrategy__T], boolean: bool) -> java.util.Collection[_ValuePeekingStrategy__T]: ...
 
 _AbstractValueCollector__T = typing.TypeVar('_AbstractValueCollector__T')  # <T>
 class AbstractValueCollector(ValueCollector[_AbstractValueCollector__T], typing.Generic[_AbstractValueCollector__T]):
+    """
+    Java class 'cern.accsoft.commons.util.collections.AbstractValueCollector'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.accsoft.commons.util.collections.ValueCollector
+    
+      Constructors:
+        * AbstractValueCollector()
+        * AbstractValueCollector(int)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -79,6 +140,20 @@ class AbstractValueCollector(ValueCollector[_AbstractValueCollector__T], typing.
 
 _ArrayCircularBuffer__E = typing.TypeVar('_ArrayCircularBuffer__E')  # <E>
 class ArrayCircularBuffer(CircularBuffer[_ArrayCircularBuffer__E], typing.Generic[_ArrayCircularBuffer__E]):
+    """
+    Java class 'cern.accsoft.commons.util.collections.ArrayCircularBuffer'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.accsoft.commons.util.collections.CircularBuffer
+    
+      Constructors:
+        * ArrayCircularBuffer(int)
+        * ArrayCircularBuffer(int, java.util.Collection)
+    
+    """
     @typing.overload
     def __init__(self, int: int): ...
     @typing.overload
@@ -113,11 +188,40 @@ class ArrayCircularBuffer(CircularBuffer[_ArrayCircularBuffer__E], typing.Generi
 
 _LastValuePeekingStrategy__T = typing.TypeVar('_LastValuePeekingStrategy__T')  # <T>
 class LastValuePeekingStrategy(ValuePeekingStrategy[_LastValuePeekingStrategy__T], typing.Generic[_LastValuePeekingStrategy__T]):
+    """
+    Java class 'cern.accsoft.commons.util.collections.LastValuePeekingStrategy'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.accsoft.commons.util.collections.ValuePeekingStrategy
+    
+      Constructors:
+        * LastValuePeekingStrategy()
+    
+    """
     def __init__(self): ...
     def peek(self, circularBuffer: CircularBuffer[_LastValuePeekingStrategy__T], boolean: bool) -> java.util.Collection[_LastValuePeekingStrategy__T]: ...
 
 _OrderedHashSet__E = typing.TypeVar('_OrderedHashSet__E')  # <E>
 class OrderedHashSet(java.util.LinkedHashSet[_OrderedHashSet__E], OrderedSet[_OrderedHashSet__E], typing.Generic[_OrderedHashSet__E]):
+    """
+    Java class 'cern.accsoft.commons.util.collections.OrderedHashSet'
+    
+        Extends:
+            java.util.LinkedHashSet
+    
+        Interfaces:
+            cern.accsoft.commons.util.collections.OrderedSet
+    
+      Constructors:
+        * OrderedHashSet()
+        * OrderedHashSet(java.util.Collection)
+        * OrderedHashSet(int, float)
+        * OrderedHashSet(int)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -129,3 +233,19 @@ class OrderedHashSet(java.util.LinkedHashSet[_OrderedHashSet__E], OrderedSet[_Or
     _asOrderedSet__T = typing.TypeVar('_asOrderedSet__T')  # <T>
     @staticmethod
     def asOrderedSet(tArray: typing.List[_asOrderedSet__T]) -> 'OrderedHashSet'[_asOrderedSet__T]: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.accsoft.commons.util.collections")``.
+
+    AbstractValueCollector: typing.Type[AbstractValueCollector]
+    ArrayCircularBuffer: typing.Type[ArrayCircularBuffer]
+    CircularBuffer: typing.Type[CircularBuffer]
+    CircularBuffers: typing.Type[CircularBuffers]
+    LastValuePeekingStrategy: typing.Type[LastValuePeekingStrategy]
+    MultiValueMap: typing.Type[MultiValueMap]
+    OrderedHashSet: typing.Type[OrderedHashSet]
+    OrderedSet: typing.Type[OrderedSet]
+    ValueCollector: typing.Type[ValueCollector]
+    ValuePeekingStrategy: typing.Type[ValuePeekingStrategy]
+    tree: cern.accsoft.commons.util.collections.tree.__module_protocol__

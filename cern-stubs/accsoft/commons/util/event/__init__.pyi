@@ -8,8 +8,20 @@ import javax.swing.event
 import typing
 
 
+
 _EventListenerSupport__T = typing.TypeVar('_EventListenerSupport__T')  # <T>
 class EventListenerSupport(typing.Generic[_EventListenerSupport__T]):
+    """
+    Java class 'cern.accsoft.commons.util.event.EventListenerSupport'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * EventListenerSupport(java.lang.Class)
+        * EventListenerSupport(java.lang.Class, cern.accsoft.commons.util.reflect.MethodInvoker)
+    
+    """
     @typing.overload
     def __init__(self, class_: typing.Type[_EventListenerSupport__T]): ...
     @typing.overload
@@ -29,6 +41,16 @@ class EventListenerSupport(typing.Generic[_EventListenerSupport__T]):
     def removeAll(self, collection: typing.Union[java.util.Collection[_EventListenerSupport__T], typing.Sequence[_EventListenerSupport__T]]) -> None: ...
 
 class EventListeners:
+    """
+    Java class 'cern.accsoft.commons.util.event.EventListeners'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * EventListeners()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def actionListener(object: typing.Any, string: str) -> java.awt.event.ActionListener: ...
@@ -49,6 +71,17 @@ class EventListeners:
 
 _SyncEventListenerSupport__T = typing.TypeVar('_SyncEventListenerSupport__T')  # <T>
 class SyncEventListenerSupport(EventListenerSupport[_SyncEventListenerSupport__T], typing.Generic[_SyncEventListenerSupport__T]):
+    """
+    Java class 'cern.accsoft.commons.util.event.SyncEventListenerSupport'
+    
+        Extends:
+            cern.accsoft.commons.util.event.EventListenerSupport
+    
+      Constructors:
+        * SyncEventListenerSupport(java.lang.Class)
+        * SyncEventListenerSupport(java.lang.Class, cern.accsoft.commons.util.reflect.MethodInvoker)
+    
+    """
     @typing.overload
     def __init__(self, class_: typing.Type[_SyncEventListenerSupport__T]): ...
     @typing.overload
@@ -66,14 +99,48 @@ class SyncEventListenerSupport(EventListenerSupport[_SyncEventListenerSupport__T
     def remove(self, t: _SyncEventListenerSupport__T) -> None: ...
 
 class EventListenerSupportDemo:
+    """
+    Java class 'cern.accsoft.commons.util.event.EventListenerSupportDemo'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * EventListenerSupportDemo()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def main(stringArray: typing.List[str]) -> None: ...
     def updateListeners(self) -> None: ...
     class MyListenerImpl(cern.accsoft.commons.util.event.EventListenerSupportDemo.MyListener, cern.accsoft.commons.util.event.EventListenerSupportDemo.ParameterValueListener):
+        """
+        Java class 'cern.accsoft.commons.util.event.EventListenerSupportDemo$MyListenerImpl'
+        
+            Extends:
+                java.lang.Object
+        
+            Interfaces:
+                cern.accsoft.commons.util.event.EventListenerSupportDemo.MyLis
+                tener, cern.accsoft.commons.util.event.EventListenerSupportDem
+                o.ParameterValueListener
+        
+          Constructors:
+            * MyListenerImpl(cern.accsoft.commons.util.event.EventListenerSupportDemo, java.lang.String)
+        
+        """
         def __init__(self, eventListenerSupportDemo: 'EventListenerSupportDemo', string: str): ...
         def exceptionOccured(self, string: str, exception: java.lang.Exception) -> None: ...
         def sendUpdate(self, long: int) -> None: ...
         def valueReceived(self, string: str) -> None: ...
     class MyListener: ...
     class ParameterValueListener: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.accsoft.commons.util.event")``.
+
+    EventListenerSupport: typing.Type[EventListenerSupport]
+    EventListenerSupportDemo: typing.Type[EventListenerSupportDemo]
+    EventListeners: typing.Type[EventListeners]
+    SyncEventListenerSupport: typing.Type[SyncEventListenerSupport]

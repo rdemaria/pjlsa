@@ -5,7 +5,12 @@ import java.util
 import typing
 
 
+
 class IncaPropertyFieldInfo:
+    """
+    Java class 'cern.lsa.domain.devices.inca.IncaPropertyFieldInfo'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultIncaPropertyFieldInfo.Builder': ...
     def getAssociatedPropertyField(self) -> cern.lsa.domain.devices.type.PropertyField: ...
@@ -16,6 +21,22 @@ class IncaPropertyFieldInfo:
     def getPropertyField(self) -> cern.lsa.domain.devices.type.PropertyField: ...
     def isMainStatus(self) -> bool: ...
     class ValueCompareType(java.lang.Enum['IncaPropertyFieldInfo.ValueCompareType']):
+        """
+        Java class 'cern.lsa.domain.devices.inca.IncaPropertyFieldInfo$ValueCompareType'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            EXACT_MEANING (cern.lsa.domain.devices.inca.IncaPropertyFieldInfo$ValueCompareType): final static enum constant
+            TOL_REL (cern.lsa.domain.devices.inca.IncaPropertyFieldInfo$ValueCompareType): final static enum constant
+            TOL_ABS (cern.lsa.domain.devices.inca.IncaPropertyFieldInfo$ValueCompareType): final static enum constant
+            EXACT (cern.lsa.domain.devices.inca.IncaPropertyFieldInfo$ValueCompareType): final static enum constant
+            TOL_ABS_REL (cern.lsa.domain.devices.inca.IncaPropertyFieldInfo$ValueCompareType): final static enum constant
+            TOL_ABS_MOD360 (cern.lsa.domain.devices.inca.IncaPropertyFieldInfo$ValueCompareType): final static enum constant
+            NONE (cern.lsa.domain.devices.inca.IncaPropertyFieldInfo$ValueCompareType): final static enum constant
+        
+        """
         EXACT_MEANING: typing.ClassVar['IncaPropertyFieldInfo.ValueCompareType'] = ...
         TOL_REL: typing.ClassVar['IncaPropertyFieldInfo.ValueCompareType'] = ...
         TOL_ABS: typing.ClassVar['IncaPropertyFieldInfo.ValueCompareType'] = ...
@@ -34,6 +55,10 @@ class IncaPropertyFieldInfo:
         def values() -> typing.List['IncaPropertyFieldInfo.ValueCompareType']: ...
 
 class IncaPropertyFieldInfosRequest:
+    """
+    Java class 'cern.lsa.domain.devices.inca.IncaPropertyFieldInfosRequest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultIncaPropertyFieldInfosRequest.Builder': ...
     @staticmethod
@@ -43,6 +68,17 @@ class IncaPropertyFieldInfosRequest:
     def getPropertyFields(self) -> java.util.Set[cern.lsa.domain.devices.type.PropertyField]: ...
 
 class DefaultIncaPropertyFieldInfo(IncaPropertyFieldInfo, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.devices.inca.DefaultIncaPropertyFieldInfo'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.devices.inca.IncaPropertyFieldInfo,
+            java.io.Serializable
+    
+    """
     @staticmethod
     def builder() -> 'DefaultIncaPropertyFieldInfo.Builder': ...
     @staticmethod
@@ -65,6 +101,13 @@ class DefaultIncaPropertyFieldInfo(IncaPropertyFieldInfo, java.io.Serializable):
     def withParameterValueCompareType(self, valueCompareType: IncaPropertyFieldInfo.ValueCompareType) -> 'DefaultIncaPropertyFieldInfo': ...
     def withPropertyField(self, propertyField: cern.lsa.domain.devices.type.PropertyField) -> 'DefaultIncaPropertyFieldInfo': ...
     class Builder:
+        """
+        Java class 'cern.lsa.domain.devices.inca.DefaultIncaPropertyFieldInfo$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def associatedPropertyField(self, propertyField: cern.lsa.domain.devices.type.PropertyField) -> 'DefaultIncaPropertyFieldInfo.Builder': ...
         def build(self) -> 'DefaultIncaPropertyFieldInfo': ...
         def controlWarningMessage(self, string: str) -> 'DefaultIncaPropertyFieldInfo.Builder': ...
@@ -75,6 +118,17 @@ class DefaultIncaPropertyFieldInfo(IncaPropertyFieldInfo, java.io.Serializable):
         def propertyField(self, propertyField: cern.lsa.domain.devices.type.PropertyField) -> 'DefaultIncaPropertyFieldInfo.Builder': ...
 
 class DefaultIncaPropertyFieldInfosRequest(IncaPropertyFieldInfosRequest, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.devices.inca.DefaultIncaPropertyFieldInfosRequest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.devices.inca.IncaPropertyFieldInfosRequest,
+            java.io.Serializable
+    
+    """
     @staticmethod
     def builder() -> 'DefaultIncaPropertyFieldInfosRequest.Builder': ...
     @staticmethod
@@ -88,8 +142,24 @@ class DefaultIncaPropertyFieldInfosRequest(IncaPropertyFieldInfosRequest, java.i
     @typing.overload
     def withPropertyFields(self, iterable: java.lang.Iterable[cern.lsa.domain.devices.type.PropertyField]) -> 'DefaultIncaPropertyFieldInfosRequest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.domain.devices.inca.DefaultIncaPropertyFieldInfosRequest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def addAllPropertyFields(self, iterable: java.lang.Iterable[cern.lsa.domain.devices.type.PropertyField]) -> 'DefaultIncaPropertyFieldInfosRequest.Builder': ...
         def addPropertyField(self, propertyField: cern.lsa.domain.devices.type.PropertyField) -> 'DefaultIncaPropertyFieldInfosRequest.Builder': ...
         def addPropertyFields(self, propertyFieldArray: typing.List[cern.lsa.domain.devices.type.PropertyField]) -> 'DefaultIncaPropertyFieldInfosRequest.Builder': ...
         def build(self) -> 'DefaultIncaPropertyFieldInfosRequest': ...
         def propertyFields(self, iterable: java.lang.Iterable[cern.lsa.domain.devices.type.PropertyField]) -> 'DefaultIncaPropertyFieldInfosRequest.Builder': ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.devices.inca")``.
+
+    DefaultIncaPropertyFieldInfo: typing.Type[DefaultIncaPropertyFieldInfo]
+    DefaultIncaPropertyFieldInfosRequest: typing.Type[DefaultIncaPropertyFieldInfosRequest]
+    IncaPropertyFieldInfo: typing.Type[IncaPropertyFieldInfo]
+    IncaPropertyFieldInfosRequest: typing.Type[IncaPropertyFieldInfosRequest]

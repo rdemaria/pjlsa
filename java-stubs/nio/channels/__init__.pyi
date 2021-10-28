@@ -13,16 +13,54 @@ import jpype.protocol
 import typing
 
 
+
 class AcceptPendingException(java.lang.IllegalStateException):
+    """
+    Java class 'java.nio.channels.AcceptPendingException'
+    
+        Extends:
+            java.lang.IllegalStateException
+    
+      Constructors:
+        * AcceptPendingException()
+    
+    """
     def __init__(self): ...
 
 class AlreadyBoundException(java.lang.IllegalStateException):
+    """
+    Java class 'java.nio.channels.AlreadyBoundException'
+    
+        Extends:
+            java.lang.IllegalStateException
+    
+      Constructors:
+        * AlreadyBoundException()
+    
+    """
     def __init__(self): ...
 
 class AlreadyConnectedException(java.lang.IllegalStateException):
+    """
+    Java class 'java.nio.channels.AlreadyConnectedException'
+    
+        Extends:
+            java.lang.IllegalStateException
+    
+      Constructors:
+        * AlreadyConnectedException()
+    
+    """
     def __init__(self): ...
 
 class AsynchronousChannelGroup:
+    """
+    Java class 'java.nio.channels.AsynchronousChannelGroup'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     def awaitTermination(self, long: int, timeUnit: java.util.concurrent.TimeUnit) -> bool: ...
     def isShutdown(self) -> bool: ...
     def isTerminated(self) -> bool: ...
@@ -37,13 +75,37 @@ class AsynchronousChannelGroup:
     def withThreadPool(executorService: java.util.concurrent.ExecutorService) -> 'AsynchronousChannelGroup': ...
 
 class CancelledKeyException(java.lang.IllegalStateException):
+    """
+    Java class 'java.nio.channels.CancelledKeyException'
+    
+        Extends:
+            java.lang.IllegalStateException
+    
+      Constructors:
+        * CancelledKeyException()
+    
+    """
     def __init__(self): ...
 
 class Channel(java.io.Closeable):
+    """
+    Java class 'java.nio.channels.Channel'
+    
+        Interfaces:
+            java.io.Closeable
+    
+    """
     def close(self) -> None: ...
     def isOpen(self) -> bool: ...
 
 class Channels:
+    """
+    Java class 'java.nio.channels.Channels'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @typing.overload
     @staticmethod
     def newChannel(inputStream: java.io.InputStream) -> 'ReadableByteChannel': ...
@@ -82,21 +144,65 @@ class Channels:
     def newWriter(writableByteChannel: 'WritableByteChannel', charsetEncoder: java.nio.charset.CharsetEncoder, int: int) -> java.io.Writer: ...
 
 class ClosedChannelException(java.io.IOException):
+    """
+    Java class 'java.nio.channels.ClosedChannelException'
+    
+        Extends:
+            java.io.IOException
+    
+      Constructors:
+        * ClosedChannelException()
+    
+    """
     def __init__(self): ...
 
 class ClosedSelectorException(java.lang.IllegalStateException):
+    """
+    Java class 'java.nio.channels.ClosedSelectorException'
+    
+        Extends:
+            java.lang.IllegalStateException
+    
+      Constructors:
+        * ClosedSelectorException()
+    
+    """
     def __init__(self): ...
 
 _CompletionHandler__V = typing.TypeVar('_CompletionHandler__V')  # <V>
 _CompletionHandler__A = typing.TypeVar('_CompletionHandler__A')  # <A>
 class CompletionHandler(typing.Generic[_CompletionHandler__V, _CompletionHandler__A]):
+    """
+    Java class 'java.nio.channels.CompletionHandler'
+    
+    """
     def completed(self, v: _CompletionHandler__V, a: _CompletionHandler__A) -> None: ...
     def failed(self, throwable: java.lang.Throwable, a: _CompletionHandler__A) -> None: ...
 
 class ConnectionPendingException(java.lang.IllegalStateException):
+    """
+    Java class 'java.nio.channels.ConnectionPendingException'
+    
+        Extends:
+            java.lang.IllegalStateException
+    
+      Constructors:
+        * ConnectionPendingException()
+    
+    """
     def __init__(self): ...
 
 class FileLock(java.lang.AutoCloseable):
+    """
+    Java class 'java.nio.channels.FileLock'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.AutoCloseable
+    
+    """
     def acquiredBy(self) -> Channel: ...
     def channel(self) -> 'FileChannel': ...
     def close(self) -> None: ...
@@ -109,21 +215,78 @@ class FileLock(java.lang.AutoCloseable):
     def toString(self) -> str: ...
 
 class FileLockInterruptionException(java.io.IOException):
+    """
+    Java class 'java.nio.channels.FileLockInterruptionException'
+    
+        Extends:
+            java.io.IOException
+    
+      Constructors:
+        * FileLockInterruptionException()
+    
+    """
     def __init__(self): ...
 
 class IllegalBlockingModeException(java.lang.IllegalStateException):
+    """
+    Java class 'java.nio.channels.IllegalBlockingModeException'
+    
+        Extends:
+            java.lang.IllegalStateException
+    
+      Constructors:
+        * IllegalBlockingModeException()
+    
+    """
     def __init__(self): ...
 
 class IllegalChannelGroupException(java.lang.IllegalArgumentException):
+    """
+    Java class 'java.nio.channels.IllegalChannelGroupException'
+    
+        Extends:
+            java.lang.IllegalArgumentException
+    
+      Constructors:
+        * IllegalChannelGroupException()
+    
+    """
     def __init__(self): ...
 
 class IllegalSelectorException(java.lang.IllegalArgumentException):
+    """
+    Java class 'java.nio.channels.IllegalSelectorException'
+    
+        Extends:
+            java.lang.IllegalArgumentException
+    
+      Constructors:
+        * IllegalSelectorException()
+    
+    """
     def __init__(self): ...
 
 class InterruptedByTimeoutException(java.io.IOException):
+    """
+    Java class 'java.nio.channels.InterruptedByTimeoutException'
+    
+        Extends:
+            java.io.IOException
+    
+      Constructors:
+        * InterruptedByTimeoutException()
+    
+    """
     def __init__(self): ...
 
 class MembershipKey:
+    """
+    Java class 'java.nio.channels.MembershipKey'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     def block(self, inetAddress: java.net.InetAddress) -> 'MembershipKey': ...
     def channel(self) -> 'MulticastChannel': ...
     def drop(self) -> None: ...
@@ -134,27 +297,110 @@ class MembershipKey:
     def unblock(self, inetAddress: java.net.InetAddress) -> 'MembershipKey': ...
 
 class NoConnectionPendingException(java.lang.IllegalStateException):
+    """
+    Java class 'java.nio.channels.NoConnectionPendingException'
+    
+        Extends:
+            java.lang.IllegalStateException
+    
+      Constructors:
+        * NoConnectionPendingException()
+    
+    """
     def __init__(self): ...
 
 class NonReadableChannelException(java.lang.IllegalStateException):
+    """
+    Java class 'java.nio.channels.NonReadableChannelException'
+    
+        Extends:
+            java.lang.IllegalStateException
+    
+      Constructors:
+        * NonReadableChannelException()
+    
+    """
     def __init__(self): ...
 
 class NonWritableChannelException(java.lang.IllegalStateException):
+    """
+    Java class 'java.nio.channels.NonWritableChannelException'
+    
+        Extends:
+            java.lang.IllegalStateException
+    
+      Constructors:
+        * NonWritableChannelException()
+    
+    """
     def __init__(self): ...
 
 class NotYetBoundException(java.lang.IllegalStateException):
+    """
+    Java class 'java.nio.channels.NotYetBoundException'
+    
+        Extends:
+            java.lang.IllegalStateException
+    
+      Constructors:
+        * NotYetBoundException()
+    
+    """
     def __init__(self): ...
 
 class NotYetConnectedException(java.lang.IllegalStateException):
+    """
+    Java class 'java.nio.channels.NotYetConnectedException'
+    
+        Extends:
+            java.lang.IllegalStateException
+    
+      Constructors:
+        * NotYetConnectedException()
+    
+    """
     def __init__(self): ...
 
 class OverlappingFileLockException(java.lang.IllegalStateException):
+    """
+    Java class 'java.nio.channels.OverlappingFileLockException'
+    
+        Extends:
+            java.lang.IllegalStateException
+    
+      Constructors:
+        * OverlappingFileLockException()
+    
+    """
     def __init__(self): ...
 
 class ReadPendingException(java.lang.IllegalStateException):
+    """
+    Java class 'java.nio.channels.ReadPendingException'
+    
+        Extends:
+            java.lang.IllegalStateException
+    
+      Constructors:
+        * ReadPendingException()
+    
+    """
     def __init__(self): ...
 
 class SelectionKey:
+    """
+    Java class 'java.nio.channels.SelectionKey'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        OP_READ (int): final static field
+        OP_WRITE (int): final static field
+        OP_CONNECT (int): final static field
+        OP_ACCEPT (int): final static field
+    
+    """
     OP_READ: typing.ClassVar[int] = ...
     OP_WRITE: typing.ClassVar[int] = ...
     OP_CONNECT: typing.ClassVar[int] = ...
@@ -178,6 +424,16 @@ class SelectionKey:
     def selector(self) -> 'Selector': ...
 
 class Selector(java.io.Closeable):
+    """
+    Java class 'java.nio.channels.Selector'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Closeable
+    
+    """
     def close(self) -> None: ...
     def isOpen(self) -> bool: ...
     def keys(self) -> java.util.Set[SelectionKey]: ...
@@ -200,27 +456,98 @@ class Selector(java.io.Closeable):
     def wakeup(self) -> 'Selector': ...
 
 class ShutdownChannelGroupException(java.lang.IllegalStateException):
+    """
+    Java class 'java.nio.channels.ShutdownChannelGroupException'
+    
+        Extends:
+            java.lang.IllegalStateException
+    
+      Constructors:
+        * ShutdownChannelGroupException()
+    
+    """
     def __init__(self): ...
 
 class UnresolvedAddressException(java.lang.IllegalArgumentException):
+    """
+    Java class 'java.nio.channels.UnresolvedAddressException'
+    
+        Extends:
+            java.lang.IllegalArgumentException
+    
+      Constructors:
+        * UnresolvedAddressException()
+    
+    """
     def __init__(self): ...
 
 class UnsupportedAddressTypeException(java.lang.IllegalArgumentException):
+    """
+    Java class 'java.nio.channels.UnsupportedAddressTypeException'
+    
+        Extends:
+            java.lang.IllegalArgumentException
+    
+      Constructors:
+        * UnsupportedAddressTypeException()
+    
+    """
     def __init__(self): ...
 
 class WritePendingException(java.lang.IllegalStateException):
+    """
+    Java class 'java.nio.channels.WritePendingException'
+    
+        Extends:
+            java.lang.IllegalStateException
+    
+      Constructors:
+        * WritePendingException()
+    
+    """
     def __init__(self): ...
 
 class AsynchronousChannel(Channel):
+    """
+    Java class 'java.nio.channels.AsynchronousChannel'
+    
+        Interfaces:
+            java.nio.channels.Channel
+    
+    """
     def close(self) -> None: ...
 
 class AsynchronousCloseException(ClosedChannelException):
+    """
+    Java class 'java.nio.channels.AsynchronousCloseException'
+    
+        Extends:
+            java.nio.channels.ClosedChannelException
+    
+      Constructors:
+        * AsynchronousCloseException()
+    
+    """
     def __init__(self): ...
 
 class InterruptibleChannel(Channel):
+    """
+    Java class 'java.nio.channels.InterruptibleChannel'
+    
+        Interfaces:
+            java.nio.channels.Channel
+    
+    """
     def close(self) -> None: ...
 
 class NetworkChannel(Channel):
+    """
+    Java class 'java.nio.channels.NetworkChannel'
+    
+        Interfaces:
+            java.nio.channels.Channel
+    
+    """
     def bind(self, socketAddress: java.net.SocketAddress) -> 'NetworkChannel': ...
     def getLocalAddress(self) -> java.net.SocketAddress: ...
     _getOption__T = typing.TypeVar('_getOption__T')  # <T>
@@ -230,9 +557,26 @@ class NetworkChannel(Channel):
     def supportedOptions(self) -> java.util.Set[java.net.SocketOption[typing.Any]]: ...
 
 class ReadableByteChannel(Channel):
+    """
+    Java class 'java.nio.channels.ReadableByteChannel'
+    
+        Interfaces:
+            java.nio.channels.Channel
+    
+    """
     def read(self, byteBuffer: java.nio.ByteBuffer) -> int: ...
 
 class SelectableChannel(java.nio.channels.spi.AbstractInterruptibleChannel, Channel):
+    """
+    Java class 'java.nio.channels.SelectableChannel'
+    
+        Extends:
+            java.nio.channels.spi.AbstractInterruptibleChannel
+    
+        Interfaces:
+            java.nio.channels.Channel
+    
+    """
     def blockingLock(self) -> typing.Any: ...
     def configureBlocking(self, boolean: bool) -> 'SelectableChannel': ...
     def isBlocking(self) -> bool: ...
@@ -246,9 +590,23 @@ class SelectableChannel(java.nio.channels.spi.AbstractInterruptibleChannel, Chan
     def validOps(self) -> int: ...
 
 class WritableByteChannel(Channel):
+    """
+    Java class 'java.nio.channels.WritableByteChannel'
+    
+        Interfaces:
+            java.nio.channels.Channel
+    
+    """
     def write(self, byteBuffer: java.nio.ByteBuffer) -> int: ...
 
 class AsynchronousByteChannel(AsynchronousChannel):
+    """
+    Java class 'java.nio.channels.AsynchronousByteChannel'
+    
+        Interfaces:
+            java.nio.channels.AsynchronousChannel
+    
+    """
     _read_1__A = typing.TypeVar('_read_1__A')  # <A>
     @typing.overload
     def read(self, byteBuffer: java.nio.ByteBuffer) -> java.util.concurrent.Future[int]: ...
@@ -261,6 +619,16 @@ class AsynchronousByteChannel(AsynchronousChannel):
     def write(self, byteBuffer: java.nio.ByteBuffer, a: _write_1__A, completionHandler: CompletionHandler[int, _write_1__A]) -> None: ...
 
 class AsynchronousFileChannel(AsynchronousChannel):
+    """
+    Java class 'java.nio.channels.AsynchronousFileChannel'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.nio.channels.AsynchronousChannel
+    
+    """
     def force(self, boolean: bool) -> None: ...
     _lock_1__A = typing.TypeVar('_lock_1__A')  # <A>
     _lock_3__A = typing.TypeVar('_lock_3__A')  # <A>
@@ -296,6 +664,17 @@ class AsynchronousFileChannel(AsynchronousChannel):
     def write(self, byteBuffer: java.nio.ByteBuffer, long: int, a: _write_1__A, completionHandler: CompletionHandler[int, _write_1__A]) -> None: ...
 
 class AsynchronousServerSocketChannel(AsynchronousChannel, NetworkChannel):
+    """
+    Java class 'java.nio.channels.AsynchronousServerSocketChannel'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.nio.channels.AsynchronousChannel,
+            java.nio.channels.NetworkChannel
+    
+    """
     _accept_1__A = typing.TypeVar('_accept_1__A')  # <A>
     @typing.overload
     def accept(self) -> java.util.concurrent.Future['AsynchronousSocketChannel']: ...
@@ -319,9 +698,26 @@ class AsynchronousServerSocketChannel(AsynchronousChannel, NetworkChannel):
 class ByteChannel(ReadableByteChannel, WritableByteChannel): ...
 
 class ClosedByInterruptException(AsynchronousCloseException):
+    """
+    Java class 'java.nio.channels.ClosedByInterruptException'
+    
+        Extends:
+            java.nio.channels.AsynchronousCloseException
+    
+      Constructors:
+        * ClosedByInterruptException()
+    
+    """
     def __init__(self): ...
 
 class GatheringByteChannel(WritableByteChannel):
+    """
+    Java class 'java.nio.channels.GatheringByteChannel'
+    
+        Interfaces:
+            java.nio.channels.WritableByteChannel
+    
+    """
     @typing.overload
     def write(self, byteBuffer: java.nio.ByteBuffer) -> int: ...
     @typing.overload
@@ -330,6 +726,13 @@ class GatheringByteChannel(WritableByteChannel):
     def write(self, byteBufferArray: typing.List[java.nio.ByteBuffer], int: int, int2: int) -> int: ...
 
 class MulticastChannel(NetworkChannel):
+    """
+    Java class 'java.nio.channels.MulticastChannel'
+    
+        Interfaces:
+            java.nio.channels.NetworkChannel
+    
+    """
     def close(self) -> None: ...
     @typing.overload
     def join(self, inetAddress: java.net.InetAddress, networkInterface: java.net.NetworkInterface) -> MembershipKey: ...
@@ -337,6 +740,13 @@ class MulticastChannel(NetworkChannel):
     def join(self, inetAddress: java.net.InetAddress, networkInterface: java.net.NetworkInterface, inetAddress2: java.net.InetAddress) -> MembershipKey: ...
 
 class ScatteringByteChannel(ReadableByteChannel):
+    """
+    Java class 'java.nio.channels.ScatteringByteChannel'
+    
+        Interfaces:
+            java.nio.channels.ReadableByteChannel
+    
+    """
     @typing.overload
     def read(self, byteBuffer: java.nio.ByteBuffer) -> int: ...
     @typing.overload
@@ -345,6 +755,16 @@ class ScatteringByteChannel(ReadableByteChannel):
     def read(self, byteBufferArray: typing.List[java.nio.ByteBuffer], int: int, int2: int) -> int: ...
 
 class ServerSocketChannel(java.nio.channels.spi.AbstractSelectableChannel, NetworkChannel):
+    """
+    Java class 'java.nio.channels.ServerSocketChannel'
+    
+        Extends:
+            java.nio.channels.spi.AbstractSelectableChannel
+    
+        Interfaces:
+            java.nio.channels.NetworkChannel
+    
+    """
     def accept(self) -> 'SocketChannel': ...
     @typing.overload
     def bind(self, socketAddress: java.net.SocketAddress, int: int) -> 'ServerSocketChannel': ...
@@ -359,6 +779,17 @@ class ServerSocketChannel(java.nio.channels.spi.AbstractSelectableChannel, Netwo
     def validOps(self) -> int: ...
 
 class AsynchronousSocketChannel(AsynchronousByteChannel, NetworkChannel):
+    """
+    Java class 'java.nio.channels.AsynchronousSocketChannel'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.nio.channels.AsynchronousByteChannel,
+            java.nio.channels.NetworkChannel
+    
+    """
     def bind(self, socketAddress: java.net.SocketAddress) -> 'AsynchronousSocketChannel': ...
     _connect_1__A = typing.TypeVar('_connect_1__A')  # <A>
     @typing.overload
@@ -402,6 +833,19 @@ class AsynchronousSocketChannel(AsynchronousByteChannel, NetworkChannel):
     def write(self, byteBuffer: java.nio.ByteBuffer, a: _write_3__A, completionHandler: CompletionHandler[int, _write_3__A]) -> None: ...
 
 class DatagramChannel(java.nio.channels.spi.AbstractSelectableChannel, ByteChannel, ScatteringByteChannel, GatheringByteChannel, MulticastChannel):
+    """
+    Java class 'java.nio.channels.DatagramChannel'
+    
+        Extends:
+            java.nio.channels.spi.AbstractSelectableChannel
+    
+        Interfaces:
+            java.nio.channels.ByteChannel,
+            java.nio.channels.ScatteringByteChannel,
+            java.nio.channels.GatheringByteChannel,
+            java.nio.channels.MulticastChannel
+    
+    """
     def bind(self, socketAddress: java.net.SocketAddress) -> 'DatagramChannel': ...
     def connect(self, socketAddress: java.net.SocketAddress) -> 'DatagramChannel': ...
     def disconnect(self) -> 'DatagramChannel': ...
@@ -434,16 +878,52 @@ class DatagramChannel(java.nio.channels.spi.AbstractSelectableChannel, ByteChann
     def write(self, byteBufferArray: typing.List[java.nio.ByteBuffer]) -> int: ...
 
 class Pipe:
+    """
+    Java class 'java.nio.channels.Pipe'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def open() -> 'Pipe': ...
     def sink(self) -> 'Pipe.SinkChannel': ...
     def source(self) -> 'Pipe.SourceChannel': ...
     class SinkChannel(java.nio.channels.spi.AbstractSelectableChannel, WritableByteChannel, GatheringByteChannel):
+        """
+        Java class 'java.nio.channels.Pipe$SinkChannel'
+        
+            Extends:
+                java.nio.channels.spi.AbstractSelectableChannel
+        
+            Interfaces:
+                java.nio.channels.WritableByteChannel,
+                java.nio.channels.GatheringByteChannel
+        
+        """
         def validOps(self) -> int: ...
     class SourceChannel(java.nio.channels.spi.AbstractSelectableChannel, ReadableByteChannel, ScatteringByteChannel):
+        """
+        Java class 'java.nio.channels.Pipe$SourceChannel'
+        
+            Extends:
+                java.nio.channels.spi.AbstractSelectableChannel
+        
+            Interfaces:
+                java.nio.channels.ReadableByteChannel,
+                java.nio.channels.ScatteringByteChannel
+        
+        """
         def validOps(self) -> int: ...
 
 class SeekableByteChannel(ByteChannel):
+    """
+    Java class 'java.nio.channels.SeekableByteChannel'
+    
+        Interfaces:
+            java.nio.channels.ByteChannel
+    
+    """
     @typing.overload
     def position(self, long: int) -> 'SeekableByteChannel': ...
     @typing.overload
@@ -454,6 +934,19 @@ class SeekableByteChannel(ByteChannel):
     def write(self, byteBuffer: java.nio.ByteBuffer) -> int: ...
 
 class SocketChannel(java.nio.channels.spi.AbstractSelectableChannel, ByteChannel, ScatteringByteChannel, GatheringByteChannel, NetworkChannel):
+    """
+    Java class 'java.nio.channels.SocketChannel'
+    
+        Extends:
+            java.nio.channels.spi.AbstractSelectableChannel
+    
+        Interfaces:
+            java.nio.channels.ByteChannel,
+            java.nio.channels.ScatteringByteChannel,
+            java.nio.channels.GatheringByteChannel,
+            java.nio.channels.NetworkChannel
+    
+    """
     def bind(self, socketAddress: java.net.SocketAddress) -> 'SocketChannel': ...
     def connect(self, socketAddress: java.net.SocketAddress) -> bool: ...
     def finishConnect(self) -> bool: ...
@@ -487,6 +980,18 @@ class SocketChannel(java.nio.channels.spi.AbstractSelectableChannel, ByteChannel
     def write(self, byteBufferArray: typing.List[java.nio.ByteBuffer]) -> int: ...
 
 class FileChannel(java.nio.channels.spi.AbstractInterruptibleChannel, SeekableByteChannel, GatheringByteChannel, ScatteringByteChannel):
+    """
+    Java class 'java.nio.channels.FileChannel'
+    
+        Extends:
+            java.nio.channels.spi.AbstractInterruptibleChannel
+    
+        Interfaces:
+            java.nio.channels.SeekableByteChannel,
+            java.nio.channels.GatheringByteChannel,
+            java.nio.channels.ScatteringByteChannel
+    
+    """
     def force(self, boolean: bool) -> None: ...
     @typing.overload
     def lock(self, long: int, long2: int, boolean: bool) -> FileLock: ...
@@ -528,7 +1033,78 @@ class FileChannel(java.nio.channels.spi.AbstractInterruptibleChannel, SeekableBy
     @typing.overload
     def write(self, byteBufferArray: typing.List[java.nio.ByteBuffer]) -> int: ...
     class MapMode:
+        """
+        Java class 'java.nio.channels.FileChannel$MapMode'
+        
+            Extends:
+                java.lang.Object
+        
+          Attributes:
+            READ_ONLY (java.nio.channels.FileChannel$MapMode): final static field
+            READ_WRITE (java.nio.channels.FileChannel$MapMode): final static field
+            PRIVATE (java.nio.channels.FileChannel$MapMode): final static field
+        
+        """
         READ_ONLY: typing.ClassVar['FileChannel.MapMode'] = ...
         READ_WRITE: typing.ClassVar['FileChannel.MapMode'] = ...
         PRIVATE: typing.ClassVar['FileChannel.MapMode'] = ...
         def toString(self) -> str: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.nio.channels")``.
+
+    AcceptPendingException: typing.Type[AcceptPendingException]
+    AlreadyBoundException: typing.Type[AlreadyBoundException]
+    AlreadyConnectedException: typing.Type[AlreadyConnectedException]
+    AsynchronousByteChannel: typing.Type[AsynchronousByteChannel]
+    AsynchronousChannel: typing.Type[AsynchronousChannel]
+    AsynchronousChannelGroup: typing.Type[AsynchronousChannelGroup]
+    AsynchronousCloseException: typing.Type[AsynchronousCloseException]
+    AsynchronousFileChannel: typing.Type[AsynchronousFileChannel]
+    AsynchronousServerSocketChannel: typing.Type[AsynchronousServerSocketChannel]
+    AsynchronousSocketChannel: typing.Type[AsynchronousSocketChannel]
+    ByteChannel: typing.Type[ByteChannel]
+    CancelledKeyException: typing.Type[CancelledKeyException]
+    Channel: typing.Type[Channel]
+    Channels: typing.Type[Channels]
+    ClosedByInterruptException: typing.Type[ClosedByInterruptException]
+    ClosedChannelException: typing.Type[ClosedChannelException]
+    ClosedSelectorException: typing.Type[ClosedSelectorException]
+    CompletionHandler: typing.Type[CompletionHandler]
+    ConnectionPendingException: typing.Type[ConnectionPendingException]
+    DatagramChannel: typing.Type[DatagramChannel]
+    FileChannel: typing.Type[FileChannel]
+    FileLock: typing.Type[FileLock]
+    FileLockInterruptionException: typing.Type[FileLockInterruptionException]
+    GatheringByteChannel: typing.Type[GatheringByteChannel]
+    IllegalBlockingModeException: typing.Type[IllegalBlockingModeException]
+    IllegalChannelGroupException: typing.Type[IllegalChannelGroupException]
+    IllegalSelectorException: typing.Type[IllegalSelectorException]
+    InterruptedByTimeoutException: typing.Type[InterruptedByTimeoutException]
+    InterruptibleChannel: typing.Type[InterruptibleChannel]
+    MembershipKey: typing.Type[MembershipKey]
+    MulticastChannel: typing.Type[MulticastChannel]
+    NetworkChannel: typing.Type[NetworkChannel]
+    NoConnectionPendingException: typing.Type[NoConnectionPendingException]
+    NonReadableChannelException: typing.Type[NonReadableChannelException]
+    NonWritableChannelException: typing.Type[NonWritableChannelException]
+    NotYetBoundException: typing.Type[NotYetBoundException]
+    NotYetConnectedException: typing.Type[NotYetConnectedException]
+    OverlappingFileLockException: typing.Type[OverlappingFileLockException]
+    Pipe: typing.Type[Pipe]
+    ReadPendingException: typing.Type[ReadPendingException]
+    ReadableByteChannel: typing.Type[ReadableByteChannel]
+    ScatteringByteChannel: typing.Type[ScatteringByteChannel]
+    SeekableByteChannel: typing.Type[SeekableByteChannel]
+    SelectableChannel: typing.Type[SelectableChannel]
+    SelectionKey: typing.Type[SelectionKey]
+    Selector: typing.Type[Selector]
+    ServerSocketChannel: typing.Type[ServerSocketChannel]
+    ShutdownChannelGroupException: typing.Type[ShutdownChannelGroupException]
+    SocketChannel: typing.Type[SocketChannel]
+    UnresolvedAddressException: typing.Type[UnresolvedAddressException]
+    UnsupportedAddressTypeException: typing.Type[UnsupportedAddressTypeException]
+    WritableByteChannel: typing.Type[WritableByteChannel]
+    WritePendingException: typing.Type[WritePendingException]
+    spi: java.nio.channels.spi.__module_protocol__

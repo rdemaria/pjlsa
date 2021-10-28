@@ -1,6 +1,9 @@
 import cern.accsoft.commons.domain
 import cern.lsa.client
+import cern.lsa.client.rest.api.v1.dto
+import cern.lsa.client.rest.api.v1.error
 import cern.lsa.client.rest.api.v1.feign
+import cern.lsa.client.rest.api.v1.interceptor
 import cern.lsa.client.rest.api.v1.mapper
 import cern.lsa.domain.devices
 import cern.lsa.domain.devices.inca
@@ -9,11 +12,23 @@ import cern.lsa.domain.settings
 import cern.lsa.domain.settings.parameter.relation
 import cern.lsa.domain.settings.parameter.type.relation
 import cern.lsa.domain.trim.rules.makerule
+import java.lang
 import java.util
 import typing
 
 
+
 class ClientRestConfig:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.ClientRestConfig'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ClientRestConfig()
+    
+    """
     def __init__(self): ...
     def feignServiceLocator(self) -> cern.lsa.client.rest.api.v1.feign.FeignServiceLocator: ...
     def fromRest(self) -> cern.lsa.client.rest.api.v1.mapper.FromRest: ...
@@ -22,11 +37,37 @@ class ClientRestConfig:
     def toRest(self) -> cern.lsa.client.rest.api.v1.mapper.ToRest: ...
 
 class ClientRestIncaService(cern.lsa.client.IncaService):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.ClientRestIncaService'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.IncaService
+    
+      Constructors:
+        * ClientRestIncaService(cern.lsa.client.rest.api.v1.feign.IncaFeignService, cern.lsa.client.rest.api.v1.mapper.ToRest, cern.lsa.client.rest.api.v1.mapper.FromRest)
+    
+    """
     def __init__(self, incaFeignService: cern.lsa.client.rest.api.v1.feign.IncaFeignService, toRest: cern.lsa.client.rest.api.v1.mapper.ToRest, fromRest: cern.lsa.client.rest.api.v1.mapper.FromRest): ...
     def findIncaPropertyFieldInfos(self, incaPropertyFieldInfosRequest: cern.lsa.domain.devices.inca.IncaPropertyFieldInfosRequest) -> java.util.Set[cern.lsa.domain.devices.inca.IncaPropertyFieldInfo]: ...
     def saveIncaPropertyFieldInfos(self, collection: typing.Union[java.util.Collection[cern.lsa.domain.devices.inca.IncaPropertyFieldInfo], typing.Sequence[cern.lsa.domain.devices.inca.IncaPropertyFieldInfo]]) -> None: ...
 
 class ClientRestParameterService(cern.lsa.client.ParameterService):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.ClientRestParameterService'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.ParameterService
+    
+      Constructors:
+        * ClientRestParameterService(cern.lsa.client.rest.api.v1.feign.ParameterFeignService, cern.lsa.client.rest.api.v1.mapper.ToRest, cern.lsa.client.rest.api.v1.mapper.FromRest)
+    
+    """
     def __init__(self, parameterFeignService: cern.lsa.client.rest.api.v1.feign.ParameterFeignService, toRest: cern.lsa.client.rest.api.v1.mapper.ToRest, fromRest: cern.lsa.client.rest.api.v1.mapper.FromRest): ...
     def addParametersToParameterGroup(self, parameterGroup: cern.lsa.domain.settings.ParameterGroup, collection: typing.Union[java.util.Collection[str], typing.Sequence[str]]) -> None: ...
     def deleteCriticalProperty(self, propertyVersion: cern.lsa.domain.devices.type.PropertyVersion, device: cern.lsa.domain.devices.Device) -> None: ...
@@ -62,3 +103,40 @@ class ClientRestParameterService(cern.lsa.client.ParameterService):
     def saveParameterTypeRelationInfos(self, collection: typing.Union[java.util.Collection[cern.lsa.domain.settings.parameter.type.relation.ParameterTypeRelationInfo], typing.Sequence[cern.lsa.domain.settings.parameter.type.relation.ParameterTypeRelationInfo]]) -> None: ...
     def saveParameterTypes(self, collection: typing.Union[java.util.Collection[cern.lsa.domain.settings.ParameterType], typing.Sequence[cern.lsa.domain.settings.ParameterType]]) -> None: ...
     def saveParameters(self, collection: typing.Union[java.util.Collection[cern.lsa.domain.settings.ParameterAttributes], typing.Sequence[cern.lsa.domain.settings.ParameterAttributes]]) -> None: ...
+
+class HttpHeaders(java.lang.Enum['HttpHeaders']):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.HttpHeaders'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        X_CLIENT_ID (cern.lsa.client.rest.api.v1.HttpHeaders): final static enum constant
+    
+    """
+    X_CLIENT_ID: typing.ClassVar['HttpHeaders'] = ...
+    def getValue(self) -> str: ...
+    _valueOf_1__T = typing.TypeVar('_valueOf_1__T', bound=java.lang.Enum)  # <T>
+    @typing.overload
+    @staticmethod
+    def valueOf(string: str) -> 'HttpHeaders': ...
+    @typing.overload
+    @staticmethod
+    def valueOf(class_: typing.Type[_valueOf_1__T], string: str) -> _valueOf_1__T: ...
+    @staticmethod
+    def values() -> typing.List['HttpHeaders']: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.client.rest.api.v1")``.
+
+    ClientRestConfig: typing.Type[ClientRestConfig]
+    ClientRestIncaService: typing.Type[ClientRestIncaService]
+    ClientRestParameterService: typing.Type[ClientRestParameterService]
+    HttpHeaders: typing.Type[HttpHeaders]
+    dto: cern.lsa.client.rest.api.v1.dto.__module_protocol__
+    error: cern.lsa.client.rest.api.v1.error.__module_protocol__
+    feign: cern.lsa.client.rest.api.v1.feign.__module_protocol__
+    interceptor: cern.lsa.client.rest.api.v1.interceptor.__module_protocol__
+    mapper: cern.lsa.client.rest.api.v1.mapper.__module_protocol__

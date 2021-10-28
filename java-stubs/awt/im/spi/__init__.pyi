@@ -8,7 +8,12 @@ import javax.swing
 import typing
 
 
+
 class InputMethod:
+    """
+    Java class 'java.awt.im.spi.InputMethod'
+    
+    """
     def activate(self) -> None: ...
     def deactivate(self, boolean: bool) -> None: ...
     def dispatchEvent(self, aWTEvent: java.awt.AWTEvent) -> None: ...
@@ -27,14 +32,33 @@ class InputMethod:
     def setLocale(self, locale: java.util.Locale) -> bool: ...
 
 class InputMethodContext(java.awt.im.InputMethodRequests):
+    """
+    Java class 'java.awt.im.spi.InputMethodContext'
+    
+        Interfaces:
+            java.awt.im.InputMethodRequests
+    
+    """
     def createInputMethodJFrame(self, string: str, boolean: bool) -> javax.swing.JFrame: ...
     def createInputMethodWindow(self, string: str, boolean: bool) -> java.awt.Window: ...
     def dispatchInputMethodEvent(self, int: int, attributedCharacterIterator: java.text.AttributedCharacterIterator, int2: int, textHitInfo: java.awt.font.TextHitInfo, textHitInfo2: java.awt.font.TextHitInfo) -> None: ...
     def enableClientWindowNotification(self, inputMethod: InputMethod, boolean: bool) -> None: ...
 
 class InputMethodDescriptor:
+    """
+    Java class 'java.awt.im.spi.InputMethodDescriptor'
+    
+    """
     def createInputMethod(self) -> InputMethod: ...
     def getAvailableLocales(self) -> typing.List[java.util.Locale]: ...
     def getInputMethodDisplayName(self, locale: java.util.Locale, locale2: java.util.Locale) -> str: ...
     def getInputMethodIcon(self, locale: java.util.Locale) -> java.awt.Image: ...
     def hasDynamicLocaleList(self) -> bool: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.awt.im.spi")``.
+
+    InputMethod: typing.Type[InputMethod]
+    InputMethodContext: typing.Type[InputMethodContext]
+    InputMethodDescriptor: typing.Type[InputMethodDescriptor]

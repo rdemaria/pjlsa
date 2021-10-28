@@ -4,13 +4,22 @@ import java.awt.dnd
 import typing
 
 
+
 class DragSourceContextPeer:
+    """
+    Java class 'java.awt.dnd.peer.DragSourceContextPeer'
+    
+    """
     def getCursor(self) -> java.awt.Cursor: ...
     def setCursor(self, cursor: java.awt.Cursor) -> None: ...
     def startDrag(self, dragSourceContext: java.awt.dnd.DragSourceContext, cursor: java.awt.Cursor, image: java.awt.Image, point: java.awt.Point) -> None: ...
     def transferablesFlavorsChanged(self) -> None: ...
 
 class DropTargetContextPeer:
+    """
+    Java class 'java.awt.dnd.peer.DropTargetContextPeer'
+    
+    """
     def acceptDrag(self, int: int) -> None: ...
     def acceptDrop(self, int: int) -> None: ...
     def dropComplete(self, boolean: bool) -> None: ...
@@ -24,5 +33,17 @@ class DropTargetContextPeer:
     def setTargetActions(self, int: int) -> None: ...
 
 class DropTargetPeer:
+    """
+    Java class 'java.awt.dnd.peer.DropTargetPeer'
+    
+    """
     def addDropTarget(self, dropTarget: java.awt.dnd.DropTarget) -> None: ...
     def removeDropTarget(self, dropTarget: java.awt.dnd.DropTarget) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.awt.dnd.peer")``.
+
+    DragSourceContextPeer: typing.Type[DragSourceContextPeer]
+    DropTargetContextPeer: typing.Type[DropTargetContextPeer]
+    DropTargetPeer: typing.Type[DropTargetPeer]

@@ -8,7 +8,21 @@ import java.util
 import typing
 
 
+
 class BlmCrateInfoImpl(cern.accsoft.commons.util.AbstractNamedSerializable[cern.lsa.domain.cern.devices.BlmCrateInfo], cern.lsa.domain.cern.devices.BlmCrateInfo):
+    """
+    Java class 'cern.lsa.domain.cern.devices.spi.BlmCrateInfoImpl'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractNamedSerializable
+    
+        Interfaces:
+            cern.lsa.domain.cern.devices.BlmCrateInfo
+    
+      Constructors:
+        * BlmCrateInfoImpl(java.lang.String)
+    
+    """
     def __init__(self, string: str): ...
     @staticmethod
     def getBeanPropertyNameByFESAFieldName(string: str) -> str: ...
@@ -74,6 +88,19 @@ class BlmCrateInfoImpl(cern.accsoft.commons.util.AbstractNamedSerializable[cern.
     def setRgohResetHvPeak(self, int: int) -> None: ...
 
 class BlmFamilyImpl(cern.accsoft.commons.util.AbstractNamedSerializable[cern.lsa.domain.cern.devices.BlmFamily], cern.lsa.domain.cern.devices.BlmFamily):
+    """
+    Java class 'cern.lsa.domain.cern.devices.spi.BlmFamilyImpl'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractNamedSerializable
+    
+        Interfaces:
+            cern.lsa.domain.cern.devices.BlmFamily
+    
+      Constructors:
+        * BlmFamilyImpl(java.lang.String, double, double)
+    
+    """
     def __init__(self, string: str, double: float, double2: float): ...
     def addThresholds(self, int: int, longArray: typing.List[int]) -> None: ...
     def equals(self, object: typing.Any) -> bool: ...
@@ -87,6 +114,23 @@ class BlmFamilyImpl(cern.accsoft.commons.util.AbstractNamedSerializable[cern.lsa
     def toString(self) -> str: ...
 
 class BlmInfoImpl(cern.accsoft.commons.util.AbstractNamedSerializable[cern.lsa.domain.cern.devices.BlmInfo], cern.lsa.domain.cern.devices.ThresholdsAwareBlmInfo, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.devices.spi.BlmInfoImpl'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractNamedSerializable
+    
+        Interfaces:
+            cern.lsa.domain.cern.devices.ThresholdsAwareBlmInfo,
+            java.io.Serializable
+    
+      Constructors:
+        * BlmInfoImpl(java.lang.String)
+    
+      Attributes:
+        SPARE_BLM_NAME_PREFIX (java.lang.String): final static field
+    
+    """
     SPARE_BLM_NAME_PREFIX: typing.ClassVar[str] = ...
     def __init__(self, string: str): ...
     def addAppliedThresholds(self, int: int, longArray: typing.List[int]) -> None: ...
@@ -133,6 +177,19 @@ class BlmInfoImpl(cern.accsoft.commons.util.AbstractNamedSerializable[cern.lsa.d
     def toString(self) -> str: ...
 
 class CollimatorAlignmentImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedEntity[cern.lsa.domain.cern.devices.CollimatorAlignment], cern.lsa.domain.cern.devices.CollimatorAlignment):
+    """
+    Java class 'cern.lsa.domain.cern.devices.spi.CollimatorAlignmentImpl'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AbstractIdentifiedEntity
+    
+        Interfaces:
+            cern.lsa.domain.cern.devices.CollimatorAlignment
+    
+      Constructors:
+        * CollimatorAlignmentImpl()
+    
+    """
     def __init__(self): ...
     def getAlignmentTime(self) -> java.util.Date: ...
     def getBeamModeCategory(self) -> str: ...
@@ -157,10 +214,38 @@ class CollimatorAlignmentImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedEnti
     def toString(self) -> str: ...
 
 class LhcBeamLossMapImpl(cern.lsa.domain.cern.devices.LhcBeamLossMap, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.devices.spi.LhcBeamLossMapImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.devices.LhcBeamLossMap,
+            java.io.Serializable
+    
+      Constructors:
+        * LhcBeamLossMapImpl(java.util.List)
+    
+    """
     def __init__(self, list: java.util.List[cern.lsa.domain.cern.devices.LhcBeamLossMap.LhcBeamLossMapEntry]): ...
     def getAllEntries(self) -> java.util.List[cern.lsa.domain.cern.devices.LhcBeamLossMap.LhcBeamLossMapEntry]: ...
     def getEntry(self, lhcBeam: cern.accsoft.commons.domain.beams.LhcBeam, string: str, string2: str) -> cern.lsa.domain.cern.devices.LhcBeamLossMap.LhcBeamLossMapEntry: ...
     class LhcBeamLossMapEntryImpl(cern.lsa.domain.cern.devices.LhcBeamLossMap.LhcBeamLossMapEntry):
+        """
+        Java class 'cern.lsa.domain.cern.devices.spi.LhcBeamLossMapImpl$LhcBeamLossMapEntryImpl'
+        
+            Extends:
+                java.lang.Object
+        
+            Interfaces:
+                cern.lsa.domain.cern.devices.LhcBeamLossMap.LhcBeamLossMapEntr
+                y
+        
+          Constructors:
+            * LhcBeamLossMapEntryImpl(cern.accsoft.commons.domain.beams.LhcBeam, java.lang.String, java.lang.String, long, long)
+        
+        """
         def __init__(self, lhcBeam: cern.accsoft.commons.domain.beams.LhcBeam, string: str, string2: str, long: int, long2: int): ...
         def getBeam(self) -> cern.accsoft.commons.domain.beams.LhcBeam: ...
         def getBeamModeCategory(self) -> str: ...
@@ -169,6 +254,19 @@ class LhcBeamLossMapImpl(cern.lsa.domain.cern.devices.LhcBeamLossMap, java.io.Se
         def getValidTo(self) -> int: ...
 
 class LhcCollimatorInfoImpl(cern.accsoft.commons.util.AbstractNamedSerializable[cern.lsa.domain.cern.devices.LhcCollimatorInfo], cern.lsa.domain.cern.devices.LhcCollimatorInfo):
+    """
+    Java class 'cern.lsa.domain.cern.devices.spi.LhcCollimatorInfoImpl'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractNamedSerializable
+    
+        Interfaces:
+            cern.lsa.domain.cern.devices.LhcCollimatorInfo
+    
+      Constructors:
+        * LhcCollimatorInfoImpl()
+    
+    """
     def __init__(self): ...
     def getAngle(self) -> float: ...
     def getAutoRetractionLeftDown(self) -> float: ...
@@ -364,6 +462,20 @@ class LhcCollimatorInfoImpl(cern.accsoft.commons.util.AbstractNamedSerializable[
     def setTankPosSwitchUp(self, double: float) -> None: ...
 
 class RfFgcChannelImpl(cern.lsa.domain.cern.devices.RfFgcChannel, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.devices.spi.RfFgcChannelImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.devices.RfFgcChannel,
+            java.io.Serializable
+    
+      Constructors:
+        * RfFgcChannelImpl()
+    
+    """
     def __init__(self): ...
     def getChannelName(self) -> str: ...
     def getChannelNumber(self) -> int: ...
@@ -383,3 +495,15 @@ class RfFgcChannelImpl(cern.lsa.domain.cern.devices.RfFgcChannel, java.io.Serial
     def setMinValue(self, double: float) -> None: ...
     def setParameterName(self, string: str) -> None: ...
     def setUnit(self, string: str) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.cern.devices.spi")``.
+
+    BlmCrateInfoImpl: typing.Type[BlmCrateInfoImpl]
+    BlmFamilyImpl: typing.Type[BlmFamilyImpl]
+    BlmInfoImpl: typing.Type[BlmInfoImpl]
+    CollimatorAlignmentImpl: typing.Type[CollimatorAlignmentImpl]
+    LhcBeamLossMapImpl: typing.Type[LhcBeamLossMapImpl]
+    LhcCollimatorInfoImpl: typing.Type[LhcCollimatorInfoImpl]
+    RfFgcChannelImpl: typing.Type[RfFgcChannelImpl]

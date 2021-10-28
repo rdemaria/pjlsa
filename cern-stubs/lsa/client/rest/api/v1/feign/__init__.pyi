@@ -5,7 +5,15 @@ import java.util
 import typing
 
 
+
 class FeignServiceLocator:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.feign.FeignServiceLocator'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def createObjectMapper() -> com.fasterxml.jackson.databind.ObjectMapper: ...
     @staticmethod
@@ -16,13 +24,38 @@ class FeignServiceLocator:
 class FeignService: ...
 
 class IncaFeignService(FeignService):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.feign.IncaFeignService'
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.feign.FeignService
+    
+    """
     def findIncaPropertyFieldInfos(self, incaPropertyFieldInfosRequestRest: cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfosRequestRest) -> java.util.Set[cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest]: ...
     def saveIncaPropertyFieldInfos(self, collection: typing.Union[java.util.Collection[cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest], typing.Sequence[cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest]]) -> None: ...
     class Urls:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.feign.IncaFeignService$Urls'
+        
+            Extends:
+                java.lang.Object
+        
+          Attributes:
+            FIND_INCA_PROPERTY_FIELDS_INFO (java.lang.String): final static field
+            SAVE_INCA_PROPERTY_FIELDS_INFO (java.lang.String): final static field
+        
+        """
         FIND_INCA_PROPERTY_FIELDS_INFO: typing.ClassVar[str] = ...
         SAVE_INCA_PROPERTY_FIELDS_INFO: typing.ClassVar[str] = ...
 
 class ParameterFeignService(FeignService):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.feign.ParameterFeignService'
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.feign.FeignService
+    
+    """
     def addParametersToParameterGroup(self, long: int, collection: typing.Union[java.util.Collection[int], typing.Sequence[int]]) -> None: ...
     def deleteCriticalProperty(self, long: int, string: str) -> None: ...
     def deleteParameterGroup(self, long: int) -> None: ...
@@ -45,6 +78,31 @@ class ParameterFeignService(FeignService):
     def saveParameterTypes(self, collection: typing.Union[java.util.Collection[cern.lsa.client.rest.api.v1.dto.ParameterTypeRest], typing.Sequence[cern.lsa.client.rest.api.v1.dto.ParameterTypeRest]]) -> None: ...
     def saveParameters(self, list: java.util.List[cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest]) -> None: ...
     class Urls:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.feign.ParameterFeignService$Urls'
+        
+            Extends:
+                java.lang.Object
+        
+          Attributes:
+            FIND_PARAMETERS_URL (java.lang.String): final static field
+            PARAMETERS_URL (java.lang.String): final static field
+            PARAMETER_TYPES_URL (java.lang.String): final static field
+            FIND_ALL_HIERARCHIES_URL (java.lang.String): final static field
+            FIND_HIERARCHIES_BY_PARAMETERS_URL (java.lang.String): final static field
+            FIND_COMMON_HIERARCHIES_BY_PARAMETERS_URL (java.lang.String): final static field
+            SAVE_PARAMETER_RELATIONS (java.lang.String): final static field
+            CRITICAL_PROPERTIES_URL (java.lang.String): final static field
+            PARAMETER_GROUPS_URL (java.lang.String): final static field
+            PARAMETER_GROUP_BY_ID_URL (java.lang.String): final static field
+            PARAMETER_GROUP_PARAMETERS_URL (java.lang.String): final static field
+            PARAMETER_RELATION_MAKE_RULE_URL (java.lang.String): final static field
+            FIND_PARAMETER_TREES_URL (java.lang.String): final static field
+            PARAMETERS_WITHOUT_SETTINGS_URL (java.lang.String): final static field
+            PARAMETERS_WITH_SETTINGS_URL (java.lang.String): final static field
+            PARAMETER_MAX_DELTA_URL (java.lang.String): final static field
+        
+        """
         FIND_PARAMETERS_URL: typing.ClassVar[str] = ...
         PARAMETERS_URL: typing.ClassVar[str] = ...
         PARAMETER_TYPES_URL: typing.ClassVar[str] = ...
@@ -63,6 +121,33 @@ class ParameterFeignService(FeignService):
         PARAMETER_MAX_DELTA_URL: typing.ClassVar[str] = ...
 
 class ReDriveSettingsFeignService(FeignService):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.feign.ReDriveSettingsFeignService'
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.feign.FeignService
+    
+    """
     def reDriveDeviceSettings(self, reDriveRequest: cern.lsa.domain.cern.settings.ReDriveRequest) -> cern.lsa.domain.cern.settings.ReDriveResponse: ...
     class Urls:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.feign.ReDriveSettingsFeignService$Urls'
+        
+            Extends:
+                java.lang.Object
+        
+          Attributes:
+            REDRIVE_DEVICES (java.lang.String): final static field
+        
+        """
         REDRIVE_DEVICES: typing.ClassVar[str] = ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.client.rest.api.v1.feign")``.
+
+    FeignService: typing.Type[FeignService]
+    FeignServiceLocator: typing.Type[FeignServiceLocator]
+    IncaFeignService: typing.Type[IncaFeignService]
+    ParameterFeignService: typing.Type[ParameterFeignService]
+    ReDriveSettingsFeignService: typing.Type[ReDriveSettingsFeignService]

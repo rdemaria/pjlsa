@@ -6,7 +6,12 @@ import java.util
 import typing
 
 
+
 class OfbMonitorReading:
+    """
+    Java class 'cern.lsa.domain.cern.optics.ofb.OfbMonitorReading'
+    
+    """
     def getHorizontal(self) -> float: ...
     def getMonitorName(self) -> str: ...
     def getPosition(self) -> float: ...
@@ -19,10 +24,25 @@ class OfbMonitorReading:
     def setVerticalValid(self, boolean: bool) -> None: ...
 
 class OfbOpticsTableItem(cern.lsa.domain.optics.OpticsTableItem):
+    """
+    Java class 'cern.lsa.domain.cern.optics.ofb.OfbOpticsTableItem'
+    
+        Interfaces:
+            cern.lsa.domain.optics.OpticsTableItem
+    
+    """
     def getOfbOrbit(self) -> 'OfbOrbit': ...
     def isUsedByOfb(self) -> bool: ...
 
 class OfbOrbit(cern.accsoft.commons.util.Named, cern.lsa.domain.commons.IdentifiedEntity):
+    """
+    Java class 'cern.lsa.domain.cern.optics.ofb.OfbOrbit'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named,
+            cern.lsa.domain.commons.IdentifiedEntity
+    
+    """
     def addKnobOverlay(self, ofbKnobOverlay: 'OfbKnobOverlay') -> None: ...
     def addStaticOverlay(self, ofbStaticOverlay: 'OfbStaticOverlay') -> None: ...
     def getBaseReadingSet(self) -> 'OfbReadingSet': ...
@@ -38,6 +58,14 @@ class OfbOrbit(cern.accsoft.commons.util.Named, cern.lsa.domain.commons.Identifi
 class OfbOverlay: ...
 
 class OfbReadingSet(cern.accsoft.commons.util.Named, cern.lsa.domain.commons.IdentifiedEntity):
+    """
+    Java class 'cern.lsa.domain.cern.optics.ofb.OfbReadingSet'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named,
+            cern.lsa.domain.commons.IdentifiedEntity
+    
+    """
     def addReading(self, ofbMonitorReading: OfbMonitorReading) -> None: ...
     def getAllReadings(self) -> java.util.SortedSet[OfbMonitorReading]: ...
     def getReading(self, string: str) -> OfbMonitorReading: ...
@@ -46,6 +74,24 @@ class OfbReadingSet(cern.accsoft.commons.util.Named, cern.lsa.domain.commons.Ide
     def setType(self, ofbReadingSetType: 'OfbReadingSetType') -> None: ...
 
 class OfbReadingSetType(java.lang.Enum['OfbReadingSetType']):
+    """
+    Java class 'cern.lsa.domain.cern.optics.ofb.OfbReadingSetType'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        BASE_ORBIT (cern.lsa.domain.cern.optics.ofb.OfbReadingSetType): final static enum constant
+        SEPARATION_BUMP_IR1 (cern.lsa.domain.cern.optics.ofb.OfbReadingSetType): final static enum constant
+        SEPARATION_BUMP_IR2 (cern.lsa.domain.cern.optics.ofb.OfbReadingSetType): final static enum constant
+        SEPARATION_BUMP_IR5 (cern.lsa.domain.cern.optics.ofb.OfbReadingSetType): final static enum constant
+        SEPARATION_BUMP_IR8 (cern.lsa.domain.cern.optics.ofb.OfbReadingSetType): final static enum constant
+        CROSSING_ANGLE_IR1 (cern.lsa.domain.cern.optics.ofb.OfbReadingSetType): final static enum constant
+        CROSSING_ANGLE_IR2 (cern.lsa.domain.cern.optics.ofb.OfbReadingSetType): final static enum constant
+        CROSSING_ANGLE_IR5 (cern.lsa.domain.cern.optics.ofb.OfbReadingSetType): final static enum constant
+        CROSSING_ANGLE_IR8 (cern.lsa.domain.cern.optics.ofb.OfbReadingSetType): final static enum constant
+    
+    """
     BASE_ORBIT: typing.ClassVar['OfbReadingSetType'] = ...
     SEPARATION_BUMP_IR1: typing.ClassVar['OfbReadingSetType'] = ...
     SEPARATION_BUMP_IR2: typing.ClassVar['OfbReadingSetType'] = ...
@@ -66,9 +112,36 @@ class OfbReadingSetType(java.lang.Enum['OfbReadingSetType']):
     def values() -> typing.List['OfbReadingSetType']: ...
 
 class OfbKnobOverlay(OfbOverlay):
+    """
+    Java class 'cern.lsa.domain.cern.optics.ofb.OfbKnobOverlay'
+    
+        Interfaces:
+            cern.lsa.domain.cern.optics.ofb.OfbOverlay
+    
+    """
     def getKnobId(self) -> int: ...
     def getKnobName(self) -> str: ...
 
 class OfbStaticOverlay(OfbOverlay):
+    """
+    Java class 'cern.lsa.domain.cern.optics.ofb.OfbStaticOverlay'
+    
+        Interfaces:
+            cern.lsa.domain.cern.optics.ofb.OfbOverlay
+    
+    """
     def getReadingSet(self) -> OfbReadingSet: ...
     def getScaling(self) -> float: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.cern.optics.ofb")``.
+
+    OfbKnobOverlay: typing.Type[OfbKnobOverlay]
+    OfbMonitorReading: typing.Type[OfbMonitorReading]
+    OfbOpticsTableItem: typing.Type[OfbOpticsTableItem]
+    OfbOrbit: typing.Type[OfbOrbit]
+    OfbOverlay: typing.Type[OfbOverlay]
+    OfbReadingSet: typing.Type[OfbReadingSet]
+    OfbReadingSetType: typing.Type[OfbReadingSetType]
+    OfbStaticOverlay: typing.Type[OfbStaticOverlay]

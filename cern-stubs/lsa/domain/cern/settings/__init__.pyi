@@ -1,3 +1,8 @@
+import cern.lsa.domain.cern.settings.ad
+import cern.lsa.domain.cern.settings.elena
+import cern.lsa.domain.cern.settings.lktim
+import cern.lsa.domain.cern.settings.spi
+import cern.lsa.domain.cern.settings.util
 import cern.lsa.domain.settings
 import com.google.common.collect
 import java.io
@@ -6,7 +11,21 @@ import java.util
 import typing
 
 
+
 class BeamProcessTypeOpticTransitionInfo(java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.settings.BeamProcessTypeOpticTransitionInfo'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * BeamProcessTypeOpticTransitionInfo(double, java.lang.String, java.lang.String, double, double)
+    
+    """
     def __init__(self, double: float, string: str, string2: str, double2: float, double3: float): ...
     def getDuration(self) -> float: ...
     def getEndOptic(self) -> str: ...
@@ -15,6 +34,24 @@ class BeamProcessTypeOpticTransitionInfo(java.io.Serializable):
     def getStartTime(self) -> float: ...
 
 class CernContextCategory(java.lang.Enum['CernContextCategory'], cern.lsa.domain.settings.ContextCategory):
+    """
+    Java class 'cern.lsa.domain.cern.settings.CernContextCategory'
+    
+        Extends:
+            java.lang.Enum
+    
+        Interfaces:
+            cern.lsa.domain.settings.ContextCategory
+    
+      Attributes:
+        MD (cern.lsa.domain.cern.settings.CernContextCategory): final static enum constant
+        OBSOLETE (cern.lsa.domain.cern.settings.CernContextCategory): final static enum constant
+        OPERATIONAL (cern.lsa.domain.cern.settings.CernContextCategory): final static enum constant
+        TEST (cern.lsa.domain.cern.settings.CernContextCategory): final static enum constant
+        REFERENCE (cern.lsa.domain.cern.settings.CernContextCategory): final static enum constant
+        ARCHIVED (cern.lsa.domain.cern.settings.CernContextCategory): final static enum constant
+    
+    """
     MD: typing.ClassVar['CernContextCategory'] = ...
     OBSOLETE: typing.ClassVar['CernContextCategory'] = ...
     OPERATIONAL: typing.ClassVar['CernContextCategory'] = ...
@@ -34,10 +71,18 @@ class CernContextCategory(java.lang.Enum['CernContextCategory'], cern.lsa.domain
     def values() -> typing.List['CernContextCategory']: ...
 
 class DeviceReDriveResponse:
+    """
+    Java class 'cern.lsa.domain.cern.settings.DeviceReDriveResponse'
+    
+    """
     def getDeviceName(self) -> str: ...
     def getParameterReDriveResponses(self) -> java.util.Set['ParameterReDriveResponse']: ...
 
 class ParameterReDriveResponse:
+    """
+    Java class 'cern.lsa.domain.cern.settings.ParameterReDriveResponse'
+    
+    """
     def containsError(self) -> bool: ...
     def getContextName(self) -> str: ...
     def getJapcParameterNameToExceptionMessage(self) -> java.util.Map[str, str]: ...
@@ -45,12 +90,30 @@ class ParameterReDriveResponse:
     def getParameterName(self) -> str: ...
 
 class ReDriveRequest:
+    """
+    Java class 'cern.lsa.domain.cern.settings.ReDriveRequest'
+    
+    """
     def getDeviceNamesToReDrive(self) -> java.util.Set[str]: ...
 
 class ReDriveResponse:
+    """
+    Java class 'cern.lsa.domain.cern.settings.ReDriveResponse'
+    
+    """
     def getDeviceReDriveResponses(self) -> java.util.Collection[DeviceReDriveResponse]: ...
 
 class DefaultDeviceReDriveResponse(DeviceReDriveResponse):
+    """
+    Java class 'cern.lsa.domain.cern.settings.DefaultDeviceReDriveResponse'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.settings.DeviceReDriveResponse
+    
+    """
     @staticmethod
     def builder() -> 'DefaultDeviceReDriveResponse.Builder': ...
     @staticmethod
@@ -66,6 +129,13 @@ class DefaultDeviceReDriveResponse(DeviceReDriveResponse):
     @typing.overload
     def withParameterReDriveResponses(self, iterable: java.lang.Iterable[ParameterReDriveResponse]) -> 'DefaultDeviceReDriveResponse': ...
     class Builder:
+        """
+        Java class 'cern.lsa.domain.cern.settings.DefaultDeviceReDriveResponse$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def addAllParameterReDriveResponses(self, iterable: java.lang.Iterable[ParameterReDriveResponse]) -> 'DefaultDeviceReDriveResponse.Builder': ...
         def addParameterReDriveResponse(self, parameterReDriveResponse: ParameterReDriveResponse) -> 'DefaultDeviceReDriveResponse.Builder': ...
         def addParameterReDriveResponses(self, parameterReDriveResponseArray: typing.List[ParameterReDriveResponse]) -> 'DefaultDeviceReDriveResponse.Builder': ...
@@ -74,6 +144,16 @@ class DefaultDeviceReDriveResponse(DeviceReDriveResponse):
         def parameterReDriveResponses(self, iterable: java.lang.Iterable[ParameterReDriveResponse]) -> 'DefaultDeviceReDriveResponse.Builder': ...
 
 class DefaultParameterReDriveResponse(ParameterReDriveResponse):
+    """
+    Java class 'cern.lsa.domain.cern.settings.DefaultParameterReDriveResponse'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.settings.ParameterReDriveResponse
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParameterReDriveResponse.Builder': ...
     def containsError(self) -> bool: ...
@@ -92,6 +172,13 @@ class DefaultParameterReDriveResponse(ParameterReDriveResponse):
     def withLsaExceptionMessage(self, string: str) -> 'DefaultParameterReDriveResponse': ...
     def withParameterName(self, string: str) -> 'DefaultParameterReDriveResponse': ...
     class Builder:
+        """
+        Java class 'cern.lsa.domain.cern.settings.DefaultParameterReDriveResponse$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultParameterReDriveResponse': ...
         def containsError(self, boolean: bool) -> 'DefaultParameterReDriveResponse.Builder': ...
         def contextName(self, string: str) -> 'DefaultParameterReDriveResponse.Builder': ...
@@ -105,6 +192,16 @@ class DefaultParameterReDriveResponse(ParameterReDriveResponse):
         def putJapcParameterNameToExceptionMessage(self, entry: java.util.Map.Entry[str, str]) -> 'DefaultParameterReDriveResponse.Builder': ...
 
 class DefaultReDriveRequest(ReDriveRequest):
+    """
+    Java class 'cern.lsa.domain.cern.settings.DefaultReDriveRequest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.settings.ReDriveRequest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultReDriveRequest.Builder': ...
     @staticmethod
@@ -118,6 +215,13 @@ class DefaultReDriveRequest(ReDriveRequest):
     @typing.overload
     def withDeviceNamesToReDrive(self, stringArray: typing.List[str]) -> 'DefaultReDriveRequest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.domain.cern.settings.DefaultReDriveRequest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def addAllDeviceNamesToReDrive(self, iterable: java.lang.Iterable[str]) -> 'DefaultReDriveRequest.Builder': ...
         @typing.overload
         def addDeviceNamesToReDrive(self, string: str) -> 'DefaultReDriveRequest.Builder': ...
@@ -127,6 +231,16 @@ class DefaultReDriveRequest(ReDriveRequest):
         def deviceNamesToReDrive(self, iterable: java.lang.Iterable[str]) -> 'DefaultReDriveRequest.Builder': ...
 
 class DefaultReDriveResponse(ReDriveResponse):
+    """
+    Java class 'cern.lsa.domain.cern.settings.DefaultReDriveResponse'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.settings.ReDriveResponse
+    
+    """
     @staticmethod
     def builder() -> 'DefaultReDriveResponse.Builder': ...
     @staticmethod
@@ -137,5 +251,32 @@ class DefaultReDriveResponse(ReDriveResponse):
     def toString(self) -> str: ...
     def withDeviceReDriveResponses(self, collection: typing.Union[java.util.Collection[DeviceReDriveResponse], typing.Sequence[DeviceReDriveResponse]]) -> 'DefaultReDriveResponse': ...
     class Builder:
+        """
+        Java class 'cern.lsa.domain.cern.settings.DefaultReDriveResponse$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultReDriveResponse': ...
         def deviceReDriveResponses(self, collection: typing.Union[java.util.Collection[DeviceReDriveResponse], typing.Sequence[DeviceReDriveResponse]]) -> 'DefaultReDriveResponse.Builder': ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.cern.settings")``.
+
+    BeamProcessTypeOpticTransitionInfo: typing.Type[BeamProcessTypeOpticTransitionInfo]
+    CernContextCategory: typing.Type[CernContextCategory]
+    DefaultDeviceReDriveResponse: typing.Type[DefaultDeviceReDriveResponse]
+    DefaultParameterReDriveResponse: typing.Type[DefaultParameterReDriveResponse]
+    DefaultReDriveRequest: typing.Type[DefaultReDriveRequest]
+    DefaultReDriveResponse: typing.Type[DefaultReDriveResponse]
+    DeviceReDriveResponse: typing.Type[DeviceReDriveResponse]
+    ParameterReDriveResponse: typing.Type[ParameterReDriveResponse]
+    ReDriveRequest: typing.Type[ReDriveRequest]
+    ReDriveResponse: typing.Type[ReDriveResponse]
+    ad: cern.lsa.domain.cern.settings.ad.__module_protocol__
+    elena: cern.lsa.domain.cern.settings.elena.__module_protocol__
+    lktim: cern.lsa.domain.cern.settings.lktim.__module_protocol__
+    spi: cern.lsa.domain.cern.settings.spi.__module_protocol__
+    util: cern.lsa.domain.cern.settings.util.__module_protocol__

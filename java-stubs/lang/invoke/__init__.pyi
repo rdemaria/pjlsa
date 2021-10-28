@@ -6,13 +6,31 @@ import java.util
 import typing
 
 
+
 class CallSite:
+    """
+    Java class 'java.lang.invoke.CallSite'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     def dynamicInvoker(self) -> 'MethodHandle': ...
     def getTarget(self) -> 'MethodHandle': ...
     def setTarget(self, methodHandle: 'MethodHandle') -> None: ...
     def type(self) -> 'MethodType': ...
 
 class ConstantBootstraps:
+    """
+    Java class 'java.lang.invoke.ConstantBootstraps'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ConstantBootstraps()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def arrayVarHandle(lookup: 'MethodHandles.Lookup', string: str, class_: typing.Type['VarHandle'], class2: typing.Type[typing.Any]) -> 'VarHandle': ...
@@ -37,6 +55,20 @@ class ConstantBootstraps:
     def staticFieldVarHandle(lookup: 'MethodHandles.Lookup', string: str, class_: typing.Type['VarHandle'], class2: typing.Type[typing.Any], class3: typing.Type[typing.Any]) -> 'VarHandle': ...
 
 class LambdaConversionException(java.lang.Exception):
+    """
+    Java class 'java.lang.invoke.LambdaConversionException'
+    
+        Extends:
+            java.lang.Exception
+    
+      Constructors:
+        * LambdaConversionException(java.lang.String, java.lang.Throwable, boolean, boolean)
+        * LambdaConversionException(java.lang.Throwable)
+        * LambdaConversionException(java.lang.String, java.lang.Throwable)
+        * LambdaConversionException(java.lang.String)
+        * LambdaConversionException()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -49,6 +81,18 @@ class LambdaConversionException(java.lang.Exception):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class LambdaMetafactory:
+    """
+    Java class 'java.lang.invoke.LambdaMetafactory'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        FLAG_SERIALIZABLE (int): final static field
+        FLAG_MARKERS (int): final static field
+        FLAG_BRIDGES (int): final static field
+    
+    """
     FLAG_SERIALIZABLE: typing.ClassVar[int] = ...
     FLAG_MARKERS: typing.ClassVar[int] = ...
     FLAG_BRIDGES: typing.ClassVar[int] = ...
@@ -58,6 +102,13 @@ class LambdaMetafactory:
     def metafactory(lookup: 'MethodHandles.Lookup', string: str, methodType: 'MethodType', methodType2: 'MethodType', methodHandle: 'MethodHandle', methodType3: 'MethodType') -> CallSite: ...
 
 class MethodHandle:
+    """
+    Java class 'java.lang.invoke.MethodHandle'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @typing.overload
     def asCollector(self, int: int, class_: typing.Type[typing.Any], int2: int) -> 'MethodHandle': ...
     @typing.overload
@@ -82,6 +133,21 @@ class MethodHandle:
     def withVarargs(self, boolean: bool) -> 'MethodHandle': ...
 
 class MethodHandleInfo:
+    """
+    Java class 'java.lang.invoke.MethodHandleInfo'
+    
+      Attributes:
+        REF_getField (int): final static field
+        REF_getStatic (int): final static field
+        REF_putField (int): final static field
+        REF_putStatic (int): final static field
+        REF_invokeVirtual (int): final static field
+        REF_invokeStatic (int): final static field
+        REF_invokeSpecial (int): final static field
+        REF_newInvokeSpecial (int): final static field
+        REF_invokeInterface (int): final static field
+    
+    """
     REF_getField: typing.ClassVar[int] = ...
     REF_getStatic: typing.ClassVar[int] = ...
     REF_putField: typing.ClassVar[int] = ...
@@ -105,6 +171,13 @@ class MethodHandleInfo:
     def toString(int: int, class_: typing.Type[typing.Any], string: str, methodType: 'MethodType') -> str: ...
 
 class MethodHandleProxies:
+    """
+    Java class 'java.lang.invoke.MethodHandleProxies'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _asInterfaceInstance__T = typing.TypeVar('_asInterfaceInstance__T')  # <T>
     @staticmethod
     def asInterfaceInstance(class_: typing.Type[_asInterfaceInstance__T], methodHandle: MethodHandle) -> _asInterfaceInstance__T: ...
@@ -116,6 +189,13 @@ class MethodHandleProxies:
     def wrapperInstanceType(object: typing.Any) -> typing.Type[typing.Any]: ...
 
 class MethodHandles:
+    """
+    Java class 'java.lang.invoke.MethodHandles'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def arrayConstructor(class_: typing.Type[typing.Any]) -> MethodHandle: ...
     @staticmethod
@@ -206,6 +286,21 @@ class MethodHandles:
     @staticmethod
     def zero(class_: typing.Type[typing.Any]) -> MethodHandle: ...
     class Lookup:
+        """
+        Java class 'java.lang.invoke.MethodHandles$Lookup'
+        
+            Extends:
+                java.lang.Object
+        
+          Attributes:
+            PUBLIC (int): final static field
+            PRIVATE (int): final static field
+            PROTECTED (int): final static field
+            PACKAGE (int): final static field
+            MODULE (int): final static field
+            UNCONDITIONAL (int): final static field
+        
+        """
         PUBLIC: typing.ClassVar[int] = ...
         PRIVATE: typing.ClassVar[int] = ...
         PROTECTED: typing.ClassVar[int] = ...
@@ -240,6 +335,16 @@ class MethodHandles:
         def unreflectVarHandle(self, field: java.lang.reflect.Field) -> 'VarHandle': ...
 
 class MethodType(java.io.Serializable):
+    """
+    Java class 'java.lang.invoke.MethodType'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     @typing.overload
     def appendParameterTypes(self, classArray: typing.List[typing.Type[typing.Any]]) -> 'MethodType': ...
     @typing.overload
@@ -295,6 +400,19 @@ class MethodType(java.io.Serializable):
     def wrap(self) -> 'MethodType': ...
 
 class SerializedLambda(java.io.Serializable):
+    """
+    Java class 'java.lang.invoke.SerializedLambda'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * SerializedLambda(java.lang.Class, java.lang.String, java.lang.String, java.lang.String, int, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.Object[])
+    
+    """
     def __init__(self, class_: typing.Type[typing.Any], string: str, string2: str, string3: str, int: int, string4: str, string5: str, string6: str, string7: str, objectArray: typing.List[typing.Any]): ...
     def getCapturedArg(self, int: int) -> typing.Any: ...
     def getCapturedArgCount(self) -> int: ...
@@ -310,18 +428,46 @@ class SerializedLambda(java.io.Serializable):
     def toString(self) -> str: ...
 
 class StringConcatException(java.lang.Exception):
+    """
+    Java class 'java.lang.invoke.StringConcatException'
+    
+        Extends:
+            java.lang.Exception
+    
+      Constructors:
+        * StringConcatException(java.lang.String)
+        * StringConcatException(java.lang.String, java.lang.Throwable)
+    
+    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
     def __init__(self, string: str, throwable: java.lang.Throwable): ...
 
 class StringConcatFactory:
+    """
+    Java class 'java.lang.invoke.StringConcatFactory'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def makeConcat(lookup: MethodHandles.Lookup, string: str, methodType: MethodType) -> CallSite: ...
     @staticmethod
     def makeConcatWithConstants(lookup: MethodHandles.Lookup, string: str, methodType: MethodType, string2: str, objectArray: typing.List[typing.Any]) -> CallSite: ...
 
 class SwitchPoint:
+    """
+    Java class 'java.lang.invoke.SwitchPoint'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * SwitchPoint()
+    
+    """
     def __init__(self): ...
     def guardWithTest(self, methodHandle: MethodHandle, methodHandle2: MethodHandle) -> MethodHandle: ...
     def hasBeenInvalidated(self) -> bool: ...
@@ -329,6 +475,13 @@ class SwitchPoint:
     def invalidateAll(switchPointArray: typing.List['SwitchPoint']) -> None: ...
 
 class VarHandle:
+    """
+    Java class 'java.lang.invoke.VarHandle'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     def accessModeType(self, accessMode: 'VarHandle.AccessMode') -> MethodType: ...
     @staticmethod
     def acquireFence() -> None: ...
@@ -376,6 +529,46 @@ class VarHandle:
     def weakCompareAndSetPlain(self, objectArray: typing.List[typing.Any]) -> bool: ...
     def weakCompareAndSetRelease(self, objectArray: typing.List[typing.Any]) -> bool: ...
     class AccessMode(java.lang.Enum['VarHandle.AccessMode']):
+        """
+        Java class 'java.lang.invoke.VarHandle$AccessMode'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            GET (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            SET (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            GET_VOLATILE (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            SET_VOLATILE (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            GET_ACQUIRE (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            SET_RELEASE (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            GET_OPAQUE (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            SET_OPAQUE (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            COMPARE_AND_SET (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            COMPARE_AND_EXCHANGE (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            COMPARE_AND_EXCHANGE_ACQUIRE (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            COMPARE_AND_EXCHANGE_RELEASE (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            WEAK_COMPARE_AND_SET_PLAIN (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            WEAK_COMPARE_AND_SET (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            WEAK_COMPARE_AND_SET_ACQUIRE (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            WEAK_COMPARE_AND_SET_RELEASE (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            GET_AND_SET (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            GET_AND_SET_ACQUIRE (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            GET_AND_SET_RELEASE (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            GET_AND_ADD (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            GET_AND_ADD_ACQUIRE (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            GET_AND_ADD_RELEASE (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            GET_AND_BITWISE_OR (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            GET_AND_BITWISE_OR_RELEASE (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            GET_AND_BITWISE_OR_ACQUIRE (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            GET_AND_BITWISE_AND (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            GET_AND_BITWISE_AND_RELEASE (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            GET_AND_BITWISE_AND_ACQUIRE (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            GET_AND_BITWISE_XOR (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            GET_AND_BITWISE_XOR_RELEASE (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+            GET_AND_BITWISE_XOR_ACQUIRE (java.lang.invoke.VarHandle$AccessMode): final static enum constant
+        
+        """
         GET: typing.ClassVar['VarHandle.AccessMode'] = ...
         SET: typing.ClassVar['VarHandle.AccessMode'] = ...
         GET_VOLATILE: typing.ClassVar['VarHandle.AccessMode'] = ...
@@ -421,18 +614,50 @@ class VarHandle:
         def values() -> typing.List['VarHandle.AccessMode']: ...
 
 class WrongMethodTypeException(java.lang.RuntimeException):
+    """
+    Java class 'java.lang.invoke.WrongMethodTypeException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * WrongMethodTypeException(java.lang.String)
+        * WrongMethodTypeException()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class ConstantCallSite(CallSite):
+    """
+    Java class 'java.lang.invoke.ConstantCallSite'
+    
+        Extends:
+            java.lang.invoke.CallSite
+    
+      Constructors:
+        * ConstantCallSite(java.lang.invoke.MethodHandle)
+    
+    """
     def __init__(self, methodHandle: MethodHandle): ...
     def dynamicInvoker(self) -> MethodHandle: ...
     def getTarget(self) -> MethodHandle: ...
     def setTarget(self, methodHandle: MethodHandle) -> None: ...
 
 class MutableCallSite(CallSite):
+    """
+    Java class 'java.lang.invoke.MutableCallSite'
+    
+        Extends:
+            java.lang.invoke.CallSite
+    
+      Constructors:
+        * MutableCallSite(java.lang.invoke.MethodType)
+        * MutableCallSite(java.lang.invoke.MethodHandle)
+    
+    """
     @typing.overload
     def __init__(self, methodHandle: MethodHandle): ...
     @typing.overload
@@ -444,6 +669,17 @@ class MutableCallSite(CallSite):
     def syncAll(mutableCallSiteArray: typing.List['MutableCallSite']) -> None: ...
 
 class VolatileCallSite(CallSite):
+    """
+    Java class 'java.lang.invoke.VolatileCallSite'
+    
+        Extends:
+            java.lang.invoke.CallSite
+    
+      Constructors:
+        * VolatileCallSite(java.lang.invoke.MethodType)
+        * VolatileCallSite(java.lang.invoke.MethodHandle)
+    
+    """
     @typing.overload
     def __init__(self, methodHandle: MethodHandle): ...
     @typing.overload
@@ -451,3 +687,26 @@ class VolatileCallSite(CallSite):
     def dynamicInvoker(self) -> MethodHandle: ...
     def getTarget(self) -> MethodHandle: ...
     def setTarget(self, methodHandle: MethodHandle) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.lang.invoke")``.
+
+    CallSite: typing.Type[CallSite]
+    ConstantBootstraps: typing.Type[ConstantBootstraps]
+    ConstantCallSite: typing.Type[ConstantCallSite]
+    LambdaConversionException: typing.Type[LambdaConversionException]
+    LambdaMetafactory: typing.Type[LambdaMetafactory]
+    MethodHandle: typing.Type[MethodHandle]
+    MethodHandleInfo: typing.Type[MethodHandleInfo]
+    MethodHandleProxies: typing.Type[MethodHandleProxies]
+    MethodHandles: typing.Type[MethodHandles]
+    MethodType: typing.Type[MethodType]
+    MutableCallSite: typing.Type[MutableCallSite]
+    SerializedLambda: typing.Type[SerializedLambda]
+    StringConcatException: typing.Type[StringConcatException]
+    StringConcatFactory: typing.Type[StringConcatFactory]
+    SwitchPoint: typing.Type[SwitchPoint]
+    VarHandle: typing.Type[VarHandle]
+    VolatileCallSite: typing.Type[VolatileCallSite]
+    WrongMethodTypeException: typing.Type[WrongMethodTypeException]

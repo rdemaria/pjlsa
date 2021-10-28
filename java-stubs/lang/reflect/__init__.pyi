@@ -5,7 +5,12 @@ import java.security
 import typing
 
 
+
 class AnnotatedElement:
+    """
+    Java class 'java.lang.reflect.AnnotatedElement'
+    
+    """
     _getAnnotation__T = typing.TypeVar('_getAnnotation__T', bound=java.lang.annotation.Annotation)  # <T>
     def getAnnotation(self, class_: typing.Type[_getAnnotation__T]) -> _getAnnotation__T: ...
     def getAnnotations(self) -> typing.List[java.lang.annotation.Annotation]: ...
@@ -19,6 +24,13 @@ class AnnotatedElement:
     def isAnnotationPresent(self, class_: typing.Type[java.lang.annotation.Annotation]) -> bool: ...
 
 class Array:
+    """
+    Java class 'java.lang.reflect.Array'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def get(object: typing.Any, int: int) -> typing.Any: ...
     @staticmethod
@@ -65,21 +77,58 @@ class Array:
     def setShort(object: typing.Any, int: int, short: int) -> None: ...
 
 class GenericSignatureFormatError(java.lang.ClassFormatError):
+    """
+    Java class 'java.lang.reflect.GenericSignatureFormatError'
+    
+        Extends:
+            java.lang.ClassFormatError
+    
+      Constructors:
+        * GenericSignatureFormatError()
+        * GenericSignatureFormatError(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class InaccessibleObjectException(java.lang.RuntimeException):
+    """
+    Java class 'java.lang.reflect.InaccessibleObjectException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * InaccessibleObjectException()
+        * InaccessibleObjectException(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class InvocationHandler:
+    """
+    Java class 'java.lang.reflect.InvocationHandler'
+    
+    """
     def invoke(self, object: typing.Any, method: 'Method', objectArray: typing.List[typing.Any]) -> typing.Any: ...
 
 class InvocationTargetException(java.lang.ReflectiveOperationException):
+    """
+    Java class 'java.lang.reflect.InvocationTargetException'
+    
+        Extends:
+            java.lang.ReflectiveOperationException
+    
+      Constructors:
+        * InvocationTargetException(java.lang.Throwable, java.lang.String)
+        * InvocationTargetException(java.lang.Throwable)
+    
+    """
     @typing.overload
     def __init__(self, throwable: java.lang.Throwable): ...
     @typing.overload
@@ -88,18 +137,48 @@ class InvocationTargetException(java.lang.ReflectiveOperationException):
     def getTargetException(self) -> java.lang.Throwable: ...
 
 class MalformedParameterizedTypeException(java.lang.RuntimeException):
+    """
+    Java class 'java.lang.reflect.MalformedParameterizedTypeException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * MalformedParameterizedTypeException()
+        * MalformedParameterizedTypeException(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class MalformedParametersException(java.lang.RuntimeException):
+    """
+    Java class 'java.lang.reflect.MalformedParametersException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * MalformedParametersException()
+        * MalformedParametersException(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class Member:
+    """
+    Java class 'java.lang.reflect.Member'
+    
+      Attributes:
+        PUBLIC (int): final static field
+        DECLARED (int): final static field
+    
+    """
     PUBLIC: typing.ClassVar[int] = ...
     DECLARED: typing.ClassVar[int] = ...
     def getDeclaringClass(self) -> typing.Type[typing.Any]: ...
@@ -108,6 +187,30 @@ class Member:
     def isSynthetic(self) -> bool: ...
 
 class Modifier:
+    """
+    Java class 'java.lang.reflect.Modifier'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * Modifier()
+    
+      Attributes:
+        PUBLIC (int): final static field
+        PRIVATE (int): final static field
+        PROTECTED (int): final static field
+        STATIC (int): final static field
+        FINAL (int): final static field
+        SYNCHRONIZED (int): final static field
+        VOLATILE (int): final static field
+        TRANSIENT (int): final static field
+        NATIVE (int): final static field
+        INTERFACE (int): final static field
+        ABSTRACT (int): final static field
+        STRICT (int): final static field
+    
+    """
     PUBLIC: typing.ClassVar[int] = ...
     PRIVATE: typing.ClassVar[int] = ...
     PROTECTED: typing.ClassVar[int] = ...
@@ -164,6 +267,16 @@ class Modifier:
     def toString(int: int) -> str: ...
 
 class Proxy(java.io.Serializable):
+    """
+    Java class 'java.lang.reflect.Proxy'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     @staticmethod
     def getInvocationHandler(object: typing.Any) -> InvocationHandler: ...
     @staticmethod
@@ -174,15 +287,41 @@ class Proxy(java.io.Serializable):
     def newProxyInstance(classLoader: java.lang.ClassLoader, classArray: typing.List[typing.Type[typing.Any]], invocationHandler: InvocationHandler) -> typing.Any: ...
 
 class ReflectPermission(java.security.BasicPermission):
+    """
+    Java class 'java.lang.reflect.ReflectPermission'
+    
+        Extends:
+            java.security.BasicPermission
+    
+      Constructors:
+        * ReflectPermission(java.lang.String)
+        * ReflectPermission(java.lang.String, java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
     def __init__(self, string: str, string2: str): ...
 
 class Type:
+    """
+    Java class 'java.lang.reflect.Type'
+    
+    """
     def getTypeName(self) -> str: ...
 
 class UndeclaredThrowableException(java.lang.RuntimeException):
+    """
+    Java class 'java.lang.reflect.UndeclaredThrowableException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * UndeclaredThrowableException(java.lang.Throwable)
+        * UndeclaredThrowableException(java.lang.Throwable, java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self, throwable: java.lang.Throwable): ...
     @typing.overload
@@ -191,6 +330,16 @@ class UndeclaredThrowableException(java.lang.RuntimeException):
     def getUndeclaredThrowable(self) -> java.lang.Throwable: ...
 
 class AccessibleObject(AnnotatedElement):
+    """
+    Java class 'java.lang.reflect.AccessibleObject'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.reflect.AnnotatedElement
+    
+    """
     def canAccess(self, object: typing.Any) -> bool: ...
     _getAnnotation__T = typing.TypeVar('_getAnnotation__T', bound=java.lang.annotation.Annotation)  # <T>
     def getAnnotation(self, class_: typing.Type[_getAnnotation__T]) -> _getAnnotation__T: ...
@@ -212,16 +361,47 @@ class AccessibleObject(AnnotatedElement):
     def trySetAccessible(self) -> bool: ...
 
 class AnnotatedType(AnnotatedElement):
+    """
+    Java class 'java.lang.reflect.AnnotatedType'
+    
+        Interfaces:
+            java.lang.reflect.AnnotatedElement
+    
+    """
     def getAnnotatedOwnerType(self) -> 'AnnotatedType': ...
     def getType(self) -> Type: ...
 
 class GenericArrayType(Type):
+    """
+    Java class 'java.lang.reflect.GenericArrayType'
+    
+        Interfaces:
+            java.lang.reflect.Type
+    
+    """
     def getGenericComponentType(self) -> Type: ...
 
 class GenericDeclaration(AnnotatedElement):
+    """
+    Java class 'java.lang.reflect.GenericDeclaration'
+    
+        Interfaces:
+            java.lang.reflect.AnnotatedElement
+    
+    """
     def getTypeParameters(self) -> typing.List['TypeVariable'[typing.Any]]: ...
 
 class Parameter(AnnotatedElement):
+    """
+    Java class 'java.lang.reflect.Parameter'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.reflect.AnnotatedElement
+    
+    """
     def equals(self, object: typing.Any) -> bool: ...
     def getAnnotatedType(self) -> AnnotatedType: ...
     _getAnnotation__T = typing.TypeVar('_getAnnotation__T', bound=java.lang.annotation.Annotation)  # <T>
@@ -247,39 +427,98 @@ class Parameter(AnnotatedElement):
     def toString(self) -> str: ...
 
 class ParameterizedType(Type):
+    """
+    Java class 'java.lang.reflect.ParameterizedType'
+    
+        Interfaces:
+            java.lang.reflect.Type
+    
+    """
     def getActualTypeArguments(self) -> typing.List[Type]: ...
     def getOwnerType(self) -> Type: ...
     def getRawType(self) -> Type: ...
 
 _TypeVariable__D = typing.TypeVar('_TypeVariable__D', bound=GenericDeclaration)  # <D>
 class TypeVariable(Type, AnnotatedElement, typing.Generic[_TypeVariable__D]):
+    """
+    Java class 'java.lang.reflect.TypeVariable'
+    
+        Interfaces:
+            java.lang.reflect.Type, java.lang.reflect.AnnotatedElement
+    
+    """
     def getAnnotatedBounds(self) -> typing.List[AnnotatedType]: ...
     def getBounds(self) -> typing.List[Type]: ...
     def getGenericDeclaration(self) -> _TypeVariable__D: ...
     def getName(self) -> str: ...
 
 class WildcardType(Type):
+    """
+    Java class 'java.lang.reflect.WildcardType'
+    
+        Interfaces:
+            java.lang.reflect.Type
+    
+    """
     def getLowerBounds(self) -> typing.List[Type]: ...
     def getUpperBounds(self) -> typing.List[Type]: ...
 
 class AnnotatedArrayType(AnnotatedType):
+    """
+    Java class 'java.lang.reflect.AnnotatedArrayType'
+    
+        Interfaces:
+            java.lang.reflect.AnnotatedType
+    
+    """
     def getAnnotatedGenericComponentType(self) -> AnnotatedType: ...
     def getAnnotatedOwnerType(self) -> AnnotatedType: ...
 
 class AnnotatedParameterizedType(AnnotatedType):
+    """
+    Java class 'java.lang.reflect.AnnotatedParameterizedType'
+    
+        Interfaces:
+            java.lang.reflect.AnnotatedType
+    
+    """
     def getAnnotatedActualTypeArguments(self) -> typing.List[AnnotatedType]: ...
     def getAnnotatedOwnerType(self) -> AnnotatedType: ...
 
 class AnnotatedTypeVariable(AnnotatedType):
+    """
+    Java class 'java.lang.reflect.AnnotatedTypeVariable'
+    
+        Interfaces:
+            java.lang.reflect.AnnotatedType
+    
+    """
     def getAnnotatedBounds(self) -> typing.List[AnnotatedType]: ...
     def getAnnotatedOwnerType(self) -> AnnotatedType: ...
 
 class AnnotatedWildcardType(AnnotatedType):
+    """
+    Java class 'java.lang.reflect.AnnotatedWildcardType'
+    
+        Interfaces:
+            java.lang.reflect.AnnotatedType
+    
+    """
     def getAnnotatedLowerBounds(self) -> typing.List[AnnotatedType]: ...
     def getAnnotatedOwnerType(self) -> AnnotatedType: ...
     def getAnnotatedUpperBounds(self) -> typing.List[AnnotatedType]: ...
 
 class Executable(AccessibleObject, Member, GenericDeclaration):
+    """
+    Java class 'java.lang.reflect.Executable'
+    
+        Extends:
+            java.lang.reflect.AccessibleObject
+    
+        Interfaces:
+            java.lang.reflect.Member, java.lang.reflect.GenericDeclaration
+    
+    """
     def getAnnotatedExceptionTypes(self) -> typing.List[AnnotatedType]: ...
     def getAnnotatedParameterTypes(self) -> typing.List[AnnotatedType]: ...
     def getAnnotatedReceiverType(self) -> AnnotatedType: ...
@@ -305,6 +544,16 @@ class Executable(AccessibleObject, Member, GenericDeclaration):
     def toGenericString(self) -> str: ...
 
 class Field(AccessibleObject, Member):
+    """
+    Java class 'java.lang.reflect.Field'
+    
+        Extends:
+            java.lang.reflect.AccessibleObject
+    
+        Interfaces:
+            java.lang.reflect.Member
+    
+    """
     def equals(self, object: typing.Any) -> bool: ...
     def get(self, object: typing.Any) -> typing.Any: ...
     def getAnnotatedType(self) -> AnnotatedType: ...
@@ -348,6 +597,13 @@ class Field(AccessibleObject, Member):
 
 _Constructor__T = typing.TypeVar('_Constructor__T')  # <T>
 class Constructor(Executable, typing.Generic[_Constructor__T]):
+    """
+    Java class 'java.lang.reflect.Constructor'
+    
+        Extends:
+            java.lang.reflect.Executable
+    
+    """
     def equals(self, object: typing.Any) -> bool: ...
     def getAnnotatedReceiverType(self) -> AnnotatedType: ...
     def getAnnotatedReturnType(self) -> AnnotatedType: ...
@@ -377,6 +633,13 @@ class Constructor(Executable, typing.Generic[_Constructor__T]):
     def toString(self) -> str: ...
 
 class Method(Executable):
+    """
+    Java class 'java.lang.reflect.Method'
+    
+        Extends:
+            java.lang.reflect.Executable
+    
+    """
     def equals(self, object: typing.Any) -> bool: ...
     def getAnnotatedReturnType(self) -> AnnotatedType: ...
     _getAnnotation__T = typing.TypeVar('_getAnnotation__T', bound=java.lang.annotation.Annotation)  # <T>
@@ -408,3 +671,38 @@ class Method(Executable):
     def setAccessible(self, boolean: bool) -> None: ...
     def toGenericString(self) -> str: ...
     def toString(self) -> str: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.lang.reflect")``.
+
+    AccessibleObject: typing.Type[AccessibleObject]
+    AnnotatedArrayType: typing.Type[AnnotatedArrayType]
+    AnnotatedElement: typing.Type[AnnotatedElement]
+    AnnotatedParameterizedType: typing.Type[AnnotatedParameterizedType]
+    AnnotatedType: typing.Type[AnnotatedType]
+    AnnotatedTypeVariable: typing.Type[AnnotatedTypeVariable]
+    AnnotatedWildcardType: typing.Type[AnnotatedWildcardType]
+    Array: typing.Type[Array]
+    Constructor: typing.Type[Constructor]
+    Executable: typing.Type[Executable]
+    Field: typing.Type[Field]
+    GenericArrayType: typing.Type[GenericArrayType]
+    GenericDeclaration: typing.Type[GenericDeclaration]
+    GenericSignatureFormatError: typing.Type[GenericSignatureFormatError]
+    InaccessibleObjectException: typing.Type[InaccessibleObjectException]
+    InvocationHandler: typing.Type[InvocationHandler]
+    InvocationTargetException: typing.Type[InvocationTargetException]
+    MalformedParameterizedTypeException: typing.Type[MalformedParameterizedTypeException]
+    MalformedParametersException: typing.Type[MalformedParametersException]
+    Member: typing.Type[Member]
+    Method: typing.Type[Method]
+    Modifier: typing.Type[Modifier]
+    Parameter: typing.Type[Parameter]
+    ParameterizedType: typing.Type[ParameterizedType]
+    Proxy: typing.Type[Proxy]
+    ReflectPermission: typing.Type[ReflectPermission]
+    Type: typing.Type[Type]
+    TypeVariable: typing.Type[TypeVariable]
+    UndeclaredThrowableException: typing.Type[UndeclaredThrowableException]
+    WildcardType: typing.Type[WildcardType]

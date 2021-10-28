@@ -9,7 +9,19 @@ import javax.xml.bind.annotation.adapters
 import typing
 
 
+
 class AbstractElenaCycleSegment(cern.lsa.domain.cern.settings.elena.ElenaCycleSegment, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.settings.spi.elena.AbstractElenaCycleSegment'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.settings.elena.ElenaCycleSegment,
+            java.io.Serializable
+    
+    """
     def addTimingProcess(self, timingProcess: cern.lsa.domain.cern.timing.TimingProcess, duration: java.time.Duration, timingProcessAnchor: cern.lsa.domain.cern.timing.TimingProcessAnchor) -> None: ...
     def getAttribute(self, string: str) -> str: ...
     def getAttributeNames(self) -> java.util.Set[str]: ...
@@ -36,11 +48,39 @@ class AbstractElenaCycleSegment(cern.lsa.domain.cern.settings.elena.ElenaCycleSe
     class Attribute: ...
 
 class ElenaCycleSerializer:
+    """
+    Java class 'cern.lsa.domain.cern.settings.spi.elena.ElenaCycleSerializer'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ElenaCycleSerializer()
+    
+      Raises:
+        javax.xml.bind.JAXBException: from java
+    
+    """
     def __init__(self): ...
     def marshal(self, elenaCycleStructure: cern.lsa.domain.cern.settings.elena.ElenaCycleStructure) -> str: ...
     def unmarshal(self, string: str) -> 'ElenaCycleStructureImpl': ...
 
 class ElenaCycleStructureImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedEntity['ElenaCycleStructureImpl'], cern.lsa.domain.cern.settings.elena.ElenaCycleStructure, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.settings.spi.elena.ElenaCycleStructureImpl'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AbstractIdentifiedEntity
+    
+        Interfaces:
+            cern.lsa.domain.cern.settings.elena.ElenaCycleStructure,
+            java.io.Serializable
+    
+      Constructors:
+        * ElenaCycleStructureImpl()
+        * ElenaCycleStructureImpl(java.util.List, cern.accsoft.commons.domain.ParticleType, cern.lsa.domain.cern.settings.elena.InjectionMode)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -61,11 +101,35 @@ class ElenaCycleStructureImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedEnti
     def setVersion(self, int: int) -> None: ...
 
 class ParticleTypeToStringAdapter(javax.xml.bind.annotation.adapters.XmlAdapter[str, cern.accsoft.commons.domain.ParticleType]):
+    """
+    Java class 'cern.lsa.domain.cern.settings.spi.elena.ParticleTypeToStringAdapter'
+    
+        Extends:
+            javax.xml.bind.annotation.adapters.XmlAdapter
+    
+      Constructors:
+        * ParticleTypeToStringAdapter()
+    
+    """
     def __init__(self): ...
     def marshal(self, particleType: cern.accsoft.commons.domain.ParticleType) -> str: ...
     def unmarshal(self, string: str) -> cern.accsoft.commons.domain.ParticleType: ...
 
 class FlatSegmentImpl(AbstractElenaCycleSegment, cern.lsa.domain.cern.settings.elena.FlatSegment):
+    """
+    Java class 'cern.lsa.domain.cern.settings.spi.elena.FlatSegmentImpl'
+    
+        Extends:
+            cern.lsa.domain.cern.settings.spi.elena.AbstractElenaCycleSegment
+    
+        Interfaces:
+            cern.lsa.domain.cern.settings.elena.FlatSegment
+    
+      Constructors:
+        * FlatSegmentImpl()
+        * FlatSegmentImpl(java.lang.String, java.time.Duration)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -80,6 +144,19 @@ class FlatSegmentImpl(AbstractElenaCycleSegment, cern.lsa.domain.cern.settings.e
     def toString(self) -> str: ...
 
 class RampSegmentImpl(AbstractElenaCycleSegment, cern.lsa.domain.cern.settings.elena.RampSegment):
+    """
+    Java class 'cern.lsa.domain.cern.settings.spi.elena.RampSegmentImpl'
+    
+        Extends:
+            cern.lsa.domain.cern.settings.spi.elena.AbstractElenaCycleSegment
+    
+        Interfaces:
+            cern.lsa.domain.cern.settings.elena.RampSegment
+    
+      Constructors:
+        * RampSegmentImpl(java.time.Duration)
+    
+    """
     def __init__(self, duration: java.time.Duration): ...
     def getEndMomentum(self) -> int: ...
     def getFlatPartLength(self) -> java.time.Duration: ...
@@ -92,3 +169,14 @@ class RampSegmentImpl(AbstractElenaCycleSegment, cern.lsa.domain.cern.settings.e
     def setRoundPartLength(self, duration: java.time.Duration) -> None: ...
     def setRoundPartLengthMillis(self, long: int) -> None: ...
     def toString(self) -> str: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.cern.settings.spi.elena")``.
+
+    AbstractElenaCycleSegment: typing.Type[AbstractElenaCycleSegment]
+    ElenaCycleSerializer: typing.Type[ElenaCycleSerializer]
+    ElenaCycleStructureImpl: typing.Type[ElenaCycleStructureImpl]
+    FlatSegmentImpl: typing.Type[FlatSegmentImpl]
+    ParticleTypeToStringAdapter: typing.Type[ParticleTypeToStringAdapter]
+    RampSegmentImpl: typing.Type[RampSegmentImpl]

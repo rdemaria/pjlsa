@@ -5,13 +5,23 @@ import java.security
 import java.time
 import java.time.temporal
 import java.util
+import java.util.concurrent.atomic
+import java.util.concurrent.locks
 import java.util.function
 import java.util.stream
 import typing
 
 
+
 _BlockingQueue__E = typing.TypeVar('_BlockingQueue__E')  # <E>
 class BlockingQueue(java.util.Queue[_BlockingQueue__E], typing.Generic[_BlockingQueue__E]):
+    """
+    Java class 'java.util.concurrent.BlockingQueue'
+    
+        Interfaces:
+            java.util.Queue
+    
+    """
     def add(self, e: _BlockingQueue__E) -> bool: ...
     def contains(self, object: typing.Any) -> bool: ...
     @typing.overload
@@ -37,6 +47,17 @@ class BlockingQueue(java.util.Queue[_BlockingQueue__E], typing.Generic[_Blocking
     def take(self) -> _BlockingQueue__E: ...
 
 class BrokenBarrierException(java.lang.Exception):
+    """
+    Java class 'java.util.concurrent.BrokenBarrierException'
+    
+        Extends:
+            java.lang.Exception
+    
+      Constructors:
+        * BrokenBarrierException()
+        * BrokenBarrierException(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -44,15 +65,41 @@ class BrokenBarrierException(java.lang.Exception):
 
 _Callable__V = typing.TypeVar('_Callable__V')  # <V>
 class Callable(typing.Generic[_Callable__V]):
+    """
+    Java class 'java.util.concurrent.Callable'
+    
+    """
     def call(self) -> _Callable__V: ...
 
 class CancellationException(java.lang.IllegalStateException):
+    """
+    Java class 'java.util.concurrent.CancellationException'
+    
+        Extends:
+            java.lang.IllegalStateException
+    
+      Constructors:
+        * CancellationException()
+        * CancellationException(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class CompletionException(java.lang.RuntimeException):
+    """
+    Java class 'java.util.concurrent.CompletionException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * CompletionException(java.lang.Throwable)
+        * CompletionException(java.lang.String, java.lang.Throwable)
+    
+    """
     @typing.overload
     def __init__(self, string: str, throwable: java.lang.Throwable): ...
     @typing.overload
@@ -60,6 +107,10 @@ class CompletionException(java.lang.RuntimeException):
 
 _CompletionService__V = typing.TypeVar('_CompletionService__V')  # <V>
 class CompletionService(typing.Generic[_CompletionService__V]):
+    """
+    Java class 'java.util.concurrent.CompletionService'
+    
+    """
     @typing.overload
     def poll(self) -> 'Future'[_CompletionService__V]: ...
     @typing.overload
@@ -72,6 +123,10 @@ class CompletionService(typing.Generic[_CompletionService__V]):
 
 _CompletionStage__T = typing.TypeVar('_CompletionStage__T')  # <T>
 class CompletionStage(typing.Generic[_CompletionStage__T]):
+    """
+    Java class 'java.util.concurrent.CompletionStage'
+    
+    """
     def acceptEither(self, completionStage: 'CompletionStage'[_CompletionStage__T], consumer: typing.Union[java.util.function.Consumer[_CompletionStage__T], typing.Callable[[_CompletionStage__T], None]]) -> 'CompletionStage'[None]: ...
     @typing.overload
     def acceptEitherAsync(self, completionStage: 'CompletionStage'[_CompletionStage__T], consumer: typing.Union[java.util.function.Consumer[_CompletionStage__T], typing.Callable[[_CompletionStage__T], None]]) -> 'CompletionStage'[None]: ...
@@ -158,6 +213,20 @@ class CompletionStage(typing.Generic[_CompletionStage__T]):
 
 _ConcurrentLinkedDeque__E = typing.TypeVar('_ConcurrentLinkedDeque__E')  # <E>
 class ConcurrentLinkedDeque(java.util.AbstractCollection[_ConcurrentLinkedDeque__E], java.util.Deque[_ConcurrentLinkedDeque__E], java.io.Serializable, typing.Generic[_ConcurrentLinkedDeque__E]):
+    """
+    Java class 'java.util.concurrent.ConcurrentLinkedDeque'
+    
+        Extends:
+            java.util.AbstractCollection
+    
+        Interfaces:
+            java.util.Deque, java.io.Serializable
+    
+      Constructors:
+        * ConcurrentLinkedDeque(java.util.Collection)
+        * ConcurrentLinkedDeque()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -211,6 +280,20 @@ class ConcurrentLinkedDeque(java.util.AbstractCollection[_ConcurrentLinkedDeque_
 
 _ConcurrentLinkedQueue__E = typing.TypeVar('_ConcurrentLinkedQueue__E')  # <E>
 class ConcurrentLinkedQueue(java.util.AbstractQueue[_ConcurrentLinkedQueue__E], java.util.Queue[_ConcurrentLinkedQueue__E], java.io.Serializable, typing.Generic[_ConcurrentLinkedQueue__E]):
+    """
+    Java class 'java.util.concurrent.ConcurrentLinkedQueue'
+    
+        Extends:
+            java.util.AbstractQueue
+    
+        Interfaces:
+            java.util.Queue, java.io.Serializable
+    
+      Constructors:
+        * ConcurrentLinkedQueue()
+        * ConcurrentLinkedQueue(java.util.Collection)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -247,6 +330,13 @@ class ConcurrentLinkedQueue(java.util.AbstractQueue[_ConcurrentLinkedQueue__E], 
 _ConcurrentMap__K = typing.TypeVar('_ConcurrentMap__K')  # <K>
 _ConcurrentMap__V = typing.TypeVar('_ConcurrentMap__V')  # <V>
 class ConcurrentMap(java.util.Map[_ConcurrentMap__K, _ConcurrentMap__V], typing.Generic[_ConcurrentMap__K, _ConcurrentMap__V]):
+    """
+    Java class 'java.util.concurrent.ConcurrentMap'
+    
+        Interfaces:
+            java.util.Map
+    
+    """
     def compute(self, k: _ConcurrentMap__K, biFunction: typing.Union[java.util.function.BiFunction[_ConcurrentMap__K, _ConcurrentMap__V, _ConcurrentMap__V], typing.Callable[[_ConcurrentMap__K, _ConcurrentMap__V], _ConcurrentMap__V]]) -> _ConcurrentMap__V: ...
     def computeIfAbsent(self, k: _ConcurrentMap__K, function: typing.Union[java.util.function.Function[_ConcurrentMap__K, _ConcurrentMap__V], typing.Callable[[_ConcurrentMap__K], _ConcurrentMap__V]]) -> _ConcurrentMap__V: ...
     def computeIfPresent(self, k: _ConcurrentMap__K, biFunction: typing.Union[java.util.function.BiFunction[_ConcurrentMap__K, _ConcurrentMap__V, _ConcurrentMap__V], typing.Callable[[_ConcurrentMap__K, _ConcurrentMap__V], _ConcurrentMap__V]]) -> _ConcurrentMap__V: ...
@@ -268,6 +358,23 @@ class ConcurrentMap(java.util.Map[_ConcurrentMap__K, _ConcurrentMap__V], typing.
 
 _ConcurrentSkipListSet__E = typing.TypeVar('_ConcurrentSkipListSet__E')  # <E>
 class ConcurrentSkipListSet(java.util.AbstractSet[_ConcurrentSkipListSet__E], java.util.NavigableSet[_ConcurrentSkipListSet__E], java.lang.Cloneable, java.io.Serializable, typing.Generic[_ConcurrentSkipListSet__E]):
+    """
+    Java class 'java.util.concurrent.ConcurrentSkipListSet'
+    
+        Extends:
+            java.util.AbstractSet
+    
+        Interfaces:
+            java.util.NavigableSet, java.lang.Cloneable,
+            java.io.Serializable
+    
+      Constructors:
+        * ConcurrentSkipListSet(java.util.SortedSet)
+        * ConcurrentSkipListSet(java.util.Collection)
+        * ConcurrentSkipListSet(java.util.Comparator)
+        * ConcurrentSkipListSet()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -313,6 +420,22 @@ class ConcurrentSkipListSet(java.util.AbstractSet[_ConcurrentSkipListSet__E], ja
 
 _CopyOnWriteArrayList__E = typing.TypeVar('_CopyOnWriteArrayList__E')  # <E>
 class CopyOnWriteArrayList(java.util.List[_CopyOnWriteArrayList__E], java.util.RandomAccess, java.lang.Cloneable, java.io.Serializable, typing.Generic[_CopyOnWriteArrayList__E]):
+    """
+    Java class 'java.util.concurrent.CopyOnWriteArrayList'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.List, java.util.RandomAccess, java.lang.Cloneable,
+            java.io.Serializable
+    
+      Constructors:
+        * CopyOnWriteArrayList(java.lang.Object[])
+        * CopyOnWriteArrayList()
+        * CopyOnWriteArrayList(java.util.Collection)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -372,6 +495,20 @@ class CopyOnWriteArrayList(java.util.List[_CopyOnWriteArrayList__E], java.util.R
 
 _CopyOnWriteArraySet__E = typing.TypeVar('_CopyOnWriteArraySet__E')  # <E>
 class CopyOnWriteArraySet(java.util.AbstractSet[_CopyOnWriteArraySet__E], java.io.Serializable, typing.Generic[_CopyOnWriteArraySet__E]):
+    """
+    Java class 'java.util.concurrent.CopyOnWriteArraySet'
+    
+        Extends:
+            java.util.AbstractSet
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * CopyOnWriteArraySet()
+        * CopyOnWriteArraySet(java.util.Collection)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -401,12 +538,33 @@ class CopyOnWriteArraySet(java.util.AbstractSet[_CopyOnWriteArraySet__E], java.i
     def toArray(self, tArray: typing.List[_toArray_2__T]) -> typing.List[_toArray_2__T]: ...
 
 class CountDownLatch:
+    """
+    Java class 'java.util.concurrent.CountDownLatch'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * CountDownLatch(int)
+    
+    """
     def __init__(self, int: int): ...
     def countDown(self) -> None: ...
     def getCount(self) -> int: ...
     def toString(self) -> str: ...
 
 class CyclicBarrier:
+    """
+    Java class 'java.util.concurrent.CyclicBarrier'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * CyclicBarrier(int, java.lang.Runnable)
+        * CyclicBarrier(int)
+    
+    """
     @typing.overload
     def __init__(self, int: int): ...
     @typing.overload
@@ -417,10 +575,27 @@ class CyclicBarrier:
     def reset(self) -> None: ...
 
 class Delayed(java.lang.Comparable['Delayed']):
+    """
+    Java class 'java.util.concurrent.Delayed'
+    
+        Interfaces:
+            java.lang.Comparable
+    
+    """
     def getDelay(self, timeUnit: 'TimeUnit') -> int: ...
 
 _Exchanger__V = typing.TypeVar('_Exchanger__V')  # <V>
 class Exchanger(typing.Generic[_Exchanger__V]):
+    """
+    Java class 'java.util.concurrent.Exchanger'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * Exchanger()
+    
+    """
     def __init__(self): ...
     @typing.overload
     def exchange(self, v: _Exchanger__V) -> _Exchanger__V: ...
@@ -428,15 +603,37 @@ class Exchanger(typing.Generic[_Exchanger__V]):
     def exchange(self, v: _Exchanger__V, long: int, timeUnit: 'TimeUnit') -> _Exchanger__V: ...
 
 class ExecutionException(java.lang.Exception):
+    """
+    Java class 'java.util.concurrent.ExecutionException'
+    
+        Extends:
+            java.lang.Exception
+    
+      Constructors:
+        * ExecutionException(java.lang.Throwable)
+        * ExecutionException(java.lang.String, java.lang.Throwable)
+    
+    """
     @typing.overload
     def __init__(self, string: str, throwable: java.lang.Throwable): ...
     @typing.overload
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class Executor:
+    """
+    Java class 'java.util.concurrent.Executor'
+    
+    """
     def execute(self, runnable: typing.Union[java.lang.Runnable, typing.Callable]) -> None: ...
 
 class Executors:
+    """
+    Java class 'java.util.concurrent.Executors'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _callable_1__T = typing.TypeVar('_callable_1__T')  # <T>
     @typing.overload
     @staticmethod
@@ -502,12 +699,23 @@ class Executors:
     def unconfigurableScheduledExecutorService(scheduledExecutorService: 'ScheduledExecutorService') -> 'ScheduledExecutorService': ...
 
 class ForkJoinWorkerThread(java.lang.Thread):
+    """
+    Java class 'java.util.concurrent.ForkJoinWorkerThread'
+    
+        Extends:
+            java.lang.Thread
+    
+    """
     def getPool(self) -> 'ForkJoinPool': ...
     def getPoolIndex(self) -> int: ...
     def run(self) -> None: ...
 
 _Future__V = typing.TypeVar('_Future__V')  # <V>
 class Future(typing.Generic[_Future__V]):
+    """
+    Java class 'java.util.concurrent.Future'
+    
+    """
     def cancel(self, boolean: bool) -> bool: ...
     @typing.overload
     def get(self) -> _Future__V: ...
@@ -517,6 +725,19 @@ class Future(typing.Generic[_Future__V]):
     def isDone(self) -> bool: ...
 
 class Phaser:
+    """
+    Java class 'java.util.concurrent.Phaser'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * Phaser(java.util.concurrent.Phaser)
+        * Phaser()
+        * Phaser(java.util.concurrent.Phaser, int)
+        * Phaser(int)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -546,6 +767,19 @@ class Phaser:
     def toString(self) -> str: ...
 
 class RejectedExecutionException(java.lang.RuntimeException):
+    """
+    Java class 'java.util.concurrent.RejectedExecutionException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * RejectedExecutionException(java.lang.Throwable)
+        * RejectedExecutionException(java.lang.String, java.lang.Throwable)
+        * RejectedExecutionException(java.lang.String)
+        * RejectedExecutionException()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -556,9 +790,27 @@ class RejectedExecutionException(java.lang.RuntimeException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class RejectedExecutionHandler:
+    """
+    Java class 'java.util.concurrent.RejectedExecutionHandler'
+    
+    """
     def rejectedExecution(self, runnable: typing.Union[java.lang.Runnable, typing.Callable], threadPoolExecutor: 'ThreadPoolExecutor') -> None: ...
 
 class Semaphore(java.io.Serializable):
+    """
+    Java class 'java.util.concurrent.Semaphore'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * Semaphore(int)
+        * Semaphore(int, boolean)
+    
+    """
     @typing.overload
     def __init__(self, int: int): ...
     @typing.overload
@@ -591,9 +843,20 @@ class Semaphore(java.io.Serializable):
     def tryAcquire(self, long: int, timeUnit: 'TimeUnit') -> bool: ...
 
 class ThreadFactory:
+    """
+    Java class 'java.util.concurrent.ThreadFactory'
+    
+    """
     def newThread(self, runnable: typing.Union[java.lang.Runnable, typing.Callable]) -> java.lang.Thread: ...
 
 class ThreadLocalRandom(java.util.Random):
+    """
+    Java class 'java.util.concurrent.ThreadLocalRandom'
+    
+        Extends:
+            java.util.Random
+    
+    """
     @staticmethod
     def current() -> 'ThreadLocalRandom': ...
     @typing.overload
@@ -644,6 +907,22 @@ class ThreadLocalRandom(java.util.Random):
     def setSeed(self, long: int) -> None: ...
 
 class TimeUnit(java.lang.Enum['TimeUnit']):
+    """
+    Java class 'java.util.concurrent.TimeUnit'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        NANOSECONDS (java.util.concurrent.TimeUnit): final static enum constant
+        MICROSECONDS (java.util.concurrent.TimeUnit): final static enum constant
+        MILLISECONDS (java.util.concurrent.TimeUnit): final static enum constant
+        SECONDS (java.util.concurrent.TimeUnit): final static enum constant
+        MINUTES (java.util.concurrent.TimeUnit): final static enum constant
+        HOURS (java.util.concurrent.TimeUnit): final static enum constant
+        DAYS (java.util.concurrent.TimeUnit): final static enum constant
+    
+    """
     NANOSECONDS: typing.ClassVar['TimeUnit'] = ...
     MICROSECONDS: typing.ClassVar['TimeUnit'] = ...
     MILLISECONDS: typing.ClassVar['TimeUnit'] = ...
@@ -679,6 +958,17 @@ class TimeUnit(java.lang.Enum['TimeUnit']):
     def values() -> typing.List['TimeUnit']: ...
 
 class TimeoutException(java.lang.Exception):
+    """
+    Java class 'java.util.concurrent.TimeoutException'
+    
+        Extends:
+            java.lang.Exception
+    
+      Constructors:
+        * TimeoutException()
+        * TimeoutException(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -686,6 +976,21 @@ class TimeoutException(java.lang.Exception):
 
 _ArrayBlockingQueue__E = typing.TypeVar('_ArrayBlockingQueue__E')  # <E>
 class ArrayBlockingQueue(java.util.AbstractQueue[_ArrayBlockingQueue__E], BlockingQueue[_ArrayBlockingQueue__E], java.io.Serializable, typing.Generic[_ArrayBlockingQueue__E]):
+    """
+    Java class 'java.util.concurrent.ArrayBlockingQueue'
+    
+        Extends:
+            java.util.AbstractQueue
+    
+        Interfaces:
+            java.util.concurrent.BlockingQueue, java.io.Serializable
+    
+      Constructors:
+        * ArrayBlockingQueue(int, boolean, java.util.Collection)
+        * ArrayBlockingQueue(int)
+        * ArrayBlockingQueue(int, boolean)
+    
+    """
     @typing.overload
     def __init__(self, int: int): ...
     @typing.overload
@@ -734,6 +1039,13 @@ class ArrayBlockingQueue(java.util.AbstractQueue[_ArrayBlockingQueue__E], Blocki
 
 _BlockingDeque__E = typing.TypeVar('_BlockingDeque__E')  # <E>
 class BlockingDeque(BlockingQueue[_BlockingDeque__E], java.util.Deque[_BlockingDeque__E], typing.Generic[_BlockingDeque__E]):
+    """
+    Java class 'java.util.concurrent.BlockingDeque'
+    
+        Interfaces:
+            java.util.concurrent.BlockingQueue, java.util.Deque
+    
+    """
     def add(self, e: _BlockingDeque__E) -> bool: ...
     def addFirst(self, e: _BlockingDeque__E) -> None: ...
     def addLast(self, e: _BlockingDeque__E) -> None: ...
@@ -784,6 +1096,20 @@ class BlockingDeque(BlockingQueue[_BlockingDeque__E], java.util.Deque[_BlockingD
 
 _CompletableFuture__T = typing.TypeVar('_CompletableFuture__T')  # <T>
 class CompletableFuture(Future[_CompletableFuture__T], CompletionStage[_CompletableFuture__T], typing.Generic[_CompletableFuture__T]):
+    """
+    Java class 'java.util.concurrent.CompletableFuture'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.concurrent.Future,
+            java.util.concurrent.CompletionStage
+    
+      Constructors:
+        * CompletableFuture()
+    
+    """
     def __init__(self): ...
     def acceptEither(self, completionStage: CompletionStage[_CompletableFuture__T], consumer: typing.Union[java.util.function.Consumer[_CompletableFuture__T], typing.Callable[[_CompletableFuture__T], None]]) -> 'CompletableFuture'[None]: ...
     @typing.overload
@@ -936,6 +1262,13 @@ class CompletableFuture(Future[_CompletableFuture__T], CompletionStage[_Completa
 _ConcurrentNavigableMap__K = typing.TypeVar('_ConcurrentNavigableMap__K')  # <K>
 _ConcurrentNavigableMap__V = typing.TypeVar('_ConcurrentNavigableMap__V')  # <V>
 class ConcurrentNavigableMap(ConcurrentMap[_ConcurrentNavigableMap__K, _ConcurrentNavigableMap__V], java.util.NavigableMap[_ConcurrentNavigableMap__K, _ConcurrentNavigableMap__V], typing.Generic[_ConcurrentNavigableMap__K, _ConcurrentNavigableMap__V]):
+    """
+    Java class 'java.util.concurrent.ConcurrentNavigableMap'
+    
+        Interfaces:
+            java.util.concurrent.ConcurrentMap, java.util.NavigableMap
+    
+    """
     def descendingKeySet(self) -> java.util.NavigableSet[_ConcurrentNavigableMap__K]: ...
     def descendingMap(self) -> 'ConcurrentNavigableMap'[_ConcurrentNavigableMap__K, _ConcurrentNavigableMap__V]: ...
     def equals(self, object: typing.Any) -> bool: ...
@@ -957,6 +1290,20 @@ class ConcurrentNavigableMap(ConcurrentMap[_ConcurrentNavigableMap__K, _Concurre
 
 _DelayQueue__E = typing.TypeVar('_DelayQueue__E', bound=Delayed)  # <E>
 class DelayQueue(java.util.AbstractQueue[_DelayQueue__E], BlockingQueue[_DelayQueue__E], typing.Generic[_DelayQueue__E]):
+    """
+    Java class 'java.util.concurrent.DelayQueue'
+    
+        Extends:
+            java.util.AbstractQueue
+    
+        Interfaces:
+            java.util.concurrent.BlockingQueue
+    
+      Constructors:
+        * DelayQueue()
+        * DelayQueue(java.util.Collection)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -996,6 +1343,20 @@ class DelayQueue(java.util.AbstractQueue[_DelayQueue__E], BlockingQueue[_DelayQu
 
 _ExecutorCompletionService__V = typing.TypeVar('_ExecutorCompletionService__V')  # <V>
 class ExecutorCompletionService(CompletionService[_ExecutorCompletionService__V], typing.Generic[_ExecutorCompletionService__V]):
+    """
+    Java class 'java.util.concurrent.ExecutorCompletionService'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.concurrent.CompletionService
+    
+      Constructors:
+        * ExecutorCompletionService(java.util.concurrent.Executor)
+        * ExecutorCompletionService(java.util.concurrent.Executor, java.util.concurrent.BlockingQueue)
+    
+    """
     @typing.overload
     def __init__(self, executor: Executor): ...
     @typing.overload
@@ -1011,6 +1372,13 @@ class ExecutorCompletionService(CompletionService[_ExecutorCompletionService__V]
     def take(self) -> Future[_ExecutorCompletionService__V]: ...
 
 class ExecutorService(Executor):
+    """
+    Java class 'java.util.concurrent.ExecutorService'
+    
+        Interfaces:
+            java.util.concurrent.Executor
+    
+    """
     def awaitTermination(self, long: int, timeUnit: TimeUnit) -> bool: ...
     _invokeAll_0__T = typing.TypeVar('_invokeAll_0__T')  # <T>
     _invokeAll_1__T = typing.TypeVar('_invokeAll_1__T')  # <T>
@@ -1039,6 +1407,19 @@ class ExecutorService(Executor):
 
 _ForkJoinTask__V = typing.TypeVar('_ForkJoinTask__V')  # <V>
 class ForkJoinTask(Future[_ForkJoinTask__V], java.io.Serializable, typing.Generic[_ForkJoinTask__V]):
+    """
+    Java class 'java.util.concurrent.ForkJoinTask'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.concurrent.Future, java.io.Serializable
+    
+      Constructors:
+        * ForkJoinTask()
+    
+    """
     def __init__(self): ...
     _adapt_1__T = typing.TypeVar('_adapt_1__T')  # <T>
     _adapt_2__T = typing.TypeVar('_adapt_2__T')  # <T>
@@ -1098,6 +1479,21 @@ class ForkJoinTask(Future[_ForkJoinTask__V], java.io.Serializable, typing.Generi
 
 _LinkedBlockingQueue__E = typing.TypeVar('_LinkedBlockingQueue__E')  # <E>
 class LinkedBlockingQueue(java.util.AbstractQueue[_LinkedBlockingQueue__E], BlockingQueue[_LinkedBlockingQueue__E], java.io.Serializable, typing.Generic[_LinkedBlockingQueue__E]):
+    """
+    Java class 'java.util.concurrent.LinkedBlockingQueue'
+    
+        Extends:
+            java.util.AbstractQueue
+    
+        Interfaces:
+            java.util.concurrent.BlockingQueue, java.io.Serializable
+    
+      Constructors:
+        * LinkedBlockingQueue()
+        * LinkedBlockingQueue(int)
+        * LinkedBlockingQueue(java.util.Collection)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1145,6 +1541,22 @@ class LinkedBlockingQueue(java.util.AbstractQueue[_LinkedBlockingQueue__E], Bloc
 
 _PriorityBlockingQueue__E = typing.TypeVar('_PriorityBlockingQueue__E')  # <E>
 class PriorityBlockingQueue(java.util.AbstractQueue[_PriorityBlockingQueue__E], BlockingQueue[_PriorityBlockingQueue__E], java.io.Serializable, typing.Generic[_PriorityBlockingQueue__E]):
+    """
+    Java class 'java.util.concurrent.PriorityBlockingQueue'
+    
+        Extends:
+            java.util.AbstractQueue
+    
+        Interfaces:
+            java.util.concurrent.BlockingQueue, java.io.Serializable
+    
+      Constructors:
+        * PriorityBlockingQueue(java.util.Collection)
+        * PriorityBlockingQueue(int, java.util.Comparator)
+        * PriorityBlockingQueue(int)
+        * PriorityBlockingQueue()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1196,6 +1608,13 @@ class PriorityBlockingQueue(java.util.AbstractQueue[_PriorityBlockingQueue__E], 
 
 _RunnableFuture__V = typing.TypeVar('_RunnableFuture__V')  # <V>
 class RunnableFuture(java.lang.Runnable, Future[_RunnableFuture__V], typing.Generic[_RunnableFuture__V]):
+    """
+    Java class 'java.util.concurrent.RunnableFuture'
+    
+        Interfaces:
+            java.lang.Runnable, java.util.concurrent.Future
+    
+    """
     def run(self) -> None: ...
 
 _ScheduledFuture__V = typing.TypeVar('_ScheduledFuture__V')  # <V>
@@ -1203,6 +1622,20 @@ class ScheduledFuture(Delayed, Future[_ScheduledFuture__V], typing.Generic[_Sche
 
 _SynchronousQueue__E = typing.TypeVar('_SynchronousQueue__E')  # <E>
 class SynchronousQueue(java.util.AbstractQueue[_SynchronousQueue__E], BlockingQueue[_SynchronousQueue__E], java.io.Serializable, typing.Generic[_SynchronousQueue__E]):
+    """
+    Java class 'java.util.concurrent.SynchronousQueue'
+    
+        Extends:
+            java.util.AbstractQueue
+    
+        Interfaces:
+            java.util.concurrent.BlockingQueue, java.io.Serializable
+    
+      Constructors:
+        * SynchronousQueue()
+        * SynchronousQueue(boolean)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1248,6 +1681,13 @@ class SynchronousQueue(java.util.AbstractQueue[_SynchronousQueue__E], BlockingQu
 
 _TransferQueue__E = typing.TypeVar('_TransferQueue__E')  # <E>
 class TransferQueue(BlockingQueue[_TransferQueue__E], typing.Generic[_TransferQueue__E]):
+    """
+    Java class 'java.util.concurrent.TransferQueue'
+    
+        Interfaces:
+            java.util.concurrent.BlockingQueue
+    
+    """
     def equals(self, object: typing.Any) -> bool: ...
     def getWaitingConsumerCount(self) -> int: ...
     def hasWaitingConsumer(self) -> bool: ...
@@ -1259,6 +1699,19 @@ class TransferQueue(BlockingQueue[_TransferQueue__E], typing.Generic[_TransferQu
     def tryTransfer(self, e: _TransferQueue__E, long: int, timeUnit: TimeUnit) -> bool: ...
 
 class AbstractExecutorService(ExecutorService):
+    """
+    Java class 'java.util.concurrent.AbstractExecutorService'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.concurrent.ExecutorService
+    
+      Constructors:
+        * AbstractExecutorService()
+    
+    """
     def __init__(self): ...
     _invokeAll_0__T = typing.TypeVar('_invokeAll_0__T')  # <T>
     _invokeAll_1__T = typing.TypeVar('_invokeAll_1__T')  # <T>
@@ -1284,6 +1737,23 @@ class AbstractExecutorService(ExecutorService):
 _ConcurrentSkipListMap__K = typing.TypeVar('_ConcurrentSkipListMap__K')  # <K>
 _ConcurrentSkipListMap__V = typing.TypeVar('_ConcurrentSkipListMap__V')  # <V>
 class ConcurrentSkipListMap(java.util.AbstractMap[_ConcurrentSkipListMap__K, _ConcurrentSkipListMap__V], ConcurrentNavigableMap[_ConcurrentSkipListMap__K, _ConcurrentSkipListMap__V], java.lang.Cloneable, java.io.Serializable, typing.Generic[_ConcurrentSkipListMap__K, _ConcurrentSkipListMap__V]):
+    """
+    Java class 'java.util.concurrent.ConcurrentSkipListMap'
+    
+        Extends:
+            java.util.AbstractMap
+    
+        Interfaces:
+            java.util.concurrent.ConcurrentNavigableMap,
+            java.lang.Cloneable, java.io.Serializable
+    
+      Constructors:
+        * ConcurrentSkipListMap(java.util.Comparator)
+        * ConcurrentSkipListMap()
+        * ConcurrentSkipListMap(java.util.SortedMap)
+        * ConcurrentSkipListMap(java.util.Map)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1353,6 +1823,13 @@ class ConcurrentSkipListMap(java.util.AbstractMap[_ConcurrentSkipListMap__K, _Co
 
 _CountedCompleter__T = typing.TypeVar('_CountedCompleter__T')  # <T>
 class CountedCompleter(ForkJoinTask[_CountedCompleter__T], typing.Generic[_CountedCompleter__T]):
+    """
+    Java class 'java.util.concurrent.CountedCompleter'
+    
+        Extends:
+            java.util.concurrent.ForkJoinTask
+    
+    """
     def addToPendingCount(self, int: int) -> None: ...
     def compareAndSetPendingCount(self, int: int, int2: int) -> bool: ...
     def complete(self, t: _CountedCompleter__T) -> None: ...
@@ -1374,6 +1851,20 @@ class CountedCompleter(ForkJoinTask[_CountedCompleter__T], typing.Generic[_Count
 
 _FutureTask__V = typing.TypeVar('_FutureTask__V')  # <V>
 class FutureTask(RunnableFuture[_FutureTask__V], typing.Generic[_FutureTask__V]):
+    """
+    Java class 'java.util.concurrent.FutureTask'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.concurrent.RunnableFuture
+    
+      Constructors:
+        * FutureTask(java.lang.Runnable, java.lang.Object)
+        * FutureTask(java.util.concurrent.Callable)
+    
+    """
     @typing.overload
     def __init__(self, runnable: typing.Union[java.lang.Runnable, typing.Callable], v: _FutureTask__V): ...
     @typing.overload
@@ -1390,6 +1881,21 @@ class FutureTask(RunnableFuture[_FutureTask__V], typing.Generic[_FutureTask__V])
 
 _LinkedBlockingDeque__E = typing.TypeVar('_LinkedBlockingDeque__E')  # <E>
 class LinkedBlockingDeque(java.util.AbstractQueue[_LinkedBlockingDeque__E], BlockingDeque[_LinkedBlockingDeque__E], java.io.Serializable, typing.Generic[_LinkedBlockingDeque__E]):
+    """
+    Java class 'java.util.concurrent.LinkedBlockingDeque'
+    
+        Extends:
+            java.util.AbstractQueue
+    
+        Interfaces:
+            java.util.concurrent.BlockingDeque, java.io.Serializable
+    
+      Constructors:
+        * LinkedBlockingDeque(java.util.Collection)
+        * LinkedBlockingDeque(int)
+        * LinkedBlockingDeque()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1473,6 +1979,20 @@ class LinkedBlockingDeque(java.util.AbstractQueue[_LinkedBlockingDeque__E], Bloc
 
 _LinkedTransferQueue__E = typing.TypeVar('_LinkedTransferQueue__E')  # <E>
 class LinkedTransferQueue(java.util.AbstractQueue[_LinkedTransferQueue__E], TransferQueue[_LinkedTransferQueue__E], java.io.Serializable, typing.Generic[_LinkedTransferQueue__E]):
+    """
+    Java class 'java.util.concurrent.LinkedTransferQueue'
+    
+        Extends:
+            java.util.AbstractQueue
+    
+        Interfaces:
+            java.util.concurrent.TransferQueue, java.io.Serializable
+    
+      Constructors:
+        * LinkedTransferQueue(java.util.Collection)
+        * LinkedTransferQueue()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1526,19 +2046,54 @@ class LinkedTransferQueue(java.util.AbstractQueue[_LinkedTransferQueue__E], Tran
     def tryTransfer(self, e: _LinkedTransferQueue__E, long: int, timeUnit: TimeUnit) -> bool: ...
 
 class RecursiveAction(ForkJoinTask[None]):
+    """
+    Java class 'java.util.concurrent.RecursiveAction'
+    
+        Extends:
+            java.util.concurrent.ForkJoinTask
+    
+      Constructors:
+        * RecursiveAction()
+    
+    """
     def __init__(self): ...
     def getRawResult(self) -> None: ...
 
 _RecursiveTask__V = typing.TypeVar('_RecursiveTask__V')  # <V>
 class RecursiveTask(ForkJoinTask[_RecursiveTask__V], typing.Generic[_RecursiveTask__V]):
+    """
+    Java class 'java.util.concurrent.RecursiveTask'
+    
+        Extends:
+            java.util.concurrent.ForkJoinTask
+    
+      Constructors:
+        * RecursiveTask()
+    
+    """
     def __init__(self): ...
     def getRawResult(self) -> _RecursiveTask__V: ...
 
 _RunnableScheduledFuture__V = typing.TypeVar('_RunnableScheduledFuture__V')  # <V>
 class RunnableScheduledFuture(RunnableFuture[_RunnableScheduledFuture__V], ScheduledFuture[_RunnableScheduledFuture__V], typing.Generic[_RunnableScheduledFuture__V]):
+    """
+    Java class 'java.util.concurrent.RunnableScheduledFuture'
+    
+        Interfaces:
+            java.util.concurrent.RunnableFuture,
+            java.util.concurrent.ScheduledFuture
+    
+    """
     def isPeriodic(self) -> bool: ...
 
 class ScheduledExecutorService(ExecutorService):
+    """
+    Java class 'java.util.concurrent.ScheduledExecutorService'
+    
+        Interfaces:
+            java.util.concurrent.ExecutorService
+    
+    """
     _schedule_1__V = typing.TypeVar('_schedule_1__V')  # <V>
     @typing.overload
     def schedule(self, runnable: typing.Union[java.lang.Runnable, typing.Callable], long: int, timeUnit: TimeUnit) -> ScheduledFuture[typing.Any]: ...
@@ -1548,6 +2103,22 @@ class ScheduledExecutorService(ExecutorService):
     def scheduleWithFixedDelay(self, runnable: typing.Union[java.lang.Runnable, typing.Callable], long: int, long2: int, timeUnit: TimeUnit) -> ScheduledFuture[typing.Any]: ...
 
 class ForkJoinPool(AbstractExecutorService):
+    """
+    Java class 'java.util.concurrent.ForkJoinPool'
+    
+        Extends:
+            java.util.concurrent.AbstractExecutorService
+    
+      Constructors:
+        * ForkJoinPool(int, java.util.concurrent.ForkJoinPool.ForkJoinWorkerThreadFactory, java.lang.Thread.UncaughtExceptionHandler, boolean, int, int, int, java.util.function.Predicate, long, java.util.concurrent.TimeUnit)
+        * ForkJoinPool()
+        * ForkJoinPool(int, java.util.concurrent.ForkJoinPool.ForkJoinWorkerThreadFactory, java.lang.Thread.UncaughtExceptionHandler, boolean)
+        * ForkJoinPool(int)
+    
+      Attributes:
+        defaultForkJoinWorkerThreadFactory (java.util.concurrent.ForkJoinPool$ForkJoinWorkerThreadFactory): final static field
+    
+    """
     defaultForkJoinWorkerThreadFactory: typing.ClassVar['ForkJoinPool.ForkJoinWorkerThreadFactory'] = ...
     @typing.overload
     def __init__(self): ...
@@ -1607,12 +2178,33 @@ class ForkJoinPool(AbstractExecutorService):
     def submit(self, forkJoinTask: ForkJoinTask[_submit_3__T]) -> ForkJoinTask[_submit_3__T]: ...
     def toString(self) -> str: ...
     class ForkJoinWorkerThreadFactory:
+        """
+        Java class 'java.util.concurrent.ForkJoinPool$ForkJoinWorkerThreadFactory'
+        
+        """
         def newThread(self, forkJoinPool: 'ForkJoinPool') -> ForkJoinWorkerThread: ...
     class ManagedBlocker:
+        """
+        Java class 'java.util.concurrent.ForkJoinPool$ManagedBlocker'
+        
+        """
         def block(self) -> bool: ...
         def isReleasable(self) -> bool: ...
 
 class ThreadPoolExecutor(AbstractExecutorService):
+    """
+    Java class 'java.util.concurrent.ThreadPoolExecutor'
+    
+        Extends:
+            java.util.concurrent.AbstractExecutorService
+    
+      Constructors:
+        * ThreadPoolExecutor(int, int, long, java.util.concurrent.TimeUnit, java.util.concurrent.BlockingQueue, java.util.concurrent.ThreadFactory, java.util.concurrent.RejectedExecutionHandler)
+        * ThreadPoolExecutor(int, int, long, java.util.concurrent.TimeUnit, java.util.concurrent.BlockingQueue, java.util.concurrent.RejectedExecutionHandler)
+        * ThreadPoolExecutor(int, int, long, java.util.concurrent.TimeUnit, java.util.concurrent.BlockingQueue, java.util.concurrent.ThreadFactory)
+        * ThreadPoolExecutor(int, int, long, java.util.concurrent.TimeUnit, java.util.concurrent.BlockingQueue)
+    
+    """
     @typing.overload
     def __init__(self, int: int, int2: int, long: int, timeUnit: TimeUnit, blockingQueue: BlockingQueue[typing.Union[java.lang.Runnable, typing.Callable]]): ...
     @typing.overload
@@ -1652,19 +2244,87 @@ class ThreadPoolExecutor(AbstractExecutorService):
     def shutdownNow(self) -> java.util.List[java.lang.Runnable]: ...
     def toString(self) -> str: ...
     class AbortPolicy(RejectedExecutionHandler):
+        """
+        Java class 'java.util.concurrent.ThreadPoolExecutor$AbortPolicy'
+        
+            Extends:
+                java.lang.Object
+        
+            Interfaces:
+                java.util.concurrent.RejectedExecutionHandler
+        
+          Constructors:
+            * AbortPolicy()
+        
+        """
         def __init__(self): ...
         def rejectedExecution(self, runnable: typing.Union[java.lang.Runnable, typing.Callable], threadPoolExecutor: 'ThreadPoolExecutor') -> None: ...
     class CallerRunsPolicy(RejectedExecutionHandler):
+        """
+        Java class 'java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy'
+        
+            Extends:
+                java.lang.Object
+        
+            Interfaces:
+                java.util.concurrent.RejectedExecutionHandler
+        
+          Constructors:
+            * CallerRunsPolicy()
+        
+        """
         def __init__(self): ...
         def rejectedExecution(self, runnable: typing.Union[java.lang.Runnable, typing.Callable], threadPoolExecutor: 'ThreadPoolExecutor') -> None: ...
     class DiscardOldestPolicy(RejectedExecutionHandler):
+        """
+        Java class 'java.util.concurrent.ThreadPoolExecutor$DiscardOldestPolicy'
+        
+            Extends:
+                java.lang.Object
+        
+            Interfaces:
+                java.util.concurrent.RejectedExecutionHandler
+        
+          Constructors:
+            * DiscardOldestPolicy()
+        
+        """
         def __init__(self): ...
         def rejectedExecution(self, runnable: typing.Union[java.lang.Runnable, typing.Callable], threadPoolExecutor: 'ThreadPoolExecutor') -> None: ...
     class DiscardPolicy(RejectedExecutionHandler):
+        """
+        Java class 'java.util.concurrent.ThreadPoolExecutor$DiscardPolicy'
+        
+            Extends:
+                java.lang.Object
+        
+            Interfaces:
+                java.util.concurrent.RejectedExecutionHandler
+        
+          Constructors:
+            * DiscardPolicy()
+        
+        """
         def __init__(self): ...
         def rejectedExecution(self, runnable: typing.Union[java.lang.Runnable, typing.Callable], threadPoolExecutor: 'ThreadPoolExecutor') -> None: ...
 
 class ScheduledThreadPoolExecutor(ThreadPoolExecutor, ScheduledExecutorService):
+    """
+    Java class 'java.util.concurrent.ScheduledThreadPoolExecutor'
+    
+        Extends:
+            java.util.concurrent.ThreadPoolExecutor
+    
+        Interfaces:
+            java.util.concurrent.ScheduledExecutorService
+    
+      Constructors:
+        * ScheduledThreadPoolExecutor(int)
+        * ScheduledThreadPoolExecutor(int, java.util.concurrent.RejectedExecutionHandler)
+        * ScheduledThreadPoolExecutor(int, java.util.concurrent.ThreadFactory, java.util.concurrent.RejectedExecutionHandler)
+        * ScheduledThreadPoolExecutor(int, java.util.concurrent.ThreadFactory)
+    
+    """
     @typing.overload
     def __init__(self, int: int): ...
     @typing.overload
@@ -1704,6 +2364,23 @@ _ConcurrentHashMap__KeySetView__V = typing.TypeVar('_ConcurrentHashMap__KeySetVi
 _ConcurrentHashMap__K = typing.TypeVar('_ConcurrentHashMap__K')  # <K>
 _ConcurrentHashMap__V = typing.TypeVar('_ConcurrentHashMap__V')  # <V>
 class ConcurrentHashMap(java.util.AbstractMap[_ConcurrentHashMap__K, _ConcurrentHashMap__V], ConcurrentMap[_ConcurrentHashMap__K, _ConcurrentHashMap__V], java.io.Serializable, typing.Generic[_ConcurrentHashMap__K, _ConcurrentHashMap__V]):
+    """
+    Java class 'java.util.concurrent.ConcurrentHashMap'
+    
+        Extends:
+            java.util.AbstractMap
+    
+        Interfaces:
+            java.util.concurrent.ConcurrentMap, java.io.Serializable
+    
+      Constructors:
+        * ConcurrentHashMap()
+        * ConcurrentHashMap(int)
+        * ConcurrentHashMap(java.util.Map)
+        * ConcurrentHashMap(int, float, int)
+        * ConcurrentHashMap(int, float)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1818,6 +2495,16 @@ class ConcurrentHashMap(java.util.AbstractMap[_ConcurrentHashMap__K, _Concurrent
     def toString(self) -> str: ...
     def values(self) -> java.util.Collection[_ConcurrentHashMap__V]: ...
     class KeySetView(java.util.concurrent.ConcurrentHashMap.CollectionView[_ConcurrentHashMap__KeySetView__K, _ConcurrentHashMap__KeySetView__V, _ConcurrentHashMap__KeySetView__K], java.util.Set[_ConcurrentHashMap__KeySetView__K], java.io.Serializable, typing.Generic[_ConcurrentHashMap__KeySetView__K, _ConcurrentHashMap__KeySetView__V]):
+        """
+        Java class 'java.util.concurrent.ConcurrentHashMap$KeySetView'
+        
+            Extends:
+                java.util.concurrent.ConcurrentHashMap$CollectionView
+        
+            Interfaces:
+                java.util.Set, java.io.Serializable
+        
+        """
         def add(self, k: _ConcurrentHashMap__KeySetView__K) -> bool: ...
         def addAll(self, collection: typing.Union[java.util.Collection[_ConcurrentHashMap__KeySetView__K], typing.Sequence[_ConcurrentHashMap__KeySetView__K]]) -> bool: ...
         def contains(self, object: typing.Any) -> bool: ...
@@ -1835,22 +2522,56 @@ _Flow__Processor__R = typing.TypeVar('_Flow__Processor__R')  # <R>
 _Flow__Publisher__T = typing.TypeVar('_Flow__Publisher__T')  # <T>
 _Flow__Subscriber__T = typing.TypeVar('_Flow__Subscriber__T')  # <T>
 class Flow:
+    """
+    Java class 'java.util.concurrent.Flow'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def defaultBufferSize() -> int: ...
     class Processor(java.util.concurrent.Flow.Subscriber[_Flow__Processor__T], java.util.concurrent.Flow.Publisher[_Flow__Processor__R], typing.Generic[_Flow__Processor__T, _Flow__Processor__R]): ...
     class Publisher(typing.Generic[_Flow__Publisher__T]):
+        """
+        Java class 'java.util.concurrent.Flow$Publisher'
+        
+        """
         def subscribe(self, subscriber: 'Flow.Subscriber'[_Flow__Publisher__T]) -> None: ...
     class Subscriber(typing.Generic[_Flow__Subscriber__T]):
+        """
+        Java class 'java.util.concurrent.Flow$Subscriber'
+        
+        """
         def onComplete(self) -> None: ...
         def onError(self, throwable: java.lang.Throwable) -> None: ...
         def onNext(self, t: _Flow__Subscriber__T) -> None: ...
         def onSubscribe(self, subscription: 'Flow.Subscription') -> None: ...
     class Subscription:
+        """
+        Java class 'java.util.concurrent.Flow$Subscription'
+        
+        """
         def cancel(self) -> None: ...
         def request(self, long: int) -> None: ...
 
 _SubmissionPublisher__T = typing.TypeVar('_SubmissionPublisher__T')  # <T>
 class SubmissionPublisher(Flow.Publisher[_SubmissionPublisher__T], java.lang.AutoCloseable, typing.Generic[_SubmissionPublisher__T]):
+    """
+    Java class 'java.util.concurrent.SubmissionPublisher'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.concurrent.Flow.Publisher, java.lang.AutoCloseable
+    
+      Constructors:
+        * SubmissionPublisher(java.util.concurrent.Executor, int)
+        * SubmissionPublisher(java.util.concurrent.Executor, int, java.util.function.BiConsumer)
+        * SubmissionPublisher()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1876,3 +2597,70 @@ class SubmissionPublisher(Flow.Publisher[_SubmissionPublisher__T], java.lang.Aut
     def offer(self, t: _SubmissionPublisher__T, long: int, timeUnit: TimeUnit, biPredicate: typing.Union[java.util.function.BiPredicate[Flow.Subscriber[_SubmissionPublisher__T], _SubmissionPublisher__T], typing.Callable[[Flow.Subscriber[_SubmissionPublisher__T], _SubmissionPublisher__T], bool]]) -> int: ...
     def submit(self, t: _SubmissionPublisher__T) -> int: ...
     def subscribe(self, subscriber: Flow.Subscriber[_SubmissionPublisher__T]) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.util.concurrent")``.
+
+    AbstractExecutorService: typing.Type[AbstractExecutorService]
+    ArrayBlockingQueue: typing.Type[ArrayBlockingQueue]
+    BlockingDeque: typing.Type[BlockingDeque]
+    BlockingQueue: typing.Type[BlockingQueue]
+    BrokenBarrierException: typing.Type[BrokenBarrierException]
+    Callable: typing.Type[Callable]
+    CancellationException: typing.Type[CancellationException]
+    CompletableFuture: typing.Type[CompletableFuture]
+    CompletionException: typing.Type[CompletionException]
+    CompletionService: typing.Type[CompletionService]
+    CompletionStage: typing.Type[CompletionStage]
+    ConcurrentHashMap: typing.Type[ConcurrentHashMap]
+    ConcurrentLinkedDeque: typing.Type[ConcurrentLinkedDeque]
+    ConcurrentLinkedQueue: typing.Type[ConcurrentLinkedQueue]
+    ConcurrentMap: typing.Type[ConcurrentMap]
+    ConcurrentNavigableMap: typing.Type[ConcurrentNavigableMap]
+    ConcurrentSkipListMap: typing.Type[ConcurrentSkipListMap]
+    ConcurrentSkipListSet: typing.Type[ConcurrentSkipListSet]
+    CopyOnWriteArrayList: typing.Type[CopyOnWriteArrayList]
+    CopyOnWriteArraySet: typing.Type[CopyOnWriteArraySet]
+    CountDownLatch: typing.Type[CountDownLatch]
+    CountedCompleter: typing.Type[CountedCompleter]
+    CyclicBarrier: typing.Type[CyclicBarrier]
+    DelayQueue: typing.Type[DelayQueue]
+    Delayed: typing.Type[Delayed]
+    Exchanger: typing.Type[Exchanger]
+    ExecutionException: typing.Type[ExecutionException]
+    Executor: typing.Type[Executor]
+    ExecutorCompletionService: typing.Type[ExecutorCompletionService]
+    ExecutorService: typing.Type[ExecutorService]
+    Executors: typing.Type[Executors]
+    Flow: typing.Type[Flow]
+    ForkJoinPool: typing.Type[ForkJoinPool]
+    ForkJoinTask: typing.Type[ForkJoinTask]
+    ForkJoinWorkerThread: typing.Type[ForkJoinWorkerThread]
+    Future: typing.Type[Future]
+    FutureTask: typing.Type[FutureTask]
+    LinkedBlockingDeque: typing.Type[LinkedBlockingDeque]
+    LinkedBlockingQueue: typing.Type[LinkedBlockingQueue]
+    LinkedTransferQueue: typing.Type[LinkedTransferQueue]
+    Phaser: typing.Type[Phaser]
+    PriorityBlockingQueue: typing.Type[PriorityBlockingQueue]
+    RecursiveAction: typing.Type[RecursiveAction]
+    RecursiveTask: typing.Type[RecursiveTask]
+    RejectedExecutionException: typing.Type[RejectedExecutionException]
+    RejectedExecutionHandler: typing.Type[RejectedExecutionHandler]
+    RunnableFuture: typing.Type[RunnableFuture]
+    RunnableScheduledFuture: typing.Type[RunnableScheduledFuture]
+    ScheduledExecutorService: typing.Type[ScheduledExecutorService]
+    ScheduledFuture: typing.Type[ScheduledFuture]
+    ScheduledThreadPoolExecutor: typing.Type[ScheduledThreadPoolExecutor]
+    Semaphore: typing.Type[Semaphore]
+    SubmissionPublisher: typing.Type[SubmissionPublisher]
+    SynchronousQueue: typing.Type[SynchronousQueue]
+    ThreadFactory: typing.Type[ThreadFactory]
+    ThreadLocalRandom: typing.Type[ThreadLocalRandom]
+    ThreadPoolExecutor: typing.Type[ThreadPoolExecutor]
+    TimeUnit: typing.Type[TimeUnit]
+    TimeoutException: typing.Type[TimeoutException]
+    TransferQueue: typing.Type[TransferQueue]
+    atomic: java.util.concurrent.atomic.__module_protocol__
+    locks: java.util.concurrent.locks.__module_protocol__

@@ -6,7 +6,39 @@ import java.util
 import typing
 
 
+
 class Descriptors:
+    """
+    Java class 'cern.japc.core.support.Descriptors'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * Descriptors()
+    
+      Attributes:
+        RDA (java.lang.String): final static field
+        RDA3 (java.lang.String): final static field
+        DEFAULT_STRING (java.lang.String): final static field
+        IS_VALID (java.lang.String): final static field
+        ERROR_STRING (java.lang.String): final static field
+        SERVER_NAME (java.lang.String): final static field
+        DEVICE_ALIAS (java.lang.String): final static field
+        RESPONSIBLE (java.lang.String): final static field
+        CLASS_VERSION (java.lang.String): final static field
+        IMPL_UNKNOWN (java.lang.String): final static field
+        IMPL_VIRTUAL (java.lang.String): final static field
+        IMPL_HARDWARE (java.lang.String): final static field
+        IMPL_SLEQUIP (java.lang.String): final static field
+        IMPL_GM (java.lang.String): final static field
+        IMPL_FESA (java.lang.String): final static field
+        IMPL_FGC (java.lang.String): final static field
+        IMPL_BISCOTO (java.lang.String): final static field
+        DATA_SOURCE (java.lang.String): final static field
+        DATA_SOURCE_UNKNOWN (java.lang.String): final static field
+    
+    """
     RDA: typing.ClassVar[str] = ...
     RDA3: typing.ClassVar[str] = ...
     DEFAULT_STRING: typing.ClassVar[str] = ...
@@ -35,6 +67,8 @@ class Descriptors:
     @typing.overload
     @staticmethod
     def getClassVersion(string: str) -> str: ...
+    @staticmethod
+    def getColumnCount(parameter: cern.japc.core.Parameter) -> int: ...
     @staticmethod
     def getDataSource(string: str) -> str: ...
     @staticmethod
@@ -86,6 +120,8 @@ class Descriptors:
     def getMaxValue(string: str) -> float: ...
     @staticmethod
     def getMinValue(string: str) -> float: ...
+    @staticmethod
+    def getRowCount(parameter: cern.japc.core.Parameter) -> int: ...
     @typing.overload
     @staticmethod
     def getServerName(deviceDescriptor: cern.japc.core.DeviceDescriptor) -> str: ...
@@ -162,6 +198,22 @@ class Descriptors:
     def isWritable(string: str) -> bool: ...
 
 class DiagTrace:
+    """
+    Java class 'cern.japc.core.support.DiagTrace'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * DiagTrace()
+    
+      Attributes:
+        RDA_SUBSCRIPTION (int): final static field
+        RDA_DATA_RECEPTION (int): final static field
+        RDA_DATA_SET (int): final static field
+        RDA_PARAMETER_CREATION (int): final static field
+    
+    """
     RDA_SUBSCRIPTION: typing.ClassVar[int] = ...
     RDA_DATA_RECEPTION: typing.ClassVar[int] = ...
     RDA_DATA_SET: typing.ClassVar[int] = ...
@@ -181,11 +233,36 @@ class DiagTrace:
     def timeStamp() -> str: ...
 
 class FirstUpdateDiscardingPVL(cern.japc.core.ParameterValueListener):
+    """
+    Java class 'cern.japc.core.support.FirstUpdateDiscardingPVL'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.ParameterValueListener
+    
+      Constructors:
+        * FirstUpdateDiscardingPVL(cern.japc.core.ParameterValueListener)
+    
+    """
     def __init__(self, parameterValueListener: cern.japc.core.ParameterValueListener): ...
     def exceptionOccured(self, string: str, string2: str, parameterException: cern.japc.core.ParameterException) -> None: ...
     def valueReceived(self, string: str, acquiredParameterValue: cern.japc.core.AcquiredParameterValue) -> None: ...
 
 class ParameterCatalog:
+    """
+    Java class 'cern.japc.core.support.ParameterCatalog'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ParameterCatalog()
+        * ParameterCatalog(cern.japc.core.factory.ParameterFactory)
+        * ParameterCatalog(cern.japc.core.factory.ParameterFactory, boolean)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -210,6 +287,13 @@ class ParameterCatalog:
     def stopMonitoring(self, string: str, selector: cern.japc.core.Selector) -> None: ...
 
 class ParameterGroupValues:
+    """
+    Java class 'cern.japc.core.support.ParameterGroupValues'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @typing.overload
     @staticmethod
     def checkForException(failSafeParameterValueArray: typing.List[cern.japc.core.FailSafeParameterValue]) -> cern.japc.core.FailSafeParameterValue: ...
@@ -228,6 +312,13 @@ class ParameterGroupValues:
     def splitOneMap2Simple(acquiredParameterValue: cern.japc.core.AcquiredParameterValue) -> typing.List[cern.japc.core.AcquiredParameterValue]: ...
 
 class ParameterValues:
+    """
+    Java class 'cern.japc.core.support.ParameterValues'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @typing.overload
     @staticmethod
     def extractParameterValue(acquiredParameterValue: cern.japc.core.AcquiredParameterValue) -> typing.Any: ...
@@ -312,6 +403,31 @@ class ParameterValues:
     def replaceControlStatus(simpleValueStatus: cern.japc.value.SimpleValueStatus, simpleValueControlStatus: cern.japc.value.SimpleValueControlStatus) -> cern.japc.value.SimpleValueStatus: ...
 
 class SysoutParameterValueListener(cern.japc.core.ParameterValueListener):
+    """
+    Java class 'cern.japc.core.support.SysoutParameterValueListener'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.ParameterValueListener
+    
+      Constructors:
+        * SysoutParameterValueListener()
+    
+    """
     def __init__(self): ...
     def exceptionOccured(self, string: str, string2: str, parameterException: cern.japc.core.ParameterException) -> None: ...
     def valueReceived(self, string: str, acquiredParameterValue: cern.japc.core.AcquiredParameterValue) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.japc.core.support")``.
+
+    Descriptors: typing.Type[Descriptors]
+    DiagTrace: typing.Type[DiagTrace]
+    FirstUpdateDiscardingPVL: typing.Type[FirstUpdateDiscardingPVL]
+    ParameterCatalog: typing.Type[ParameterCatalog]
+    ParameterGroupValues: typing.Type[ParameterGroupValues]
+    ParameterValues: typing.Type[ParameterValues]
+    SysoutParameterValueListener: typing.Type[SysoutParameterValueListener]

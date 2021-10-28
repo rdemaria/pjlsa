@@ -7,7 +7,23 @@ import java.util
 import typing
 
 
+
 class ActiveTimingUsersImpl(cern.lsa.domain.cern.timing.ActiveTimingUsers, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.timing.spi.ActiveTimingUsersImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.timing.ActiveTimingUsers,
+            java.io.Serializable
+    
+      Constructors:
+        * ActiveTimingUsersImpl()
+        * ActiveTimingUsersImpl(java.util.List, java.util.List)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -17,6 +33,19 @@ class ActiveTimingUsersImpl(cern.lsa.domain.cern.timing.ActiveTimingUsers, java.
     def getSpareUsers(self) -> java.util.List[str]: ...
 
 class BunchPatternImpl(cern.lsa.domain.cern.timing.BunchPattern, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.timing.spi.BunchPatternImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.timing.BunchPattern, java.io.Serializable
+    
+      Constructors:
+        * BunchPatternImpl(java.lang.String, java.lang.String)
+    
+    """
     def __init__(self, string: str, string2: str): ...
     def addBunchPosition(self, int: int) -> None: ...
     def equals(self, object: typing.Any) -> bool: ...
@@ -40,6 +69,20 @@ class BunchPatternImpl(cern.lsa.domain.cern.timing.BunchPattern, java.io.Seriali
     def toString(self) -> str: ...
 
 class EventTableImpl(cern.lsa.domain.cern.timing.EventTable, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.timing.spi.EventTableImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.timing.EventTable, java.io.Serializable
+    
+      Constructors:
+        * EventTableImpl()
+        * EventTableImpl(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -59,6 +102,20 @@ class EventTableImpl(cern.lsa.domain.cern.timing.EventTable, java.io.Serializabl
     def toString(self) -> str: ...
 
 class EventTableStatusImpl(cern.lsa.domain.cern.timing.EventTableStatus, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.timing.spi.EventTableStatusImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.timing.EventTableStatus,
+            java.io.Serializable
+    
+      Constructors:
+        * EventTableStatusImpl(java.lang.String, cern.lsa.domain.cern.timing.enums.TABLE_STATUS_SW, java.util.List)
+    
+    """
     def __init__(self, string: str, tABLE_STATUS_SW: cern.lsa.domain.cern.timing.enums.TABLE_STATUS_SW, list: java.util.List[cern.lsa.domain.cern.timing.enums.TABLE_STATUS_HW]): ...
     def getHardwareStatus(self) -> java.util.List[cern.lsa.domain.cern.timing.enums.TABLE_STATUS_HW]: ...
     def getSoftwareStatus(self) -> cern.lsa.domain.cern.timing.enums.TABLE_STATUS_SW: ...
@@ -66,6 +123,19 @@ class EventTableStatusImpl(cern.lsa.domain.cern.timing.EventTableStatus, java.io
     def toString(self) -> str: ...
 
 class EventTypeImpl(cern.lsa.domain.cern.timing.EventType, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.timing.spi.EventTypeImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.timing.EventType, java.io.Serializable
+    
+      Constructors:
+        * EventTypeImpl(java.lang.String, java.lang.String, java.lang.String)
+    
+    """
     def __init__(self, string: str, string2: str, string3: str): ...
     def equals(self, object: typing.Any) -> bool: ...
     def getDescription(self) -> str: ...
@@ -78,6 +148,20 @@ class EventTypeImpl(cern.lsa.domain.cern.timing.EventType, java.io.Serializable)
     def toString(self) -> str: ...
 
 class LhcCirculatingBunchConfigurationImpl(cern.lsa.domain.cern.timing.LhcCirculatingBunchConfiguration, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.timing.spi.LhcCirculatingBunchConfigurationImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.timing.LhcCirculatingBunchConfiguration,
+            java.io.Serializable
+    
+      Constructors:
+        * LhcCirculatingBunchConfigurationImpl()
+    
+    """
     def __init__(self): ...
     def addFilledBucket(self, int: int) -> None: ...
     def getBeamNbr(self) -> int: ...
@@ -86,6 +170,21 @@ class LhcCirculatingBunchConfigurationImpl(cern.lsa.domain.cern.timing.LhcCircul
     def setBeamNbr(self, int: int) -> None: ...
 
 class LhcInjectionBunchConfigurationImpl(cern.accsoft.commons.util.AbstractNamedSerializable[cern.lsa.domain.cern.timing.LhcInjectionBunchConfiguration], cern.lsa.domain.cern.timing.LhcInjectionBunchConfiguration, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.timing.spi.LhcInjectionBunchConfigurationImpl'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractNamedSerializable
+    
+        Interfaces:
+            cern.lsa.domain.cern.timing.LhcInjectionBunchConfiguration,
+            java.io.Serializable
+    
+      Constructors:
+        * LhcInjectionBunchConfigurationImpl()
+        * LhcInjectionBunchConfigurationImpl(java.lang.String, int)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -100,6 +199,19 @@ class LhcInjectionBunchConfigurationImpl(cern.accsoft.commons.util.AbstractNamed
     def toString(self) -> str: ...
 
 class LhcInjectionImpl(cern.accsoft.commons.util.AbstractNamedSerializable[cern.lsa.domain.cern.timing.LhcInjection], cern.lsa.domain.cern.timing.LhcInjection):
+    """
+    Java class 'cern.lsa.domain.cern.timing.spi.LhcInjectionImpl'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractNamedSerializable
+    
+        Interfaces:
+            cern.lsa.domain.cern.timing.LhcInjection
+    
+      Constructors:
+        * LhcInjectionImpl()
+    
+    """
     def __init__(self): ...
     def equals(self, object: typing.Any) -> bool: ...
     def getBunchConfiguration(self) -> cern.lsa.domain.cern.timing.LhcInjectionBunchConfiguration: ...
@@ -124,6 +236,20 @@ class LhcInjectionImpl(cern.accsoft.commons.util.AbstractNamedSerializable[cern.
     def toString(self) -> str: ...
 
 class LhcInjectionSchemeEntryImpl(cern.lsa.domain.cern.timing.LhcInjectionSchemeEntry_Obs, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.timing.spi.LhcInjectionSchemeEntryImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.timing.LhcInjectionSchemeEntry_Obs,
+            java.io.Serializable
+    
+      Constructors:
+        * LhcInjectionSchemeEntryImpl(cern.lsa.domain.cern.timing.LhcInjection, int, int)
+    
+    """
     def __init__(self, lhcInjection: cern.lsa.domain.cern.timing.LhcInjection, int: int, int2: int): ...
     def compareTo(self, lhcInjectionSchemeEntry_Obs: cern.lsa.domain.cern.timing.LhcInjectionSchemeEntry_Obs) -> int: ...
     def getDelay(self) -> int: ...
@@ -133,6 +259,20 @@ class LhcInjectionSchemeEntryImpl(cern.lsa.domain.cern.timing.LhcInjectionScheme
     def setInjectionOrder(self, int: int) -> None: ...
 
 class LhcInjectionSchemeImpl(cern.lsa.domain.cern.timing.LhcInjectionScheme, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.timing.spi.LhcInjectionSchemeImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.timing.LhcInjectionScheme,
+            java.io.Serializable
+    
+      Constructors:
+        * LhcInjectionSchemeImpl(java.lang.String)
+    
+    """
     def __init__(self, string: str): ...
     def addInjection(self, lhcInjection: cern.lsa.domain.cern.timing.LhcInjection) -> None: ...
     def getCreationDate(self) -> java.util.Date: ...
@@ -169,17 +309,58 @@ class LhcInjectionSchemeImpl(cern.lsa.domain.cern.timing.LhcInjectionScheme, jav
     def toString(self) -> str: ...
 
 class LoadedEventTableImpl(cern.lsa.domain.cern.timing.LoadedEventTable, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.timing.spi.LoadedEventTableImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.timing.LoadedEventTable,
+            java.io.Serializable
+    
+      Constructors:
+        * LoadedEventTableImpl(cern.lsa.domain.cern.timing.EventTableStatus, cern.lsa.domain.cern.timing.EventTable)
+    
+    """
     def __init__(self, eventTableStatus: cern.lsa.domain.cern.timing.EventTableStatus, eventTable2: cern.lsa.domain.cern.timing.EventTable): ...
     def getEventTable(self) -> cern.lsa.domain.cern.timing.EventTable: ...
     def getTableStatus(self) -> cern.lsa.domain.cern.timing.EventTableStatus: ...
     def toString(self) -> str: ...
 
 class TimingEventImpl(cern.accsoft.commons.util.AbstractNamedSerializable[cern.lsa.domain.cern.timing.TimingEvent], cern.lsa.domain.cern.timing.TimingEvent):
+    """
+    Java class 'cern.lsa.domain.cern.timing.spi.TimingEventImpl'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractNamedSerializable
+    
+        Interfaces:
+            cern.lsa.domain.cern.timing.TimingEvent
+    
+      Constructors:
+        * TimingEventImpl(java.lang.String, java.lang.String, java.lang.String)
+    
+    """
     def __init__(self, string: str, string2: str, string3: str): ...
     def getHardwareEventName(self) -> str: ...
     def getPayloadAttributeName(self) -> str: ...
 
 class TimingEventSchedulingImpl(cern.lsa.domain.cern.timing.TimingEventScheduling, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.timing.spi.TimingEventSchedulingImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.timing.TimingEventScheduling,
+            java.io.Serializable
+    
+      Constructors:
+        * TimingEventSchedulingImpl(cern.lsa.domain.cern.timing.TimingEvent, int)
+    
+    """
     def __init__(self, timingEvent: cern.lsa.domain.cern.timing.TimingEvent, int: int): ...
     def equals(self, object: typing.Any) -> bool: ...
     def getOffsetInMillis(self) -> int: ...
@@ -187,6 +368,19 @@ class TimingEventSchedulingImpl(cern.lsa.domain.cern.timing.TimingEventSchedulin
     def hashCode(self) -> int: ...
 
 class TimingProcessImpl(cern.accsoft.commons.util.AbstractNamedSerializable[cern.lsa.domain.cern.timing.TimingProcess], cern.lsa.domain.cern.timing.TimingProcess):
+    """
+    Java class 'cern.lsa.domain.cern.timing.spi.TimingProcessImpl'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractNamedSerializable
+    
+        Interfaces:
+            cern.lsa.domain.cern.timing.TimingProcess
+    
+      Constructors:
+        * TimingProcessImpl(java.lang.String, cern.accsoft.commons.domain.TimingDomain)
+    
+    """
     def __init__(self, string: str, timingDomain: cern.accsoft.commons.domain.TimingDomain): ...
     def addTimingEventScheduling(self, timingEventScheduling: cern.lsa.domain.cern.timing.TimingEventScheduling) -> None: ...
     def getName(self) -> str: ...
@@ -194,6 +388,20 @@ class TimingProcessImpl(cern.accsoft.commons.util.AbstractNamedSerializable[cern
     def getTimingDomain(self) -> cern.accsoft.commons.domain.TimingDomain: ...
 
 class TimingProcessSchedulingImpl(cern.lsa.domain.cern.timing.TimingProcessScheduling, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.timing.spi.TimingProcessSchedulingImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.timing.TimingProcessScheduling,
+            java.io.Serializable
+    
+      Constructors:
+        * TimingProcessSchedulingImpl(cern.lsa.domain.cern.timing.TimingProcess, int, cern.lsa.domain.cern.timing.TimingProcessAnchor)
+    
+    """
     def __init__(self, timingProcess: cern.lsa.domain.cern.timing.TimingProcess, int: int, timingProcessAnchor: cern.lsa.domain.cern.timing.TimingProcessAnchor): ...
     def equals(self, object: typing.Any) -> bool: ...
     def getOffsetInMillis(self) -> int: ...
@@ -210,6 +418,19 @@ class TimingProcessSchedulingImpl(cern.lsa.domain.cern.timing.TimingProcessSched
     def toString(self) -> str: ...
 
 class XtimInfoImpl(cern.lsa.domain.cern.timing.XtimInfo, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.timing.spi.XtimInfoImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.timing.XtimInfo, java.io.Serializable
+    
+      Constructors:
+        * XtimInfoImpl(java.lang.String, java.lang.String)
+    
+    """
     def __init__(self, string: str, string2: str): ...
     def getAcqStamp(self) -> int: ...
     def getEvenTypeName(self) -> str: ...
@@ -225,3 +446,24 @@ class XtimInfoImpl(cern.lsa.domain.cern.timing.XtimInfo, java.io.Serializable):
     def setPayload(self, long: int) -> None: ...
     def setUtcNanoseconde(self, long: int) -> None: ...
     def setUtcSeconde(self, long: int) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.cern.timing.spi")``.
+
+    ActiveTimingUsersImpl: typing.Type[ActiveTimingUsersImpl]
+    BunchPatternImpl: typing.Type[BunchPatternImpl]
+    EventTableImpl: typing.Type[EventTableImpl]
+    EventTableStatusImpl: typing.Type[EventTableStatusImpl]
+    EventTypeImpl: typing.Type[EventTypeImpl]
+    LhcCirculatingBunchConfigurationImpl: typing.Type[LhcCirculatingBunchConfigurationImpl]
+    LhcInjectionBunchConfigurationImpl: typing.Type[LhcInjectionBunchConfigurationImpl]
+    LhcInjectionImpl: typing.Type[LhcInjectionImpl]
+    LhcInjectionSchemeEntryImpl: typing.Type[LhcInjectionSchemeEntryImpl]
+    LhcInjectionSchemeImpl: typing.Type[LhcInjectionSchemeImpl]
+    LoadedEventTableImpl: typing.Type[LoadedEventTableImpl]
+    TimingEventImpl: typing.Type[TimingEventImpl]
+    TimingEventSchedulingImpl: typing.Type[TimingEventSchedulingImpl]
+    TimingProcessImpl: typing.Type[TimingProcessImpl]
+    TimingProcessSchedulingImpl: typing.Type[TimingProcessSchedulingImpl]
+    XtimInfoImpl: typing.Type[XtimInfoImpl]

@@ -12,9 +12,17 @@ import java.util.stream
 import typing
 
 
+
 _BiMap__K = typing.TypeVar('_BiMap__K')  # <K>
 _BiMap__V = typing.TypeVar('_BiMap__V')  # <V>
 class BiMap(java.util.Map[_BiMap__K, _BiMap__V], typing.Generic[_BiMap__K, _BiMap__V]):
+    """
+    Java class 'com.google.common.collect.BiMap'
+    
+        Interfaces:
+            java.util.Map
+    
+    """
     def equals(self, object: typing.Any) -> bool: ...
     def forcePut(self, k: _BiMap__K, v: _BiMap__V) -> _BiMap__V: ...
     def hashCode(self) -> int: ...
@@ -24,6 +32,17 @@ class BiMap(java.util.Map[_BiMap__K, _BiMap__V], typing.Generic[_BiMap__K, _BiMa
     def values(self) -> java.util.Set[_BiMap__V]: ...
 
 class BoundType(java.lang.Enum['BoundType']):
+    """
+    Java class 'com.google.common.collect.BoundType'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        OPEN (com.google.common.collect.BoundType): final static enum constant
+        CLOSED (com.google.common.collect.BoundType): final static enum constant
+    
+    """
     OPEN: typing.ClassVar['BoundType'] = ...
     CLOSED: typing.ClassVar['BoundType'] = ...
     _valueOf_1__T = typing.TypeVar('_valueOf_1__T', bound=java.lang.Enum)  # <T>
@@ -38,6 +57,13 @@ class BoundType(java.lang.Enum['BoundType']):
 
 _ClassToInstanceMap__B = typing.TypeVar('_ClassToInstanceMap__B')  # <B>
 class ClassToInstanceMap(java.util.Map[typing.Type[_ClassToInstanceMap__B], _ClassToInstanceMap__B], typing.Generic[_ClassToInstanceMap__B]):
+    """
+    Java class 'com.google.common.collect.ClassToInstanceMap'
+    
+        Interfaces:
+            java.util.Map
+    
+    """
     def equals(self, object: typing.Any) -> bool: ...
     _getInstance__T = typing.TypeVar('_getInstance__T')  # <T>
     def getInstance(self, class_: typing.Type[_getInstance__T]) -> _getInstance__T: ...
@@ -46,6 +72,13 @@ class ClassToInstanceMap(java.util.Map[typing.Type[_ClassToInstanceMap__B], _Cla
     def putInstance(self, class_: typing.Type[_putInstance__T], t: _putInstance__T) -> _putInstance__T: ...
 
 class Collections2:
+    """
+    Java class 'com.google.common.collect.Collections2'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _filter__E = typing.TypeVar('_filter__E')  # <E>
     @staticmethod
     def filter(collection: typing.Union[java.util.Collection[_filter__E], typing.Sequence[_filter__E]], predicate: typing.Union[com.google.common.base.Predicate[_filter__E], typing.Callable[[_filter__E], bool]]) -> java.util.Collection[_filter__E]: ...
@@ -66,6 +99,13 @@ class Collections2:
     def transform(collection: typing.Union[java.util.Collection[_transform__F], typing.Sequence[_transform__F]], function: typing.Union[com.google.common.base.Function[_transform__F, _transform__T], typing.Callable[[_transform__F], _transform__T]]) -> java.util.Collection[_transform__T]: ...
 
 class Comparators:
+    """
+    Java class 'com.google.common.collect.Comparators'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _emptiesFirst__T = typing.TypeVar('_emptiesFirst__T')  # <T>
     @staticmethod
     def emptiesFirst(comparator: typing.Union[java.util.Comparator[_emptiesFirst__T], typing.Callable[[_emptiesFirst__T, _emptiesFirst__T], int]]) -> java.util.Comparator[java.util.Optional[_emptiesFirst__T]]: ...
@@ -90,6 +130,13 @@ class Comparators:
     def lexicographical(comparator: typing.Union[java.util.Comparator[_lexicographical__T], typing.Callable[[_lexicographical__T, _lexicographical__T], int]]) -> java.util.Comparator[java.lang.Iterable[_lexicographical__S]]: ...
 
 class ComparisonChain:
+    """
+    Java class 'com.google.common.collect.ComparisonChain'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _compare_4__T = typing.TypeVar('_compare_4__T')  # <T>
     @typing.overload
     def compare(self, double: float, double2: float) -> 'ComparisonChain': ...
@@ -112,10 +159,27 @@ class ComparisonChain:
     def start() -> 'ComparisonChain': ...
 
 class ComputationException(java.lang.RuntimeException):
+    """
+    Java class 'com.google.common.collect.ComputationException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * ComputationException(java.lang.Throwable)
+    
+    """
     def __init__(self, throwable: java.lang.Throwable): ...
 
 _DiscreteDomain__C = typing.TypeVar('_DiscreteDomain__C', bound=java.lang.Comparable)  # <C>
 class DiscreteDomain(typing.Generic[_DiscreteDomain__C]):
+    """
+    Java class 'com.google.common.collect.DiscreteDomain'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def bigIntegers() -> 'DiscreteDomain'[java.math.BigInteger]: ...
     def distance(self, c: _DiscreteDomain__C, c2: _DiscreteDomain__C) -> int: ...
@@ -130,6 +194,16 @@ class DiscreteDomain(typing.Generic[_DiscreteDomain__C]):
 
 _FluentIterable__E = typing.TypeVar('_FluentIterable__E')  # <E>
 class FluentIterable(java.lang.Iterable[_FluentIterable__E], typing.Generic[_FluentIterable__E]):
+    """
+    Java class 'com.google.common.collect.FluentIterable'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.Iterable
+    
+    """
     def allMatch(self, predicate: typing.Union[com.google.common.base.Predicate[_FluentIterable__E], typing.Callable[[_FluentIterable__E], bool]]) -> bool: ...
     def anyMatch(self, predicate: typing.Union[com.google.common.base.Predicate[_FluentIterable__E], typing.Callable[[_FluentIterable__E], bool]]) -> bool: ...
     @typing.overload
@@ -202,11 +276,28 @@ class FluentIterable(java.lang.Iterable[_FluentIterable__E], typing.Generic[_Flu
     def uniqueIndex(self, function: typing.Union[com.google.common.base.Function[_FluentIterable__E, _uniqueIndex__K], typing.Callable[[_FluentIterable__E], _uniqueIndex__K]]) -> 'ImmutableMap'[_uniqueIndex__K, _FluentIterable__E]: ...
 
 class ForwardingObject:
+    """
+    Java class 'com.google.common.collect.ForwardingObject'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     def toString(self) -> str: ...
 
 _ImmutableCollection__Builder__E = typing.TypeVar('_ImmutableCollection__Builder__E')  # <E>
 _ImmutableCollection__E = typing.TypeVar('_ImmutableCollection__E')  # <E>
 class ImmutableCollection(java.util.AbstractCollection[_ImmutableCollection__E], java.io.Serializable, typing.Generic[_ImmutableCollection__E]):
+    """
+    Java class 'com.google.common.collect.ImmutableCollection'
+    
+        Extends:
+            java.util.AbstractCollection
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     def add(self, e: _ImmutableCollection__E) -> bool: ...
     def addAll(self, collection: typing.Union[java.util.Collection[_ImmutableCollection__E], typing.Sequence[_ImmutableCollection__E]]) -> bool: ...
     def asList(self) -> 'ImmutableList'[_ImmutableCollection__E]: ...
@@ -227,6 +318,13 @@ class ImmutableCollection(java.util.AbstractCollection[_ImmutableCollection__E],
     @typing.overload
     def toArray(self, tArray: typing.List[_toArray_2__T]) -> typing.List[_toArray_2__T]: ...
     class Builder(typing.Generic[_ImmutableCollection__Builder__E]):
+        """
+        Java class 'com.google.common.collect.ImmutableCollection$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         @typing.overload
         def add(self, e: _ImmutableCollection__Builder__E) -> 'ImmutableCollection.Builder'[_ImmutableCollection__Builder__E]: ...
         @typing.overload
@@ -242,6 +340,16 @@ _ImmutableMap__Builder__V = typing.TypeVar('_ImmutableMap__Builder__V')  # <V>
 _ImmutableMap__K = typing.TypeVar('_ImmutableMap__K')  # <K>
 _ImmutableMap__V = typing.TypeVar('_ImmutableMap__V')  # <V>
 class ImmutableMap(java.util.Map[_ImmutableMap__K, _ImmutableMap__V], java.io.Serializable, typing.Generic[_ImmutableMap__K, _ImmutableMap__V]):
+    """
+    Java class 'com.google.common.collect.ImmutableMap'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.Map, java.io.Serializable
+    
+    """
     def asMultimap(self) -> 'ImmutableSetMultimap'[_ImmutableMap__K, _ImmutableMap__V]: ...
     _builder__K = typing.TypeVar('_builder__K')  # <K>
     _builder__V = typing.TypeVar('_builder__V')  # <V>
@@ -332,6 +440,16 @@ class ImmutableMap(java.util.Map[_ImmutableMap__K, _ImmutableMap__V], java.io.Se
     def toString(self) -> str: ...
     def values(self) -> ImmutableCollection[_ImmutableMap__V]: ...
     class Builder(typing.Generic[_ImmutableMap__Builder__K, _ImmutableMap__Builder__V]):
+        """
+        Java class 'com.google.common.collect.ImmutableMap$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+          Constructors:
+            * Builder()
+        
+        """
         def __init__(self): ...
         def build(self) -> 'ImmutableMap'[_ImmutableMap__Builder__K, _ImmutableMap__Builder__V]: ...
         def orderEntriesByValue(self, comparator: typing.Union[java.util.Comparator[_ImmutableMap__Builder__V], typing.Callable[[_ImmutableMap__Builder__V, _ImmutableMap__Builder__V], int]]) -> 'ImmutableMap.Builder'[_ImmutableMap__Builder__K, _ImmutableMap__Builder__V]: ...
@@ -346,9 +464,20 @@ class ImmutableMap(java.util.Map[_ImmutableMap__K, _ImmutableMap__V], java.io.Se
 
 _Interner__E = typing.TypeVar('_Interner__E')  # <E>
 class Interner(typing.Generic[_Interner__E]):
+    """
+    Java class 'com.google.common.collect.Interner'
+    
+    """
     def intern(self, e: _Interner__E) -> _Interner__E: ...
 
 class Interners:
+    """
+    Java class 'com.google.common.collect.Interners'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _asFunction__E = typing.TypeVar('_asFunction__E')  # <E>
     @staticmethod
     def asFunction(interner: Interner[_asFunction__E]) -> com.google.common.base.Function[_asFunction__E, _asFunction__E]: ...
@@ -361,6 +490,13 @@ class Interners:
     @staticmethod
     def newWeakInterner() -> Interner[_newWeakInterner__E]: ...
     class InternerBuilder:
+        """
+        Java class 'com.google.common.collect.Interners$InternerBuilder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         _build__E = typing.TypeVar('_build__E')  # <E>
         def build(self) -> Interner[_build__E]: ...
         def concurrencyLevel(self, int: int) -> 'Interners.InternerBuilder': ...
@@ -368,6 +504,13 @@ class Interners:
         def weak(self) -> 'Interners.InternerBuilder': ...
 
 class Iterables:
+    """
+    Java class 'com.google.common.collect.Iterables'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _addAll__T = typing.TypeVar('_addAll__T')  # <T>
     @staticmethod
     def addAll(collection: typing.Union[java.util.Collection[_addAll__T], typing.Sequence[_addAll__T]], iterable: java.lang.Iterable[_addAll__T]) -> bool: ...
@@ -511,6 +654,13 @@ class Iterables:
     def unmodifiableIterable(iterable: java.lang.Iterable[_unmodifiableIterable_1__T]) -> java.lang.Iterable[_unmodifiableIterable_1__T]: ...
 
 class Iterators:
+    """
+    Java class 'com.google.common.collect.Iterators'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _addAll__T = typing.TypeVar('_addAll__T')  # <T>
     @staticmethod
     def addAll(collection: typing.Union[java.util.Collection[_addAll__T], typing.Sequence[_addAll__T]], iterator: java.util.Iterator[_addAll__T]) -> bool: ...
@@ -671,6 +821,13 @@ class Iterators:
     def unmodifiableIterator(iterator: java.util.Iterator[_unmodifiableIterator_1__T]) -> 'UnmodifiableIterator'[_unmodifiableIterator_1__T]: ...
 
 class Lists:
+    """
+    Java class 'com.google.common.collect.Lists'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _asList_0__E = typing.TypeVar('_asList_0__E')  # <E>
     _asList_1__E = typing.TypeVar('_asList_1__E')  # <E>
     @typing.overload
@@ -746,6 +903,10 @@ _MapDifference__ValueDifference__V = typing.TypeVar('_MapDifference__ValueDiffer
 _MapDifference__K = typing.TypeVar('_MapDifference__K')  # <K>
 _MapDifference__V = typing.TypeVar('_MapDifference__V')  # <V>
 class MapDifference(typing.Generic[_MapDifference__K, _MapDifference__V]):
+    """
+    Java class 'com.google.common.collect.MapDifference'
+    
+    """
     def areEqual(self) -> bool: ...
     def entriesDiffering(self) -> java.util.Map[_MapDifference__K, 'MapDifference.ValueDifference'[_MapDifference__V]]: ...
     def entriesInCommon(self) -> java.util.Map[_MapDifference__K, _MapDifference__V]: ...
@@ -754,12 +915,26 @@ class MapDifference(typing.Generic[_MapDifference__K, _MapDifference__V]):
     def equals(self, object: typing.Any) -> bool: ...
     def hashCode(self) -> int: ...
     class ValueDifference(typing.Generic[_MapDifference__ValueDifference__V]):
+        """
+        Java class 'com.google.common.collect.MapDifference$ValueDifference'
+        
+        """
         def equals(self, object: typing.Any) -> bool: ...
         def hashCode(self) -> int: ...
         def leftValue(self) -> _MapDifference__ValueDifference__V: ...
         def rightValue(self) -> _MapDifference__ValueDifference__V: ...
 
 class MapMaker:
+    """
+    Java class 'com.google.common.collect.MapMaker'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * MapMaker()
+    
+    """
     def __init__(self): ...
     def concurrencyLevel(self, int: int) -> 'MapMaker': ...
     def initialCapacity(self, int: int) -> 'MapMaker': ...
@@ -774,6 +949,13 @@ _Maps__EntryTransformer__K = typing.TypeVar('_Maps__EntryTransformer__K')  # <K>
 _Maps__EntryTransformer__V1 = typing.TypeVar('_Maps__EntryTransformer__V1')  # <V1>
 _Maps__EntryTransformer__V2 = typing.TypeVar('_Maps__EntryTransformer__V2')  # <V2>
 class Maps:
+    """
+    Java class 'com.google.common.collect.Maps'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _asConverter__A = typing.TypeVar('_asConverter__A')  # <A>
     _asConverter__B = typing.TypeVar('_asConverter__B')  # <B>
     @staticmethod
@@ -1029,11 +1211,22 @@ class Maps:
     @staticmethod
     def unmodifiableNavigableMap(navigableMap: java.util.NavigableMap[_unmodifiableNavigableMap__K, _unmodifiableNavigableMap__V]) -> java.util.NavigableMap[_unmodifiableNavigableMap__K, _unmodifiableNavigableMap__V]: ...
     class EntryTransformer(typing.Generic[_Maps__EntryTransformer__K, _Maps__EntryTransformer__V1, _Maps__EntryTransformer__V2]):
+        """
+        Java class 'com.google.common.collect.Maps$EntryTransformer'
+        
+        """
         def transformEntry(self, k: _Maps__EntryTransformer__K, v1: _Maps__EntryTransformer__V1) -> _Maps__EntryTransformer__V2: ...
 
 _MinMaxPriorityQueue__Builder__B = typing.TypeVar('_MinMaxPriorityQueue__Builder__B')  # <B>
 _MinMaxPriorityQueue__E = typing.TypeVar('_MinMaxPriorityQueue__E')  # <E>
 class MinMaxPriorityQueue(java.util.AbstractQueue[_MinMaxPriorityQueue__E], typing.Generic[_MinMaxPriorityQueue__E]):
+    """
+    Java class 'com.google.common.collect.MinMaxPriorityQueue'
+    
+        Extends:
+            java.util.AbstractQueue
+    
+    """
     def add(self, e: _MinMaxPriorityQueue__E) -> bool: ...
     def addAll(self, collection: typing.Union[java.util.Collection[_MinMaxPriorityQueue__E], typing.Sequence[_MinMaxPriorityQueue__E]]) -> bool: ...
     def clear(self) -> None: ...
@@ -1073,6 +1266,13 @@ class MinMaxPriorityQueue(java.util.AbstractQueue[_MinMaxPriorityQueue__E], typi
     @typing.overload
     def toArray(self, tArray: typing.List[_toArray_2__T]) -> typing.List[_toArray_2__T]: ...
     class Builder(typing.Generic[_MinMaxPriorityQueue__Builder__B]):
+        """
+        Java class 'com.google.common.collect.MinMaxPriorityQueue$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         _create_0__T = typing.TypeVar('_create_0__T')  # <T>
         _create_1__T = typing.TypeVar('_create_1__T')  # <T>
         @typing.overload
@@ -1083,6 +1283,13 @@ class MinMaxPriorityQueue(java.util.AbstractQueue[_MinMaxPriorityQueue__E], typi
         def maximumSize(self, int: int) -> 'MinMaxPriorityQueue.Builder'[_MinMaxPriorityQueue__Builder__B]: ...
 
 class MoreCollectors:
+    """
+    Java class 'com.google.common.collect.MoreCollectors'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _onlyElement__T = typing.TypeVar('_onlyElement__T')  # <T>
     @staticmethod
     def onlyElement() -> java.util.stream.Collector[_onlyElement__T, typing.Any, _onlyElement__T]: ...
@@ -1093,6 +1300,10 @@ class MoreCollectors:
 _Multimap__K = typing.TypeVar('_Multimap__K')  # <K>
 _Multimap__V = typing.TypeVar('_Multimap__V')  # <V>
 class Multimap(typing.Generic[_Multimap__K, _Multimap__V]):
+    """
+    Java class 'com.google.common.collect.Multimap'
+    
+    """
     def asMap(self) -> java.util.Map[_Multimap__K, java.util.Collection[_Multimap__V]]: ...
     def clear(self) -> None: ...
     def containsEntry(self, object: typing.Any, object2: typing.Any) -> bool: ...
@@ -1118,6 +1329,13 @@ class Multimap(typing.Generic[_Multimap__K, _Multimap__V]):
     def values(self) -> java.util.Collection[_Multimap__V]: ...
 
 class Multimaps:
+    """
+    Java class 'com.google.common.collect.Multimaps'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _asMap_0__K = typing.TypeVar('_asMap_0__K')  # <K>
     _asMap_0__V = typing.TypeVar('_asMap_0__V')  # <V>
     _asMap_1__K = typing.TypeVar('_asMap_1__K')  # <K>
@@ -1298,6 +1516,13 @@ class Multimaps:
 _Multiset__Entry__E = typing.TypeVar('_Multiset__Entry__E')  # <E>
 _Multiset__E = typing.TypeVar('_Multiset__E')  # <E>
 class Multiset(java.util.Collection[_Multiset__E], typing.Generic[_Multiset__E]):
+    """
+    Java class 'com.google.common.collect.Multiset'
+    
+        Interfaces:
+            java.util.Collection
+    
+    """
     @typing.overload
     def add(self, e: _Multiset__E) -> bool: ...
     @typing.overload
@@ -1326,6 +1551,10 @@ class Multiset(java.util.Collection[_Multiset__E], typing.Generic[_Multiset__E])
     def spliterator(self) -> java.util.Spliterator[_Multiset__E]: ...
     def toString(self) -> str: ...
     class Entry(typing.Generic[_Multiset__Entry__E]):
+        """
+        Java class 'com.google.common.collect.Multiset$Entry'
+        
+        """
         def equals(self, object: typing.Any) -> bool: ...
         def getCount(self) -> int: ...
         def getElement(self) -> _Multiset__Entry__E: ...
@@ -1333,6 +1562,13 @@ class Multiset(java.util.Collection[_Multiset__E], typing.Generic[_Multiset__E])
         def toString(self) -> str: ...
 
 class Multisets:
+    """
+    Java class 'com.google.common.collect.Multisets'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def containsOccurrences(multiset: Multiset[typing.Any], multiset2: Multiset[typing.Any]) -> bool: ...
     _copyHighestCountFirst__E = typing.TypeVar('_copyHighestCountFirst__E')  # <E>
@@ -1382,6 +1618,13 @@ class Multisets:
     def unmodifiableSortedMultiset(sortedMultiset: 'SortedMultiset'[_unmodifiableSortedMultiset__E]) -> 'SortedMultiset'[_unmodifiableSortedMultiset__E]: ...
 
 class ObjectArrays:
+    """
+    Java class 'com.google.common.collect.ObjectArrays'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _concat_0__T = typing.TypeVar('_concat_0__T')  # <T>
     _concat_1__T = typing.TypeVar('_concat_1__T')  # <T>
     _concat_2__T = typing.TypeVar('_concat_2__T')  # <T>
@@ -1405,6 +1648,16 @@ class ObjectArrays:
 
 _Ordering__T = typing.TypeVar('_Ordering__T')  # <T>
 class Ordering(java.util.Comparator[_Ordering__T], typing.Generic[_Ordering__T]):
+    """
+    Java class 'com.google.common.collect.Ordering'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.Comparator
+    
+    """
     @staticmethod
     def allEqual() -> 'Ordering'[typing.Any]: ...
     @staticmethod
@@ -1486,11 +1739,25 @@ class Ordering(java.util.Comparator[_Ordering__T], typing.Generic[_Ordering__T])
 
 _PeekingIterator__E = typing.TypeVar('_PeekingIterator__E')  # <E>
 class PeekingIterator(java.util.Iterator[_PeekingIterator__E], typing.Generic[_PeekingIterator__E]):
+    """
+    Java class 'com.google.common.collect.PeekingIterator'
+    
+        Interfaces:
+            java.util.Iterator
+    
+    """
     def next(self) -> _PeekingIterator__E: ...
     def peek(self) -> _PeekingIterator__E: ...
     def remove(self) -> None: ...
 
 class Queues:
+    """
+    Java class 'com.google.common.collect.Queues'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _drain_0__E = typing.TypeVar('_drain_0__E')  # <E>
     _drain_1__E = typing.TypeVar('_drain_1__E')  # <E>
     @typing.overload
@@ -1579,6 +1846,10 @@ class Queues:
 _RangeMap__K = typing.TypeVar('_RangeMap__K', bound=java.lang.Comparable)  # <K>
 _RangeMap__V = typing.TypeVar('_RangeMap__V')  # <V>
 class RangeMap(typing.Generic[_RangeMap__K, _RangeMap__V]):
+    """
+    Java class 'com.google.common.collect.RangeMap'
+    
+    """
     def asDescendingMapOfRanges(self) -> java.util.Map['Range'[_RangeMap__K], _RangeMap__V]: ...
     def asMapOfRanges(self) -> java.util.Map['Range'[_RangeMap__K], _RangeMap__V]: ...
     def clear(self) -> None: ...
@@ -1597,6 +1868,10 @@ class RangeMap(typing.Generic[_RangeMap__K, _RangeMap__V]):
 
 _RangeSet__C = typing.TypeVar('_RangeSet__C', bound=java.lang.Comparable)  # <C>
 class RangeSet(typing.Generic[_RangeSet__C]):
+    """
+    Java class 'com.google.common.collect.RangeSet'
+    
+    """
     def add(self, range: 'Range'[_RangeSet__C]) -> None: ...
     @typing.overload
     def addAll(self, rangeSet: 'RangeSet'[_RangeSet__C]) -> None: ...
@@ -1628,6 +1903,13 @@ class RangeSet(typing.Generic[_RangeSet__C]):
 
 _Sets__SetView__E = typing.TypeVar('_Sets__SetView__E')  # <E>
 class Sets:
+    """
+    Java class 'com.google.common.collect.Sets'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _cartesianProduct_0__B = typing.TypeVar('_cartesianProduct_0__B')  # <B>
     _cartesianProduct_1__B = typing.TypeVar('_cartesianProduct_1__B')  # <B>
     @typing.overload
@@ -1762,6 +2044,13 @@ class Sets:
     @staticmethod
     def unmodifiableNavigableSet(navigableSet: java.util.NavigableSet[_unmodifiableNavigableSet__E]) -> java.util.NavigableSet[_unmodifiableNavigableSet__E]: ...
     class SetView(java.util.AbstractSet[_Sets__SetView__E], typing.Generic[_Sets__SetView__E]):
+        """
+        Java class 'com.google.common.collect.Sets$SetView'
+        
+            Extends:
+                java.util.AbstractSet
+        
+        """
         def add(self, e: _Sets__SetView__E) -> bool: ...
         def addAll(self, collection: typing.Union[java.util.Collection[_Sets__SetView__E], typing.Sequence[_Sets__SetView__E]]) -> bool: ...
         def clear(self) -> None: ...
@@ -1780,6 +2069,13 @@ _Streams__FunctionWithIndex__R = typing.TypeVar('_Streams__FunctionWithIndex__R'
 _Streams__IntFunctionWithIndex__R = typing.TypeVar('_Streams__IntFunctionWithIndex__R')  # <R>
 _Streams__LongFunctionWithIndex__R = typing.TypeVar('_Streams__LongFunctionWithIndex__R')  # <R>
 class Streams:
+    """
+    Java class 'com.google.common.collect.Streams'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _concat_3__T = typing.TypeVar('_concat_3__T')  # <T>
     @typing.overload
     @staticmethod
@@ -1862,12 +2158,28 @@ class Streams:
     @staticmethod
     def zip(stream: java.util.stream.Stream[_zip__A], stream2: java.util.stream.Stream[_zip__B], biFunction: typing.Union[java.util.function.BiFunction[_zip__A, _zip__B, _zip__R], typing.Callable[[_zip__A, _zip__B], _zip__R]]) -> java.util.stream.Stream[_zip__R]: ...
     class DoubleFunctionWithIndex(typing.Generic[_Streams__DoubleFunctionWithIndex__R]):
+        """
+        Java class 'com.google.common.collect.Streams$DoubleFunctionWithIndex'
+        
+        """
         def apply(self, double: float, long: int) -> _Streams__DoubleFunctionWithIndex__R: ...
     class FunctionWithIndex(typing.Generic[_Streams__FunctionWithIndex__T, _Streams__FunctionWithIndex__R]):
+        """
+        Java class 'com.google.common.collect.Streams$FunctionWithIndex'
+        
+        """
         def apply(self, t: _Streams__FunctionWithIndex__T, long: int) -> _Streams__FunctionWithIndex__R: ...
     class IntFunctionWithIndex(typing.Generic[_Streams__IntFunctionWithIndex__R]):
+        """
+        Java class 'com.google.common.collect.Streams$IntFunctionWithIndex'
+        
+        """
         def apply(self, int: int, long: int) -> _Streams__IntFunctionWithIndex__R: ...
     class LongFunctionWithIndex(typing.Generic[_Streams__LongFunctionWithIndex__R]):
+        """
+        Java class 'com.google.common.collect.Streams$LongFunctionWithIndex'
+        
+        """
         def apply(self, long: int, long2: int) -> _Streams__LongFunctionWithIndex__R: ...
 
 _Table__Cell__R = typing.TypeVar('_Table__Cell__R')  # <R>
@@ -1877,6 +2189,10 @@ _Table__R = typing.TypeVar('_Table__R')  # <R>
 _Table__C = typing.TypeVar('_Table__C')  # <C>
 _Table__V = typing.TypeVar('_Table__V')  # <V>
 class Table(typing.Generic[_Table__R, _Table__C, _Table__V]):
+    """
+    Java class 'com.google.common.collect.Table'
+    
+    """
     def cellSet(self) -> java.util.Set['Table.Cell'[_Table__R, _Table__C, _Table__V]]: ...
     def clear(self) -> None: ...
     def column(self, c: _Table__C) -> java.util.Map[_Table__R, _Table__V]: ...
@@ -1899,6 +2215,10 @@ class Table(typing.Generic[_Table__R, _Table__C, _Table__V]):
     def size(self) -> int: ...
     def values(self) -> java.util.Collection[_Table__V]: ...
     class Cell(typing.Generic[_Table__Cell__R, _Table__Cell__C, _Table__Cell__V]):
+        """
+        Java class 'com.google.common.collect.Table$Cell'
+        
+        """
         def equals(self, object: typing.Any) -> bool: ...
         def getColumnKey(self) -> _Table__Cell__C: ...
         def getRowKey(self) -> _Table__Cell__R: ...
@@ -1906,6 +2226,13 @@ class Table(typing.Generic[_Table__R, _Table__C, _Table__V]):
         def hashCode(self) -> int: ...
 
 class Tables:
+    """
+    Java class 'com.google.common.collect.Tables'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _immutableCell__R = typing.TypeVar('_immutableCell__R')  # <R>
     _immutableCell__C = typing.TypeVar('_immutableCell__C')  # <C>
     _immutableCell__V = typing.TypeVar('_immutableCell__V')  # <V>
@@ -1961,6 +2288,16 @@ class Tables:
 
 _TreeTraverser__T = typing.TypeVar('_TreeTraverser__T')  # <T>
 class TreeTraverser(typing.Generic[_TreeTraverser__T]):
+    """
+    Java class 'com.google.common.collect.TreeTraverser'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * TreeTraverser()
+    
+    """
     def __init__(self): ...
     def breadthFirstTraversal(self, t: _TreeTraverser__T) -> FluentIterable[_TreeTraverser__T]: ...
     def children(self, t: _TreeTraverser__T) -> java.lang.Iterable[_TreeTraverser__T]: ...
@@ -1972,21 +2309,55 @@ class TreeTraverser(typing.Generic[_TreeTraverser__T]):
 
 _UnmodifiableIterator__E = typing.TypeVar('_UnmodifiableIterator__E')  # <E>
 class UnmodifiableIterator(java.util.Iterator[_UnmodifiableIterator__E], typing.Generic[_UnmodifiableIterator__E]):
+    """
+    Java class 'com.google.common.collect.UnmodifiableIterator'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.Iterator
+    
+    """
     def remove(self) -> None: ...
 
 _AbstractIterator__T = typing.TypeVar('_AbstractIterator__T')  # <T>
 class AbstractIterator(UnmodifiableIterator[_AbstractIterator__T], typing.Generic[_AbstractIterator__T]):
+    """
+    Java class 'com.google.common.collect.AbstractIterator'
+    
+        Extends:
+            com.google.common.collect.UnmodifiableIterator
+    
+    """
     def hasNext(self) -> bool: ...
     def next(self) -> _AbstractIterator__T: ...
     def peek(self) -> _AbstractIterator__T: ...
 
 _AbstractSequentialIterator__T = typing.TypeVar('_AbstractSequentialIterator__T')  # <T>
 class AbstractSequentialIterator(UnmodifiableIterator[_AbstractSequentialIterator__T], typing.Generic[_AbstractSequentialIterator__T]):
+    """
+    Java class 'com.google.common.collect.AbstractSequentialIterator'
+    
+        Extends:
+            com.google.common.collect.UnmodifiableIterator
+    
+    """
     def hasNext(self) -> bool: ...
     def next(self) -> _AbstractSequentialIterator__T: ...
 
 _ForwardingCollection__E = typing.TypeVar('_ForwardingCollection__E')  # <E>
 class ForwardingCollection(ForwardingObject, java.util.Collection[_ForwardingCollection__E], typing.Generic[_ForwardingCollection__E]):
+    """
+    Java class 'com.google.common.collect.ForwardingCollection'
+    
+        Extends:
+            com.google.common.collect.ForwardingObject
+    
+        Interfaces:
+            java.util.Collection
+    
+    """
     def add(self, e: _ForwardingCollection__E) -> bool: ...
     def addAll(self, collection: typing.Union[java.util.Collection[_ForwardingCollection__E], typing.Sequence[_ForwardingCollection__E]]) -> bool: ...
     def clear(self) -> None: ...
@@ -2009,6 +2380,16 @@ class ForwardingCollection(ForwardingObject, java.util.Collection[_ForwardingCol
 
 _ForwardingIterator__T = typing.TypeVar('_ForwardingIterator__T')  # <T>
 class ForwardingIterator(ForwardingObject, java.util.Iterator[_ForwardingIterator__T], typing.Generic[_ForwardingIterator__T]):
+    """
+    Java class 'com.google.common.collect.ForwardingIterator'
+    
+        Extends:
+            com.google.common.collect.ForwardingObject
+    
+        Interfaces:
+            java.util.Iterator
+    
+    """
     def hasNext(self) -> bool: ...
     def next(self) -> _ForwardingIterator__T: ...
     def remove(self) -> None: ...
@@ -2016,6 +2397,16 @@ class ForwardingIterator(ForwardingObject, java.util.Iterator[_ForwardingIterato
 _ForwardingMap__K = typing.TypeVar('_ForwardingMap__K')  # <K>
 _ForwardingMap__V = typing.TypeVar('_ForwardingMap__V')  # <V>
 class ForwardingMap(ForwardingObject, java.util.Map[_ForwardingMap__K, _ForwardingMap__V], typing.Generic[_ForwardingMap__K, _ForwardingMap__V]):
+    """
+    Java class 'com.google.common.collect.ForwardingMap'
+    
+        Extends:
+            com.google.common.collect.ForwardingObject
+    
+        Interfaces:
+            java.util.Map
+    
+    """
     def clear(self) -> None: ...
     def containsKey(self, object: typing.Any) -> bool: ...
     def containsValue(self, object: typing.Any) -> bool: ...
@@ -2037,6 +2428,16 @@ class ForwardingMap(ForwardingObject, java.util.Map[_ForwardingMap__K, _Forwardi
 _ForwardingMapEntry__K = typing.TypeVar('_ForwardingMapEntry__K')  # <K>
 _ForwardingMapEntry__V = typing.TypeVar('_ForwardingMapEntry__V')  # <V>
 class ForwardingMapEntry(ForwardingObject, java.util.Map.Entry[_ForwardingMapEntry__K, _ForwardingMapEntry__V], typing.Generic[_ForwardingMapEntry__K, _ForwardingMapEntry__V]):
+    """
+    Java class 'com.google.common.collect.ForwardingMapEntry'
+    
+        Extends:
+            com.google.common.collect.ForwardingObject
+    
+        Interfaces:
+            java.util.Map.Entry
+    
+    """
     def equals(self, object: typing.Any) -> bool: ...
     def getKey(self) -> _ForwardingMapEntry__K: ...
     def getValue(self) -> _ForwardingMapEntry__V: ...
@@ -2046,6 +2447,16 @@ class ForwardingMapEntry(ForwardingObject, java.util.Map.Entry[_ForwardingMapEnt
 _ForwardingMultimap__K = typing.TypeVar('_ForwardingMultimap__K')  # <K>
 _ForwardingMultimap__V = typing.TypeVar('_ForwardingMultimap__V')  # <V>
 class ForwardingMultimap(ForwardingObject, Multimap[_ForwardingMultimap__K, _ForwardingMultimap__V], typing.Generic[_ForwardingMultimap__K, _ForwardingMultimap__V]):
+    """
+    Java class 'com.google.common.collect.ForwardingMultimap'
+    
+        Extends:
+            com.google.common.collect.ForwardingObject
+    
+        Interfaces:
+            com.google.common.collect.Multimap
+    
+    """
     def asMap(self) -> java.util.Map[_ForwardingMultimap__K, java.util.Collection[_ForwardingMultimap__V]]: ...
     def clear(self) -> None: ...
     def containsEntry(self, object: typing.Any, object2: typing.Any) -> bool: ...
@@ -2073,6 +2484,16 @@ _ForwardingTable__R = typing.TypeVar('_ForwardingTable__R')  # <R>
 _ForwardingTable__C = typing.TypeVar('_ForwardingTable__C')  # <C>
 _ForwardingTable__V = typing.TypeVar('_ForwardingTable__V')  # <V>
 class ForwardingTable(ForwardingObject, Table[_ForwardingTable__R, _ForwardingTable__C, _ForwardingTable__V], typing.Generic[_ForwardingTable__R, _ForwardingTable__C, _ForwardingTable__V]):
+    """
+    Java class 'com.google.common.collect.ForwardingTable'
+    
+        Extends:
+            com.google.common.collect.ForwardingObject
+    
+        Interfaces:
+            com.google.common.collect.Table
+    
+    """
     def cellSet(self) -> java.util.Set[Table.Cell[_ForwardingTable__R, _ForwardingTable__C, _ForwardingTable__V]]: ...
     def clear(self) -> None: ...
     def column(self, c: _ForwardingTable__C) -> java.util.Map[_ForwardingTable__R, _ForwardingTable__V]: ...
@@ -2098,6 +2519,16 @@ class ForwardingTable(ForwardingObject, Table[_ForwardingTable__R, _ForwardingTa
 _ImmutableList__Builder__E = typing.TypeVar('_ImmutableList__Builder__E')  # <E>
 _ImmutableList__E = typing.TypeVar('_ImmutableList__E')  # <E>
 class ImmutableList(ImmutableCollection[_ImmutableList__E], java.util.List[_ImmutableList__E], java.util.RandomAccess, typing.Generic[_ImmutableList__E]):
+    """
+    Java class 'com.google.common.collect.ImmutableList'
+    
+        Extends:
+            com.google.common.collect.ImmutableCollection
+    
+        Interfaces:
+            java.util.List, java.util.RandomAccess
+    
+    """
     @typing.overload
     def add(self, e: _ImmutableList__E) -> bool: ...
     @typing.overload
@@ -2210,6 +2641,16 @@ class ImmutableList(ImmutableCollection[_ImmutableList__E], java.util.List[_Immu
     @staticmethod
     def toImmutableList() -> java.util.stream.Collector[_toImmutableList__E, typing.Any, 'ImmutableList'[_toImmutableList__E]]: ...
     class Builder(ImmutableCollection.Builder[_ImmutableList__Builder__E], typing.Generic[_ImmutableList__Builder__E]):
+        """
+        Java class 'com.google.common.collect.ImmutableList$Builder'
+        
+            Extends:
+                com.google.common.collect.ImmutableCollection$Builder
+        
+          Constructors:
+            * Builder()
+        
+        """
         def __init__(self): ...
         @typing.overload
         def add(self, e: _ImmutableList__Builder__E) -> 'ImmutableList.Builder'[_ImmutableList__Builder__E]: ...
@@ -2226,6 +2667,16 @@ _ImmutableRangeMap__Builder__V = typing.TypeVar('_ImmutableRangeMap__Builder__V'
 _ImmutableRangeMap__K = typing.TypeVar('_ImmutableRangeMap__K', bound=java.lang.Comparable)  # <K>
 _ImmutableRangeMap__V = typing.TypeVar('_ImmutableRangeMap__V')  # <V>
 class ImmutableRangeMap(RangeMap[_ImmutableRangeMap__K, _ImmutableRangeMap__V], java.io.Serializable, typing.Generic[_ImmutableRangeMap__K, _ImmutableRangeMap__V]):
+    """
+    Java class 'com.google.common.collect.ImmutableRangeMap'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            com.google.common.collect.RangeMap, java.io.Serializable
+    
+    """
     def asDescendingMapOfRanges(self) -> ImmutableMap['Range'[_ImmutableRangeMap__K], _ImmutableRangeMap__V]: ...
     def asMapOfRanges(self) -> ImmutableMap['Range'[_ImmutableRangeMap__K], _ImmutableRangeMap__V]: ...
     _builder__K = typing.TypeVar('_builder__K', bound=java.lang.Comparable)  # <K>
@@ -2265,6 +2716,16 @@ class ImmutableRangeMap(RangeMap[_ImmutableRangeMap__K, _ImmutableRangeMap__V], 
     def toImmutableRangeMap(function: typing.Union[java.util.function.Function[_toImmutableRangeMap__T, 'Range'[_toImmutableRangeMap__K]], typing.Callable[[_toImmutableRangeMap__T], 'Range'[_toImmutableRangeMap__K]]], function2: typing.Union[java.util.function.Function[_toImmutableRangeMap__T, _toImmutableRangeMap__V], typing.Callable[[_toImmutableRangeMap__T], _toImmutableRangeMap__V]]) -> java.util.stream.Collector[_toImmutableRangeMap__T, typing.Any, 'ImmutableRangeMap'[_toImmutableRangeMap__K, _toImmutableRangeMap__V]]: ...
     def toString(self) -> str: ...
     class Builder(typing.Generic[_ImmutableRangeMap__Builder__K, _ImmutableRangeMap__Builder__V]):
+        """
+        Java class 'com.google.common.collect.ImmutableRangeMap$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+          Constructors:
+            * Builder()
+        
+        """
         def __init__(self): ...
         def build(self) -> 'ImmutableRangeMap'[_ImmutableRangeMap__Builder__K, _ImmutableRangeMap__Builder__V]: ...
         def put(self, range: 'Range'[_ImmutableRangeMap__Builder__K], v: _ImmutableRangeMap__Builder__V) -> 'ImmutableRangeMap.Builder'[_ImmutableRangeMap__Builder__K, _ImmutableRangeMap__Builder__V]: ...
@@ -2273,6 +2734,16 @@ class ImmutableRangeMap(RangeMap[_ImmutableRangeMap__K, _ImmutableRangeMap__V], 
 _ImmutableSet__Builder__E = typing.TypeVar('_ImmutableSet__Builder__E')  # <E>
 _ImmutableSet__E = typing.TypeVar('_ImmutableSet__E')  # <E>
 class ImmutableSet(ImmutableCollection[_ImmutableSet__E], java.util.Set[_ImmutableSet__E], typing.Generic[_ImmutableSet__E]):
+    """
+    Java class 'com.google.common.collect.ImmutableSet'
+    
+        Extends:
+            com.google.common.collect.ImmutableCollection
+    
+        Interfaces:
+            java.util.Set
+    
+    """
     def asList(self) -> ImmutableList[_ImmutableSet__E]: ...
     _builder__E = typing.TypeVar('_builder__E')  # <E>
     @staticmethod
@@ -2331,6 +2802,16 @@ class ImmutableSet(ImmutableCollection[_ImmutableSet__E], java.util.Set[_Immutab
     @staticmethod
     def toImmutableSet() -> java.util.stream.Collector[_toImmutableSet__E, typing.Any, 'ImmutableSet'[_toImmutableSet__E]]: ...
     class Builder(ImmutableCollection.Builder[_ImmutableSet__Builder__E], typing.Generic[_ImmutableSet__Builder__E]):
+        """
+        Java class 'com.google.common.collect.ImmutableSet$Builder'
+        
+            Extends:
+                com.google.common.collect.ImmutableCollection$Builder
+        
+          Constructors:
+            * Builder()
+        
+        """
         def __init__(self): ...
         @typing.overload
         def add(self, e: _ImmutableSet__Builder__E) -> 'ImmutableSet.Builder'[_ImmutableSet__Builder__E]: ...
@@ -2345,6 +2826,13 @@ class ImmutableSet(ImmutableCollection[_ImmutableSet__E], java.util.Set[_Immutab
 _ListMultimap__K = typing.TypeVar('_ListMultimap__K')  # <K>
 _ListMultimap__V = typing.TypeVar('_ListMultimap__V')  # <V>
 class ListMultimap(Multimap[_ListMultimap__K, _ListMultimap__V], typing.Generic[_ListMultimap__K, _ListMultimap__V]):
+    """
+    Java class 'com.google.common.collect.ListMultimap'
+    
+        Interfaces:
+            com.google.common.collect.Multimap
+    
+    """
     def asMap(self) -> java.util.Map[_ListMultimap__K, java.util.Collection[_ListMultimap__V]]: ...
     def equals(self, object: typing.Any) -> bool: ...
     def get(self, k: _ListMultimap__K) -> java.util.List[_ListMultimap__V]: ...
@@ -2356,6 +2844,13 @@ _RowSortedTable__R = typing.TypeVar('_RowSortedTable__R')  # <R>
 _RowSortedTable__C = typing.TypeVar('_RowSortedTable__C')  # <C>
 _RowSortedTable__V = typing.TypeVar('_RowSortedTable__V')  # <V>
 class RowSortedTable(Table[_RowSortedTable__R, _RowSortedTable__C, _RowSortedTable__V], typing.Generic[_RowSortedTable__R, _RowSortedTable__C, _RowSortedTable__V]):
+    """
+    Java class 'com.google.common.collect.RowSortedTable'
+    
+        Interfaces:
+            com.google.common.collect.Table
+    
+    """
     def equals(self, object: typing.Any) -> bool: ...
     def hashCode(self) -> int: ...
     def rowKeySet(self) -> java.util.SortedSet[_RowSortedTable__R]: ...
@@ -2364,6 +2859,13 @@ class RowSortedTable(Table[_RowSortedTable__R, _RowSortedTable__C, _RowSortedTab
 _SetMultimap__K = typing.TypeVar('_SetMultimap__K')  # <K>
 _SetMultimap__V = typing.TypeVar('_SetMultimap__V')  # <V>
 class SetMultimap(Multimap[_SetMultimap__K, _SetMultimap__V], typing.Generic[_SetMultimap__K, _SetMultimap__V]):
+    """
+    Java class 'com.google.common.collect.SetMultimap'
+    
+        Interfaces:
+            com.google.common.collect.Multimap
+    
+    """
     def asMap(self) -> java.util.Map[_SetMultimap__K, java.util.Collection[_SetMultimap__V]]: ...
     def entries(self) -> java.util.Set[java.util.Map.Entry[_SetMultimap__K, _SetMultimap__V]]: ...
     def equals(self, object: typing.Any) -> bool: ...
@@ -2375,6 +2877,13 @@ class SetMultimap(Multimap[_SetMultimap__K, _SetMultimap__V], typing.Generic[_Se
 _SortedMapDifference__K = typing.TypeVar('_SortedMapDifference__K')  # <K>
 _SortedMapDifference__V = typing.TypeVar('_SortedMapDifference__V')  # <V>
 class SortedMapDifference(MapDifference[_SortedMapDifference__K, _SortedMapDifference__V], typing.Generic[_SortedMapDifference__K, _SortedMapDifference__V]):
+    """
+    Java class 'com.google.common.collect.SortedMapDifference'
+    
+        Interfaces:
+            com.google.common.collect.MapDifference
+    
+    """
     def entriesDiffering(self) -> java.util.SortedMap[_SortedMapDifference__K, MapDifference.ValueDifference[_SortedMapDifference__V]]: ...
     def entriesInCommon(self) -> java.util.SortedMap[_SortedMapDifference__K, _SortedMapDifference__V]: ...
     def entriesOnlyOnLeft(self) -> java.util.SortedMap[_SortedMapDifference__K, _SortedMapDifference__V]: ...
@@ -2385,6 +2894,16 @@ class SortedMapDifference(MapDifference[_SortedMapDifference__K, _SortedMapDiffe
 _TreeRangeMap__K = typing.TypeVar('_TreeRangeMap__K', bound=java.lang.Comparable)  # <K>
 _TreeRangeMap__V = typing.TypeVar('_TreeRangeMap__V')  # <V>
 class TreeRangeMap(RangeMap[_TreeRangeMap__K, _TreeRangeMap__V], typing.Generic[_TreeRangeMap__K, _TreeRangeMap__V]):
+    """
+    Java class 'com.google.common.collect.TreeRangeMap'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            com.google.common.collect.RangeMap
+    
+    """
     def asDescendingMapOfRanges(self) -> java.util.Map['Range'[_TreeRangeMap__K], _TreeRangeMap__V]: ...
     def asMapOfRanges(self) -> java.util.Map['Range'[_TreeRangeMap__K], _TreeRangeMap__V]: ...
     def clear(self) -> None: ...
@@ -2407,12 +2926,32 @@ class TreeRangeMap(RangeMap[_TreeRangeMap__K, _TreeRangeMap__V], typing.Generic[
 
 _UnmodifiableListIterator__E = typing.TypeVar('_UnmodifiableListIterator__E')  # <E>
 class UnmodifiableListIterator(UnmodifiableIterator[_UnmodifiableListIterator__E], java.util.ListIterator[_UnmodifiableListIterator__E], typing.Generic[_UnmodifiableListIterator__E]):
+    """
+    Java class 'com.google.common.collect.UnmodifiableListIterator'
+    
+        Extends:
+            com.google.common.collect.UnmodifiableIterator
+    
+        Interfaces:
+            java.util.ListIterator
+    
+    """
     def add(self, e: _UnmodifiableListIterator__E) -> None: ...
     def set(self, e: _UnmodifiableListIterator__E) -> None: ...
 
 _ForwardingConcurrentMap__K = typing.TypeVar('_ForwardingConcurrentMap__K')  # <K>
 _ForwardingConcurrentMap__V = typing.TypeVar('_ForwardingConcurrentMap__V')  # <V>
 class ForwardingConcurrentMap(ForwardingMap[_ForwardingConcurrentMap__K, _ForwardingConcurrentMap__V], java.util.concurrent.ConcurrentMap[_ForwardingConcurrentMap__K, _ForwardingConcurrentMap__V], typing.Generic[_ForwardingConcurrentMap__K, _ForwardingConcurrentMap__V]):
+    """
+    Java class 'com.google.common.collect.ForwardingConcurrentMap'
+    
+        Extends:
+            com.google.common.collect.ForwardingMap
+    
+        Interfaces:
+            java.util.concurrent.ConcurrentMap
+    
+    """
     def putIfAbsent(self, k: _ForwardingConcurrentMap__K, v: _ForwardingConcurrentMap__V) -> _ForwardingConcurrentMap__V: ...
     @typing.overload
     def remove(self, object: typing.Any, object2: typing.Any) -> bool: ...
@@ -2425,6 +2964,16 @@ class ForwardingConcurrentMap(ForwardingMap[_ForwardingConcurrentMap__K, _Forwar
 
 _ForwardingList__E = typing.TypeVar('_ForwardingList__E')  # <E>
 class ForwardingList(ForwardingCollection[_ForwardingList__E], java.util.List[_ForwardingList__E], typing.Generic[_ForwardingList__E]):
+    """
+    Java class 'com.google.common.collect.ForwardingList'
+    
+        Extends:
+            com.google.common.collect.ForwardingCollection
+    
+        Interfaces:
+            java.util.List
+    
+    """
     @typing.overload
     def add(self, e: _ForwardingList__E) -> bool: ...
     @typing.overload
@@ -2447,6 +2996,16 @@ class ForwardingList(ForwardingCollection[_ForwardingList__E], java.util.List[_F
 
 _ForwardingListIterator__E = typing.TypeVar('_ForwardingListIterator__E')  # <E>
 class ForwardingListIterator(ForwardingIterator[_ForwardingListIterator__E], java.util.ListIterator[_ForwardingListIterator__E], typing.Generic[_ForwardingListIterator__E]):
+    """
+    Java class 'com.google.common.collect.ForwardingListIterator'
+    
+        Extends:
+            com.google.common.collect.ForwardingIterator
+    
+        Interfaces:
+            java.util.ListIterator
+    
+    """
     def add(self, e: _ForwardingListIterator__E) -> None: ...
     def hasPrevious(self) -> bool: ...
     def nextIndex(self) -> int: ...
@@ -2457,12 +3016,32 @@ class ForwardingListIterator(ForwardingIterator[_ForwardingListIterator__E], jav
 _ForwardingListMultimap__K = typing.TypeVar('_ForwardingListMultimap__K')  # <K>
 _ForwardingListMultimap__V = typing.TypeVar('_ForwardingListMultimap__V')  # <V>
 class ForwardingListMultimap(ForwardingMultimap[_ForwardingListMultimap__K, _ForwardingListMultimap__V], ListMultimap[_ForwardingListMultimap__K, _ForwardingListMultimap__V], typing.Generic[_ForwardingListMultimap__K, _ForwardingListMultimap__V]):
+    """
+    Java class 'com.google.common.collect.ForwardingListMultimap'
+    
+        Extends:
+            com.google.common.collect.ForwardingMultimap
+    
+        Interfaces:
+            com.google.common.collect.ListMultimap
+    
+    """
     def get(self, k: _ForwardingListMultimap__K) -> java.util.List[_ForwardingListMultimap__V]: ...
     def removeAll(self, object: typing.Any) -> java.util.List[_ForwardingListMultimap__V]: ...
     def replaceValues(self, k: _ForwardingListMultimap__K, iterable: java.lang.Iterable[_ForwardingListMultimap__V]) -> java.util.List[_ForwardingListMultimap__V]: ...
 
 _ForwardingMultiset__E = typing.TypeVar('_ForwardingMultiset__E')  # <E>
 class ForwardingMultiset(ForwardingCollection[_ForwardingMultiset__E], Multiset[_ForwardingMultiset__E], typing.Generic[_ForwardingMultiset__E]):
+    """
+    Java class 'com.google.common.collect.ForwardingMultiset'
+    
+        Extends:
+            com.google.common.collect.ForwardingCollection
+    
+        Interfaces:
+            com.google.common.collect.Multiset
+    
+    """
     @typing.overload
     def add(self, e: _ForwardingMultiset__E) -> bool: ...
     @typing.overload
@@ -2483,6 +3062,16 @@ class ForwardingMultiset(ForwardingCollection[_ForwardingMultiset__E], Multiset[
 
 _ForwardingQueue__E = typing.TypeVar('_ForwardingQueue__E')  # <E>
 class ForwardingQueue(ForwardingCollection[_ForwardingQueue__E], java.util.Queue[_ForwardingQueue__E], typing.Generic[_ForwardingQueue__E]):
+    """
+    Java class 'com.google.common.collect.ForwardingQueue'
+    
+        Extends:
+            com.google.common.collect.ForwardingCollection
+    
+        Interfaces:
+            java.util.Queue
+    
+    """
     def element(self) -> _ForwardingQueue__E: ...
     def offer(self, e: _ForwardingQueue__E) -> bool: ...
     def peek(self) -> _ForwardingQueue__E: ...
@@ -2494,12 +3083,35 @@ class ForwardingQueue(ForwardingCollection[_ForwardingQueue__E], java.util.Queue
 
 _ForwardingSet__E = typing.TypeVar('_ForwardingSet__E')  # <E>
 class ForwardingSet(ForwardingCollection[_ForwardingSet__E], java.util.Set[_ForwardingSet__E], typing.Generic[_ForwardingSet__E]):
+    """
+    Java class 'com.google.common.collect.ForwardingSet'
+    
+        Extends:
+            com.google.common.collect.ForwardingCollection
+    
+        Interfaces:
+            java.util.Set
+    
+    """
     def equals(self, object: typing.Any) -> bool: ...
     def hashCode(self) -> int: ...
 
 _ForwardingSetMultimap__K = typing.TypeVar('_ForwardingSetMultimap__K')  # <K>
 _ForwardingSetMultimap__V = typing.TypeVar('_ForwardingSetMultimap__V')  # <V>
 class ForwardingSetMultimap(ForwardingMultimap[_ForwardingSetMultimap__K, _ForwardingSetMultimap__V], SetMultimap[_ForwardingSetMultimap__K, _ForwardingSetMultimap__V], typing.Generic[_ForwardingSetMultimap__K, _ForwardingSetMultimap__V]):
+    """
+    Java class 'com.google.common.collect.ForwardingSetMultimap'
+    
+        Extends:
+            com.google.common.collect.ForwardingMultimap
+    
+        Interfaces:
+            com.google.common.collect.SetMultimap
+    
+      Constructors:
+        * ForwardingSetMultimap()
+    
+    """
     def __init__(self): ...
     def entries(self) -> java.util.Set[java.util.Map.Entry[_ForwardingSetMultimap__K, _ForwardingSetMultimap__V]]: ...
     def get(self, k: _ForwardingSetMultimap__K) -> java.util.Set[_ForwardingSetMultimap__V]: ...
@@ -2509,6 +3121,16 @@ class ForwardingSetMultimap(ForwardingMultimap[_ForwardingSetMultimap__K, _Forwa
 _ForwardingSortedMap__K = typing.TypeVar('_ForwardingSortedMap__K')  # <K>
 _ForwardingSortedMap__V = typing.TypeVar('_ForwardingSortedMap__V')  # <V>
 class ForwardingSortedMap(ForwardingMap[_ForwardingSortedMap__K, _ForwardingSortedMap__V], java.util.SortedMap[_ForwardingSortedMap__K, _ForwardingSortedMap__V], typing.Generic[_ForwardingSortedMap__K, _ForwardingSortedMap__V]):
+    """
+    Java class 'com.google.common.collect.ForwardingSortedMap'
+    
+        Extends:
+            com.google.common.collect.ForwardingMap
+    
+        Interfaces:
+            java.util.SortedMap
+    
+    """
     def comparator(self) -> java.util.Comparator[_ForwardingSortedMap__K]: ...
     def firstKey(self) -> _ForwardingSortedMap__K: ...
     def headMap(self, k: _ForwardingSortedMap__K) -> java.util.SortedMap[_ForwardingSortedMap__K, _ForwardingSortedMap__V]: ...
@@ -2519,6 +3141,17 @@ class ForwardingSortedMap(ForwardingMap[_ForwardingSortedMap__K, _ForwardingSort
 _ImmutableClassToInstanceMap__Builder__B = typing.TypeVar('_ImmutableClassToInstanceMap__Builder__B')  # <B>
 _ImmutableClassToInstanceMap__B = typing.TypeVar('_ImmutableClassToInstanceMap__B')  # <B>
 class ImmutableClassToInstanceMap(ForwardingMap[typing.Type[_ImmutableClassToInstanceMap__B], _ImmutableClassToInstanceMap__B], ClassToInstanceMap[_ImmutableClassToInstanceMap__B], java.io.Serializable, typing.Generic[_ImmutableClassToInstanceMap__B]):
+    """
+    Java class 'com.google.common.collect.ImmutableClassToInstanceMap'
+    
+        Extends:
+            com.google.common.collect.ForwardingMap
+    
+        Interfaces:
+            com.google.common.collect.ClassToInstanceMap,
+            java.io.Serializable
+    
+    """
     _builder__B = typing.TypeVar('_builder__B')  # <B>
     @staticmethod
     def builder() -> 'ImmutableClassToInstanceMap.Builder'[_builder__B]: ...
@@ -2540,6 +3173,16 @@ class ImmutableClassToInstanceMap(ForwardingMap[typing.Type[_ImmutableClassToIns
     _putInstance__T = typing.TypeVar('_putInstance__T')  # <T>
     def putInstance(self, class_: typing.Type[_putInstance__T], t: _putInstance__T) -> _putInstance__T: ...
     class Builder(typing.Generic[_ImmutableClassToInstanceMap__Builder__B]):
+        """
+        Java class 'com.google.common.collect.ImmutableClassToInstanceMap$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+          Constructors:
+            * Builder()
+        
+        """
         def __init__(self): ...
         def build(self) -> 'ImmutableClassToInstanceMap'[_ImmutableClassToInstanceMap__Builder__B]: ...
         _put__T = typing.TypeVar('_put__T')  # <T>
@@ -2549,6 +3192,17 @@ class ImmutableClassToInstanceMap(ForwardingMap[typing.Type[_ImmutableClassToIns
 
 _MutableClassToInstanceMap__B = typing.TypeVar('_MutableClassToInstanceMap__B')  # <B>
 class MutableClassToInstanceMap(ForwardingMap[typing.Type[_MutableClassToInstanceMap__B], _MutableClassToInstanceMap__B], ClassToInstanceMap[_MutableClassToInstanceMap__B], java.io.Serializable, typing.Generic[_MutableClassToInstanceMap__B]):
+    """
+    Java class 'com.google.common.collect.MutableClassToInstanceMap'
+    
+        Extends:
+            com.google.common.collect.ForwardingMap
+    
+        Interfaces:
+            com.google.common.collect.ClassToInstanceMap,
+            java.io.Serializable
+    
+    """
     _create_0__B = typing.TypeVar('_create_0__B')  # <B>
     _create_1__B = typing.TypeVar('_create_1__B')  # <B>
     @typing.overload
@@ -2568,6 +3222,13 @@ class MutableClassToInstanceMap(ForwardingMap[typing.Type[_MutableClassToInstanc
 _SortedSetMultimap__K = typing.TypeVar('_SortedSetMultimap__K')  # <K>
 _SortedSetMultimap__V = typing.TypeVar('_SortedSetMultimap__V')  # <V>
 class SortedSetMultimap(SetMultimap[_SortedSetMultimap__K, _SortedSetMultimap__V], typing.Generic[_SortedSetMultimap__K, _SortedSetMultimap__V]):
+    """
+    Java class 'com.google.common.collect.SortedSetMultimap'
+    
+        Interfaces:
+            com.google.common.collect.SetMultimap
+    
+    """
     def asMap(self) -> java.util.Map[_SortedSetMultimap__K, java.util.Collection[_SortedSetMultimap__V]]: ...
     def equals(self, object: typing.Any) -> bool: ...
     def get(self, k: _SortedSetMultimap__K) -> java.util.SortedSet[_SortedSetMultimap__V]: ...
@@ -2578,6 +3239,16 @@ class SortedSetMultimap(SetMultimap[_SortedSetMultimap__K, _SortedSetMultimap__V
 
 _EvictingQueue__E = typing.TypeVar('_EvictingQueue__E')  # <E>
 class EvictingQueue(ForwardingQueue[_EvictingQueue__E], java.io.Serializable, typing.Generic[_EvictingQueue__E]):
+    """
+    Java class 'com.google.common.collect.EvictingQueue'
+    
+        Extends:
+            com.google.common.collect.ForwardingQueue
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     def add(self, e: _EvictingQueue__E) -> bool: ...
     def addAll(self, collection: typing.Union[java.util.Collection[_EvictingQueue__E], typing.Sequence[_EvictingQueue__E]]) -> bool: ...
     def contains(self, object: typing.Any) -> bool: ...
@@ -2593,6 +3264,16 @@ class EvictingQueue(ForwardingQueue[_EvictingQueue__E], java.io.Serializable, ty
 
 _ForwardingDeque__E = typing.TypeVar('_ForwardingDeque__E')  # <E>
 class ForwardingDeque(ForwardingQueue[_ForwardingDeque__E], java.util.Deque[_ForwardingDeque__E], typing.Generic[_ForwardingDeque__E]):
+    """
+    Java class 'com.google.common.collect.ForwardingDeque'
+    
+        Extends:
+            com.google.common.collect.ForwardingQueue
+    
+        Interfaces:
+            java.util.Deque
+    
+    """
     def addFirst(self, e: _ForwardingDeque__E) -> None: ...
     def addLast(self, e: _ForwardingDeque__E) -> None: ...
     def descendingIterator(self) -> java.util.Iterator[_ForwardingDeque__E]: ...
@@ -2614,6 +3295,16 @@ class ForwardingDeque(ForwardingQueue[_ForwardingDeque__E], java.util.Deque[_For
 _ForwardingNavigableMap__K = typing.TypeVar('_ForwardingNavigableMap__K')  # <K>
 _ForwardingNavigableMap__V = typing.TypeVar('_ForwardingNavigableMap__V')  # <V>
 class ForwardingNavigableMap(ForwardingSortedMap[_ForwardingNavigableMap__K, _ForwardingNavigableMap__V], java.util.NavigableMap[_ForwardingNavigableMap__K, _ForwardingNavigableMap__V], typing.Generic[_ForwardingNavigableMap__K, _ForwardingNavigableMap__V]):
+    """
+    Java class 'com.google.common.collect.ForwardingNavigableMap'
+    
+        Extends:
+            com.google.common.collect.ForwardingSortedMap
+    
+        Interfaces:
+            java.util.NavigableMap
+    
+    """
     def ceilingEntry(self, k: _ForwardingNavigableMap__K) -> java.util.Map.Entry[_ForwardingNavigableMap__K, _ForwardingNavigableMap__V]: ...
     def ceilingKey(self, k: _ForwardingNavigableMap__K) -> _ForwardingNavigableMap__K: ...
     def descendingKeySet(self) -> java.util.NavigableSet[_ForwardingNavigableMap__K]: ...
@@ -2644,6 +3335,16 @@ class ForwardingNavigableMap(ForwardingSortedMap[_ForwardingNavigableMap__K, _Fo
 
 _ForwardingSortedSet__E = typing.TypeVar('_ForwardingSortedSet__E')  # <E>
 class ForwardingSortedSet(ForwardingSet[_ForwardingSortedSet__E], java.util.SortedSet[_ForwardingSortedSet__E], typing.Generic[_ForwardingSortedSet__E]):
+    """
+    Java class 'com.google.common.collect.ForwardingSortedSet'
+    
+        Extends:
+            com.google.common.collect.ForwardingSet
+    
+        Interfaces:
+            java.util.SortedSet
+    
+    """
     def comparator(self) -> java.util.Comparator[_ForwardingSortedSet__E]: ...
     def first(self) -> _ForwardingSortedSet__E: ...
     def headSet(self, e: _ForwardingSortedSet__E) -> java.util.SortedSet[_ForwardingSortedSet__E]: ...
@@ -2654,6 +3355,16 @@ class ForwardingSortedSet(ForwardingSet[_ForwardingSortedSet__E], java.util.Sort
 _ForwardingSortedSetMultimap__K = typing.TypeVar('_ForwardingSortedSetMultimap__K')  # <K>
 _ForwardingSortedSetMultimap__V = typing.TypeVar('_ForwardingSortedSetMultimap__V')  # <V>
 class ForwardingSortedSetMultimap(ForwardingSetMultimap[_ForwardingSortedSetMultimap__K, _ForwardingSortedSetMultimap__V], SortedSetMultimap[_ForwardingSortedSetMultimap__K, _ForwardingSortedSetMultimap__V], typing.Generic[_ForwardingSortedSetMultimap__K, _ForwardingSortedSetMultimap__V]):
+    """
+    Java class 'com.google.common.collect.ForwardingSortedSetMultimap'
+    
+        Extends:
+            com.google.common.collect.ForwardingSetMultimap
+    
+        Interfaces:
+            com.google.common.collect.SortedSetMultimap
+    
+    """
     def get(self, k: _ForwardingSortedSetMultimap__K) -> java.util.SortedSet[_ForwardingSortedSetMultimap__V]: ...
     def removeAll(self, object: typing.Any) -> java.util.SortedSet[_ForwardingSortedSetMultimap__V]: ...
     def replaceValues(self, k: _ForwardingSortedSetMultimap__K, iterable: java.lang.Iterable[_ForwardingSortedSetMultimap__V]) -> java.util.SortedSet[_ForwardingSortedSetMultimap__V]: ...
@@ -2661,6 +3372,16 @@ class ForwardingSortedSetMultimap(ForwardingSetMultimap[_ForwardingSortedSetMult
 
 _ForwardingBlockingDeque__E = typing.TypeVar('_ForwardingBlockingDeque__E')  # <E>
 class ForwardingBlockingDeque(ForwardingDeque[_ForwardingBlockingDeque__E], java.util.concurrent.BlockingDeque[_ForwardingBlockingDeque__E], typing.Generic[_ForwardingBlockingDeque__E]):
+    """
+    Java class 'com.google.common.collect.ForwardingBlockingDeque'
+    
+        Extends:
+            com.google.common.collect.ForwardingDeque
+    
+        Interfaces:
+            java.util.concurrent.BlockingDeque
+    
+    """
     @typing.overload
     def drainTo(self, collection: typing.Union[java.util.Collection[_ForwardingBlockingDeque__E], typing.Sequence[_ForwardingBlockingDeque__E]]) -> int: ...
     @typing.overload
@@ -2699,6 +3420,16 @@ class ForwardingBlockingDeque(ForwardingDeque[_ForwardingBlockingDeque__E], java
 
 _ForwardingNavigableSet__E = typing.TypeVar('_ForwardingNavigableSet__E')  # <E>
 class ForwardingNavigableSet(ForwardingSortedSet[_ForwardingNavigableSet__E], java.util.NavigableSet[_ForwardingNavigableSet__E], typing.Generic[_ForwardingNavigableSet__E]):
+    """
+    Java class 'com.google.common.collect.ForwardingNavigableSet'
+    
+        Extends:
+            com.google.common.collect.ForwardingSortedSet
+    
+        Interfaces:
+            java.util.NavigableSet
+    
+    """
     def ceiling(self, e: _ForwardingNavigableSet__E) -> _ForwardingNavigableSet__E: ...
     def descendingIterator(self) -> java.util.Iterator[_ForwardingNavigableSet__E]: ...
     def descendingSet(self) -> java.util.NavigableSet[_ForwardingNavigableSet__E]: ...
@@ -2723,6 +3454,13 @@ class ForwardingNavigableSet(ForwardingSortedSet[_ForwardingNavigableSet__E], ja
 _ArrayListMultimap__K = typing.TypeVar('_ArrayListMultimap__K')  # <K>
 _ArrayListMultimap__V = typing.TypeVar('_ArrayListMultimap__V')  # <V>
 class ArrayListMultimap(com.google.common.collect.ArrayListMultimapGwtSerializationDependencies[_ArrayListMultimap__K, _ArrayListMultimap__V], typing.Generic[_ArrayListMultimap__K, _ArrayListMultimap__V]):
+    """
+    Java class 'com.google.common.collect.ArrayListMultimap'
+    
+        Extends:
+            com.google.common.collect.ArrayListMultimapGwtSerializationDependencies
+    
+    """
     _create_0__K = typing.TypeVar('_create_0__K')  # <K>
     _create_0__V = typing.TypeVar('_create_0__V')  # <V>
     _create_1__K = typing.TypeVar('_create_1__K')  # <K>
@@ -2744,6 +3482,16 @@ _ArrayTable__R = typing.TypeVar('_ArrayTable__R')  # <R>
 _ArrayTable__C = typing.TypeVar('_ArrayTable__C')  # <C>
 _ArrayTable__V = typing.TypeVar('_ArrayTable__V')  # <V>
 class ArrayTable(com.google.common.collect.AbstractTable[_ArrayTable__R, _ArrayTable__C, _ArrayTable__V], java.io.Serializable, typing.Generic[_ArrayTable__R, _ArrayTable__C, _ArrayTable__V]):
+    """
+    Java class 'com.google.common.collect.ArrayTable'
+    
+        Extends:
+            com.google.common.collect.AbstractTable
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     def at(self, int: int, int2: int) -> _ArrayTable__V: ...
     def cellSet(self) -> java.util.Set[Table.Cell[_ArrayTable__R, _ArrayTable__C, _ArrayTable__V]]: ...
     def clear(self) -> None: ...
@@ -2785,6 +3533,16 @@ class ArrayTable(com.google.common.collect.AbstractTable[_ArrayTable__R, _ArrayT
 
 _ConcurrentHashMultiset__E = typing.TypeVar('_ConcurrentHashMultiset__E')  # <E>
 class ConcurrentHashMultiset(com.google.common.collect.AbstractMultiset[_ConcurrentHashMultiset__E], java.io.Serializable, typing.Generic[_ConcurrentHashMultiset__E]):
+    """
+    Java class 'com.google.common.collect.ConcurrentHashMultiset'
+    
+        Extends:
+            com.google.common.collect.AbstractMultiset
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     @typing.overload
     def add(self, e: _ConcurrentHashMultiset__E) -> bool: ...
     @typing.overload
@@ -2827,6 +3585,13 @@ class ConcurrentHashMultiset(com.google.common.collect.AbstractMultiset[_Concurr
 
 _ContiguousSet__C = typing.TypeVar('_ContiguousSet__C', bound=java.lang.Comparable)  # <C>
 class ContiguousSet(com.google.common.collect.ImmutableSortedSet[_ContiguousSet__C], typing.Generic[_ContiguousSet__C]):
+    """
+    Java class 'com.google.common.collect.ContiguousSet'
+    
+        Extends:
+            com.google.common.collect.ImmutableSortedSet
+    
+    """
     _builder_0__E = typing.TypeVar('_builder_0__E')  # <E>
     _builder_1__E = typing.TypeVar('_builder_1__E')  # <E>
     @typing.overload
@@ -2872,6 +3637,13 @@ class ContiguousSet(com.google.common.collect.ImmutableSortedSet[_ContiguousSet_
 _EnumBiMap__K = typing.TypeVar('_EnumBiMap__K', bound=java.lang.Enum)  # <K>
 _EnumBiMap__V = typing.TypeVar('_EnumBiMap__V', bound=java.lang.Enum)  # <V>
 class EnumBiMap(com.google.common.collect.AbstractBiMap[_EnumBiMap__K, _EnumBiMap__V], typing.Generic[_EnumBiMap__K, _EnumBiMap__V]):
+    """
+    Java class 'com.google.common.collect.EnumBiMap'
+    
+        Extends:
+            com.google.common.collect.AbstractBiMap
+    
+    """
     _create_0__K = typing.TypeVar('_create_0__K', bound=java.lang.Enum)  # <K>
     _create_0__V = typing.TypeVar('_create_0__V', bound=java.lang.Enum)  # <V>
     _create_1__K = typing.TypeVar('_create_1__K', bound=java.lang.Enum)  # <K>
@@ -2888,6 +3660,13 @@ class EnumBiMap(com.google.common.collect.AbstractBiMap[_EnumBiMap__K, _EnumBiMa
 _EnumHashBiMap__K = typing.TypeVar('_EnumHashBiMap__K', bound=java.lang.Enum)  # <K>
 _EnumHashBiMap__V = typing.TypeVar('_EnumHashBiMap__V')  # <V>
 class EnumHashBiMap(com.google.common.collect.AbstractBiMap[_EnumHashBiMap__K, _EnumHashBiMap__V], typing.Generic[_EnumHashBiMap__K, _EnumHashBiMap__V]):
+    """
+    Java class 'com.google.common.collect.EnumHashBiMap'
+    
+        Extends:
+            com.google.common.collect.AbstractBiMap
+    
+    """
     _create_0__K = typing.TypeVar('_create_0__K', bound=java.lang.Enum)  # <K>
     _create_0__V = typing.TypeVar('_create_0__V')  # <V>
     _create_1__K = typing.TypeVar('_create_1__K', bound=java.lang.Enum)  # <K>
@@ -2905,6 +3684,16 @@ class EnumHashBiMap(com.google.common.collect.AbstractBiMap[_EnumHashBiMap__K, _
 
 _EnumMultiset__E = typing.TypeVar('_EnumMultiset__E', bound=java.lang.Enum)  # <E>
 class EnumMultiset(com.google.common.collect.AbstractMultiset[_EnumMultiset__E], java.io.Serializable, typing.Generic[_EnumMultiset__E]):
+    """
+    Java class 'com.google.common.collect.EnumMultiset'
+    
+        Extends:
+            com.google.common.collect.AbstractMultiset
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     @typing.overload
     def add(self, e: _EnumMultiset__E) -> bool: ...
     @typing.overload
@@ -2937,6 +3726,16 @@ class EnumMultiset(com.google.common.collect.AbstractMultiset[_EnumMultiset__E],
 
 _ForwardingSortedMultiset__E = typing.TypeVar('_ForwardingSortedMultiset__E')  # <E>
 class ForwardingSortedMultiset(ForwardingMultiset[_ForwardingSortedMultiset__E], com.google.common.collect.SortedMultiset[_ForwardingSortedMultiset__E], typing.Generic[_ForwardingSortedMultiset__E]):
+    """
+    Java class 'com.google.common.collect.ForwardingSortedMultiset'
+    
+        Extends:
+            com.google.common.collect.ForwardingMultiset
+    
+        Interfaces:
+            com.google.common.collect.SortedMultiset
+    
+    """
     def comparator(self) -> java.util.Comparator[_ForwardingSortedMultiset__E]: ...
     def descendingMultiset(self) -> 'SortedMultiset'[_ForwardingSortedMultiset__E]: ...
     def elementSet(self) -> java.util.NavigableSet[_ForwardingSortedMultiset__E]: ...
@@ -2952,6 +3751,13 @@ _HashBasedTable__R = typing.TypeVar('_HashBasedTable__R')  # <R>
 _HashBasedTable__C = typing.TypeVar('_HashBasedTable__C')  # <C>
 _HashBasedTable__V = typing.TypeVar('_HashBasedTable__V')  # <V>
 class HashBasedTable(com.google.common.collect.StandardTable[_HashBasedTable__R, _HashBasedTable__C, _HashBasedTable__V], typing.Generic[_HashBasedTable__R, _HashBasedTable__C, _HashBasedTable__V]):
+    """
+    Java class 'com.google.common.collect.HashBasedTable'
+    
+        Extends:
+            com.google.common.collect.StandardTable
+    
+    """
     def contains(self, object: typing.Any, object2: typing.Any) -> bool: ...
     def containsColumn(self, object: typing.Any) -> bool: ...
     def containsRow(self, object: typing.Any) -> bool: ...
@@ -2981,6 +3787,16 @@ class HashBasedTable(com.google.common.collect.StandardTable[_HashBasedTable__R,
 _HashBiMap__K = typing.TypeVar('_HashBiMap__K')  # <K>
 _HashBiMap__V = typing.TypeVar('_HashBiMap__V')  # <V>
 class HashBiMap(com.google.common.collect.Maps.IteratorBasedAbstractMap[_HashBiMap__K, _HashBiMap__V], BiMap[_HashBiMap__K, _HashBiMap__V], java.io.Serializable, typing.Generic[_HashBiMap__K, _HashBiMap__V]):
+    """
+    Java class 'com.google.common.collect.HashBiMap'
+    
+        Extends:
+            com.google.common.collect.Maps$IteratorBasedAbstractMap
+    
+        Interfaces:
+            com.google.common.collect.BiMap, java.io.Serializable
+    
+    """
     def clear(self) -> None: ...
     def containsKey(self, object: typing.Any) -> bool: ...
     def containsValue(self, object: typing.Any) -> bool: ...
@@ -3016,6 +3832,13 @@ class HashBiMap(com.google.common.collect.Maps.IteratorBasedAbstractMap[_HashBiM
 _HashMultimap__K = typing.TypeVar('_HashMultimap__K')  # <K>
 _HashMultimap__V = typing.TypeVar('_HashMultimap__V')  # <V>
 class HashMultimap(com.google.common.collect.HashMultimapGwtSerializationDependencies[_HashMultimap__K, _HashMultimap__V], typing.Generic[_HashMultimap__K, _HashMultimap__V]):
+    """
+    Java class 'com.google.common.collect.HashMultimap'
+    
+        Extends:
+            com.google.common.collect.HashMultimapGwtSerializationDependencies
+    
+    """
     _create_0__K = typing.TypeVar('_create_0__K')  # <K>
     _create_0__V = typing.TypeVar('_create_0__V')  # <V>
     _create_1__K = typing.TypeVar('_create_1__K')  # <K>
@@ -3034,6 +3857,13 @@ class HashMultimap(com.google.common.collect.HashMultimapGwtSerializationDepende
 
 _HashMultiset__E = typing.TypeVar('_HashMultiset__E')  # <E>
 class HashMultiset(com.google.common.collect.AbstractMapBasedMultiset[_HashMultiset__E], typing.Generic[_HashMultiset__E]):
+    """
+    Java class 'com.google.common.collect.HashMultiset'
+    
+        Extends:
+            com.google.common.collect.AbstractMapBasedMultiset
+    
+    """
     def add(self, e: _HashMultiset__E) -> bool: ...
     _create_0__E = typing.TypeVar('_create_0__E')  # <E>
     _create_1__E = typing.TypeVar('_create_1__E')  # <E>
@@ -3054,6 +3884,16 @@ _ImmutableBiMap__Builder__V = typing.TypeVar('_ImmutableBiMap__Builder__V')  # <
 _ImmutableBiMap__K = typing.TypeVar('_ImmutableBiMap__K')  # <K>
 _ImmutableBiMap__V = typing.TypeVar('_ImmutableBiMap__V')  # <V>
 class ImmutableBiMap(com.google.common.collect.ImmutableBiMapFauxverideShim[_ImmutableBiMap__K, _ImmutableBiMap__V], BiMap[_ImmutableBiMap__K, _ImmutableBiMap__V], typing.Generic[_ImmutableBiMap__K, _ImmutableBiMap__V]):
+    """
+    Java class 'com.google.common.collect.ImmutableBiMap'
+    
+        Extends:
+            com.google.common.collect.ImmutableBiMapFauxverideShim
+    
+        Interfaces:
+            com.google.common.collect.BiMap
+    
+    """
     _builder_0__K = typing.TypeVar('_builder_0__K')  # <K>
     _builder_0__V = typing.TypeVar('_builder_0__V')  # <V>
     _builder_1__K = typing.TypeVar('_builder_1__K')  # <K>
@@ -3163,6 +4003,16 @@ class ImmutableBiMap(com.google.common.collect.ImmutableBiMapFauxverideShim[_Imm
     def toImmutableBiMap(function: typing.Union[java.util.function.Function[_toImmutableBiMap__T, _toImmutableBiMap__K], typing.Callable[[_toImmutableBiMap__T], _toImmutableBiMap__K]], function2: typing.Union[java.util.function.Function[_toImmutableBiMap__T, _toImmutableBiMap__V], typing.Callable[[_toImmutableBiMap__T], _toImmutableBiMap__V]]) -> java.util.stream.Collector[_toImmutableBiMap__T, typing.Any, 'ImmutableBiMap'[_toImmutableBiMap__K, _toImmutableBiMap__V]]: ...
     def values(self) -> ImmutableSet[_ImmutableBiMap__V]: ...
     class Builder(ImmutableMap.Builder[_ImmutableBiMap__Builder__K, _ImmutableBiMap__Builder__V], typing.Generic[_ImmutableBiMap__Builder__K, _ImmutableBiMap__Builder__V]):
+        """
+        Java class 'com.google.common.collect.ImmutableBiMap$Builder'
+        
+            Extends:
+                com.google.common.collect.ImmutableMap$Builder
+        
+          Constructors:
+            * Builder()
+        
+        """
         def __init__(self): ...
         def build(self) -> 'ImmutableBiMap'[_ImmutableBiMap__Builder__K, _ImmutableBiMap__Builder__V]: ...
         def orderEntriesByValue(self, comparator: typing.Union[java.util.Comparator[_ImmutableBiMap__Builder__V], typing.Callable[[_ImmutableBiMap__Builder__V, _ImmutableBiMap__Builder__V], int]]) -> 'ImmutableBiMap.Builder'[_ImmutableBiMap__Builder__K, _ImmutableBiMap__Builder__V]: ...
@@ -3180,6 +4030,16 @@ _ImmutableListMultimap__Builder__V = typing.TypeVar('_ImmutableListMultimap__Bui
 _ImmutableListMultimap__K = typing.TypeVar('_ImmutableListMultimap__K')  # <K>
 _ImmutableListMultimap__V = typing.TypeVar('_ImmutableListMultimap__V')  # <V>
 class ImmutableListMultimap(com.google.common.collect.ImmutableMultimap[_ImmutableListMultimap__K, _ImmutableListMultimap__V], ListMultimap[_ImmutableListMultimap__K, _ImmutableListMultimap__V], typing.Generic[_ImmutableListMultimap__K, _ImmutableListMultimap__V]):
+    """
+    Java class 'com.google.common.collect.ImmutableListMultimap'
+    
+        Extends:
+            com.google.common.collect.ImmutableMultimap
+    
+        Interfaces:
+            com.google.common.collect.ListMultimap
+    
+    """
     _builder_0__K = typing.TypeVar('_builder_0__K')  # <K>
     _builder_0__V = typing.TypeVar('_builder_0__V')  # <V>
     _builder_1__K = typing.TypeVar('_builder_1__K')  # <K>
@@ -3285,6 +4145,16 @@ class ImmutableListMultimap(com.google.common.collect.ImmutableMultimap[_Immutab
     @staticmethod
     def toImmutableListMultimap(function: typing.Union[java.util.function.Function[_toImmutableListMultimap__T, _toImmutableListMultimap__K], typing.Callable[[_toImmutableListMultimap__T], _toImmutableListMultimap__K]], function2: typing.Union[java.util.function.Function[_toImmutableListMultimap__T, _toImmutableListMultimap__V], typing.Callable[[_toImmutableListMultimap__T], _toImmutableListMultimap__V]]) -> java.util.stream.Collector[_toImmutableListMultimap__T, typing.Any, 'ImmutableListMultimap'[_toImmutableListMultimap__K, _toImmutableListMultimap__V]]: ...
     class Builder(com.google.common.collect.ImmutableMultimap.Builder[_ImmutableListMultimap__Builder__K, _ImmutableListMultimap__Builder__V], typing.Generic[_ImmutableListMultimap__Builder__K, _ImmutableListMultimap__Builder__V]):
+        """
+        Java class 'com.google.common.collect.ImmutableListMultimap$Builder'
+        
+            Extends:
+                com.google.common.collect.ImmutableMultimap$Builder
+        
+          Constructors:
+            * Builder()
+        
+        """
         def __init__(self): ...
         def build(self) -> 'ImmutableListMultimap'[_ImmutableListMultimap__Builder__K, _ImmutableListMultimap__Builder__V]: ...
         def orderKeysBy(self, comparator: typing.Union[java.util.Comparator[_ImmutableListMultimap__Builder__K], typing.Callable[[_ImmutableListMultimap__Builder__K, _ImmutableListMultimap__Builder__K], int]]) -> 'ImmutableListMultimap.Builder'[_ImmutableListMultimap__Builder__K, _ImmutableListMultimap__Builder__V]: ...
@@ -3307,6 +4177,16 @@ _ImmutableMultimap__Builder__V = typing.TypeVar('_ImmutableMultimap__Builder__V'
 _ImmutableMultimap__K = typing.TypeVar('_ImmutableMultimap__K')  # <K>
 _ImmutableMultimap__V = typing.TypeVar('_ImmutableMultimap__V')  # <V>
 class ImmutableMultimap(com.google.common.collect.BaseImmutableMultimap[_ImmutableMultimap__K, _ImmutableMultimap__V], java.io.Serializable, typing.Generic[_ImmutableMultimap__K, _ImmutableMultimap__V]):
+    """
+    Java class 'com.google.common.collect.ImmutableMultimap'
+    
+        Extends:
+            com.google.common.collect.BaseImmutableMultimap
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     def asMap(self) -> ImmutableMap[_ImmutableMultimap__K, java.util.Collection[_ImmutableMultimap__V]]: ...
     _builder__K = typing.TypeVar('_builder__K')  # <K>
     _builder__V = typing.TypeVar('_builder__V')  # <V>
@@ -3372,6 +4252,16 @@ class ImmutableMultimap(com.google.common.collect.BaseImmutableMultimap[_Immutab
     def size(self) -> int: ...
     def values(self) -> ImmutableCollection[_ImmutableMultimap__V]: ...
     class Builder(typing.Generic[_ImmutableMultimap__Builder__K, _ImmutableMultimap__Builder__V]):
+        """
+        Java class 'com.google.common.collect.ImmutableMultimap$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+          Constructors:
+            * Builder()
+        
+        """
         def __init__(self): ...
         def build(self) -> 'ImmutableMultimap'[_ImmutableMultimap__Builder__K, _ImmutableMultimap__Builder__V]: ...
         def orderKeysBy(self, comparator: typing.Union[java.util.Comparator[_ImmutableMultimap__Builder__K], typing.Callable[[_ImmutableMultimap__Builder__K, _ImmutableMultimap__Builder__K], int]]) -> 'ImmutableMultimap.Builder'[_ImmutableMultimap__Builder__K, _ImmutableMultimap__Builder__V]: ...
@@ -3392,6 +4282,16 @@ class ImmutableMultimap(com.google.common.collect.BaseImmutableMultimap[_Immutab
 _ImmutableMultiset__Builder__E = typing.TypeVar('_ImmutableMultiset__Builder__E')  # <E>
 _ImmutableMultiset__E = typing.TypeVar('_ImmutableMultiset__E')  # <E>
 class ImmutableMultiset(com.google.common.collect.ImmutableMultisetGwtSerializationDependencies[_ImmutableMultiset__E], Multiset[_ImmutableMultiset__E], typing.Generic[_ImmutableMultiset__E]):
+    """
+    Java class 'com.google.common.collect.ImmutableMultiset'
+    
+        Extends:
+            com.google.common.collect.ImmutableMultisetGwtSerializationDependencies
+    
+        Interfaces:
+            com.google.common.collect.Multiset
+    
+    """
     @typing.overload
     def add(self, e: _ImmutableMultiset__E) -> bool: ...
     @typing.overload
@@ -3465,6 +4365,16 @@ class ImmutableMultiset(com.google.common.collect.ImmutableMultisetGwtSerializat
     def toImmutableMultiset(function: typing.Union[java.util.function.Function[_toImmutableMultiset_1__T, _toImmutableMultiset_1__E], typing.Callable[[_toImmutableMultiset_1__T], _toImmutableMultiset_1__E]], toIntFunction: typing.Union[java.util.function.ToIntFunction[_toImmutableMultiset_1__T], typing.Callable[[_toImmutableMultiset_1__T], int]]) -> java.util.stream.Collector[_toImmutableMultiset_1__T, typing.Any, 'ImmutableMultiset'[_toImmutableMultiset_1__E]]: ...
     def toString(self) -> str: ...
     class Builder(ImmutableCollection.Builder[_ImmutableMultiset__Builder__E], typing.Generic[_ImmutableMultiset__Builder__E]):
+        """
+        Java class 'com.google.common.collect.ImmutableMultiset$Builder'
+        
+            Extends:
+                com.google.common.collect.ImmutableCollection$Builder
+        
+          Constructors:
+            * Builder()
+        
+        """
         def __init__(self): ...
         @typing.overload
         def add(self, e: _ImmutableMultiset__Builder__E) -> 'ImmutableMultiset.Builder'[_ImmutableMultiset__Builder__E]: ...
@@ -3481,6 +4391,16 @@ class ImmutableMultiset(com.google.common.collect.ImmutableMultisetGwtSerializat
 _ImmutableRangeSet__Builder__C = typing.TypeVar('_ImmutableRangeSet__Builder__C', bound=java.lang.Comparable)  # <C>
 _ImmutableRangeSet__C = typing.TypeVar('_ImmutableRangeSet__C', bound=java.lang.Comparable)  # <C>
 class ImmutableRangeSet(com.google.common.collect.AbstractRangeSet[_ImmutableRangeSet__C], java.io.Serializable, typing.Generic[_ImmutableRangeSet__C]):
+    """
+    Java class 'com.google.common.collect.ImmutableRangeSet'
+    
+        Extends:
+            com.google.common.collect.AbstractRangeSet
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     def add(self, range: 'Range'[_ImmutableRangeSet__C]) -> None: ...
     @typing.overload
     def addAll(self, rangeSet: RangeSet[_ImmutableRangeSet__C]) -> None: ...
@@ -3531,6 +4451,16 @@ class ImmutableRangeSet(com.google.common.collect.AbstractRangeSet[_ImmutableRan
     @staticmethod
     def unionOf(iterable: java.lang.Iterable['Range'[_unionOf__C]]) -> 'ImmutableRangeSet'[_unionOf__C]: ...
     class Builder(typing.Generic[_ImmutableRangeSet__Builder__C]):
+        """
+        Java class 'com.google.common.collect.ImmutableRangeSet$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+          Constructors:
+            * Builder()
+        
+        """
         def __init__(self): ...
         def add(self, range: 'Range'[_ImmutableRangeSet__Builder__C]) -> 'ImmutableRangeSet.Builder'[_ImmutableRangeSet__Builder__C]: ...
         @typing.overload
@@ -3544,6 +4474,16 @@ _ImmutableSetMultimap__Builder__V = typing.TypeVar('_ImmutableSetMultimap__Build
 _ImmutableSetMultimap__K = typing.TypeVar('_ImmutableSetMultimap__K')  # <K>
 _ImmutableSetMultimap__V = typing.TypeVar('_ImmutableSetMultimap__V')  # <V>
 class ImmutableSetMultimap(ImmutableMultimap[_ImmutableSetMultimap__K, _ImmutableSetMultimap__V], SetMultimap[_ImmutableSetMultimap__K, _ImmutableSetMultimap__V], typing.Generic[_ImmutableSetMultimap__K, _ImmutableSetMultimap__V]):
+    """
+    Java class 'com.google.common.collect.ImmutableSetMultimap'
+    
+        Extends:
+            com.google.common.collect.ImmutableMultimap
+    
+        Interfaces:
+            com.google.common.collect.SetMultimap
+    
+    """
     _builder_0__K = typing.TypeVar('_builder_0__K')  # <K>
     _builder_0__V = typing.TypeVar('_builder_0__V')  # <V>
     _builder_1__K = typing.TypeVar('_builder_1__K')  # <K>
@@ -3650,6 +4590,16 @@ class ImmutableSetMultimap(ImmutableMultimap[_ImmutableSetMultimap__K, _Immutabl
     @staticmethod
     def toImmutableSetMultimap(function: typing.Union[java.util.function.Function[_toImmutableSetMultimap__T, _toImmutableSetMultimap__K], typing.Callable[[_toImmutableSetMultimap__T], _toImmutableSetMultimap__K]], function2: typing.Union[java.util.function.Function[_toImmutableSetMultimap__T, _toImmutableSetMultimap__V], typing.Callable[[_toImmutableSetMultimap__T], _toImmutableSetMultimap__V]]) -> java.util.stream.Collector[_toImmutableSetMultimap__T, typing.Any, 'ImmutableSetMultimap'[_toImmutableSetMultimap__K, _toImmutableSetMultimap__V]]: ...
     class Builder(ImmutableMultimap.Builder[_ImmutableSetMultimap__Builder__K, _ImmutableSetMultimap__Builder__V], typing.Generic[_ImmutableSetMultimap__Builder__K, _ImmutableSetMultimap__Builder__V]):
+        """
+        Java class 'com.google.common.collect.ImmutableSetMultimap$Builder'
+        
+            Extends:
+                com.google.common.collect.ImmutableMultimap$Builder
+        
+          Constructors:
+            * Builder()
+        
+        """
         def __init__(self): ...
         def build(self) -> 'ImmutableSetMultimap'[_ImmutableSetMultimap__Builder__K, _ImmutableSetMultimap__Builder__V]: ...
         def orderKeysBy(self, comparator: typing.Union[java.util.Comparator[_ImmutableSetMultimap__Builder__K], typing.Callable[[_ImmutableSetMultimap__Builder__K, _ImmutableSetMultimap__Builder__K], int]]) -> 'ImmutableSetMultimap.Builder'[_ImmutableSetMultimap__Builder__K, _ImmutableSetMultimap__Builder__V]: ...
@@ -3672,6 +4622,16 @@ _ImmutableSortedMap__Builder__V = typing.TypeVar('_ImmutableSortedMap__Builder__
 _ImmutableSortedMap__K = typing.TypeVar('_ImmutableSortedMap__K')  # <K>
 _ImmutableSortedMap__V = typing.TypeVar('_ImmutableSortedMap__V')  # <V>
 class ImmutableSortedMap(com.google.common.collect.ImmutableSortedMapFauxverideShim[_ImmutableSortedMap__K, _ImmutableSortedMap__V], java.util.NavigableMap[_ImmutableSortedMap__K, _ImmutableSortedMap__V], typing.Generic[_ImmutableSortedMap__K, _ImmutableSortedMap__V]):
+    """
+    Java class 'com.google.common.collect.ImmutableSortedMap'
+    
+        Extends:
+            com.google.common.collect.ImmutableSortedMapFauxverideShim
+    
+        Interfaces:
+            java.util.NavigableMap
+    
+    """
     def ceilingEntry(self, k: _ImmutableSortedMap__K) -> java.util.Map.Entry[_ImmutableSortedMap__K, _ImmutableSortedMap__V]: ...
     def ceilingKey(self, k: _ImmutableSortedMap__K) -> _ImmutableSortedMap__K: ...
     def comparator(self) -> java.util.Comparator[_ImmutableSortedMap__K]: ...
@@ -3852,6 +4812,16 @@ class ImmutableSortedMap(com.google.common.collect.ImmutableSortedMapFauxverideS
     def toImmutableSortedMap(comparator: typing.Union[java.util.Comparator[_toImmutableSortedMap_1__K], typing.Callable[[_toImmutableSortedMap_1__K, _toImmutableSortedMap_1__K], int]], function: typing.Union[java.util.function.Function[_toImmutableSortedMap_1__T, _toImmutableSortedMap_1__K], typing.Callable[[_toImmutableSortedMap_1__T], _toImmutableSortedMap_1__K]], function2: typing.Union[java.util.function.Function[_toImmutableSortedMap_1__T, _toImmutableSortedMap_1__V], typing.Callable[[_toImmutableSortedMap_1__T], _toImmutableSortedMap_1__V]], binaryOperator: typing.Union[java.util.function.BinaryOperator[_toImmutableSortedMap_1__V], typing.Callable]) -> java.util.stream.Collector[_toImmutableSortedMap_1__T, typing.Any, 'ImmutableSortedMap'[_toImmutableSortedMap_1__K, _toImmutableSortedMap_1__V]]: ...
     def values(self) -> ImmutableCollection[_ImmutableSortedMap__V]: ...
     class Builder(ImmutableMap.Builder[_ImmutableSortedMap__Builder__K, _ImmutableSortedMap__Builder__V], typing.Generic[_ImmutableSortedMap__Builder__K, _ImmutableSortedMap__Builder__V]):
+        """
+        Java class 'com.google.common.collect.ImmutableSortedMap$Builder'
+        
+            Extends:
+                com.google.common.collect.ImmutableMap$Builder
+        
+          Constructors:
+            * Builder(java.util.Comparator)
+        
+        """
         def __init__(self, comparator: typing.Union[java.util.Comparator[_ImmutableSortedMap__Builder__K], typing.Callable[[_ImmutableSortedMap__Builder__K, _ImmutableSortedMap__Builder__K], int]]): ...
         def build(self) -> 'ImmutableSortedMap'[_ImmutableSortedMap__Builder__K, _ImmutableSortedMap__Builder__V]: ...
         def orderEntriesByValue(self, comparator: typing.Union[java.util.Comparator[_ImmutableSortedMap__Builder__V], typing.Callable[[_ImmutableSortedMap__Builder__V, _ImmutableSortedMap__Builder__V], int]]) -> 'ImmutableSortedMap.Builder'[_ImmutableSortedMap__Builder__K, _ImmutableSortedMap__Builder__V]: ...
@@ -3867,6 +4837,16 @@ class ImmutableSortedMap(com.google.common.collect.ImmutableSortedMapFauxverideS
 _ImmutableSortedMultiset__Builder__E = typing.TypeVar('_ImmutableSortedMultiset__Builder__E')  # <E>
 _ImmutableSortedMultiset__E = typing.TypeVar('_ImmutableSortedMultiset__E')  # <E>
 class ImmutableSortedMultiset(com.google.common.collect.ImmutableSortedMultisetFauxverideShim[_ImmutableSortedMultiset__E], com.google.common.collect.SortedMultiset[_ImmutableSortedMultiset__E], typing.Generic[_ImmutableSortedMultiset__E]):
+    """
+    Java class 'com.google.common.collect.ImmutableSortedMultiset'
+    
+        Extends:
+            com.google.common.collect.ImmutableSortedMultisetFauxverideShim
+    
+        Interfaces:
+            com.google.common.collect.SortedMultiset
+    
+    """
     def comparator(self) -> java.util.Comparator[_ImmutableSortedMultiset__E]: ...
     _copyOf_0__E = typing.TypeVar('_copyOf_0__E')  # <E>
     _copyOf_1__E = typing.TypeVar('_copyOf_1__E')  # <E>
@@ -4013,6 +4993,16 @@ class ImmutableSortedMultiset(com.google.common.collect.ImmutableSortedMultisetF
     @staticmethod
     def toImmutableSortedMultiset(comparator: typing.Union[java.util.Comparator[_toImmutableSortedMultiset_1__E], typing.Callable[[_toImmutableSortedMultiset_1__E, _toImmutableSortedMultiset_1__E], int]], function: typing.Union[java.util.function.Function[_toImmutableSortedMultiset_1__T, _toImmutableSortedMultiset_1__E], typing.Callable[[_toImmutableSortedMultiset_1__T], _toImmutableSortedMultiset_1__E]], toIntFunction: typing.Union[java.util.function.ToIntFunction[_toImmutableSortedMultiset_1__T], typing.Callable[[_toImmutableSortedMultiset_1__T], int]]) -> java.util.stream.Collector[_toImmutableSortedMultiset_1__T, typing.Any, 'ImmutableSortedMultiset'[_toImmutableSortedMultiset_1__E]]: ...
     class Builder(ImmutableMultiset.Builder[_ImmutableSortedMultiset__Builder__E], typing.Generic[_ImmutableSortedMultiset__Builder__E]):
+        """
+        Java class 'com.google.common.collect.ImmutableSortedMultiset$Builder'
+        
+            Extends:
+                com.google.common.collect.ImmutableMultiset$Builder
+        
+          Constructors:
+            * Builder(java.util.Comparator)
+        
+        """
         def __init__(self, comparator: typing.Union[java.util.Comparator[_ImmutableSortedMultiset__Builder__E], typing.Callable[[_ImmutableSortedMultiset__Builder__E, _ImmutableSortedMultiset__Builder__E], int]]): ...
         @typing.overload
         def add(self, e: _ImmutableSortedMultiset__Builder__E) -> 'ImmutableSortedMultiset.Builder'[_ImmutableSortedMultiset__Builder__E]: ...
@@ -4029,6 +5019,17 @@ class ImmutableSortedMultiset(com.google.common.collect.ImmutableSortedMultisetF
 _ImmutableSortedSet__Builder__E = typing.TypeVar('_ImmutableSortedSet__Builder__E')  # <E>
 _ImmutableSortedSet__E = typing.TypeVar('_ImmutableSortedSet__E')  # <E>
 class ImmutableSortedSet(com.google.common.collect.ImmutableSortedSetFauxverideShim[_ImmutableSortedSet__E], java.util.NavigableSet[_ImmutableSortedSet__E], com.google.common.collect.SortedIterable[_ImmutableSortedSet__E], typing.Generic[_ImmutableSortedSet__E]):
+    """
+    Java class 'com.google.common.collect.ImmutableSortedSet'
+    
+        Extends:
+            com.google.common.collect.ImmutableSortedSetFauxverideShim
+    
+        Interfaces:
+            java.util.NavigableSet,
+            com.google.common.collect.SortedIterable
+    
+    """
     def ceiling(self, e: _ImmutableSortedSet__E) -> _ImmutableSortedSet__E: ...
     def comparator(self) -> java.util.Comparator[_ImmutableSortedSet__E]: ...
     _copyOf_0__E = typing.TypeVar('_copyOf_0__E')  # <E>
@@ -4198,6 +5199,16 @@ class ImmutableSortedSet(com.google.common.collect.ImmutableSortedSetFauxverideS
     @staticmethod
     def toImmutableSortedSet(comparator: typing.Union[java.util.Comparator[_toImmutableSortedSet__E], typing.Callable[[_toImmutableSortedSet__E, _toImmutableSortedSet__E], int]]) -> java.util.stream.Collector[_toImmutableSortedSet__E, typing.Any, 'ImmutableSortedSet'[_toImmutableSortedSet__E]]: ...
     class Builder(ImmutableSet.Builder[_ImmutableSortedSet__Builder__E], typing.Generic[_ImmutableSortedSet__Builder__E]):
+        """
+        Java class 'com.google.common.collect.ImmutableSortedSet$Builder'
+        
+            Extends:
+                com.google.common.collect.ImmutableSet$Builder
+        
+          Constructors:
+            * Builder(java.util.Comparator)
+        
+        """
         def __init__(self, comparator: typing.Union[java.util.Comparator[_ImmutableSortedSet__Builder__E], typing.Callable[[_ImmutableSortedSet__Builder__E, _ImmutableSortedSet__Builder__E], int]]): ...
         @typing.overload
         def add(self, e: _ImmutableSortedSet__Builder__E) -> 'ImmutableSortedSet.Builder'[_ImmutableSortedSet__Builder__E]: ...
@@ -4216,6 +5227,16 @@ _ImmutableTable__R = typing.TypeVar('_ImmutableTable__R')  # <R>
 _ImmutableTable__C = typing.TypeVar('_ImmutableTable__C')  # <C>
 _ImmutableTable__V = typing.TypeVar('_ImmutableTable__V')  # <V>
 class ImmutableTable(com.google.common.collect.AbstractTable[_ImmutableTable__R, _ImmutableTable__C, _ImmutableTable__V], java.io.Serializable, typing.Generic[_ImmutableTable__R, _ImmutableTable__C, _ImmutableTable__V]):
+    """
+    Java class 'com.google.common.collect.ImmutableTable'
+    
+        Extends:
+            com.google.common.collect.AbstractTable
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     _builder__R = typing.TypeVar('_builder__R')  # <R>
     _builder__C = typing.TypeVar('_builder__C')  # <C>
     _builder__V = typing.TypeVar('_builder__V')  # <V>
@@ -4267,6 +5288,16 @@ class ImmutableTable(com.google.common.collect.AbstractTable[_ImmutableTable__R,
     def toImmutableTable(function: typing.Union[java.util.function.Function[_toImmutableTable_1__T, _toImmutableTable_1__R], typing.Callable[[_toImmutableTable_1__T], _toImmutableTable_1__R]], function2: typing.Union[java.util.function.Function[_toImmutableTable_1__T, _toImmutableTable_1__C], typing.Callable[[_toImmutableTable_1__T], _toImmutableTable_1__C]], function3: typing.Union[java.util.function.Function[_toImmutableTable_1__T, _toImmutableTable_1__V], typing.Callable[[_toImmutableTable_1__T], _toImmutableTable_1__V]], binaryOperator: typing.Union[java.util.function.BinaryOperator[_toImmutableTable_1__V], typing.Callable]) -> java.util.stream.Collector[_toImmutableTable_1__T, typing.Any, 'ImmutableTable'[_toImmutableTable_1__R, _toImmutableTable_1__C, _toImmutableTable_1__V]]: ...
     def values(self) -> ImmutableCollection[_ImmutableTable__V]: ...
     class Builder(typing.Generic[_ImmutableTable__Builder__R, _ImmutableTable__Builder__C, _ImmutableTable__Builder__V]):
+        """
+        Java class 'com.google.common.collect.ImmutableTable$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+          Constructors:
+            * Builder()
+        
+        """
         def __init__(self): ...
         def build(self) -> 'ImmutableTable'[_ImmutableTable__Builder__R, _ImmutableTable__Builder__C, _ImmutableTable__Builder__V]: ...
         def orderColumnsBy(self, comparator: typing.Union[java.util.Comparator[_ImmutableTable__Builder__C], typing.Callable[[_ImmutableTable__Builder__C, _ImmutableTable__Builder__C], int]]) -> 'ImmutableTable.Builder'[_ImmutableTable__Builder__R, _ImmutableTable__Builder__C, _ImmutableTable__Builder__V]: ...
@@ -4280,6 +5311,13 @@ class ImmutableTable(com.google.common.collect.AbstractTable[_ImmutableTable__R,
 _LinkedHashMultimap__K = typing.TypeVar('_LinkedHashMultimap__K')  # <K>
 _LinkedHashMultimap__V = typing.TypeVar('_LinkedHashMultimap__V')  # <V>
 class LinkedHashMultimap(com.google.common.collect.LinkedHashMultimapGwtSerializationDependencies[_LinkedHashMultimap__K, _LinkedHashMultimap__V], typing.Generic[_LinkedHashMultimap__K, _LinkedHashMultimap__V]):
+    """
+    Java class 'com.google.common.collect.LinkedHashMultimap'
+    
+        Extends:
+            com.google.common.collect.LinkedHashMultimapGwtSerializationDependencies
+    
+    """
     def clear(self) -> None: ...
     _create_0__K = typing.TypeVar('_create_0__K')  # <K>
     _create_0__V = typing.TypeVar('_create_0__V')  # <V>
@@ -4303,6 +5341,13 @@ class LinkedHashMultimap(com.google.common.collect.LinkedHashMultimapGwtSerializ
 
 _LinkedHashMultiset__E = typing.TypeVar('_LinkedHashMultiset__E')  # <E>
 class LinkedHashMultiset(com.google.common.collect.AbstractMapBasedMultiset[_LinkedHashMultiset__E], typing.Generic[_LinkedHashMultiset__E]):
+    """
+    Java class 'com.google.common.collect.LinkedHashMultiset'
+    
+        Extends:
+            com.google.common.collect.AbstractMapBasedMultiset
+    
+    """
     def add(self, e: _LinkedHashMultiset__E) -> bool: ...
     _create_0__E = typing.TypeVar('_create_0__E')  # <E>
     _create_1__E = typing.TypeVar('_create_1__E')  # <E>
@@ -4321,6 +5366,16 @@ class LinkedHashMultiset(com.google.common.collect.AbstractMapBasedMultiset[_Lin
 _LinkedListMultimap__K = typing.TypeVar('_LinkedListMultimap__K')  # <K>
 _LinkedListMultimap__V = typing.TypeVar('_LinkedListMultimap__V')  # <V>
 class LinkedListMultimap(com.google.common.collect.AbstractMultimap[_LinkedListMultimap__K, _LinkedListMultimap__V], ListMultimap[_LinkedListMultimap__K, _LinkedListMultimap__V], java.io.Serializable, typing.Generic[_LinkedListMultimap__K, _LinkedListMultimap__V]):
+    """
+    Java class 'com.google.common.collect.LinkedListMultimap'
+    
+        Extends:
+            com.google.common.collect.AbstractMultimap
+    
+        Interfaces:
+            com.google.common.collect.ListMultimap, java.io.Serializable
+    
+    """
     def clear(self) -> None: ...
     def containsKey(self, object: typing.Any) -> bool: ...
     def containsValue(self, object: typing.Any) -> bool: ...
@@ -4358,6 +5413,13 @@ _MultimapBuilder__SortedSetMultimapBuilder__V0 = typing.TypeVar('_MultimapBuilde
 _MultimapBuilder__K0 = typing.TypeVar('_MultimapBuilder__K0')  # <K0>
 _MultimapBuilder__V0 = typing.TypeVar('_MultimapBuilder__V0')  # <V0>
 class MultimapBuilder(typing.Generic[_MultimapBuilder__K0, _MultimapBuilder__V0]):
+    """
+    Java class 'com.google.common.collect.MultimapBuilder'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _build_0__K = typing.TypeVar('_build_0__K')  # <K>
     _build_0__V = typing.TypeVar('_build_0__V')  # <V>
     _build_1__K = typing.TypeVar('_build_1__K')  # <K>
@@ -4389,6 +5451,13 @@ class MultimapBuilder(typing.Generic[_MultimapBuilder__K0, _MultimapBuilder__V0]
     @staticmethod
     def treeKeys(comparator: typing.Union[java.util.Comparator[_treeKeys_1__K0], typing.Callable[[_treeKeys_1__K0, _treeKeys_1__K0], int]]) -> 'MultimapBuilder.MultimapBuilderWithKeys'[_treeKeys_1__K0]: ...
     class ListMultimapBuilder(com.google.common.collect.MultimapBuilder[_MultimapBuilder__ListMultimapBuilder__K0, _MultimapBuilder__ListMultimapBuilder__V0], typing.Generic[_MultimapBuilder__ListMultimapBuilder__K0, _MultimapBuilder__ListMultimapBuilder__V0]):
+        """
+        Java class 'com.google.common.collect.MultimapBuilder$ListMultimapBuilder'
+        
+            Extends:
+                com.google.common.collect.MultimapBuilder
+        
+        """
         _build_0__K = typing.TypeVar('_build_0__K')  # <K>
         _build_0__V = typing.TypeVar('_build_0__V')  # <V>
         _build_1__K = typing.TypeVar('_build_1__K')  # <K>
@@ -4398,6 +5467,13 @@ class MultimapBuilder(typing.Generic[_MultimapBuilder__K0, _MultimapBuilder__V0]
         @typing.overload
         def build(self, multimap: Multimap[_build_1__K, _build_1__V]) -> ListMultimap[_build_1__K, _build_1__V]: ...
     class MultimapBuilderWithKeys(typing.Generic[_MultimapBuilder__MultimapBuilderWithKeys__K0]):
+        """
+        Java class 'com.google.common.collect.MultimapBuilder$MultimapBuilderWithKeys'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         @typing.overload
         def arrayListValues(self) -> 'MultimapBuilder.ListMultimapBuilder'[_MultimapBuilder__MultimapBuilderWithKeys__K0, typing.Any]: ...
         @typing.overload
@@ -4419,6 +5495,13 @@ class MultimapBuilder(typing.Generic[_MultimapBuilder__K0, _MultimapBuilder__V0]
         @typing.overload
         def treeSetValues(self, comparator: typing.Union[java.util.Comparator[_treeSetValues_1__V0], typing.Callable[[_treeSetValues_1__V0, _treeSetValues_1__V0], int]]) -> 'MultimapBuilder.SortedSetMultimapBuilder'[_MultimapBuilder__MultimapBuilderWithKeys__K0, _treeSetValues_1__V0]: ...
     class SetMultimapBuilder(com.google.common.collect.MultimapBuilder[_MultimapBuilder__SetMultimapBuilder__K0, _MultimapBuilder__SetMultimapBuilder__V0], typing.Generic[_MultimapBuilder__SetMultimapBuilder__K0, _MultimapBuilder__SetMultimapBuilder__V0]):
+        """
+        Java class 'com.google.common.collect.MultimapBuilder$SetMultimapBuilder'
+        
+            Extends:
+                com.google.common.collect.MultimapBuilder
+        
+        """
         _build_0__K = typing.TypeVar('_build_0__K')  # <K>
         _build_0__V = typing.TypeVar('_build_0__V')  # <V>
         _build_1__K = typing.TypeVar('_build_1__K')  # <K>
@@ -4428,6 +5511,13 @@ class MultimapBuilder(typing.Generic[_MultimapBuilder__K0, _MultimapBuilder__V0]
         @typing.overload
         def build(self, multimap: Multimap[_build_1__K, _build_1__V]) -> SetMultimap[_build_1__K, _build_1__V]: ...
     class SortedSetMultimapBuilder(com.google.common.collect.MultimapBuilder.SetMultimapBuilder[_MultimapBuilder__SortedSetMultimapBuilder__K0, _MultimapBuilder__SortedSetMultimapBuilder__V0], typing.Generic[_MultimapBuilder__SortedSetMultimapBuilder__K0, _MultimapBuilder__SortedSetMultimapBuilder__V0]):
+        """
+        Java class 'com.google.common.collect.MultimapBuilder$SortedSetMultimapBuilder'
+        
+            Extends:
+                com.google.common.collect.MultimapBuilder$SetMultimapBuilder
+        
+        """
         _build_0__K = typing.TypeVar('_build_0__K')  # <K>
         _build_0__V = typing.TypeVar('_build_0__V')  # <V>
         _build_1__K = typing.TypeVar('_build_1__K')  # <K>
@@ -4439,6 +5529,16 @@ class MultimapBuilder(typing.Generic[_MultimapBuilder__K0, _MultimapBuilder__V0]
 
 _Range__C = typing.TypeVar('_Range__C', bound=java.lang.Comparable)  # <C>
 class Range(com.google.common.collect.RangeGwtSerializationDependencies, com.google.common.base.Predicate[_Range__C], java.io.Serializable, typing.Generic[_Range__C]):
+    """
+    Java class 'com.google.common.collect.Range'
+    
+        Extends:
+            com.google.common.collect.RangeGwtSerializationDependencies
+    
+        Interfaces:
+            com.google.common.base.Predicate, java.io.Serializable
+    
+    """
     _all__C = typing.TypeVar('_all__C', bound=java.lang.Comparable)  # <C>
     @staticmethod
     def all() -> 'Range'[_all__C]: ...
@@ -4503,6 +5603,14 @@ class Range(com.google.common.collect.RangeGwtSerializationDependencies, com.goo
 
 _SortedMultiset__E = typing.TypeVar('_SortedMultiset__E')  # <E>
 class SortedMultiset(com.google.common.collect.SortedMultisetBridge[_SortedMultiset__E], com.google.common.collect.SortedIterable[_SortedMultiset__E], typing.Generic[_SortedMultiset__E]):
+    """
+    Java class 'com.google.common.collect.SortedMultiset'
+    
+        Interfaces:
+            com.google.common.collect.SortedMultisetBridge,
+            com.google.common.collect.SortedIterable
+    
+    """
     def comparator(self) -> java.util.Comparator[_SortedMultiset__E]: ...
     def descendingMultiset(self) -> 'SortedMultiset'[_SortedMultiset__E]: ...
     def elementSet(self) -> java.util.NavigableSet[_SortedMultiset__E]: ...
@@ -4523,6 +5631,13 @@ _TreeBasedTable__R = typing.TypeVar('_TreeBasedTable__R')  # <R>
 _TreeBasedTable__C = typing.TypeVar('_TreeBasedTable__C')  # <C>
 _TreeBasedTable__V = typing.TypeVar('_TreeBasedTable__V')  # <V>
 class TreeBasedTable(com.google.common.collect.StandardRowSortedTable[_TreeBasedTable__R, _TreeBasedTable__C, _TreeBasedTable__V], typing.Generic[_TreeBasedTable__R, _TreeBasedTable__C, _TreeBasedTable__V]):
+    """
+    Java class 'com.google.common.collect.TreeBasedTable'
+    
+        Extends:
+            com.google.common.collect.StandardRowSortedTable
+    
+    """
     def columnComparator(self) -> java.util.Comparator[_TreeBasedTable__C]: ...
     _create_0__R = typing.TypeVar('_create_0__R', bound=java.lang.Comparable)  # <R>
     _create_0__C = typing.TypeVar('_create_0__C', bound=java.lang.Comparable)  # <C>
@@ -4550,6 +5665,13 @@ class TreeBasedTable(com.google.common.collect.StandardRowSortedTable[_TreeBased
 _TreeMultimap__K = typing.TypeVar('_TreeMultimap__K')  # <K>
 _TreeMultimap__V = typing.TypeVar('_TreeMultimap__V')  # <V>
 class TreeMultimap(com.google.common.collect.AbstractSortedKeySortedSetMultimap[_TreeMultimap__K, _TreeMultimap__V], typing.Generic[_TreeMultimap__K, _TreeMultimap__V]):
+    """
+    Java class 'com.google.common.collect.TreeMultimap'
+    
+        Extends:
+            com.google.common.collect.AbstractSortedKeySortedSetMultimap
+    
+    """
     def asMap(self) -> java.util.NavigableMap[_TreeMultimap__K, java.util.Collection[_TreeMultimap__V]]: ...
     _create_0__K = typing.TypeVar('_create_0__K', bound=java.lang.Comparable)  # <K>
     _create_0__V = typing.TypeVar('_create_0__V', bound=java.lang.Comparable)  # <V>
@@ -4573,6 +5695,16 @@ class TreeMultimap(com.google.common.collect.AbstractSortedKeySortedSetMultimap[
 
 _TreeMultiset__E = typing.TypeVar('_TreeMultiset__E')  # <E>
 class TreeMultiset(com.google.common.collect.AbstractSortedMultiset[_TreeMultiset__E], java.io.Serializable, typing.Generic[_TreeMultiset__E]):
+    """
+    Java class 'com.google.common.collect.TreeMultiset'
+    
+        Extends:
+            com.google.common.collect.AbstractSortedMultiset
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     @typing.overload
     def add(self, e: _TreeMultiset__E) -> bool: ...
     @typing.overload
@@ -4607,6 +5739,16 @@ class TreeMultiset(com.google.common.collect.AbstractSortedMultiset[_TreeMultise
 
 _TreeRangeSet__C = typing.TypeVar('_TreeRangeSet__C', bound=java.lang.Comparable)  # <C>
 class TreeRangeSet(com.google.common.collect.AbstractRangeSet[_TreeRangeSet__C], java.io.Serializable, typing.Generic[_TreeRangeSet__C]):
+    """
+    Java class 'com.google.common.collect.TreeRangeSet'
+    
+        Extends:
+            com.google.common.collect.AbstractRangeSet
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     def add(self, range: Range[_TreeRangeSet__C]) -> None: ...
     def addAll(self, iterable: java.lang.Iterable[Range[_TreeRangeSet__C]]) -> None: ...
     def asDescendingSetOfRanges(self) -> java.util.Set[Range[_TreeRangeSet__C]]: ...
@@ -4676,3 +5818,136 @@ class SortedMultisetBridge: ...
 class StandardRowSortedTable: ...
 
 class StandardTable: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("com.google.common.collect")``.
+
+    AbstractBiMap: typing.Type[AbstractBiMap]
+    AbstractIterator: typing.Type[AbstractIterator]
+    AbstractMapBasedMultiset: typing.Type[AbstractMapBasedMultiset]
+    AbstractMultimap: typing.Type[AbstractMultimap]
+    AbstractMultiset: typing.Type[AbstractMultiset]
+    AbstractRangeSet: typing.Type[AbstractRangeSet]
+    AbstractSequentialIterator: typing.Type[AbstractSequentialIterator]
+    AbstractSortedKeySortedSetMultimap: typing.Type[AbstractSortedKeySortedSetMultimap]
+    AbstractSortedMultiset: typing.Type[AbstractSortedMultiset]
+    AbstractTable: typing.Type[AbstractTable]
+    ArrayListMultimap: typing.Type[ArrayListMultimap]
+    ArrayListMultimapGwtSerializationDependencies: typing.Type[ArrayListMultimapGwtSerializationDependencies]
+    ArrayTable: typing.Type[ArrayTable]
+    BaseImmutableMultimap: typing.Type[BaseImmutableMultimap]
+    BiMap: typing.Type[BiMap]
+    BoundType: typing.Type[BoundType]
+    ClassToInstanceMap: typing.Type[ClassToInstanceMap]
+    Collections2: typing.Type[Collections2]
+    Comparators: typing.Type[Comparators]
+    ComparisonChain: typing.Type[ComparisonChain]
+    ComputationException: typing.Type[ComputationException]
+    ConcurrentHashMultiset: typing.Type[ConcurrentHashMultiset]
+    ContiguousSet: typing.Type[ContiguousSet]
+    DiscreteDomain: typing.Type[DiscreteDomain]
+    EnumBiMap: typing.Type[EnumBiMap]
+    EnumHashBiMap: typing.Type[EnumHashBiMap]
+    EnumMultiset: typing.Type[EnumMultiset]
+    EvictingQueue: typing.Type[EvictingQueue]
+    FluentIterable: typing.Type[FluentIterable]
+    ForwardingBlockingDeque: typing.Type[ForwardingBlockingDeque]
+    ForwardingCollection: typing.Type[ForwardingCollection]
+    ForwardingConcurrentMap: typing.Type[ForwardingConcurrentMap]
+    ForwardingDeque: typing.Type[ForwardingDeque]
+    ForwardingIterator: typing.Type[ForwardingIterator]
+    ForwardingList: typing.Type[ForwardingList]
+    ForwardingListIterator: typing.Type[ForwardingListIterator]
+    ForwardingListMultimap: typing.Type[ForwardingListMultimap]
+    ForwardingMap: typing.Type[ForwardingMap]
+    ForwardingMapEntry: typing.Type[ForwardingMapEntry]
+    ForwardingMultimap: typing.Type[ForwardingMultimap]
+    ForwardingMultiset: typing.Type[ForwardingMultiset]
+    ForwardingNavigableMap: typing.Type[ForwardingNavigableMap]
+    ForwardingNavigableSet: typing.Type[ForwardingNavigableSet]
+    ForwardingObject: typing.Type[ForwardingObject]
+    ForwardingQueue: typing.Type[ForwardingQueue]
+    ForwardingSet: typing.Type[ForwardingSet]
+    ForwardingSetMultimap: typing.Type[ForwardingSetMultimap]
+    ForwardingSortedMap: typing.Type[ForwardingSortedMap]
+    ForwardingSortedMultiset: typing.Type[ForwardingSortedMultiset]
+    ForwardingSortedSet: typing.Type[ForwardingSortedSet]
+    ForwardingSortedSetMultimap: typing.Type[ForwardingSortedSetMultimap]
+    ForwardingTable: typing.Type[ForwardingTable]
+    HashBasedTable: typing.Type[HashBasedTable]
+    HashBiMap: typing.Type[HashBiMap]
+    HashMultimap: typing.Type[HashMultimap]
+    HashMultimapGwtSerializationDependencies: typing.Type[HashMultimapGwtSerializationDependencies]
+    HashMultiset: typing.Type[HashMultiset]
+    ImmutableBiMap: typing.Type[ImmutableBiMap]
+    ImmutableBiMapFauxverideShim: typing.Type[ImmutableBiMapFauxverideShim]
+    ImmutableClassToInstanceMap: typing.Type[ImmutableClassToInstanceMap]
+    ImmutableCollection: typing.Type[ImmutableCollection]
+    ImmutableList: typing.Type[ImmutableList]
+    ImmutableListMultimap: typing.Type[ImmutableListMultimap]
+    ImmutableMap: typing.Type[ImmutableMap]
+    ImmutableMultimap: typing.Type[ImmutableMultimap]
+    ImmutableMultiset: typing.Type[ImmutableMultiset]
+    ImmutableMultisetGwtSerializationDependencies: typing.Type[ImmutableMultisetGwtSerializationDependencies]
+    ImmutableRangeMap: typing.Type[ImmutableRangeMap]
+    ImmutableRangeSet: typing.Type[ImmutableRangeSet]
+    ImmutableSet: typing.Type[ImmutableSet]
+    ImmutableSetMultimap: typing.Type[ImmutableSetMultimap]
+    ImmutableSortedMap: typing.Type[ImmutableSortedMap]
+    ImmutableSortedMapFauxverideShim: typing.Type[ImmutableSortedMapFauxverideShim]
+    ImmutableSortedMultiset: typing.Type[ImmutableSortedMultiset]
+    ImmutableSortedMultisetFauxverideShim: typing.Type[ImmutableSortedMultisetFauxverideShim]
+    ImmutableSortedSet: typing.Type[ImmutableSortedSet]
+    ImmutableSortedSetFauxverideShim: typing.Type[ImmutableSortedSetFauxverideShim]
+    ImmutableTable: typing.Type[ImmutableTable]
+    Interner: typing.Type[Interner]
+    Interners: typing.Type[Interners]
+    Iterables: typing.Type[Iterables]
+    Iterators: typing.Type[Iterators]
+    LinkedHashMultimap: typing.Type[LinkedHashMultimap]
+    LinkedHashMultimapGwtSerializationDependencies: typing.Type[LinkedHashMultimapGwtSerializationDependencies]
+    LinkedHashMultiset: typing.Type[LinkedHashMultiset]
+    LinkedListMultimap: typing.Type[LinkedListMultimap]
+    ListMultimap: typing.Type[ListMultimap]
+    Lists: typing.Type[Lists]
+    MapDifference: typing.Type[MapDifference]
+    MapMaker: typing.Type[MapMaker]
+    Maps: typing.Type[Maps]
+    MinMaxPriorityQueue: typing.Type[MinMaxPriorityQueue]
+    MoreCollectors: typing.Type[MoreCollectors]
+    Multimap: typing.Type[Multimap]
+    MultimapBuilder: typing.Type[MultimapBuilder]
+    Multimaps: typing.Type[Multimaps]
+    Multiset: typing.Type[Multiset]
+    Multisets: typing.Type[Multisets]
+    MutableClassToInstanceMap: typing.Type[MutableClassToInstanceMap]
+    ObjectArrays: typing.Type[ObjectArrays]
+    Ordering: typing.Type[Ordering]
+    PeekingIterator: typing.Type[PeekingIterator]
+    Queues: typing.Type[Queues]
+    Range: typing.Type[Range]
+    RangeGwtSerializationDependencies: typing.Type[RangeGwtSerializationDependencies]
+    RangeMap: typing.Type[RangeMap]
+    RangeSet: typing.Type[RangeSet]
+    RowSortedTable: typing.Type[RowSortedTable]
+    SetMultimap: typing.Type[SetMultimap]
+    Sets: typing.Type[Sets]
+    SortedIterable: typing.Type[SortedIterable]
+    SortedMapDifference: typing.Type[SortedMapDifference]
+    SortedMultiset: typing.Type[SortedMultiset]
+    SortedMultisetBridge: typing.Type[SortedMultisetBridge]
+    SortedSetMultimap: typing.Type[SortedSetMultimap]
+    StandardRowSortedTable: typing.Type[StandardRowSortedTable]
+    StandardTable: typing.Type[StandardTable]
+    Streams: typing.Type[Streams]
+    Table: typing.Type[Table]
+    Tables: typing.Type[Tables]
+    TreeBasedTable: typing.Type[TreeBasedTable]
+    TreeMultimap: typing.Type[TreeMultimap]
+    TreeMultiset: typing.Type[TreeMultiset]
+    TreeRangeMap: typing.Type[TreeRangeMap]
+    TreeRangeSet: typing.Type[TreeRangeSet]
+    TreeTraverser: typing.Type[TreeTraverser]
+    UnmodifiableIterator: typing.Type[UnmodifiableIterator]
+    UnmodifiableListIterator: typing.Type[UnmodifiableListIterator]

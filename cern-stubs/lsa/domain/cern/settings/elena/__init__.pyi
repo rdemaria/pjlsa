@@ -12,7 +12,34 @@ import java.util
 import typing
 
 
+
 class ELTAG(java.lang.Enum['ELTAG']):
+    """
+    Java class 'cern.lsa.domain.cern.settings.elena.ELTAG'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        FT1 (cern.lsa.domain.cern.settings.elena.ELTAG): final static enum constant
+        FT2 (cern.lsa.domain.cern.settings.elena.ELTAG): final static enum constant
+        FT3 (cern.lsa.domain.cern.settings.elena.ELTAG): final static enum constant
+        FT4 (cern.lsa.domain.cern.settings.elena.ELTAG): final static enum constant
+        FTSP1 (cern.lsa.domain.cern.settings.elena.ELTAG): final static enum constant
+        FTSP2 (cern.lsa.domain.cern.settings.elena.ELTAG): final static enum constant
+        FTSP3 (cern.lsa.domain.cern.settings.elena.ELTAG): final static enum constant
+        FT2A (cern.lsa.domain.cern.settings.elena.ELTAG): final static enum constant
+        FT2B (cern.lsa.domain.cern.settings.elena.ELTAG): final static enum constant
+        FT3A (cern.lsa.domain.cern.settings.elena.ELTAG): final static enum constant
+        FT3B (cern.lsa.domain.cern.settings.elena.ELTAG): final static enum constant
+        FT3C (cern.lsa.domain.cern.settings.elena.ELTAG): final static enum constant
+        FT3D (cern.lsa.domain.cern.settings.elena.ELTAG): final static enum constant
+        FT4A (cern.lsa.domain.cern.settings.elena.ELTAG): final static enum constant
+        FT4B (cern.lsa.domain.cern.settings.elena.ELTAG): final static enum constant
+        FT4C (cern.lsa.domain.cern.settings.elena.ELTAG): final static enum constant
+        RMP (cern.lsa.domain.cern.settings.elena.ELTAG): final static enum constant
+    
+    """
     FT1: typing.ClassVar['ELTAG'] = ...
     FT2: typing.ClassVar['ELTAG'] = ...
     FT3: typing.ClassVar['ELTAG'] = ...
@@ -41,6 +68,13 @@ class ELTAG(java.lang.Enum['ELTAG']):
     def values() -> typing.List['ELTAG']: ...
 
 class ElenaCycleSegment(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.cern.settings.elena.ElenaCycleSegment'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def addTimingProcess(self, timingProcess: cern.lsa.domain.cern.timing.TimingProcess, duration: java.time.Duration, timingProcessAnchor: cern.lsa.domain.cern.timing.TimingProcessAnchor) -> None: ...
     def getAttribute(self, string: str) -> str: ...
     def getAttributeNames(self) -> java.util.Set[str]: ...
@@ -62,6 +96,10 @@ class ElenaCycleSegment(cern.accsoft.commons.util.Named):
     def setName(self, string: str) -> None: ...
 
 class ElenaCycleSettings:
+    """
+    Java class 'cern.lsa.domain.cern.settings.elena.ElenaCycleSettings'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultElenaCycleSettings.Builder': ...
     def getElenaCycleStructure(self) -> 'ElenaCycleStructure': ...
@@ -69,6 +107,13 @@ class ElenaCycleSettings:
     def getParameterToTargetFunction(self) -> java.util.Map[cern.lsa.domain.settings.Parameter, cern.accsoft.commons.value.ImmutableDiscreteFunction]: ...
 
 class ElenaCycleStructure(cern.lsa.domain.commons.IdentifiedEntity):
+    """
+    Java class 'cern.lsa.domain.cern.settings.elena.ElenaCycleStructure'
+    
+        Interfaces:
+            cern.lsa.domain.commons.IdentifiedEntity
+    
+    """
     def getId(self) -> int: ...
     def getInjectionMode(self) -> 'InjectionMode': ...
     def getInjectionSegment(self) -> 'FlatSegment': ...
@@ -83,6 +128,18 @@ class ElenaCycleStructure(cern.lsa.domain.commons.IdentifiedEntity):
     def setParticleType(self, particleType: cern.accsoft.commons.domain.ParticleType) -> None: ...
 
 class InjectionMode(java.lang.Enum['InjectionMode']):
+    """
+    Java class 'cern.lsa.domain.cern.settings.elena.InjectionMode'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        AD (cern.lsa.domain.cern.settings.elena.InjectionMode): final static enum constant
+        LOCAL_SOURCE (cern.lsa.domain.cern.settings.elena.InjectionMode): final static enum constant
+        STANDALONE (cern.lsa.domain.cern.settings.elena.InjectionMode): final static enum constant
+    
+    """
     AD: typing.ClassVar['InjectionMode'] = ...
     LOCAL_SOURCE: typing.ClassVar['InjectionMode'] = ...
     STANDALONE: typing.ClassVar['InjectionMode'] = ...
@@ -98,6 +155,19 @@ class InjectionMode(java.lang.Enum['InjectionMode']):
     def values() -> typing.List['InjectionMode']: ...
 
 class PauseLocation(java.lang.Enum['PauseLocation']):
+    """
+    Java class 'cern.lsa.domain.cern.settings.elena.PauseLocation'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        NONE (cern.lsa.domain.cern.settings.elena.PauseLocation): final static enum constant
+        BEFORE_START (cern.lsa.domain.cern.settings.elena.PauseLocation): final static enum constant
+        BEFORE_END (cern.lsa.domain.cern.settings.elena.PauseLocation): final static enum constant
+        AFTER_END (cern.lsa.domain.cern.settings.elena.PauseLocation): final static enum constant
+    
+    """
     NONE: typing.ClassVar['PauseLocation'] = ...
     BEFORE_START: typing.ClassVar['PauseLocation'] = ...
     BEFORE_END: typing.ClassVar['PauseLocation'] = ...
@@ -113,6 +183,16 @@ class PauseLocation(java.lang.Enum['PauseLocation']):
     def values() -> typing.List['PauseLocation']: ...
 
 class SegmentAttribute(java.lang.Enum['SegmentAttribute']):
+    """
+    Java class 'cern.lsa.domain.cern.settings.elena.SegmentAttribute'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        ELTAG (cern.lsa.domain.cern.settings.elena.SegmentAttribute): final static enum constant
+    
+    """
     ELTAG: typing.ClassVar['SegmentAttribute'] = ...
     _valueOf_1__T = typing.TypeVar('_valueOf_1__T', bound=java.lang.Enum)  # <T>
     @typing.overload
@@ -125,6 +205,17 @@ class SegmentAttribute(java.lang.Enum['SegmentAttribute']):
     def values() -> typing.List['SegmentAttribute']: ...
 
 class SegmentType(java.lang.Enum['SegmentType']):
+    """
+    Java class 'cern.lsa.domain.cern.settings.elena.SegmentType'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        RAMP (cern.lsa.domain.cern.settings.elena.SegmentType): final static enum constant
+        FLAT (cern.lsa.domain.cern.settings.elena.SegmentType): final static enum constant
+    
+    """
     RAMP: typing.ClassVar['SegmentType'] = ...
     FLAT: typing.ClassVar['SegmentType'] = ...
     _valueOf_1__T = typing.TypeVar('_valueOf_1__T', bound=java.lang.Enum)  # <T>
@@ -138,6 +229,17 @@ class SegmentType(java.lang.Enum['SegmentType']):
     def values() -> typing.List['SegmentType']: ...
 
 class DefaultElenaCycleSettings(ElenaCycleSettings, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.settings.elena.DefaultElenaCycleSettings'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.settings.elena.ElenaCycleSettings,
+            java.io.Serializable
+    
+    """
     @staticmethod
     def builder() -> 'DefaultElenaCycleSettings.Builder': ...
     @staticmethod
@@ -152,6 +254,13 @@ class DefaultElenaCycleSettings(ElenaCycleSettings, java.io.Serializable):
     def withParameterToCorrectionFunction(self, map: typing.Union[java.util.Map[cern.lsa.domain.settings.Parameter, cern.accsoft.commons.value.ImmutableDiscreteFunction], typing.Mapping[cern.lsa.domain.settings.Parameter, cern.accsoft.commons.value.ImmutableDiscreteFunction]]) -> 'DefaultElenaCycleSettings': ...
     def withParameterToTargetFunction(self, map: typing.Union[java.util.Map[cern.lsa.domain.settings.Parameter, cern.accsoft.commons.value.ImmutableDiscreteFunction], typing.Mapping[cern.lsa.domain.settings.Parameter, cern.accsoft.commons.value.ImmutableDiscreteFunction]]) -> 'DefaultElenaCycleSettings': ...
     class Builder:
+        """
+        Java class 'cern.lsa.domain.cern.settings.elena.DefaultElenaCycleSettings$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultElenaCycleSettings': ...
         def elenaCycleStructure(self, elenaCycleStructure: ElenaCycleStructure) -> 'DefaultElenaCycleSettings.Builder': ...
         def parameterToCorrectionFunction(self, map: typing.Union[java.util.Map[cern.lsa.domain.settings.Parameter, cern.accsoft.commons.value.ImmutableDiscreteFunction], typing.Mapping[cern.lsa.domain.settings.Parameter, cern.accsoft.commons.value.ImmutableDiscreteFunction]]) -> 'DefaultElenaCycleSettings.Builder': ...
@@ -168,6 +277,13 @@ class DefaultElenaCycleSettings(ElenaCycleSettings, java.io.Serializable):
         def putParameterToTargetFunction(self, entry: java.util.Map.Entry[cern.lsa.domain.settings.Parameter, cern.accsoft.commons.value.ImmutableDiscreteFunction]) -> 'DefaultElenaCycleSettings.Builder': ...
 
 class FlatSegment(ElenaCycleSegment):
+    """
+    Java class 'cern.lsa.domain.cern.settings.elena.FlatSegment'
+    
+        Interfaces:
+            cern.lsa.domain.cern.settings.elena.ElenaCycleSegment
+    
+    """
     def getNumberOfExtractions(self) -> int: ...
     def getNumberOfInjections(self) -> int: ...
     def getPauseLocation(self) -> PauseLocation: ...
@@ -176,8 +292,31 @@ class FlatSegment(ElenaCycleSegment):
     def setPauseLocation(self, pauseLocation: PauseLocation) -> None: ...
 
 class RampSegment(ElenaCycleSegment):
+    """
+    Java class 'cern.lsa.domain.cern.settings.elena.RampSegment'
+    
+        Interfaces:
+            cern.lsa.domain.cern.settings.elena.ElenaCycleSegment
+    
+    """
     def getFlatPartLength(self) -> java.time.Duration: ...
     def getRoundPartLength(self) -> java.time.Duration: ...
     def setEndMomentum(self, int: int) -> None: ...
     def setFlatPartLength(self, duration: java.time.Duration) -> None: ...
     def setRoundPartLength(self, duration: java.time.Duration) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.cern.settings.elena")``.
+
+    DefaultElenaCycleSettings: typing.Type[DefaultElenaCycleSettings]
+    ELTAG: typing.Type[ELTAG]
+    ElenaCycleSegment: typing.Type[ElenaCycleSegment]
+    ElenaCycleSettings: typing.Type[ElenaCycleSettings]
+    ElenaCycleStructure: typing.Type[ElenaCycleStructure]
+    FlatSegment: typing.Type[FlatSegment]
+    InjectionMode: typing.Type[InjectionMode]
+    PauseLocation: typing.Type[PauseLocation]
+    RampSegment: typing.Type[RampSegment]
+    SegmentAttribute: typing.Type[SegmentAttribute]
+    SegmentType: typing.Type[SegmentType]

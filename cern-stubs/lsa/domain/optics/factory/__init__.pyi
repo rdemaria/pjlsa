@@ -8,7 +8,18 @@ import java.util
 import typing
 
 
+
 class ElementsRequestBuilder:
+    """
+    Java class 'cern.lsa.domain.optics.factory.ElementsRequestBuilder'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ElementsRequestBuilder()
+    
+    """
     def __init__(self): ...
     def build(self) -> cern.lsa.domain.optics.ElementsRequest: ...
     @staticmethod
@@ -32,6 +43,16 @@ class ElementsRequestBuilder:
     def setTypes(self, collection: typing.Union[java.util.Collection[cern.lsa.domain.optics.ElementType], typing.Sequence[cern.lsa.domain.optics.ElementType]]) -> 'ElementsRequestBuilder': ...
 
 class MeasuredTwissBuilder:
+    """
+    Java class 'cern.lsa.domain.optics.factory.MeasuredTwissBuilder'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * MeasuredTwissBuilder(cern.lsa.domain.optics.Twiss, double, java.util.Date)
+    
+    """
     def __init__(self, twiss: cern.lsa.domain.optics.Twiss, double: float, date: java.util.Date): ...
     def build(self) -> cern.lsa.domain.optics.MeasuredTwiss: ...
     def setAlfxError(self, double: float) -> 'MeasuredTwissBuilder': ...
@@ -52,6 +73,16 @@ class MeasuredTwissBuilder:
     def setMuyMeas(self, double: float) -> 'MeasuredTwissBuilder': ...
 
 class OpticsRequestBuilder:
+    """
+    Java class 'cern.lsa.domain.optics.factory.OpticsRequestBuilder'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * OpticsRequestBuilder()
+    
+    """
     def __init__(self): ...
     def build(self) -> cern.lsa.domain.optics.OpticsRequest: ...
     @staticmethod
@@ -68,6 +99,16 @@ class OpticsRequestBuilder:
     def setParticleTransfer(self, particleTransfer: cern.accsoft.commons.domain.particletransfers.ParticleTransfer) -> 'OpticsRequestBuilder': ...
 
 class TwissesRequestBuilder:
+    """
+    Java class 'cern.lsa.domain.optics.factory.TwissesRequestBuilder'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * TwissesRequestBuilder()
+    
+    """
     def __init__(self): ...
     def build(self) -> cern.lsa.domain.optics.TwissesRequest: ...
     @staticmethod
@@ -80,3 +121,12 @@ class TwissesRequestBuilder:
     def setElementPositionRange(self, double: float, double2: float) -> 'TwissesRequestBuilder': ...
     def setElementTypes(self, collection: typing.Union[java.util.Collection[cern.lsa.domain.optics.ElementType], typing.Sequence[cern.lsa.domain.optics.ElementType]]) -> 'TwissesRequestBuilder': ...
     def setOpticName(self, string: str) -> 'TwissesRequestBuilder': ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.optics.factory")``.
+
+    ElementsRequestBuilder: typing.Type[ElementsRequestBuilder]
+    MeasuredTwissBuilder: typing.Type[MeasuredTwissBuilder]
+    OpticsRequestBuilder: typing.Type[OpticsRequestBuilder]
+    TwissesRequestBuilder: typing.Type[TwissesRequestBuilder]

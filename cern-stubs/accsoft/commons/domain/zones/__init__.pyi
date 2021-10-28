@@ -5,11 +5,32 @@ import java.util
 import typing
 
 
+
 class AcceleratorZone(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.accsoft.commons.domain.zones.AcceleratorZone'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def getAccelerator(self) -> cern.accsoft.commons.domain.Accelerator: ...
     def getParticleTransfers(self) -> java.util.Set[cern.accsoft.commons.domain.particletransfers.ParticleTransfer]: ...
 
 class AdAcceleratorZone(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['AdAcceleratorZone'], AcceleratorZone):
+    """
+    Java class 'cern.accsoft.commons.domain.zones.AdAcceleratorZone'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.zones.AcceleratorZone
+    
+      Attributes:
+        AD (cern.accsoft.commons.domain.zones.AdAcceleratorZone): final static field
+    
+    """
     AD: typing.ClassVar['AdAcceleratorZone'] = ...
     def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator: ...
     def getParticleTransfers(self) -> java.util.Set[cern.accsoft.commons.domain.particletransfers.ParticleTransfer]: ...
@@ -19,6 +40,20 @@ class AdAcceleratorZone(cern.accsoft.commons.util.AbstractImmutableNamedSerializ
     def values() -> typing.List['AdAcceleratorZone']: ...
 
 class AwakeAcceleratorZone(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['AwakeAcceleratorZone'], AcceleratorZone):
+    """
+    Java class 'cern.accsoft.commons.domain.zones.AwakeAcceleratorZone'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.zones.AcceleratorZone
+    
+      Attributes:
+        AWAKE (cern.accsoft.commons.domain.zones.AwakeAcceleratorZone): final static field
+        TT43 (cern.accsoft.commons.domain.zones.AwakeAcceleratorZone): final static field
+    
+    """
     AWAKE: typing.ClassVar['AwakeAcceleratorZone'] = ...
     TT43: typing.ClassVar['AwakeAcceleratorZone'] = ...
     def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator: ...
@@ -29,6 +64,19 @@ class AwakeAcceleratorZone(cern.accsoft.commons.util.AbstractImmutableNamedSeria
     def values() -> typing.List['AwakeAcceleratorZone']: ...
 
 class CtfAcceleratorZone(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['CtfAcceleratorZone'], AcceleratorZone):
+    """
+    Java class 'cern.accsoft.commons.domain.zones.CtfAcceleratorZone'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.zones.AcceleratorZone
+    
+      Attributes:
+        CTF (cern.accsoft.commons.domain.zones.CtfAcceleratorZone): final static field
+    
+    """
     CTF: typing.ClassVar['CtfAcceleratorZone'] = ...
     def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator: ...
     def getParticleTransfers(self) -> java.util.Set[cern.accsoft.commons.domain.particletransfers.ParticleTransfer]: ...
@@ -38,6 +86,34 @@ class CtfAcceleratorZone(cern.accsoft.commons.util.AbstractImmutableNamedSeriali
     def values() -> typing.List['CtfAcceleratorZone']: ...
 
 class ElenaAcceleratorZone(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['ElenaAcceleratorZone'], AcceleratorZone):
+    """
+    Java class 'cern.accsoft.commons.domain.zones.ElenaAcceleratorZone'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.zones.AcceleratorZone
+    
+      Attributes:
+        ELENA (cern.accsoft.commons.domain.zones.ElenaAcceleratorZone): final static field
+        LNE00 (cern.accsoft.commons.domain.zones.ElenaAcceleratorZone): final static field
+        LNE01A (cern.accsoft.commons.domain.zones.ElenaAcceleratorZone): final static field
+        LNE01B (cern.accsoft.commons.domain.zones.ElenaAcceleratorZone): final static field
+        LNE01C (cern.accsoft.commons.domain.zones.ElenaAcceleratorZone): final static field
+        LNE03A (cern.accsoft.commons.domain.zones.ElenaAcceleratorZone): final static field
+        LNE01D (cern.accsoft.commons.domain.zones.ElenaAcceleratorZone): final static field
+        LNE02 (cern.accsoft.commons.domain.zones.ElenaAcceleratorZone): final static field
+        LNE03B (cern.accsoft.commons.domain.zones.ElenaAcceleratorZone): final static field
+        LNE04 (cern.accsoft.commons.domain.zones.ElenaAcceleratorZone): final static field
+        LNE06A (cern.accsoft.commons.domain.zones.ElenaAcceleratorZone): final static field
+        LNE05 (cern.accsoft.commons.domain.zones.ElenaAcceleratorZone): final static field
+        LNE06B (cern.accsoft.commons.domain.zones.ElenaAcceleratorZone): final static field
+        LNE07 (cern.accsoft.commons.domain.zones.ElenaAcceleratorZone): final static field
+        LNE50 (cern.accsoft.commons.domain.zones.ElenaAcceleratorZone): final static field
+        LNE51 (cern.accsoft.commons.domain.zones.ElenaAcceleratorZone): final static field
+    
+    """
     ELENA: typing.ClassVar['ElenaAcceleratorZone'] = ...
     LNE00: typing.ClassVar['ElenaAcceleratorZone'] = ...
     LNE01A: typing.ClassVar['ElenaAcceleratorZone'] = ...
@@ -62,6 +138,20 @@ class ElenaAcceleratorZone(cern.accsoft.commons.util.AbstractImmutableNamedSeria
     def values() -> typing.List['ElenaAcceleratorZone']: ...
 
 class IsoldeAcceleratorZone(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['IsoldeAcceleratorZone'], AcceleratorZone):
+    """
+    Java class 'cern.accsoft.commons.domain.zones.IsoldeAcceleratorZone'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.zones.AcceleratorZone
+    
+      Attributes:
+        ISOLDE (cern.accsoft.commons.domain.zones.IsoldeAcceleratorZone): final static field
+        HIE (cern.accsoft.commons.domain.zones.IsoldeAcceleratorZone): final static field
+    
+    """
     ISOLDE: typing.ClassVar['IsoldeAcceleratorZone'] = ...
     HIE: typing.ClassVar['IsoldeAcceleratorZone'] = ...
     def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator: ...
@@ -72,6 +162,28 @@ class IsoldeAcceleratorZone(cern.accsoft.commons.util.AbstractImmutableNamedSeri
     def values() -> typing.List['IsoldeAcceleratorZone']: ...
 
 class LeirAcceleratorZone(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['LeirAcceleratorZone'], AcceleratorZone):
+    """
+    Java class 'cern.accsoft.commons.domain.zones.LeirAcceleratorZone'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.zones.AcceleratorZone
+    
+      Attributes:
+        LEIR (cern.accsoft.commons.domain.zones.LeirAcceleratorZone): final static field
+        LINAC3 (cern.accsoft.commons.domain.zones.LeirAcceleratorZone): final static field
+        ETL (cern.accsoft.commons.domain.zones.LeirAcceleratorZone): final static field
+        ITE (cern.accsoft.commons.domain.zones.LeirAcceleratorZone): final static field
+        ETP (cern.accsoft.commons.domain.zones.LeirAcceleratorZone): final static field
+        ITH (cern.accsoft.commons.domain.zones.LeirAcceleratorZone): final static field
+        ETL_INJ (cern.accsoft.commons.domain.zones.LeirAcceleratorZone): final static field
+        ETL_EJ (cern.accsoft.commons.domain.zones.LeirAcceleratorZone): final static field
+        EI (cern.accsoft.commons.domain.zones.LeirAcceleratorZone): final static field
+        EE (cern.accsoft.commons.domain.zones.LeirAcceleratorZone): final static field
+    
+    """
     LEIR: typing.ClassVar['LeirAcceleratorZone'] = ...
     LINAC3: typing.ClassVar['LeirAcceleratorZone'] = ...
     ETL: typing.ClassVar['LeirAcceleratorZone'] = ...
@@ -90,6 +202,19 @@ class LeirAcceleratorZone(cern.accsoft.commons.util.AbstractImmutableNamedSerial
     def values() -> typing.List['LeirAcceleratorZone']: ...
 
 class LhcAcceleratorZone(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['LhcAcceleratorZone'], AcceleratorZone):
+    """
+    Java class 'cern.accsoft.commons.domain.zones.LhcAcceleratorZone'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.zones.AcceleratorZone
+    
+      Attributes:
+        LHC (cern.accsoft.commons.domain.zones.LhcAcceleratorZone): final static field
+    
+    """
     LHC: typing.ClassVar['LhcAcceleratorZone'] = ...
     def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator: ...
     def getParticleTransfers(self) -> java.util.Set[cern.accsoft.commons.domain.particletransfers.ParticleTransfer]: ...
@@ -99,6 +224,39 @@ class LhcAcceleratorZone(cern.accsoft.commons.util.AbstractImmutableNamedSeriali
     def values() -> typing.List['LhcAcceleratorZone']: ...
 
 class NorthAcceleratorZone(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['NorthAcceleratorZone'], AcceleratorZone):
+    """
+    Java class 'cern.accsoft.commons.domain.zones.NorthAcceleratorZone'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.zones.AcceleratorZone
+    
+      Attributes:
+        H2Z (cern.accsoft.commons.domain.zones.NorthAcceleratorZone): final static field
+        H2A (cern.accsoft.commons.domain.zones.NorthAcceleratorZone): final static field
+        H2B (cern.accsoft.commons.domain.zones.NorthAcceleratorZone): final static field
+        H4Z (cern.accsoft.commons.domain.zones.NorthAcceleratorZone): final static field
+        H4A (cern.accsoft.commons.domain.zones.NorthAcceleratorZone): final static field
+        H4B (cern.accsoft.commons.domain.zones.NorthAcceleratorZone): final static field
+        H4C (cern.accsoft.commons.domain.zones.NorthAcceleratorZone): final static field
+        H6Z (cern.accsoft.commons.domain.zones.NorthAcceleratorZone): final static field
+        H6A (cern.accsoft.commons.domain.zones.NorthAcceleratorZone): final static field
+        H6B (cern.accsoft.commons.domain.zones.NorthAcceleratorZone): final static field
+        H6C (cern.accsoft.commons.domain.zones.NorthAcceleratorZone): final static field
+        H8Z (cern.accsoft.commons.domain.zones.NorthAcceleratorZone): final static field
+        H8A (cern.accsoft.commons.domain.zones.NorthAcceleratorZone): final static field
+        H8B (cern.accsoft.commons.domain.zones.NorthAcceleratorZone): final static field
+        H8C (cern.accsoft.commons.domain.zones.NorthAcceleratorZone): final static field
+        K12A (cern.accsoft.commons.domain.zones.NorthAcceleratorZone): final static field
+        M2A (cern.accsoft.commons.domain.zones.NorthAcceleratorZone): final static field
+        T2A (cern.accsoft.commons.domain.zones.NorthAcceleratorZone): final static field
+        T4A (cern.accsoft.commons.domain.zones.NorthAcceleratorZone): final static field
+        T6A (cern.accsoft.commons.domain.zones.NorthAcceleratorZone): final static field
+        T10A (cern.accsoft.commons.domain.zones.NorthAcceleratorZone): final static field
+    
+    """
     H2Z: typing.ClassVar['NorthAcceleratorZone'] = ...
     H2A: typing.ClassVar['NorthAcceleratorZone'] = ...
     H2B: typing.ClassVar['NorthAcceleratorZone'] = ...
@@ -128,6 +286,25 @@ class NorthAcceleratorZone(cern.accsoft.commons.util.AbstractImmutableNamedSeria
     def values() -> typing.List['NorthAcceleratorZone']: ...
 
 class PsAcceleratorZone(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['PsAcceleratorZone'], AcceleratorZone):
+    """
+    Java class 'cern.accsoft.commons.domain.zones.PsAcceleratorZone'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.zones.AcceleratorZone
+    
+      Attributes:
+        PS (cern.accsoft.commons.domain.zones.PsAcceleratorZone): final static field
+        F16 (cern.accsoft.commons.domain.zones.PsAcceleratorZone): final static field
+        F61 (cern.accsoft.commons.domain.zones.PsAcceleratorZone): final static field
+        T08 (cern.accsoft.commons.domain.zones.PsAcceleratorZone): final static field
+        F62_1 (cern.accsoft.commons.domain.zones.PsAcceleratorZone): final static field
+        F62_2 (cern.accsoft.commons.domain.zones.PsAcceleratorZone): final static field
+        F63 (cern.accsoft.commons.domain.zones.PsAcceleratorZone): final static field
+    
+    """
     PS: typing.ClassVar['PsAcceleratorZone'] = ...
     F16: typing.ClassVar['PsAcceleratorZone'] = ...
     F61: typing.ClassVar['PsAcceleratorZone'] = ...
@@ -143,6 +320,34 @@ class PsAcceleratorZone(cern.accsoft.commons.util.AbstractImmutableNamedSerializ
     def values() -> typing.List['PsAcceleratorZone']: ...
 
 class PsbAcceleratorZone(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['PsbAcceleratorZone'], AcceleratorZone):
+    """
+    Java class 'cern.accsoft.commons.domain.zones.PsbAcceleratorZone'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.zones.AcceleratorZone
+    
+      Attributes:
+        LINAC4 (cern.accsoft.commons.domain.zones.PsbAcceleratorZone): final static field
+        L4T (cern.accsoft.commons.domain.zones.PsbAcceleratorZone): final static field
+        LT (cern.accsoft.commons.domain.zones.PsbAcceleratorZone): final static field
+        LTB (cern.accsoft.commons.domain.zones.PsbAcceleratorZone): final static field
+        LBE (cern.accsoft.commons.domain.zones.PsbAcceleratorZone): final static field
+        BI (cern.accsoft.commons.domain.zones.PsbAcceleratorZone): final static field
+        PSB (cern.accsoft.commons.domain.zones.PsbAcceleratorZone): final static field
+        BE_BT (cern.accsoft.commons.domain.zones.PsbAcceleratorZone): final static field
+        BTP (cern.accsoft.commons.domain.zones.PsbAcceleratorZone): final static field
+        BTM (cern.accsoft.commons.domain.zones.PsbAcceleratorZone): final static field
+        BTY (cern.accsoft.commons.domain.zones.PsbAcceleratorZone): final static field
+        BTM_BTY (cern.accsoft.commons.domain.zones.PsbAcceleratorZone): final static field
+        BTY_GPS (cern.accsoft.commons.domain.zones.PsbAcceleratorZone): final static field
+        BTY_HRS (cern.accsoft.commons.domain.zones.PsbAcceleratorZone): final static field
+        BT_DUMP (cern.accsoft.commons.domain.zones.PsbAcceleratorZone): final static field
+        BTM_DUMP (cern.accsoft.commons.domain.zones.PsbAcceleratorZone): final static field
+    
+    """
     LINAC4: typing.ClassVar['PsbAcceleratorZone'] = ...
     L4T: typing.ClassVar['PsbAcceleratorZone'] = ...
     LT: typing.ClassVar['PsbAcceleratorZone'] = ...
@@ -167,6 +372,35 @@ class PsbAcceleratorZone(cern.accsoft.commons.util.AbstractImmutableNamedSeriali
     def values() -> typing.List['PsbAcceleratorZone']: ...
 
 class SpsAcceleratorZone(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['SpsAcceleratorZone'], AcceleratorZone):
+    """
+    Java class 'cern.accsoft.commons.domain.zones.SpsAcceleratorZone'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.zones.AcceleratorZone
+    
+      Attributes:
+        SPS (cern.accsoft.commons.domain.zones.SpsAcceleratorZone): final static field
+        TT40 (cern.accsoft.commons.domain.zones.SpsAcceleratorZone): final static field
+        TI8 (cern.accsoft.commons.domain.zones.SpsAcceleratorZone): final static field
+        TT41 (cern.accsoft.commons.domain.zones.SpsAcceleratorZone): final static field
+        TT10 (cern.accsoft.commons.domain.zones.SpsAcceleratorZone): final static field
+        TT21 (cern.accsoft.commons.domain.zones.SpsAcceleratorZone): final static field
+        TT22 (cern.accsoft.commons.domain.zones.SpsAcceleratorZone): final static field
+        TT23 (cern.accsoft.commons.domain.zones.SpsAcceleratorZone): final static field
+        TT24 (cern.accsoft.commons.domain.zones.SpsAcceleratorZone): final static field
+        TT25 (cern.accsoft.commons.domain.zones.SpsAcceleratorZone): final static field
+        TT60 (cern.accsoft.commons.domain.zones.SpsAcceleratorZone): final static field
+        TI2 (cern.accsoft.commons.domain.zones.SpsAcceleratorZone): final static field
+        NORTH_EXTRACTION (cern.accsoft.commons.domain.zones.SpsAcceleratorZone): final static field
+        WEST_EXTRACTION (cern.accsoft.commons.domain.zones.SpsAcceleratorZone): final static field
+        EAST_EXTRACTION (cern.accsoft.commons.domain.zones.SpsAcceleratorZone): final static field
+        TT2 (cern.accsoft.commons.domain.zones.SpsAcceleratorZone): final static field
+        TT66 (cern.accsoft.commons.domain.zones.SpsAcceleratorZone): final static field
+    
+    """
     SPS: typing.ClassVar['SpsAcceleratorZone'] = ...
     TT40: typing.ClassVar['SpsAcceleratorZone'] = ...
     TI8: typing.ClassVar['SpsAcceleratorZone'] = ...
@@ -190,3 +424,20 @@ class SpsAcceleratorZone(cern.accsoft.commons.util.AbstractImmutableNamedSeriali
     def valueOf(string: str) -> 'SpsAcceleratorZone': ...
     @staticmethod
     def values() -> typing.List['SpsAcceleratorZone']: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.accsoft.commons.domain.zones")``.
+
+    AcceleratorZone: typing.Type[AcceleratorZone]
+    AdAcceleratorZone: typing.Type[AdAcceleratorZone]
+    AwakeAcceleratorZone: typing.Type[AwakeAcceleratorZone]
+    CtfAcceleratorZone: typing.Type[CtfAcceleratorZone]
+    ElenaAcceleratorZone: typing.Type[ElenaAcceleratorZone]
+    IsoldeAcceleratorZone: typing.Type[IsoldeAcceleratorZone]
+    LeirAcceleratorZone: typing.Type[LeirAcceleratorZone]
+    LhcAcceleratorZone: typing.Type[LhcAcceleratorZone]
+    NorthAcceleratorZone: typing.Type[NorthAcceleratorZone]
+    PsAcceleratorZone: typing.Type[PsAcceleratorZone]
+    PsbAcceleratorZone: typing.Type[PsbAcceleratorZone]
+    SpsAcceleratorZone: typing.Type[SpsAcceleratorZone]

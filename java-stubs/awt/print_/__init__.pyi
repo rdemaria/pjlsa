@@ -6,7 +6,21 @@ import javax.print_.attribute
 import typing
 
 
+
 class Book(java.awt.print_.Pageable):
+    """
+    Java class 'java.awt.print.Book'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.print.Pageable
+    
+      Constructors:
+        * Book()
+    
+    """
     def __init__(self): ...
     @typing.overload
     def append(self, printable: 'Printable', pageFormat: 'PageFormat') -> None: ...
@@ -18,6 +32,24 @@ class Book(java.awt.print_.Pageable):
     def setPage(self, int: int, printable: 'Printable', pageFormat: 'PageFormat') -> None: ...
 
 class PageFormat(java.lang.Cloneable):
+    """
+    Java class 'java.awt.print.PageFormat'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.Cloneable
+    
+      Constructors:
+        * PageFormat()
+    
+      Attributes:
+        LANDSCAPE (int): final static field
+        PORTRAIT (int): final static field
+        REVERSE_LANDSCAPE (int): final static field
+    
+    """
     LANDSCAPE: typing.ClassVar[int] = ...
     PORTRAIT: typing.ClassVar[int] = ...
     REVERSE_LANDSCAPE: typing.ClassVar[int] = ...
@@ -36,12 +68,32 @@ class PageFormat(java.lang.Cloneable):
     def setPaper(self, paper: 'Paper') -> None: ...
 
 class Pageable:
+    """
+    Java class 'java.awt.print.Pageable'
+    
+      Attributes:
+        UNKNOWN_NUMBER_OF_PAGES (int): final static field
+    
+    """
     UNKNOWN_NUMBER_OF_PAGES: typing.ClassVar[int] = ...
     def getNumberOfPages(self) -> int: ...
     def getPageFormat(self, int: int) -> PageFormat: ...
     def getPrintable(self, int: int) -> 'Printable': ...
 
 class Paper(java.lang.Cloneable):
+    """
+    Java class 'java.awt.print.Paper'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.Cloneable
+    
+      Constructors:
+        * Paper()
+    
+    """
     def __init__(self): ...
     def clone(self) -> typing.Any: ...
     def getHeight(self) -> float: ...
@@ -54,30 +106,84 @@ class Paper(java.lang.Cloneable):
     def setSize(self, double: float, double2: float) -> None: ...
 
 class Printable:
+    """
+    Java class 'java.awt.print.Printable'
+    
+      Attributes:
+        PAGE_EXISTS (int): final static field
+        NO_SUCH_PAGE (int): final static field
+    
+    """
     PAGE_EXISTS: typing.ClassVar[int] = ...
     NO_SUCH_PAGE: typing.ClassVar[int] = ...
 
 class PrinterAbortException(java.awt.print_.PrinterException):
+    """
+    Java class 'java.awt.print.PrinterAbortException'
+    
+        Extends:
+            java.awt.print.PrinterException
+    
+      Constructors:
+        * PrinterAbortException()
+        * PrinterAbortException(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class PrinterException(java.lang.Exception):
+    """
+    Java class 'java.awt.print.PrinterException'
+    
+        Extends:
+            java.lang.Exception
+    
+      Constructors:
+        * PrinterException()
+        * PrinterException(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class PrinterGraphics:
+    """
+    Java class 'java.awt.print.PrinterGraphics'
+    
+    """
     def getPrinterJob(self) -> 'PrinterJob': ...
 
 class PrinterIOException(PrinterException):
+    """
+    Java class 'java.awt.print.PrinterIOException'
+    
+        Extends:
+            java.awt.print.PrinterException
+    
+      Constructors:
+        * PrinterIOException(java.io.IOException)
+    
+    """
     def __init__(self, iOException: java.io.IOException): ...
     def getCause(self) -> java.lang.Throwable: ...
     def getIOException(self) -> java.io.IOException: ...
 
 class PrinterJob:
+    """
+    Java class 'java.awt.print.PrinterJob'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * PrinterJob()
+    
+    """
     def __init__(self): ...
     def cancel(self) -> None: ...
     @typing.overload
@@ -113,3 +219,18 @@ class PrinterJob:
     @typing.overload
     def setPrintable(self, printable: Printable, pageFormat: PageFormat) -> None: ...
     def validatePage(self, pageFormat: PageFormat) -> PageFormat: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.awt.print_")``.
+
+    Book: typing.Type[Book]
+    PageFormat: typing.Type[PageFormat]
+    Pageable: typing.Type[Pageable]
+    Paper: typing.Type[Paper]
+    Printable: typing.Type[Printable]
+    PrinterAbortException: typing.Type[PrinterAbortException]
+    PrinterException: typing.Type[PrinterException]
+    PrinterGraphics: typing.Type[PrinterGraphics]
+    PrinterIOException: typing.Type[PrinterIOException]
+    PrinterJob: typing.Type[PrinterJob]

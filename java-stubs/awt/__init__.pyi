@@ -9,6 +9,8 @@ import java.awt.geom
 import java.awt.im
 import java.awt.image
 import java.awt.image.renderable
+import java.awt.peer
+import java.awt.print_
 import java.beans
 import java.io
 import java.lang
@@ -22,10 +24,54 @@ import jpype.protocol
 import typing
 
 
+
 class AWTError(java.lang.Error):
+    """
+    Java class 'java.awt.AWTError'
+    
+        Extends:
+            java.lang.Error
+    
+      Constructors:
+        * AWTError(java.lang.String)
+    
+    """
     def __init__(self, string: str): ...
 
 class AWTEvent(java.util.EventObject):
+    """
+    Java class 'java.awt.AWTEvent'
+    
+        Extends:
+            java.util.EventObject
+    
+      Constructors:
+        * AWTEvent(java.lang.Object, int)
+        * AWTEvent(java.awt.Event)
+    
+      Attributes:
+        COMPONENT_EVENT_MASK (long): final static field
+        CONTAINER_EVENT_MASK (long): final static field
+        FOCUS_EVENT_MASK (long): final static field
+        KEY_EVENT_MASK (long): final static field
+        MOUSE_EVENT_MASK (long): final static field
+        MOUSE_MOTION_EVENT_MASK (long): final static field
+        WINDOW_EVENT_MASK (long): final static field
+        ACTION_EVENT_MASK (long): final static field
+        ADJUSTMENT_EVENT_MASK (long): final static field
+        ITEM_EVENT_MASK (long): final static field
+        TEXT_EVENT_MASK (long): final static field
+        INPUT_METHOD_EVENT_MASK (long): final static field
+        PAINT_EVENT_MASK (long): final static field
+        INVOCATION_EVENT_MASK (long): final static field
+        HIERARCHY_EVENT_MASK (long): final static field
+        HIERARCHY_BOUNDS_EVENT_MASK (long): final static field
+        MOUSE_WHEEL_EVENT_MASK (long): final static field
+        WINDOW_STATE_EVENT_MASK (long): final static field
+        WINDOW_FOCUS_EVENT_MASK (long): final static field
+        RESERVED_ID_MAX (int): final static field
+    
+    """
     COMPONENT_EVENT_MASK: typing.ClassVar[int] = ...
     CONTAINER_EVENT_MASK: typing.ClassVar[int] = ...
     FOCUS_EVENT_MASK: typing.ClassVar[int] = ...
@@ -56,6 +102,30 @@ class AWTEvent(java.util.EventObject):
     def toString(self) -> str: ...
 
 class AWTEventMulticaster(java.awt.event.ComponentListener, java.awt.event.ContainerListener, java.awt.event.FocusListener, java.awt.event.KeyListener, java.awt.event.MouseListener, java.awt.event.MouseMotionListener, java.awt.event.WindowListener, java.awt.event.WindowFocusListener, java.awt.event.WindowStateListener, java.awt.event.ActionListener, java.awt.event.ItemListener, java.awt.event.AdjustmentListener, java.awt.event.TextListener, java.awt.event.InputMethodListener, java.awt.event.HierarchyListener, java.awt.event.HierarchyBoundsListener, java.awt.event.MouseWheelListener):
+    """
+    Java class 'java.awt.AWTEventMulticaster'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.event.ComponentListener,
+            java.awt.event.ContainerListener,
+            java.awt.event.FocusListener, java.awt.event.KeyListener,
+            java.awt.event.MouseListener,
+            java.awt.event.MouseMotionListener,
+            java.awt.event.WindowListener,
+            java.awt.event.WindowFocusListener,
+            java.awt.event.WindowStateListener,
+            java.awt.event.ActionListener, java.awt.event.ItemListener,
+            java.awt.event.AdjustmentListener,
+            java.awt.event.TextListener,
+            java.awt.event.InputMethodListener,
+            java.awt.event.HierarchyListener,
+            java.awt.event.HierarchyBoundsListener,
+            java.awt.event.MouseWheelListener
+    
+    """
     def actionPerformed(self, actionEvent: java.awt.event.ActionEvent) -> None: ...
     @typing.overload
     @staticmethod
@@ -201,9 +271,29 @@ class AWTEventMulticaster(java.awt.event.ComponentListener, java.awt.event.Conta
     def windowStateChanged(self, windowEvent: java.awt.event.WindowEvent) -> None: ...
 
 class AWTException(java.lang.Exception):
+    """
+    Java class 'java.awt.AWTException'
+    
+        Extends:
+            java.lang.Exception
+    
+      Constructors:
+        * AWTException(java.lang.String)
+    
+    """
     def __init__(self, string: str): ...
 
 class AWTKeyStroke(java.io.Serializable):
+    """
+    Java class 'java.awt.AWTKeyStroke'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     def equals(self, object: typing.Any) -> bool: ...
     @typing.overload
     @staticmethod
@@ -231,15 +321,39 @@ class AWTKeyStroke(java.io.Serializable):
     def toString(self) -> str: ...
 
 class AWTPermission(java.security.BasicPermission):
+    """
+    Java class 'java.awt.AWTPermission'
+    
+        Extends:
+            java.security.BasicPermission
+    
+      Constructors:
+        * AWTPermission(java.lang.String)
+        * AWTPermission(java.lang.String, java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
     def __init__(self, string: str, string2: str): ...
 
 class ActiveEvent:
+    """
+    Java class 'java.awt.ActiveEvent'
+    
+    """
     def dispatch(self) -> None: ...
 
 class Adjustable:
+    """
+    Java class 'java.awt.Adjustable'
+    
+      Attributes:
+        HORIZONTAL (int): final static field
+        VERTICAL (int): final static field
+        NO_ORIENTATION (int): final static field
+    
+    """
     HORIZONTAL: typing.ClassVar[int] = ...
     VERTICAL: typing.ClassVar[int] = ...
     NO_ORIENTATION: typing.ClassVar[int] = ...
@@ -260,6 +374,19 @@ class Adjustable:
     def setVisibleAmount(self, int: int) -> None: ...
 
 class CheckboxGroup(java.io.Serializable):
+    """
+    Java class 'java.awt.CheckboxGroup'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * CheckboxGroup()
+    
+    """
     def __init__(self): ...
     def getCurrent(self) -> 'Checkbox': ...
     def getSelectedCheckbox(self) -> 'Checkbox': ...
@@ -268,6 +395,21 @@ class CheckboxGroup(java.io.Serializable):
     def toString(self) -> str: ...
 
 class ComponentOrientation(java.io.Serializable):
+    """
+    Java class 'java.awt.ComponentOrientation'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Attributes:
+        LEFT_TO_RIGHT (java.awt.ComponentOrientation): final static field
+        RIGHT_TO_LEFT (java.awt.ComponentOrientation): final static field
+        UNKNOWN (java.awt.ComponentOrientation): final static field
+    
+    """
     LEFT_TO_RIGHT: typing.ClassVar['ComponentOrientation'] = ...
     RIGHT_TO_LEFT: typing.ClassVar['ComponentOrientation'] = ...
     UNKNOWN: typing.ClassVar['ComponentOrientation'] = ...
@@ -281,13 +423,51 @@ class ComponentOrientation(java.io.Serializable):
     def isLeftToRight(self) -> bool: ...
 
 class Composite:
+    """
+    Java class 'java.awt.Composite'
+    
+    """
     def createContext(self, colorModel: java.awt.image.ColorModel, colorModel2: java.awt.image.ColorModel, renderingHints: 'RenderingHints') -> 'CompositeContext': ...
 
 class CompositeContext:
+    """
+    Java class 'java.awt.CompositeContext'
+    
+    """
     def compose(self, raster: java.awt.image.Raster, raster2: java.awt.image.Raster, writableRaster: java.awt.image.WritableRaster) -> None: ...
     def dispose(self) -> None: ...
 
 class Cursor(java.io.Serializable):
+    """
+    Java class 'java.awt.Cursor'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * Cursor(int)
+    
+      Attributes:
+        DEFAULT_CURSOR (int): final static field
+        CROSSHAIR_CURSOR (int): final static field
+        TEXT_CURSOR (int): final static field
+        WAIT_CURSOR (int): final static field
+        SW_RESIZE_CURSOR (int): final static field
+        SE_RESIZE_CURSOR (int): final static field
+        NW_RESIZE_CURSOR (int): final static field
+        NE_RESIZE_CURSOR (int): final static field
+        N_RESIZE_CURSOR (int): final static field
+        S_RESIZE_CURSOR (int): final static field
+        W_RESIZE_CURSOR (int): final static field
+        E_RESIZE_CURSOR (int): final static field
+        HAND_CURSOR (int): final static field
+        MOVE_CURSOR (int): final static field
+        CUSTOM_CURSOR (int): final static field
+    
+    """
     DEFAULT_CURSOR: typing.ClassVar[int] = ...
     CROSSHAIR_CURSOR: typing.ClassVar[int] = ...
     TEXT_CURSOR: typing.ClassVar[int] = ...
@@ -315,6 +495,13 @@ class Cursor(java.io.Serializable):
     def toString(self) -> str: ...
 
 class Desktop:
+    """
+    Java class 'java.awt.Desktop'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     def addAppEventListener(self, systemEventListener: java.awt.desktop.SystemEventListener) -> None: ...
     def browse(self, uRI: java.net.URI) -> None: ...
     def browseFileDirectory(self, file: typing.Union[java.io.File, jpype.protocol.SupportsPath]) -> None: ...
@@ -344,6 +531,39 @@ class Desktop:
     def setQuitHandler(self, quitHandler: java.awt.desktop.QuitHandler) -> None: ...
     def setQuitStrategy(self, quitStrategy: java.awt.desktop.QuitStrategy) -> None: ...
     class Action(java.lang.Enum['Desktop.Action']):
+        """
+        Java class 'java.awt.Desktop$Action'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            OPEN (java.awt.Desktop$Action): final static enum constant
+            EDIT (java.awt.Desktop$Action): final static enum constant
+            PRINT (java.awt.Desktop$Action): final static enum constant
+            MAIL (java.awt.Desktop$Action): final static enum constant
+            BROWSE (java.awt.Desktop$Action): final static enum constant
+            APP_EVENT_FOREGROUND (java.awt.Desktop$Action): final static enum constant
+            APP_EVENT_HIDDEN (java.awt.Desktop$Action): final static enum constant
+            APP_EVENT_REOPENED (java.awt.Desktop$Action): final static enum constant
+            APP_EVENT_SCREEN_SLEEP (java.awt.Desktop$Action): final static enum constant
+            APP_EVENT_SYSTEM_SLEEP (java.awt.Desktop$Action): final static enum constant
+            APP_EVENT_USER_SESSION (java.awt.Desktop$Action): final static enum constant
+            APP_ABOUT (java.awt.Desktop$Action): final static enum constant
+            APP_PREFERENCES (java.awt.Desktop$Action): final static enum constant
+            APP_OPEN_FILE (java.awt.Desktop$Action): final static enum constant
+            APP_PRINT_FILE (java.awt.Desktop$Action): final static enum constant
+            APP_OPEN_URI (java.awt.Desktop$Action): final static enum constant
+            APP_QUIT_HANDLER (java.awt.Desktop$Action): final static enum constant
+            APP_QUIT_STRATEGY (java.awt.Desktop$Action): final static enum constant
+            APP_SUDDEN_TERMINATION (java.awt.Desktop$Action): final static enum constant
+            APP_REQUEST_FOREGROUND (java.awt.Desktop$Action): final static enum constant
+            APP_HELP_VIEWER (java.awt.Desktop$Action): final static enum constant
+            APP_MENU_BAR (java.awt.Desktop$Action): final static enum constant
+            BROWSE_FILE_DIR (java.awt.Desktop$Action): final static enum constant
+            MOVE_TO_TRASH (java.awt.Desktop$Action): final static enum constant
+        
+        """
         OPEN: typing.ClassVar['Desktop.Action'] = ...
         EDIT: typing.ClassVar['Desktop.Action'] = ...
         PRINT: typing.ClassVar['Desktop.Action'] = ...
@@ -379,6 +599,25 @@ class Desktop:
         def values() -> typing.List['Desktop.Action']: ...
 
 class Dimension(java.awt.geom.Dimension2D, java.io.Serializable):
+    """
+    Java class 'java.awt.Dimension'
+    
+        Extends:
+            java.awt.geom.Dimension2D
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * Dimension(java.awt.Dimension)
+        * Dimension()
+        * Dimension(int, int)
+    
+      Attributes:
+        width (int): field
+        height (int): field
+    
+    """
     width: int = ...
     height: int = ...
     @typing.overload
@@ -403,6 +642,20 @@ class Dimension(java.awt.geom.Dimension2D, java.io.Serializable):
     def toString(self) -> str: ...
 
 class DisplayMode:
+    """
+    Java class 'java.awt.DisplayMode'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * DisplayMode(int, int, int, int)
+    
+      Attributes:
+        BIT_DEPTH_MULTI (int): final static field
+        REFRESH_RATE_UNKNOWN (int): final static field
+    
+    """
     BIT_DEPTH_MULTI: typing.ClassVar[int] = ...
     REFRESH_RATE_UNKNOWN: typing.ClassVar[int] = ...
     def __init__(self, int: int, int2: int, int3: int, int4: int): ...
@@ -418,6 +671,97 @@ class DisplayMode:
     def toString(self) -> str: ...
 
 class Event(java.io.Serializable):
+    """
+    Java class 'java.awt.Event'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * Event(java.lang.Object, long, int, int, int, int, int)
+        * Event(java.lang.Object, long, int, int, int, int, int, java.lang.Object)
+        * Event(java.lang.Object, int, java.lang.Object)
+    
+      Attributes:
+        SHIFT_MASK (int): final static field
+        CTRL_MASK (int): final static field
+        META_MASK (int): final static field
+        ALT_MASK (int): final static field
+        HOME (int): final static field
+        END (int): final static field
+        PGUP (int): final static field
+        PGDN (int): final static field
+        UP (int): final static field
+        DOWN (int): final static field
+        LEFT (int): final static field
+        RIGHT (int): final static field
+        F1 (int): final static field
+        F2 (int): final static field
+        F3 (int): final static field
+        F4 (int): final static field
+        F5 (int): final static field
+        F6 (int): final static field
+        F7 (int): final static field
+        F8 (int): final static field
+        F9 (int): final static field
+        F10 (int): final static field
+        F11 (int): final static field
+        F12 (int): final static field
+        PRINT_SCREEN (int): final static field
+        SCROLL_LOCK (int): final static field
+        CAPS_LOCK (int): final static field
+        NUM_LOCK (int): final static field
+        PAUSE (int): final static field
+        INSERT (int): final static field
+        ENTER (int): final static field
+        BACK_SPACE (int): final static field
+        TAB (int): final static field
+        ESCAPE (int): final static field
+        DELETE (int): final static field
+        WINDOW_DESTROY (int): final static field
+        WINDOW_EXPOSE (int): final static field
+        WINDOW_ICONIFY (int): final static field
+        WINDOW_DEICONIFY (int): final static field
+        WINDOW_MOVED (int): final static field
+        KEY_PRESS (int): final static field
+        KEY_RELEASE (int): final static field
+        KEY_ACTION (int): final static field
+        KEY_ACTION_RELEASE (int): final static field
+        MOUSE_DOWN (int): final static field
+        MOUSE_UP (int): final static field
+        MOUSE_MOVE (int): final static field
+        MOUSE_ENTER (int): final static field
+        MOUSE_EXIT (int): final static field
+        MOUSE_DRAG (int): final static field
+        SCROLL_LINE_UP (int): final static field
+        SCROLL_LINE_DOWN (int): final static field
+        SCROLL_PAGE_UP (int): final static field
+        SCROLL_PAGE_DOWN (int): final static field
+        SCROLL_ABSOLUTE (int): final static field
+        SCROLL_BEGIN (int): final static field
+        SCROLL_END (int): final static field
+        LIST_SELECT (int): final static field
+        LIST_DESELECT (int): final static field
+        ACTION_EVENT (int): final static field
+        LOAD_FILE (int): final static field
+        SAVE_FILE (int): final static field
+        GOT_FOCUS (int): final static field
+        LOST_FOCUS (int): final static field
+        target (java.lang.Object): field
+        when (long): field
+        id (int): field
+        x (int): field
+        y (int): field
+        key (int): field
+        modifiers (int): field
+        clickCount (int): field
+        arg (java.lang.Object): field
+        evt (java.awt.Event): field
+    
+    """
     SHIFT_MASK: typing.ClassVar[int] = ...
     CTRL_MASK: typing.ClassVar[int] = ...
     META_MASK: typing.ClassVar[int] = ...
@@ -505,6 +849,16 @@ class Event(java.io.Serializable):
     def translate(self, int: int, int2: int) -> None: ...
 
 class EventQueue:
+    """
+    Java class 'java.awt.EventQueue'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * EventQueue()
+    
+    """
     def __init__(self): ...
     def createSecondaryLoop(self) -> 'SecondaryLoop': ...
     @staticmethod
@@ -526,6 +880,16 @@ class EventQueue:
     def push(self, eventQueue: 'EventQueue') -> None: ...
 
 class FocusTraversalPolicy:
+    """
+    Java class 'java.awt.FocusTraversalPolicy'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * FocusTraversalPolicy()
+    
+    """
     def __init__(self): ...
     def getComponentAfter(self, container: 'Container', component: 'Component') -> 'Component': ...
     def getComponentBefore(self, container: 'Container', component: 'Component') -> 'Component': ...
@@ -535,6 +899,39 @@ class FocusTraversalPolicy:
     def getLastComponent(self, container: 'Container') -> 'Component': ...
 
 class Font(java.io.Serializable):
+    """
+    Java class 'java.awt.Font'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * Font(java.util.Map)
+        * Font(java.lang.String, int, int)
+    
+      Attributes:
+        DIALOG (java.lang.String): final static field
+        DIALOG_INPUT (java.lang.String): final static field
+        SANS_SERIF (java.lang.String): final static field
+        SERIF (java.lang.String): final static field
+        MONOSPACED (java.lang.String): final static field
+        PLAIN (int): final static field
+        BOLD (int): final static field
+        ITALIC (int): final static field
+        ROMAN_BASELINE (int): final static field
+        CENTER_BASELINE (int): final static field
+        HANGING_BASELINE (int): final static field
+        TRUETYPE_FONT (int): final static field
+        TYPE1_FONT (int): final static field
+        LAYOUT_LEFT_TO_RIGHT (int): final static field
+        LAYOUT_RIGHT_TO_LEFT (int): final static field
+        LAYOUT_NO_START_CONTEXT (int): final static field
+        LAYOUT_NO_LIMIT_CONTEXT (int): final static field
+    
+    """
     DIALOG: typing.ClassVar[str] = ...
     DIALOG_INPUT: typing.ClassVar[str] = ...
     SANS_SERIF: typing.ClassVar[str] = ...
@@ -660,9 +1057,29 @@ class Font(java.io.Serializable):
     def toString(self) -> str: ...
 
 class FontFormatException(java.lang.Exception):
+    """
+    Java class 'java.awt.FontFormatException'
+    
+        Extends:
+            java.lang.Exception
+    
+      Constructors:
+        * FontFormatException(java.lang.String)
+    
+    """
     def __init__(self, string: str): ...
 
 class FontMetrics(java.io.Serializable):
+    """
+    Java class 'java.awt.FontMetrics'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     def bytesWidth(self, byteArray: typing.List[int], int: int, int2: int) -> int: ...
     @typing.overload
     def charWidth(self, char: str) -> int: ...
@@ -702,6 +1119,13 @@ class FontMetrics(java.io.Serializable):
     def toString(self) -> str: ...
 
 class Graphics:
+    """
+    Java class 'java.awt.Graphics'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     def clearRect(self, int: int, int2: int, int3: int, int4: int) -> None: ...
     def clipRect(self, int: int, int2: int, int3: int, int4: int) -> None: ...
     def copyArea(self, int: int, int2: int, int3: int, int4: int, int5: int, int6: int) -> None: ...
@@ -774,6 +1198,24 @@ class Graphics:
     def translate(self, int: int, int2: int) -> None: ...
 
 class GraphicsConfigTemplate(java.io.Serializable):
+    """
+    Java class 'java.awt.GraphicsConfigTemplate'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * GraphicsConfigTemplate()
+    
+      Attributes:
+        REQUIRED (int): final static field
+        PREFERRED (int): final static field
+        UNNECESSARY (int): final static field
+    
+    """
     REQUIRED: typing.ClassVar[int] = ...
     PREFERRED: typing.ClassVar[int] = ...
     UNNECESSARY: typing.ClassVar[int] = ...
@@ -782,6 +1224,13 @@ class GraphicsConfigTemplate(java.io.Serializable):
     def isGraphicsConfigSupported(self, graphicsConfiguration: 'GraphicsConfiguration') -> bool: ...
 
 class GraphicsConfiguration:
+    """
+    Java class 'java.awt.GraphicsConfiguration'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @typing.overload
     def createCompatibleImage(self, int: int, int2: int) -> java.awt.image.BufferedImage: ...
     @typing.overload
@@ -807,6 +1256,18 @@ class GraphicsConfiguration:
     def isTranslucencyCapable(self) -> bool: ...
 
 class GraphicsDevice:
+    """
+    Java class 'java.awt.GraphicsDevice'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        TYPE_RASTER_SCREEN (int): final static field
+        TYPE_PRINTER (int): final static field
+        TYPE_IMAGE_BUFFER (int): final static field
+    
+    """
     TYPE_RASTER_SCREEN: typing.ClassVar[int] = ...
     TYPE_PRINTER: typing.ClassVar[int] = ...
     TYPE_IMAGE_BUFFER: typing.ClassVar[int] = ...
@@ -825,6 +1286,18 @@ class GraphicsDevice:
     def setDisplayMode(self, displayMode: DisplayMode) -> None: ...
     def setFullScreenWindow(self, window: 'Window') -> None: ...
     class WindowTranslucency(java.lang.Enum['GraphicsDevice.WindowTranslucency']):
+        """
+        Java class 'java.awt.GraphicsDevice$WindowTranslucency'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            PERPIXEL_TRANSPARENT (java.awt.GraphicsDevice$WindowTranslucency): final static enum constant
+            TRANSLUCENT (java.awt.GraphicsDevice$WindowTranslucency): final static enum constant
+            PERPIXEL_TRANSLUCENT (java.awt.GraphicsDevice$WindowTranslucency): final static enum constant
+        
+        """
         PERPIXEL_TRANSPARENT: typing.ClassVar['GraphicsDevice.WindowTranslucency'] = ...
         TRANSLUCENT: typing.ClassVar['GraphicsDevice.WindowTranslucency'] = ...
         PERPIXEL_TRANSLUCENT: typing.ClassVar['GraphicsDevice.WindowTranslucency'] = ...
@@ -839,6 +1312,13 @@ class GraphicsDevice:
         def values() -> typing.List['GraphicsDevice.WindowTranslucency']: ...
 
 class GraphicsEnvironment:
+    """
+    Java class 'java.awt.GraphicsEnvironment'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     def createGraphics(self, bufferedImage: java.awt.image.BufferedImage) -> 'Graphics2D': ...
     def getAllFonts(self) -> typing.List[Font]: ...
     @typing.overload
@@ -859,6 +1339,65 @@ class GraphicsEnvironment:
     def registerFont(self, font: Font) -> bool: ...
 
 class GridBagConstraints(java.lang.Cloneable, java.io.Serializable):
+    """
+    Java class 'java.awt.GridBagConstraints'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.Cloneable, java.io.Serializable
+    
+      Constructors:
+        * GridBagConstraints()
+        * GridBagConstraints(int, int, int, int, double, double, int, int, java.awt.Insets, int, int)
+    
+      Attributes:
+        RELATIVE (int): final static field
+        REMAINDER (int): final static field
+        NONE (int): final static field
+        BOTH (int): final static field
+        HORIZONTAL (int): final static field
+        VERTICAL (int): final static field
+        CENTER (int): final static field
+        NORTH (int): final static field
+        NORTHEAST (int): final static field
+        EAST (int): final static field
+        SOUTHEAST (int): final static field
+        SOUTH (int): final static field
+        SOUTHWEST (int): final static field
+        WEST (int): final static field
+        NORTHWEST (int): final static field
+        PAGE_START (int): final static field
+        PAGE_END (int): final static field
+        LINE_START (int): final static field
+        LINE_END (int): final static field
+        FIRST_LINE_START (int): final static field
+        FIRST_LINE_END (int): final static field
+        LAST_LINE_START (int): final static field
+        LAST_LINE_END (int): final static field
+        BASELINE (int): final static field
+        BASELINE_LEADING (int): final static field
+        BASELINE_TRAILING (int): final static field
+        ABOVE_BASELINE (int): final static field
+        ABOVE_BASELINE_LEADING (int): final static field
+        ABOVE_BASELINE_TRAILING (int): final static field
+        BELOW_BASELINE (int): final static field
+        BELOW_BASELINE_LEADING (int): final static field
+        BELOW_BASELINE_TRAILING (int): final static field
+        gridx (int): field
+        gridy (int): field
+        gridwidth (int): field
+        gridheight (int): field
+        weightx (double): field
+        weighty (double): field
+        anchor (int): field
+        fill (int): field
+        insets (java.awt.Insets): field
+        ipadx (int): field
+        ipady (int): field
+    
+    """
     RELATIVE: typing.ClassVar[int] = ...
     REMAINDER: typing.ClassVar[int] = ...
     NONE: typing.ClassVar[int] = ...
@@ -911,6 +1450,17 @@ class GridBagConstraints(java.lang.Cloneable, java.io.Serializable):
 class GridBagLayoutInfo(java.io.Serializable): ...
 
 class HeadlessException(java.lang.UnsupportedOperationException):
+    """
+    Java class 'java.awt.HeadlessException'
+    
+        Extends:
+            java.lang.UnsupportedOperationException
+    
+      Constructors:
+        * HeadlessException()
+        * HeadlessException(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -918,12 +1468,41 @@ class HeadlessException(java.lang.UnsupportedOperationException):
     def getMessage(self) -> str: ...
 
 class IllegalComponentStateException(java.lang.IllegalStateException):
+    """
+    Java class 'java.awt.IllegalComponentStateException'
+    
+        Extends:
+            java.lang.IllegalStateException
+    
+      Constructors:
+        * IllegalComponentStateException()
+        * IllegalComponentStateException(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class Image:
+    """
+    Java class 'java.awt.Image'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * Image()
+    
+      Attributes:
+        UndefinedProperty (java.lang.Object): final static field
+        SCALE_DEFAULT (int): final static field
+        SCALE_FAST (int): final static field
+        SCALE_SMOOTH (int): final static field
+        SCALE_REPLICATE (int): final static field
+        SCALE_AREA_AVERAGING (int): final static field
+    
+    """
     UndefinedProperty: typing.ClassVar[typing.Any] = ...
     SCALE_DEFAULT: typing.ClassVar[int] = ...
     SCALE_FAST: typing.ClassVar[int] = ...
@@ -943,12 +1522,44 @@ class Image:
     def setAccelerationPriority(self, float: float) -> None: ...
 
 class ImageCapabilities(java.lang.Cloneable):
+    """
+    Java class 'java.awt.ImageCapabilities'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.Cloneable
+    
+      Constructors:
+        * ImageCapabilities(boolean)
+    
+    """
     def __init__(self, boolean: bool): ...
     def clone(self) -> typing.Any: ...
     def isAccelerated(self) -> bool: ...
     def isTrueVolatile(self) -> bool: ...
 
 class Insets(java.lang.Cloneable, java.io.Serializable):
+    """
+    Java class 'java.awt.Insets'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.Cloneable, java.io.Serializable
+    
+      Constructors:
+        * Insets(int, int, int, int)
+    
+      Attributes:
+        top (int): field
+        left (int): field
+        bottom (int): field
+        right (int): field
+    
+    """
     top: int = ...
     left: int = ...
     bottom: int = ...
@@ -961,17 +1572,33 @@ class Insets(java.lang.Cloneable, java.io.Serializable):
     def toString(self) -> str: ...
 
 class ItemSelectable:
+    """
+    Java class 'java.awt.ItemSelectable'
+    
+    """
     def addItemListener(self, itemListener: java.awt.event.ItemListener) -> None: ...
     def getSelectedObjects(self) -> typing.List[typing.Any]: ...
     def removeItemListener(self, itemListener: java.awt.event.ItemListener) -> None: ...
 
 class KeyEventDispatcher:
+    """
+    Java class 'java.awt.KeyEventDispatcher'
+    
+    """
     def dispatchKeyEvent(self, keyEvent: java.awt.event.KeyEvent) -> bool: ...
 
 class KeyEventPostProcessor:
+    """
+    Java class 'java.awt.KeyEventPostProcessor'
+    
+    """
     def postProcessKeyEvent(self, keyEvent: java.awt.event.KeyEvent) -> bool: ...
 
 class LayoutManager:
+    """
+    Java class 'java.awt.LayoutManager'
+    
+    """
     def addLayoutComponent(self, string: str, component: 'Component') -> None: ...
     def layoutContainer(self, container: 'Container') -> None: ...
     def minimumLayoutSize(self, container: 'Container') -> Dimension: ...
@@ -979,6 +1606,25 @@ class LayoutManager:
     def removeLayoutComponent(self, component: 'Component') -> None: ...
 
 class MediaTracker(java.io.Serializable):
+    """
+    Java class 'java.awt.MediaTracker'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * MediaTracker(java.awt.Component)
+    
+      Attributes:
+        LOADING (int): final static field
+        ABORTED (int): final static field
+        ERRORED (int): final static field
+        COMPLETE (int): final static field
+    
+    """
     LOADING: typing.ClassVar[int] = ...
     ABORTED: typing.ClassVar[int] = ...
     ERRORED: typing.ClassVar[int] = ...
@@ -1018,6 +1664,22 @@ class MediaTracker(java.io.Serializable):
     def waitForID(self, int: int) -> None: ...
 
 class MenuComponent(java.io.Serializable):
+    """
+    Java class 'java.awt.MenuComponent'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * MenuComponent()
+    
+      Raises:
+        java.awt.HeadlessException: from java
+    
+    """
     def __init__(self): ...
     def dispatchEvent(self, aWTEvent: AWTEvent) -> None: ...
     def getAccessibleContext(self) -> javax.accessibility.AccessibleContext: ...
@@ -1031,11 +1693,29 @@ class MenuComponent(java.io.Serializable):
     def toString(self) -> str: ...
 
 class MenuContainer:
+    """
+    Java class 'java.awt.MenuContainer'
+    
+    """
     def getFont(self) -> Font: ...
     def postEvent(self, event: Event) -> bool: ...
     def remove(self, menuComponent: MenuComponent) -> None: ...
 
 class MenuShortcut(java.io.Serializable):
+    """
+    Java class 'java.awt.MenuShortcut'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * MenuShortcut(int)
+        * MenuShortcut(int, boolean)
+    
+    """
     @typing.overload
     def __init__(self, int: int): ...
     @typing.overload
@@ -1050,17 +1730,47 @@ class MenuShortcut(java.io.Serializable):
     def usesShiftModifier(self) -> bool: ...
 
 class MouseInfo:
+    """
+    Java class 'java.awt.MouseInfo'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def getNumberOfButtons() -> int: ...
     @staticmethod
     def getPointerInfo() -> 'PointerInfo': ...
 
 class PaintContext:
+    """
+    Java class 'java.awt.PaintContext'
+    
+    """
     def dispose(self) -> None: ...
     def getColorModel(self) -> java.awt.image.ColorModel: ...
     def getRaster(self, int: int, int2: int, int3: int, int4: int) -> java.awt.image.Raster: ...
 
 class Point(java.awt.geom.Point2D, java.io.Serializable):
+    """
+    Java class 'java.awt.Point'
+    
+        Extends:
+            java.awt.geom.Point2D
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * Point(int, int)
+        * Point(java.awt.Point)
+        * Point()
+    
+      Attributes:
+        x (int): field
+        y (int): field
+    
+    """
     x: int = ...
     y: int = ...
     @typing.overload
@@ -1086,13 +1796,34 @@ class Point(java.awt.geom.Point2D, java.io.Serializable):
     def translate(self, int: int, int2: int) -> None: ...
 
 class PointerInfo:
+    """
+    Java class 'java.awt.PointerInfo'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     def getDevice(self) -> GraphicsDevice: ...
     def getLocation(self) -> Point: ...
 
 class PrintGraphics:
+    """
+    Java class 'java.awt.PrintGraphics'
+    
+    """
     def getPrintJob(self) -> 'PrintJob': ...
 
 class PrintJob:
+    """
+    Java class 'java.awt.PrintJob'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * PrintJob()
+    
+    """
     def __init__(self): ...
     def end(self) -> None: ...
     def finalize(self) -> None: ...
@@ -1102,6 +1833,69 @@ class PrintJob:
     def lastPageFirst(self) -> bool: ...
 
 class RenderingHints(java.util.Map[typing.Any, typing.Any], java.lang.Cloneable):
+    """
+    Java class 'java.awt.RenderingHints'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.Map, java.lang.Cloneable
+    
+      Constructors:
+        * RenderingHints(java.util.Map)
+        * RenderingHints(java.awt.RenderingHints.Key, java.lang.Object)
+    
+      Attributes:
+        KEY_ANTIALIASING (java.awt.RenderingHints$Key): final static field
+        VALUE_ANTIALIAS_ON (java.lang.Object): final static field
+        VALUE_ANTIALIAS_OFF (java.lang.Object): final static field
+        VALUE_ANTIALIAS_DEFAULT (java.lang.Object): final static field
+        KEY_RENDERING (java.awt.RenderingHints$Key): final static field
+        VALUE_RENDER_SPEED (java.lang.Object): final static field
+        VALUE_RENDER_QUALITY (java.lang.Object): final static field
+        VALUE_RENDER_DEFAULT (java.lang.Object): final static field
+        KEY_DITHERING (java.awt.RenderingHints$Key): final static field
+        VALUE_DITHER_DISABLE (java.lang.Object): final static field
+        VALUE_DITHER_ENABLE (java.lang.Object): final static field
+        VALUE_DITHER_DEFAULT (java.lang.Object): final static field
+        KEY_TEXT_ANTIALIASING (java.awt.RenderingHints$Key): final static field
+        VALUE_TEXT_ANTIALIAS_ON (java.lang.Object): final static field
+        VALUE_TEXT_ANTIALIAS_OFF (java.lang.Object): final static field
+        VALUE_TEXT_ANTIALIAS_DEFAULT (java.lang.Object): final static field
+        VALUE_TEXT_ANTIALIAS_GASP (java.lang.Object): final static field
+        VALUE_TEXT_ANTIALIAS_LCD_HRGB (java.lang.Object): final static field
+        VALUE_TEXT_ANTIALIAS_LCD_HBGR (java.lang.Object): final static field
+        VALUE_TEXT_ANTIALIAS_LCD_VRGB (java.lang.Object): final static field
+        VALUE_TEXT_ANTIALIAS_LCD_VBGR (java.lang.Object): final static field
+        KEY_TEXT_LCD_CONTRAST (java.awt.RenderingHints$Key): final static field
+        KEY_FRACTIONALMETRICS (java.awt.RenderingHints$Key): final static field
+        VALUE_FRACTIONALMETRICS_OFF (java.lang.Object): final static field
+        VALUE_FRACTIONALMETRICS_ON (java.lang.Object): final static field
+        VALUE_FRACTIONALMETRICS_DEFAULT (java.lang.Object): final static field
+        KEY_INTERPOLATION (java.awt.RenderingHints$Key): final static field
+        VALUE_INTERPOLATION_NEAREST_NEIGHBOR (java.lang.Object): final static field
+        VALUE_INTERPOLATION_BILINEAR (java.lang.Object): final static field
+        VALUE_INTERPOLATION_BICUBIC (java.lang.Object): final static field
+        KEY_ALPHA_INTERPOLATION (java.awt.RenderingHints$Key): final static field
+        VALUE_ALPHA_INTERPOLATION_SPEED (java.lang.Object): final static field
+        VALUE_ALPHA_INTERPOLATION_QUALITY (java.lang.Object): final static field
+        VALUE_ALPHA_INTERPOLATION_DEFAULT (java.lang.Object): final static field
+        KEY_COLOR_RENDERING (java.awt.RenderingHints$Key): final static field
+        VALUE_COLOR_RENDER_SPEED (java.lang.Object): final static field
+        VALUE_COLOR_RENDER_QUALITY (java.lang.Object): final static field
+        VALUE_COLOR_RENDER_DEFAULT (java.lang.Object): final static field
+        KEY_STROKE_CONTROL (java.awt.RenderingHints$Key): final static field
+        VALUE_STROKE_DEFAULT (java.lang.Object): final static field
+        VALUE_STROKE_NORMALIZE (java.lang.Object): final static field
+        VALUE_STROKE_PURE (java.lang.Object): final static field
+        KEY_RESOLUTION_VARIANT (java.awt.RenderingHints$Key): final static field
+        VALUE_RESOLUTION_VARIANT_DEFAULT (java.lang.Object): final static field
+        VALUE_RESOLUTION_VARIANT_BASE (java.lang.Object): final static field
+        VALUE_RESOLUTION_VARIANT_SIZE_FIT (java.lang.Object): final static field
+        VALUE_RESOLUTION_VARIANT_DPI_FIT (java.lang.Object): final static field
+    
+    """
     KEY_ANTIALIASING: typing.ClassVar['RenderingHints.Key'] = ...
     VALUE_ANTIALIAS_ON: typing.ClassVar[typing.Any] = ...
     VALUE_ANTIALIAS_OFF: typing.ClassVar[typing.Any] = ...
@@ -1174,11 +1968,32 @@ class RenderingHints(java.util.Map[typing.Any, typing.Any], java.lang.Cloneable)
     def toString(self) -> str: ...
     def values(self) -> java.util.Collection[typing.Any]: ...
     class Key:
+        """
+        Java class 'java.awt.RenderingHints$Key'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def equals(self, object: typing.Any) -> bool: ...
         def hashCode(self) -> int: ...
         def isCompatibleValue(self, object: typing.Any) -> bool: ...
 
 class Robot:
+    """
+    Java class 'java.awt.Robot'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * Robot()
+        * Robot(java.awt.GraphicsDevice)
+    
+      Raises:
+        java.awt.AWTException: from java
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1201,10 +2016,18 @@ class Robot:
     def waitForIdle(self) -> None: ...
 
 class SecondaryLoop:
+    """
+    Java class 'java.awt.SecondaryLoop'
+    
+    """
     def enter(self) -> bool: ...
     def exit(self) -> bool: ...
 
 class Shape:
+    """
+    Java class 'java.awt.Shape'
+    
+    """
     @typing.overload
     def contains(self, double: float, double2: float) -> bool: ...
     @typing.overload
@@ -1225,6 +2048,13 @@ class Shape:
     def intersects(self, rectangle2D: java.awt.geom.Rectangle2D) -> bool: ...
 
 class SplashScreen:
+    """
+    Java class 'java.awt.SplashScreen'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     def close(self) -> None: ...
     def createGraphics(self) -> 'Graphics2D': ...
     def getBounds(self) -> 'Rectangle': ...
@@ -1237,9 +2067,20 @@ class SplashScreen:
     def update(self) -> None: ...
 
 class Stroke:
+    """
+    Java class 'java.awt.Stroke'
+    
+    """
     def createStrokedShape(self, shape: Shape) -> Shape: ...
 
 class SystemTray:
+    """
+    Java class 'java.awt.SystemTray'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     def add(self, trayIcon: 'TrayIcon') -> None: ...
     def addPropertyChangeListener(self, string: str, propertyChangeListener: java.beans.PropertyChangeListener) -> None: ...
     def getPropertyChangeListeners(self, string: str) -> typing.List[java.beans.PropertyChangeListener]: ...
@@ -1253,6 +2094,13 @@ class SystemTray:
     def removePropertyChangeListener(self, string: str, propertyChangeListener: java.beans.PropertyChangeListener) -> None: ...
 
 class Taskbar:
+    """
+    Java class 'java.awt.Taskbar'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     def getIconImage(self) -> Image: ...
     def getMenu(self) -> 'PopupMenu': ...
     @staticmethod
@@ -1270,6 +2118,25 @@ class Taskbar:
     def setWindowProgressState(self, window: 'Window', state: 'Taskbar.State') -> None: ...
     def setWindowProgressValue(self, window: 'Window', int: int) -> None: ...
     class Feature(java.lang.Enum['Taskbar.Feature']):
+        """
+        Java class 'java.awt.Taskbar$Feature'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            ICON_BADGE_TEXT (java.awt.Taskbar$Feature): final static enum constant
+            ICON_BADGE_NUMBER (java.awt.Taskbar$Feature): final static enum constant
+            ICON_BADGE_IMAGE_WINDOW (java.awt.Taskbar$Feature): final static enum constant
+            ICON_IMAGE (java.awt.Taskbar$Feature): final static enum constant
+            MENU (java.awt.Taskbar$Feature): final static enum constant
+            PROGRESS_STATE_WINDOW (java.awt.Taskbar$Feature): final static enum constant
+            PROGRESS_VALUE (java.awt.Taskbar$Feature): final static enum constant
+            PROGRESS_VALUE_WINDOW (java.awt.Taskbar$Feature): final static enum constant
+            USER_ATTENTION (java.awt.Taskbar$Feature): final static enum constant
+            USER_ATTENTION_WINDOW (java.awt.Taskbar$Feature): final static enum constant
+        
+        """
         ICON_BADGE_TEXT: typing.ClassVar['Taskbar.Feature'] = ...
         ICON_BADGE_NUMBER: typing.ClassVar['Taskbar.Feature'] = ...
         ICON_BADGE_IMAGE_WINDOW: typing.ClassVar['Taskbar.Feature'] = ...
@@ -1290,6 +2157,20 @@ class Taskbar:
         @staticmethod
         def values() -> typing.List['Taskbar.Feature']: ...
     class State(java.lang.Enum['Taskbar.State']):
+        """
+        Java class 'java.awt.Taskbar$State'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            OFF (java.awt.Taskbar$State): final static enum constant
+            NORMAL (java.awt.Taskbar$State): final static enum constant
+            PAUSED (java.awt.Taskbar$State): final static enum constant
+            INDETERMINATE (java.awt.Taskbar$State): final static enum constant
+            ERROR (java.awt.Taskbar$State): final static enum constant
+        
+        """
         OFF: typing.ClassVar['Taskbar.State'] = ...
         NORMAL: typing.ClassVar['Taskbar.State'] = ...
         PAUSED: typing.ClassVar['Taskbar.State'] = ...
@@ -1306,6 +2187,16 @@ class Taskbar:
         def values() -> typing.List['Taskbar.State']: ...
 
 class Toolkit:
+    """
+    Java class 'java.awt.Toolkit'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * Toolkit()
+    
+    """
     def __init__(self): ...
     def addAWTEventListener(self, aWTEventListener: java.awt.event.AWTEventListener, long: int) -> None: ...
     def addPropertyChangeListener(self, string: str, propertyChangeListener: java.beans.PropertyChangeListener) -> None: ...
@@ -1374,12 +2265,33 @@ class Toolkit:
     def sync(self) -> None: ...
 
 class Transparency:
+    """
+    Java class 'java.awt.Transparency'
+    
+      Attributes:
+        OPAQUE (int): final static field
+        BITMASK (int): final static field
+        TRANSLUCENT (int): final static field
+    
+    """
     OPAQUE: typing.ClassVar[int] = ...
     BITMASK: typing.ClassVar[int] = ...
     TRANSLUCENT: typing.ClassVar[int] = ...
     def getTransparency(self) -> int: ...
 
 class TrayIcon:
+    """
+    Java class 'java.awt.TrayIcon'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * TrayIcon(java.awt.Image, java.lang.String)
+        * TrayIcon(java.awt.Image)
+        * TrayIcon(java.awt.Image, java.lang.String, java.awt.PopupMenu)
+    
+    """
     @typing.overload
     def __init__(self, image: Image): ...
     @typing.overload
@@ -1408,6 +2320,19 @@ class TrayIcon:
     def setPopupMenu(self, popupMenu: 'PopupMenu') -> None: ...
     def setToolTip(self, string: str) -> None: ...
     class MessageType(java.lang.Enum['TrayIcon.MessageType']):
+        """
+        Java class 'java.awt.TrayIcon$MessageType'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            ERROR (java.awt.TrayIcon$MessageType): final static enum constant
+            WARNING (java.awt.TrayIcon$MessageType): final static enum constant
+            INFO (java.awt.TrayIcon$MessageType): final static enum constant
+            NONE (java.awt.TrayIcon$MessageType): final static enum constant
+        
+        """
         ERROR: typing.ClassVar['TrayIcon.MessageType'] = ...
         WARNING: typing.ClassVar['TrayIcon.MessageType'] = ...
         INFO: typing.ClassVar['TrayIcon.MessageType'] = ...
@@ -1423,6 +2348,42 @@ class TrayIcon:
         def values() -> typing.List['TrayIcon.MessageType']: ...
 
 class AlphaComposite(Composite):
+    """
+    Java class 'java.awt.AlphaComposite'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.Composite
+    
+      Attributes:
+        CLEAR (int): final static field
+        SRC (int): final static field
+        DST (int): final static field
+        SRC_OVER (int): final static field
+        DST_OVER (int): final static field
+        SRC_IN (int): final static field
+        DST_IN (int): final static field
+        SRC_OUT (int): final static field
+        DST_OUT (int): final static field
+        SRC_ATOP (int): final static field
+        DST_ATOP (int): final static field
+        XOR (int): final static field
+        Clear (java.awt.AlphaComposite): final static field
+        Src (java.awt.AlphaComposite): final static field
+        Dst (java.awt.AlphaComposite): final static field
+        SrcOver (java.awt.AlphaComposite): final static field
+        DstOver (java.awt.AlphaComposite): final static field
+        SrcIn (java.awt.AlphaComposite): final static field
+        DstIn (java.awt.AlphaComposite): final static field
+        SrcOut (java.awt.AlphaComposite): final static field
+        DstOut (java.awt.AlphaComposite): final static field
+        SrcAtop (java.awt.AlphaComposite): final static field
+        DstAtop (java.awt.AlphaComposite): final static field
+        Xor (java.awt.AlphaComposite): final static field
+    
+    """
     CLEAR: typing.ClassVar[int] = ...
     SRC: typing.ClassVar[int] = ...
     DST: typing.ClassVar[int] = ...
@@ -1464,6 +2425,31 @@ class AlphaComposite(Composite):
     def hashCode(self) -> int: ...
 
 class BasicStroke(Stroke):
+    """
+    Java class 'java.awt.BasicStroke'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.Stroke
+    
+      Constructors:
+        * BasicStroke()
+        * BasicStroke(float)
+        * BasicStroke(float, int, int)
+        * BasicStroke(float, int, int, float)
+        * BasicStroke(float, int, int, float, float[], float)
+    
+      Attributes:
+        JOIN_MITER (int): final static field
+        JOIN_ROUND (int): final static field
+        JOIN_BEVEL (int): final static field
+        CAP_BUTT (int): final static field
+        CAP_ROUND (int): final static field
+        CAP_SQUARE (int): final static field
+    
+    """
     JOIN_MITER: typing.ClassVar[int] = ...
     JOIN_ROUND: typing.ClassVar[int] = ...
     JOIN_BEVEL: typing.ClassVar[int] = ...
@@ -1491,6 +2477,24 @@ class BasicStroke(Stroke):
     def hashCode(self) -> int: ...
 
 class Component(java.awt.image.ImageObserver, MenuContainer, java.io.Serializable):
+    """
+    Java class 'java.awt.Component'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.image.ImageObserver, java.awt.MenuContainer,
+            java.io.Serializable
+    
+      Attributes:
+        TOP_ALIGNMENT (float): final static field
+        CENTER_ALIGNMENT (float): final static field
+        BOTTOM_ALIGNMENT (float): final static field
+        LEFT_ALIGNMENT (float): final static field
+        RIGHT_ALIGNMENT (float): final static field
+    
+    """
     TOP_ALIGNMENT: typing.ClassVar[float] = ...
     CENTER_ALIGNMENT: typing.ClassVar[float] = ...
     BOTTOM_ALIGNMENT: typing.ClassVar[float] = ...
@@ -1757,6 +2761,19 @@ class Component(java.awt.image.ImageObserver, MenuContainer, java.io.Serializabl
     def update(self, graphics: Graphics) -> None: ...
     def validate(self) -> None: ...
     class BaselineResizeBehavior(java.lang.Enum['Component.BaselineResizeBehavior']):
+        """
+        Java class 'java.awt.Component$BaselineResizeBehavior'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            CONSTANT_ASCENT (java.awt.Component$BaselineResizeBehavior): final static enum constant
+            CONSTANT_DESCENT (java.awt.Component$BaselineResizeBehavior): final static enum constant
+            CENTER_OFFSET (java.awt.Component$BaselineResizeBehavior): final static enum constant
+            OTHER (java.awt.Component$BaselineResizeBehavior): final static enum constant
+        
+        """
         CONSTANT_ASCENT: typing.ClassVar['Component.BaselineResizeBehavior'] = ...
         CONSTANT_DESCENT: typing.ClassVar['Component.BaselineResizeBehavior'] = ...
         CENTER_OFFSET: typing.ClassVar['Component.BaselineResizeBehavior'] = ...
@@ -1772,6 +2789,19 @@ class Component(java.awt.image.ImageObserver, MenuContainer, java.io.Serializabl
         def values() -> typing.List['Component.BaselineResizeBehavior']: ...
 
 class ContainerOrderFocusTraversalPolicy(FocusTraversalPolicy, java.io.Serializable):
+    """
+    Java class 'java.awt.ContainerOrderFocusTraversalPolicy'
+    
+        Extends:
+            java.awt.FocusTraversalPolicy
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * ContainerOrderFocusTraversalPolicy()
+    
+    """
     def __init__(self): ...
     def getComponentAfter(self, container: 'Container', component: Component) -> Component: ...
     def getComponentBefore(self, container: 'Container', component: Component) -> Component: ...
@@ -1782,6 +2812,28 @@ class ContainerOrderFocusTraversalPolicy(FocusTraversalPolicy, java.io.Serializa
     def setImplicitDownCycleTraversal(self, boolean: bool) -> None: ...
 
 class FlowLayout(LayoutManager, java.io.Serializable):
+    """
+    Java class 'java.awt.FlowLayout'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.LayoutManager, java.io.Serializable
+    
+      Constructors:
+        * FlowLayout(int, int, int)
+        * FlowLayout(int)
+        * FlowLayout()
+    
+      Attributes:
+        LEFT (int): final static field
+        CENTER (int): final static field
+        RIGHT (int): final static field
+        LEADING (int): final static field
+        TRAILING (int): final static field
+    
+    """
     LEFT: typing.ClassVar[int] = ...
     CENTER: typing.ClassVar[int] = ...
     RIGHT: typing.ClassVar[int] = ...
@@ -1809,6 +2861,13 @@ class FlowLayout(LayoutManager, java.io.Serializable):
     def toString(self) -> str: ...
 
 class Graphics2D(Graphics):
+    """
+    Java class 'java.awt.Graphics2D'
+    
+        Extends:
+            java.awt.Graphics
+    
+    """
     def addRenderingHints(self, map: typing.Union[java.util.Map[typing.Any, typing.Any], typing.Mapping[typing.Any, typing.Any]]) -> None: ...
     def clip(self, shape: Shape) -> None: ...
     def draw(self, shape: Shape) -> None: ...
@@ -1872,6 +2931,21 @@ class Graphics2D(Graphics):
     def translate(self, int: int, int2: int) -> None: ...
 
 class GridLayout(LayoutManager, java.io.Serializable):
+    """
+    Java class 'java.awt.GridLayout'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.LayoutManager, java.io.Serializable
+    
+      Constructors:
+        * GridLayout(int, int, int, int)
+        * GridLayout(int, int)
+        * GridLayout()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1894,6 +2968,25 @@ class GridLayout(LayoutManager, java.io.Serializable):
     def toString(self) -> str: ...
 
 class KeyboardFocusManager(KeyEventDispatcher, KeyEventPostProcessor):
+    """
+    Java class 'java.awt.KeyboardFocusManager'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.KeyEventDispatcher, java.awt.KeyEventPostProcessor
+    
+      Constructors:
+        * KeyboardFocusManager()
+    
+      Attributes:
+        FORWARD_TRAVERSAL_KEYS (int): final static field
+        BACKWARD_TRAVERSAL_KEYS (int): final static field
+        UP_CYCLE_TRAVERSAL_KEYS (int): final static field
+        DOWN_CYCLE_TRAVERSAL_KEYS (int): final static field
+    
+    """
     FORWARD_TRAVERSAL_KEYS: typing.ClassVar[int] = ...
     BACKWARD_TRAVERSAL_KEYS: typing.ClassVar[int] = ...
     UP_CYCLE_TRAVERSAL_KEYS: typing.ClassVar[int] = ...
@@ -1966,6 +3059,13 @@ class KeyboardFocusManager(KeyEventDispatcher, KeyEventPostProcessor):
     def upFocusCycle(self) -> None: ...
 
 class LayoutManager2(LayoutManager):
+    """
+    Java class 'java.awt.LayoutManager2'
+    
+        Interfaces:
+            java.awt.LayoutManager
+    
+    """
     @typing.overload
     def addLayoutComponent(self, string: str, component: Component) -> None: ...
     @typing.overload
@@ -1976,6 +3076,22 @@ class LayoutManager2(LayoutManager):
     def maximumLayoutSize(self, container: 'Container') -> Dimension: ...
 
 class MenuBar(MenuComponent, MenuContainer, javax.accessibility.Accessible):
+    """
+    Java class 'java.awt.MenuBar'
+    
+        Extends:
+            java.awt.MenuComponent
+    
+        Interfaces:
+            java.awt.MenuContainer, javax.accessibility.Accessible
+    
+      Constructors:
+        * MenuBar()
+    
+      Raises:
+        java.awt.HeadlessException: from java
+    
+    """
     def __init__(self): ...
     def add(self, menu: 'Menu') -> 'Menu': ...
     def addNotify(self) -> None: ...
@@ -1995,6 +3111,24 @@ class MenuBar(MenuComponent, MenuContainer, javax.accessibility.Accessible):
     def shortcuts(self) -> java.util.Enumeration[MenuShortcut]: ...
 
 class MenuItem(MenuComponent, javax.accessibility.Accessible):
+    """
+    Java class 'java.awt.MenuItem'
+    
+        Extends:
+            java.awt.MenuComponent
+    
+        Interfaces:
+            javax.accessibility.Accessible
+    
+      Constructors:
+        * MenuItem(java.lang.String, java.awt.MenuShortcut)
+        * MenuItem(java.lang.String)
+        * MenuItem()
+    
+      Raises:
+        java.awt.HeadlessException: from java
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2025,9 +3159,35 @@ class MenuItem(MenuComponent, javax.accessibility.Accessible):
     def setShortcut(self, menuShortcut: MenuShortcut) -> None: ...
 
 class Paint(Transparency):
+    """
+    Java class 'java.awt.Paint'
+    
+        Interfaces:
+            java.awt.Transparency
+    
+    """
     def createContext(self, colorModel: java.awt.image.ColorModel, rectangle: 'Rectangle', rectangle2D: java.awt.geom.Rectangle2D, affineTransform: java.awt.geom.AffineTransform, renderingHints: RenderingHints) -> PaintContext: ...
 
 class Polygon(Shape, java.io.Serializable):
+    """
+    Java class 'java.awt.Polygon'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.Shape, java.io.Serializable
+    
+      Constructors:
+        * Polygon()
+        * Polygon(int[], int[], int)
+    
+      Attributes:
+        npoints (int): field
+        xpoints ([I): field
+        ypoints ([I): field
+    
+    """
     npoints: int = ...
     xpoints: typing.List[int] = ...
     ypoints: typing.List[int] = ...
@@ -2065,6 +3225,31 @@ class Polygon(Shape, java.io.Serializable):
     def translate(self, int: int, int2: int) -> None: ...
 
 class Rectangle(java.awt.geom.Rectangle2D, Shape, java.io.Serializable):
+    """
+    Java class 'java.awt.Rectangle'
+    
+        Extends:
+            java.awt.geom.Rectangle2D
+    
+        Interfaces:
+            java.awt.Shape, java.io.Serializable
+    
+      Constructors:
+        * Rectangle(int, int, int, int)
+        * Rectangle(int, int)
+        * Rectangle(java.awt.Dimension)
+        * Rectangle(java.awt.Point)
+        * Rectangle(java.awt.Rectangle)
+        * Rectangle()
+        * Rectangle(java.awt.Point, java.awt.Dimension)
+    
+      Attributes:
+        x (int): field
+        y (int): field
+        width (int): field
+        height (int): field
+    
+    """
     x: int = ...
     y: int = ...
     width: int = ...
@@ -2164,6 +3349,16 @@ class Rectangle(java.awt.geom.Rectangle2D, Shape, java.io.Serializable):
     def union(rectangle2D: java.awt.geom.Rectangle2D, rectangle2D2: java.awt.geom.Rectangle2D, rectangle2D3: java.awt.geom.Rectangle2D) -> None: ...
 
 class ScrollPaneAdjustable(Adjustable, java.io.Serializable):
+    """
+    Java class 'java.awt.ScrollPaneAdjustable'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.Adjustable, java.io.Serializable
+    
+    """
     def addAdjustmentListener(self, adjustmentListener: java.awt.event.AdjustmentListener) -> None: ...
     def getAdjustmentListeners(self) -> typing.List[java.awt.event.AdjustmentListener]: ...
     def getBlockIncrement(self) -> int: ...
@@ -2186,6 +3381,35 @@ class ScrollPaneAdjustable(Adjustable, java.io.Serializable):
     def toString(self) -> str: ...
 
 class BorderLayout(LayoutManager2, java.io.Serializable):
+    """
+    Java class 'java.awt.BorderLayout'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.LayoutManager2, java.io.Serializable
+    
+      Constructors:
+        * BorderLayout()
+        * BorderLayout(int, int)
+    
+      Attributes:
+        NORTH (java.lang.String): final static field
+        SOUTH (java.lang.String): final static field
+        EAST (java.lang.String): final static field
+        WEST (java.lang.String): final static field
+        CENTER (java.lang.String): final static field
+        BEFORE_FIRST_LINE (java.lang.String): final static field
+        AFTER_LAST_LINE (java.lang.String): final static field
+        BEFORE_LINE_BEGINS (java.lang.String): final static field
+        AFTER_LINE_ENDS (java.lang.String): final static field
+        PAGE_START (java.lang.String): final static field
+        PAGE_END (java.lang.String): final static field
+        LINE_START (java.lang.String): final static field
+        LINE_END (java.lang.String): final static field
+    
+    """
     NORTH: typing.ClassVar[str] = ...
     SOUTH: typing.ClassVar[str] = ...
     EAST: typing.ClassVar[str] = ...
@@ -2227,6 +3451,23 @@ class BorderLayout(LayoutManager2, java.io.Serializable):
     def toString(self) -> str: ...
 
 class Button(Component, javax.accessibility.Accessible):
+    """
+    Java class 'java.awt.Button'
+    
+        Extends:
+            java.awt.Component
+    
+        Interfaces:
+            javax.accessibility.Accessible
+    
+      Constructors:
+        * Button(java.lang.String)
+        * Button()
+    
+      Raises:
+        java.awt.HeadlessException: from java
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2244,6 +3485,20 @@ class Button(Component, javax.accessibility.Accessible):
     def setLabel(self, string: str) -> None: ...
 
 class Canvas(Component, javax.accessibility.Accessible):
+    """
+    Java class 'java.awt.Canvas'
+    
+        Extends:
+            java.awt.Component
+    
+        Interfaces:
+            javax.accessibility.Accessible
+    
+      Constructors:
+        * Canvas()
+        * Canvas(java.awt.GraphicsConfiguration)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2259,6 +3514,20 @@ class Canvas(Component, javax.accessibility.Accessible):
     def update(self, graphics: Graphics) -> None: ...
 
 class CardLayout(LayoutManager2, java.io.Serializable):
+    """
+    Java class 'java.awt.CardLayout'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.LayoutManager2, java.io.Serializable
+    
+      Constructors:
+        * CardLayout()
+        * CardLayout(int, int)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2287,6 +3556,26 @@ class CardLayout(LayoutManager2, java.io.Serializable):
     def toString(self) -> str: ...
 
 class Checkbox(Component, ItemSelectable, javax.accessibility.Accessible):
+    """
+    Java class 'java.awt.Checkbox'
+    
+        Extends:
+            java.awt.Component
+    
+        Interfaces:
+            java.awt.ItemSelectable, javax.accessibility.Accessible
+    
+      Constructors:
+        * Checkbox(java.lang.String, java.awt.CheckboxGroup, boolean)
+        * Checkbox(java.lang.String, boolean)
+        * Checkbox(java.lang.String)
+        * Checkbox()
+        * Checkbox(java.lang.String, boolean, java.awt.CheckboxGroup)
+    
+      Raises:
+        java.awt.HeadlessException: from java
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2313,6 +3602,24 @@ class Checkbox(Component, ItemSelectable, javax.accessibility.Accessible):
     def setState(self, boolean: bool) -> None: ...
 
 class CheckboxMenuItem(MenuItem, ItemSelectable, javax.accessibility.Accessible):
+    """
+    Java class 'java.awt.CheckboxMenuItem'
+    
+        Extends:
+            java.awt.MenuItem
+    
+        Interfaces:
+            java.awt.ItemSelectable, javax.accessibility.Accessible
+    
+      Constructors:
+        * CheckboxMenuItem(java.lang.String, boolean)
+        * CheckboxMenuItem(java.lang.String)
+        * CheckboxMenuItem()
+    
+      Raises:
+        java.awt.HeadlessException: from java
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2332,6 +3639,22 @@ class CheckboxMenuItem(MenuItem, ItemSelectable, javax.accessibility.Accessible)
     def setState(self, boolean: bool) -> None: ...
 
 class Choice(Component, ItemSelectable, javax.accessibility.Accessible):
+    """
+    Java class 'java.awt.Choice'
+    
+        Extends:
+            java.awt.Component
+    
+        Interfaces:
+            java.awt.ItemSelectable, javax.accessibility.Accessible
+    
+      Constructors:
+        * Choice()
+    
+      Raises:
+        java.awt.HeadlessException: from java
+    
+    """
     def __init__(self): ...
     @typing.overload
     def add(self, string: str) -> None: ...
@@ -2365,6 +3688,53 @@ class Choice(Component, ItemSelectable, javax.accessibility.Accessible):
     def select(self, string: str) -> None: ...
 
 class Color(Paint, java.io.Serializable):
+    """
+    Java class 'java.awt.Color'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.Paint, java.io.Serializable
+    
+      Constructors:
+        * Color(float, float, float, float)
+        * Color(int)
+        * Color(int, boolean)
+        * Color(float, float, float)
+        * Color(int, int, int)
+        * Color(java.awt.color.ColorSpace, float[], float)
+        * Color(int, int, int, int)
+    
+      Attributes:
+        white (java.awt.Color): final static field
+        WHITE (java.awt.Color): final static field
+        lightGray (java.awt.Color): final static field
+        LIGHT_GRAY (java.awt.Color): final static field
+        gray (java.awt.Color): final static field
+        GRAY (java.awt.Color): final static field
+        darkGray (java.awt.Color): final static field
+        DARK_GRAY (java.awt.Color): final static field
+        black (java.awt.Color): final static field
+        BLACK (java.awt.Color): final static field
+        red (java.awt.Color): final static field
+        RED (java.awt.Color): final static field
+        pink (java.awt.Color): final static field
+        PINK (java.awt.Color): final static field
+        orange (java.awt.Color): final static field
+        ORANGE (java.awt.Color): final static field
+        yellow (java.awt.Color): final static field
+        YELLOW (java.awt.Color): final static field
+        green (java.awt.Color): final static field
+        GREEN (java.awt.Color): final static field
+        magenta (java.awt.Color): final static field
+        MAGENTA (java.awt.Color): final static field
+        cyan (java.awt.Color): final static field
+        CYAN (java.awt.Color): final static field
+        blue (java.awt.Color): final static field
+        BLUE (java.awt.Color): final static field
+    
+    """
     white: typing.ClassVar['Color'] = ...
     WHITE: typing.ClassVar['Color'] = ...
     lightGray: typing.ClassVar['Color'] = ...
@@ -2447,6 +3817,16 @@ class Color(Paint, java.io.Serializable):
     def toString(self) -> str: ...
 
 class Container(Component):
+    """
+    Java class 'java.awt.Container'
+    
+        Extends:
+            java.awt.Component
+    
+      Constructors:
+        * Container()
+    
+    """
     def __init__(self): ...
     @typing.overload
     def add(self, component: Component) -> Component: ...
@@ -2547,9 +3927,29 @@ class Container(Component):
     def validate(self) -> None: ...
 
 class DefaultFocusTraversalPolicy(ContainerOrderFocusTraversalPolicy):
+    """
+    Java class 'java.awt.DefaultFocusTraversalPolicy'
+    
+        Extends:
+            java.awt.ContainerOrderFocusTraversalPolicy
+    
+      Constructors:
+        * DefaultFocusTraversalPolicy()
+    
+    """
     def __init__(self): ...
 
 class DefaultKeyboardFocusManager(KeyboardFocusManager):
+    """
+    Java class 'java.awt.DefaultKeyboardFocusManager'
+    
+        Extends:
+            java.awt.KeyboardFocusManager
+    
+      Constructors:
+        * DefaultKeyboardFocusManager()
+    
+    """
     def __init__(self): ...
     def dispatchEvent(self, aWTEvent: AWTEvent) -> bool: ...
     def dispatchKeyEvent(self, keyEvent: java.awt.event.KeyEvent) -> bool: ...
@@ -2573,6 +3973,22 @@ class DefaultKeyboardFocusManager(KeyboardFocusManager):
     def upFocusCycle(self, component: Component) -> None: ...
 
 class GradientPaint(Paint):
+    """
+    Java class 'java.awt.GradientPaint'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.Paint
+    
+      Constructors:
+        * GradientPaint(java.awt.geom.Point2D, java.awt.Color, java.awt.geom.Point2D, java.awt.Color, boolean)
+        * GradientPaint(float, float, java.awt.Color, float, float, java.awt.Color, boolean)
+        * GradientPaint(java.awt.geom.Point2D, java.awt.Color, java.awt.geom.Point2D, java.awt.Color)
+        * GradientPaint(float, float, java.awt.Color, float, float, java.awt.Color)
+    
+    """
     @typing.overload
     def __init__(self, float: float, float2: float, color: Color, float3: float, float4: float, color2: Color): ...
     @typing.overload
@@ -2590,6 +4006,25 @@ class GradientPaint(Paint):
     def isCyclic(self) -> bool: ...
 
 class GridBagLayout(LayoutManager2, java.io.Serializable):
+    """
+    Java class 'java.awt.GridBagLayout'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.LayoutManager2, java.io.Serializable
+    
+      Constructors:
+        * GridBagLayout()
+    
+      Attributes:
+        columnWidths ([I): field
+        rowHeights ([I): field
+        columnWeights ([D): field
+        rowWeights ([D): field
+    
+    """
     columnWidths: typing.List[int] = ...
     rowHeights: typing.List[int] = ...
     columnWeights: typing.List[float] = ...
@@ -2616,6 +4051,29 @@ class GridBagLayout(LayoutManager2, java.io.Serializable):
     def toString(self) -> str: ...
 
 class Label(Component, javax.accessibility.Accessible):
+    """
+    Java class 'java.awt.Label'
+    
+        Extends:
+            java.awt.Component
+    
+        Interfaces:
+            javax.accessibility.Accessible
+    
+      Constructors:
+        * Label(java.lang.String, int)
+        * Label(java.lang.String)
+        * Label()
+    
+      Raises:
+        java.awt.HeadlessException: from java
+    
+      Attributes:
+        LEFT (int): final static field
+        CENTER (int): final static field
+        RIGHT (int): final static field
+    
+    """
     LEFT: typing.ClassVar[int] = ...
     CENTER: typing.ClassVar[int] = ...
     RIGHT: typing.ClassVar[int] = ...
@@ -2633,6 +4091,24 @@ class Label(Component, javax.accessibility.Accessible):
     def setText(self, string: str) -> None: ...
 
 class List(Component, ItemSelectable, javax.accessibility.Accessible):
+    """
+    Java class 'java.awt.List'
+    
+        Extends:
+            java.awt.Component
+    
+        Interfaces:
+            java.awt.ItemSelectable, javax.accessibility.Accessible
+    
+      Constructors:
+        * List(int, boolean)
+        * List(int)
+        * List()
+    
+      Raises:
+        java.awt.HeadlessException: from java
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2709,6 +4185,24 @@ class List(Component, ItemSelectable, javax.accessibility.Accessible):
     def setMultipleSelections(self, boolean: bool) -> None: ...
 
 class Menu(MenuItem, MenuContainer, javax.accessibility.Accessible):
+    """
+    Java class 'java.awt.Menu'
+    
+        Extends:
+            java.awt.MenuItem
+    
+        Interfaces:
+            java.awt.MenuContainer, javax.accessibility.Accessible
+    
+      Constructors:
+        * Menu(java.lang.String, boolean)
+        * Menu(java.lang.String)
+        * Menu()
+    
+      Raises:
+        java.awt.HeadlessException: from java
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2740,6 +4234,16 @@ class Menu(MenuItem, MenuContainer, javax.accessibility.Accessible):
     def removeNotify(self) -> None: ...
 
 class MultipleGradientPaint(Paint):
+    """
+    Java class 'java.awt.MultipleGradientPaint'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.Paint
+    
+    """
     def getColorSpace(self) -> 'MultipleGradientPaint.ColorSpaceType': ...
     def getColors(self) -> typing.List[Color]: ...
     def getCycleMethod(self) -> 'MultipleGradientPaint.CycleMethod': ...
@@ -2747,6 +4251,17 @@ class MultipleGradientPaint(Paint):
     def getTransform(self) -> java.awt.geom.AffineTransform: ...
     def getTransparency(self) -> int: ...
     class ColorSpaceType(java.lang.Enum['MultipleGradientPaint.ColorSpaceType']):
+        """
+        Java class 'java.awt.MultipleGradientPaint$ColorSpaceType'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            SRGB (java.awt.MultipleGradientPaint$ColorSpaceType): final static enum constant
+            LINEAR_RGB (java.awt.MultipleGradientPaint$ColorSpaceType): final static enum constant
+        
+        """
         SRGB: typing.ClassVar['MultipleGradientPaint.ColorSpaceType'] = ...
         LINEAR_RGB: typing.ClassVar['MultipleGradientPaint.ColorSpaceType'] = ...
         _valueOf_1__T = typing.TypeVar('_valueOf_1__T', bound=java.lang.Enum)  # <T>
@@ -2759,6 +4274,18 @@ class MultipleGradientPaint(Paint):
         @staticmethod
         def values() -> typing.List['MultipleGradientPaint.ColorSpaceType']: ...
     class CycleMethod(java.lang.Enum['MultipleGradientPaint.CycleMethod']):
+        """
+        Java class 'java.awt.MultipleGradientPaint$CycleMethod'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            NO_CYCLE (java.awt.MultipleGradientPaint$CycleMethod): final static enum constant
+            REFLECT (java.awt.MultipleGradientPaint$CycleMethod): final static enum constant
+            REPEAT (java.awt.MultipleGradientPaint$CycleMethod): final static enum constant
+        
+        """
         NO_CYCLE: typing.ClassVar['MultipleGradientPaint.CycleMethod'] = ...
         REFLECT: typing.ClassVar['MultipleGradientPaint.CycleMethod'] = ...
         REPEAT: typing.ClassVar['MultipleGradientPaint.CycleMethod'] = ...
@@ -2773,6 +4300,28 @@ class MultipleGradientPaint(Paint):
         def values() -> typing.List['MultipleGradientPaint.CycleMethod']: ...
 
 class Scrollbar(Component, Adjustable, javax.accessibility.Accessible):
+    """
+    Java class 'java.awt.Scrollbar'
+    
+        Extends:
+            java.awt.Component
+    
+        Interfaces:
+            java.awt.Adjustable, javax.accessibility.Accessible
+    
+      Constructors:
+        * Scrollbar(int)
+        * Scrollbar()
+        * Scrollbar(int, int, int, int, int)
+    
+      Raises:
+        java.awt.HeadlessException: from java
+    
+      Attributes:
+        HORIZONTAL (int): final static field
+        VERTICAL (int): final static field
+    
+    """
     HORIZONTAL: typing.ClassVar[int] = ...
     VERTICAL: typing.ClassVar[int] = ...
     @typing.overload
@@ -2812,6 +4361,16 @@ class Scrollbar(Component, Adjustable, javax.accessibility.Accessible):
     def setVisibleAmount(self, int: int) -> None: ...
 
 class TextComponent(Component, javax.accessibility.Accessible):
+    """
+    Java class 'java.awt.TextComponent'
+    
+        Extends:
+            java.awt.Component
+    
+        Interfaces:
+            javax.accessibility.Accessible
+    
+    """
     def addNotify(self) -> None: ...
     def addTextListener(self, textListener: java.awt.event.TextListener) -> None: ...
     def enableInputMethods(self, boolean: bool) -> None: ...
@@ -2839,6 +4398,19 @@ class TextComponent(Component, javax.accessibility.Accessible):
     def setText(self, string: str) -> None: ...
 
 class TexturePaint(Paint):
+    """
+    Java class 'java.awt.TexturePaint'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.Paint
+    
+      Constructors:
+        * TexturePaint(java.awt.image.BufferedImage, java.awt.geom.Rectangle2D)
+    
+    """
     def __init__(self, bufferedImage: java.awt.image.BufferedImage, rectangle2D: java.awt.geom.Rectangle2D): ...
     def createContext(self, colorModel: java.awt.image.ColorModel, rectangle: Rectangle, rectangle2D: java.awt.geom.Rectangle2D, affineTransform: java.awt.geom.AffineTransform, renderingHints: RenderingHints) -> PaintContext: ...
     def getAnchorRect(self) -> java.awt.geom.Rectangle2D: ...
@@ -2846,6 +4418,20 @@ class TexturePaint(Paint):
     def getTransparency(self) -> int: ...
 
 class LinearGradientPaint(MultipleGradientPaint):
+    """
+    Java class 'java.awt.LinearGradientPaint'
+    
+        Extends:
+            java.awt.MultipleGradientPaint
+    
+      Constructors:
+        * LinearGradientPaint(java.awt.geom.Point2D, java.awt.geom.Point2D, float[], java.awt.Color[], java.awt.MultipleGradientPaint.CycleMethod, java.awt.MultipleGradientPaint.ColorSpaceType, java.awt.geom.AffineTransform)
+        * LinearGradientPaint(java.awt.geom.Point2D, java.awt.geom.Point2D, float[], java.awt.Color[], java.awt.MultipleGradientPaint.CycleMethod)
+        * LinearGradientPaint(java.awt.geom.Point2D, java.awt.geom.Point2D, float[], java.awt.Color[])
+        * LinearGradientPaint(float, float, float, float, float[], java.awt.Color[], java.awt.MultipleGradientPaint.CycleMethod)
+        * LinearGradientPaint(float, float, float, float, float[], java.awt.Color[])
+    
+    """
     @typing.overload
     def __init__(self, float: float, float2: float, float3: float, float4: float, floatArray: typing.List[float], colorArray: typing.List[Color]): ...
     @typing.overload
@@ -2861,6 +4447,20 @@ class LinearGradientPaint(MultipleGradientPaint):
     def getStartPoint(self) -> java.awt.geom.Point2D: ...
 
 class Panel(Container, javax.accessibility.Accessible):
+    """
+    Java class 'java.awt.Panel'
+    
+        Extends:
+            java.awt.Container
+    
+        Interfaces:
+            javax.accessibility.Accessible
+    
+      Constructors:
+        * Panel()
+        * Panel(java.awt.LayoutManager)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2869,6 +4469,20 @@ class Panel(Container, javax.accessibility.Accessible):
     def getAccessibleContext(self) -> javax.accessibility.AccessibleContext: ...
 
 class PopupMenu(Menu):
+    """
+    Java class 'java.awt.PopupMenu'
+    
+        Extends:
+            java.awt.Menu
+    
+      Constructors:
+        * PopupMenu()
+        * PopupMenu(java.lang.String)
+    
+      Raises:
+        java.awt.HeadlessException: from java
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2879,6 +4493,23 @@ class PopupMenu(Menu):
     def show(self, component: Component, int: int, int2: int) -> None: ...
 
 class RadialGradientPaint(MultipleGradientPaint):
+    """
+    Java class 'java.awt.RadialGradientPaint'
+    
+        Extends:
+            java.awt.MultipleGradientPaint
+    
+      Constructors:
+        * RadialGradientPaint(float, float, float, float, float, float[], java.awt.Color[], java.awt.MultipleGradientPaint.CycleMethod)
+        * RadialGradientPaint(java.awt.geom.Point2D, float, java.awt.geom.Point2D, float[], java.awt.Color[], java.awt.MultipleGradientPaint.CycleMethod)
+        * RadialGradientPaint(java.awt.geom.Point2D, float, java.awt.geom.Point2D, float[], java.awt.Color[], java.awt.MultipleGradientPaint.CycleMethod, java.awt.MultipleGradientPaint.ColorSpaceType, java.awt.geom.AffineTransform)
+        * RadialGradientPaint(java.awt.geom.Rectangle2D, float[], java.awt.Color[], java.awt.MultipleGradientPaint.CycleMethod)
+        * RadialGradientPaint(float, float, float, float[], java.awt.Color[])
+        * RadialGradientPaint(java.awt.geom.Point2D, float, float[], java.awt.Color[])
+        * RadialGradientPaint(float, float, float, float[], java.awt.Color[], java.awt.MultipleGradientPaint.CycleMethod)
+        * RadialGradientPaint(java.awt.geom.Point2D, float, float[], java.awt.Color[], java.awt.MultipleGradientPaint.CycleMethod)
+    
+    """
     @typing.overload
     def __init__(self, float: float, float2: float, float3: float, float4: float, float5: float, floatArray: typing.List[float], colorArray: typing.List[Color], cycleMethod: MultipleGradientPaint.CycleMethod): ...
     @typing.overload
@@ -2901,6 +4532,28 @@ class RadialGradientPaint(MultipleGradientPaint):
     def getRadius(self) -> float: ...
 
 class ScrollPane(Container, javax.accessibility.Accessible):
+    """
+    Java class 'java.awt.ScrollPane'
+    
+        Extends:
+            java.awt.Container
+    
+        Interfaces:
+            javax.accessibility.Accessible
+    
+      Constructors:
+        * ScrollPane(int)
+        * ScrollPane()
+    
+      Raises:
+        java.awt.HeadlessException: from java
+    
+      Attributes:
+        SCROLLBARS_AS_NEEDED (int): final static field
+        SCROLLBARS_ALWAYS (int): final static field
+        SCROLLBARS_NEVER (int): final static field
+    
+    """
     SCROLLBARS_AS_NEEDED: typing.ClassVar[int] = ...
     SCROLLBARS_ALWAYS: typing.ClassVar[int] = ...
     SCROLLBARS_NEVER: typing.ClassVar[int] = ...
@@ -2930,6 +4583,71 @@ class ScrollPane(Container, javax.accessibility.Accessible):
     def setWheelScrollingEnabled(self, boolean: bool) -> None: ...
 
 class SystemColor(Color, java.io.Serializable):
+    """
+    Java class 'java.awt.SystemColor'
+    
+        Extends:
+            java.awt.Color
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Attributes:
+        DESKTOP (int): final static field
+        ACTIVE_CAPTION (int): final static field
+        ACTIVE_CAPTION_TEXT (int): final static field
+        ACTIVE_CAPTION_BORDER (int): final static field
+        INACTIVE_CAPTION (int): final static field
+        INACTIVE_CAPTION_TEXT (int): final static field
+        INACTIVE_CAPTION_BORDER (int): final static field
+        WINDOW (int): final static field
+        WINDOW_BORDER (int): final static field
+        WINDOW_TEXT (int): final static field
+        MENU (int): final static field
+        MENU_TEXT (int): final static field
+        TEXT (int): final static field
+        TEXT_TEXT (int): final static field
+        TEXT_HIGHLIGHT (int): final static field
+        TEXT_HIGHLIGHT_TEXT (int): final static field
+        TEXT_INACTIVE_TEXT (int): final static field
+        CONTROL (int): final static field
+        CONTROL_TEXT (int): final static field
+        CONTROL_HIGHLIGHT (int): final static field
+        CONTROL_LT_HIGHLIGHT (int): final static field
+        CONTROL_SHADOW (int): final static field
+        CONTROL_DK_SHADOW (int): final static field
+        SCROLLBAR (int): final static field
+        INFO (int): final static field
+        INFO_TEXT (int): final static field
+        NUM_COLORS (int): final static field
+        desktop (java.awt.SystemColor): final static field
+        activeCaption (java.awt.SystemColor): final static field
+        activeCaptionText (java.awt.SystemColor): final static field
+        activeCaptionBorder (java.awt.SystemColor): final static field
+        inactiveCaption (java.awt.SystemColor): final static field
+        inactiveCaptionText (java.awt.SystemColor): final static field
+        inactiveCaptionBorder (java.awt.SystemColor): final static field
+        window (java.awt.SystemColor): final static field
+        windowBorder (java.awt.SystemColor): final static field
+        windowText (java.awt.SystemColor): final static field
+        menu (java.awt.SystemColor): final static field
+        menuText (java.awt.SystemColor): final static field
+        text (java.awt.SystemColor): final static field
+        textText (java.awt.SystemColor): final static field
+        textHighlight (java.awt.SystemColor): final static field
+        textHighlightText (java.awt.SystemColor): final static field
+        textInactiveText (java.awt.SystemColor): final static field
+        control (java.awt.SystemColor): final static field
+        controlText (java.awt.SystemColor): final static field
+        controlHighlight (java.awt.SystemColor): final static field
+        controlLtHighlight (java.awt.SystemColor): final static field
+        controlShadow (java.awt.SystemColor): final static field
+        controlDkShadow (java.awt.SystemColor): final static field
+        scrollbar (java.awt.SystemColor): final static field
+        info (java.awt.SystemColor): final static field
+        infoText (java.awt.SystemColor): final static field
+    
+    """
     DESKTOP: typing.ClassVar[int] = ...
     ACTIVE_CAPTION: typing.ClassVar[int] = ...
     ACTIVE_CAPTION_TEXT: typing.ClassVar[int] = ...
@@ -2986,6 +4704,29 @@ class SystemColor(Color, java.io.Serializable):
     def toString(self) -> str: ...
 
 class TextArea(TextComponent):
+    """
+    Java class 'java.awt.TextArea'
+    
+        Extends:
+            java.awt.TextComponent
+    
+      Constructors:
+        * TextArea(java.lang.String, int, int)
+        * TextArea(int, int)
+        * TextArea(java.lang.String)
+        * TextArea()
+        * TextArea(java.lang.String, int, int, int)
+    
+      Raises:
+        java.awt.HeadlessException: from java
+    
+      Attributes:
+        SCROLLBARS_BOTH (int): final static field
+        SCROLLBARS_VERTICAL_ONLY (int): final static field
+        SCROLLBARS_HORIZONTAL_ONLY (int): final static field
+        SCROLLBARS_NONE (int): final static field
+    
+    """
     SCROLLBARS_BOTH: typing.ClassVar[int] = ...
     SCROLLBARS_VERTICAL_ONLY: typing.ClassVar[int] = ...
     SCROLLBARS_HORIZONTAL_ONLY: typing.ClassVar[int] = ...
@@ -3031,6 +4772,22 @@ class TextArea(TextComponent):
     def setRows(self, int: int) -> None: ...
 
 class TextField(TextComponent):
+    """
+    Java class 'java.awt.TextField'
+    
+        Extends:
+            java.awt.TextComponent
+    
+      Constructors:
+        * TextField(int)
+        * TextField(java.lang.String)
+        * TextField()
+        * TextField(java.lang.String, int)
+    
+      Raises:
+        java.awt.HeadlessException: from java
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3071,6 +4828,21 @@ class TextField(TextComponent):
     def setText(self, string: str) -> None: ...
 
 class Window(Container, javax.accessibility.Accessible):
+    """
+    Java class 'java.awt.Window'
+    
+        Extends:
+            java.awt.Container
+    
+        Interfaces:
+            javax.accessibility.Accessible
+    
+      Constructors:
+        * Window(java.awt.Frame)
+        * Window(java.awt.Window)
+        * Window(java.awt.Window, java.awt.GraphicsConfiguration)
+    
+    """
     @typing.overload
     def __init__(self, frame: 'Frame'): ...
     @typing.overload
@@ -3180,6 +4952,18 @@ class Window(Container, javax.accessibility.Accessible):
     def toBack(self) -> None: ...
     def toFront(self) -> None: ...
     class Type(java.lang.Enum['Window.Type']):
+        """
+        Java class 'java.awt.Window$Type'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            NORMAL (java.awt.Window$Type): final static enum constant
+            UTILITY (java.awt.Window$Type): final static enum constant
+            POPUP (java.awt.Window$Type): final static enum constant
+        
+        """
         NORMAL: typing.ClassVar['Window.Type'] = ...
         UTILITY: typing.ClassVar['Window.Type'] = ...
         POPUP: typing.ClassVar['Window.Type'] = ...
@@ -3194,6 +4978,32 @@ class Window(Container, javax.accessibility.Accessible):
         def values() -> typing.List['Window.Type']: ...
 
 class Dialog(Window):
+    """
+    Java class 'java.awt.Dialog'
+    
+        Extends:
+            java.awt.Window
+    
+      Constructors:
+        * Dialog(java.awt.Window, java.lang.String)
+        * Dialog(java.awt.Window)
+        * Dialog(java.awt.Dialog, java.lang.String, boolean, java.awt.GraphicsConfiguration)
+        * Dialog(java.awt.Dialog, java.lang.String, boolean)
+        * Dialog(java.awt.Window, java.awt.Dialog.ModalityType)
+        * Dialog(java.awt.Window, java.lang.String, java.awt.Dialog.ModalityType)
+        * Dialog(java.awt.Window, java.lang.String, java.awt.Dialog.ModalityType, java.awt.GraphicsConfiguration)
+        * Dialog(java.awt.Frame, java.lang.String, boolean)
+        * Dialog(java.awt.Frame, java.lang.String)
+        * Dialog(java.awt.Frame, boolean)
+        * Dialog(java.awt.Frame)
+        * Dialog(java.awt.Dialog, java.lang.String)
+        * Dialog(java.awt.Dialog)
+        * Dialog(java.awt.Frame, java.lang.String, boolean, java.awt.GraphicsConfiguration)
+    
+      Attributes:
+        DEFAULT_MODALITY_TYPE (java.awt.Dialog$ModalityType): final static field
+    
+    """
     DEFAULT_MODALITY_TYPE: typing.ClassVar['Dialog.ModalityType'] = ...
     @typing.overload
     def __init__(self, dialog: 'Dialog'): ...
@@ -3246,6 +5056,18 @@ class Dialog(Window):
     def show(self) -> None: ...
     def toBack(self) -> None: ...
     class ModalExclusionType(java.lang.Enum['Dialog.ModalExclusionType']):
+        """
+        Java class 'java.awt.Dialog$ModalExclusionType'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            NO_EXCLUDE (java.awt.Dialog$ModalExclusionType): final static enum constant
+            APPLICATION_EXCLUDE (java.awt.Dialog$ModalExclusionType): final static enum constant
+            TOOLKIT_EXCLUDE (java.awt.Dialog$ModalExclusionType): final static enum constant
+        
+        """
         NO_EXCLUDE: typing.ClassVar['Dialog.ModalExclusionType'] = ...
         APPLICATION_EXCLUDE: typing.ClassVar['Dialog.ModalExclusionType'] = ...
         TOOLKIT_EXCLUDE: typing.ClassVar['Dialog.ModalExclusionType'] = ...
@@ -3259,6 +5081,19 @@ class Dialog(Window):
         @staticmethod
         def values() -> typing.List['Dialog.ModalExclusionType']: ...
     class ModalityType(java.lang.Enum['Dialog.ModalityType']):
+        """
+        Java class 'java.awt.Dialog$ModalityType'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            MODELESS (java.awt.Dialog$ModalityType): final static enum constant
+            DOCUMENT_MODAL (java.awt.Dialog$ModalityType): final static enum constant
+            APPLICATION_MODAL (java.awt.Dialog$ModalityType): final static enum constant
+            TOOLKIT_MODAL (java.awt.Dialog$ModalityType): final static enum constant
+        
+        """
         MODELESS: typing.ClassVar['Dialog.ModalityType'] = ...
         DOCUMENT_MODAL: typing.ClassVar['Dialog.ModalityType'] = ...
         APPLICATION_MODAL: typing.ClassVar['Dialog.ModalityType'] = ...
@@ -3274,6 +5109,46 @@ class Dialog(Window):
         def values() -> typing.List['Dialog.ModalityType']: ...
 
 class Frame(Window, MenuContainer):
+    """
+    Java class 'java.awt.Frame'
+    
+        Extends:
+            java.awt.Window
+    
+        Interfaces:
+            java.awt.MenuContainer
+    
+      Constructors:
+        * Frame(java.lang.String, java.awt.GraphicsConfiguration)
+        * Frame(java.lang.String)
+        * Frame(java.awt.GraphicsConfiguration)
+        * Frame()
+    
+      Raises:
+        java.awt.HeadlessException: from java
+    
+      Attributes:
+        DEFAULT_CURSOR (int): final static field
+        CROSSHAIR_CURSOR (int): final static field
+        TEXT_CURSOR (int): final static field
+        WAIT_CURSOR (int): final static field
+        SW_RESIZE_CURSOR (int): final static field
+        SE_RESIZE_CURSOR (int): final static field
+        NW_RESIZE_CURSOR (int): final static field
+        NE_RESIZE_CURSOR (int): final static field
+        N_RESIZE_CURSOR (int): final static field
+        S_RESIZE_CURSOR (int): final static field
+        W_RESIZE_CURSOR (int): final static field
+        E_RESIZE_CURSOR (int): final static field
+        HAND_CURSOR (int): final static field
+        MOVE_CURSOR (int): final static field
+        NORMAL (int): final static field
+        ICONIFIED (int): final static field
+        MAXIMIZED_HORIZ (int): final static field
+        MAXIMIZED_VERT (int): final static field
+        MAXIMIZED_BOTH (int): final static field
+    
+    """
     DEFAULT_CURSOR: typing.ClassVar[int] = ...
     CROSSHAIR_CURSOR: typing.ClassVar[int] = ...
     TEXT_CURSOR: typing.ClassVar[int] = ...
@@ -3338,6 +5213,25 @@ class Frame(Window, MenuContainer):
     def setUndecorated(self, boolean: bool) -> None: ...
 
 class FileDialog(Dialog):
+    """
+    Java class 'java.awt.FileDialog'
+    
+        Extends:
+            java.awt.Dialog
+    
+      Constructors:
+        * FileDialog(java.awt.Dialog, java.lang.String, int)
+        * FileDialog(java.awt.Dialog)
+        * FileDialog(java.awt.Frame, java.lang.String, int)
+        * FileDialog(java.awt.Frame, java.lang.String)
+        * FileDialog(java.awt.Frame)
+        * FileDialog(java.awt.Dialog, java.lang.String)
+    
+      Attributes:
+        LOAD (int): final static field
+        SAVE (int): final static field
+    
+    """
     LOAD: typing.ClassVar[int] = ...
     SAVE: typing.ClassVar[int] = ...
     @typing.overload
@@ -3367,6 +5261,19 @@ class FileDialog(Dialog):
     def setTitle(self, string: str) -> None: ...
 
 class BufferCapabilities(java.lang.Cloneable):
+    """
+    Java class 'java.awt.BufferCapabilities'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.Cloneable
+    
+      Constructors:
+        * BufferCapabilities(java.awt.ImageCapabilities, java.awt.ImageCapabilities, java.awt.BufferCapabilities.FlipContents)
+    
+    """
     def __init__(self, imageCapabilities: ImageCapabilities, imageCapabilities2: ImageCapabilities, flipContents: 'BufferCapabilities.FlipContents'): ...
     def clone(self) -> typing.Any: ...
     def getBackBufferCapabilities(self) -> ImageCapabilities: ...
@@ -3376,12 +5283,40 @@ class BufferCapabilities(java.lang.Cloneable):
     def isMultiBufferAvailable(self) -> bool: ...
     def isPageFlipping(self) -> bool: ...
     class FlipContents(java.awt.AttributeValue):
+        """
+        Java class 'java.awt.BufferCapabilities$FlipContents'
+        
+            Extends:
+                java.awt.AttributeValue
+        
+          Attributes:
+            UNDEFINED (java.awt.BufferCapabilities$FlipContents): final static field
+            BACKGROUND (java.awt.BufferCapabilities$FlipContents): final static field
+            PRIOR (java.awt.BufferCapabilities$FlipContents): final static field
+            COPIED (java.awt.BufferCapabilities$FlipContents): final static field
+        
+        """
         UNDEFINED: typing.ClassVar['BufferCapabilities.FlipContents'] = ...
         BACKGROUND: typing.ClassVar['BufferCapabilities.FlipContents'] = ...
         PRIOR: typing.ClassVar['BufferCapabilities.FlipContents'] = ...
         COPIED: typing.ClassVar['BufferCapabilities.FlipContents'] = ...
 
 class JobAttributes(java.lang.Cloneable):
+    """
+    Java class 'java.awt.JobAttributes'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.Cloneable
+    
+      Constructors:
+        * JobAttributes(int, java.awt.JobAttributes.DefaultSelectionType, java.awt.JobAttributes.DestinationType, java.awt.JobAttributes.DialogType, java.lang.String, int, int, java.awt.JobAttributes.MultipleDocumentHandlingType, int[][], java.lang.String, java.awt.JobAttributes.SidesType)
+        * JobAttributes(java.awt.JobAttributes)
+        * JobAttributes()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3423,25 +5358,98 @@ class JobAttributes(java.lang.Cloneable):
     def setToPage(self, int: int) -> None: ...
     def toString(self) -> str: ...
     class DefaultSelectionType(java.awt.AttributeValue):
+        """
+        Java class 'java.awt.JobAttributes$DefaultSelectionType'
+        
+            Extends:
+                java.awt.AttributeValue
+        
+          Attributes:
+            ALL (java.awt.JobAttributes$DefaultSelectionType): final static field
+            RANGE (java.awt.JobAttributes$DefaultSelectionType): final static field
+            SELECTION (java.awt.JobAttributes$DefaultSelectionType): final static field
+        
+        """
         ALL: typing.ClassVar['JobAttributes.DefaultSelectionType'] = ...
         RANGE: typing.ClassVar['JobAttributes.DefaultSelectionType'] = ...
         SELECTION: typing.ClassVar['JobAttributes.DefaultSelectionType'] = ...
     class DestinationType(java.awt.AttributeValue):
+        """
+        Java class 'java.awt.JobAttributes$DestinationType'
+        
+            Extends:
+                java.awt.AttributeValue
+        
+          Attributes:
+            FILE (java.awt.JobAttributes$DestinationType): final static field
+            PRINTER (java.awt.JobAttributes$DestinationType): final static field
+        
+        """
         FILE: typing.ClassVar['JobAttributes.DestinationType'] = ...
         PRINTER: typing.ClassVar['JobAttributes.DestinationType'] = ...
     class DialogType(java.awt.AttributeValue):
+        """
+        Java class 'java.awt.JobAttributes$DialogType'
+        
+            Extends:
+                java.awt.AttributeValue
+        
+          Attributes:
+            COMMON (java.awt.JobAttributes$DialogType): final static field
+            NATIVE (java.awt.JobAttributes$DialogType): final static field
+            NONE (java.awt.JobAttributes$DialogType): final static field
+        
+        """
         COMMON: typing.ClassVar['JobAttributes.DialogType'] = ...
         NATIVE: typing.ClassVar['JobAttributes.DialogType'] = ...
         NONE: typing.ClassVar['JobAttributes.DialogType'] = ...
     class MultipleDocumentHandlingType(java.awt.AttributeValue):
+        """
+        Java class 'java.awt.JobAttributes$MultipleDocumentHandlingType'
+        
+            Extends:
+                java.awt.AttributeValue
+        
+          Attributes:
+            SEPARATE_DOCUMENTS_COLLATED_COPIES (java.awt.JobAttributes$MultipleDocumentHandlingType): final static field
+            SEPARATE_DOCUMENTS_UNCOLLATED_COPIES (java.awt.JobAttributes$MultipleDocumentHandlingType): final static field
+        
+        """
         SEPARATE_DOCUMENTS_COLLATED_COPIES: typing.ClassVar['JobAttributes.MultipleDocumentHandlingType'] = ...
         SEPARATE_DOCUMENTS_UNCOLLATED_COPIES: typing.ClassVar['JobAttributes.MultipleDocumentHandlingType'] = ...
     class SidesType(java.awt.AttributeValue):
+        """
+        Java class 'java.awt.JobAttributes$SidesType'
+        
+            Extends:
+                java.awt.AttributeValue
+        
+          Attributes:
+            ONE_SIDED (java.awt.JobAttributes$SidesType): final static field
+            TWO_SIDED_LONG_EDGE (java.awt.JobAttributes$SidesType): final static field
+            TWO_SIDED_SHORT_EDGE (java.awt.JobAttributes$SidesType): final static field
+        
+        """
         ONE_SIDED: typing.ClassVar['JobAttributes.SidesType'] = ...
         TWO_SIDED_LONG_EDGE: typing.ClassVar['JobAttributes.SidesType'] = ...
         TWO_SIDED_SHORT_EDGE: typing.ClassVar['JobAttributes.SidesType'] = ...
 
 class PageAttributes(java.lang.Cloneable):
+    """
+    Java class 'java.awt.PageAttributes'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.Cloneable
+    
+      Constructors:
+        * PageAttributes(java.awt.PageAttributes.ColorType, java.awt.PageAttributes.MediaType, java.awt.PageAttributes.OrientationRequestedType, java.awt.PageAttributes.OriginType, java.awt.PageAttributes.PrintQualityType, int[])
+        * PageAttributes(java.awt.PageAttributes)
+        * PageAttributes()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3479,9 +5487,176 @@ class PageAttributes(java.lang.Cloneable):
     def setPrinterResolutionToDefault(self) -> None: ...
     def toString(self) -> str: ...
     class ColorType(java.awt.AttributeValue):
+        """
+        Java class 'java.awt.PageAttributes$ColorType'
+        
+            Extends:
+                java.awt.AttributeValue
+        
+          Attributes:
+            COLOR (java.awt.PageAttributes$ColorType): final static field
+            MONOCHROME (java.awt.PageAttributes$ColorType): final static field
+        
+        """
         COLOR: typing.ClassVar['PageAttributes.ColorType'] = ...
         MONOCHROME: typing.ClassVar['PageAttributes.ColorType'] = ...
     class MediaType(java.awt.AttributeValue):
+        """
+        Java class 'java.awt.PageAttributes$MediaType'
+        
+            Extends:
+                java.awt.AttributeValue
+        
+          Attributes:
+            ISO_4A0 (java.awt.PageAttributes$MediaType): final static field
+            ISO_2A0 (java.awt.PageAttributes$MediaType): final static field
+            ISO_A0 (java.awt.PageAttributes$MediaType): final static field
+            ISO_A1 (java.awt.PageAttributes$MediaType): final static field
+            ISO_A2 (java.awt.PageAttributes$MediaType): final static field
+            ISO_A3 (java.awt.PageAttributes$MediaType): final static field
+            ISO_A4 (java.awt.PageAttributes$MediaType): final static field
+            ISO_A5 (java.awt.PageAttributes$MediaType): final static field
+            ISO_A6 (java.awt.PageAttributes$MediaType): final static field
+            ISO_A7 (java.awt.PageAttributes$MediaType): final static field
+            ISO_A8 (java.awt.PageAttributes$MediaType): final static field
+            ISO_A9 (java.awt.PageAttributes$MediaType): final static field
+            ISO_A10 (java.awt.PageAttributes$MediaType): final static field
+            ISO_B0 (java.awt.PageAttributes$MediaType): final static field
+            ISO_B1 (java.awt.PageAttributes$MediaType): final static field
+            ISO_B2 (java.awt.PageAttributes$MediaType): final static field
+            ISO_B3 (java.awt.PageAttributes$MediaType): final static field
+            ISO_B4 (java.awt.PageAttributes$MediaType): final static field
+            ISO_B5 (java.awt.PageAttributes$MediaType): final static field
+            ISO_B6 (java.awt.PageAttributes$MediaType): final static field
+            ISO_B7 (java.awt.PageAttributes$MediaType): final static field
+            ISO_B8 (java.awt.PageAttributes$MediaType): final static field
+            ISO_B9 (java.awt.PageAttributes$MediaType): final static field
+            ISO_B10 (java.awt.PageAttributes$MediaType): final static field
+            JIS_B0 (java.awt.PageAttributes$MediaType): final static field
+            JIS_B1 (java.awt.PageAttributes$MediaType): final static field
+            JIS_B2 (java.awt.PageAttributes$MediaType): final static field
+            JIS_B3 (java.awt.PageAttributes$MediaType): final static field
+            JIS_B4 (java.awt.PageAttributes$MediaType): final static field
+            JIS_B5 (java.awt.PageAttributes$MediaType): final static field
+            JIS_B6 (java.awt.PageAttributes$MediaType): final static field
+            JIS_B7 (java.awt.PageAttributes$MediaType): final static field
+            JIS_B8 (java.awt.PageAttributes$MediaType): final static field
+            JIS_B9 (java.awt.PageAttributes$MediaType): final static field
+            JIS_B10 (java.awt.PageAttributes$MediaType): final static field
+            ISO_C0 (java.awt.PageAttributes$MediaType): final static field
+            ISO_C1 (java.awt.PageAttributes$MediaType): final static field
+            ISO_C2 (java.awt.PageAttributes$MediaType): final static field
+            ISO_C3 (java.awt.PageAttributes$MediaType): final static field
+            ISO_C4 (java.awt.PageAttributes$MediaType): final static field
+            ISO_C5 (java.awt.PageAttributes$MediaType): final static field
+            ISO_C6 (java.awt.PageAttributes$MediaType): final static field
+            ISO_C7 (java.awt.PageAttributes$MediaType): final static field
+            ISO_C8 (java.awt.PageAttributes$MediaType): final static field
+            ISO_C9 (java.awt.PageAttributes$MediaType): final static field
+            ISO_C10 (java.awt.PageAttributes$MediaType): final static field
+            ISO_DESIGNATED_LONG (java.awt.PageAttributes$MediaType): final static field
+            EXECUTIVE (java.awt.PageAttributes$MediaType): final static field
+            FOLIO (java.awt.PageAttributes$MediaType): final static field
+            INVOICE (java.awt.PageAttributes$MediaType): final static field
+            LEDGER (java.awt.PageAttributes$MediaType): final static field
+            NA_LETTER (java.awt.PageAttributes$MediaType): final static field
+            NA_LEGAL (java.awt.PageAttributes$MediaType): final static field
+            QUARTO (java.awt.PageAttributes$MediaType): final static field
+            A (java.awt.PageAttributes$MediaType): final static field
+            B (java.awt.PageAttributes$MediaType): final static field
+            C (java.awt.PageAttributes$MediaType): final static field
+            D (java.awt.PageAttributes$MediaType): final static field
+            E (java.awt.PageAttributes$MediaType): final static field
+            NA_10X15_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            NA_10X14_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            NA_10X13_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            NA_9X12_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            NA_9X11_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            NA_7X9_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            NA_6X9_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            NA_NUMBER_9_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            NA_NUMBER_10_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            NA_NUMBER_11_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            NA_NUMBER_12_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            NA_NUMBER_14_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            INVITE_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            ITALY_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            MONARCH_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            PERSONAL_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            A0 (java.awt.PageAttributes$MediaType): final static field
+            A1 (java.awt.PageAttributes$MediaType): final static field
+            A2 (java.awt.PageAttributes$MediaType): final static field
+            A3 (java.awt.PageAttributes$MediaType): final static field
+            A4 (java.awt.PageAttributes$MediaType): final static field
+            A5 (java.awt.PageAttributes$MediaType): final static field
+            A6 (java.awt.PageAttributes$MediaType): final static field
+            A7 (java.awt.PageAttributes$MediaType): final static field
+            A8 (java.awt.PageAttributes$MediaType): final static field
+            A9 (java.awt.PageAttributes$MediaType): final static field
+            A10 (java.awt.PageAttributes$MediaType): final static field
+            B0 (java.awt.PageAttributes$MediaType): final static field
+            B1 (java.awt.PageAttributes$MediaType): final static field
+            B2 (java.awt.PageAttributes$MediaType): final static field
+            B3 (java.awt.PageAttributes$MediaType): final static field
+            B4 (java.awt.PageAttributes$MediaType): final static field
+            ISO_B4_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            B5 (java.awt.PageAttributes$MediaType): final static field
+            ISO_B5_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            B6 (java.awt.PageAttributes$MediaType): final static field
+            B7 (java.awt.PageAttributes$MediaType): final static field
+            B8 (java.awt.PageAttributes$MediaType): final static field
+            B9 (java.awt.PageAttributes$MediaType): final static field
+            B10 (java.awt.PageAttributes$MediaType): final static field
+            C0 (java.awt.PageAttributes$MediaType): final static field
+            ISO_C0_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            C1 (java.awt.PageAttributes$MediaType): final static field
+            ISO_C1_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            C2 (java.awt.PageAttributes$MediaType): final static field
+            ISO_C2_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            C3 (java.awt.PageAttributes$MediaType): final static field
+            ISO_C3_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            C4 (java.awt.PageAttributes$MediaType): final static field
+            ISO_C4_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            C5 (java.awt.PageAttributes$MediaType): final static field
+            ISO_C5_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            C6 (java.awt.PageAttributes$MediaType): final static field
+            ISO_C6_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            C7 (java.awt.PageAttributes$MediaType): final static field
+            ISO_C7_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            C8 (java.awt.PageAttributes$MediaType): final static field
+            ISO_C8_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            C9 (java.awt.PageAttributes$MediaType): final static field
+            ISO_C9_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            C10 (java.awt.PageAttributes$MediaType): final static field
+            ISO_C10_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            ISO_DESIGNATED_LONG_ENVELOPE (java.awt.PageAttributes$MediaType): final static field
+            STATEMENT (java.awt.PageAttributes$MediaType): final static field
+            TABLOID (java.awt.PageAttributes$MediaType): final static field
+            LETTER (java.awt.PageAttributes$MediaType): final static field
+            NOTE (java.awt.PageAttributes$MediaType): final static field
+            LEGAL (java.awt.PageAttributes$MediaType): final static field
+            ENV_10X15 (java.awt.PageAttributes$MediaType): final static field
+            ENV_10X14 (java.awt.PageAttributes$MediaType): final static field
+            ENV_10X13 (java.awt.PageAttributes$MediaType): final static field
+            ENV_9X12 (java.awt.PageAttributes$MediaType): final static field
+            ENV_9X11 (java.awt.PageAttributes$MediaType): final static field
+            ENV_7X9 (java.awt.PageAttributes$MediaType): final static field
+            ENV_6X9 (java.awt.PageAttributes$MediaType): final static field
+            ENV_9 (java.awt.PageAttributes$MediaType): final static field
+            ENV_10 (java.awt.PageAttributes$MediaType): final static field
+            ENV_11 (java.awt.PageAttributes$MediaType): final static field
+            ENV_12 (java.awt.PageAttributes$MediaType): final static field
+            ENV_14 (java.awt.PageAttributes$MediaType): final static field
+            ENV_INVITE (java.awt.PageAttributes$MediaType): final static field
+            ENV_ITALY (java.awt.PageAttributes$MediaType): final static field
+            ENV_MONARCH (java.awt.PageAttributes$MediaType): final static field
+            ENV_PERSONAL (java.awt.PageAttributes$MediaType): final static field
+            INVITE (java.awt.PageAttributes$MediaType): final static field
+            ITALY (java.awt.PageAttributes$MediaType): final static field
+            MONARCH (java.awt.PageAttributes$MediaType): final static field
+            PERSONAL (java.awt.PageAttributes$MediaType): final static field
+        
+        """
         ISO_4A0: typing.ClassVar['PageAttributes.MediaType'] = ...
         ISO_2A0: typing.ClassVar['PageAttributes.MediaType'] = ...
         ISO_A0: typing.ClassVar['PageAttributes.MediaType'] = ...
@@ -3630,14 +5805,174 @@ class PageAttributes(java.lang.Cloneable):
         MONARCH: typing.ClassVar['PageAttributes.MediaType'] = ...
         PERSONAL: typing.ClassVar['PageAttributes.MediaType'] = ...
     class OrientationRequestedType(java.awt.AttributeValue):
+        """
+        Java class 'java.awt.PageAttributes$OrientationRequestedType'
+        
+            Extends:
+                java.awt.AttributeValue
+        
+          Attributes:
+            PORTRAIT (java.awt.PageAttributes$OrientationRequestedType): final static field
+            LANDSCAPE (java.awt.PageAttributes$OrientationRequestedType): final static field
+        
+        """
         PORTRAIT: typing.ClassVar['PageAttributes.OrientationRequestedType'] = ...
         LANDSCAPE: typing.ClassVar['PageAttributes.OrientationRequestedType'] = ...
     class OriginType(java.awt.AttributeValue):
+        """
+        Java class 'java.awt.PageAttributes$OriginType'
+        
+            Extends:
+                java.awt.AttributeValue
+        
+          Attributes:
+            PHYSICAL (java.awt.PageAttributes$OriginType): final static field
+            PRINTABLE (java.awt.PageAttributes$OriginType): final static field
+        
+        """
         PHYSICAL: typing.ClassVar['PageAttributes.OriginType'] = ...
         PRINTABLE: typing.ClassVar['PageAttributes.OriginType'] = ...
     class PrintQualityType(java.awt.AttributeValue):
+        """
+        Java class 'java.awt.PageAttributes$PrintQualityType'
+        
+            Extends:
+                java.awt.AttributeValue
+        
+          Attributes:
+            HIGH (java.awt.PageAttributes$PrintQualityType): final static field
+            NORMAL (java.awt.PageAttributes$PrintQualityType): final static field
+            DRAFT (java.awt.PageAttributes$PrintQualityType): final static field
+        
+        """
         HIGH: typing.ClassVar['PageAttributes.PrintQualityType'] = ...
         NORMAL: typing.ClassVar['PageAttributes.PrintQualityType'] = ...
         DRAFT: typing.ClassVar['PageAttributes.PrintQualityType'] = ...
 
 class AttributeValue: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.awt")``.
+
+    AWTError: typing.Type[AWTError]
+    AWTEvent: typing.Type[AWTEvent]
+    AWTEventMulticaster: typing.Type[AWTEventMulticaster]
+    AWTException: typing.Type[AWTException]
+    AWTKeyStroke: typing.Type[AWTKeyStroke]
+    AWTPermission: typing.Type[AWTPermission]
+    ActiveEvent: typing.Type[ActiveEvent]
+    Adjustable: typing.Type[Adjustable]
+    AlphaComposite: typing.Type[AlphaComposite]
+    AttributeValue: typing.Type[AttributeValue]
+    BasicStroke: typing.Type[BasicStroke]
+    BorderLayout: typing.Type[BorderLayout]
+    BufferCapabilities: typing.Type[BufferCapabilities]
+    Button: typing.Type[Button]
+    Canvas: typing.Type[Canvas]
+    CardLayout: typing.Type[CardLayout]
+    Checkbox: typing.Type[Checkbox]
+    CheckboxGroup: typing.Type[CheckboxGroup]
+    CheckboxMenuItem: typing.Type[CheckboxMenuItem]
+    Choice: typing.Type[Choice]
+    Color: typing.Type[Color]
+    Component: typing.Type[Component]
+    ComponentOrientation: typing.Type[ComponentOrientation]
+    Composite: typing.Type[Composite]
+    CompositeContext: typing.Type[CompositeContext]
+    Container: typing.Type[Container]
+    ContainerOrderFocusTraversalPolicy: typing.Type[ContainerOrderFocusTraversalPolicy]
+    Cursor: typing.Type[Cursor]
+    DefaultFocusTraversalPolicy: typing.Type[DefaultFocusTraversalPolicy]
+    DefaultKeyboardFocusManager: typing.Type[DefaultKeyboardFocusManager]
+    Desktop: typing.Type[Desktop]
+    Dialog: typing.Type[Dialog]
+    Dimension: typing.Type[Dimension]
+    DisplayMode: typing.Type[DisplayMode]
+    Event: typing.Type[Event]
+    EventQueue: typing.Type[EventQueue]
+    FileDialog: typing.Type[FileDialog]
+    FlowLayout: typing.Type[FlowLayout]
+    FocusTraversalPolicy: typing.Type[FocusTraversalPolicy]
+    Font: typing.Type[Font]
+    FontFormatException: typing.Type[FontFormatException]
+    FontMetrics: typing.Type[FontMetrics]
+    Frame: typing.Type[Frame]
+    GradientPaint: typing.Type[GradientPaint]
+    Graphics: typing.Type[Graphics]
+    Graphics2D: typing.Type[Graphics2D]
+    GraphicsConfigTemplate: typing.Type[GraphicsConfigTemplate]
+    GraphicsConfiguration: typing.Type[GraphicsConfiguration]
+    GraphicsDevice: typing.Type[GraphicsDevice]
+    GraphicsEnvironment: typing.Type[GraphicsEnvironment]
+    GridBagConstraints: typing.Type[GridBagConstraints]
+    GridBagLayout: typing.Type[GridBagLayout]
+    GridBagLayoutInfo: typing.Type[GridBagLayoutInfo]
+    GridLayout: typing.Type[GridLayout]
+    HeadlessException: typing.Type[HeadlessException]
+    IllegalComponentStateException: typing.Type[IllegalComponentStateException]
+    Image: typing.Type[Image]
+    ImageCapabilities: typing.Type[ImageCapabilities]
+    Insets: typing.Type[Insets]
+    ItemSelectable: typing.Type[ItemSelectable]
+    JobAttributes: typing.Type[JobAttributes]
+    KeyEventDispatcher: typing.Type[KeyEventDispatcher]
+    KeyEventPostProcessor: typing.Type[KeyEventPostProcessor]
+    KeyboardFocusManager: typing.Type[KeyboardFocusManager]
+    Label: typing.Type[Label]
+    LayoutManager: typing.Type[LayoutManager]
+    LayoutManager2: typing.Type[LayoutManager2]
+    LinearGradientPaint: typing.Type[LinearGradientPaint]
+    List: typing.Type[List]
+    MediaTracker: typing.Type[MediaTracker]
+    Menu: typing.Type[Menu]
+    MenuBar: typing.Type[MenuBar]
+    MenuComponent: typing.Type[MenuComponent]
+    MenuContainer: typing.Type[MenuContainer]
+    MenuItem: typing.Type[MenuItem]
+    MenuShortcut: typing.Type[MenuShortcut]
+    MouseInfo: typing.Type[MouseInfo]
+    MultipleGradientPaint: typing.Type[MultipleGradientPaint]
+    PageAttributes: typing.Type[PageAttributes]
+    Paint: typing.Type[Paint]
+    PaintContext: typing.Type[PaintContext]
+    Panel: typing.Type[Panel]
+    Point: typing.Type[Point]
+    PointerInfo: typing.Type[PointerInfo]
+    Polygon: typing.Type[Polygon]
+    PopupMenu: typing.Type[PopupMenu]
+    PrintGraphics: typing.Type[PrintGraphics]
+    PrintJob: typing.Type[PrintJob]
+    RadialGradientPaint: typing.Type[RadialGradientPaint]
+    Rectangle: typing.Type[Rectangle]
+    RenderingHints: typing.Type[RenderingHints]
+    Robot: typing.Type[Robot]
+    ScrollPane: typing.Type[ScrollPane]
+    ScrollPaneAdjustable: typing.Type[ScrollPaneAdjustable]
+    Scrollbar: typing.Type[Scrollbar]
+    SecondaryLoop: typing.Type[SecondaryLoop]
+    Shape: typing.Type[Shape]
+    SplashScreen: typing.Type[SplashScreen]
+    Stroke: typing.Type[Stroke]
+    SystemColor: typing.Type[SystemColor]
+    SystemTray: typing.Type[SystemTray]
+    Taskbar: typing.Type[Taskbar]
+    TextArea: typing.Type[TextArea]
+    TextComponent: typing.Type[TextComponent]
+    TextField: typing.Type[TextField]
+    TexturePaint: typing.Type[TexturePaint]
+    Toolkit: typing.Type[Toolkit]
+    Transparency: typing.Type[Transparency]
+    TrayIcon: typing.Type[TrayIcon]
+    Window: typing.Type[Window]
+    color: java.awt.color.__module_protocol__
+    datatransfer: java.awt.datatransfer.__module_protocol__
+    desktop: java.awt.desktop.__module_protocol__
+    dnd: java.awt.dnd.__module_protocol__
+    event: java.awt.event.__module_protocol__
+    font: java.awt.font.__module_protocol__
+    geom: java.awt.geom.__module_protocol__
+    im: java.awt.im.__module_protocol__
+    image: java.awt.image.__module_protocol__
+    peer: java.awt.peer.__module_protocol__
+    print_: java.awt.print_.__module_protocol__

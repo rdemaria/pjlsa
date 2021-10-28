@@ -7,7 +7,24 @@ import java.util
 import typing
 
 
+
 class AbstractMapParameterValue(cern.japc.value.spi.value.core.ParameterValueImpl, cern.japc.value.MapParameterValue):
+    """
+    Java class 'cern.japc.core.spi.value.AbstractMapParameterValue'
+    
+        Extends:
+            cern.japc.value.spi.value.core.ParameterValueImpl
+    
+        Interfaces:
+            cern.japc.value.MapParameterValue
+    
+      Constructors:
+        * AbstractMapParameterValue(cern.japc.value.MapDescriptor)
+        * AbstractMapParameterValue()
+        * AbstractMapParameterValue(java.util.Map)
+        * AbstractMapParameterValue(java.lang.String[], cern.japc.value.SimpleParameterValue[])
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -35,6 +52,21 @@ class AbstractMapParameterValue(cern.japc.value.spi.value.core.ParameterValueImp
     def toString(self) -> str: ...
 
 class MapDescriptorImpl(cern.japc.value.spi.value.core.AbstractValueDescriptor, cern.japc.value.MapDescriptor, java.io.Serializable):
+    """
+    Java class 'cern.japc.core.spi.value.MapDescriptorImpl'
+    
+        Extends:
+            cern.japc.value.spi.value.core.AbstractValueDescriptor
+    
+        Interfaces:
+            cern.japc.value.MapDescriptor, java.io.Serializable
+    
+      Constructors:
+        * MapDescriptorImpl(java.util.Map)
+        * MapDescriptorImpl(java.lang.String[], cern.japc.value.SimpleDescriptor[])
+        * MapDescriptorImpl()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -51,6 +83,20 @@ class MapDescriptorImpl(cern.japc.value.spi.value.core.AbstractValueDescriptor, 
     def toString(self) -> str: ...
 
 class ObjectParameterValueImpl(cern.japc.value.spi.value.core.ParameterValueImpl, cern.japc.core.ObjectParameterValue):
+    """
+    Java class 'cern.japc.core.spi.value.ObjectParameterValueImpl'
+    
+        Extends:
+            cern.japc.value.spi.value.core.ParameterValueImpl
+    
+        Interfaces:
+            cern.japc.core.ObjectParameterValue
+    
+      Constructors:
+        * ObjectParameterValueImpl()
+        * ObjectParameterValueImpl(java.lang.Object)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -64,6 +110,21 @@ class ObjectParameterValueImpl(cern.japc.value.spi.value.core.ParameterValueImpl
     def toString(self) -> str: ...
 
 class SimpleDescriptorImpl(cern.japc.value.spi.value.core.AbstractValueDescriptor, cern.japc.value.SimpleDescriptor, java.io.Serializable):
+    """
+    Java class 'cern.japc.core.spi.value.SimpleDescriptorImpl'
+    
+        Extends:
+            cern.japc.value.spi.value.core.AbstractValueDescriptor
+    
+        Interfaces:
+            cern.japc.value.SimpleDescriptor, java.io.Serializable
+    
+      Constructors:
+        * SimpleDescriptorImpl(cern.japc.value.ValueType, cern.japc.value.BooleanType)
+        * SimpleDescriptorImpl(cern.japc.value.ValueType, cern.japc.value.EnumType)
+        * SimpleDescriptorImpl(cern.japc.value.ValueType)
+    
+    """
     @typing.overload
     def __init__(self, valueType: cern.japc.value.ValueType): ...
     @typing.overload
@@ -117,6 +178,19 @@ class SimpleDescriptorImpl(cern.japc.value.spi.value.core.AbstractValueDescripto
     def toString(self) -> str: ...
 
 class SimpleDescriptorSupport(cern.japc.value.spi.value.core.TypedObject, cern.japc.value.SimpleDescriptor, java.io.Serializable):
+    """
+    Java class 'cern.japc.core.spi.value.SimpleDescriptorSupport'
+    
+        Extends:
+            cern.japc.value.spi.value.core.TypedObject
+    
+        Interfaces:
+            cern.japc.value.SimpleDescriptor, java.io.Serializable
+    
+      Constructors:
+        * SimpleDescriptorSupport()
+    
+    """
     def __init__(self): ...
     def get(self, string: str) -> cern.japc.value.SimpleDescriptor: ...
     def getBooleanType(self) -> cern.japc.value.BooleanType: ...
@@ -142,6 +216,13 @@ class SimpleDescriptorSupport(cern.japc.value.spi.value.core.TypedObject, cern.j
     def toString(self) -> str: ...
 
 class SimpleDescriptorToStringHelper:
+    """
+    Java class 'cern.japc.core.spi.value.SimpleDescriptorToStringHelper'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @typing.overload
     def toString(self) -> str: ...
     @typing.overload
@@ -152,12 +233,40 @@ class SimpleDescriptorToStringHelper:
     def toString(simpleDescriptor: cern.japc.value.SimpleDescriptor, string: str) -> str: ...
 
 class EnumValueDescriptor(SimpleDescriptorImpl):
+    """
+    Java class 'cern.japc.core.spi.value.EnumValueDescriptor'
+    
+        Extends:
+            cern.japc.core.spi.value.SimpleDescriptorImpl
+    
+      Constructors:
+        * EnumValueDescriptor(cern.japc.value.ValueType, cern.japc.value.EnumType, java.util.Map, java.util.Set)
+    
+    """
     def __init__(self, valueType: cern.japc.value.ValueType, enumType: cern.japc.value.EnumType, map: typing.Union[java.util.Map[cern.japc.value.EnumItem, cern.japc.value.SimpleValueStandardMeaning], typing.Mapping[cern.japc.value.EnumItem, cern.japc.value.SimpleValueStandardMeaning]], set: java.util.Set[cern.japc.value.EnumItem]): ...
     def getStandardMeaning(self, object: typing.Any) -> cern.japc.value.SimpleValueStandardMeaning: ...
     def isDiscrete(self) -> bool: ...
     def isSettable(self, object: typing.Any) -> bool: ...
 
 class MapParameterValueImpl(AbstractMapParameterValue, cern.japc.value.MapParameterValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.core.spi.value.MapParameterValueImpl'
+    
+        Extends:
+            cern.japc.core.spi.value.AbstractMapParameterValue
+    
+        Interfaces:
+            cern.japc.value.MapParameterValue, java.io.Serializable,
+            java.lang.Cloneable
+    
+      Constructors:
+        * MapParameterValueImpl(cern.japc.value.MapDescriptor)
+        * MapParameterValueImpl()
+        * MapParameterValueImpl(cern.japc.value.ImmutableMapParameterValue)
+        * MapParameterValueImpl(java.util.Map)
+        * MapParameterValueImpl(java.lang.String[], cern.japc.value.SimpleParameterValue[])
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -317,3 +426,16 @@ class MapParameterValueImpl(AbstractMapParameterValue, cern.japc.value.MapParame
     def setString(self, string: str, string2: str) -> None: ...
     def setStrings(self, string: str, stringArray: typing.List[str]) -> None: ...
     def setStrings2D(self, string: str, stringArray: typing.List[str], intArray: typing.List[int]) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.japc.core.spi.value")``.
+
+    AbstractMapParameterValue: typing.Type[AbstractMapParameterValue]
+    EnumValueDescriptor: typing.Type[EnumValueDescriptor]
+    MapDescriptorImpl: typing.Type[MapDescriptorImpl]
+    MapParameterValueImpl: typing.Type[MapParameterValueImpl]
+    ObjectParameterValueImpl: typing.Type[ObjectParameterValueImpl]
+    SimpleDescriptorImpl: typing.Type[SimpleDescriptorImpl]
+    SimpleDescriptorSupport: typing.Type[SimpleDescriptorSupport]
+    SimpleDescriptorToStringHelper: typing.Type[SimpleDescriptorToStringHelper]

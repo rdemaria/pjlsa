@@ -7,12 +7,37 @@ import java.util
 import typing
 
 
+
 class ADCycleSerializer:
+    """
+    Java class 'cern.lsa.domain.cern.settings.spi.ad.ADCycleSerializer'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ADCycleSerializer()
+    
+      Raises:
+        javax.xml.bind.JAXBException: from java
+    
+    """
     def __init__(self): ...
     def marshal(self, adCycleStructure: cern.lsa.domain.cern.settings.ad.AdCycleStructure) -> str: ...
     def unmarshal(self, string: str) -> 'AdCycleStructureImpl': ...
 
 class AbstractAdCycleSegment(cern.lsa.domain.cern.settings.ad.AdCycleSegment, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.settings.spi.ad.AbstractAdCycleSegment'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.settings.ad.AdCycleSegment,
+            java.io.Serializable
+    
+    """
     def addTimingProcess(self, timingProcess: cern.lsa.domain.cern.timing.TimingProcess, int: int, timingProcessAnchor: cern.lsa.domain.cern.timing.TimingProcessAnchor) -> None: ...
     def getAttribute(self, string: str) -> str: ...
     def getAttributeNames(self) -> java.util.Set[str]: ...
@@ -35,6 +60,25 @@ class AbstractAdCycleSegment(cern.lsa.domain.cern.settings.ad.AdCycleSegment, ja
     class Attribute: ...
 
 class AdCycleStructureImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedEntity['AdCycleStructureImpl'], cern.lsa.domain.cern.settings.ad.AdCycleStructure, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.settings.spi.ad.AdCycleStructureImpl'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AbstractIdentifiedEntity
+    
+        Interfaces:
+            cern.lsa.domain.cern.settings.ad.AdCycleStructure,
+            java.io.Serializable
+    
+      Constructors:
+        * AdCycleStructureImpl()
+        * AdCycleStructureImpl(java.util.List)
+    
+      Attributes:
+        PARAMETER_CYCLE (java.lang.String): final static field
+        PARAMETER_CYCLE_TEST (java.lang.String): final static field
+    
+    """
     PARAMETER_CYCLE: typing.ClassVar[str] = ...
     PARAMETER_CYCLE_TEST: typing.ClassVar[str] = ...
     @typing.overload
@@ -57,6 +101,17 @@ class AdCycleStructureImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedEntity[
     def setVersion(self, int: int) -> None: ...
 
 class SettingsUpdateState(java.lang.Enum['SettingsUpdateState']):
+    """
+    Java class 'cern.lsa.domain.cern.settings.spi.ad.SettingsUpdateState'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        CURRENT_SETTINGS (cern.lsa.domain.cern.settings.spi.ad.SettingsUpdateState): final static enum constant
+        UPDATED_SETTINGS (cern.lsa.domain.cern.settings.spi.ad.SettingsUpdateState): final static enum constant
+    
+    """
     CURRENT_SETTINGS: typing.ClassVar['SettingsUpdateState'] = ...
     UPDATED_SETTINGS: typing.ClassVar['SettingsUpdateState'] = ...
     _valueOf_1__T = typing.TypeVar('_valueOf_1__T', bound=java.lang.Enum)  # <T>
@@ -70,6 +125,20 @@ class SettingsUpdateState(java.lang.Enum['SettingsUpdateState']):
     def values() -> typing.List['SettingsUpdateState']: ...
 
 class FlatSegmentImpl(AbstractAdCycleSegment, cern.lsa.domain.cern.settings.ad.FlatSegment):
+    """
+    Java class 'cern.lsa.domain.cern.settings.spi.ad.FlatSegmentImpl'
+    
+        Extends:
+            cern.lsa.domain.cern.settings.spi.ad.AbstractAdCycleSegment
+    
+        Interfaces:
+            cern.lsa.domain.cern.settings.ad.FlatSegment
+    
+      Constructors:
+        * FlatSegmentImpl()
+        * FlatSegmentImpl(java.lang.String, int)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -85,6 +154,19 @@ class FlatSegmentImpl(AbstractAdCycleSegment, cern.lsa.domain.cern.settings.ad.F
     def toString(self) -> str: ...
 
 class RampSegmentImpl(AbstractAdCycleSegment, cern.lsa.domain.cern.settings.ad.RampSegment):
+    """
+    Java class 'cern.lsa.domain.cern.settings.spi.ad.RampSegmentImpl'
+    
+        Extends:
+            cern.lsa.domain.cern.settings.spi.ad.AbstractAdCycleSegment
+    
+        Interfaces:
+            cern.lsa.domain.cern.settings.ad.RampSegment
+    
+      Constructors:
+        * RampSegmentImpl(int)
+    
+    """
     def __init__(self, int: int): ...
     def getEndMomentum(self) -> int: ...
     def getFlatPartLength(self) -> int: ...
@@ -93,3 +175,14 @@ class RampSegmentImpl(AbstractAdCycleSegment, cern.lsa.domain.cern.settings.ad.R
     def setFlatPartLength(self, int: int) -> None: ...
     def setRoundPartLength(self, int: int) -> None: ...
     def toString(self) -> str: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.cern.settings.spi.ad")``.
+
+    ADCycleSerializer: typing.Type[ADCycleSerializer]
+    AbstractAdCycleSegment: typing.Type[AbstractAdCycleSegment]
+    AdCycleStructureImpl: typing.Type[AdCycleStructureImpl]
+    FlatSegmentImpl: typing.Type[FlatSegmentImpl]
+    RampSegmentImpl: typing.Type[RampSegmentImpl]
+    SettingsUpdateState: typing.Type[SettingsUpdateState]

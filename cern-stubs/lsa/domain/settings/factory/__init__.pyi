@@ -15,8 +15,16 @@ import java.util
 import typing
 
 
+
 _AbstractKnobBuilder__T = typing.TypeVar('_AbstractKnobBuilder__T', bound='AbstractKnobBuilder')  # <T>
 class AbstractKnobBuilder(typing.Generic[_AbstractKnobBuilder__T]):
+    """
+    Java class 'cern.lsa.domain.settings.factory.AbstractKnobBuilder'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @typing.overload
     def addFactor(self, knobFactor: cern.lsa.domain.settings.KnobFactor) -> _AbstractKnobBuilder__T: ...
     @typing.overload
@@ -34,6 +42,16 @@ class AbstractKnobBuilder(typing.Generic[_AbstractKnobBuilder__T]):
     def updateFactor(self, string: str, string2: str, double: float) -> _AbstractKnobBuilder__T: ...
 
 class BeamProcessIncorporationRequestBuilder(cern.lsa.domain.commons.spi.AbstractPropertiesHolder):
+    """
+    Java class 'cern.lsa.domain.settings.factory.BeamProcessIncorporationRequestBuilder'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AbstractPropertiesHolder
+    
+      Constructors:
+        * BeamProcessIncorporationRequestBuilder()
+    
+    """
     def __init__(self): ...
     def build(self) -> cern.lsa.domain.settings.BeamProcessIncorporationRequest: ...
     def setDescription(self, string: str) -> 'BeamProcessIncorporationRequestBuilder': ...
@@ -48,6 +66,17 @@ class BeamProcessIncorporationRequestBuilder(cern.lsa.domain.commons.spi.Abstrac
     def setSourcePointInTime(self, double: float) -> 'BeamProcessIncorporationRequestBuilder': ...
 
 class ContextSettingsBuilder:
+    """
+    Java class 'cern.lsa.domain.settings.factory.ContextSettingsBuilder'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ContextSettingsBuilder()
+        * ContextSettingsBuilder(cern.lsa.domain.settings.ContextSettings)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -66,6 +95,16 @@ class ContextSettingsBuilder:
     def parameterSettings(self, collection: typing.Union[java.util.Collection[cern.lsa.domain.settings.spi.ParameterSettingsImpl], typing.Sequence[cern.lsa.domain.settings.spi.ParameterSettingsImpl]]) -> 'ContextSettingsBuilder': ...
 
 class ParameterTreesRequestBuilder:
+    """
+    Java class 'cern.lsa.domain.settings.factory.ParameterTreesRequestBuilder'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ParameterTreesRequestBuilder()
+    
+    """
     def __init__(self): ...
     def build(self) -> cern.lsa.domain.settings.ParameterTreesRequest: ...
     @staticmethod
@@ -84,6 +123,19 @@ class ParameterTreesRequestBuilder:
     def setTreeDirection(self, treeDirection: cern.lsa.domain.settings.ParameterTreesRequest.TreeDirection) -> 'ParameterTreesRequestBuilder': ...
 
 class ParameterTypesRequestBuilder:
+    """
+    Java class 'cern.lsa.domain.settings.factory.ParameterTypesRequestBuilder'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ParameterTypesRequestBuilder()
+    
+      Attributes:
+        ALL_PARAMETER_TYPES (cern.lsa.domain.settings.ParameterTypesRequest): final static field
+    
+    """
     ALL_PARAMETER_TYPES: typing.ClassVar[cern.lsa.domain.settings.ParameterTypesRequest] = ...
     def __init__(self): ...
     def build(self) -> cern.lsa.domain.settings.ParameterTypesRequest: ...
@@ -99,6 +151,16 @@ class ParameterTypesRequestBuilder:
     def setParameterTypeNames(self, collection: typing.Union[java.util.Collection[str], typing.Sequence[str]]) -> 'ParameterTypesRequestBuilder': ...
 
 class ParametersRequestBuilder:
+    """
+    Java class 'cern.lsa.domain.settings.factory.ParametersRequestBuilder'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ParametersRequestBuilder()
+    
+    """
     def __init__(self): ...
     def build(self) -> cern.lsa.domain.settings.ParametersRequest: ...
     @staticmethod
@@ -146,6 +208,7 @@ class ParametersRequestBuilder:
     def setDeviceNames(self, collection: typing.Union[java.util.Collection[str], typing.Sequence[str]]) -> 'ParametersRequestBuilder': ...
     def setDevices(self, collection: typing.Union[java.util.Collection[cern.lsa.domain.devices.Device], typing.Sequence[cern.lsa.domain.devices.Device]]) -> 'ParametersRequestBuilder': ...
     def setIncludeSignatures(self, boolean: bool) -> 'ParametersRequestBuilder': ...
+    def setLsaImplementation(self, boolean: bool) -> 'ParametersRequestBuilder': ...
     def setMultiplexed(self, boolean: bool) -> 'ParametersRequestBuilder': ...
     def setParameterGroup(self, string: str) -> 'ParametersRequestBuilder': ...
     def setParameterGroups(self, collection: typing.Union[java.util.Collection[str], typing.Sequence[str]]) -> 'ParametersRequestBuilder': ...
@@ -166,6 +229,16 @@ class ParametersRequestBuilder:
     def setWritable(self, boolean: bool) -> 'ParametersRequestBuilder': ...
 
 class SettingComparisonRequestBuilder:
+    """
+    Java class 'cern.lsa.domain.settings.factory.SettingComparisonRequestBuilder'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * SettingComparisonRequestBuilder()
+    
+    """
     def __init__(self): ...
     def build(self) -> cern.lsa.domain.settings.SettingComparisonRequest: ...
     def setCompareAllParameters(self, boolean: bool) -> 'SettingComparisonRequestBuilder': ...
@@ -179,6 +252,16 @@ class SettingComparisonRequestBuilder:
     def setSourceSettingsSource(self, settingsSource: cern.lsa.domain.settings.SettingsSource) -> 'SettingComparisonRequestBuilder': ...
 
 class StandAloneContextCloneRequestBuilder(cern.lsa.domain.commons.spi.AbstractPropertiesHolder):
+    """
+    Java class 'cern.lsa.domain.settings.factory.StandAloneContextCloneRequestBuilder'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AbstractPropertiesHolder
+    
+      Constructors:
+        * StandAloneContextCloneRequestBuilder()
+    
+    """
     def __init__(self): ...
     def build(self) -> cern.lsa.domain.settings.StandAloneContextCloneRequest: ...
     def setAttributes(self, collection: typing.Union[java.util.Collection[cern.lsa.domain.commons.Attribute], typing.Sequence[cern.lsa.domain.commons.Attribute]]) -> 'StandAloneContextCloneRequestBuilder': ...
@@ -191,6 +274,16 @@ class StandAloneContextCloneRequestBuilder(cern.lsa.domain.commons.spi.AbstractP
     def shouldCloneType(self, boolean: bool) -> 'StandAloneContextCloneRequestBuilder': ...
 
 class StandAloneContextCreationRequestBuilder(cern.lsa.domain.commons.spi.AbstractPropertiesHolder):
+    """
+    Java class 'cern.lsa.domain.settings.factory.StandAloneContextCreationRequestBuilder'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AbstractPropertiesHolder
+    
+      Constructors:
+        * StandAloneContextCreationRequestBuilder()
+    
+    """
     def __init__(self): ...
     def build(self) -> cern.lsa.domain.settings.StandAloneContextCreationRequest: ...
     def setAttributes(self, collection: typing.Union[java.util.Collection[cern.lsa.domain.commons.Attribute], typing.Sequence[cern.lsa.domain.commons.Attribute]]) -> 'StandAloneContextCreationRequestBuilder': ...
@@ -202,6 +295,17 @@ class StandAloneContextCreationRequestBuilder(cern.lsa.domain.commons.spi.Abstra
     def setName(self, string: str) -> 'StandAloneContextCreationRequestBuilder': ...
 
 class TrimRequestBuilder:
+    """
+    Java class 'cern.lsa.domain.settings.factory.TrimRequestBuilder'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * TrimRequestBuilder()
+        * TrimRequestBuilder(cern.lsa.domain.settings.TrimRequest)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -238,6 +342,18 @@ class TrimRequestBuilder:
     def setSkipProcessing(self, boolean: bool) -> 'TrimRequestBuilder': ...
 
 class CopySettingsRequestBuilder(TrimRequestBuilder):
+    """
+    Java class 'cern.lsa.domain.settings.factory.CopySettingsRequestBuilder'
+    
+        Extends:
+            cern.lsa.domain.settings.factory.TrimRequestBuilder
+    
+      Constructors:
+        * CopySettingsRequestBuilder(cern.lsa.domain.settings.TrimRequest)
+        * CopySettingsRequestBuilder(cern.lsa.domain.settings.CopySettingsRequest)
+        * CopySettingsRequestBuilder()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -278,6 +394,17 @@ class CopySettingsRequestBuilder(TrimRequestBuilder):
     def setSourceContexts(self, collection: typing.Union[java.util.Collection[cern.lsa.domain.settings.Context], typing.Sequence[cern.lsa.domain.settings.Context]]) -> 'CopySettingsRequestBuilder': ...
 
 class IncorporationRequestBuilder(TrimRequestBuilder):
+    """
+    Java class 'cern.lsa.domain.settings.factory.IncorporationRequestBuilder'
+    
+        Extends:
+            cern.lsa.domain.settings.factory.TrimRequestBuilder
+    
+      Constructors:
+        * IncorporationRequestBuilder()
+        * IncorporationRequestBuilder(cern.lsa.domain.settings.IncorporationRequest)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -314,6 +441,17 @@ class IncorporationRequestBuilder(TrimRequestBuilder):
     def setSkipProcessing(self, boolean: bool) -> 'IncorporationRequestBuilder': ...
 
 class KnobCreationBuilder(AbstractKnobBuilder['KnobCreationBuilder']):
+    """
+    Java class 'cern.lsa.domain.settings.factory.KnobCreationBuilder'
+    
+        Extends:
+            cern.lsa.domain.settings.factory.AbstractKnobBuilder
+    
+      Constructors:
+        * KnobCreationBuilder()
+        * KnobCreationBuilder(cern.lsa.domain.settings.Knob)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -324,9 +462,31 @@ class KnobCreationBuilder(AbstractKnobBuilder['KnobCreationBuilder']):
     def setValueType(self, type: cern.accsoft.commons.value.Type) -> 'KnobCreationBuilder': ...
 
 class KnobModificationBuilder(AbstractKnobBuilder['KnobModificationBuilder']):
+    """
+    Java class 'cern.lsa.domain.settings.factory.KnobModificationBuilder'
+    
+        Extends:
+            cern.lsa.domain.settings.factory.AbstractKnobBuilder
+    
+      Constructors:
+        * KnobModificationBuilder(cern.lsa.domain.settings.Knob)
+    
+    """
     def __init__(self, knob: cern.lsa.domain.settings.Knob): ...
 
 class RevertTrimRequestBuilder(TrimRequestBuilder):
+    """
+    Java class 'cern.lsa.domain.settings.factory.RevertTrimRequestBuilder'
+    
+        Extends:
+            cern.lsa.domain.settings.factory.TrimRequestBuilder
+    
+      Constructors:
+        * RevertTrimRequestBuilder(cern.lsa.domain.settings.TrimRequest)
+        * RevertTrimRequestBuilder(cern.lsa.domain.settings.RevertTrimRequest)
+        * RevertTrimRequestBuilder()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -365,6 +525,16 @@ class RevertTrimRequestBuilder(TrimRequestBuilder):
     def setTrimHeader(self, trimHeader: cern.lsa.domain.settings.TrimHeader) -> 'RevertTrimRequestBuilder': ...
 
 class SettingsGenerationRequestBuilder(TrimRequestBuilder):
+    """
+    Java class 'cern.lsa.domain.settings.factory.SettingsGenerationRequestBuilder'
+    
+        Extends:
+            cern.lsa.domain.settings.factory.TrimRequestBuilder
+    
+      Constructors:
+        * SettingsGenerationRequestBuilder()
+    
+    """
     def __init__(self): ...
     def build(self) -> cern.lsa.domain.settings.SettingsGenerationRequest: ...
     def setAttribute(self, string: str, object: typing.Any) -> 'SettingsGenerationRequestBuilder': ...
@@ -377,3 +547,24 @@ class SettingsGenerationRequestBuilder(TrimRequestBuilder):
     def setPropagateToChildren(self, boolean: bool) -> 'SettingsGenerationRequestBuilder': ...
     def setReturnSettings(self, boolean: bool) -> 'SettingsGenerationRequestBuilder': ...
     def setSubContexts(self, set: java.util.Set[cern.lsa.domain.settings.SubContext]) -> 'SettingsGenerationRequestBuilder': ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.settings.factory")``.
+
+    AbstractKnobBuilder: typing.Type[AbstractKnobBuilder]
+    BeamProcessIncorporationRequestBuilder: typing.Type[BeamProcessIncorporationRequestBuilder]
+    ContextSettingsBuilder: typing.Type[ContextSettingsBuilder]
+    CopySettingsRequestBuilder: typing.Type[CopySettingsRequestBuilder]
+    IncorporationRequestBuilder: typing.Type[IncorporationRequestBuilder]
+    KnobCreationBuilder: typing.Type[KnobCreationBuilder]
+    KnobModificationBuilder: typing.Type[KnobModificationBuilder]
+    ParameterTreesRequestBuilder: typing.Type[ParameterTreesRequestBuilder]
+    ParameterTypesRequestBuilder: typing.Type[ParameterTypesRequestBuilder]
+    ParametersRequestBuilder: typing.Type[ParametersRequestBuilder]
+    RevertTrimRequestBuilder: typing.Type[RevertTrimRequestBuilder]
+    SettingComparisonRequestBuilder: typing.Type[SettingComparisonRequestBuilder]
+    SettingsGenerationRequestBuilder: typing.Type[SettingsGenerationRequestBuilder]
+    StandAloneContextCloneRequestBuilder: typing.Type[StandAloneContextCloneRequestBuilder]
+    StandAloneContextCreationRequestBuilder: typing.Type[StandAloneContextCreationRequestBuilder]
+    TrimRequestBuilder: typing.Type[TrimRequestBuilder]

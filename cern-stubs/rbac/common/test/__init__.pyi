@@ -2,7 +2,18 @@ import cern.rbac.common
 import typing
 
 
+
 class TestTokenBuilder:
+    """
+    Java class 'cern.rbac.common.test.TestTokenBuilder'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        DEFAULT_USER_ACCOUNT_TYPE (cern.rbac.common.UserPrincipal$AccountType): final static field
+    
+    """
     DEFAULT_USER_ACCOUNT_TYPE: typing.ClassVar[cern.rbac.common.UserPrincipal.AccountType] = ...
     def application(self, string: str) -> 'TestTokenBuilder': ...
     def authenticationTime(self, int: int) -> 'TestTokenBuilder': ...
@@ -20,3 +31,9 @@ class TestTokenBuilder:
     def userEmail(self, string: str) -> 'TestTokenBuilder': ...
     def userFullName(self, string: str) -> 'TestTokenBuilder': ...
     def username(self, string: str) -> 'TestTokenBuilder': ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.rbac.common.test")``.
+
+    TestTokenBuilder: typing.Type[TestTokenBuilder]

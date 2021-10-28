@@ -1,16 +1,42 @@
 import java.io
 import java.lang
 import java.math
+import java.text.spi
 import java.util
 import typing
 
 
+
 class Annotation:
+    """
+    Java class 'java.text.Annotation'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * Annotation(java.lang.Object)
+    
+    """
     def __init__(self, object: typing.Any): ...
     def getValue(self) -> typing.Any: ...
     def toString(self) -> str: ...
 
 class AttributedString:
+    """
+    Java class 'java.text.AttributedString'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * AttributedString(java.text.AttributedCharacterIterator, int, int, java.text.AttributedCharacterIterator.Attribute[])
+        * AttributedString(java.text.AttributedCharacterIterator, int, int)
+        * AttributedString(java.text.AttributedCharacterIterator)
+        * AttributedString(java.lang.String)
+        * AttributedString(java.lang.String, java.util.Map)
+    
+    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
@@ -34,6 +60,24 @@ class AttributedString:
     def getIterator(self, attributeArray: typing.List['AttributedCharacterIterator.Attribute'], int: int, int2: int) -> 'AttributedCharacterIterator': ...
 
 class Bidi:
+    """
+    Java class 'java.text.Bidi'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * Bidi(char[], int, byte[], int, int, int)
+        * Bidi(java.text.AttributedCharacterIterator)
+        * Bidi(java.lang.String, int)
+    
+      Attributes:
+        DIRECTION_LEFT_TO_RIGHT (int): final static field
+        DIRECTION_RIGHT_TO_LEFT (int): final static field
+        DIRECTION_DEFAULT_LEFT_TO_RIGHT (int): final static field
+        DIRECTION_DEFAULT_RIGHT_TO_LEFT (int): final static field
+    
+    """
     DIRECTION_LEFT_TO_RIGHT: typing.ClassVar[int] = ...
     DIRECTION_RIGHT_TO_LEFT: typing.ClassVar[int] = ...
     DIRECTION_DEFAULT_LEFT_TO_RIGHT: typing.ClassVar[int] = ...
@@ -63,6 +107,19 @@ class Bidi:
     def toString(self) -> str: ...
 
 class BreakIterator(java.lang.Cloneable):
+    """
+    Java class 'java.text.BreakIterator'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.Cloneable
+    
+      Attributes:
+        DONE (int): final static field
+    
+    """
     DONE: typing.ClassVar[int] = ...
     def clone(self) -> typing.Any: ...
     def current(self) -> int: ...
@@ -109,6 +166,16 @@ class BreakIterator(java.lang.Cloneable):
     def setText(self, string: str) -> None: ...
 
 class CharacterIterator(java.lang.Cloneable):
+    """
+    Java class 'java.text.CharacterIterator'
+    
+        Interfaces:
+            java.lang.Cloneable
+    
+      Attributes:
+        DONE (char): final static field
+    
+    """
     DONE: typing.ClassVar[str] = ...
     def clone(self) -> typing.Any: ...
     def current(self) -> str: ...
@@ -122,6 +189,16 @@ class CharacterIterator(java.lang.Cloneable):
     def setIndex(self, int: int) -> str: ...
 
 class CollationElementIterator:
+    """
+    Java class 'java.text.CollationElementIterator'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        NULLORDER (int): final static field
+    
+    """
     NULLORDER: typing.ClassVar[int] = ...
     def getMaxExpansion(self, int: int) -> int: ...
     def getOffset(self) -> int: ...
@@ -141,11 +218,40 @@ class CollationElementIterator:
     def tertiaryOrder(int: int) -> int: ...
 
 class CollationKey(java.lang.Comparable['CollationKey']):
+    """
+    Java class 'java.text.CollationKey'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.Comparable
+    
+    """
     def compareTo(self, collationKey: 'CollationKey') -> int: ...
     def getSourceString(self) -> str: ...
     def toByteArray(self) -> typing.List[int]: ...
 
 class Collator(java.util.Comparator[typing.Any], java.lang.Cloneable):
+    """
+    Java class 'java.text.Collator'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.Comparator, java.lang.Cloneable
+    
+      Attributes:
+        PRIMARY (int): final static field
+        SECONDARY (int): final static field
+        TERTIARY (int): final static field
+        IDENTICAL (int): final static field
+        NO_DECOMPOSITION (int): final static field
+        CANONICAL_DECOMPOSITION (int): final static field
+        FULL_DECOMPOSITION (int): final static field
+    
+    """
     PRIMARY: typing.ClassVar[int] = ...
     SECONDARY: typing.ClassVar[int] = ...
     TERTIARY: typing.ClassVar[int] = ...
@@ -178,6 +284,20 @@ class Collator(java.util.Comparator[typing.Any], java.lang.Cloneable):
     def setStrength(self, int: int) -> None: ...
 
 class DateFormatSymbols(java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'java.text.DateFormatSymbols'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * DateFormatSymbols(java.util.Locale)
+        * DateFormatSymbols()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -211,6 +331,20 @@ class DateFormatSymbols(java.io.Serializable, java.lang.Cloneable):
     def setZoneStrings(self, stringArray: typing.List[typing.List[str]]) -> None: ...
 
 class DecimalFormatSymbols(java.lang.Cloneable, java.io.Serializable):
+    """
+    Java class 'java.text.DecimalFormatSymbols'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.Cloneable, java.io.Serializable
+    
+      Constructors:
+        * DecimalFormatSymbols()
+        * DecimalFormatSymbols(java.util.Locale)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -258,6 +392,18 @@ class DecimalFormatSymbols(java.lang.Cloneable, java.io.Serializable):
     def setZeroDigit(self, char: str) -> None: ...
 
 class FieldPosition:
+    """
+    Java class 'java.text.FieldPosition'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * FieldPosition(java.text.Format.Field, int)
+        * FieldPosition(java.text.Format.Field)
+        * FieldPosition(int)
+    
+    """
     @typing.overload
     def __init__(self, int: int): ...
     @typing.overload
@@ -275,11 +421,31 @@ class FieldPosition:
     def toString(self) -> str: ...
 
 class Normalizer:
+    """
+    Java class 'java.text.Normalizer'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def isNormalized(charSequence: typing.Union[java.lang.CharSequence, str], form: 'Normalizer.Form') -> bool: ...
     @staticmethod
     def normalize(charSequence: typing.Union[java.lang.CharSequence, str], form: 'Normalizer.Form') -> str: ...
     class Form(java.lang.Enum['Normalizer.Form']):
+        """
+        Java class 'java.text.Normalizer$Form'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            NFD (java.text.Normalizer$Form): final static enum constant
+            NFC (java.text.Normalizer$Form): final static enum constant
+            NFKD (java.text.Normalizer$Form): final static enum constant
+            NFKC (java.text.Normalizer$Form): final static enum constant
+        
+        """
         NFD: typing.ClassVar['Normalizer.Form'] = ...
         NFC: typing.ClassVar['Normalizer.Form'] = ...
         NFKD: typing.ClassVar['Normalizer.Form'] = ...
@@ -295,10 +461,30 @@ class Normalizer:
         def values() -> typing.List['Normalizer.Form']: ...
 
 class ParseException(java.lang.Exception):
+    """
+    Java class 'java.text.ParseException'
+    
+        Extends:
+            java.lang.Exception
+    
+      Constructors:
+        * ParseException(java.lang.String, int)
+    
+    """
     def __init__(self, string: str, int: int): ...
     def getErrorOffset(self) -> int: ...
 
 class ParsePosition:
+    """
+    Java class 'java.text.ParsePosition'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ParsePosition(int)
+    
+    """
     def __init__(self, int: int): ...
     def equals(self, object: typing.Any) -> bool: ...
     def getErrorIndex(self) -> int: ...
@@ -309,6 +495,13 @@ class ParsePosition:
     def toString(self) -> str: ...
 
 class AttributedCharacterIterator(CharacterIterator):
+    """
+    Java class 'java.text.AttributedCharacterIterator'
+    
+        Interfaces:
+            java.text.CharacterIterator
+    
+    """
     def getAllAttributeKeys(self) -> java.util.Set['AttributedCharacterIterator.Attribute']: ...
     def getAttribute(self, attribute: 'AttributedCharacterIterator.Attribute') -> typing.Any: ...
     def getAttributes(self) -> java.util.Map['AttributedCharacterIterator.Attribute', typing.Any]: ...
@@ -325,6 +518,21 @@ class AttributedCharacterIterator(CharacterIterator):
     @typing.overload
     def getRunStart(self, set: java.util.Set['AttributedCharacterIterator.Attribute']) -> int: ...
     class Attribute(java.io.Serializable):
+        """
+        Java class 'java.text.AttributedCharacterIterator$Attribute'
+        
+            Extends:
+                java.lang.Object
+        
+            Interfaces:
+                java.io.Serializable
+        
+          Attributes:
+            LANGUAGE (java.text.AttributedCharacterIterator$Attribute): final static field
+            READING (java.text.AttributedCharacterIterator$Attribute): final static field
+            INPUT_METHOD_SEGMENT (java.text.AttributedCharacterIterator$Attribute): final static field
+        
+        """
         LANGUAGE: typing.ClassVar['AttributedCharacterIterator.Attribute'] = ...
         READING: typing.ClassVar['AttributedCharacterIterator.Attribute'] = ...
         INPUT_METHOD_SEGMENT: typing.ClassVar['AttributedCharacterIterator.Attribute'] = ...
@@ -333,6 +541,19 @@ class AttributedCharacterIterator(CharacterIterator):
         def toString(self) -> str: ...
 
 class RuleBasedCollator(Collator):
+    """
+    Java class 'java.text.RuleBasedCollator'
+    
+        Extends:
+            java.text.Collator
+    
+      Constructors:
+        * RuleBasedCollator(java.lang.String)
+    
+      Raises:
+        java.text.ParseException: from java
+    
+    """
     def __init__(self, string: str): ...
     def clone(self) -> typing.Any: ...
     @typing.overload
@@ -352,6 +573,21 @@ class RuleBasedCollator(Collator):
     def hashCode(self) -> int: ...
 
 class StringCharacterIterator(CharacterIterator):
+    """
+    Java class 'java.text.StringCharacterIterator'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.text.CharacterIterator
+    
+      Constructors:
+        * StringCharacterIterator(java.lang.String, int, int, int)
+        * StringCharacterIterator(java.lang.String, int)
+        * StringCharacterIterator(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
@@ -373,6 +609,16 @@ class StringCharacterIterator(CharacterIterator):
     def setText(self, string: str) -> None: ...
 
 class Format(java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'java.text.Format'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+    """
     def clone(self) -> typing.Any: ...
     @typing.overload
     def format(self, object: typing.Any, stringBuffer: java.lang.StringBuffer, fieldPosition: FieldPosition) -> java.lang.StringBuffer: ...
@@ -386,6 +632,38 @@ class Format(java.io.Serializable, java.lang.Cloneable):
     class Field(AttributedCharacterIterator.Attribute): ...
 
 class DateFormat(Format):
+    """
+    Java class 'java.text.DateFormat'
+    
+        Extends:
+            java.text.Format
+    
+      Attributes:
+        ERA_FIELD (int): final static field
+        YEAR_FIELD (int): final static field
+        MONTH_FIELD (int): final static field
+        DATE_FIELD (int): final static field
+        HOUR_OF_DAY1_FIELD (int): final static field
+        HOUR_OF_DAY0_FIELD (int): final static field
+        MINUTE_FIELD (int): final static field
+        SECOND_FIELD (int): final static field
+        MILLISECOND_FIELD (int): final static field
+        DAY_OF_WEEK_FIELD (int): final static field
+        DAY_OF_YEAR_FIELD (int): final static field
+        DAY_OF_WEEK_IN_MONTH_FIELD (int): final static field
+        WEEK_OF_YEAR_FIELD (int): final static field
+        WEEK_OF_MONTH_FIELD (int): final static field
+        AM_PM_FIELD (int): final static field
+        HOUR1_FIELD (int): final static field
+        HOUR0_FIELD (int): final static field
+        TIMEZONE_FIELD (int): final static field
+        FULL (int): final static field
+        LONG (int): final static field
+        MEDIUM (int): final static field
+        SHORT (int): final static field
+        DEFAULT (int): final static field
+    
+    """
     ERA_FIELD: typing.ClassVar[int] = ...
     YEAR_FIELD: typing.ClassVar[int] = ...
     MONTH_FIELD: typing.ClassVar[int] = ...
@@ -468,6 +746,33 @@ class DateFormat(Format):
     def setNumberFormat(self, numberFormat: 'NumberFormat') -> None: ...
     def setTimeZone(self, timeZone: java.util.TimeZone) -> None: ...
     class Field(Format.Field):
+        """
+        Java class 'java.text.DateFormat$Field'
+        
+            Extends:
+                java.text.Format$Field
+        
+          Attributes:
+            ERA (java.text.DateFormat$Field): final static field
+            YEAR (java.text.DateFormat$Field): final static field
+            MONTH (java.text.DateFormat$Field): final static field
+            DAY_OF_MONTH (java.text.DateFormat$Field): final static field
+            HOUR_OF_DAY1 (java.text.DateFormat$Field): final static field
+            HOUR_OF_DAY0 (java.text.DateFormat$Field): final static field
+            MINUTE (java.text.DateFormat$Field): final static field
+            SECOND (java.text.DateFormat$Field): final static field
+            MILLISECOND (java.text.DateFormat$Field): final static field
+            DAY_OF_WEEK (java.text.DateFormat$Field): final static field
+            DAY_OF_YEAR (java.text.DateFormat$Field): final static field
+            DAY_OF_WEEK_IN_MONTH (java.text.DateFormat$Field): final static field
+            WEEK_OF_YEAR (java.text.DateFormat$Field): final static field
+            WEEK_OF_MONTH (java.text.DateFormat$Field): final static field
+            AM_PM (java.text.DateFormat$Field): final static field
+            HOUR1 (java.text.DateFormat$Field): final static field
+            HOUR0 (java.text.DateFormat$Field): final static field
+            TIME_ZONE (java.text.DateFormat$Field): final static field
+        
+        """
         ERA: typing.ClassVar['DateFormat.Field'] = ...
         YEAR: typing.ClassVar['DateFormat.Field'] = ...
         MONTH: typing.ClassVar['DateFormat.Field'] = ...
@@ -491,6 +796,17 @@ class DateFormat(Format):
         def ofCalendarField(int: int) -> 'DateFormat.Field': ...
 
 class MessageFormat(Format):
+    """
+    Java class 'java.text.MessageFormat'
+    
+        Extends:
+            java.text.Format
+    
+      Constructors:
+        * MessageFormat(java.lang.String)
+        * MessageFormat(java.lang.String, java.util.Locale)
+    
+    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
@@ -527,9 +843,30 @@ class MessageFormat(Format):
     def setLocale(self, locale: java.util.Locale) -> None: ...
     def toPattern(self) -> str: ...
     class Field(Format.Field):
+        """
+        Java class 'java.text.MessageFormat$Field'
+        
+            Extends:
+                java.text.Format$Field
+        
+          Attributes:
+            ARGUMENT (java.text.MessageFormat$Field): final static field
+        
+        """
         ARGUMENT: typing.ClassVar['MessageFormat.Field'] = ...
 
 class NumberFormat(Format):
+    """
+    Java class 'java.text.NumberFormat'
+    
+        Extends:
+            java.text.Format
+    
+      Attributes:
+        INTEGER_FIELD (int): final static field
+        FRACTION_FIELD (int): final static field
+    
+    """
     INTEGER_FIELD: typing.ClassVar[int] = ...
     FRACTION_FIELD: typing.ClassVar[int] = ...
     def clone(self) -> typing.Any: ...
@@ -604,6 +941,26 @@ class NumberFormat(Format):
     def setParseIntegerOnly(self, boolean: bool) -> None: ...
     def setRoundingMode(self, roundingMode: java.math.RoundingMode) -> None: ...
     class Field(Format.Field):
+        """
+        Java class 'java.text.NumberFormat$Field'
+        
+            Extends:
+                java.text.Format$Field
+        
+          Attributes:
+            INTEGER (java.text.NumberFormat$Field): final static field
+            FRACTION (java.text.NumberFormat$Field): final static field
+            EXPONENT (java.text.NumberFormat$Field): final static field
+            DECIMAL_SEPARATOR (java.text.NumberFormat$Field): final static field
+            SIGN (java.text.NumberFormat$Field): final static field
+            GROUPING_SEPARATOR (java.text.NumberFormat$Field): final static field
+            EXPONENT_SYMBOL (java.text.NumberFormat$Field): final static field
+            PERCENT (java.text.NumberFormat$Field): final static field
+            PERMILLE (java.text.NumberFormat$Field): final static field
+            CURRENCY (java.text.NumberFormat$Field): final static field
+            EXPONENT_SIGN (java.text.NumberFormat$Field): final static field
+        
+        """
         INTEGER: typing.ClassVar['NumberFormat.Field'] = ...
         FRACTION: typing.ClassVar['NumberFormat.Field'] = ...
         EXPONENT: typing.ClassVar['NumberFormat.Field'] = ...
@@ -617,6 +974,17 @@ class NumberFormat(Format):
         EXPONENT_SIGN: typing.ClassVar['NumberFormat.Field'] = ...
 
 class ChoiceFormat(NumberFormat):
+    """
+    Java class 'java.text.ChoiceFormat'
+    
+        Extends:
+            java.text.NumberFormat
+    
+      Constructors:
+        * ChoiceFormat(double[], java.lang.String[])
+        * ChoiceFormat(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self, doubleArray: typing.List[float], stringArray: typing.List[str]): ...
     @typing.overload
@@ -655,6 +1023,18 @@ class ChoiceFormat(NumberFormat):
     def toPattern(self) -> str: ...
 
 class DecimalFormat(NumberFormat):
+    """
+    Java class 'java.text.DecimalFormat'
+    
+        Extends:
+            java.text.NumberFormat
+    
+      Constructors:
+        * DecimalFormat(java.lang.String, java.text.DecimalFormatSymbols)
+        * DecimalFormat(java.lang.String)
+        * DecimalFormat()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -718,6 +1098,19 @@ class DecimalFormat(NumberFormat):
     def toPattern(self) -> str: ...
 
 class SimpleDateFormat(DateFormat):
+    """
+    Java class 'java.text.SimpleDateFormat'
+    
+        Extends:
+            java.text.DateFormat
+    
+      Constructors:
+        * SimpleDateFormat(java.lang.String, java.text.DateFormatSymbols)
+        * SimpleDateFormat(java.lang.String, java.util.Locale)
+        * SimpleDateFormat(java.lang.String)
+        * SimpleDateFormat()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -750,3 +1143,33 @@ class SimpleDateFormat(DateFormat):
     def setDateFormatSymbols(self, dateFormatSymbols: DateFormatSymbols) -> None: ...
     def toLocalizedPattern(self) -> str: ...
     def toPattern(self) -> str: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.text")``.
+
+    Annotation: typing.Type[Annotation]
+    AttributedCharacterIterator: typing.Type[AttributedCharacterIterator]
+    AttributedString: typing.Type[AttributedString]
+    Bidi: typing.Type[Bidi]
+    BreakIterator: typing.Type[BreakIterator]
+    CharacterIterator: typing.Type[CharacterIterator]
+    ChoiceFormat: typing.Type[ChoiceFormat]
+    CollationElementIterator: typing.Type[CollationElementIterator]
+    CollationKey: typing.Type[CollationKey]
+    Collator: typing.Type[Collator]
+    DateFormat: typing.Type[DateFormat]
+    DateFormatSymbols: typing.Type[DateFormatSymbols]
+    DecimalFormat: typing.Type[DecimalFormat]
+    DecimalFormatSymbols: typing.Type[DecimalFormatSymbols]
+    FieldPosition: typing.Type[FieldPosition]
+    Format: typing.Type[Format]
+    MessageFormat: typing.Type[MessageFormat]
+    Normalizer: typing.Type[Normalizer]
+    NumberFormat: typing.Type[NumberFormat]
+    ParseException: typing.Type[ParseException]
+    ParsePosition: typing.Type[ParsePosition]
+    RuleBasedCollator: typing.Type[RuleBasedCollator]
+    SimpleDateFormat: typing.Type[SimpleDateFormat]
+    StringCharacterIterator: typing.Type[StringCharacterIterator]
+    spi: java.text.spi.__module_protocol__

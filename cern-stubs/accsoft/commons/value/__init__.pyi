@@ -2,6 +2,7 @@ import cern.accsoft.commons.util
 import cern.accsoft.commons.util.value
 import cern.accsoft.commons.value.expression
 import cern.accsoft.commons.value.operation
+import cern.accsoft.commons.value.spi
 import cern.accsoft.commons.value.spi.function
 import cern.accsoft.commons.value.spi.operation
 import cern.japc.value
@@ -11,7 +12,15 @@ import java.util
 import typing
 
 
+
 class BoundedPolynomials:
+    """
+    Java class 'cern.accsoft.commons.value.BoundedPolynomials'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @typing.overload
     @staticmethod
     def createBoundedPolynomialSequence(boundedPolynomialArray: typing.List['BoundedPolynomial']) -> 'BoundedPolynomialSequence': ...
@@ -64,6 +73,17 @@ class BoundedPolynomials:
     def toRelativePolynomials(boundedPolynomialSequence: 'BoundedPolynomialSequence') -> typing.List['Polynomial']: ...
 
 class DiscreteFunctionCompressor:
+    """
+    Java class 'cern.accsoft.commons.value.DiscreteFunctionCompressor'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * DiscreteFunctionCompressor(cern.accsoft.commons.value.DiscreteFunction, int)
+        * DiscreteFunctionCompressor(cern.accsoft.commons.value.DiscreteFunction, int, int, int, int, float)
+    
+    """
     @typing.overload
     def __init__(self, discreteFunction: 'DiscreteFunction', int: int): ...
     @typing.overload
@@ -71,6 +91,16 @@ class DiscreteFunctionCompressor:
     def compressFunction(self) -> 'DiscreteFunction': ...
 
 class DiscreteFunctions:
+    """
+    Java class 'cern.accsoft.commons.value.DiscreteFunctions'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        DEFAULT_SHIFT_COMPENSATION_FACTOR (double): final static field
+    
+    """
     DEFAULT_SHIFT_COMPENSATION_FACTOR: typing.ClassVar[float] = ...
     @staticmethod
     def align(discreteFunction: 'DiscreteFunction', int: int, int2: int) -> 'DiscreteFunction': ...
@@ -241,6 +271,9 @@ class DiscreteFunctions:
     def reduceFunctionPoints(immutableDiscreteFunction: 'ImmutableDiscreteFunction', int: int) -> 'ImmutableDiscreteFunction': ...
     @typing.overload
     @staticmethod
+    def reduceFunctionPoints(immutableDiscreteFunction: 'ImmutableDiscreteFunction', int: int, functionPointReductionOptions: 'FunctionPointReductionOptions') -> 'ImmutableDiscreteFunction': ...
+    @typing.overload
+    @staticmethod
     def reduceFunctionPoints(immutableDiscreteFunction: 'ImmutableDiscreteFunction', int: int, double: float) -> 'ImmutableDiscreteFunction': ...
     @typing.overload
     @staticmethod
@@ -255,6 +288,18 @@ class DiscreteFunctions:
     @staticmethod
     def toYArray(discreteFunctionList: cern.japc.value.DiscreteFunctionList) -> typing.List[float]: ...
     class ApproximationMode(java.lang.Enum['DiscreteFunctions.ApproximationMode']):
+        """
+        Java class 'cern.accsoft.commons.value.DiscreteFunctions$ApproximationMode'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            FORWARD (cern.accsoft.commons.value.DiscreteFunctions$ApproximationMode): final static enum constant
+            BACKWARD (cern.accsoft.commons.value.DiscreteFunctions$ApproximationMode): final static enum constant
+            CENTERED (cern.accsoft.commons.value.DiscreteFunctions$ApproximationMode): final static enum constant
+        
+        """
         FORWARD: typing.ClassVar['DiscreteFunctions.ApproximationMode'] = ...
         BACKWARD: typing.ClassVar['DiscreteFunctions.ApproximationMode'] = ...
         CENTERED: typing.ClassVar['DiscreteFunctions.ApproximationMode'] = ...
@@ -268,6 +313,18 @@ class DiscreteFunctions:
         @staticmethod
         def values() -> typing.List['DiscreteFunctions.ApproximationMode']: ...
     class FilterResult(java.lang.Enum['DiscreteFunctions.FilterResult']):
+        """
+        Java class 'cern.accsoft.commons.value.DiscreteFunctions$FilterResult'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            FILTERED (cern.accsoft.commons.value.DiscreteFunctions$FilterResult): final static enum constant
+            NOT_FILTERED (cern.accsoft.commons.value.DiscreteFunctions$FilterResult): final static enum constant
+            ONLY_FLAT_TOPS (cern.accsoft.commons.value.DiscreteFunctions$FilterResult): final static enum constant
+        
+        """
         FILTERED: typing.ClassVar['DiscreteFunctions.FilterResult'] = ...
         NOT_FILTERED: typing.ClassVar['DiscreteFunctions.FilterResult'] = ...
         ONLY_FLAT_TOPS: typing.ClassVar['DiscreteFunctions.FilterResult'] = ...
@@ -282,15 +339,67 @@ class DiscreteFunctions:
         def values() -> typing.List['DiscreteFunctions.FilterResult']: ...
 
 class FunctionOperationException(java.lang.RuntimeException):
+    """
+    Java class 'cern.accsoft.commons.value.FunctionOperationException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * FunctionOperationException(java.lang.String)
+    
+    """
     def __init__(self, string: str): ...
 
+class FunctionPointReductionOptions:
+    """
+    Java class 'cern.accsoft.commons.value.FunctionPointReductionOptions'
+    
+        Extends:
+            java.lang.Object
+    
+    """
+    @staticmethod
+    def defaults() -> 'FunctionPointReductionOptions': ...
+    def getInitialTolerance(self) -> float: ...
+    def getMaxRounds(self) -> int: ...
+    def getToleranceIncrementMultiplier(self) -> float: ...
+    def withInitialTolerance(self, double: float) -> 'FunctionPointReductionOptions': ...
+    def withMaxRounds(self, int: int) -> 'FunctionPointReductionOptions': ...
+    def withToleranceIncrementMultiplier(self, double: float) -> 'FunctionPointReductionOptions': ...
+
 class Indexed:
+    """
+    Java class 'cern.accsoft.commons.value.Indexed'
+    
+    """
     def execute(self, indexing: cern.accsoft.commons.value.spi.operation.Indexing) -> 'Scalar': ...
 
 class Interpolable:
+    """
+    Java class 'cern.accsoft.commons.value.Interpolable'
+    
+    """
     def interpolate(self, double: float) -> float: ...
 
 class Interval(java.io.Serializable):
+    """
+    Java class 'cern.accsoft.commons.value.Interval'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * Interval(double, double)
+    
+      Attributes:
+        INFINITY (cern.accsoft.commons.value.Interval): final static field
+        BOUNDS_COMPARATOR (java.util.Comparator): final static field
+    
+    """
     INFINITY: typing.ClassVar['Interval'] = ...
     BOUNDS_COMPARATOR: typing.ClassVar[java.util.Comparator] = ...
     def __init__(self, double: float, double2: float): ...
@@ -314,6 +423,13 @@ class Interval(java.io.Serializable):
     def toString(self) -> str: ...
 
 class Operations:
+    """
+    Java class 'cern.accsoft.commons.value.Operations'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def abs(immutableValue: 'ImmutableValue') -> 'Value': ...
     @staticmethod
@@ -438,15 +554,84 @@ class Operations:
     def tanNoCopy(value: 'Value') -> None: ...
 
 class ParabolicSplineFunction(cern.accsoft.commons.value.spi.function.AbstractMathFunction):
+    """
+    Java class 'cern.accsoft.commons.value.ParabolicSplineFunction'
+    
+        Extends:
+            cern.accsoft.commons.value.spi.function.AbstractMathFunction
+    
+      Constructors:
+        * ParabolicSplineFunction(cern.accsoft.commons.value.ImmutableDiscreteFunction)
+    
+    """
     def __init__(self, immutableDiscreteFunction: 'ImmutableDiscreteFunction'): ...
     def getFunction(self) -> 'ImmutableDiscreteFunction': ...
     def getSplineX(self, int: int) -> float: ...
 
 class ScalarArrays:
+    """
+    Java class 'cern.accsoft.commons.value.ScalarArrays'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def isContinueWith(immutableScalarArray: 'ImmutableScalarArray', immutableScalarArray2: 'ImmutableScalarArray', double: float) -> bool: ...
 
 class Type(java.lang.Enum['Type'], cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.accsoft.commons.value.Type'
+    
+        Extends:
+            java.lang.Enum
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+      Attributes:
+        FUNCTION (cern.accsoft.commons.value.Type): final static enum constant
+        POINT (cern.accsoft.commons.value.Type): final static enum constant
+        EXPRESSION_BASED_FUNCTION (cern.accsoft.commons.value.Type): final static enum constant
+        FUNCTION_LIST (cern.accsoft.commons.value.Type): final static enum constant
+        FUNCTIONS_ARRAY (cern.accsoft.commons.value.Type): final static enum constant
+        POLYNOMIAL (cern.accsoft.commons.value.Type): final static enum constant
+        BOUNDED_POLYNOMIAL (cern.accsoft.commons.value.Type): final static enum constant
+        BOUNDED_POLYNOMIAL_SEQUENCE (cern.accsoft.commons.value.Type): final static enum constant
+        BOOLEAN (cern.accsoft.commons.value.Type): final static enum constant
+        BYTE (cern.accsoft.commons.value.Type): final static enum constant
+        DOUBLE (cern.accsoft.commons.value.Type): final static enum constant
+        FLOAT (cern.accsoft.commons.value.Type): final static enum constant
+        LONG (cern.accsoft.commons.value.Type): final static enum constant
+        INT (cern.accsoft.commons.value.Type): final static enum constant
+        SHORT (cern.accsoft.commons.value.Type): final static enum constant
+        STRING (cern.accsoft.commons.value.Type): final static enum constant
+        TEXT_DOCUMENT (cern.accsoft.commons.value.Type): final static enum constant
+        BOOLEAN_ARRAY (cern.accsoft.commons.value.Type): final static enum constant
+        BYTE_ARRAY (cern.accsoft.commons.value.Type): final static enum constant
+        DOUBLE_ARRAY (cern.accsoft.commons.value.Type): final static enum constant
+        FLOAT_ARRAY (cern.accsoft.commons.value.Type): final static enum constant
+        INT_ARRAY (cern.accsoft.commons.value.Type): final static enum constant
+        LONG_ARRAY (cern.accsoft.commons.value.Type): final static enum constant
+        SHORT_ARRAY (cern.accsoft.commons.value.Type): final static enum constant
+        STRING_ARRAY (cern.accsoft.commons.value.Type): final static enum constant
+        BOOLEAN_ARRAY_2D (cern.accsoft.commons.value.Type): final static enum constant
+        BYTE_ARRAY_2D (cern.accsoft.commons.value.Type): final static enum constant
+        DOUBLE_ARRAY_2D (cern.accsoft.commons.value.Type): final static enum constant
+        FLOAT_ARRAY_2D (cern.accsoft.commons.value.Type): final static enum constant
+        INT_ARRAY_2D (cern.accsoft.commons.value.Type): final static enum constant
+        LONG_ARRAY_2D (cern.accsoft.commons.value.Type): final static enum constant
+        SHORT_ARRAY_2D (cern.accsoft.commons.value.Type): final static enum constant
+        STRING_ARRAY_2D (cern.accsoft.commons.value.Type): final static enum constant
+        ENUM (cern.accsoft.commons.value.Type): final static enum constant
+        ENUM_ARRAY (cern.accsoft.commons.value.Type): final static enum constant
+        ENUM_ARRAY_2D (cern.accsoft.commons.value.Type): final static enum constant
+        ENUM_SET (cern.accsoft.commons.value.Type): final static enum constant
+        ENUM_SET_ARRAY (cern.accsoft.commons.value.Type): final static enum constant
+        ENUM_SET_ARRAY_2D (cern.accsoft.commons.value.Type): final static enum constant
+        UNDEFINED (cern.accsoft.commons.value.Type): final static enum constant
+    
+    """
     FUNCTION: typing.ClassVar['Type'] = ...
     POINT: typing.ClassVar['Type'] = ...
     EXPRESSION_BASED_FUNCTION: typing.ClassVar['Type'] = ...
@@ -554,9 +739,20 @@ class Type(java.lang.Enum['Type'], cern.accsoft.commons.util.Named):
     def values() -> typing.List['Type']: ...
 
 class Typed:
+    """
+    Java class 'cern.accsoft.commons.value.Typed'
+    
+    """
     def getType(self) -> Type: ...
 
 class ValueDescriptor(java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.accsoft.commons.value.ValueDescriptor'
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+    """
     def clone(self) -> 'ValueDescriptor': ...
     def containsMeanings(self) -> bool: ...
     def getAbsoluteTolerance(self) -> float: ...
@@ -574,6 +770,23 @@ class ValueDescriptor(java.io.Serializable, java.lang.Cloneable):
     def getYUnit(self) -> str: ...
     def isSettable(self, object: typing.Any) -> bool: ...
     class ValueCompareType(java.lang.Enum['ValueDescriptor.ValueCompareType']):
+        """
+        Java class 'cern.accsoft.commons.value.ValueDescriptor$ValueCompareType'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            EXACT_MEANING (cern.accsoft.commons.value.ValueDescriptor$ValueCompareType): final static enum constant
+            TOL_REL (cern.accsoft.commons.value.ValueDescriptor$ValueCompareType): final static enum constant
+            TOL_ABS (cern.accsoft.commons.value.ValueDescriptor$ValueCompareType): final static enum constant
+            EXACT_WITH_RES (cern.accsoft.commons.value.ValueDescriptor$ValueCompareType): final static enum constant
+            EXACT (cern.accsoft.commons.value.ValueDescriptor$ValueCompareType): final static enum constant
+            TOL_ABS_REL (cern.accsoft.commons.value.ValueDescriptor$ValueCompareType): final static enum constant
+            TOL_ABS_MOD360 (cern.accsoft.commons.value.ValueDescriptor$ValueCompareType): final static enum constant
+            NONE (cern.accsoft.commons.value.ValueDescriptor$ValueCompareType): final static enum constant
+        
+        """
         EXACT_MEANING: typing.ClassVar['ValueDescriptor.ValueCompareType'] = ...
         TOL_REL: typing.ClassVar['ValueDescriptor.ValueCompareType'] = ...
         TOL_ABS: typing.ClassVar['ValueDescriptor.ValueCompareType'] = ...
@@ -593,6 +806,13 @@ class ValueDescriptor(java.io.Serializable, java.lang.Cloneable):
         def values() -> typing.List['ValueDescriptor.ValueCompareType']: ...
 
 class ValueFactory:
+    """
+    Java class 'cern.accsoft.commons.value.ValueFactory'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def convertToDiscreteFunction(immutableScalarArray: 'ImmutableScalarArray') -> 'DiscreteFunction': ...
     @staticmethod
@@ -740,6 +960,18 @@ class ValueFactory:
     def createZeroFunction(double: float) -> 'DiscreteFunction': ...
 
 class Values:
+    """
+    Java class 'cern.accsoft.commons.value.Values'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        DEFAULT_DOUBLE_PRECISION (double): final static field
+        INFINITE_PRECISION (double): final static field
+        doublePrecision (double): static field
+    
+    """
     DEFAULT_DOUBLE_PRECISION: typing.ClassVar[float] = ...
     INFINITE_PRECISION: typing.ClassVar[float] = ...
     doublePrecision: typing.ClassVar[float] = ...
@@ -792,9 +1024,24 @@ class Values:
     def setPrecision(double: float) -> None: ...
 
 class Function(Typed):
+    """
+    Java class 'cern.accsoft.commons.value.Function'
+    
+        Interfaces:
+            cern.accsoft.commons.value.Typed
+    
+    """
     def isDiscrete(self) -> bool: ...
 
 class ImmutableValue(java.lang.Cloneable, java.io.Serializable, Typed):
+    """
+    Java class 'cern.accsoft.commons.value.ImmutableValue'
+    
+        Interfaces:
+            java.lang.Cloneable, java.io.Serializable,
+            cern.accsoft.commons.value.Typed
+    
+    """
     def clone(self) -> typing.Any: ...
     def getString(self) -> str: ...
     def getValueDescriptor(self) -> ValueDescriptor: ...
@@ -802,10 +1049,24 @@ class ImmutableValue(java.lang.Cloneable, java.io.Serializable, Typed):
     def makeMutable(self) -> 'Value': ...
 
 class ContinuousFunction(Function):
+    """
+    Java class 'cern.accsoft.commons.value.ContinuousFunction'
+    
+        Interfaces:
+            cern.accsoft.commons.value.Function
+    
+    """
     _evaluate__T = typing.TypeVar('_evaluate__T', bound='Value')  # <T>
     def evaluate(self, valueMap: cern.accsoft.commons.value.expression.ValueMap, list: java.util.List[_evaluate__T]) -> _evaluate__T: ...
 
 class ImmutableDiscreteFunctionsArray(ImmutableValue):
+    """
+    Java class 'cern.accsoft.commons.value.ImmutableDiscreteFunctionsArray'
+    
+        Interfaces:
+            cern.accsoft.commons.value.ImmutableValue
+    
+    """
     def getFunction(self, int: int) -> 'ImmutableDiscreteFunction': ...
     def getFunctions(self) -> typing.List['ImmutableDiscreteFunction']: ...
     def getFunctionsCount(self) -> int: ...
@@ -814,6 +1075,13 @@ class ImmutableDiscreteFunctionsArray(ImmutableValue):
     def toXArray(self) -> typing.List[float]: ...
 
 class ImmutableScalar(ImmutableValue):
+    """
+    Java class 'cern.accsoft.commons.value.ImmutableScalar'
+    
+        Interfaces:
+            cern.accsoft.commons.value.ImmutableValue
+    
+    """
     def getBoolean(self) -> bool: ...
     def getByte(self) -> int: ...
     def getDouble(self) -> float: ...
@@ -827,6 +1095,13 @@ class ImmutableScalar(ImmutableValue):
 class MathFunction(Function, Interpolable): ...
 
 class Value(ImmutableValue):
+    """
+    Java class 'cern.accsoft.commons.value.Value'
+    
+        Interfaces:
+            cern.accsoft.commons.value.ImmutableValue
+    
+    """
     @typing.overload
     def execute(self, binaryOperation: cern.accsoft.commons.value.operation.BinaryOperation, immutableValue: ImmutableValue) -> None: ...
     @typing.overload
@@ -835,10 +1110,26 @@ class Value(ImmutableValue):
     def setValueDescriptor(self, valueDescriptor: ValueDescriptor) -> None: ...
 
 class BoundedPolynomialSequence(MathFunction, Value):
+    """
+    Java class 'cern.accsoft.commons.value.BoundedPolynomialSequence'
+    
+        Interfaces:
+            cern.accsoft.commons.value.MathFunction,
+            cern.accsoft.commons.value.Value
+    
+    """
     def getBoundedPolynomials(self) -> typing.List['BoundedPolynomial']: ...
     def interpolate(self, double: float) -> float: ...
 
 class DiscreteFunctionsArray(ImmutableDiscreteFunctionsArray, Value):
+    """
+    Java class 'cern.accsoft.commons.value.DiscreteFunctionsArray'
+    
+        Interfaces:
+            cern.accsoft.commons.value.ImmutableDiscreteFunctionsArray,
+            cern.accsoft.commons.value.Value
+    
+    """
     def getFunction(self, int: int) -> 'DiscreteFunction': ...
     def getFunctions(self) -> typing.List['DiscreteFunction']: ...
     @typing.overload
@@ -873,6 +1164,15 @@ class DiscreteFunctionsArray(ImmutableDiscreteFunctionsArray, Value):
     def translate(self, int: int, double: float) -> None: ...
 
 class ImmutableDiscreteFunction(Function, ImmutableScalar, Interpolable):
+    """
+    Java class 'cern.accsoft.commons.value.ImmutableDiscreteFunction'
+    
+        Interfaces:
+            cern.accsoft.commons.value.Function,
+            cern.accsoft.commons.value.ImmutableScalar,
+            cern.accsoft.commons.value.Interpolable
+    
+    """
     def getLength(self) -> float: ...
     def getX(self, int: int) -> float: ...
     def getY(self, int: int) -> float: ...
@@ -888,10 +1188,24 @@ class ImmutableDiscreteFunction(Function, ImmutableScalar, Interpolable):
     def toYArray(self) -> typing.List[float]: ...
 
 class ImmutablePoint(ImmutableScalar):
+    """
+    Java class 'cern.accsoft.commons.value.ImmutablePoint'
+    
+        Interfaces:
+            cern.accsoft.commons.value.ImmutableScalar
+    
+    """
     def getX(self) -> float: ...
     def getY(self) -> float: ...
 
 class ImmutableScalarArray(ImmutableScalar):
+    """
+    Java class 'cern.accsoft.commons.value.ImmutableScalarArray'
+    
+        Interfaces:
+            cern.accsoft.commons.value.ImmutableScalar
+    
+    """
     def getArray2D(self) -> cern.japc.value.Array2D: ...
     @typing.overload
     def getBoolean(self) -> bool: ...
@@ -968,10 +1282,26 @@ class ImmutableScalarArray(ImmutableScalar):
     def subArray(self, int: int, int2: int) -> 'ScalarArray': ...
 
 class Polynomial(MathFunction, Value):
+    """
+    Java class 'cern.accsoft.commons.value.Polynomial'
+    
+        Interfaces:
+            cern.accsoft.commons.value.MathFunction,
+            cern.accsoft.commons.value.Value
+    
+    """
     def getCoefficients(self) -> typing.List[float]: ...
     def getDegree(self) -> int: ...
 
 class Scalar(Value, ImmutableScalar):
+    """
+    Java class 'cern.accsoft.commons.value.Scalar'
+    
+        Interfaces:
+            cern.accsoft.commons.value.Value,
+            cern.accsoft.commons.value.ImmutableScalar
+    
+    """
     def setBoolean(self, boolean: bool) -> None: ...
     def setByte(self, byte: int) -> None: ...
     def setDouble(self, double: float) -> None: ...
@@ -983,10 +1313,25 @@ class Scalar(Value, ImmutableScalar):
     def setString(self, string: str) -> None: ...
 
 class BoundedPolynomial(Polynomial):
+    """
+    Java class 'cern.accsoft.commons.value.BoundedPolynomial'
+    
+        Interfaces:
+            cern.accsoft.commons.value.Polynomial
+    
+    """
     def getInterval(self) -> Interval: ...
     def interpolate(self, double: float) -> float: ...
 
 class DiscreteFunction(Scalar, ImmutableDiscreteFunction):
+    """
+    Java class 'cern.accsoft.commons.value.DiscreteFunction'
+    
+        Interfaces:
+            cern.accsoft.commons.value.Scalar,
+            cern.accsoft.commons.value.ImmutableDiscreteFunction
+    
+    """
     @typing.overload
     def insert(self, double: float) -> bool: ...
     @typing.overload
@@ -1003,6 +1348,13 @@ class DiscreteFunction(Scalar, ImmutableDiscreteFunction):
     def translate(self, double: float) -> None: ...
 
 class ImmutableDiscreteFunctionList(ImmutableDiscreteFunction):
+    """
+    Java class 'cern.accsoft.commons.value.ImmutableDiscreteFunctionList'
+    
+        Interfaces:
+            cern.accsoft.commons.value.ImmutableDiscreteFunction
+    
+    """
     def getAbsoluteFunction(self, int: int) -> ImmutableDiscreteFunction: ...
     def getFunction(self, int: int) -> ImmutableDiscreteFunction: ...
     def getFunctions(self) -> typing.List[ImmutableDiscreteFunction]: ...
@@ -1011,15 +1363,39 @@ class ImmutableDiscreteFunctionList(ImmutableDiscreteFunction):
     def getStopPointsIndices(self) -> typing.List[int]: ...
 
 class ImmutableScalarArray2D(ImmutableScalarArray):
+    """
+    Java class 'cern.accsoft.commons.value.ImmutableScalarArray2D'
+    
+        Interfaces:
+            cern.accsoft.commons.value.ImmutableScalarArray
+    
+    """
     def getArray2D(self) -> cern.japc.value.Array2D: ...
     def getColumnCount(self) -> int: ...
     def getRowCount(self) -> int: ...
 
 class Point(Scalar, ImmutablePoint):
+    """
+    Java class 'cern.accsoft.commons.value.Point'
+    
+        Interfaces:
+            cern.accsoft.commons.value.Scalar,
+            cern.accsoft.commons.value.ImmutablePoint
+    
+    """
     def setX(self, double: float) -> None: ...
     def setY(self, double: float) -> None: ...
 
 class ScalarArray(Scalar, ImmutableScalarArray, Indexed):
+    """
+    Java class 'cern.accsoft.commons.value.ScalarArray'
+    
+        Interfaces:
+            cern.accsoft.commons.value.Scalar,
+            cern.accsoft.commons.value.ImmutableScalarArray,
+            cern.accsoft.commons.value.Indexed
+    
+    """
     def insert(self, int: int, double: float) -> None: ...
     def insertAll(self, intArray: typing.List[int], doubleArray: typing.List[float]) -> None: ...
     def remove(self, int: int) -> None: ...
@@ -1069,12 +1445,28 @@ class ScalarArray(Scalar, ImmutableScalarArray, Indexed):
     def setStrings(self, stringArray: typing.List[str]) -> None: ...
 
 class DiscreteFunctionList(DiscreteFunction, ImmutableDiscreteFunctionList):
+    """
+    Java class 'cern.accsoft.commons.value.DiscreteFunctionList'
+    
+        Interfaces:
+            cern.accsoft.commons.value.DiscreteFunction,
+            cern.accsoft.commons.value.ImmutableDiscreteFunctionList
+    
+    """
     def merge(self, int: int) -> None: ...
     def setStopPoints(self, intArray: typing.List[int]) -> None: ...
     def split(self, double: float) -> None: ...
     def subView(self, double: float, double2: float) -> DiscreteFunction: ...
 
 class ScalarArray2D(ImmutableScalarArray2D, ScalarArray):
+    """
+    Java class 'cern.accsoft.commons.value.ScalarArray2D'
+    
+        Interfaces:
+            cern.accsoft.commons.value.ImmutableScalarArray2D,
+            cern.accsoft.commons.value.ScalarArray
+    
+    """
     def setBooleans2D(self, booleanArray: typing.List[bool], int: int, int2: int) -> None: ...
     def setBytes2D(self, byteArray: typing.List[int], int: int, int2: int) -> None: ...
     def setDoubles2D(self, doubleArray: typing.List[float], int: int, int2: int) -> None: ...
@@ -1084,3 +1476,49 @@ class ScalarArray2D(ImmutableScalarArray2D, ScalarArray):
     def setObjects2D(self, object: typing.Any, int: int, int2: int) -> None: ...
     def setShorts2D(self, shortArray: typing.List[int], int: int, int2: int) -> None: ...
     def setStrings2D(self, stringArray: typing.List[str], int: int, int2: int) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.accsoft.commons.value")``.
+
+    BoundedPolynomial: typing.Type[BoundedPolynomial]
+    BoundedPolynomialSequence: typing.Type[BoundedPolynomialSequence]
+    BoundedPolynomials: typing.Type[BoundedPolynomials]
+    ContinuousFunction: typing.Type[ContinuousFunction]
+    DiscreteFunction: typing.Type[DiscreteFunction]
+    DiscreteFunctionCompressor: typing.Type[DiscreteFunctionCompressor]
+    DiscreteFunctionList: typing.Type[DiscreteFunctionList]
+    DiscreteFunctions: typing.Type[DiscreteFunctions]
+    DiscreteFunctionsArray: typing.Type[DiscreteFunctionsArray]
+    Function: typing.Type[Function]
+    FunctionOperationException: typing.Type[FunctionOperationException]
+    FunctionPointReductionOptions: typing.Type[FunctionPointReductionOptions]
+    ImmutableDiscreteFunction: typing.Type[ImmutableDiscreteFunction]
+    ImmutableDiscreteFunctionList: typing.Type[ImmutableDiscreteFunctionList]
+    ImmutableDiscreteFunctionsArray: typing.Type[ImmutableDiscreteFunctionsArray]
+    ImmutablePoint: typing.Type[ImmutablePoint]
+    ImmutableScalar: typing.Type[ImmutableScalar]
+    ImmutableScalarArray: typing.Type[ImmutableScalarArray]
+    ImmutableScalarArray2D: typing.Type[ImmutableScalarArray2D]
+    ImmutableValue: typing.Type[ImmutableValue]
+    Indexed: typing.Type[Indexed]
+    Interpolable: typing.Type[Interpolable]
+    Interval: typing.Type[Interval]
+    MathFunction: typing.Type[MathFunction]
+    Operations: typing.Type[Operations]
+    ParabolicSplineFunction: typing.Type[ParabolicSplineFunction]
+    Point: typing.Type[Point]
+    Polynomial: typing.Type[Polynomial]
+    Scalar: typing.Type[Scalar]
+    ScalarArray: typing.Type[ScalarArray]
+    ScalarArray2D: typing.Type[ScalarArray2D]
+    ScalarArrays: typing.Type[ScalarArrays]
+    Type: typing.Type[Type]
+    Typed: typing.Type[Typed]
+    Value: typing.Type[Value]
+    ValueDescriptor: typing.Type[ValueDescriptor]
+    ValueFactory: typing.Type[ValueFactory]
+    Values: typing.Type[Values]
+    expression: cern.accsoft.commons.value.expression.__module_protocol__
+    operation: cern.accsoft.commons.value.operation.__module_protocol__
+    spi: cern.accsoft.commons.value.spi.__module_protocol__

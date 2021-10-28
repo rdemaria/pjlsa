@@ -1,7 +1,70 @@
+import java.io
 import typing
 
 
+
+class ClientInformation(java.io.Serializable):
+    """
+    Java class 'cern.accsoft.commons.util.userinfo.ClientInformation'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
+    @staticmethod
+    def builder() -> 'ClientInformation.ClientInformationBuilder': ...
+    def equals(self, object: typing.Any) -> bool: ...
+    def getApplication(self) -> str: ...
+    def getHostname(self) -> str: ...
+    def getUser(self) -> str: ...
+    def getVersion(self) -> str: ...
+    def hashCode(self) -> int: ...
+    def prettyPrint(self) -> str: ...
+    def toString(self) -> str: ...
+    def withApplication(self, string: str) -> 'ClientInformation': ...
+    def withUser(self, string: str) -> 'ClientInformation': ...
+    class ClientInformationBuilder:
+        """
+        Java class 'cern.accsoft.commons.util.userinfo.ClientInformation$ClientInformationBuilder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
+        def application(self, string: str) -> 'ClientInformation.ClientInformationBuilder': ...
+        def build(self) -> 'ClientInformation': ...
+        def hostname(self, string: str) -> 'ClientInformation.ClientInformationBuilder': ...
+        def user(self, string: str) -> 'ClientInformation.ClientInformationBuilder': ...
+        def version(self, string: str) -> 'ClientInformation.ClientInformationBuilder': ...
+
+class ClientInformationHolder:
+    """
+    Java class 'cern.accsoft.commons.util.userinfo.ClientInformationHolder'
+    
+    """
+    def getClientInformationOrDefault(self) -> ClientInformation: ...
+    @staticmethod
+    def getInstance() -> 'ClientInformationHolder': ...
+    def isClientInformationPresent(self) -> bool: ...
+    def setClientInformation(self, clientInformation: ClientInformation) -> None: ...
+
 class Constants:
+    """
+    Java class 'cern.accsoft.commons.util.userinfo.Constants'
+    
+      Attributes:
+        OUT_ENCODING (java.lang.String): final static field
+        TRUST_PASSWD (java.lang.String): final static field
+        TRUSTSTORE_TYPE (java.lang.String): final static field
+        IS_WINDOWS (boolean): final static field
+        DATA_PATH (java.lang.String): final static field
+        DATA_URL (java.lang.String): final static field
+        CONNECT_TIMEOUT (int): final static field
+    
+    """
     OUT_ENCODING: typing.ClassVar[str] = ...
     TRUST_PASSWD: typing.ClassVar[str] = ...
     TRUSTSTORE_TYPE: typing.ClassVar[str] = ...
@@ -11,6 +74,16 @@ class Constants:
     CONNECT_TIMEOUT: typing.ClassVar[int] = ...
 
 class NiceUser:
+    """
+    Java class 'cern.accsoft.commons.util.userinfo.NiceUser'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * NiceUser(int, int, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+    
+    """
     def __init__(self, int: int, int2: int, string: str, string2: str, string3: str, string4: str, string5: str, string6: str, string7: str, string8: str): ...
     def equals(self, object: typing.Any) -> bool: ...
     def getCCID(self) -> int: ...
@@ -25,3 +98,12 @@ class NiceUser:
     def getRespCCID(self) -> int: ...
     def hashCode(self) -> int: ...
     def toString(self) -> str: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.accsoft.commons.util.userinfo")``.
+
+    ClientInformation: typing.Type[ClientInformation]
+    ClientInformationHolder: typing.Type[ClientInformationHolder]
+    Constants: typing.Type[Constants]
+    NiceUser: typing.Type[NiceUser]

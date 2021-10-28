@@ -13,7 +13,18 @@ import java.util
 import typing
 
 
+
 class DriveResultsTestUtils:
+    """
+    Java class 'cern.lsa.domain.settings.spi.test.DriveResultsTestUtils'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * DriveResultsTestUtils()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def countJapcParameterDriveResults(driveResult: cern.lsa.domain.exploitation.DriveResult) -> int: ...
@@ -45,6 +56,72 @@ class DriveResultsTestUtils:
     def createSuccessfulJapcParameterDriveResults(int: int) -> java.util.Set[cern.lsa.domain.exploitation.spi.results.JapcParameterDriveResult]: ...
 
 class SettingsDomainUtils:
+    """
+    Java class 'cern.lsa.domain.settings.spi.test.SettingsDomainUtils'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * SettingsDomainUtils()
+    
+      Attributes:
+        BP_LENGTH (int): final static field
+        CONTEXT_CATEGORY_OPERATIONAL (java.lang.String): final static field
+        FUNC_0_0 (cern.accsoft.commons.value.ImmutableDiscreteFunction): final static field
+        FUNC_0_1 (cern.accsoft.commons.value.ImmutableDiscreteFunction): final static field
+        FUNC_1_0 (cern.accsoft.commons.value.ImmutableDiscreteFunction): final static field
+        FUNC_1_1 (cern.accsoft.commons.value.ImmutableDiscreteFunction): final static field
+        FUNC_1_2 (cern.accsoft.commons.value.ImmutableDiscreteFunction): final static field
+        FUNC_2_1 (cern.accsoft.commons.value.ImmutableDiscreteFunction): final static field
+        FUNC_2_2 (cern.accsoft.commons.value.ImmutableDiscreteFunction): final static field
+        FUNC_2_3 (cern.accsoft.commons.value.ImmutableDiscreteFunction): final static field
+        FUNC_3_3 (cern.accsoft.commons.value.ImmutableDiscreteFunction): final static field
+        FUNC_4_4 (cern.accsoft.commons.value.ImmutableDiscreteFunction): final static field
+        FUNC_5_5 (cern.accsoft.commons.value.ImmutableDiscreteFunction): final static field
+        FUNC_6_6 (cern.accsoft.commons.value.ImmutableDiscreteFunction): final static field
+        FUNC_0_1_0 (cern.accsoft.commons.value.ImmutableDiscreteFunction): final static field
+        SCALAR_0 (cern.accsoft.commons.value.ImmutableScalar): final static field
+        SCALAR_1 (cern.accsoft.commons.value.ImmutableScalar): final static field
+        SCALAR_2 (cern.accsoft.commons.value.ImmutableScalar): final static field
+        SCALAR_3 (cern.accsoft.commons.value.ImmutableScalar): final static field
+        SCALAR_4 (cern.accsoft.commons.value.ImmutableScalar): final static field
+        SCALAR_5 (cern.accsoft.commons.value.ImmutableScalar): final static field
+        PARAMETER_TYPE_FUNCTION (cern.lsa.domain.settings.spi.test.SettingsDomainUtils$ParameterTypeStub): final static field
+        PARAMETER_TYPE_FUNCTION_LIST (cern.lsa.domain.settings.spi.test.SettingsDomainUtils$ParameterTypeStub): final static field
+        PARAMETER_TYPE_FUNCTIONS_ARRAY (cern.lsa.domain.settings.spi.test.SettingsDomainUtils$ParameterTypeStub): final static field
+        PARAMETER_TYPE_DOUBLE (cern.lsa.domain.settings.spi.test.SettingsDomainUtils$ParameterTypeStub): final static field
+        PARAMETER_TYPE_DOUBLE_ARRAY (cern.lsa.domain.settings.spi.test.SettingsDomainUtils$ParameterTypeStub): final static field
+        PARAMETER_TYPE_SHORT_ARRAY (cern.lsa.domain.settings.spi.test.SettingsDomainUtils$ParameterTypeStub): final static field
+        PARAMETER_TYPE_NON_MUX (cern.lsa.domain.settings.spi.test.SettingsDomainUtils$ParameterTypeStub): final static field
+        PARAMETER_FUNCTION (cern.lsa.domain.settings.Parameter): final static field
+        PARAMETER_DOUBLE (cern.lsa.domain.settings.Parameter): final static field
+        PARAMETER_DOUBLE_ARRAY (cern.lsa.domain.settings.Parameter): final static field
+        PARAMETER_DOUBLE_FUNC_BP (cern.lsa.domain.settings.Parameter): final static field
+        PARAMETER_DOUBLE_ARRAY_FUNC_BP (cern.lsa.domain.settings.Parameter): final static field
+        PARAMETER_SHORT_ARRAY (cern.lsa.domain.settings.Parameter): final static field
+        BP_STAND_ALONE_DISCRETE (cern.lsa.domain.settings.StandAloneBeamProcess): final static field
+        BP_STAND_ALONE_DISCRETE_ARCHIVED (cern.lsa.domain.settings.StandAloneBeamProcess): final static field
+        BP_STAND_ALONE_FUNCTION (cern.lsa.domain.settings.StandAloneBeamProcess): final static field
+        BP_STAND_ALONE_ACTUAL (cern.lsa.domain.settings.StandAloneBeamProcess): final static field
+        BP_SPSRING_FUNCTION_INJ (cern.lsa.domain.settings.spi.BeamProcessImpl): final static field
+        BP_SPSRING_FUNCTION_RAMP (cern.lsa.domain.settings.spi.BeamProcessImpl): final static field
+        BP_SPSRING_FUNCTION_FTOP (cern.lsa.domain.settings.spi.BeamProcessImpl): final static field
+        BP_SPSRING_FUNCTION_BEAM_OUT (cern.lsa.domain.settings.spi.BeamProcessImpl): final static field
+        BP_SPSRING_DISCRETE (cern.lsa.domain.settings.spi.BeamProcessImpl): final static field
+        BP_SPS_CNGS_FUNCTION_BEAM_IN (cern.lsa.domain.settings.spi.BeamProcessImpl): final static field
+        BP_SPS_CNGS_FUNCTION_BEAM_OUT (cern.lsa.domain.settings.spi.BeamProcessImpl): final static field
+        BP_SPS_INJ_FUNCTION_BEAM_IN (cern.lsa.domain.settings.spi.BeamProcessImpl): final static field
+        BP_SPS_INJ_FUNCTION_BEAM_OUT (cern.lsa.domain.settings.spi.BeamProcessImpl): final static field
+        CYCLE_SPS (cern.lsa.domain.settings.spi.StandAloneCycleImpl): final static field
+        BP_PSRING_FUNCTION (cern.lsa.domain.settings.spi.BeamProcessImpl): final static field
+        BP_PSRING_DISCRETE (cern.lsa.domain.settings.spi.BeamProcessImpl): final static field
+        BP_PS_INJ_FUNCTION (cern.lsa.domain.settings.spi.BeamProcessImpl): final static field
+        CYCLE_PS (cern.lsa.domain.settings.spi.StandAloneCycleImpl): final static field
+        BP_PS_NON_MULTIPLEXED (cern.lsa.domain.settings.spi.BeamProcessImpl): final static field
+        CYCLE_PS_NON_MULTIPLEXED (cern.lsa.domain.settings.spi.StandAloneCycleImpl): final static field
+    
+    """
     BP_LENGTH: typing.ClassVar[int] = ...
     CONTEXT_CATEGORY_OPERATIONAL: typing.ClassVar[str] = ...
     FUNC_0_0: typing.ClassVar[cern.accsoft.commons.value.ImmutableDiscreteFunction] = ...
@@ -223,3 +300,10 @@ class SettingsDomainUtils:
     @staticmethod
     def standAloneCycle(string: str, int: int, beamProcessImplArray: typing.List[cern.lsa.domain.settings.spi.BeamProcessImpl]) -> cern.lsa.domain.settings.spi.StandAloneCycleImpl: ...
     class ParameterTypeStub: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.settings.spi.test")``.
+
+    DriveResultsTestUtils: typing.Type[DriveResultsTestUtils]
+    SettingsDomainUtils: typing.Type[SettingsDomainUtils]

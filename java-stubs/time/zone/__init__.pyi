@@ -6,7 +6,18 @@ import java.util
 import typing
 
 
+
 class ZoneOffsetTransition(java.lang.Comparable['ZoneOffsetTransition'], java.io.Serializable):
+    """
+    Java class 'java.time.zone.ZoneOffsetTransition'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.Comparable, java.io.Serializable
+    
+    """
     def compareTo(self, zoneOffsetTransition: 'ZoneOffsetTransition') -> int: ...
     def equals(self, object: typing.Any) -> bool: ...
     def getDateTimeAfter(self) -> java.time.LocalDateTime: ...
@@ -25,6 +36,16 @@ class ZoneOffsetTransition(java.lang.Comparable['ZoneOffsetTransition'], java.io
     def toString(self) -> str: ...
 
 class ZoneOffsetTransitionRule(java.io.Serializable):
+    """
+    Java class 'java.time.zone.ZoneOffsetTransitionRule'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     def createTransition(self, int: int) -> ZoneOffsetTransition: ...
     def equals(self, object: typing.Any) -> bool: ...
     def getDayOfMonthIndicator(self) -> int: ...
@@ -41,6 +62,18 @@ class ZoneOffsetTransitionRule(java.io.Serializable):
     def of(month: java.time.Month, int: int, dayOfWeek: java.time.DayOfWeek, localTime: java.time.LocalTime, boolean: bool, timeDefinition: 'ZoneOffsetTransitionRule.TimeDefinition', zoneOffset: java.time.ZoneOffset, zoneOffset2: java.time.ZoneOffset, zoneOffset3: java.time.ZoneOffset) -> 'ZoneOffsetTransitionRule': ...
     def toString(self) -> str: ...
     class TimeDefinition(java.lang.Enum['ZoneOffsetTransitionRule.TimeDefinition']):
+        """
+        Java class 'java.time.zone.ZoneOffsetTransitionRule$TimeDefinition'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            UTC (java.time.zone.ZoneOffsetTransitionRule$TimeDefinition): final static enum constant
+            WALL (java.time.zone.ZoneOffsetTransitionRule$TimeDefinition): final static enum constant
+            STANDARD (java.time.zone.ZoneOffsetTransitionRule$TimeDefinition): final static enum constant
+        
+        """
         UTC: typing.ClassVar['ZoneOffsetTransitionRule.TimeDefinition'] = ...
         WALL: typing.ClassVar['ZoneOffsetTransitionRule.TimeDefinition'] = ...
         STANDARD: typing.ClassVar['ZoneOffsetTransitionRule.TimeDefinition'] = ...
@@ -56,6 +89,16 @@ class ZoneOffsetTransitionRule(java.io.Serializable):
         def values() -> typing.List['ZoneOffsetTransitionRule.TimeDefinition']: ...
 
 class ZoneRules(java.io.Serializable):
+    """
+    Java class 'java.time.zone.ZoneRules'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     def equals(self, object: typing.Any) -> bool: ...
     def getDaylightSavings(self, instant: typing.Union[java.time.Instant, datetime.datetime]) -> java.time.Duration: ...
     @typing.overload
@@ -82,12 +125,30 @@ class ZoneRules(java.io.Serializable):
     def toString(self) -> str: ...
 
 class ZoneRulesException(java.time.DateTimeException):
+    """
+    Java class 'java.time.zone.ZoneRulesException'
+    
+        Extends:
+            java.time.DateTimeException
+    
+      Constructors:
+        * ZoneRulesException(java.lang.String)
+        * ZoneRulesException(java.lang.String, java.lang.Throwable)
+    
+    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
     def __init__(self, string: str, throwable: java.lang.Throwable): ...
 
 class ZoneRulesProvider:
+    """
+    Java class 'java.time.zone.ZoneRulesProvider'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def getAvailableZoneIds() -> java.util.Set[str]: ...
     @staticmethod
@@ -98,3 +159,13 @@ class ZoneRulesProvider:
     def refresh() -> bool: ...
     @staticmethod
     def registerProvider(zoneRulesProvider: 'ZoneRulesProvider') -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.time.zone")``.
+
+    ZoneOffsetTransition: typing.Type[ZoneOffsetTransition]
+    ZoneOffsetTransitionRule: typing.Type[ZoneOffsetTransitionRule]
+    ZoneRules: typing.Type[ZoneRules]
+    ZoneRulesException: typing.Type[ZoneRulesException]
+    ZoneRulesProvider: typing.Type[ZoneRulesProvider]

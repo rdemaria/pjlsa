@@ -5,9 +5,14 @@ import java.util.concurrent
 import typing
 
 
+
 class AbstractOwnableSynchronizer(java.io.Serializable): ...
 
 class Condition:
+    """
+    Java class 'java.util.concurrent.locks.Condition'
+    
+    """
     def awaitNanos(self, long: int) -> int: ...
     def awaitUninterruptibly(self) -> None: ...
     def awaitUntil(self, date: java.util.Date) -> bool: ...
@@ -15,6 +20,10 @@ class Condition:
     def signalAll(self) -> None: ...
 
 class Lock:
+    """
+    Java class 'java.util.concurrent.locks.Lock'
+    
+    """
     def lock(self) -> None: ...
     def lockInterruptibly(self) -> None: ...
     def newCondition(self) -> Condition: ...
@@ -25,6 +34,13 @@ class Lock:
     def unlock(self) -> None: ...
 
 class LockSupport:
+    """
+    Java class 'java.util.concurrent.locks.LockSupport'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def getBlocker(thread: java.lang.Thread) -> typing.Any: ...
     @typing.overload
@@ -49,10 +65,27 @@ class LockSupport:
     def unpark(thread: java.lang.Thread) -> None: ...
 
 class ReadWriteLock:
+    """
+    Java class 'java.util.concurrent.locks.ReadWriteLock'
+    
+    """
     def readLock(self) -> Lock: ...
     def writeLock(self) -> Lock: ...
 
 class StampedLock(java.io.Serializable):
+    """
+    Java class 'java.util.concurrent.locks.StampedLock'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * StampedLock()
+    
+    """
     def __init__(self): ...
     def asReadLock(self) -> Lock: ...
     def asReadWriteLock(self) -> ReadWriteLock: ...
@@ -93,6 +126,16 @@ class StampedLock(java.io.Serializable):
     def writeLockInterruptibly(self) -> int: ...
 
 class AbstractQueuedLongSynchronizer(AbstractOwnableSynchronizer, java.io.Serializable):
+    """
+    Java class 'java.util.concurrent.locks.AbstractQueuedLongSynchronizer'
+    
+        Extends:
+            java.util.concurrent.locks.AbstractOwnableSynchronizer
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     def acquire(self, long: int) -> None: ...
     def acquireInterruptibly(self, long: int) -> None: ...
     def acquireShared(self, long: int) -> None: ...
@@ -116,6 +159,19 @@ class AbstractQueuedLongSynchronizer(AbstractOwnableSynchronizer, java.io.Serial
     def tryAcquireNanos(self, long: int, long2: int) -> bool: ...
     def tryAcquireSharedNanos(self, long: int, long2: int) -> bool: ...
     class ConditionObject(Condition, java.io.Serializable):
+        """
+        Java class 'java.util.concurrent.locks.AbstractQueuedLongSynchronizer$ConditionObject'
+        
+            Extends:
+                java.lang.Object
+        
+            Interfaces:
+                java.util.concurrent.locks.Condition, java.io.Serializable
+        
+          Constructors:
+            * ConditionObject(java.util.concurrent.locks.AbstractQueuedLongSynchronizer)
+        
+        """
         def __init__(self, abstractQueuedLongSynchronizer: 'AbstractQueuedLongSynchronizer'): ...
         def awaitNanos(self, long: int) -> int: ...
         def awaitUninterruptibly(self) -> None: ...
@@ -124,6 +180,16 @@ class AbstractQueuedLongSynchronizer(AbstractOwnableSynchronizer, java.io.Serial
         def signalAll(self) -> None: ...
 
 class AbstractQueuedSynchronizer(AbstractOwnableSynchronizer, java.io.Serializable):
+    """
+    Java class 'java.util.concurrent.locks.AbstractQueuedSynchronizer'
+    
+        Extends:
+            java.util.concurrent.locks.AbstractOwnableSynchronizer
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     def acquire(self, int: int) -> None: ...
     def acquireInterruptibly(self, int: int) -> None: ...
     def acquireShared(self, int: int) -> None: ...
@@ -147,6 +213,19 @@ class AbstractQueuedSynchronizer(AbstractOwnableSynchronizer, java.io.Serializab
     def tryAcquireNanos(self, int: int, long: int) -> bool: ...
     def tryAcquireSharedNanos(self, int: int, long: int) -> bool: ...
     class ConditionObject(Condition, java.io.Serializable):
+        """
+        Java class 'java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject'
+        
+            Extends:
+                java.lang.Object
+        
+            Interfaces:
+                java.util.concurrent.locks.Condition, java.io.Serializable
+        
+          Constructors:
+            * ConditionObject(java.util.concurrent.locks.AbstractQueuedSynchronizer)
+        
+        """
         def __init__(self, abstractQueuedSynchronizer: 'AbstractQueuedSynchronizer'): ...
         def awaitNanos(self, long: int) -> int: ...
         def awaitUninterruptibly(self) -> None: ...
@@ -155,6 +234,20 @@ class AbstractQueuedSynchronizer(AbstractOwnableSynchronizer, java.io.Serializab
         def signalAll(self) -> None: ...
 
 class ReentrantLock(Lock, java.io.Serializable):
+    """
+    Java class 'java.util.concurrent.locks.ReentrantLock'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.concurrent.locks.Lock, java.io.Serializable
+    
+      Constructors:
+        * ReentrantLock()
+        * ReentrantLock(boolean)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -179,6 +272,20 @@ class ReentrantLock(Lock, java.io.Serializable):
     def unlock(self) -> None: ...
 
 class ReentrantReadWriteLock(ReadWriteLock, java.io.Serializable):
+    """
+    Java class 'java.util.concurrent.locks.ReentrantReadWriteLock'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.concurrent.locks.ReadWriteLock, java.io.Serializable
+    
+      Constructors:
+        * ReentrantReadWriteLock()
+        * ReentrantReadWriteLock(boolean)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -198,6 +305,16 @@ class ReentrantReadWriteLock(ReadWriteLock, java.io.Serializable):
     def toString(self) -> str: ...
     def writeLock(self) -> 'ReentrantReadWriteLock.WriteLock': ...
     class ReadLock(Lock, java.io.Serializable):
+        """
+        Java class 'java.util.concurrent.locks.ReentrantReadWriteLock$ReadLock'
+        
+            Extends:
+                java.lang.Object
+        
+            Interfaces:
+                java.util.concurrent.locks.Lock, java.io.Serializable
+        
+        """
         def lock(self) -> None: ...
         def lockInterruptibly(self) -> None: ...
         def newCondition(self) -> Condition: ...
@@ -208,6 +325,16 @@ class ReentrantReadWriteLock(ReadWriteLock, java.io.Serializable):
         def tryLock(self, long: int, timeUnit: java.util.concurrent.TimeUnit) -> bool: ...
         def unlock(self) -> None: ...
     class WriteLock(Lock, java.io.Serializable):
+        """
+        Java class 'java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock'
+        
+            Extends:
+                java.lang.Object
+        
+            Interfaces:
+                java.util.concurrent.locks.Lock, java.io.Serializable
+        
+        """
         def getHoldCount(self) -> int: ...
         def isHeldByCurrentThread(self) -> bool: ...
         def lock(self) -> None: ...
@@ -219,3 +346,18 @@ class ReentrantReadWriteLock(ReadWriteLock, java.io.Serializable):
         @typing.overload
         def tryLock(self, long: int, timeUnit: java.util.concurrent.TimeUnit) -> bool: ...
         def unlock(self) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.util.concurrent.locks")``.
+
+    AbstractOwnableSynchronizer: typing.Type[AbstractOwnableSynchronizer]
+    AbstractQueuedLongSynchronizer: typing.Type[AbstractQueuedLongSynchronizer]
+    AbstractQueuedSynchronizer: typing.Type[AbstractQueuedSynchronizer]
+    Condition: typing.Type[Condition]
+    Lock: typing.Type[Lock]
+    LockSupport: typing.Type[LockSupport]
+    ReadWriteLock: typing.Type[ReadWriteLock]
+    ReentrantLock: typing.Type[ReentrantLock]
+    ReentrantReadWriteLock: typing.Type[ReentrantReadWriteLock]
+    StampedLock: typing.Type[StampedLock]

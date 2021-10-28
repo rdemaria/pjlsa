@@ -5,12 +5,44 @@ import java.util.concurrent
 import typing
 
 
+
 class FanoutParameterValueListener(cern.japc.core.ParameterValueListener):
+    """
+    Java class 'cern.japc.core.spi.util.FanoutParameterValueListener'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.ParameterValueListener
+    
+      Constructors:
+        * FanoutParameterValueListener(java.util.Collection)
+    
+    """
     def __init__(self, collection: typing.Union[java.util.Collection[cern.japc.core.ParameterValueListener], typing.Sequence[cern.japc.core.ParameterValueListener]]): ...
     def exceptionOccured(self, string: str, string2: str, parameterException: cern.japc.core.ParameterException) -> None: ...
     def valueReceived(self, string: str, acquiredParameterValue: cern.japc.core.AcquiredParameterValue) -> None: ...
 
 class JapcExecutor:
+    """
+    Java class 'cern.japc.core.spi.util.JapcExecutor'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        SYSPROP_MAXTHREADS (java.lang.String): final static field
+        SYSPROP_BLOCKSTRAT (java.lang.String): final static field
+        SYSPROP_BUFSIZE (java.lang.String): final static field
+        SYSPROP_INSTRUMENTATION_DISABLED (java.lang.String): final static field
+        SYSPROP_INSTRUMENTATION_INTERVAL_SEC (java.lang.String): final static field
+        SYSPROP_SCHEDULED_THREADS (java.lang.String): final static field
+        BS_ABORT (java.lang.String): final static field
+        BS_WAIT (java.lang.String): final static field
+        BS_DISCARD (java.lang.String): final static field
+    
+    """
     SYSPROP_MAXTHREADS: typing.ClassVar[str] = ...
     SYSPROP_BLOCKSTRAT: typing.ClassVar[str] = ...
     SYSPROP_BUFSIZE: typing.ClassVar[str] = ...
@@ -32,6 +64,10 @@ class JapcExecutor:
     @staticmethod
     def getScheduledExecutor() -> java.util.concurrent.ScheduledExecutorService: ...
     class JmxMBean:
+        """
+        Java class 'cern.japc.core.spi.util.JapcExecutor$JmxMBean'
+        
+        """
         def getActiveThreadNumber(self) -> int: ...
         def getCurrentBufferSize(self) -> int: ...
         def getCurrentThreadPoolSize(self) -> int: ...
@@ -47,6 +83,19 @@ class JapcExecutor:
 _MultiValueMap__K = typing.TypeVar('_MultiValueMap__K')  # <K>
 _MultiValueMap__V = typing.TypeVar('_MultiValueMap__V')  # <V>
 class MultiValueMap(typing.Generic[_MultiValueMap__K, _MultiValueMap__V]):
+    """
+    Java class 'cern.japc.core.spi.util.MultiValueMap'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * MultiValueMap(int, java.lang.Class)
+        * MultiValueMap(int)
+        * MultiValueMap(java.lang.Class)
+        * MultiValueMap()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -74,6 +123,19 @@ class MultiValueMap(typing.Generic[_MultiValueMap__K, _MultiValueMap__V]):
     def toString(self) -> str: ...
 
 class SwingThreadParameterValueListener(cern.japc.core.ParameterValueListener):
+    """
+    Java class 'cern.japc.core.spi.util.SwingThreadParameterValueListener'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.ParameterValueListener
+    
+      Constructors:
+        * SwingThreadParameterValueListener()
+    
+    """
     def __init__(self): ...
     def exceptionOccured(self, string: str, string2: str, parameterException: cern.japc.core.ParameterException) -> None: ...
     def valueReceived(self, string: str, acquiredParameterValue: cern.japc.core.AcquiredParameterValue) -> None: ...
@@ -81,6 +143,17 @@ class SwingThreadParameterValueListener(cern.japc.core.ParameterValueListener):
 _SynchronizedMultiValueMap__K = typing.TypeVar('_SynchronizedMultiValueMap__K')  # <K>
 _SynchronizedMultiValueMap__V = typing.TypeVar('_SynchronizedMultiValueMap__V')  # <V>
 class SynchronizedMultiValueMap(typing.Generic[_SynchronizedMultiValueMap__K, _SynchronizedMultiValueMap__V]):
+    """
+    Java class 'cern.japc.core.spi.util.SynchronizedMultiValueMap'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * SynchronizedMultiValueMap()
+        * SynchronizedMultiValueMap(int)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -102,6 +175,20 @@ class SynchronizedMultiValueMap(typing.Generic[_SynchronizedMultiValueMap__K, _S
     def toString(self) -> str: ...
 
 class ThreadedParameterValueListener(cern.japc.core.ParameterValueListener):
+    """
+    Java class 'cern.japc.core.spi.util.ThreadedParameterValueListener'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.ParameterValueListener
+    
+      Constructors:
+        * ThreadedParameterValueListener(cern.japc.core.spi.util.JapcExecutor, cern.japc.core.ParameterValueListener)
+        * ThreadedParameterValueListener(cern.japc.core.ParameterValueListener)
+    
+    """
     @typing.overload
     def __init__(self, parameterValueListener: cern.japc.core.ParameterValueListener): ...
     @typing.overload
@@ -109,10 +196,39 @@ class ThreadedParameterValueListener(cern.japc.core.ParameterValueListener):
     def exceptionOccured(self, string: str, string2: str, parameterException: cern.japc.core.ParameterException) -> None: ...
     def valueReceived(self, string: str, acquiredParameterValue: cern.japc.core.AcquiredParameterValue) -> None: ...
     class ValueReceivedCommand(java.lang.Runnable):
+        """
+        Java class 'cern.japc.core.spi.util.ThreadedParameterValueListener$ValueReceivedCommand'
+        
+            Extends:
+                java.lang.Object
+        
+            Interfaces:
+                java.lang.Runnable
+        
+        """
         def getValue(self) -> cern.japc.core.AcquiredParameterValue: ...
         def run(self) -> None: ...
         def toString(self) -> str: ...
 
 class TimeUtils:
+    """
+    Java class 'cern.japc.core.spi.util.TimeUtils'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def currentTimeNanos() -> int: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.japc.core.spi.util")``.
+
+    FanoutParameterValueListener: typing.Type[FanoutParameterValueListener]
+    JapcExecutor: typing.Type[JapcExecutor]
+    MultiValueMap: typing.Type[MultiValueMap]
+    SwingThreadParameterValueListener: typing.Type[SwingThreadParameterValueListener]
+    SynchronizedMultiValueMap: typing.Type[SynchronizedMultiValueMap]
+    ThreadedParameterValueListener: typing.Type[ThreadedParameterValueListener]
+    TimeUtils: typing.Type[TimeUtils]

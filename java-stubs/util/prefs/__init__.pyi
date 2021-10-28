@@ -4,13 +4,37 @@ import java.util
 import typing
 
 
+
 class BackingStoreException(java.lang.Exception):
+    """
+    Java class 'java.util.prefs.BackingStoreException'
+    
+        Extends:
+            java.lang.Exception
+    
+      Constructors:
+        * BackingStoreException(java.lang.String)
+        * BackingStoreException(java.lang.Throwable)
+    
+    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class InvalidPreferencesFormatException(java.lang.Exception):
+    """
+    Java class 'java.util.prefs.InvalidPreferencesFormatException'
+    
+        Extends:
+            java.lang.Exception
+    
+      Constructors:
+        * InvalidPreferencesFormatException(java.lang.Throwable)
+        * InvalidPreferencesFormatException(java.lang.String)
+        * InvalidPreferencesFormatException(java.lang.String, java.lang.Throwable)
+    
+    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
@@ -19,24 +43,70 @@ class InvalidPreferencesFormatException(java.lang.Exception):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class NodeChangeEvent(java.util.EventObject):
+    """
+    Java class 'java.util.prefs.NodeChangeEvent'
+    
+        Extends:
+            java.util.EventObject
+    
+      Constructors:
+        * NodeChangeEvent(java.util.prefs.Preferences, java.util.prefs.Preferences)
+    
+    """
     def __init__(self, preferences: 'Preferences', preferences2: 'Preferences'): ...
     def getChild(self) -> 'Preferences': ...
     def getParent(self) -> 'Preferences': ...
 
 class NodeChangeListener(java.util.EventListener):
+    """
+    Java class 'java.util.prefs.NodeChangeListener'
+    
+        Interfaces:
+            java.util.EventListener
+    
+    """
     def childAdded(self, nodeChangeEvent: NodeChangeEvent) -> None: ...
     def childRemoved(self, nodeChangeEvent: NodeChangeEvent) -> None: ...
 
 class PreferenceChangeEvent(java.util.EventObject):
+    """
+    Java class 'java.util.prefs.PreferenceChangeEvent'
+    
+        Extends:
+            java.util.EventObject
+    
+      Constructors:
+        * PreferenceChangeEvent(java.util.prefs.Preferences, java.lang.String, java.lang.String)
+    
+    """
     def __init__(self, preferences: 'Preferences', string: str, string2: str): ...
     def getKey(self) -> str: ...
     def getNewValue(self) -> str: ...
     def getNode(self) -> 'Preferences': ...
 
 class PreferenceChangeListener(java.util.EventListener):
+    """
+    Java class 'java.util.prefs.PreferenceChangeListener'
+    
+        Interfaces:
+            java.util.EventListener
+    
+    """
     def preferenceChange(self, preferenceChangeEvent: PreferenceChangeEvent) -> None: ...
 
 class Preferences:
+    """
+    Java class 'java.util.prefs.Preferences'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        MAX_KEY_LENGTH (int): final static field
+        MAX_VALUE_LENGTH (int): final static field
+        MAX_NAME_LENGTH (int): final static field
+    
+    """
     MAX_KEY_LENGTH: typing.ClassVar[int] = ...
     MAX_VALUE_LENGTH: typing.ClassVar[int] = ...
     MAX_NAME_LENGTH: typing.ClassVar[int] = ...
@@ -86,10 +156,21 @@ class Preferences:
     def userRoot() -> 'Preferences': ...
 
 class PreferencesFactory:
+    """
+    Java class 'java.util.prefs.PreferencesFactory'
+    
+    """
     def systemRoot(self) -> Preferences: ...
     def userRoot(self) -> Preferences: ...
 
 class AbstractPreferences(Preferences):
+    """
+    Java class 'java.util.prefs.AbstractPreferences'
+    
+        Extends:
+            java.util.prefs.Preferences
+    
+    """
     def absolutePath(self) -> str: ...
     def addNodeChangeListener(self, nodeChangeListener: NodeChangeListener) -> None: ...
     def addPreferenceChangeListener(self, preferenceChangeListener: typing.Union[PreferenceChangeListener, typing.Callable]) -> None: ...
@@ -124,3 +205,17 @@ class AbstractPreferences(Preferences):
     def removePreferenceChangeListener(self, preferenceChangeListener: typing.Union[PreferenceChangeListener, typing.Callable]) -> None: ...
     def sync(self) -> None: ...
     def toString(self) -> str: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.util.prefs")``.
+
+    AbstractPreferences: typing.Type[AbstractPreferences]
+    BackingStoreException: typing.Type[BackingStoreException]
+    InvalidPreferencesFormatException: typing.Type[InvalidPreferencesFormatException]
+    NodeChangeEvent: typing.Type[NodeChangeEvent]
+    NodeChangeListener: typing.Type[NodeChangeListener]
+    PreferenceChangeEvent: typing.Type[PreferenceChangeEvent]
+    PreferenceChangeListener: typing.Type[PreferenceChangeListener]
+    Preferences: typing.Type[Preferences]
+    PreferencesFactory: typing.Type[PreferencesFactory]

@@ -5,7 +5,38 @@ import java.lang
 import typing
 
 
+
 class AffineTransform(java.lang.Cloneable, java.io.Serializable):
+    """
+    Java class 'java.awt.geom.AffineTransform'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.Cloneable, java.io.Serializable
+    
+      Constructors:
+        * AffineTransform(float, float, float, float, float, float)
+        * AffineTransform(float[])
+        * AffineTransform(double, double, double, double, double, double)
+        * AffineTransform(double[])
+        * AffineTransform()
+        * AffineTransform(java.awt.geom.AffineTransform)
+    
+      Attributes:
+        TYPE_IDENTITY (int): final static field
+        TYPE_TRANSLATION (int): final static field
+        TYPE_UNIFORM_SCALE (int): final static field
+        TYPE_GENERAL_SCALE (int): final static field
+        TYPE_MASK_SCALE (int): final static field
+        TYPE_FLIP (int): final static field
+        TYPE_QUADRANT_ROTATION (int): final static field
+        TYPE_GENERAL_ROTATION (int): final static field
+        TYPE_MASK_ROTATION (int): final static field
+        TYPE_GENERAL_TRANSFORM (int): final static field
+    
+    """
     TYPE_IDENTITY: typing.ClassVar[int] = ...
     TYPE_TRANSLATION: typing.ClassVar[int] = ...
     TYPE_UNIFORM_SCALE: typing.ClassVar[int] = ...
@@ -128,6 +159,20 @@ class AffineTransform(java.lang.Cloneable, java.io.Serializable):
     def translate(self, double: float, double2: float) -> None: ...
 
 class Area(java.awt.Shape, java.lang.Cloneable):
+    """
+    Java class 'java.awt.geom.Area'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.Shape, java.lang.Cloneable
+    
+      Constructors:
+        * Area()
+        * Area(java.awt.Shape)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -168,6 +213,16 @@ class Area(java.awt.Shape, java.lang.Cloneable):
     def transform(self, affineTransform: AffineTransform) -> None: ...
 
 class Dimension2D(java.lang.Cloneable):
+    """
+    Java class 'java.awt.geom.Dimension2D'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.Cloneable
+    
+    """
     def clone(self) -> typing.Any: ...
     def getHeight(self) -> float: ...
     def getWidth(self) -> float: ...
@@ -177,15 +232,49 @@ class Dimension2D(java.lang.Cloneable):
     def setSize(self, dimension2D: 'Dimension2D') -> None: ...
 
 class IllegalPathStateException(java.lang.RuntimeException):
+    """
+    Java class 'java.awt.geom.IllegalPathStateException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * IllegalPathStateException()
+        * IllegalPathStateException(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class NoninvertibleTransformException(java.lang.Exception):
+    """
+    Java class 'java.awt.geom.NoninvertibleTransformException'
+    
+        Extends:
+            java.lang.Exception
+    
+      Constructors:
+        * NoninvertibleTransformException(java.lang.String)
+    
+    """
     def __init__(self, string: str): ...
 
 class PathIterator:
+    """
+    Java class 'java.awt.geom.PathIterator'
+    
+      Attributes:
+        WIND_EVEN_ODD (int): final static field
+        WIND_NON_ZERO (int): final static field
+        SEG_MOVETO (int): final static field
+        SEG_LINETO (int): final static field
+        SEG_QUADTO (int): final static field
+        SEG_CUBICTO (int): final static field
+        SEG_CLOSE (int): final static field
+    
+    """
     WIND_EVEN_ODD: typing.ClassVar[int] = ...
     WIND_NON_ZERO: typing.ClassVar[int] = ...
     SEG_MOVETO: typing.ClassVar[int] = ...
@@ -202,6 +291,16 @@ class PathIterator:
     def next(self) -> None: ...
 
 class RectangularShape(java.awt.Shape, java.lang.Cloneable):
+    """
+    Java class 'java.awt.geom.RectangularShape'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.Shape, java.lang.Cloneable
+    
+    """
     def clone(self) -> typing.Any: ...
     @typing.overload
     def contains(self, double: float, double2: float) -> bool: ...
@@ -248,6 +347,20 @@ class RectangularShape(java.awt.Shape, java.lang.Cloneable):
     def setFrameFromDiagonal(self, point2D: 'Point2D', point2D2: 'Point2D') -> None: ...
 
 class FlatteningPathIterator(PathIterator):
+    """
+    Java class 'java.awt.geom.FlatteningPathIterator'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.geom.PathIterator
+    
+      Constructors:
+        * FlatteningPathIterator(java.awt.geom.PathIterator, double)
+        * FlatteningPathIterator(java.awt.geom.PathIterator, double, int)
+    
+    """
     @typing.overload
     def __init__(self, pathIterator: PathIterator, double: float): ...
     @typing.overload
@@ -263,6 +376,18 @@ class FlatteningPathIterator(PathIterator):
     def next(self) -> None: ...
 
 class Arc2D(RectangularShape):
+    """
+    Java class 'java.awt.geom.Arc2D'
+    
+        Extends:
+            java.awt.geom.RectangularShape
+    
+      Attributes:
+        OPEN (int): final static field
+        CHORD (int): final static field
+        PIE (int): final static field
+    
+    """
     OPEN: typing.ClassVar[int] = ...
     CHORD: typing.ClassVar[int] = ...
     PIE: typing.ClassVar[int] = ...
@@ -318,6 +443,30 @@ class Arc2D(RectangularShape):
     @typing.overload
     def setFrame(self, rectangle2D: 'Rectangle2D') -> None: ...
     class Double(java.awt.geom.Arc2D, java.io.Serializable):
+        """
+        Java class 'java.awt.geom.Arc2D$Double'
+        
+            Extends:
+                java.awt.geom.Arc2D
+        
+            Interfaces:
+                java.io.Serializable
+        
+          Constructors:
+            * Double(java.awt.geom.Rectangle2D, double, double, int)
+            * Double(double, double, double, double, double, double, int)
+            * Double(int)
+            * Double()
+        
+          Attributes:
+            x (double): field
+            y (double): field
+            width (double): field
+            height (double): field
+            start (double): field
+            extent (double): field
+        
+        """
         x: float = ...
         y: float = ...
         width: float = ...
@@ -353,6 +502,30 @@ class Arc2D(RectangularShape):
         @typing.overload
         def setArc(self, rectangle2D: 'Rectangle2D', double: float, double2: float, int: int) -> None: ...
     class Float(java.awt.geom.Arc2D, java.io.Serializable):
+        """
+        Java class 'java.awt.geom.Arc2D$Float'
+        
+            Extends:
+                java.awt.geom.Arc2D
+        
+            Interfaces:
+                java.io.Serializable
+        
+          Constructors:
+            * Float(java.awt.geom.Rectangle2D, float, float, int)
+            * Float(float, float, float, float, float, float, int)
+            * Float(int)
+            * Float()
+        
+          Attributes:
+            x (float): field
+            y (float): field
+            width (float): field
+            height (float): field
+            start (float): field
+            extent (float): field
+        
+        """
         x: float = ...
         y: float = ...
         width: float = ...
@@ -389,6 +562,16 @@ class Arc2D(RectangularShape):
         def setArc(self, rectangle2D: 'Rectangle2D', double: float, double2: float, int: int) -> None: ...
 
 class CubicCurve2D(java.awt.Shape, java.lang.Cloneable):
+    """
+    Java class 'java.awt.geom.CubicCurve2D'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.Shape, java.lang.Cloneable
+    
+    """
     def clone(self) -> typing.Any: ...
     @typing.overload
     def contains(self, double: float, double2: float) -> bool: ...
@@ -460,6 +643,30 @@ class CubicCurve2D(java.awt.Shape, java.lang.Cloneable):
     @typing.overload
     def subdivide(self, cubicCurve2D: 'CubicCurve2D', cubicCurve2D2: 'CubicCurve2D') -> None: ...
     class Double(java.awt.geom.CubicCurve2D, java.io.Serializable):
+        """
+        Java class 'java.awt.geom.CubicCurve2D$Double'
+        
+            Extends:
+                java.awt.geom.CubicCurve2D
+        
+            Interfaces:
+                java.io.Serializable
+        
+          Constructors:
+            * Double()
+            * Double(double, double, double, double, double, double, double, double)
+        
+          Attributes:
+            x1 (double): field
+            y1 (double): field
+            ctrlx1 (double): field
+            ctrly1 (double): field
+            ctrlx2 (double): field
+            ctrly2 (double): field
+            x2 (double): field
+            y2 (double): field
+        
+        """
         x1: float = ...
         y1: float = ...
         ctrlx1: float = ...
@@ -496,6 +703,30 @@ class CubicCurve2D(java.awt.Shape, java.lang.Cloneable):
         @typing.overload
         def setCurve(self, point2DArray: typing.List['Point2D'], int: int) -> None: ...
     class Float(java.awt.geom.CubicCurve2D, java.io.Serializable):
+        """
+        Java class 'java.awt.geom.CubicCurve2D$Float'
+        
+            Extends:
+                java.awt.geom.CubicCurve2D
+        
+            Interfaces:
+                java.io.Serializable
+        
+          Constructors:
+            * Float()
+            * Float(float, float, float, float, float, float, float, float)
+        
+          Attributes:
+            x1 (float): field
+            y1 (float): field
+            ctrlx1 (float): field
+            ctrly1 (float): field
+            ctrlx2 (float): field
+            ctrly2 (float): field
+            x2 (float): field
+            y2 (float): field
+        
+        """
         x1: float = ...
         y1: float = ...
         ctrlx1: float = ...
@@ -535,6 +766,13 @@ class CubicCurve2D(java.awt.Shape, java.lang.Cloneable):
         def setCurve(self, point2DArray: typing.List['Point2D'], int: int) -> None: ...
 
 class Ellipse2D(RectangularShape):
+    """
+    Java class 'java.awt.geom.Ellipse2D'
+    
+        Extends:
+            java.awt.geom.RectangularShape
+    
+    """
     @typing.overload
     def contains(self, double: float, double2: float) -> bool: ...
     @typing.overload
@@ -554,6 +792,26 @@ class Ellipse2D(RectangularShape):
     @typing.overload
     def intersects(self, rectangle2D: 'Rectangle2D') -> bool: ...
     class Double(java.awt.geom.Ellipse2D, java.io.Serializable):
+        """
+        Java class 'java.awt.geom.Ellipse2D$Double'
+        
+            Extends:
+                java.awt.geom.Ellipse2D
+        
+            Interfaces:
+                java.io.Serializable
+        
+          Constructors:
+            * Double()
+            * Double(double, double, double, double)
+        
+          Attributes:
+            x (double): field
+            y (double): field
+            width (double): field
+            height (double): field
+        
+        """
         x: float = ...
         y: float = ...
         width: float = ...
@@ -575,6 +833,26 @@ class Ellipse2D(RectangularShape):
         @typing.overload
         def setFrame(self, rectangle2D: 'Rectangle2D') -> None: ...
     class Float(java.awt.geom.Ellipse2D, java.io.Serializable):
+        """
+        Java class 'java.awt.geom.Ellipse2D$Float'
+        
+            Extends:
+                java.awt.geom.Ellipse2D
+        
+            Interfaces:
+                java.io.Serializable
+        
+          Constructors:
+            * Float()
+            * Float(float, float, float, float)
+        
+          Attributes:
+            x (float): field
+            y (float): field
+            width (float): field
+            height (float): field
+        
+        """
         x: float = ...
         y: float = ...
         width: float = ...
@@ -599,6 +877,19 @@ class Ellipse2D(RectangularShape):
         def setFrame(self, rectangle2D: 'Rectangle2D') -> None: ...
 
 class GeneralPath(java.awt.geom.Path2D.Float):
+    """
+    Java class 'java.awt.geom.GeneralPath'
+    
+        Extends:
+            java.awt.geom.Path2D$Float
+    
+      Constructors:
+        * GeneralPath(java.awt.Shape)
+        * GeneralPath(int, int)
+        * GeneralPath(int)
+        * GeneralPath()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -609,6 +900,16 @@ class GeneralPath(java.awt.geom.Path2D.Float):
     def __init__(self, shape: java.awt.Shape): ...
 
 class Line2D(java.awt.Shape, java.lang.Cloneable):
+    """
+    Java class 'java.awt.geom.Line2D'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.Shape, java.lang.Cloneable
+    
+    """
     def clone(self) -> typing.Any: ...
     @typing.overload
     def contains(self, double: float, double2: float) -> bool: ...
@@ -681,6 +982,27 @@ class Line2D(java.awt.Shape, java.lang.Cloneable):
     @typing.overload
     def setLine(self, point2D: 'Point2D', point2D2: 'Point2D') -> None: ...
     class Double(java.awt.geom.Line2D, java.io.Serializable):
+        """
+        Java class 'java.awt.geom.Line2D$Double'
+        
+            Extends:
+                java.awt.geom.Line2D
+        
+            Interfaces:
+                java.io.Serializable
+        
+          Constructors:
+            * Double(java.awt.geom.Point2D, java.awt.geom.Point2D)
+            * Double(double, double, double, double)
+            * Double()
+        
+          Attributes:
+            x1 (double): field
+            y1 (double): field
+            x2 (double): field
+            y2 (double): field
+        
+        """
         x1: float = ...
         y1: float = ...
         x2: float = ...
@@ -705,6 +1027,27 @@ class Line2D(java.awt.Shape, java.lang.Cloneable):
         @typing.overload
         def setLine(self, point2D: 'Point2D', point2D2: 'Point2D') -> None: ...
     class Float(java.awt.geom.Line2D, java.io.Serializable):
+        """
+        Java class 'java.awt.geom.Line2D$Float'
+        
+            Extends:
+                java.awt.geom.Line2D
+        
+            Interfaces:
+                java.io.Serializable
+        
+          Constructors:
+            * Float(java.awt.geom.Point2D, java.awt.geom.Point2D)
+            * Float(float, float, float, float)
+            * Float()
+        
+          Attributes:
+            x1 (float): field
+            y1 (float): field
+            x2 (float): field
+            y2 (float): field
+        
+        """
         x1: float = ...
         y1: float = ...
         x2: float = ...
@@ -732,6 +1075,20 @@ class Line2D(java.awt.Shape, java.lang.Cloneable):
         def setLine(self, point2D: 'Point2D', point2D2: 'Point2D') -> None: ...
 
 class Path2D(java.awt.Shape, java.lang.Cloneable):
+    """
+    Java class 'java.awt.geom.Path2D'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.Shape, java.lang.Cloneable
+    
+      Attributes:
+        WIND_EVEN_ODD (int): final static field
+        WIND_NON_ZERO (int): final static field
+    
+    """
     WIND_EVEN_ODD: typing.ClassVar[int] = ...
     WIND_NON_ZERO: typing.ClassVar[int] = ...
     @typing.overload
@@ -787,6 +1144,23 @@ class Path2D(java.awt.Shape, java.lang.Cloneable):
     def transform(self, affineTransform: AffineTransform) -> None: ...
     def trimToSize(self) -> None: ...
     class Double(java.awt.geom.Path2D, java.io.Serializable):
+        """
+        Java class 'java.awt.geom.Path2D$Double'
+        
+            Extends:
+                java.awt.geom.Path2D
+        
+            Interfaces:
+                java.io.Serializable
+        
+          Constructors:
+            * Double(java.awt.Shape, java.awt.geom.AffineTransform)
+            * Double(java.awt.Shape)
+            * Double(int, int)
+            * Double(int)
+            * Double()
+        
+        """
         @typing.overload
         def __init__(self): ...
         @typing.overload
@@ -814,6 +1188,23 @@ class Path2D(java.awt.Shape, java.lang.Cloneable):
         def transform(self, affineTransform: AffineTransform) -> None: ...
         def trimToSize(self) -> None: ...
     class Float(java.awt.geom.Path2D, java.io.Serializable):
+        """
+        Java class 'java.awt.geom.Path2D$Float'
+        
+            Extends:
+                java.awt.geom.Path2D
+        
+            Interfaces:
+                java.io.Serializable
+        
+          Constructors:
+            * Float(java.awt.Shape, java.awt.geom.AffineTransform)
+            * Float(java.awt.Shape)
+            * Float(int, int)
+            * Float(int)
+            * Float()
+        
+        """
         @typing.overload
         def __init__(self): ...
         @typing.overload
@@ -854,6 +1245,16 @@ class Path2D(java.awt.Shape, java.lang.Cloneable):
         def trimToSize(self) -> None: ...
 
 class Point2D(java.lang.Cloneable):
+    """
+    Java class 'java.awt.geom.Point2D'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.Cloneable
+    
+    """
     def clone(self) -> typing.Any: ...
     @typing.overload
     def distance(self, double: float, double2: float) -> float: ...
@@ -878,6 +1279,24 @@ class Point2D(java.lang.Cloneable):
     @typing.overload
     def setLocation(self, point2D: 'Point2D') -> None: ...
     class Double(java.awt.geom.Point2D, java.io.Serializable):
+        """
+        Java class 'java.awt.geom.Point2D$Double'
+        
+            Extends:
+                java.awt.geom.Point2D
+        
+            Interfaces:
+                java.io.Serializable
+        
+          Constructors:
+            * Double()
+            * Double(double, double)
+        
+          Attributes:
+            x (double): field
+            y (double): field
+        
+        """
         x: float = ...
         y: float = ...
         @typing.overload
@@ -892,6 +1311,24 @@ class Point2D(java.lang.Cloneable):
         def setLocation(self, point2D: 'Point2D') -> None: ...
         def toString(self) -> str: ...
     class Float(java.awt.geom.Point2D, java.io.Serializable):
+        """
+        Java class 'java.awt.geom.Point2D$Float'
+        
+            Extends:
+                java.awt.geom.Point2D
+        
+            Interfaces:
+                java.io.Serializable
+        
+          Constructors:
+            * Float()
+            * Float(float, float)
+        
+          Attributes:
+            x (float): field
+            y (float): field
+        
+        """
         x: float = ...
         y: float = ...
         @typing.overload
@@ -909,6 +1346,16 @@ class Point2D(java.lang.Cloneable):
         def toString(self) -> str: ...
 
 class QuadCurve2D(java.awt.Shape, java.lang.Cloneable):
+    """
+    Java class 'java.awt.geom.QuadCurve2D'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.Shape, java.lang.Cloneable
+    
+    """
     def clone(self) -> typing.Any: ...
     @typing.overload
     def contains(self, double: float, double2: float) -> bool: ...
@@ -977,6 +1424,28 @@ class QuadCurve2D(java.awt.Shape, java.lang.Cloneable):
     @typing.overload
     def subdivide(self, quadCurve2D: 'QuadCurve2D', quadCurve2D2: 'QuadCurve2D') -> None: ...
     class Double(java.awt.geom.QuadCurve2D, java.io.Serializable):
+        """
+        Java class 'java.awt.geom.QuadCurve2D$Double'
+        
+            Extends:
+                java.awt.geom.QuadCurve2D
+        
+            Interfaces:
+                java.io.Serializable
+        
+          Constructors:
+            * Double()
+            * Double(double, double, double, double, double, double)
+        
+          Attributes:
+            x1 (double): field
+            y1 (double): field
+            ctrlx (double): field
+            ctrly (double): field
+            x2 (double): field
+            y2 (double): field
+        
+        """
         x1: float = ...
         y1: float = ...
         ctrlx: float = ...
@@ -1008,6 +1477,28 @@ class QuadCurve2D(java.awt.Shape, java.lang.Cloneable):
         @typing.overload
         def setCurve(self, quadCurve2D: 'QuadCurve2D') -> None: ...
     class Float(java.awt.geom.QuadCurve2D, java.io.Serializable):
+        """
+        Java class 'java.awt.geom.QuadCurve2D$Float'
+        
+            Extends:
+                java.awt.geom.QuadCurve2D
+        
+            Interfaces:
+                java.io.Serializable
+        
+          Constructors:
+            * Float()
+            * Float(float, float, float, float, float, float)
+        
+          Attributes:
+            x1 (float): field
+            y1 (float): field
+            ctrlx (float): field
+            ctrly (float): field
+            x2 (float): field
+            y2 (float): field
+        
+        """
         x1: float = ...
         y1: float = ...
         ctrlx: float = ...
@@ -1042,6 +1533,19 @@ class QuadCurve2D(java.awt.Shape, java.lang.Cloneable):
         def setCurve(self, quadCurve2D: 'QuadCurve2D') -> None: ...
 
 class Rectangle2D(RectangularShape):
+    """
+    Java class 'java.awt.geom.Rectangle2D'
+    
+        Extends:
+            java.awt.geom.RectangularShape
+    
+      Attributes:
+        OUT_LEFT (int): final static field
+        OUT_TOP (int): final static field
+        OUT_RIGHT (int): final static field
+        OUT_BOTTOM (int): final static field
+    
+    """
     OUT_LEFT: typing.ClassVar[int] = ...
     OUT_TOP: typing.ClassVar[int] = ...
     OUT_RIGHT: typing.ClassVar[int] = ...
@@ -1096,6 +1600,26 @@ class Rectangle2D(RectangularShape):
     @staticmethod
     def union(rectangle2D: 'Rectangle2D', rectangle2D2: 'Rectangle2D', rectangle2D3: 'Rectangle2D') -> None: ...
     class Double(java.awt.geom.Rectangle2D, java.io.Serializable):
+        """
+        Java class 'java.awt.geom.Rectangle2D$Double'
+        
+            Extends:
+                java.awt.geom.Rectangle2D
+        
+            Interfaces:
+                java.io.Serializable
+        
+          Constructors:
+            * Double()
+            * Double(double, double, double, double)
+        
+          Attributes:
+            x (double): field
+            y (double): field
+            width (double): field
+            height (double): field
+        
+        """
         x: float = ...
         y: float = ...
         width: float = ...
@@ -1122,6 +1646,26 @@ class Rectangle2D(RectangularShape):
         def setRect(self, rectangle2D: 'Rectangle2D') -> None: ...
         def toString(self) -> str: ...
     class Float(java.awt.geom.Rectangle2D, java.io.Serializable):
+        """
+        Java class 'java.awt.geom.Rectangle2D$Float'
+        
+            Extends:
+                java.awt.geom.Rectangle2D
+        
+            Interfaces:
+                java.io.Serializable
+        
+          Constructors:
+            * Float()
+            * Float(float, float, float, float)
+        
+          Attributes:
+            x (float): field
+            y (float): field
+            width (float): field
+            height (float): field
+        
+        """
         x: float = ...
         y: float = ...
         width: float = ...
@@ -1151,6 +1695,13 @@ class Rectangle2D(RectangularShape):
         def toString(self) -> str: ...
 
 class RoundRectangle2D(RectangularShape):
+    """
+    Java class 'java.awt.geom.RoundRectangle2D'
+    
+        Extends:
+            java.awt.geom.RectangularShape
+    
+    """
     @typing.overload
     def contains(self, point2D: Point2D) -> bool: ...
     @typing.overload
@@ -1182,6 +1733,28 @@ class RoundRectangle2D(RectangularShape):
     @typing.overload
     def setRoundRect(self, roundRectangle2D: 'RoundRectangle2D') -> None: ...
     class Double(java.awt.geom.RoundRectangle2D, java.io.Serializable):
+        """
+        Java class 'java.awt.geom.RoundRectangle2D$Double'
+        
+            Extends:
+                java.awt.geom.RoundRectangle2D
+        
+            Interfaces:
+                java.io.Serializable
+        
+          Constructors:
+            * Double()
+            * Double(double, double, double, double, double, double)
+        
+          Attributes:
+            x (double): field
+            y (double): field
+            width (double): field
+            height (double): field
+            arcwidth (double): field
+            archeight (double): field
+        
+        """
         x: float = ...
         y: float = ...
         width: float = ...
@@ -1205,6 +1778,28 @@ class RoundRectangle2D(RectangularShape):
         @typing.overload
         def setRoundRect(self, roundRectangle2D: 'RoundRectangle2D') -> None: ...
     class Float(java.awt.geom.RoundRectangle2D, java.io.Serializable):
+        """
+        Java class 'java.awt.geom.RoundRectangle2D$Float'
+        
+            Extends:
+                java.awt.geom.RoundRectangle2D
+        
+            Interfaces:
+                java.io.Serializable
+        
+          Constructors:
+            * Float()
+            * Float(float, float, float, float, float, float)
+        
+          Attributes:
+            x (float): field
+            y (float): field
+            width (float): field
+            height (float): field
+            arcwidth (float): field
+            archeight (float): field
+        
+        """
         x: float = ...
         y: float = ...
         width: float = ...
@@ -1229,3 +1824,26 @@ class RoundRectangle2D(RectangularShape):
         def setRoundRect(self, float: float, float2: float, float3: float, float4: float, float5: float, float6: float) -> None: ...
         @typing.overload
         def setRoundRect(self, roundRectangle2D: 'RoundRectangle2D') -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.awt.geom")``.
+
+    AffineTransform: typing.Type[AffineTransform]
+    Arc2D: typing.Type[Arc2D]
+    Area: typing.Type[Area]
+    CubicCurve2D: typing.Type[CubicCurve2D]
+    Dimension2D: typing.Type[Dimension2D]
+    Ellipse2D: typing.Type[Ellipse2D]
+    FlatteningPathIterator: typing.Type[FlatteningPathIterator]
+    GeneralPath: typing.Type[GeneralPath]
+    IllegalPathStateException: typing.Type[IllegalPathStateException]
+    Line2D: typing.Type[Line2D]
+    NoninvertibleTransformException: typing.Type[NoninvertibleTransformException]
+    Path2D: typing.Type[Path2D]
+    PathIterator: typing.Type[PathIterator]
+    Point2D: typing.Type[Point2D]
+    QuadCurve2D: typing.Type[QuadCurve2D]
+    Rectangle2D: typing.Type[Rectangle2D]
+    RectangularShape: typing.Type[RectangularShape]
+    RoundRectangle2D: typing.Type[RoundRectangle2D]

@@ -1,17 +1,27 @@
 import cern.accsoft.commons.domain
 import cern.accsoft.commons.util
 import cern.lsa.domain.cern.timing.enums
+import cern.lsa.domain.cern.timing.spi
 import java.lang
 import java.util
 import typing
 
 
+
 class ActiveTimingUsers:
+    """
+    Java class 'cern.lsa.domain.cern.timing.ActiveTimingUsers'
+    
+    """
     def contains(self, string: str) -> bool: ...
     def getNormalUsers(self) -> java.util.List[str]: ...
     def getSpareUsers(self) -> java.util.List[str]: ...
 
 class BunchPattern:
+    """
+    Java class 'cern.lsa.domain.cern.timing.BunchPattern'
+    
+    """
     def addBunchPosition(self, int: int) -> None: ...
     def getBatchSpacing(self) -> int: ...
     def getBunchPatternDescription(self) -> str: ...
@@ -30,12 +40,26 @@ class BunchPattern:
     def setNbrOfPSBatches(self, int: int) -> None: ...
 
 class Event(java.lang.Comparable['Event'], cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.cern.timing.Event'
+    
+        Interfaces:
+            java.lang.Comparable, cern.accsoft.commons.util.Named
+    
+    """
     def getDescription(self) -> str: ...
     def getName(self) -> str: ...
     def getPayload(self) -> int: ...
     def getType(self) -> 'EventType': ...
 
 class EventTable:
+    """
+    Java class 'cern.lsa.domain.cern.timing.EventTable'
+    
+      Attributes:
+        INFINITE_RUN (int): final static field
+    
+    """
     INFINITE_RUN: typing.ClassVar[int] = ...
     def addEvent(self, event: Event, int: int) -> bool: ...
     def addEvents(self, sortedSet: java.util.SortedSet['EventTableEntry']) -> None: ...
@@ -50,15 +74,33 @@ class EventTable:
     def setStartingEvent(self, event: Event) -> None: ...
 
 class EventTableEntry(java.lang.Comparable['EventTableEntry']):
+    """
+    Java class 'cern.lsa.domain.cern.timing.EventTableEntry'
+    
+        Interfaces:
+            java.lang.Comparable
+    
+    """
     def getEvent(self) -> Event: ...
     def getOffset(self) -> int: ...
 
 class EventTableStatus:
+    """
+    Java class 'cern.lsa.domain.cern.timing.EventTableStatus'
+    
+    """
     def getHardwareStatus(self) -> java.util.List[cern.lsa.domain.cern.timing.enums.TABLE_STATUS_HW]: ...
     def getSoftwareStatus(self) -> cern.lsa.domain.cern.timing.enums.TABLE_STATUS_SW: ...
     def getTableName(self) -> str: ...
 
 class EventType(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.cern.timing.EventType'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def getDescription(self) -> str: ...
     def getEvent(self, int: int) -> Event: ...
     def getGroup(self) -> str: ...
@@ -66,6 +108,19 @@ class EventType(cern.accsoft.commons.util.Named):
     def getXtimName(self) -> str: ...
 
 class InvalidEventException(java.lang.RuntimeException):
+    """
+    Java class 'cern.lsa.domain.cern.timing.InvalidEventException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * InvalidEventException(java.lang.Throwable)
+        * InvalidEventException(java.lang.String)
+        * InvalidEventException(java.lang.String, java.lang.Throwable)
+        * InvalidEventException()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -76,6 +131,19 @@ class InvalidEventException(java.lang.RuntimeException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class InvalidEventTableEntryException(java.lang.RuntimeException):
+    """
+    Java class 'cern.lsa.domain.cern.timing.InvalidEventTableEntryException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * InvalidEventTableEntryException(java.lang.Throwable)
+        * InvalidEventTableEntryException(java.lang.String)
+        * InvalidEventTableEntryException(java.lang.String, java.lang.Throwable)
+        * InvalidEventTableEntryException()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -86,6 +154,19 @@ class InvalidEventTableEntryException(java.lang.RuntimeException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class InvalidEventTableException(java.lang.RuntimeException):
+    """
+    Java class 'cern.lsa.domain.cern.timing.InvalidEventTableException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * InvalidEventTableException(java.lang.Throwable)
+        * InvalidEventTableException(java.lang.String)
+        * InvalidEventTableException(java.lang.String, java.lang.Throwable)
+        * InvalidEventTableException()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -96,11 +177,22 @@ class InvalidEventTableException(java.lang.RuntimeException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class LhcCirculatingBunchConfiguration:
+    """
+    Java class 'cern.lsa.domain.cern.timing.LhcCirculatingBunchConfiguration'
+    
+    """
     def getBeamNbr(self) -> int: ...
     def getFilledBuckets(self) -> java.util.SortedSet[int]: ...
     def getFirstFilledBucket(self) -> int: ...
 
 class LhcInjection(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.cern.timing.LhcInjection'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def getBunchConfiguration(self) -> 'LhcInjectionBunchConfiguration': ...
     def getNextInjectionBeamType(self) -> cern.lsa.domain.cern.timing.enums.BEAM_TYPE: ...
     def getNextInjectionBunchIntensity(self) -> int: ...
@@ -122,6 +214,13 @@ class LhcInjection(cern.accsoft.commons.util.Named):
     def setNextInjectionRing(self, int: int) -> None: ...
 
 class LhcInjectionBunchConfiguration(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.cern.timing.LhcInjectionBunchConfiguration'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def getBunchPattern(self) -> BunchPattern: ...
     def getFilledBuckets(self) -> typing.List[int]: ...
     def getFirstFilledBucket(self) -> int: ...
@@ -130,6 +229,10 @@ class LhcInjectionBunchConfiguration(cern.accsoft.commons.util.Named):
     def setName(self, string: str) -> None: ...
 
 class LhcInjectionScheme:
+    """
+    Java class 'cern.lsa.domain.cern.timing.LhcInjectionScheme'
+    
+    """
     def addInjection(self, lhcInjection: LhcInjection) -> None: ...
     def getCreationDate(self) -> java.util.Date: ...
     def getDescription(self) -> str: ...
@@ -163,6 +266,13 @@ class LhcInjectionScheme:
     def setPilotPositionB2(self, int: int) -> None: ...
 
 class LhcInjectionSchemeEntry_Obs(java.lang.Comparable['LhcInjectionSchemeEntry_Obs']):
+    """
+    Java class 'cern.lsa.domain.cern.timing.LhcInjectionSchemeEntry_Obs'
+    
+        Interfaces:
+            java.lang.Comparable
+    
+    """
     def getDelay(self) -> int: ...
     def getInjection(self) -> LhcInjection: ...
     def getInjectionOrder(self) -> int: ...
@@ -170,10 +280,27 @@ class LhcInjectionSchemeEntry_Obs(java.lang.Comparable['LhcInjectionSchemeEntry_
     def setInjectionOrder(self, int: int) -> None: ...
 
 class LoadedEventTable:
+    """
+    Java class 'cern.lsa.domain.cern.timing.LoadedEventTable'
+    
+    """
     def getEventTable(self) -> EventTable: ...
     def getTableStatus(self) -> EventTableStatus: ...
 
 class LowLevelTimingException(java.lang.RuntimeException):
+    """
+    Java class 'cern.lsa.domain.cern.timing.LowLevelTimingException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * LowLevelTimingException(java.lang.Throwable)
+        * LowLevelTimingException(java.lang.String)
+        * LowLevelTimingException(java.lang.String, java.lang.Throwable)
+        * LowLevelTimingException()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -184,6 +311,19 @@ class LowLevelTimingException(java.lang.RuntimeException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class NoSuchEventTableException(java.lang.Exception):
+    """
+    Java class 'cern.lsa.domain.cern.timing.NoSuchEventTableException'
+    
+        Extends:
+            java.lang.Exception
+    
+      Constructors:
+        * NoSuchEventTableException(java.lang.Throwable)
+        * NoSuchEventTableException(java.lang.String)
+        * NoSuchEventTableException(java.lang.String, java.lang.Throwable)
+        * NoSuchEventTableException()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -194,6 +334,19 @@ class NoSuchEventTableException(java.lang.Exception):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class NoSuchEventTypeException(java.lang.Exception):
+    """
+    Java class 'cern.lsa.domain.cern.timing.NoSuchEventTypeException'
+    
+        Extends:
+            java.lang.Exception
+    
+      Constructors:
+        * NoSuchEventTypeException(java.lang.Throwable)
+        * NoSuchEventTypeException(java.lang.String)
+        * NoSuchEventTypeException(java.lang.String, java.lang.Throwable)
+        * NoSuchEventTypeException()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -204,19 +357,48 @@ class NoSuchEventTypeException(java.lang.Exception):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class TimingEvent(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.cern.timing.TimingEvent'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def getHardwareEventName(self) -> str: ...
     def getName(self) -> str: ...
     def getPayloadAttributeName(self) -> str: ...
 
 class TimingEventScheduling:
+    """
+    Java class 'cern.lsa.domain.cern.timing.TimingEventScheduling'
+    
+    """
     def getOffsetInMillis(self) -> int: ...
     def getTimingEvent(self) -> TimingEvent: ...
 
 class TimingProcess(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.cern.timing.TimingProcess'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def getScheduledTimingEvents(self) -> java.util.Set[TimingEventScheduling]: ...
     def getTimingDomain(self) -> cern.accsoft.commons.domain.TimingDomain: ...
 
 class TimingProcessAnchor(java.lang.Enum['TimingProcessAnchor']):
+    """
+    Java class 'cern.lsa.domain.cern.timing.TimingProcessAnchor'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        SEGMENT_START (cern.lsa.domain.cern.timing.TimingProcessAnchor): final static enum constant
+        SEGMENT_END (cern.lsa.domain.cern.timing.TimingProcessAnchor): final static enum constant
+    
+    """
     SEGMENT_START: typing.ClassVar['TimingProcessAnchor'] = ...
     SEGMENT_END: typing.ClassVar['TimingProcessAnchor'] = ...
     _valueOf_1__T = typing.TypeVar('_valueOf_1__T', bound=java.lang.Enum)  # <T>
@@ -230,6 +412,10 @@ class TimingProcessAnchor(java.lang.Enum['TimingProcessAnchor']):
     def values() -> typing.List['TimingProcessAnchor']: ...
 
 class TimingProcessScheduling:
+    """
+    Java class 'cern.lsa.domain.cern.timing.TimingProcessScheduling'
+    
+    """
     def getOffsetInMillis(self) -> int: ...
     def getTimingProcess(self) -> TimingProcess: ...
     def getTimingProcessAnchor(self) -> TimingProcessAnchor: ...
@@ -237,6 +423,10 @@ class TimingProcessScheduling:
     def setTimingProcessAnchor(self, timingProcessAnchor: TimingProcessAnchor) -> None: ...
 
 class XtimInfo:
+    """
+    Java class 'cern.lsa.domain.cern.timing.XtimInfo'
+    
+    """
     def getAcqStamp(self) -> int: ...
     def getEvenTypeName(self) -> str: ...
     def getMilliseconde(self) -> int: ...
@@ -245,3 +435,35 @@ class XtimInfo:
     def getUtcNanoseconde(self) -> int: ...
     def getUtcSeconde(self) -> int: ...
     def getXtimName(self) -> str: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.cern.timing")``.
+
+    ActiveTimingUsers: typing.Type[ActiveTimingUsers]
+    BunchPattern: typing.Type[BunchPattern]
+    Event: typing.Type[Event]
+    EventTable: typing.Type[EventTable]
+    EventTableEntry: typing.Type[EventTableEntry]
+    EventTableStatus: typing.Type[EventTableStatus]
+    EventType: typing.Type[EventType]
+    InvalidEventException: typing.Type[InvalidEventException]
+    InvalidEventTableEntryException: typing.Type[InvalidEventTableEntryException]
+    InvalidEventTableException: typing.Type[InvalidEventTableException]
+    LhcCirculatingBunchConfiguration: typing.Type[LhcCirculatingBunchConfiguration]
+    LhcInjection: typing.Type[LhcInjection]
+    LhcInjectionBunchConfiguration: typing.Type[LhcInjectionBunchConfiguration]
+    LhcInjectionScheme: typing.Type[LhcInjectionScheme]
+    LhcInjectionSchemeEntry_Obs: typing.Type[LhcInjectionSchemeEntry_Obs]
+    LoadedEventTable: typing.Type[LoadedEventTable]
+    LowLevelTimingException: typing.Type[LowLevelTimingException]
+    NoSuchEventTableException: typing.Type[NoSuchEventTableException]
+    NoSuchEventTypeException: typing.Type[NoSuchEventTypeException]
+    TimingEvent: typing.Type[TimingEvent]
+    TimingEventScheduling: typing.Type[TimingEventScheduling]
+    TimingProcess: typing.Type[TimingProcess]
+    TimingProcessAnchor: typing.Type[TimingProcessAnchor]
+    TimingProcessScheduling: typing.Type[TimingProcessScheduling]
+    XtimInfo: typing.Type[XtimInfo]
+    enums: cern.lsa.domain.cern.timing.enums.__module_protocol__
+    spi: cern.lsa.domain.cern.timing.spi.__module_protocol__

@@ -1,11 +1,18 @@
 import cern.accsoft.commons.util
+import cern.japc.value.factory
+import cern.japc.value.spi
 import java.io
 import java.lang
 import java.util
 import typing
 
 
+
 class Array2D:
+    """
+    Java class 'cern.japc.value.Array2D'
+    
+    """
     def getArray1D(self) -> typing.Any: ...
     def getBoolean(self, int: int, int2: int) -> bool: ...
     def getBooleanArray2D(self) -> typing.List[typing.List[bool]]: ...
@@ -52,6 +59,17 @@ class Array2D:
     def getStrings(self) -> typing.List[str]: ...
 
 class Array2DBuilder:
+    """
+    Java class 'cern.japc.value.Array2DBuilder'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * Array2DBuilder(cern.japc.value.ValueType, int[])
+        * Array2DBuilder(cern.japc.value.Array2D)
+    
+    """
     @typing.overload
     def __init__(self, array2D: Array2D): ...
     @typing.overload
@@ -69,15 +87,33 @@ class Array2DBuilder:
     def setString(self, string: str, int: int, int2: int) -> 'Array2DBuilder': ...
 
 class BooleanItem:
+    """
+    Java class 'cern.japc.value.BooleanItem'
+    
+    """
     def getStandardMeaning(self) -> 'SimpleValueStandardMeaning': ...
     def getValue(self) -> bool: ...
 
 class BooleanType(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.japc.value.BooleanType'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def getName(self) -> str: ...
     def valueOf(self, boolean: bool) -> BooleanItem: ...
     def values(self) -> java.util.Set[BooleanItem]: ...
 
 class DiscreteFunction(java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.DiscreteFunction'
+    
+        Interfaces:
+            java.lang.Cloneable
+    
+    """
     def clone(self) -> 'DiscreteFunction': ...
     def getX(self, int: int) -> float: ...
     def getY(self, int: int) -> float: ...
@@ -86,12 +122,26 @@ class DiscreteFunction(java.lang.Cloneable):
     def toYArray(self) -> typing.List[float]: ...
 
 class DiscreteFunctionList(java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.DiscreteFunctionList'
+    
+        Interfaces:
+            java.lang.Cloneable
+    
+    """
     def clone(self) -> 'DiscreteFunctionList': ...
     def getFunction(self, int: int) -> DiscreteFunction: ...
     def iterator(self) -> java.util.Iterator[DiscreteFunction]: ...
     def size(self) -> int: ...
 
 class EnumItem(java.lang.Comparable['EnumItem']):
+    """
+    Java class 'cern.japc.value.EnumItem'
+    
+        Interfaces:
+            java.lang.Comparable
+    
+    """
     def getCode(self) -> int: ...
     def getEnumType(self) -> 'EnumType': ...
     def getStandardMeaning(self) -> 'SimpleValueStandardMeaning': ...
@@ -100,6 +150,13 @@ class EnumItem(java.lang.Comparable['EnumItem']):
     def isSettable(self) -> bool: ...
 
 class EnumItemSet(java.util.Set[EnumItem], java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.EnumItemSet'
+    
+        Interfaces:
+            java.util.Set, java.lang.Cloneable
+    
+    """
     @typing.overload
     def addAll(self, enumItemArray: typing.List[EnumItem]) -> bool: ...
     @typing.overload
@@ -123,6 +180,10 @@ class EnumItemSet(java.util.Set[EnumItem], java.lang.Cloneable):
     def retainAll(self, collection: typing.Union[java.util.Collection[typing.Any], typing.Sequence[typing.Any]]) -> bool: ...
 
 class EnumType:
+    """
+    Java class 'cern.japc.value.EnumType'
+    
+    """
     def getBitSize(self) -> 'EnumTypeBitSize': ...
     def getName(self) -> str: ...
     def isApplicableToEnumItemSet(self) -> bool: ...
@@ -135,6 +196,20 @@ class EnumType:
     def values(self) -> java.util.Set[EnumItem]: ...
 
 class EnumTypeBitSize(java.lang.Enum['EnumTypeBitSize']):
+    """
+    Java class 'cern.japc.value.EnumTypeBitSize'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        BYTE (cern.japc.value.EnumTypeBitSize): final static enum constant
+        SHORT (cern.japc.value.EnumTypeBitSize): final static enum constant
+        INT (cern.japc.value.EnumTypeBitSize): final static enum constant
+        LONG (cern.japc.value.EnumTypeBitSize): final static enum constant
+        STRING (cern.japc.value.EnumTypeBitSize): final static enum constant
+    
+    """
     BYTE: typing.ClassVar['EnumTypeBitSize'] = ...
     SHORT: typing.ClassVar['EnumTypeBitSize'] = ...
     INT: typing.ClassVar['EnumTypeBitSize'] = ...
@@ -151,6 +226,13 @@ class EnumTypeBitSize(java.lang.Enum['EnumTypeBitSize']):
     def values() -> typing.List['EnumTypeBitSize']: ...
 
 class ParameterValue(java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.ParameterValue'
+    
+        Interfaces:
+            java.lang.Cloneable
+    
+    """
     def castAsMap(self) -> 'MapParameterValue': ...
     def castAsSimple(self) -> 'SimpleParameterValue': ...
     def clone(self) -> typing.Any: ...
@@ -161,6 +243,21 @@ class ParameterValue(java.lang.Cloneable):
     def makeMutable(self) -> 'ParameterValue': ...
 
 class SimpleValueControlStatus(java.lang.Enum['SimpleValueControlStatus']):
+    """
+    Java class 'cern.japc.value.SimpleValueControlStatus'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        OK (cern.japc.value.SimpleValueControlStatus): final static enum constant
+        WARNING (cern.japc.value.SimpleValueControlStatus): final static enum constant
+        ERROR (cern.japc.value.SimpleValueControlStatus): final static enum constant
+        NONE (cern.japc.value.SimpleValueControlStatus): final static enum constant
+        INACTIVE (cern.japc.value.SimpleValueControlStatus): final static enum constant
+        OFF (cern.japc.value.SimpleValueControlStatus): final static enum constant
+    
+    """
     OK: typing.ClassVar['SimpleValueControlStatus'] = ...
     WARNING: typing.ClassVar['SimpleValueControlStatus'] = ...
     ERROR: typing.ClassVar['SimpleValueControlStatus'] = ...
@@ -178,6 +275,20 @@ class SimpleValueControlStatus(java.lang.Enum['SimpleValueControlStatus']):
     def values() -> typing.List['SimpleValueControlStatus']: ...
 
 class SimpleValueStandardMeaning(java.lang.Enum['SimpleValueStandardMeaning']):
+    """
+    Java class 'cern.japc.value.SimpleValueStandardMeaning'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        ON (cern.japc.value.SimpleValueStandardMeaning): final static enum constant
+        OFF (cern.japc.value.SimpleValueStandardMeaning): final static enum constant
+        WARNING (cern.japc.value.SimpleValueStandardMeaning): final static enum constant
+        ERROR (cern.japc.value.SimpleValueStandardMeaning): final static enum constant
+        NONE (cern.japc.value.SimpleValueStandardMeaning): final static enum constant
+    
+    """
     ON: typing.ClassVar['SimpleValueStandardMeaning'] = ...
     OFF: typing.ClassVar['SimpleValueStandardMeaning'] = ...
     WARNING: typing.ClassVar['SimpleValueStandardMeaning'] = ...
@@ -194,6 +305,21 @@ class SimpleValueStandardMeaning(java.lang.Enum['SimpleValueStandardMeaning']):
     def values() -> typing.List['SimpleValueStandardMeaning']: ...
 
 class SimpleValueStatus(java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.SimpleValueStatus'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * SimpleValueStatus(long, cern.japc.value.SimpleValueControlStatus)
+        * SimpleValueStatus(long)
+        * SimpleValueStatus()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -213,6 +339,21 @@ class SimpleValueStatus(java.io.Serializable, java.lang.Cloneable):
     def toString(self) -> str: ...
 
 class Type(java.io.Serializable):
+    """
+    Java class 'cern.japc.value.Type'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Attributes:
+        SIMPLE (cern.japc.value.Type): final static field
+        MAP (cern.japc.value.Type): final static field
+        OBJECT (cern.japc.value.Type): final static field
+    
+    """
     SIMPLE: typing.ClassVar['Type'] = ...
     MAP: typing.ClassVar['Type'] = ...
     OBJECT: typing.ClassVar['Type'] = ...
@@ -226,6 +367,19 @@ class Type(java.io.Serializable):
     def valueOf(string: str) -> 'Type': ...
 
 class ValueConversionException(java.lang.RuntimeException):
+    """
+    Java class 'cern.japc.value.ValueConversionException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * ValueConversionException(java.lang.String, java.lang.Exception)
+        * ValueConversionException(java.lang.Exception)
+        * ValueConversionException(java.lang.String)
+        * ValueConversionException()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -236,10 +390,39 @@ class ValueConversionException(java.lang.RuntimeException):
     def __init__(self, string: str, exception: java.lang.Exception): ...
 
 class ValueDescriptor:
+    """
+    Java class 'cern.japc.value.ValueDescriptor'
+    
+    """
+    def castAsMap(self) -> 'MapDescriptor': ...
+    def castAsSimple(self) -> 'SimpleDescriptor': ...
     def getType(self) -> Type: ...
     def isConstant(self) -> bool: ...
 
 class ValueStatus(java.io.Serializable):
+    """
+    Java class 'cern.japc.value.ValueStatus'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Attributes:
+        NONE (cern.japc.value.ValueStatus): final static field
+        UNDEFINED (cern.japc.value.ValueStatus): final static field
+        WARNING (cern.japc.value.ValueStatus): final static field
+        ERROR (cern.japc.value.ValueStatus): final static field
+        ON (cern.japc.value.ValueStatus): final static field
+        STAND_BY (cern.japc.value.ValueStatus): final static field
+        OFF (cern.japc.value.ValueStatus): final static field
+        DIFFERS_FROM_CONTROL (cern.japc.value.ValueStatus): final static field
+        OUT_OF_TOLERANCE (cern.japc.value.ValueStatus): final static field
+        ILLEGAL (cern.japc.value.ValueStatus): final static field
+        COM_ERROR (cern.japc.value.ValueStatus): final static field
+    
+    """
     NONE: typing.ClassVar['ValueStatus'] = ...
     UNDEFINED: typing.ClassVar['ValueStatus'] = ...
     WARNING: typing.ClassVar['ValueStatus'] = ...
@@ -260,6 +443,51 @@ class ValueStatus(java.io.Serializable):
     def toString(self) -> str: ...
 
 class ValueType(java.io.Serializable):
+    """
+    Java class 'cern.japc.value.ValueType'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Attributes:
+        UNDEFINED (cern.japc.value.ValueType): final static field
+        BOOLEAN (cern.japc.value.ValueType): final static field
+        BYTE (cern.japc.value.ValueType): final static field
+        DOUBLE (cern.japc.value.ValueType): final static field
+        FLOAT (cern.japc.value.ValueType): final static field
+        INT (cern.japc.value.ValueType): final static field
+        LONG (cern.japc.value.ValueType): final static field
+        SHORT (cern.japc.value.ValueType): final static field
+        STRING (cern.japc.value.ValueType): final static field
+        BOOLEAN_ARRAY (cern.japc.value.ValueType): final static field
+        BYTE_ARRAY (cern.japc.value.ValueType): final static field
+        DOUBLE_ARRAY (cern.japc.value.ValueType): final static field
+        FLOAT_ARRAY (cern.japc.value.ValueType): final static field
+        INT_ARRAY (cern.japc.value.ValueType): final static field
+        LONG_ARRAY (cern.japc.value.ValueType): final static field
+        SHORT_ARRAY (cern.japc.value.ValueType): final static field
+        STRING_ARRAY (cern.japc.value.ValueType): final static field
+        BOOLEAN_ARRAY_2D (cern.japc.value.ValueType): final static field
+        BYTE_ARRAY_2D (cern.japc.value.ValueType): final static field
+        DOUBLE_ARRAY_2D (cern.japc.value.ValueType): final static field
+        FLOAT_ARRAY_2D (cern.japc.value.ValueType): final static field
+        INT_ARRAY_2D (cern.japc.value.ValueType): final static field
+        LONG_ARRAY_2D (cern.japc.value.ValueType): final static field
+        SHORT_ARRAY_2D (cern.japc.value.ValueType): final static field
+        STRING_ARRAY_2D (cern.japc.value.ValueType): final static field
+        ENUM (cern.japc.value.ValueType): final static field
+        ENUM_SET (cern.japc.value.ValueType): final static field
+        DISCRETE_FUNCTION (cern.japc.value.ValueType): final static field
+        DISCRETE_FUNCTION_LIST (cern.japc.value.ValueType): final static field
+        ENUM_ARRAY (cern.japc.value.ValueType): final static field
+        ENUM_SET_ARRAY (cern.japc.value.ValueType): final static field
+        ENUM_ARRAY_2D (cern.japc.value.ValueType): final static field
+        ENUM_SET_ARRAY_2D (cern.japc.value.ValueType): final static field
+    
+    """
     UNDEFINED: typing.ClassVar['ValueType'] = ...
     BOOLEAN: typing.ClassVar['ValueType'] = ...
     BYTE: typing.ClassVar['ValueType'] = ...
@@ -325,6 +553,13 @@ class ValueType(java.io.Serializable):
     def valueOf(string: str) -> 'ValueType': ...
 
 class ImmutableMapParameterValue(ParameterValue):
+    """
+    Java class 'cern.japc.value.ImmutableMapParameterValue'
+    
+        Interfaces:
+            cern.japc.value.ParameterValue
+    
+    """
     def get(self, string: str) -> 'SimpleParameterValue': ...
     def getArray2D(self, string: str) -> Array2D: ...
     @typing.overload
@@ -420,11 +655,25 @@ class ImmutableMapParameterValue(ParameterValue):
     def size(self) -> int: ...
 
 class MapDescriptor(ValueDescriptor):
+    """
+    Java class 'cern.japc.value.MapDescriptor'
+    
+        Interfaces:
+            cern.japc.value.ValueDescriptor
+    
+    """
     def get(self, string: str) -> 'SimpleDescriptor': ...
     def getNames(self) -> typing.List[str]: ...
     def size(self) -> int: ...
 
 class MapParameterValue(ImmutableMapParameterValue):
+    """
+    Java class 'cern.japc.value.MapParameterValue'
+    
+        Interfaces:
+            cern.japc.value.ImmutableMapParameterValue
+    
+    """
     def makeMutable(self) -> 'MapParameterValue': ...
     def put(self, string: str, simpleParameterValue: 'SimpleParameterValue') -> None: ...
     def remove(self, string: str) -> 'SimpleParameterValue': ...
@@ -488,10 +737,25 @@ class MapParameterValue(ImmutableMapParameterValue):
     def setStrings2D(self, string: str, stringArray: typing.List[str], intArray: typing.List[int]) -> None: ...
 
 class SimpleDescriptor(MapDescriptor):
+    """
+    Java class 'cern.japc.value.SimpleDescriptor'
+    
+        Interfaces:
+            cern.japc.value.MapDescriptor
+    
+      Attributes:
+        DEFAULT_DECIMAL_FORMAT (java.lang.String): final static field
+        DEFAULT_FORMAT (java.lang.String): final static field
+        DATE_FORMAT_PREFIX (java.lang.String): final static field
+        HEXADECIMAL_FORMAT_PREFIX (java.lang.String): final static field
+        UNDEFINED_DIMENSION (int): final static field
+    
+    """
     DEFAULT_DECIMAL_FORMAT: typing.ClassVar[str] = ...
     DEFAULT_FORMAT: typing.ClassVar[str] = ...
     DATE_FORMAT_PREFIX: typing.ClassVar[str] = ...
     HEXADECIMAL_FORMAT_PREFIX: typing.ClassVar[str] = ...
+    UNDEFINED_DIMENSION: typing.ClassVar[int] = ...
     def getBooleanType(self) -> BooleanType: ...
     def getColumnCount(self) -> int: ...
     def getDescription(self) -> str: ...
@@ -518,6 +782,17 @@ class SimpleDescriptor(MapDescriptor):
     def isSettable(self, object: typing.Any) -> bool: ...
 
 class SimpleParameterValue(MapParameterValue):
+    """
+    Java class 'cern.japc.value.SimpleParameterValue'
+    
+        Interfaces:
+            cern.japc.value.MapParameterValue
+    
+      Attributes:
+        NO_UNIT (java.lang.String): final static field
+        NO_MIN_MAX_VALUE (java.lang.Double): final static field
+    
+    """
     NO_UNIT: typing.ClassVar[str] = ...
     NO_MIN_MAX_VALUE: typing.ClassVar[float] = ...
     @typing.overload
@@ -919,3 +1194,34 @@ class SimpleParameterValue(MapParameterValue):
     @typing.overload
     def setStrings2D(self, stringArray: typing.List[str], intArray: typing.List[int]) -> None: ...
     def setValueStatus(self, simpleValueStatus: SimpleValueStatus) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.japc.value")``.
+
+    Array2D: typing.Type[Array2D]
+    Array2DBuilder: typing.Type[Array2DBuilder]
+    BooleanItem: typing.Type[BooleanItem]
+    BooleanType: typing.Type[BooleanType]
+    DiscreteFunction: typing.Type[DiscreteFunction]
+    DiscreteFunctionList: typing.Type[DiscreteFunctionList]
+    EnumItem: typing.Type[EnumItem]
+    EnumItemSet: typing.Type[EnumItemSet]
+    EnumType: typing.Type[EnumType]
+    EnumTypeBitSize: typing.Type[EnumTypeBitSize]
+    ImmutableMapParameterValue: typing.Type[ImmutableMapParameterValue]
+    MapDescriptor: typing.Type[MapDescriptor]
+    MapParameterValue: typing.Type[MapParameterValue]
+    ParameterValue: typing.Type[ParameterValue]
+    SimpleDescriptor: typing.Type[SimpleDescriptor]
+    SimpleParameterValue: typing.Type[SimpleParameterValue]
+    SimpleValueControlStatus: typing.Type[SimpleValueControlStatus]
+    SimpleValueStandardMeaning: typing.Type[SimpleValueStandardMeaning]
+    SimpleValueStatus: typing.Type[SimpleValueStatus]
+    Type: typing.Type[Type]
+    ValueConversionException: typing.Type[ValueConversionException]
+    ValueDescriptor: typing.Type[ValueDescriptor]
+    ValueStatus: typing.Type[ValueStatus]
+    ValueType: typing.Type[ValueType]
+    factory: cern.japc.value.factory.__module_protocol__
+    spi: cern.japc.value.spi.__module_protocol__

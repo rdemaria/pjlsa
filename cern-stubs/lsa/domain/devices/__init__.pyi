@@ -4,6 +4,9 @@ import cern.accsoft.commons.domain.zones
 import cern.accsoft.commons.util
 import cern.lsa.domain.commons
 import cern.lsa.domain.devices.factory
+import cern.lsa.domain.devices.inca
+import cern.lsa.domain.devices.spi
+import cern.lsa.domain.devices.type
 import com.google.common.collect
 import java.io
 import java.lang
@@ -11,7 +14,15 @@ import java.util
 import typing
 
 
+
 class CalibrationsRequest:
+    """
+    Java class 'cern.lsa.domain.devices.CalibrationsRequest'
+    
+      Attributes:
+        ALL (cern.lsa.domain.devices.CalibrationsRequest): final static field
+    
+    """
     ALL: typing.ClassVar['CalibrationsRequest'] = ...
     @staticmethod
     def builder() -> 'DefaultCalibrationsRequest.Builder': ...
@@ -26,6 +37,14 @@ class CalibrationsRequest:
     def getParticleTransfer(self) -> cern.accsoft.commons.domain.particletransfers.ParticleTransfer: ...
 
 class Device(cern.accsoft.commons.util.Named, cern.lsa.domain.commons.IdentifiedEntity, java.lang.Comparable['Device']):
+    """
+    Java class 'cern.lsa.domain.devices.Device'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named,
+            cern.lsa.domain.commons.IdentifiedEntity, java.lang.Comparable
+    
+    """
     def getAccelerator(self) -> cern.accsoft.commons.domain.Accelerator: ...
     def getAcceleratorZone(self) -> cern.accsoft.commons.domain.zones.AcceleratorZone: ...
     def getAlias(self) -> str: ...
@@ -39,8 +58,22 @@ class Device(cern.accsoft.commons.util.Named, cern.lsa.domain.commons.Identified
     def getSortOrder(self) -> int: ...
     def getState(self) -> 'Device.DeviceState': ...
     def isCycleBound(self) -> bool: ...
+    def isLsaImplementation(self) -> bool: ...
     def isMultiplexed(self) -> bool: ...
     class DeviceState(java.lang.Enum['Device.DeviceState']):
+        """
+        Java class 'cern.lsa.domain.devices.Device$DeviceState'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            OPERATIONAL (cern.lsa.domain.devices.Device$DeviceState): final static enum constant
+            EXPERT (cern.lsa.domain.devices.Device$DeviceState): final static enum constant
+            DEVELOPMENT (cern.lsa.domain.devices.Device$DeviceState): final static enum constant
+            OBSOLETE (cern.lsa.domain.devices.Device$DeviceState): final static enum constant
+        
+        """
         OPERATIONAL: typing.ClassVar['Device.DeviceState'] = ...
         EXPERT: typing.ClassVar['Device.DeviceState'] = ...
         DEVELOPMENT: typing.ClassVar['Device.DeviceState'] = ...
@@ -56,6 +89,19 @@ class Device(cern.accsoft.commons.util.Named, cern.lsa.domain.commons.Identified
         def values() -> typing.List['Device.DeviceState']: ...
 
 class DeviceFilter(cern.accsoft.commons.util.Filters.Filter[Device]):
+    """
+    Java class 'cern.lsa.domain.devices.DeviceFilter'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.accsoft.commons.util.Filters.Filter
+    
+      Constructors:
+        * DeviceFilter()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def acceleratorZone(acceleratorZone: cern.accsoft.commons.domain.zones.AcceleratorZone) -> 'DeviceFilter': ...
@@ -79,6 +125,14 @@ class DeviceFilter(cern.accsoft.commons.util.Filters.Filter[Device]):
     def setDeviceTypes(self, collection: typing.Union[java.util.Collection['DeviceType'], typing.Sequence['DeviceType']]) -> 'DeviceFilter': ...
 
 class DeviceGroup(cern.accsoft.commons.util.Named, cern.lsa.domain.commons.IdentifiedEntity):
+    """
+    Java class 'cern.lsa.domain.devices.DeviceGroup'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named,
+            cern.lsa.domain.commons.IdentifiedEntity
+    
+    """
     def getAccelerator(self) -> cern.accsoft.commons.domain.Accelerator: ...
     def getChildGroups(self) -> java.util.Set['DeviceGroup']: ...
     def getCreateTime(self) -> java.util.Date: ...
@@ -90,6 +144,19 @@ class DeviceGroup(cern.accsoft.commons.util.Named, cern.lsa.domain.commons.Ident
     def isOperational(self) -> bool: ...
 
 class DeviceGroupFilter(cern.accsoft.commons.util.Filters.Filter[DeviceGroup]):
+    """
+    Java class 'cern.lsa.domain.devices.DeviceGroupFilter'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.accsoft.commons.util.Filters.Filter
+    
+      Constructors:
+        * DeviceGroupFilter()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def accelerator(accelerator: cern.accsoft.commons.domain.Accelerator) -> 'DeviceGroupFilter': ...
@@ -103,9 +170,29 @@ class DeviceGroupFilter(cern.accsoft.commons.util.Filters.Filter[DeviceGroup]):
     def typeIn(collection: typing.Union[java.util.Collection['DeviceGroupType'], typing.Sequence['DeviceGroupType']]) -> 'DeviceGroupFilter': ...
 
 class DeviceGroupType(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.devices.DeviceGroupType'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def getDescription(self) -> str: ...
 
 class DeviceGroups:
+    """
+    Java class 'cern.lsa.domain.devices.DeviceGroups'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * DeviceGroups()
+    
+      Attributes:
+        CHILD_GROUPS (cern.accsoft.commons.util.Mappers$Mapper): final static field
+    
+    """
     CHILD_GROUPS: typing.ClassVar[cern.accsoft.commons.util.Mappers.Mapper] = ...
     def __init__(self): ...
     @staticmethod
@@ -116,6 +203,10 @@ class DeviceGroups:
     def getDirectChildDeviceGroups(collection: typing.Union[java.util.Collection[DeviceGroup], typing.Sequence[DeviceGroup]]) -> java.util.Set[DeviceGroup]: ...
 
 class DeviceGroupsRequest:
+    """
+    Java class 'cern.lsa.domain.devices.DeviceGroupsRequest'
+    
+    """
     @staticmethod
     def builder() -> cern.lsa.domain.devices.factory.DeviceGroupsRequestBuilder: ...
     def getAccelerator(self) -> cern.accsoft.commons.domain.Accelerator: ...
@@ -124,6 +215,20 @@ class DeviceGroupsRequest:
     def getDeviceGroupTypes(self) -> java.util.Set[DeviceGroupType]: ...
 
 class DeviceMetaTypeEnum(java.lang.Enum['DeviceMetaTypeEnum']):
+    """
+    Java class 'cern.lsa.domain.devices.DeviceMetaTypeEnum'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        ACTUAL (cern.lsa.domain.devices.DeviceMetaTypeEnum): final static enum constant
+        LOGICAL (cern.lsa.domain.devices.DeviceMetaTypeEnum): final static enum constant
+        BEAM (cern.lsa.domain.devices.DeviceMetaTypeEnum): final static enum constant
+        ALL (cern.lsa.domain.devices.DeviceMetaTypeEnum): final static enum constant
+        NONE (cern.lsa.domain.devices.DeviceMetaTypeEnum): final static enum constant
+    
+    """
     ACTUAL: typing.ClassVar['DeviceMetaTypeEnum'] = ...
     LOGICAL: typing.ClassVar['DeviceMetaTypeEnum'] = ...
     BEAM: typing.ClassVar['DeviceMetaTypeEnum'] = ...
@@ -145,11 +250,39 @@ class DeviceMetaTypeEnum(java.lang.Enum['DeviceMetaTypeEnum']):
     def values() -> typing.List['DeviceMetaTypeEnum']: ...
 
 class DeviceType(cern.accsoft.commons.util.Named, cern.lsa.domain.commons.IdentifiedEntity, java.lang.Comparable['DeviceType']):
+    """
+    Java class 'cern.lsa.domain.devices.DeviceType'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named,
+            cern.lsa.domain.commons.IdentifiedEntity, java.lang.Comparable
+    
+    """
     def getDescription(self) -> str: ...
     def getMetaType(self) -> DeviceMetaTypeEnum: ...
     def getVersions(self) -> java.util.SortedSet['DeviceTypeVersion']: ...
 
 class DeviceTypeImplementation(java.lang.Enum['DeviceTypeImplementation'], cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.devices.DeviceTypeImplementation'
+    
+        Extends:
+            java.lang.Enum
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+      Attributes:
+        HARDWARE (cern.lsa.domain.devices.DeviceTypeImplementation): final static enum constant
+        FESA2 (cern.lsa.domain.devices.DeviceTypeImplementation): final static enum constant
+        FESA3 (cern.lsa.domain.devices.DeviceTypeImplementation): final static enum constant
+        VIRTUAL (cern.lsa.domain.devices.DeviceTypeImplementation): final static enum constant
+        GM (cern.lsa.domain.devices.DeviceTypeImplementation): final static enum constant
+        DEVACC (cern.lsa.domain.devices.DeviceTypeImplementation): final static enum constant
+        LSA (cern.lsa.domain.devices.DeviceTypeImplementation): final static enum constant
+        FGC (cern.lsa.domain.devices.DeviceTypeImplementation): final static enum constant
+    
+    """
     HARDWARE: typing.ClassVar['DeviceTypeImplementation'] = ...
     FESA2: typing.ClassVar['DeviceTypeImplementation'] = ...
     FESA3: typing.ClassVar['DeviceTypeImplementation'] = ...
@@ -170,15 +303,39 @@ class DeviceTypeImplementation(java.lang.Enum['DeviceTypeImplementation'], cern.
     def values() -> typing.List['DeviceTypeImplementation']: ...
 
 class DeviceTypeVersion(cern.lsa.domain.commons.IdentifiedEntity, java.lang.Comparable['DeviceTypeVersion']):
+    """
+    Java class 'cern.lsa.domain.devices.DeviceTypeVersion'
+    
+        Interfaces:
+            cern.lsa.domain.commons.IdentifiedEntity, java.lang.Comparable
+    
+    """
     def getDeviceType(self) -> DeviceType: ...
     def getImplementation(self) -> DeviceTypeImplementation: ...
     def getVersionNumber(self) -> 'DeviceTypeVersionNumber': ...
 
 class DeviceTypeVersionNumber(java.lang.Comparable['DeviceTypeVersionNumber']):
+    """
+    Java class 'cern.lsa.domain.devices.DeviceTypeVersionNumber'
+    
+        Interfaces:
+            java.lang.Comparable
+    
+    """
     def getMajor(self) -> int: ...
     def getMinor(self) -> int: ...
 
 class DeviceTypes:
+    """
+    Java class 'cern.lsa.domain.devices.DeviceTypes'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * DeviceTypes()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def getLatestVersion(deviceType: DeviceType) -> DeviceTypeVersion: ...
@@ -190,6 +347,10 @@ class DeviceTypes:
     def toDeviceTypes(collection: typing.Union[java.util.Collection[DeviceTypeVersion], typing.Sequence[DeviceTypeVersion]]) -> java.util.Set[DeviceType]: ...
 
 class DeviceTypesRequest:
+    """
+    Java class 'cern.lsa.domain.devices.DeviceTypesRequest'
+    
+    """
     @staticmethod
     def builder() -> cern.lsa.domain.devices.factory.DeviceTypesRequestBuilder: ...
     def getAccelerator(self) -> cern.accsoft.commons.domain.Accelerator: ...
@@ -200,6 +361,23 @@ class DeviceTypesRequest:
     def getDeviceTypeVersionNumber(self) -> DeviceTypeVersionNumber: ...
 
 class Devices:
+    """
+    Java class 'cern.lsa.domain.devices.Devices'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * Devices()
+    
+      Attributes:
+        DEVICE_TYPES (cern.accsoft.commons.util.Mappers$Mapper): final static field
+        DEVICE_TYPE_NAMES (cern.accsoft.commons.util.Mappers$Mapper): final static field
+        DEVICE_TYPE_VERSIONS (cern.accsoft.commons.util.Mappers$Mapper): final static field
+        FRONT_END_NAMES (cern.accsoft.commons.util.Mappers$Mapper): final static field
+        DEVICE_GROUP_NAMES (cern.accsoft.commons.util.Mappers$Mapper): final static field
+    
+    """
     DEVICE_TYPES: typing.ClassVar[cern.accsoft.commons.util.Mappers.Mapper] = ...
     DEVICE_TYPE_NAMES: typing.ClassVar[cern.accsoft.commons.util.Mappers.Mapper] = ...
     DEVICE_TYPE_VERSIONS: typing.ClassVar[cern.accsoft.commons.util.Mappers.Mapper] = ...
@@ -232,6 +410,10 @@ class Devices:
     def groupDevicesByDeviceGroup(collection: typing.Union[java.util.Collection[Device], typing.Sequence[Device]]) -> java.util.Map[str, java.util.Set[Device]]: ...
 
 class DevicesRequest:
+    """
+    Java class 'cern.lsa.domain.devices.DevicesRequest'
+    
+    """
     @staticmethod
     def builder() -> cern.lsa.domain.devices.factory.DevicesRequestBuilder: ...
     def existInLsaOnly(self) -> bool: ...
@@ -252,7 +434,48 @@ class DevicesRequest:
     def getServerNames(self) -> java.util.Set[str]: ...
     def isMultiplexed(self) -> bool: ...
 
+class PowerConverterNestedCircuitInfo:
+    """
+    Java class 'cern.lsa.domain.devices.PowerConverterNestedCircuitInfo'
+    
+    """
+    def getActualDeviceName(self) -> str: ...
+    def getCoefficient(self) -> int: ...
+    def getLogicalDeviceName(self) -> str: ...
+
+class PowerConverterNestedCircuitInfosRequest:
+    """
+    Java class 'cern.lsa.domain.devices.PowerConverterNestedCircuitInfosRequest'
+    
+    """
+    @staticmethod
+    def builder() -> 'DefaultPowerConverterNestedCircuitInfosRequest.Builder': ...
+    @staticmethod
+    def byActualDeviceNames(collection: typing.Union[java.util.Collection[str], typing.Sequence[str]]) -> 'PowerConverterNestedCircuitInfosRequest': ...
+    @staticmethod
+    def byActualDevices(collection: typing.Union[java.util.Collection[Device], typing.Sequence[Device]]) -> 'PowerConverterNestedCircuitInfosRequest': ...
+    @staticmethod
+    def byLogicalDeviceNames(collection: typing.Union[java.util.Collection[str], typing.Sequence[str]]) -> 'PowerConverterNestedCircuitInfosRequest': ...
+    @staticmethod
+    def byLogicalDevices(collection: typing.Union[java.util.Collection[Device], typing.Sequence[Device]]) -> 'PowerConverterNestedCircuitInfosRequest': ...
+    def check(self) -> None: ...
+    @staticmethod
+    def forSingleLogicalActualRelation(string: str, string2: str) -> 'PowerConverterNestedCircuitInfosRequest': ...
+    def getActualDeviceNames(self) -> java.util.List[str]: ...
+    def getLogicalDeviceNames(self) -> java.util.List[str]: ...
+
 class DefaultCalibrationsRequest(CalibrationsRequest, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.devices.DefaultCalibrationsRequest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.devices.CalibrationsRequest,
+            java.io.Serializable
+    
+    """
     @staticmethod
     def builder() -> 'DefaultCalibrationsRequest.Builder': ...
     @staticmethod
@@ -270,6 +493,13 @@ class DefaultCalibrationsRequest(CalibrationsRequest, java.io.Serializable):
     def withLogicalHardwareName(self, string: str) -> 'DefaultCalibrationsRequest': ...
     def withParticleTransfer(self, particleTransfer: cern.accsoft.commons.domain.particletransfers.ParticleTransfer) -> 'DefaultCalibrationsRequest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.domain.devices.DefaultCalibrationsRequest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def addAllCalibrationNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultCalibrationsRequest.Builder': ...
         def addCalibrationName(self, string: str) -> 'DefaultCalibrationsRequest.Builder': ...
         def addCalibrationNames(self, stringArray: typing.List[str]) -> 'DefaultCalibrationsRequest.Builder': ...
@@ -277,3 +507,119 @@ class DefaultCalibrationsRequest(CalibrationsRequest, java.io.Serializable):
         def calibrationNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultCalibrationsRequest.Builder': ...
         def logicalHardwareName(self, string: str) -> 'DefaultCalibrationsRequest.Builder': ...
         def particleTransfer(self, particleTransfer: cern.accsoft.commons.domain.particletransfers.ParticleTransfer) -> 'DefaultCalibrationsRequest.Builder': ...
+
+class DefaultPowerConverterNestedCircuitInfo(PowerConverterNestedCircuitInfo, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.devices.DefaultPowerConverterNestedCircuitInfo'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.devices.PowerConverterNestedCircuitInfo,
+            java.io.Serializable
+    
+    """
+    @staticmethod
+    def builder() -> 'DefaultPowerConverterNestedCircuitInfo.Builder': ...
+    @staticmethod
+    def copyOf(powerConverterNestedCircuitInfo: PowerConverterNestedCircuitInfo) -> 'DefaultPowerConverterNestedCircuitInfo': ...
+    def equals(self, object: typing.Any) -> bool: ...
+    def getActualDeviceName(self) -> str: ...
+    def getCoefficient(self) -> int: ...
+    def getLogicalDeviceName(self) -> str: ...
+    def hashCode(self) -> int: ...
+    def toString(self) -> str: ...
+    def withActualDeviceName(self, string: str) -> 'DefaultPowerConverterNestedCircuitInfo': ...
+    def withCoefficient(self, int: int) -> 'DefaultPowerConverterNestedCircuitInfo': ...
+    def withLogicalDeviceName(self, string: str) -> 'DefaultPowerConverterNestedCircuitInfo': ...
+    class Builder:
+        """
+        Java class 'cern.lsa.domain.devices.DefaultPowerConverterNestedCircuitInfo$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
+        def actualDeviceName(self, string: str) -> 'DefaultPowerConverterNestedCircuitInfo.Builder': ...
+        def build(self) -> 'DefaultPowerConverterNestedCircuitInfo': ...
+        def coefficient(self, int: int) -> 'DefaultPowerConverterNestedCircuitInfo.Builder': ...
+        def logicalDeviceName(self, string: str) -> 'DefaultPowerConverterNestedCircuitInfo.Builder': ...
+
+class DefaultPowerConverterNestedCircuitInfosRequest(PowerConverterNestedCircuitInfosRequest, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.devices.DefaultPowerConverterNestedCircuitInfosRequest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.devices.PowerConverterNestedCircuitInfosReques
+            t, java.io.Serializable
+    
+    """
+    @staticmethod
+    def builder() -> 'DefaultPowerConverterNestedCircuitInfosRequest.Builder': ...
+    @staticmethod
+    def copyOf(powerConverterNestedCircuitInfosRequest: PowerConverterNestedCircuitInfosRequest) -> 'DefaultPowerConverterNestedCircuitInfosRequest': ...
+    def equals(self, object: typing.Any) -> bool: ...
+    def getActualDeviceNames(self) -> java.util.List[str]: ...
+    def getLogicalDeviceNames(self) -> java.util.List[str]: ...
+    def hashCode(self) -> int: ...
+    def toString(self) -> str: ...
+    @typing.overload
+    def withActualDeviceNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultPowerConverterNestedCircuitInfosRequest': ...
+    @typing.overload
+    def withActualDeviceNames(self, stringArray: typing.List[str]) -> 'DefaultPowerConverterNestedCircuitInfosRequest': ...
+    @typing.overload
+    def withLogicalDeviceNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultPowerConverterNestedCircuitInfosRequest': ...
+    @typing.overload
+    def withLogicalDeviceNames(self, stringArray: typing.List[str]) -> 'DefaultPowerConverterNestedCircuitInfosRequest': ...
+    class Builder:
+        """
+        Java class 'cern.lsa.domain.devices.DefaultPowerConverterNestedCircuitInfosRequest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
+        def actualDeviceNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultPowerConverterNestedCircuitInfosRequest.Builder': ...
+        def addActualDeviceName(self, string: str) -> 'DefaultPowerConverterNestedCircuitInfosRequest.Builder': ...
+        def addActualDeviceNames(self, stringArray: typing.List[str]) -> 'DefaultPowerConverterNestedCircuitInfosRequest.Builder': ...
+        def addAllActualDeviceNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultPowerConverterNestedCircuitInfosRequest.Builder': ...
+        def addAllLogicalDeviceNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultPowerConverterNestedCircuitInfosRequest.Builder': ...
+        def addLogicalDeviceName(self, string: str) -> 'DefaultPowerConverterNestedCircuitInfosRequest.Builder': ...
+        def addLogicalDeviceNames(self, stringArray: typing.List[str]) -> 'DefaultPowerConverterNestedCircuitInfosRequest.Builder': ...
+        def build(self) -> 'DefaultPowerConverterNestedCircuitInfosRequest': ...
+        def logicalDeviceNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultPowerConverterNestedCircuitInfosRequest.Builder': ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.devices")``.
+
+    CalibrationsRequest: typing.Type[CalibrationsRequest]
+    DefaultCalibrationsRequest: typing.Type[DefaultCalibrationsRequest]
+    DefaultPowerConverterNestedCircuitInfo: typing.Type[DefaultPowerConverterNestedCircuitInfo]
+    DefaultPowerConverterNestedCircuitInfosRequest: typing.Type[DefaultPowerConverterNestedCircuitInfosRequest]
+    Device: typing.Type[Device]
+    DeviceFilter: typing.Type[DeviceFilter]
+    DeviceGroup: typing.Type[DeviceGroup]
+    DeviceGroupFilter: typing.Type[DeviceGroupFilter]
+    DeviceGroupType: typing.Type[DeviceGroupType]
+    DeviceGroups: typing.Type[DeviceGroups]
+    DeviceGroupsRequest: typing.Type[DeviceGroupsRequest]
+    DeviceMetaTypeEnum: typing.Type[DeviceMetaTypeEnum]
+    DeviceType: typing.Type[DeviceType]
+    DeviceTypeImplementation: typing.Type[DeviceTypeImplementation]
+    DeviceTypeVersion: typing.Type[DeviceTypeVersion]
+    DeviceTypeVersionNumber: typing.Type[DeviceTypeVersionNumber]
+    DeviceTypes: typing.Type[DeviceTypes]
+    DeviceTypesRequest: typing.Type[DeviceTypesRequest]
+    Devices: typing.Type[Devices]
+    DevicesRequest: typing.Type[DevicesRequest]
+    PowerConverterNestedCircuitInfo: typing.Type[PowerConverterNestedCircuitInfo]
+    PowerConverterNestedCircuitInfosRequest: typing.Type[PowerConverterNestedCircuitInfosRequest]
+    factory: cern.lsa.domain.devices.factory.__module_protocol__
+    inca: cern.lsa.domain.devices.inca.__module_protocol__
+    spi: cern.lsa.domain.devices.spi.__module_protocol__
+    type: cern.lsa.domain.devices.type.__module_protocol__

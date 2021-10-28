@@ -11,7 +11,12 @@ import java.util
 import typing
 
 
+
 class LsaAddedPropertyFieldSaveRequest:
+    """
+    Java class 'cern.lsa.domain.devices.type.LsaAddedPropertyFieldSaveRequest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultLsaAddedPropertyFieldSaveRequest.Builder': ...
     def getDescription(self) -> str: ...
@@ -30,6 +35,19 @@ class LsaAddedPropertyFieldSaveRequest:
     def isPropertyReadable(self) -> bool: ...
     def isPropertyWritable(self) -> bool: ...
     class ExistingPropertyHandling(java.lang.Enum['LsaAddedPropertyFieldSaveRequest.ExistingPropertyHandling']):
+        """
+        Java class 'cern.lsa.domain.devices.type.LsaAddedPropertyFieldSaveRequest$ExistingPropertyHandling'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            THROW (cern.lsa.domain.devices.type.LsaAddedPropertyFieldSaveRequest$ExistingPropertyHandling): final static enum constant
+            REUSE_EXISTING_PROPERTY (cern.lsa.domain.devices.type.LsaAddedPropertyFieldSaveRequest$ExistingPropertyHandling): final static enum constant
+            ASSERT_EXISTING_PROPERTY_MATCH (cern.lsa.domain.devices.type.LsaAddedPropertyFieldSaveRequest$ExistingPropertyHandling): final static enum constant
+            UPDATE_EXISTING_PROPERTY (cern.lsa.domain.devices.type.LsaAddedPropertyFieldSaveRequest$ExistingPropertyHandling): final static enum constant
+        
+        """
         THROW: typing.ClassVar['LsaAddedPropertyFieldSaveRequest.ExistingPropertyHandling'] = ...
         REUSE_EXISTING_PROPERTY: typing.ClassVar['LsaAddedPropertyFieldSaveRequest.ExistingPropertyHandling'] = ...
         ASSERT_EXISTING_PROPERTY_MATCH: typing.ClassVar['LsaAddedPropertyFieldSaveRequest.ExistingPropertyHandling'] = ...
@@ -45,6 +63,13 @@ class LsaAddedPropertyFieldSaveRequest:
         def values() -> typing.List['LsaAddedPropertyFieldSaveRequest.ExistingPropertyHandling']: ...
 
 class PropertyField(cern.lsa.domain.commons.IdentifiedEntity):
+    """
+    Java class 'cern.lsa.domain.devices.type.PropertyField'
+    
+        Interfaces:
+            cern.lsa.domain.commons.IdentifiedEntity
+    
+    """
     @staticmethod
     def builder() -> 'DefaultPropertyField.Builder': ...
     def getDeviceTypeName(self) -> str: ...
@@ -52,6 +77,13 @@ class PropertyField(cern.lsa.domain.commons.IdentifiedEntity):
     def getPropertyName(self) -> str: ...
 
 class PropertyFieldVersion(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.devices.type.PropertyFieldVersion'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def getDescription(self) -> str: ...
     def getPropertyField(self) -> PropertyField: ...
     def getPropertyVersion(self) -> 'PropertyVersion': ...
@@ -61,10 +93,21 @@ class PropertyFieldVersion(cern.accsoft.commons.util.Named):
     def isWritable(self) -> bool: ...
 
 class PropertyFields:
+    """
+    Java class 'cern.lsa.domain.devices.type.PropertyFields'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def buildPropertyFieldDisplayName(string: str, string2: str) -> str: ...
 
 class PropertyFieldsRequest:
+    """
+    Java class 'cern.lsa.domain.devices.type.PropertyFieldsRequest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultPropertyFieldsRequest.Builder': ...
     @staticmethod
@@ -80,18 +123,38 @@ class PropertyFieldsRequest:
     def getPropertyNames(self) -> java.util.Set[str]: ...
 
 class PropertyVersion(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.devices.type.PropertyVersion'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def getDescription(self) -> str: ...
     def getDeviceTypeVersion(self) -> cern.lsa.domain.devices.DeviceTypeVersion: ...
     def getFields(self) -> java.util.Set[PropertyFieldVersion]: ...
     def getPropertyVisibility(self) -> 'PropertyVersion.PropertyVisibility': ...
+    def isAddedInLsa(self) -> bool: ...
     def isCycleBound(self) -> bool: ...
     def isMonitorable(self) -> bool: ...
     def isMultiplexed(self) -> bool: ...
     def isReadable(self) -> bool: ...
     def isSupportingPartialSet(self) -> bool: ...
-    def isVirtual(self) -> bool: ...
     def isWritable(self) -> bool: ...
     class PropertyVisibility(java.lang.Enum['PropertyVersion.PropertyVisibility']):
+        """
+        Java class 'cern.lsa.domain.devices.type.PropertyVersion$PropertyVisibility'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            OPERATIONAL (cern.lsa.domain.devices.type.PropertyVersion$PropertyVisibility): final static enum constant
+            EXPERT (cern.lsa.domain.devices.type.PropertyVersion$PropertyVisibility): final static enum constant
+            DEVELOPMENT (cern.lsa.domain.devices.type.PropertyVersion$PropertyVisibility): final static enum constant
+            DEPRECATED (cern.lsa.domain.devices.type.PropertyVersion$PropertyVisibility): final static enum constant
+        
+        """
         OPERATIONAL: typing.ClassVar['PropertyVersion.PropertyVisibility'] = ...
         EXPERT: typing.ClassVar['PropertyVersion.PropertyVisibility'] = ...
         DEVELOPMENT: typing.ClassVar['PropertyVersion.PropertyVisibility'] = ...
@@ -107,6 +170,19 @@ class PropertyVersion(cern.accsoft.commons.util.Named):
         def values() -> typing.List['PropertyVersion.PropertyVisibility']: ...
 
 class PropertyVersionFilter(cern.accsoft.commons.util.Filters.Filter[PropertyVersion]):
+    """
+    Java class 'cern.lsa.domain.devices.type.PropertyVersionFilter'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.accsoft.commons.util.Filters.Filter
+    
+      Constructors:
+        * PropertyVersionFilter()
+    
+    """
     def __init__(self): ...
     def accepts(self, propertyVersion: PropertyVersion) -> bool: ...
     @staticmethod
@@ -132,6 +208,16 @@ class PropertyVersionFilter(cern.accsoft.commons.util.Filters.Filter[PropertyVer
     def setPropertyNames(self, collection: typing.Union[java.util.Collection[str], typing.Sequence[str]]) -> 'PropertyVersionFilter': ...
 
 class PropertyVersions:
+    """
+    Java class 'cern.lsa.domain.devices.type.PropertyVersions'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * PropertyVersions()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def findPropertyVersion(string: str, sortedMap: java.util.SortedMap[cern.lsa.domain.devices.DeviceTypeVersion, java.util.Set[PropertyVersion]], device: cern.lsa.domain.devices.Device) -> PropertyVersion: ...
@@ -143,6 +229,10 @@ class PropertyVersions:
     def toNamesMap(map: typing.Union[java.util.Map[str, java.util.Set[PropertyVersion]], typing.Mapping[str, java.util.Set[PropertyVersion]]]) -> java.util.Map[str, java.util.Map[str, PropertyVersion]]: ...
 
 class PropertyVersionsRequest:
+    """
+    Java class 'cern.lsa.domain.devices.type.PropertyVersionsRequest'
+    
+    """
     @staticmethod
     def builder() -> cern.lsa.domain.devices.factory.type.PropertyVersionsRequestBuilder: ...
     def getDeviceTypeNames(self) -> java.util.Set[str]: ...
@@ -150,6 +240,17 @@ class PropertyVersionsRequest:
     def getPropertyNames(self) -> java.util.Set[str]: ...
 
 class DefaultLsaAddedPropertyFieldSaveRequest(LsaAddedPropertyFieldSaveRequest, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.devices.type.DefaultLsaAddedPropertyFieldSaveRequest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.devices.type.LsaAddedPropertyFieldSaveRequest,
+            java.io.Serializable
+    
+    """
     @staticmethod
     def builder() -> 'DefaultLsaAddedPropertyFieldSaveRequest.Builder': ...
     @staticmethod
@@ -188,6 +289,13 @@ class DefaultLsaAddedPropertyFieldSaveRequest(LsaAddedPropertyFieldSaveRequest, 
     def withPropertyWritable(self, boolean: bool) -> 'DefaultLsaAddedPropertyFieldSaveRequest': ...
     def withReasonForAdding(self, string: str) -> 'DefaultLsaAddedPropertyFieldSaveRequest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.domain.devices.type.DefaultLsaAddedPropertyFieldSaveRequest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultLsaAddedPropertyFieldSaveRequest': ...
         def description(self, string: str) -> 'DefaultLsaAddedPropertyFieldSaveRequest.Builder': ...
         def deviceTypeName(self, string: str) -> 'DefaultLsaAddedPropertyFieldSaveRequest.Builder': ...
@@ -206,6 +314,17 @@ class DefaultLsaAddedPropertyFieldSaveRequest(LsaAddedPropertyFieldSaveRequest, 
         def reasonForAdding(self, string: str) -> 'DefaultLsaAddedPropertyFieldSaveRequest.Builder': ...
 
 class DefaultPropertyField(PropertyField, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.devices.type.DefaultPropertyField'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.devices.type.PropertyField,
+            java.io.Serializable
+    
+    """
     @staticmethod
     def builder() -> 'DefaultPropertyField.Builder': ...
     @staticmethod
@@ -222,6 +341,13 @@ class DefaultPropertyField(PropertyField, java.io.Serializable):
     def withId(self, long: int) -> 'DefaultPropertyField': ...
     def withPropertyName(self, string: str) -> 'DefaultPropertyField': ...
     class Builder:
+        """
+        Java class 'cern.lsa.domain.devices.type.DefaultPropertyField$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultPropertyField': ...
         def deviceTypeName(self, string: str) -> 'DefaultPropertyField.Builder': ...
         def fieldName(self, string: str) -> 'DefaultPropertyField.Builder': ...
@@ -229,6 +355,17 @@ class DefaultPropertyField(PropertyField, java.io.Serializable):
         def propertyName(self, string: str) -> 'DefaultPropertyField.Builder': ...
 
 class DefaultPropertyFieldsRequest(PropertyFieldsRequest, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.devices.type.DefaultPropertyFieldsRequest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.devices.type.PropertyFieldsRequest,
+            java.io.Serializable
+    
+    """
     @staticmethod
     def builder() -> 'DefaultPropertyFieldsRequest.Builder': ...
     @staticmethod
@@ -252,6 +389,13 @@ class DefaultPropertyFieldsRequest(PropertyFieldsRequest, java.io.Serializable):
     @typing.overload
     def withPropertyNames(self, stringArray: typing.List[str]) -> 'DefaultPropertyFieldsRequest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.domain.devices.type.DefaultPropertyFieldsRequest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def addAllDeviceTypeNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultPropertyFieldsRequest.Builder': ...
         def addAllFieldNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultPropertyFieldsRequest.Builder': ...
         def addAllPropertyNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultPropertyFieldsRequest.Builder': ...
@@ -265,3 +409,20 @@ class DefaultPropertyFieldsRequest(PropertyFieldsRequest, java.io.Serializable):
         def deviceTypeNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultPropertyFieldsRequest.Builder': ...
         def fieldNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultPropertyFieldsRequest.Builder': ...
         def propertyNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultPropertyFieldsRequest.Builder': ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.devices.type")``.
+
+    DefaultLsaAddedPropertyFieldSaveRequest: typing.Type[DefaultLsaAddedPropertyFieldSaveRequest]
+    DefaultPropertyField: typing.Type[DefaultPropertyField]
+    DefaultPropertyFieldsRequest: typing.Type[DefaultPropertyFieldsRequest]
+    LsaAddedPropertyFieldSaveRequest: typing.Type[LsaAddedPropertyFieldSaveRequest]
+    PropertyField: typing.Type[PropertyField]
+    PropertyFieldVersion: typing.Type[PropertyFieldVersion]
+    PropertyFields: typing.Type[PropertyFields]
+    PropertyFieldsRequest: typing.Type[PropertyFieldsRequest]
+    PropertyVersion: typing.Type[PropertyVersion]
+    PropertyVersionFilter: typing.Type[PropertyVersionFilter]
+    PropertyVersions: typing.Type[PropertyVersions]
+    PropertyVersionsRequest: typing.Type[PropertyVersionsRequest]

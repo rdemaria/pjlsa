@@ -7,7 +7,21 @@ import java.util
 import typing
 
 
+
 class AbstractLktimDevice(cern.accsoft.commons.util.AbstractNamedSerializable[cern.lsa.domain.cern.settings.lktim.LktimDevice], cern.lsa.domain.cern.settings.lktim.LktimDevice):
+    """
+    Java class 'cern.lsa.domain.cern.settings.spi.lktim.AbstractLktimDevice'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractNamedSerializable
+    
+        Interfaces:
+            cern.lsa.domain.cern.settings.lktim.LktimDevice
+    
+      Attributes:
+        PROPERTY_ACTIVE_TREE_ID (java.lang.String): final static field
+    
+    """
     PROPERTY_ACTIVE_TREE_ID: typing.ClassVar[str] = ...
     def getActiveTreeId(self, contextSettings: cern.lsa.domain.settings.ContextSettings) -> int: ...
     def getErrorMessages(self) -> java.util.Set[str]: ...
@@ -15,6 +29,20 @@ class AbstractLktimDevice(cern.accsoft.commons.util.AbstractNamedSerializable[ce
     def setActiveTreeId(self, contextSettings: cern.lsa.domain.settings.ContextSettings, long: int) -> None: ...
 
 class LktimTreeImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity[cern.lsa.domain.cern.settings.lktim.LktimTree], cern.lsa.domain.cern.settings.lktim.LktimTree):
+    """
+    Java class 'cern.lsa.domain.cern.settings.spi.lktim.LktimTreeImpl'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity
+    
+        Interfaces:
+            cern.lsa.domain.cern.settings.lktim.LktimTree
+    
+      Constructors:
+        * LktimTreeImpl(long, java.lang.String, cern.lsa.domain.cern.settings.lktim.LktimTreeNode)
+        * LktimTreeImpl(long, java.lang.String, cern.lsa.domain.cern.settings.lktim.LktimTreeNode, cern.lsa.domain.settings.Parameter, java.util.Date)
+    
+    """
     @typing.overload
     def __init__(self, long: int, string: str, lktimTreeNode: cern.lsa.domain.cern.settings.lktim.LktimTreeNode): ...
     @typing.overload
@@ -29,6 +57,19 @@ class LktimTreeImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity[ce
     def toString(self) -> str: ...
 
 class LktimTreeNodeImpl(cern.accsoft.commons.util.AbstractNamedSerializable[cern.lsa.domain.cern.settings.lktim.LktimTreeNode], cern.lsa.domain.cern.settings.lktim.LktimTreeNode):
+    """
+    Java class 'cern.lsa.domain.cern.settings.spi.lktim.LktimTreeNodeImpl'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractNamedSerializable
+    
+        Interfaces:
+            cern.lsa.domain.cern.settings.lktim.LktimTreeNode
+    
+      Constructors:
+        * LktimTreeNodeImpl(long, cern.lsa.domain.cern.settings.lktim.LktimDevice, java.lang.String)
+    
+    """
     def __init__(self, long: int, lktimDevice: cern.lsa.domain.cern.settings.lktim.LktimDevice, string: str): ...
     @typing.overload
     def addChild(self, lktimTreeNode: cern.lsa.domain.cern.settings.lktim.LktimTreeNode) -> None: ...
@@ -50,6 +91,20 @@ class LktimTreeNodeImpl(cern.accsoft.commons.util.AbstractNamedSerializable[cern
     def toString(self) -> str: ...
 
 class LktimTreeSettingsImpl(cern.lsa.domain.cern.settings.lktim.LktimTreeSettings, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.settings.spi.lktim.LktimTreeSettingsImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.settings.lktim.LktimTreeSettings,
+            java.io.Serializable
+    
+      Constructors:
+        * LktimTreeSettingsImpl(cern.lsa.domain.cern.settings.lktim.LktimTree, cern.lsa.domain.cern.settings.lktim.LktimTreeStatus, cern.lsa.domain.settings.ContextSettings)
+    
+    """
     def __init__(self, lktimTree: cern.lsa.domain.cern.settings.lktim.LktimTree, lktimTreeStatus: cern.lsa.domain.cern.settings.lktim.LktimTreeStatus, contextSettings: cern.lsa.domain.settings.ContextSettings): ...
     def getActiveTreeId(self, lktimTreeNode: cern.lsa.domain.cern.settings.lktim.LktimTreeNode) -> int: ...
     def getContext(self) -> cern.lsa.domain.settings.StandAloneCycle: ...
@@ -68,6 +123,23 @@ class LktimTreeSettingsImpl(cern.lsa.domain.cern.settings.lktim.LktimTreeSetting
     def toString(self) -> str: ...
 
 class LtimDevice(AbstractLktimDevice):
+    """
+    Java class 'cern.lsa.domain.cern.settings.spi.lktim.LtimDevice'
+    
+        Extends:
+            cern.lsa.domain.cern.settings.spi.lktim.AbstractLktimDevice
+    
+      Constructors:
+        * LtimDevice(java.lang.String, java.util.List)
+    
+      Attributes:
+        PROPERTY_DELAY (java.lang.String): final static field
+        PROPERTY_PAYLOAD (java.lang.String): final static field
+        PROPERTY_ENABLE_STATUS (java.lang.String): final static field
+        PROPERTY_PERMIT (java.lang.String): final static field
+        PROPERTY_CLOCK (java.lang.String): final static field
+    
+    """
     PROPERTY_DELAY: typing.ClassVar[str] = ...
     PROPERTY_PAYLOAD: typing.ClassVar[str] = ...
     PROPERTY_ENABLE_STATUS: typing.ClassVar[str] = ...
@@ -83,6 +155,16 @@ class LtimDevice(AbstractLktimDevice):
     def setTime(self, contextSettings: cern.lsa.domain.settings.ContextSettings, double: float) -> None: ...
 
 class RootNodeDevice(AbstractLktimDevice):
+    """
+    Java class 'cern.lsa.domain.cern.settings.spi.lktim.RootNodeDevice'
+    
+        Extends:
+            cern.lsa.domain.cern.settings.spi.lktim.AbstractLktimDevice
+    
+      Constructors:
+        * RootNodeDevice(java.lang.String)
+    
+    """
     def __init__(self, string: str): ...
     def getParameters(self) -> java.util.List[cern.lsa.domain.settings.Parameter]: ...
     def getTime(self, contextSettings: cern.lsa.domain.settings.ContextSettings) -> float: ...
@@ -91,3 +173,14 @@ class RootNodeDevice(AbstractLktimDevice):
     def setEnabled(self, contextSettings: cern.lsa.domain.settings.ContextSettings, boolean: bool) -> None: ...
     def setPermitted(self, contextSettings: cern.lsa.domain.settings.ContextSettings, boolean: bool) -> None: ...
     def setTime(self, contextSettings: cern.lsa.domain.settings.ContextSettings, double: float) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.cern.settings.spi.lktim")``.
+
+    AbstractLktimDevice: typing.Type[AbstractLktimDevice]
+    LktimTreeImpl: typing.Type[LktimTreeImpl]
+    LktimTreeNodeImpl: typing.Type[LktimTreeNodeImpl]
+    LktimTreeSettingsImpl: typing.Type[LktimTreeSettingsImpl]
+    LtimDevice: typing.Type[LtimDevice]
+    RootNodeDevice: typing.Type[RootNodeDevice]

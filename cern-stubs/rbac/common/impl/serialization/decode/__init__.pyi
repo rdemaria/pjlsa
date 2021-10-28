@@ -2,7 +2,12 @@ import cern.rbac.common
 import typing
 
 
+
 class SerializedTokenFields:
+    """
+    Java class 'cern.rbac.common.impl.serialization.decode.SerializedTokenFields'
+    
+    """
     def getApplicationName(self) -> str: ...
     def getApplicationTimeout(self) -> int: ...
     def getAuthenticationTime(self) -> int: ...
@@ -22,4 +27,15 @@ class SerializedTokenFields:
     def isLocationAuthReq(self) -> bool: ...
 
 class TokenDecoder:
+    """
+    Java class 'cern.rbac.common.impl.serialization.decode.TokenDecoder'
+    
+    """
     def decode(self, byteArray: typing.List[int]) -> SerializedTokenFields: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.rbac.common.impl.serialization.decode")``.
+
+    SerializedTokenFields: typing.Type[SerializedTokenFields]
+    TokenDecoder: typing.Type[TokenDecoder]

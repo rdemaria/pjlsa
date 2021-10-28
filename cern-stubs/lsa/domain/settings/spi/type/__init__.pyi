@@ -12,7 +12,23 @@ import java.util
 import typing
 
 
+
 class BeamProcessTypeSegmentAttributeDefinitionImpl(cern.lsa.domain.commons.spi.AttributeDefinitionImpl, cern.lsa.domain.settings.type.BeamProcessTypeSegmentAttributeDefinition):
+    """
+    Java class 'cern.lsa.domain.settings.spi.type.BeamProcessTypeSegmentAttributeDefinitionImpl'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AttributeDefinitionImpl
+    
+        Interfaces:
+            cern.lsa.domain.settings.type.BeamProcessTypeSegmentAttributeD
+            efinition
+    
+      Constructors:
+        * BeamProcessTypeSegmentAttributeDefinitionImpl(cern.lsa.domain.commons.AttributeDefinition, java.lang.String, long)
+        * BeamProcessTypeSegmentAttributeDefinitionImpl(cern.lsa.domain.settings.type.BeamProcessTypeSegmentAttributeDefinition)
+    
+    """
     @typing.overload
     def __init__(self, attributeDefinition: cern.lsa.domain.commons.AttributeDefinition, string: str, long: int): ...
     @typing.overload
@@ -24,6 +40,20 @@ class BeamProcessTypeSegmentAttributeDefinitionImpl(cern.lsa.domain.commons.spi.
     def setSegmentName(self, string: str) -> None: ...
 
 class BeamProcessTypeSegmentAttributeImpl(cern.lsa.domain.commons.spi.AttributeImpl, cern.lsa.domain.settings.type.BeamProcessTypeSegmentAttribute):
+    """
+    Java class 'cern.lsa.domain.settings.spi.type.BeamProcessTypeSegmentAttributeImpl'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AttributeImpl
+    
+        Interfaces:
+            cern.lsa.domain.settings.type.BeamProcessTypeSegmentAttribute
+    
+      Constructors:
+        * BeamProcessTypeSegmentAttributeImpl(cern.lsa.domain.settings.type.BeamProcessTypeSegmentAttributeDefinition, java.lang.String, int)
+        * BeamProcessTypeSegmentAttributeImpl(cern.lsa.domain.settings.type.BeamProcessTypeSegmentAttribute)
+    
+    """
     @typing.overload
     def __init__(self, beamProcessTypeSegmentAttribute: cern.lsa.domain.settings.type.BeamProcessTypeSegmentAttribute): ...
     @typing.overload
@@ -35,6 +65,21 @@ class BeamProcessTypeSegmentAttributeImpl(cern.lsa.domain.commons.spi.AttributeI
     def setSegmentIndex(self, int: int) -> None: ...
 
 class BeamProcessTypeSegmentsImpl(cern.lsa.domain.settings.type.BeamProcessTypeSegments, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.settings.spi.type.BeamProcessTypeSegmentsImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.settings.type.BeamProcessTypeSegments,
+            java.io.Serializable
+    
+      Constructors:
+        * BeamProcessTypeSegmentsImpl()
+        * BeamProcessTypeSegmentsImpl(cern.lsa.domain.settings.type.BeamProcessTypeSegments)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -52,12 +97,40 @@ class BeamProcessTypeSegmentsImpl(cern.lsa.domain.settings.type.BeamProcessTypeS
     def toString(self) -> str: ...
 
 class ContextTypeImpl(cern.lsa.domain.settings.spi.ContextBase[cern.lsa.domain.settings.type.ContextType], cern.lsa.domain.settings.type.ContextType):
+    """
+    Java class 'cern.lsa.domain.settings.spi.type.ContextTypeImpl'
+    
+        Extends:
+            cern.lsa.domain.settings.spi.ContextBase
+    
+        Interfaces:
+            cern.lsa.domain.settings.type.ContextType
+    
+      Constructors:
+        * ContextTypeImpl(long, java.lang.String)
+        * ContextTypeImpl(cern.lsa.domain.settings.type.ContextType)
+    
+    """
     @typing.overload
     def __init__(self, contextType: cern.lsa.domain.settings.type.ContextType): ...
     @typing.overload
     def __init__(self, long: int, string: str): ...
 
 class CycleTypeAttributeImpl(cern.accsoft.commons.util.AbstractNamedSerializable[cern.lsa.domain.settings.type.CycleTypeAttribute], cern.lsa.domain.settings.type.CycleTypeAttribute):
+    """
+    Java class 'cern.lsa.domain.settings.spi.type.CycleTypeAttributeImpl'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractNamedSerializable
+    
+        Interfaces:
+            cern.lsa.domain.settings.type.CycleTypeAttribute
+    
+      Constructors:
+        * CycleTypeAttributeImpl(java.lang.String, cern.accsoft.commons.value.ImmutableScalar, java.lang.String)
+        * CycleTypeAttributeImpl(cern.lsa.domain.settings.spi.type.CycleTypeAttributeImpl)
+    
+    """
     @typing.overload
     def __init__(self, cycleTypeAttributeImpl: 'CycleTypeAttributeImpl'): ...
     @typing.overload
@@ -70,6 +143,20 @@ class CycleTypeAttributeImpl(cern.accsoft.commons.util.AbstractNamedSerializable
     def setValue(self, object: typing.Any) -> None: ...
 
 class DefaultBeamProcessPurpose(cern.lsa.domain.settings.type.BeamProcessPurpose, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.settings.spi.type.DefaultBeamProcessPurpose'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.settings.type.BeamProcessPurpose,
+            java.io.Serializable
+    
+      Constructors:
+        * DefaultBeamProcessPurpose(java.lang.String, boolean)
+    
+    """
     def __init__(self, string: str, boolean: bool): ...
     def equals(self, object: typing.Any) -> bool: ...
     def getName(self) -> str: ...
@@ -78,6 +165,22 @@ class DefaultBeamProcessPurpose(cern.lsa.domain.settings.type.BeamProcessPurpose
     def toString(self) -> str: ...
 
 class IncorporationRangeImpl(cern.lsa.domain.settings.type.IncorporationRange, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.lsa.domain.settings.spi.type.IncorporationRangeImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.settings.type.IncorporationRange,
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * IncorporationRangeImpl(cern.lsa.domain.settings.type.IncorporationRange)
+        * IncorporationRangeImpl(java.lang.String, java.lang.String, java.lang.String, int, int, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+        * IncorporationRangeImpl()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -106,11 +209,36 @@ class IncorporationRangeImpl(cern.lsa.domain.settings.type.IncorporationRange, j
     def toString(self) -> str: ...
 
 class IncorporationRuleDescriptorImpl(cern.lsa.domain.settings.type.IncorporationRuleDescriptor, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.settings.spi.type.IncorporationRuleDescriptorImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.settings.type.IncorporationRuleDescriptor,
+            java.io.Serializable
+    
+      Constructors:
+        * IncorporationRuleDescriptorImpl(java.lang.String, boolean)
+    
+    """
     def __init__(self, string: str, boolean: bool): ...
     def getRuleName(self) -> str: ...
     def isParametrized(self) -> bool: ...
 
 class TypeSchedulingItemImpl(cern.lsa.domain.settings.type.TypeSchedulingItem, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.settings.spi.type.TypeSchedulingItemImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.settings.type.TypeSchedulingItem,
+            java.io.Serializable
+    
+    """
     def equals(self, object: typing.Any) -> bool: ...
     def getScheduledType(self) -> cern.lsa.domain.settings.type.ContextType: ...
     def getStartTime(self) -> int: ...
@@ -120,6 +248,21 @@ class TypeSchedulingItemImpl(cern.lsa.domain.settings.type.TypeSchedulingItem, j
     def toString(self) -> str: ...
 
 class BeamProcessTypeImpl(ContextTypeImpl, cern.lsa.domain.settings.type.BeamProcessType):
+    """
+    Java class 'cern.lsa.domain.settings.spi.type.BeamProcessTypeImpl'
+    
+        Extends:
+            cern.lsa.domain.settings.spi.type.ContextTypeImpl
+    
+        Interfaces:
+            cern.lsa.domain.settings.type.BeamProcessType
+    
+      Constructors:
+        * BeamProcessTypeImpl(cern.lsa.domain.settings.type.BeamProcessType)
+        * BeamProcessTypeImpl(java.lang.String)
+        * BeamProcessTypeImpl()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -140,14 +283,50 @@ class BeamProcessTypeImpl(ContextTypeImpl, cern.lsa.domain.settings.type.BeamPro
     def setPurpose(self, beamProcessPurpose: cern.lsa.domain.settings.type.BeamProcessPurpose) -> None: ...
 
 class BeamProcessTypeScheduling(TypeSchedulingItemImpl):
+    """
+    Java class 'cern.lsa.domain.settings.spi.type.BeamProcessTypeScheduling'
+    
+        Extends:
+            cern.lsa.domain.settings.spi.type.TypeSchedulingItemImpl
+    
+      Constructors:
+        * BeamProcessTypeScheduling(int, cern.lsa.domain.settings.type.ContextType)
+    
+    """
     def __init__(self, int: int, contextType: cern.lsa.domain.settings.type.ContextType): ...
 
 class TypeSchedulerImpl(ContextTypeImpl, cern.lsa.domain.settings.type.TypeScheduler):
+    """
+    Java class 'cern.lsa.domain.settings.spi.type.TypeSchedulerImpl'
+    
+        Extends:
+            cern.lsa.domain.settings.spi.type.ContextTypeImpl
+    
+        Interfaces:
+            cern.lsa.domain.settings.type.TypeScheduler
+    
+    """
     def addScheduling(self, typeSchedulingItem: cern.lsa.domain.settings.type.TypeSchedulingItem) -> None: ...
     def getSchedulings(self) -> java.util.List[cern.lsa.domain.settings.type.TypeSchedulingItem]: ...
     def setSchedulings(self, list: java.util.List[cern.lsa.domain.settings.type.TypeSchedulingItem]) -> None: ...
 
 class CycleTypeImpl(TypeSchedulerImpl, cern.lsa.domain.settings.type.CycleType, cern.lsa.domain.commons.AttributeWritableAware):
+    """
+    Java class 'cern.lsa.domain.settings.spi.type.CycleTypeImpl'
+    
+        Extends:
+            cern.lsa.domain.settings.spi.type.TypeSchedulerImpl
+    
+        Interfaces:
+            cern.lsa.domain.settings.type.CycleType,
+            cern.lsa.domain.commons.AttributeWritableAware
+    
+      Constructors:
+        * CycleTypeImpl(cern.lsa.domain.settings.spi.type.CycleTypeImpl)
+        * CycleTypeImpl(long, java.lang.String)
+        * CycleTypeImpl()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -160,3 +339,21 @@ class CycleTypeImpl(TypeSchedulerImpl, cern.lsa.domain.settings.type.CycleType, 
     def getBeamProcessType(self, string: str) -> cern.lsa.domain.settings.type.BeamProcessType: ...
     def getParticleTransfers(self) -> java.util.Set[cern.accsoft.commons.domain.particletransfers.ParticleTransfer]: ...
     def setAttributes(self, collection: typing.Union[java.util.Collection[cern.lsa.domain.commons.Attribute], typing.Sequence[cern.lsa.domain.commons.Attribute]]) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.settings.spi.type")``.
+
+    BeamProcessTypeImpl: typing.Type[BeamProcessTypeImpl]
+    BeamProcessTypeScheduling: typing.Type[BeamProcessTypeScheduling]
+    BeamProcessTypeSegmentAttributeDefinitionImpl: typing.Type[BeamProcessTypeSegmentAttributeDefinitionImpl]
+    BeamProcessTypeSegmentAttributeImpl: typing.Type[BeamProcessTypeSegmentAttributeImpl]
+    BeamProcessTypeSegmentsImpl: typing.Type[BeamProcessTypeSegmentsImpl]
+    ContextTypeImpl: typing.Type[ContextTypeImpl]
+    CycleTypeAttributeImpl: typing.Type[CycleTypeAttributeImpl]
+    CycleTypeImpl: typing.Type[CycleTypeImpl]
+    DefaultBeamProcessPurpose: typing.Type[DefaultBeamProcessPurpose]
+    IncorporationRangeImpl: typing.Type[IncorporationRangeImpl]
+    IncorporationRuleDescriptorImpl: typing.Type[IncorporationRuleDescriptorImpl]
+    TypeSchedulerImpl: typing.Type[TypeSchedulerImpl]
+    TypeSchedulingItemImpl: typing.Type[TypeSchedulingItemImpl]

@@ -1,13 +1,25 @@
 import java.awt
 import java.awt.color
 import java.awt.geom
+import java.awt.image.renderable
 import java.lang
 import java.math
 import java.util
 import typing
 
 
+
 class BufferStrategy:
+    """
+    Java class 'java.awt.image.BufferStrategy'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * BufferStrategy()
+    
+    """
     def __init__(self): ...
     def contentsLost(self) -> bool: ...
     def contentsRestored(self) -> bool: ...
@@ -17,6 +29,10 @@ class BufferStrategy:
     def show(self) -> None: ...
 
 class BufferedImageOp:
+    """
+    Java class 'java.awt.image.BufferedImageOp'
+    
+    """
     def createCompatibleDestImage(self, bufferedImage: 'BufferedImage', colorModel: 'ColorModel') -> 'BufferedImage': ...
     def filter(self, bufferedImage: 'BufferedImage', bufferedImage2: 'BufferedImage') -> 'BufferedImage': ...
     def getBounds2D(self, bufferedImage: 'BufferedImage') -> java.awt.geom.Rectangle2D: ...
@@ -24,6 +40,19 @@ class BufferedImageOp:
     def getRenderingHints(self) -> java.awt.RenderingHints: ...
 
 class ColorModel(java.awt.Transparency):
+    """
+    Java class 'java.awt.image.ColorModel'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.Transparency
+    
+      Constructors:
+        * ColorModel(int)
+    
+    """
     def __init__(self, int: int): ...
     def coerceData(self, writableRaster: 'WritableRaster', boolean: bool) -> 'ColorModel': ...
     def createCompatibleSampleModel(self, int: int, int2: int) -> 'SampleModel': ...
@@ -90,6 +119,22 @@ class ColorModel(java.awt.Transparency):
     def toString(self) -> str: ...
 
 class DataBuffer:
+    """
+    Java class 'java.awt.image.DataBuffer'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        TYPE_BYTE (int): final static field
+        TYPE_USHORT (int): final static field
+        TYPE_SHORT (int): final static field
+        TYPE_INT (int): final static field
+        TYPE_FLOAT (int): final static field
+        TYPE_DOUBLE (int): final static field
+        TYPE_UNDEFINED (int): final static field
+    
+    """
     TYPE_BYTE: typing.ClassVar[int] = ...
     TYPE_USHORT: typing.ClassVar[int] = ...
     TYPE_SHORT: typing.ClassVar[int] = ...
@@ -130,6 +175,21 @@ class DataBuffer:
     def setElemFloat(self, int: int, int2: int, float: float) -> None: ...
 
 class ImageConsumer:
+    """
+    Java class 'java.awt.image.ImageConsumer'
+    
+      Attributes:
+        RANDOMPIXELORDER (int): final static field
+        TOPDOWNLEFTRIGHT (int): final static field
+        COMPLETESCANLINES (int): final static field
+        SINGLEPASS (int): final static field
+        SINGLEFRAME (int): final static field
+        IMAGEERROR (int): final static field
+        SINGLEFRAMEDONE (int): final static field
+        STATICIMAGEDONE (int): final static field
+        IMAGEABORTED (int): final static field
+    
+    """
     RANDOMPIXELORDER: typing.ClassVar[int] = ...
     TOPDOWNLEFTRIGHT: typing.ClassVar[int] = ...
     COMPLETESCANLINES: typing.ClassVar[int] = ...
@@ -150,6 +210,20 @@ class ImageConsumer:
     def setProperties(self, hashtable: java.util.Hashtable[typing.Any, typing.Any]) -> None: ...
 
 class ImageObserver:
+    """
+    Java class 'java.awt.image.ImageObserver'
+    
+      Attributes:
+        WIDTH (int): final static field
+        HEIGHT (int): final static field
+        PROPERTIES (int): final static field
+        SOMEBITS (int): final static field
+        FRAMEBITS (int): final static field
+        ALLBITS (int): final static field
+        ERROR (int): final static field
+        ABORT (int): final static field
+    
+    """
     WIDTH: typing.ClassVar[int] = ...
     HEIGHT: typing.ClassVar[int] = ...
     PROPERTIES: typing.ClassVar[int] = ...
@@ -161,6 +235,10 @@ class ImageObserver:
     def imageUpdate(self, image: java.awt.Image, int: int, int2: int, int3: int, int4: int, int5: int) -> bool: ...
 
 class ImageProducer:
+    """
+    Java class 'java.awt.image.ImageProducer'
+    
+    """
     def addConsumer(self, imageConsumer: ImageConsumer) -> None: ...
     def isConsumer(self, imageConsumer: ImageConsumer) -> bool: ...
     def removeConsumer(self, imageConsumer: ImageConsumer) -> None: ...
@@ -168,9 +246,32 @@ class ImageProducer:
     def startProduction(self, imageConsumer: ImageConsumer) -> None: ...
 
 class ImagingOpException(java.lang.RuntimeException):
+    """
+    Java class 'java.awt.image.ImagingOpException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * ImagingOpException(java.lang.String)
+    
+    """
     def __init__(self, string: str): ...
 
 class Kernel(java.lang.Cloneable):
+    """
+    Java class 'java.awt.image.Kernel'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.Cloneable
+    
+      Constructors:
+        * Kernel(int, int, float[])
+    
+    """
     def __init__(self, int: int, int2: int, floatArray: typing.List[float]): ...
     def clone(self) -> typing.Any: ...
     def getHeight(self) -> int: ...
@@ -180,15 +281,33 @@ class Kernel(java.lang.Cloneable):
     def getYOrigin(self) -> int: ...
 
 class LookupTable:
+    """
+    Java class 'java.awt.image.LookupTable'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     def getNumComponents(self) -> int: ...
     def getOffset(self) -> int: ...
     def lookupPixel(self, intArray: typing.List[int], intArray2: typing.List[int]) -> typing.List[int]: ...
 
 class MultiResolutionImage:
+    """
+    Java class 'java.awt.image.MultiResolutionImage'
+    
+    """
     def getResolutionVariant(self, double: float, double2: float) -> java.awt.Image: ...
     def getResolutionVariants(self) -> java.util.List[java.awt.Image]: ...
 
 class Raster:
+    """
+    Java class 'java.awt.image.Raster'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @typing.overload
     @staticmethod
     def createBandedRaster(int: int, int2: int, int3: int, int4: int, intArray: typing.List[int], intArray2: typing.List[int], point: java.awt.Point) -> 'WritableRaster': ...
@@ -277,9 +396,23 @@ class Raster:
     def getWidth(self) -> int: ...
 
 class RasterFormatException(java.lang.RuntimeException):
+    """
+    Java class 'java.awt.image.RasterFormatException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * RasterFormatException(java.lang.String)
+    
+    """
     def __init__(self, string: str): ...
 
 class RasterOp:
+    """
+    Java class 'java.awt.image.RasterOp'
+    
+    """
     def createCompatibleDestRaster(self, raster: Raster) -> 'WritableRaster': ...
     def filter(self, raster: Raster, writableRaster: 'WritableRaster') -> 'WritableRaster': ...
     def getBounds2D(self, raster: Raster) -> java.awt.geom.Rectangle2D: ...
@@ -287,6 +420,10 @@ class RasterOp:
     def getRenderingHints(self) -> java.awt.RenderingHints: ...
 
 class RenderedImage:
+    """
+    Java class 'java.awt.image.RenderedImage'
+    
+    """
     def copyData(self, writableRaster: 'WritableRaster') -> 'WritableRaster': ...
     def getColorModel(self) -> ColorModel: ...
     @typing.overload
@@ -312,6 +449,16 @@ class RenderedImage:
     def getWidth(self) -> int: ...
 
 class SampleModel:
+    """
+    Java class 'java.awt.image.SampleModel'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * SampleModel(int, int, int, int)
+    
+    """
     def __init__(self, int: int, int2: int, int3: int, int4: int): ...
     def createCompatibleSampleModel(self, int: int, int2: int) -> 'SampleModel': ...
     def createDataBuffer(self) -> DataBuffer: ...
@@ -381,9 +528,31 @@ class SampleModel:
     def setSamples(self, int: int, int2: int, int3: int, int4: int, int5: int, intArray: typing.List[int], dataBuffer: DataBuffer) -> None: ...
 
 class TileObserver:
+    """
+    Java class 'java.awt.image.TileObserver'
+    
+    """
     def tileUpdate(self, writableRenderedImage: 'WritableRenderedImage', int: int, int2: int, boolean: bool) -> None: ...
 
 class VolatileImage(java.awt.Image, java.awt.Transparency):
+    """
+    Java class 'java.awt.image.VolatileImage'
+    
+        Extends:
+            java.awt.Image
+    
+        Interfaces:
+            java.awt.Transparency
+    
+      Constructors:
+        * VolatileImage()
+    
+      Attributes:
+        IMAGE_OK (int): final static field
+        IMAGE_RESTORED (int): final static field
+        IMAGE_INCOMPATIBLE (int): final static field
+    
+    """
     IMAGE_OK: typing.ClassVar[int] = ...
     IMAGE_RESTORED: typing.ClassVar[int] = ...
     IMAGE_INCOMPATIBLE: typing.ClassVar[int] = ...
@@ -409,6 +578,19 @@ class VolatileImage(java.awt.Image, java.awt.Transparency):
     def validate(self, graphicsConfiguration: java.awt.GraphicsConfiguration) -> int: ...
 
 class AbstractMultiResolutionImage(java.awt.Image, MultiResolutionImage):
+    """
+    Java class 'java.awt.image.AbstractMultiResolutionImage'
+    
+        Extends:
+            java.awt.Image
+    
+        Interfaces:
+            java.awt.image.MultiResolutionImage
+    
+      Constructors:
+        * AbstractMultiResolutionImage()
+    
+    """
     def __init__(self): ...
     def getGraphics(self) -> java.awt.Graphics: ...
     def getHeight(self, imageObserver: ImageObserver) -> int: ...
@@ -417,6 +599,25 @@ class AbstractMultiResolutionImage(java.awt.Image, MultiResolutionImage):
     def getWidth(self, imageObserver: ImageObserver) -> int: ...
 
 class AffineTransformOp(BufferedImageOp, RasterOp):
+    """
+    Java class 'java.awt.image.AffineTransformOp'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.image.BufferedImageOp, java.awt.image.RasterOp
+    
+      Constructors:
+        * AffineTransformOp(java.awt.geom.AffineTransform, java.awt.RenderingHints)
+        * AffineTransformOp(java.awt.geom.AffineTransform, int)
+    
+      Attributes:
+        TYPE_NEAREST_NEIGHBOR (int): final static field
+        TYPE_BILINEAR (int): final static field
+        TYPE_BICUBIC (int): final static field
+    
+    """
     TYPE_NEAREST_NEIGHBOR: typing.ClassVar[int] = ...
     TYPE_BILINEAR: typing.ClassVar[int] = ...
     TYPE_BICUBIC: typing.ClassVar[int] = ...
@@ -440,6 +641,19 @@ class AffineTransformOp(BufferedImageOp, RasterOp):
     def getTransform(self) -> java.awt.geom.AffineTransform: ...
 
 class BandCombineOp(RasterOp):
+    """
+    Java class 'java.awt.image.BandCombineOp'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.image.RasterOp
+    
+      Constructors:
+        * BandCombineOp(float[][], java.awt.RenderingHints)
+    
+    """
     def __init__(self, floatArray: typing.List[typing.List[float]], renderingHints: java.awt.RenderingHints): ...
     def createCompatibleDestRaster(self, raster: Raster) -> 'WritableRaster': ...
     def filter(self, raster: Raster, writableRaster: 'WritableRaster') -> 'WritableRaster': ...
@@ -449,6 +663,17 @@ class BandCombineOp(RasterOp):
     def getRenderingHints(self) -> java.awt.RenderingHints: ...
 
 class ByteLookupTable(LookupTable):
+    """
+    Java class 'java.awt.image.ByteLookupTable'
+    
+        Extends:
+            java.awt.image.LookupTable
+    
+      Constructors:
+        * ByteLookupTable(int, byte[][])
+        * ByteLookupTable(int, byte[])
+    
+    """
     @typing.overload
     def __init__(self, int: int, byteArray: typing.List[int]): ...
     @typing.overload
@@ -460,6 +685,22 @@ class ByteLookupTable(LookupTable):
     def lookupPixel(self, intArray: typing.List[int], intArray2: typing.List[int]) -> typing.List[int]: ...
 
 class ColorConvertOp(BufferedImageOp, RasterOp):
+    """
+    Java class 'java.awt.image.ColorConvertOp'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.image.BufferedImageOp, java.awt.image.RasterOp
+    
+      Constructors:
+        * ColorConvertOp(java.awt.color.ICC_Profile[], java.awt.RenderingHints)
+        * ColorConvertOp(java.awt.color.ColorSpace, java.awt.color.ColorSpace, java.awt.RenderingHints)
+        * ColorConvertOp(java.awt.color.ColorSpace, java.awt.RenderingHints)
+        * ColorConvertOp(java.awt.RenderingHints)
+    
+    """
     @typing.overload
     def __init__(self, renderingHints: java.awt.RenderingHints): ...
     @typing.overload
@@ -483,6 +724,17 @@ class ColorConvertOp(BufferedImageOp, RasterOp):
     def getRenderingHints(self) -> java.awt.RenderingHints: ...
 
 class ComponentColorModel(ColorModel):
+    """
+    Java class 'java.awt.image.ComponentColorModel'
+    
+        Extends:
+            java.awt.image.ColorModel
+    
+      Constructors:
+        * ComponentColorModel(java.awt.color.ColorSpace, int[], boolean, boolean, int, int)
+        * ComponentColorModel(java.awt.color.ColorSpace, boolean, boolean, int, int)
+    
+    """
     @typing.overload
     def __init__(self, colorSpace: java.awt.color.ColorSpace, boolean: bool, boolean2: bool, int: int, int2: int): ...
     @typing.overload
@@ -536,6 +788,17 @@ class ComponentColorModel(ColorModel):
     def isCompatibleSampleModel(self, sampleModel: SampleModel) -> bool: ...
 
 class ComponentSampleModel(SampleModel):
+    """
+    Java class 'java.awt.image.ComponentSampleModel'
+    
+        Extends:
+            java.awt.image.SampleModel
+    
+      Constructors:
+        * ComponentSampleModel(int, int, int, int, int, int[])
+        * ComponentSampleModel(int, int, int, int, int, int[], int[])
+    
+    """
     @typing.overload
     def __init__(self, int: int, int2: int, int3: int, int4: int, int5: int, intArray: typing.List[int]): ...
     @typing.overload
@@ -613,6 +876,24 @@ class ComponentSampleModel(SampleModel):
     def setSamples(self, int: int, int2: int, int3: int, int4: int, int5: int, floatArray: typing.List[float], dataBuffer: DataBuffer) -> None: ...
 
 class ConvolveOp(BufferedImageOp, RasterOp):
+    """
+    Java class 'java.awt.image.ConvolveOp'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.image.BufferedImageOp, java.awt.image.RasterOp
+    
+      Constructors:
+        * ConvolveOp(java.awt.image.Kernel, int, java.awt.RenderingHints)
+        * ConvolveOp(java.awt.image.Kernel)
+    
+      Attributes:
+        EDGE_ZERO_FILL (int): final static field
+        EDGE_NO_OP (int): final static field
+    
+    """
     EDGE_ZERO_FILL: typing.ClassVar[int] = ...
     EDGE_NO_OP: typing.ClassVar[int] = ...
     @typing.overload
@@ -635,6 +916,21 @@ class ConvolveOp(BufferedImageOp, RasterOp):
     def getRenderingHints(self) -> java.awt.RenderingHints: ...
 
 class DataBufferByte(DataBuffer):
+    """
+    Java class 'java.awt.image.DataBufferByte'
+    
+        Extends:
+            java.awt.image.DataBuffer
+    
+      Constructors:
+        * DataBufferByte(byte[][], int, int[])
+        * DataBufferByte(byte[][], int)
+        * DataBufferByte(byte[], int, int)
+        * DataBufferByte(int)
+        * DataBufferByte(int, int)
+        * DataBufferByte(byte[], int)
+    
+    """
     @typing.overload
     def __init__(self, byteArray: typing.List[int], int: int): ...
     @typing.overload
@@ -662,6 +958,21 @@ class DataBufferByte(DataBuffer):
     def setElem(self, int: int, int2: int, int3: int) -> None: ...
 
 class DataBufferDouble(DataBuffer):
+    """
+    Java class 'java.awt.image.DataBufferDouble'
+    
+        Extends:
+            java.awt.image.DataBuffer
+    
+      Constructors:
+        * DataBufferDouble(double[][], int, int[])
+        * DataBufferDouble(double[][], int)
+        * DataBufferDouble(double[], int, int)
+        * DataBufferDouble(int)
+        * DataBufferDouble(int, int)
+        * DataBufferDouble(double[], int)
+    
+    """
     @typing.overload
     def __init__(self, doubleArray: typing.List[float], int: int): ...
     @typing.overload
@@ -705,6 +1016,21 @@ class DataBufferDouble(DataBuffer):
     def setElemFloat(self, int: int, int2: int, float: float) -> None: ...
 
 class DataBufferFloat(DataBuffer):
+    """
+    Java class 'java.awt.image.DataBufferFloat'
+    
+        Extends:
+            java.awt.image.DataBuffer
+    
+      Constructors:
+        * DataBufferFloat(float[][], int, int[])
+        * DataBufferFloat(float[][], int)
+        * DataBufferFloat(float[], int, int)
+        * DataBufferFloat(int)
+        * DataBufferFloat(int, int)
+        * DataBufferFloat(float[], int)
+    
+    """
     @typing.overload
     def __init__(self, floatArray: typing.List[float], int: int): ...
     @typing.overload
@@ -748,6 +1074,21 @@ class DataBufferFloat(DataBuffer):
     def setElemFloat(self, int: int, int2: int, float: float) -> None: ...
 
 class DataBufferInt(DataBuffer):
+    """
+    Java class 'java.awt.image.DataBufferInt'
+    
+        Extends:
+            java.awt.image.DataBuffer
+    
+      Constructors:
+        * DataBufferInt(int[][], int, int[])
+        * DataBufferInt(int[][], int)
+        * DataBufferInt(int[], int, int)
+        * DataBufferInt(int)
+        * DataBufferInt(int, int)
+        * DataBufferInt(int[], int)
+    
+    """
     @typing.overload
     def __init__(self, int: int): ...
     @typing.overload
@@ -775,6 +1116,21 @@ class DataBufferInt(DataBuffer):
     def setElem(self, int: int, int2: int, int3: int) -> None: ...
 
 class DataBufferShort(DataBuffer):
+    """
+    Java class 'java.awt.image.DataBufferShort'
+    
+        Extends:
+            java.awt.image.DataBuffer
+    
+      Constructors:
+        * DataBufferShort(short[][], int, int[])
+        * DataBufferShort(short[][], int)
+        * DataBufferShort(short[], int, int)
+        * DataBufferShort(int)
+        * DataBufferShort(int, int)
+        * DataBufferShort(short[], int)
+    
+    """
     @typing.overload
     def __init__(self, int: int): ...
     @typing.overload
@@ -802,6 +1158,21 @@ class DataBufferShort(DataBuffer):
     def setElem(self, int: int, int2: int, int3: int) -> None: ...
 
 class DataBufferUShort(DataBuffer):
+    """
+    Java class 'java.awt.image.DataBufferUShort'
+    
+        Extends:
+            java.awt.image.DataBuffer
+    
+      Constructors:
+        * DataBufferUShort(short[][], int, int[])
+        * DataBufferUShort(short[][], int)
+        * DataBufferUShort(short[], int, int)
+        * DataBufferUShort(int)
+        * DataBufferUShort(int, int)
+        * DataBufferUShort(short[], int)
+    
+    """
     @typing.overload
     def __init__(self, int: int): ...
     @typing.overload
@@ -829,6 +1200,19 @@ class DataBufferUShort(DataBuffer):
     def setElem(self, int: int, int2: int, int3: int) -> None: ...
 
 class FilteredImageSource(ImageProducer):
+    """
+    Java class 'java.awt.image.FilteredImageSource'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.image.ImageProducer
+    
+      Constructors:
+        * FilteredImageSource(java.awt.image.ImageProducer, java.awt.image.ImageFilter)
+    
+    """
     def __init__(self, imageProducer: ImageProducer, imageFilter: 'ImageFilter'): ...
     def addConsumer(self, imageConsumer: ImageConsumer) -> None: ...
     def isConsumer(self, imageConsumer: ImageConsumer) -> bool: ...
@@ -837,6 +1221,19 @@ class FilteredImageSource(ImageProducer):
     def startProduction(self, imageConsumer: ImageConsumer) -> None: ...
 
 class ImageFilter(ImageConsumer, java.lang.Cloneable):
+    """
+    Java class 'java.awt.image.ImageFilter'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.image.ImageConsumer, java.lang.Cloneable
+    
+      Constructors:
+        * ImageFilter()
+    
+    """
     def __init__(self): ...
     def clone(self) -> typing.Any: ...
     def getFilterInstance(self, imageConsumer: ImageConsumer) -> 'ImageFilter': ...
@@ -852,6 +1249,22 @@ class ImageFilter(ImageConsumer, java.lang.Cloneable):
     def setProperties(self, hashtable: java.util.Hashtable[typing.Any, typing.Any]) -> None: ...
 
 class IndexColorModel(ColorModel):
+    """
+    Java class 'java.awt.image.IndexColorModel'
+    
+        Extends:
+            java.awt.image.ColorModel
+    
+      Constructors:
+        * IndexColorModel(int, int, byte[], byte[], byte[], byte[])
+        * IndexColorModel(int, int, byte[], int, boolean)
+        * IndexColorModel(int, int, byte[], int, boolean, int)
+        * IndexColorModel(int, int, int[], int, int, java.math.BigInteger)
+        * IndexColorModel(int, int, byte[], byte[], byte[], int)
+        * IndexColorModel(int, int, byte[], byte[], byte[])
+        * IndexColorModel(int, int, int[], int, boolean, int, int)
+    
+    """
     @typing.overload
     def __init__(self, int: int, int2: int, byteArray: typing.List[int], byteArray2: typing.List[int], byteArray3: typing.List[int]): ...
     @typing.overload
@@ -928,6 +1341,19 @@ class IndexColorModel(ColorModel):
     def toString(self) -> str: ...
 
 class LookupOp(BufferedImageOp, RasterOp):
+    """
+    Java class 'java.awt.image.LookupOp'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.image.BufferedImageOp, java.awt.image.RasterOp
+    
+      Constructors:
+        * LookupOp(java.awt.image.LookupTable, java.awt.RenderingHints)
+    
+    """
     def __init__(self, lookupTable: LookupTable, renderingHints: java.awt.RenderingHints): ...
     def createCompatibleDestImage(self, bufferedImage: 'BufferedImage', colorModel: ColorModel) -> 'BufferedImage': ...
     def createCompatibleDestRaster(self, raster: Raster) -> 'WritableRaster': ...
@@ -944,6 +1370,24 @@ class LookupOp(BufferedImageOp, RasterOp):
     def getTable(self) -> LookupTable: ...
 
 class MemoryImageSource(ImageProducer):
+    """
+    Java class 'java.awt.image.MemoryImageSource'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.image.ImageProducer
+    
+      Constructors:
+        * MemoryImageSource(int, int, int[], int, int)
+        * MemoryImageSource(int, int, int[], int, int, java.util.Hashtable)
+        * MemoryImageSource(int, int, java.awt.image.ColorModel, int[], int, int, java.util.Hashtable)
+        * MemoryImageSource(int, int, java.awt.image.ColorModel, int[], int, int)
+        * MemoryImageSource(int, int, java.awt.image.ColorModel, byte[], int, int, java.util.Hashtable)
+        * MemoryImageSource(int, int, java.awt.image.ColorModel, byte[], int, int)
+    
+    """
     @typing.overload
     def __init__(self, int: int, int2: int, intArray: typing.List[int], int4: int, int5: int): ...
     @typing.overload
@@ -975,6 +1419,17 @@ class MemoryImageSource(ImageProducer):
     def startProduction(self, imageConsumer: ImageConsumer) -> None: ...
 
 class MultiPixelPackedSampleModel(SampleModel):
+    """
+    Java class 'java.awt.image.MultiPixelPackedSampleModel'
+    
+        Extends:
+            java.awt.image.SampleModel
+    
+      Constructors:
+        * MultiPixelPackedSampleModel(int, int, int, int)
+        * MultiPixelPackedSampleModel(int, int, int, int, int, int)
+    
+    """
     @typing.overload
     def __init__(self, int: int, int2: int, int3: int, int4: int): ...
     @typing.overload
@@ -1024,6 +1479,17 @@ class MultiPixelPackedSampleModel(SampleModel):
     def setSample(self, int: int, int2: int, int3: int, float: float, dataBuffer: DataBuffer) -> None: ...
 
 class PackedColorModel(ColorModel):
+    """
+    Java class 'java.awt.image.PackedColorModel'
+    
+        Extends:
+            java.awt.image.ColorModel
+    
+      Constructors:
+        * PackedColorModel(java.awt.color.ColorSpace, int, int[], int, boolean, int, int)
+        * PackedColorModel(java.awt.color.ColorSpace, int, int, int, int, int, boolean, int, int)
+    
+    """
     @typing.overload
     def __init__(self, colorSpace: java.awt.color.ColorSpace, int: int, int2: int, int3: int, int4: int, int5: int, boolean: bool, int6: int, int7: int): ...
     @typing.overload
@@ -1037,6 +1503,21 @@ class PackedColorModel(ColorModel):
     def isCompatibleSampleModel(self, sampleModel: SampleModel) -> bool: ...
 
 class PixelGrabber(ImageConsumer):
+    """
+    Java class 'java.awt.image.PixelGrabber'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.image.ImageConsumer
+    
+      Constructors:
+        * PixelGrabber(java.awt.Image, int, int, int, int, boolean)
+        * PixelGrabber(java.awt.image.ImageProducer, int, int, int, int, int[], int, int)
+        * PixelGrabber(java.awt.Image, int, int, int, int, int[], int, int)
+    
+    """
     @typing.overload
     def __init__(self, image: java.awt.Image, int: int, int2: int, int3: int, int4: int, boolean: bool): ...
     @typing.overload
@@ -1066,6 +1547,20 @@ class PixelGrabber(ImageConsumer):
     def status(self) -> int: ...
 
 class RescaleOp(BufferedImageOp, RasterOp):
+    """
+    Java class 'java.awt.image.RescaleOp'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.image.BufferedImageOp, java.awt.image.RasterOp
+    
+      Constructors:
+        * RescaleOp(float[], float[], java.awt.RenderingHints)
+        * RescaleOp(float, float, java.awt.RenderingHints)
+    
+    """
     @typing.overload
     def __init__(self, float: float, float2: float, renderingHints: java.awt.RenderingHints): ...
     @typing.overload
@@ -1087,6 +1582,17 @@ class RescaleOp(BufferedImageOp, RasterOp):
     def getScaleFactors(self, floatArray: typing.List[float]) -> typing.List[float]: ...
 
 class ShortLookupTable(LookupTable):
+    """
+    Java class 'java.awt.image.ShortLookupTable'
+    
+        Extends:
+            java.awt.image.LookupTable
+    
+      Constructors:
+        * ShortLookupTable(int, short[][])
+        * ShortLookupTable(int, short[])
+    
+    """
     @typing.overload
     def __init__(self, int: int, shortArray: typing.List[int]): ...
     @typing.overload
@@ -1098,6 +1604,17 @@ class ShortLookupTable(LookupTable):
     def lookupPixel(self, shortArray: typing.List[int], shortArray2: typing.List[int]) -> typing.List[int]: ...
 
 class SinglePixelPackedSampleModel(SampleModel):
+    """
+    Java class 'java.awt.image.SinglePixelPackedSampleModel'
+    
+        Extends:
+            java.awt.image.SampleModel
+    
+      Constructors:
+        * SinglePixelPackedSampleModel(int, int, int, int, int[])
+        * SinglePixelPackedSampleModel(int, int, int, int[])
+    
+    """
     @typing.overload
     def __init__(self, int: int, int2: int, int3: int, int4: int, intArray: typing.List[int]): ...
     @typing.overload
@@ -1169,6 +1686,13 @@ class SinglePixelPackedSampleModel(SampleModel):
     def setSamples(self, int: int, int2: int, int3: int, int4: int, int5: int, intArray: typing.List[int], dataBuffer: DataBuffer) -> None: ...
 
 class WritableRaster(Raster):
+    """
+    Java class 'java.awt.image.WritableRaster'
+    
+        Extends:
+            java.awt.image.Raster
+    
+    """
     def createWritableChild(self, int: int, int2: int, int3: int, int4: int, int5: int, int6: int, intArray: typing.List[int]) -> 'WritableRaster': ...
     def createWritableTranslatedChild(self, int: int, int2: int) -> 'WritableRaster': ...
     def getWritableParent(self) -> 'WritableRaster': ...
@@ -1208,6 +1732,13 @@ class WritableRaster(Raster):
     def setSamples(self, int: int, int2: int, int3: int, int4: int, int5: int, intArray: typing.List[int]) -> None: ...
 
 class WritableRenderedImage(RenderedImage):
+    """
+    Java class 'java.awt.image.WritableRenderedImage'
+    
+        Interfaces:
+            java.awt.image.RenderedImage
+    
+    """
     def addTileObserver(self, tileObserver: TileObserver) -> None: ...
     def getWritableTile(self, int: int, int2: int) -> WritableRaster: ...
     def getWritableTileIndices(self) -> typing.List[java.awt.Point]: ...
@@ -1218,6 +1749,17 @@ class WritableRenderedImage(RenderedImage):
     def setData(self, raster: Raster) -> None: ...
 
 class BandedSampleModel(ComponentSampleModel):
+    """
+    Java class 'java.awt.image.BandedSampleModel'
+    
+        Extends:
+            java.awt.image.ComponentSampleModel
+    
+      Constructors:
+        * BandedSampleModel(int, int, int, int)
+        * BandedSampleModel(int, int, int, int, int[], int[])
+    
+    """
     @typing.overload
     def __init__(self, int: int, int2: int, int3: int, int4: int): ...
     @typing.overload
@@ -1281,6 +1823,17 @@ class BandedSampleModel(ComponentSampleModel):
     def setSamples(self, int: int, int2: int, int3: int, int4: int, int5: int, floatArray: typing.List[float], dataBuffer: DataBuffer) -> None: ...
 
 class BaseMultiResolutionImage(AbstractMultiResolutionImage):
+    """
+    Java class 'java.awt.image.BaseMultiResolutionImage'
+    
+        Extends:
+            java.awt.image.AbstractMultiResolutionImage
+    
+      Constructors:
+        * BaseMultiResolutionImage(java.awt.Image[])
+        * BaseMultiResolutionImage(int, java.awt.Image[])
+    
+    """
     @typing.overload
     def __init__(self, int: int, imageArray: typing.List[java.awt.Image]): ...
     @typing.overload
@@ -1289,6 +1842,37 @@ class BaseMultiResolutionImage(AbstractMultiResolutionImage):
     def getResolutionVariants(self) -> java.util.List[java.awt.Image]: ...
 
 class BufferedImage(java.awt.Image, WritableRenderedImage, java.awt.Transparency):
+    """
+    Java class 'java.awt.image.BufferedImage'
+    
+        Extends:
+            java.awt.Image
+    
+        Interfaces:
+            java.awt.image.WritableRenderedImage, java.awt.Transparency
+    
+      Constructors:
+        * BufferedImage(int, int, int, java.awt.image.IndexColorModel)
+        * BufferedImage(int, int, int)
+        * BufferedImage(java.awt.image.ColorModel, java.awt.image.WritableRaster, boolean, java.util.Hashtable)
+    
+      Attributes:
+        TYPE_CUSTOM (int): final static field
+        TYPE_INT_RGB (int): final static field
+        TYPE_INT_ARGB (int): final static field
+        TYPE_INT_ARGB_PRE (int): final static field
+        TYPE_INT_BGR (int): final static field
+        TYPE_3BYTE_BGR (int): final static field
+        TYPE_4BYTE_ABGR (int): final static field
+        TYPE_4BYTE_ABGR_PRE (int): final static field
+        TYPE_USHORT_565_RGB (int): final static field
+        TYPE_USHORT_555_RGB (int): final static field
+        TYPE_BYTE_GRAY (int): final static field
+        TYPE_USHORT_GRAY (int): final static field
+        TYPE_BYTE_BINARY (int): final static field
+        TYPE_BYTE_INDEXED (int): final static field
+    
+    """
     TYPE_CUSTOM: typing.ClassVar[int] = ...
     TYPE_INT_RGB: typing.ClassVar[int] = ...
     TYPE_INT_ARGB: typing.ClassVar[int] = ...
@@ -1370,6 +1954,19 @@ class BufferedImage(java.awt.Image, WritableRenderedImage, java.awt.Transparency
     def toString(self) -> str: ...
 
 class BufferedImageFilter(ImageFilter, java.lang.Cloneable):
+    """
+    Java class 'java.awt.image.BufferedImageFilter'
+    
+        Extends:
+            java.awt.image.ImageFilter
+    
+        Interfaces:
+            java.lang.Cloneable
+    
+      Constructors:
+        * BufferedImageFilter(java.awt.image.BufferedImageOp)
+    
+    """
     def __init__(self, bufferedImageOp: BufferedImageOp): ...
     def getBufferedImageOp(self) -> BufferedImageOp: ...
     def imageComplete(self, int: int) -> None: ...
@@ -1381,6 +1978,16 @@ class BufferedImageFilter(ImageFilter, java.lang.Cloneable):
     def setPixels(self, int: int, int2: int, int3: int, int4: int, colorModel: ColorModel, intArray: typing.List[int], int6: int, int7: int) -> None: ...
 
 class CropImageFilter(ImageFilter):
+    """
+    Java class 'java.awt.image.CropImageFilter'
+    
+        Extends:
+            java.awt.image.ImageFilter
+    
+      Constructors:
+        * CropImageFilter(int, int, int, int)
+    
+    """
     def __init__(self, int: int, int2: int, int3: int, int4: int): ...
     def setDimensions(self, int: int, int2: int) -> None: ...
     @typing.overload
@@ -1390,6 +1997,18 @@ class CropImageFilter(ImageFilter):
     def setProperties(self, hashtable: java.util.Hashtable[typing.Any, typing.Any]) -> None: ...
 
 class DirectColorModel(PackedColorModel):
+    """
+    Java class 'java.awt.image.DirectColorModel'
+    
+        Extends:
+            java.awt.image.PackedColorModel
+    
+      Constructors:
+        * DirectColorModel(java.awt.color.ColorSpace, int, int, int, int, int, boolean, int)
+        * DirectColorModel(int, int, int, int, int)
+        * DirectColorModel(int, int, int, int)
+    
+    """
     @typing.overload
     def __init__(self, int: int, int2: int, int3: int, int4: int): ...
     @typing.overload
@@ -1440,12 +2059,32 @@ class DirectColorModel(PackedColorModel):
     def toString(self) -> str: ...
 
 class PixelInterleavedSampleModel(ComponentSampleModel):
+    """
+    Java class 'java.awt.image.PixelInterleavedSampleModel'
+    
+        Extends:
+            java.awt.image.ComponentSampleModel
+    
+      Constructors:
+        * PixelInterleavedSampleModel(int, int, int, int, int, int[])
+    
+    """
     def __init__(self, int: int, int2: int, int3: int, int4: int, int5: int, intArray: typing.List[int]): ...
     def createCompatibleSampleModel(self, int: int, int2: int) -> SampleModel: ...
     def createSubsetSampleModel(self, intArray: typing.List[int]) -> SampleModel: ...
     def hashCode(self) -> int: ...
 
 class RGBImageFilter(ImageFilter):
+    """
+    Java class 'java.awt.image.RGBImageFilter'
+    
+        Extends:
+            java.awt.image.ImageFilter
+    
+      Constructors:
+        * RGBImageFilter()
+    
+    """
     def __init__(self): ...
     def filterIndexColorModel(self, indexColorModel: IndexColorModel) -> IndexColorModel: ...
     def filterRGB(self, int: int, int2: int, int3: int) -> int: ...
@@ -1458,6 +2097,16 @@ class RGBImageFilter(ImageFilter):
     def substituteColorModel(self, colorModel: ColorModel, colorModel2: ColorModel) -> None: ...
 
 class ReplicateScaleFilter(ImageFilter):
+    """
+    Java class 'java.awt.image.ReplicateScaleFilter'
+    
+        Extends:
+            java.awt.image.ImageFilter
+    
+      Constructors:
+        * ReplicateScaleFilter(int, int)
+    
+    """
     def __init__(self, int: int, int2: int): ...
     def setDimensions(self, int: int, int2: int) -> None: ...
     @typing.overload
@@ -1467,9 +2116,80 @@ class ReplicateScaleFilter(ImageFilter):
     def setProperties(self, hashtable: java.util.Hashtable[typing.Any, typing.Any]) -> None: ...
 
 class AreaAveragingScaleFilter(ReplicateScaleFilter):
+    """
+    Java class 'java.awt.image.AreaAveragingScaleFilter'
+    
+        Extends:
+            java.awt.image.ReplicateScaleFilter
+    
+      Constructors:
+        * AreaAveragingScaleFilter(int, int)
+    
+    """
     def __init__(self, int: int, int2: int): ...
     def setHints(self, int: int) -> None: ...
     @typing.overload
     def setPixels(self, int: int, int2: int, int3: int, int4: int, colorModel: ColorModel, byteArray: typing.List[int], int5: int, int6: int) -> None: ...
     @typing.overload
     def setPixels(self, int: int, int2: int, int3: int, int4: int, colorModel: ColorModel, intArray: typing.List[int], int6: int, int7: int) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.awt.image")``.
+
+    AbstractMultiResolutionImage: typing.Type[AbstractMultiResolutionImage]
+    AffineTransformOp: typing.Type[AffineTransformOp]
+    AreaAveragingScaleFilter: typing.Type[AreaAveragingScaleFilter]
+    BandCombineOp: typing.Type[BandCombineOp]
+    BandedSampleModel: typing.Type[BandedSampleModel]
+    BaseMultiResolutionImage: typing.Type[BaseMultiResolutionImage]
+    BufferStrategy: typing.Type[BufferStrategy]
+    BufferedImage: typing.Type[BufferedImage]
+    BufferedImageFilter: typing.Type[BufferedImageFilter]
+    BufferedImageOp: typing.Type[BufferedImageOp]
+    ByteLookupTable: typing.Type[ByteLookupTable]
+    ColorConvertOp: typing.Type[ColorConvertOp]
+    ColorModel: typing.Type[ColorModel]
+    ComponentColorModel: typing.Type[ComponentColorModel]
+    ComponentSampleModel: typing.Type[ComponentSampleModel]
+    ConvolveOp: typing.Type[ConvolveOp]
+    CropImageFilter: typing.Type[CropImageFilter]
+    DataBuffer: typing.Type[DataBuffer]
+    DataBufferByte: typing.Type[DataBufferByte]
+    DataBufferDouble: typing.Type[DataBufferDouble]
+    DataBufferFloat: typing.Type[DataBufferFloat]
+    DataBufferInt: typing.Type[DataBufferInt]
+    DataBufferShort: typing.Type[DataBufferShort]
+    DataBufferUShort: typing.Type[DataBufferUShort]
+    DirectColorModel: typing.Type[DirectColorModel]
+    FilteredImageSource: typing.Type[FilteredImageSource]
+    ImageConsumer: typing.Type[ImageConsumer]
+    ImageFilter: typing.Type[ImageFilter]
+    ImageObserver: typing.Type[ImageObserver]
+    ImageProducer: typing.Type[ImageProducer]
+    ImagingOpException: typing.Type[ImagingOpException]
+    IndexColorModel: typing.Type[IndexColorModel]
+    Kernel: typing.Type[Kernel]
+    LookupOp: typing.Type[LookupOp]
+    LookupTable: typing.Type[LookupTable]
+    MemoryImageSource: typing.Type[MemoryImageSource]
+    MultiPixelPackedSampleModel: typing.Type[MultiPixelPackedSampleModel]
+    MultiResolutionImage: typing.Type[MultiResolutionImage]
+    PackedColorModel: typing.Type[PackedColorModel]
+    PixelGrabber: typing.Type[PixelGrabber]
+    PixelInterleavedSampleModel: typing.Type[PixelInterleavedSampleModel]
+    RGBImageFilter: typing.Type[RGBImageFilter]
+    Raster: typing.Type[Raster]
+    RasterFormatException: typing.Type[RasterFormatException]
+    RasterOp: typing.Type[RasterOp]
+    RenderedImage: typing.Type[RenderedImage]
+    ReplicateScaleFilter: typing.Type[ReplicateScaleFilter]
+    RescaleOp: typing.Type[RescaleOp]
+    SampleModel: typing.Type[SampleModel]
+    ShortLookupTable: typing.Type[ShortLookupTable]
+    SinglePixelPackedSampleModel: typing.Type[SinglePixelPackedSampleModel]
+    TileObserver: typing.Type[TileObserver]
+    VolatileImage: typing.Type[VolatileImage]
+    WritableRaster: typing.Type[WritableRaster]
+    WritableRenderedImage: typing.Type[WritableRenderedImage]
+    renderable: java.awt.image.renderable.__module_protocol__

@@ -5,13 +5,31 @@ import java.util
 import typing
 
 
+
 class SettingsCompareHelper:
+    """
+    Java class 'cern.lsa.domain.settings.spi.util.SettingsCompareHelper'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def prettyPrintInconsistentArrayValues(immutableScalarArray: cern.accsoft.commons.value.ImmutableScalarArray, immutableScalarArray2: cern.accsoft.commons.value.ImmutableScalarArray) -> str: ...
     @staticmethod
     def prettyPrintInconsistentValues(string: str, string2: str, immutableValue: cern.accsoft.commons.value.ImmutableValue, immutableValue2: cern.accsoft.commons.value.ImmutableValue) -> str: ...
 
 class TrimHelper:
+    """
+    Java class 'cern.lsa.domain.settings.spi.util.TrimHelper'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * TrimHelper()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def assertRequestContainsOnlySettingParameters(trimRequest: cern.lsa.domain.settings.TrimRequest) -> None: ...
@@ -41,3 +59,10 @@ class TrimHelper:
     def parameterIsTrimmed(trimRequest: cern.lsa.domain.settings.TrimRequest, parameter: cern.lsa.domain.settings.Parameter) -> bool: ...
     @staticmethod
     def targetOrCorrectionHasLengthDifferentThanBeamProcess(setting: cern.lsa.domain.settings.Setting) -> bool: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.settings.spi.util")``.
+
+    SettingsCompareHelper: typing.Type[SettingsCompareHelper]
+    TrimHelper: typing.Type[TrimHelper]

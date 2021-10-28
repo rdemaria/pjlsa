@@ -2,7 +2,15 @@ import java.util
 import typing
 
 
+
 class AccsoftDomainHelper:
+    """
+    Java class 'cern.accsoft.commons.domain.helper.AccsoftDomainHelper'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _immutableListOf__E = typing.TypeVar('_immutableListOf__E')  # <E>
     @staticmethod
     def immutableListOf(eArray: typing.List[_immutableListOf__E]) -> java.util.List[_immutableListOf__E]: ...
@@ -17,3 +25,9 @@ class AccsoftDomainHelper:
     @typing.overload
     @staticmethod
     def immutableSetOf(eArray: typing.List[_immutableSetOf_1__E]) -> java.util.Set[_immutableSetOf_1__E]: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.accsoft.commons.domain.helper")``.
+
+    AccsoftDomainHelper: typing.Type[AccsoftDomainHelper]

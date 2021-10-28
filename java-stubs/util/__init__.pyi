@@ -15,14 +15,28 @@ import java.nio.charset
 import java.nio.file
 import java.security
 import java.time
+import java.util.concurrent
 import java.util.function
+import java.util.jar
+import java.util.logging
+import java.util.prefs
 import java.util.regex
+import java.util.spi
 import java.util.stream
+import java.util.zip
 import jpype.protocol
 import typing
 
 
+
 class Arrays:
+    """
+    Java class 'java.util.Arrays'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _asList__T = typing.TypeVar('_asList__T')  # <T>
     @staticmethod
     def asList(tArray: typing.List[_asList__T]) -> 'List'[_asList__T]: ...
@@ -700,6 +714,13 @@ class Arrays:
     def toString(shortArray: typing.List[int]) -> str: ...
 
 class Base64:
+    """
+    Java class 'java.util.Base64'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def getDecoder() -> 'Base64.Decoder': ...
     @staticmethod
@@ -717,6 +738,13 @@ class Base64:
     @staticmethod
     def getUrlEncoder() -> 'Base64.Encoder': ...
     class Decoder:
+        """
+        Java class 'java.util.Base64$Decoder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         @typing.overload
         def decode(self, byteArray: typing.List[int]) -> typing.List[int]: ...
         @typing.overload
@@ -727,6 +755,13 @@ class Base64:
         def decode(self, byteBuffer: java.nio.ByteBuffer) -> java.nio.ByteBuffer: ...
         def wrap(self, inputStream: java.io.InputStream) -> java.io.InputStream: ...
     class Encoder:
+        """
+        Java class 'java.util.Base64$Encoder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         @typing.overload
         def encode(self, byteArray: typing.List[int]) -> typing.List[int]: ...
         @typing.overload
@@ -738,6 +773,20 @@ class Base64:
         def wrap(self, outputStream: java.io.OutputStream) -> java.io.OutputStream: ...
 
 class BitSet(java.lang.Cloneable, java.io.Serializable):
+    """
+    Java class 'java.util.BitSet'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.Cloneable, java.io.Serializable
+    
+      Constructors:
+        * BitSet(int)
+        * BitSet()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -796,6 +845,69 @@ class BitSet(java.lang.Cloneable, java.io.Serializable):
     def xor(self, bitSet: 'BitSet') -> None: ...
 
 class Calendar(java.io.Serializable, java.lang.Cloneable, java.lang.Comparable['Calendar']):
+    """
+    Java class 'java.util.Calendar'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable,
+            java.lang.Comparable
+    
+      Attributes:
+        ERA (int): final static field
+        YEAR (int): final static field
+        MONTH (int): final static field
+        WEEK_OF_YEAR (int): final static field
+        WEEK_OF_MONTH (int): final static field
+        DATE (int): final static field
+        DAY_OF_MONTH (int): final static field
+        DAY_OF_YEAR (int): final static field
+        DAY_OF_WEEK (int): final static field
+        DAY_OF_WEEK_IN_MONTH (int): final static field
+        AM_PM (int): final static field
+        HOUR (int): final static field
+        HOUR_OF_DAY (int): final static field
+        MINUTE (int): final static field
+        SECOND (int): final static field
+        MILLISECOND (int): final static field
+        ZONE_OFFSET (int): final static field
+        DST_OFFSET (int): final static field
+        FIELD_COUNT (int): final static field
+        SUNDAY (int): final static field
+        MONDAY (int): final static field
+        TUESDAY (int): final static field
+        WEDNESDAY (int): final static field
+        THURSDAY (int): final static field
+        FRIDAY (int): final static field
+        SATURDAY (int): final static field
+        JANUARY (int): final static field
+        FEBRUARY (int): final static field
+        MARCH (int): final static field
+        APRIL (int): final static field
+        MAY (int): final static field
+        JUNE (int): final static field
+        JULY (int): final static field
+        AUGUST (int): final static field
+        SEPTEMBER (int): final static field
+        OCTOBER (int): final static field
+        NOVEMBER (int): final static field
+        DECEMBER (int): final static field
+        UNDECIMBER (int): final static field
+        AM (int): final static field
+        PM (int): final static field
+        ALL_STYLES (int): final static field
+        SHORT (int): final static field
+        LONG (int): final static field
+        NARROW_FORMAT (int): final static field
+        NARROW_STANDALONE (int): final static field
+        SHORT_FORMAT (int): final static field
+        LONG_FORMAT (int): final static field
+        SHORT_STANDALONE (int): final static field
+        LONG_STANDALONE (int): final static field
+    
+    """
     ERA: typing.ClassVar[int] = ...
     YEAR: typing.ClassVar[int] = ...
     MONTH: typing.ClassVar[int] = ...
@@ -915,6 +1027,16 @@ class Calendar(java.io.Serializable, java.lang.Cloneable, java.lang.Comparable['
     def toInstant(self) -> java.time.Instant: ...
     def toString(self) -> str: ...
     class Builder:
+        """
+        Java class 'java.util.Calendar$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+          Constructors:
+            * Builder()
+        
+        """
         def __init__(self): ...
         def build(self) -> 'Calendar': ...
         def set(self, int: int, int2: int) -> 'Calendar.Builder': ...
@@ -937,6 +1059,13 @@ class Calendar(java.io.Serializable, java.lang.Cloneable, java.lang.Comparable['
 
 _Collection__E = typing.TypeVar('_Collection__E')  # <E>
 class Collection(java.lang.Iterable[_Collection__E], typing.Generic[_Collection__E], _JCollection[_Collection__E]):
+    """
+    Java class 'java.util.Collection'
+    
+        Interfaces:
+            java.lang.Iterable
+    
+    """
     def add(self, e: _Collection__E) -> bool: ...
     def addAll(self, collection: typing.Union['Collection'[_Collection__E], typing.Sequence[_Collection__E]]) -> bool: ...
     def clear(self) -> None: ...
@@ -964,6 +1093,18 @@ class Collection(java.lang.Iterable[_Collection__E], typing.Generic[_Collection_
     def toArray(self, intFunction: typing.Union[java.util.function.IntFunction[typing.List[_toArray_2__T]], typing.Callable[[int], typing.List[_toArray_2__T]]]) -> typing.List[_toArray_2__T]: ...
 
 class Collections:
+    """
+    Java class 'java.util.Collections'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        EMPTY_SET (java.util.Set): final static field
+        EMPTY_LIST (java.util.List): final static field
+        EMPTY_MAP (java.util.Map): final static field
+    
+    """
     EMPTY_SET: typing.ClassVar['Set'] = ...
     EMPTY_LIST: typing.ClassVar['List'] = ...
     EMPTY_MAP: typing.ClassVar['Map'] = ...
@@ -1184,6 +1325,10 @@ class Collections:
 
 _Comparator__T = typing.TypeVar('_Comparator__T')  # <T>
 class Comparator(typing.Generic[_Comparator__T]):
+    """
+    Java class 'java.util.Comparator'
+    
+    """
     def compare(self, t: _Comparator__T, t2: _Comparator__T) -> int: ...
     _comparing_0__T = typing.TypeVar('_comparing_0__T')  # <T>
     _comparing_0__U = typing.TypeVar('_comparing_0__U', bound=java.lang.Comparable)  # <U>
@@ -1231,6 +1376,19 @@ class Comparator(typing.Generic[_Comparator__T]):
     def thenComparingLong(self, toLongFunction: typing.Union[java.util.function.ToLongFunction[_Comparator__T], typing.Callable[[_Comparator__T], int]]) -> 'Comparator'[_Comparator__T]: ...
 
 class ConcurrentModificationException(java.lang.RuntimeException):
+    """
+    Java class 'java.util.ConcurrentModificationException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * ConcurrentModificationException(java.lang.String, java.lang.Throwable)
+        * ConcurrentModificationException(java.lang.Throwable)
+        * ConcurrentModificationException(java.lang.String)
+        * ConcurrentModificationException()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1241,6 +1399,16 @@ class ConcurrentModificationException(java.lang.RuntimeException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class Currency(java.io.Serializable):
+    """
+    Java class 'java.util.Currency'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     @staticmethod
     def getAvailableCurrencies() -> 'Set'['Currency']: ...
     def getCurrencyCode(self) -> str: ...
@@ -1264,6 +1432,25 @@ class Currency(java.io.Serializable):
     def toString(self) -> str: ...
 
 class Date(java.io.Serializable, java.lang.Cloneable, java.lang.Comparable['Date']):
+    """
+    Java class 'java.util.Date'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable,
+            java.lang.Comparable
+    
+      Constructors:
+        * Date(java.lang.String)
+        * Date(int, int, int, int, int, int)
+        * Date(int, int, int, int, int)
+        * Date()
+        * Date(long)
+        * Date(int, int, int)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1310,6 +1497,16 @@ class Date(java.io.Serializable, java.lang.Cloneable, java.lang.Comparable['Date
 _Dictionary__K = typing.TypeVar('_Dictionary__K')  # <K>
 _Dictionary__V = typing.TypeVar('_Dictionary__V')  # <V>
 class Dictionary(typing.Generic[_Dictionary__K, _Dictionary__V]):
+    """
+    Java class 'java.util.Dictionary'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * Dictionary()
+    
+    """
     def __init__(self): ...
     def elements(self) -> 'Enumeration'[_Dictionary__V]: ...
     def get(self, object: typing.Any) -> _Dictionary__V: ...
@@ -1320,6 +1517,23 @@ class Dictionary(typing.Generic[_Dictionary__K, _Dictionary__V]):
     def size(self) -> int: ...
 
 class DoubleSummaryStatistics(java.util.function.DoubleConsumer):
+    """
+    Java class 'java.util.DoubleSummaryStatistics'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.function.DoubleConsumer
+    
+      Constructors:
+        * DoubleSummaryStatistics()
+        * DoubleSummaryStatistics(long, double, double, double)
+    
+      Raises:
+        java.lang.IllegalArgumentException: from java
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1334,10 +1548,24 @@ class DoubleSummaryStatistics(java.util.function.DoubleConsumer):
     def toString(self) -> str: ...
 
 class EmptyStackException(java.lang.RuntimeException):
+    """
+    Java class 'java.util.EmptyStackException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * EmptyStackException()
+    
+    """
     def __init__(self): ...
 
 _Enumeration__E = typing.TypeVar('_Enumeration__E')  # <E>
 class Enumeration(typing.Generic[_Enumeration__E], _JEnumeration[_Enumeration__E]):
+    """
+    Java class 'java.util.Enumeration'
+    
+    """
     def asIterator(self) -> 'Iterator'[_Enumeration__E]: ...
     def hasMoreElements(self) -> bool: ...
     def nextElement(self) -> _Enumeration__E: ...
@@ -1345,19 +1573,82 @@ class Enumeration(typing.Generic[_Enumeration__E], _JEnumeration[_Enumeration__E
 class EventListener: ...
 
 class EventObject(java.io.Serializable):
+    """
+    Java class 'java.util.EventObject'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * EventObject(java.lang.Object)
+    
+    """
     def __init__(self, object: typing.Any): ...
     def getSource(self) -> typing.Any: ...
     def toString(self) -> str: ...
 
 class Formattable:
+    """
+    Java class 'java.util.Formattable'
+    
+    """
     def formatTo(self, formatter: 'Formatter', int: int, int2: int, int3: int) -> None: ...
 
 class FormattableFlags:
+    """
+    Java class 'java.util.FormattableFlags'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        LEFT_JUSTIFY (int): final static field
+        UPPERCASE (int): final static field
+        ALTERNATE (int): final static field
+    
+    """
     LEFT_JUSTIFY: typing.ClassVar[int] = ...
     UPPERCASE: typing.ClassVar[int] = ...
     ALTERNATE: typing.ClassVar[int] = ...
 
 class Formatter(java.io.Closeable, java.io.Flushable):
+    """
+    Java class 'java.util.Formatter'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Closeable, java.io.Flushable
+    
+      Constructors:
+        * Formatter(java.io.File, java.lang.String)
+        * Formatter(java.io.File)
+        * Formatter(java.lang.String, java.nio.charset.Charset, java.util.Locale)
+        * Formatter(java.lang.String, java.lang.String, java.util.Locale)
+        * Formatter(java.lang.String, java.lang.String)
+        * Formatter(java.io.OutputStream, java.lang.String)
+        * Formatter(java.io.OutputStream, java.lang.String, java.util.Locale)
+        * Formatter(java.io.PrintStream)
+        * Formatter(java.io.File, java.nio.charset.Charset, java.util.Locale)
+        * Formatter(java.io.File, java.lang.String, java.util.Locale)
+        * Formatter()
+        * Formatter(java.io.OutputStream, java.nio.charset.Charset, java.util.Locale)
+        * Formatter(java.io.OutputStream)
+        * Formatter(java.lang.String)
+        * Formatter(java.lang.Appendable, java.util.Locale)
+        * Formatter(java.util.Locale)
+        * Formatter(java.lang.Appendable)
+    
+      Raises:
+        java.io.IOException: from java
+        java.io.FileNotFoundException: from java
+        java.io.UnsupportedEncodingException: from java
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1403,6 +1694,17 @@ class Formatter(java.io.Closeable, java.io.Flushable):
     def out(self) -> java.lang.Appendable: ...
     def toString(self) -> str: ...
     class BigDecimalLayoutForm(java.lang.Enum['Formatter.BigDecimalLayoutForm']):
+        """
+        Java class 'java.util.Formatter$BigDecimalLayoutForm'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            SCIENTIFIC (java.util.Formatter$BigDecimalLayoutForm): final static enum constant
+            DECIMAL_FLOAT (java.util.Formatter$BigDecimalLayoutForm): final static enum constant
+        
+        """
         SCIENTIFIC: typing.ClassVar['Formatter.BigDecimalLayoutForm'] = ...
         DECIMAL_FLOAT: typing.ClassVar['Formatter.BigDecimalLayoutForm'] = ...
         _valueOf_0__T = typing.TypeVar('_valueOf_0__T', bound=java.lang.Enum)  # <T>
@@ -1416,11 +1718,33 @@ class Formatter(java.io.Closeable, java.io.Flushable):
         def values() -> typing.List['Formatter.BigDecimalLayoutForm']: ...
 
 class FormatterClosedException(java.lang.IllegalStateException):
+    """
+    Java class 'java.util.FormatterClosedException'
+    
+        Extends:
+            java.lang.IllegalStateException
+    
+      Constructors:
+        * FormatterClosedException()
+    
+    """
     def __init__(self): ...
 
 class IllegalFormatException(java.lang.IllegalArgumentException): ...
 
 class IllformedLocaleException(java.lang.RuntimeException):
+    """
+    Java class 'java.util.IllformedLocaleException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * IllformedLocaleException(java.lang.String, int)
+        * IllformedLocaleException(java.lang.String)
+        * IllformedLocaleException()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1430,6 +1754,23 @@ class IllformedLocaleException(java.lang.RuntimeException):
     def getErrorIndex(self) -> int: ...
 
 class IntSummaryStatistics(java.util.function.IntConsumer):
+    """
+    Java class 'java.util.IntSummaryStatistics'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.function.IntConsumer
+    
+      Constructors:
+        * IntSummaryStatistics()
+        * IntSummaryStatistics(long, int, int, long)
+    
+      Raises:
+        java.lang.IllegalArgumentException: from java
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1444,6 +1785,17 @@ class IntSummaryStatistics(java.util.function.IntConsumer):
     def toString(self) -> str: ...
 
 class InvalidPropertiesFormatException(java.io.IOException):
+    """
+    Java class 'java.util.InvalidPropertiesFormatException'
+    
+        Extends:
+            java.io.IOException
+    
+      Constructors:
+        * InvalidPropertiesFormatException(java.lang.Throwable)
+        * InvalidPropertiesFormatException(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
@@ -1451,12 +1803,57 @@ class InvalidPropertiesFormatException(java.io.IOException):
 
 _Iterator__E = typing.TypeVar('_Iterator__E')  # <E>
 class Iterator(typing.Generic[_Iterator__E], _JIterator[_Iterator__E]):
+    """
+    Java class 'java.util.Iterator'
+    
+    """
     def forEachRemaining(self, consumer: typing.Union[java.util.function.Consumer[_Iterator__E], typing.Callable[[_Iterator__E], None]]) -> None: ...
     def hasNext(self) -> bool: ...
     def next(self) -> _Iterator__E: ...
     def remove(self) -> None: ...
 
 class Locale(java.lang.Cloneable, java.io.Serializable):
+    """
+    Java class 'java.util.Locale'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.Cloneable, java.io.Serializable
+    
+      Constructors:
+        * Locale(java.lang.String)
+        * Locale(java.lang.String, java.lang.String)
+        * Locale(java.lang.String, java.lang.String, java.lang.String)
+    
+      Attributes:
+        ENGLISH (java.util.Locale): final static field
+        FRENCH (java.util.Locale): final static field
+        GERMAN (java.util.Locale): final static field
+        ITALIAN (java.util.Locale): final static field
+        JAPANESE (java.util.Locale): final static field
+        KOREAN (java.util.Locale): final static field
+        CHINESE (java.util.Locale): final static field
+        SIMPLIFIED_CHINESE (java.util.Locale): final static field
+        TRADITIONAL_CHINESE (java.util.Locale): final static field
+        FRANCE (java.util.Locale): final static field
+        GERMANY (java.util.Locale): final static field
+        ITALY (java.util.Locale): final static field
+        JAPAN (java.util.Locale): final static field
+        KOREA (java.util.Locale): final static field
+        CHINA (java.util.Locale): final static field
+        PRC (java.util.Locale): final static field
+        TAIWAN (java.util.Locale): final static field
+        UK (java.util.Locale): final static field
+        US (java.util.Locale): final static field
+        CANADA (java.util.Locale): final static field
+        CANADA_FRENCH (java.util.Locale): final static field
+        ROOT (java.util.Locale): final static field
+        PRIVATE_USE_EXTENSION (char): final static field
+        UNICODE_LOCALE_EXTENSION (char): final static field
+    
+    """
     ENGLISH: typing.ClassVar['Locale'] = ...
     FRENCH: typing.ClassVar['Locale'] = ...
     GERMAN: typing.ClassVar['Locale'] = ...
@@ -1566,6 +1963,16 @@ class Locale(java.lang.Cloneable, java.io.Serializable):
     def toLanguageTag(self) -> str: ...
     def toString(self) -> str: ...
     class Builder:
+        """
+        Java class 'java.util.Locale$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+          Constructors:
+            * Builder()
+        
+        """
         def __init__(self): ...
         def addUnicodeLocaleAttribute(self, string: str) -> 'Locale.Builder': ...
         def build(self) -> 'Locale': ...
@@ -1581,6 +1988,17 @@ class Locale(java.lang.Cloneable, java.io.Serializable):
         def setUnicodeLocaleKeyword(self, string: str, string2: str) -> 'Locale.Builder': ...
         def setVariant(self, string: str) -> 'Locale.Builder': ...
     class Category(java.lang.Enum['Locale.Category']):
+        """
+        Java class 'java.util.Locale$Category'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            DISPLAY (java.util.Locale$Category): final static enum constant
+            FORMAT (java.util.Locale$Category): final static enum constant
+        
+        """
         DISPLAY: typing.ClassVar['Locale.Category'] = ...
         FORMAT: typing.ClassVar['Locale.Category'] = ...
         _valueOf_0__T = typing.TypeVar('_valueOf_0__T', bound=java.lang.Enum)  # <T>
@@ -1593,6 +2011,20 @@ class Locale(java.lang.Cloneable, java.io.Serializable):
         @staticmethod
         def values() -> typing.List['Locale.Category']: ...
     class FilteringMode(java.lang.Enum['Locale.FilteringMode']):
+        """
+        Java class 'java.util.Locale$FilteringMode'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            AUTOSELECT_FILTERING (java.util.Locale$FilteringMode): final static enum constant
+            EXTENDED_FILTERING (java.util.Locale$FilteringMode): final static enum constant
+            IGNORE_EXTENDED_RANGES (java.util.Locale$FilteringMode): final static enum constant
+            MAP_EXTENDED_RANGES (java.util.Locale$FilteringMode): final static enum constant
+            REJECT_EXTENDED_RANGES (java.util.Locale$FilteringMode): final static enum constant
+        
+        """
         AUTOSELECT_FILTERING: typing.ClassVar['Locale.FilteringMode'] = ...
         EXTENDED_FILTERING: typing.ClassVar['Locale.FilteringMode'] = ...
         IGNORE_EXTENDED_RANGES: typing.ClassVar['Locale.FilteringMode'] = ...
@@ -1608,6 +2040,18 @@ class Locale(java.lang.Cloneable, java.io.Serializable):
         @staticmethod
         def values() -> typing.List['Locale.FilteringMode']: ...
     class IsoCountryCode(java.lang.Enum['Locale.IsoCountryCode']):
+        """
+        Java class 'java.util.Locale$IsoCountryCode'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            PART1_ALPHA2 (java.util.Locale$IsoCountryCode): final static enum constant
+            PART1_ALPHA3 (java.util.Locale$IsoCountryCode): final static enum constant
+            PART3 (java.util.Locale$IsoCountryCode): final static enum constant
+        
+        """
         PART1_ALPHA2: typing.ClassVar['Locale.IsoCountryCode'] = ...
         PART1_ALPHA3: typing.ClassVar['Locale.IsoCountryCode'] = ...
         PART3: typing.ClassVar['Locale.IsoCountryCode'] = ...
@@ -1621,6 +2065,21 @@ class Locale(java.lang.Cloneable, java.io.Serializable):
         @staticmethod
         def values() -> typing.List['Locale.IsoCountryCode']: ...
     class LanguageRange:
+        """
+        Java class 'java.util.Locale$LanguageRange'
+        
+            Extends:
+                java.lang.Object
+        
+          Constructors:
+            * LanguageRange(java.lang.String)
+            * LanguageRange(java.lang.String, double)
+        
+          Attributes:
+            MAX_WEIGHT (double): final static field
+            MIN_WEIGHT (double): final static field
+        
+        """
         MAX_WEIGHT: typing.ClassVar[float] = ...
         MIN_WEIGHT: typing.ClassVar[float] = ...
         @typing.overload
@@ -1642,6 +2101,24 @@ class Locale(java.lang.Cloneable, java.io.Serializable):
         def toString(self) -> str: ...
 
 class LongSummaryStatistics(java.util.function.LongConsumer, java.util.function.IntConsumer):
+    """
+    Java class 'java.util.LongSummaryStatistics'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.function.LongConsumer,
+            java.util.function.IntConsumer
+    
+      Constructors:
+        * LongSummaryStatistics()
+        * LongSummaryStatistics(long, long, long, long)
+    
+      Raises:
+        java.lang.IllegalArgumentException: from java
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1663,6 +2140,10 @@ _Map__Entry__V = typing.TypeVar('_Map__Entry__V')  # <V>
 _Map__K = typing.TypeVar('_Map__K')  # <K>
 _Map__V = typing.TypeVar('_Map__V')  # <V>
 class Map(typing.Generic[_Map__K, _Map__V], _JMap[_Map__K, _Map__V]):
+    """
+    Java class 'java.util.Map'
+    
+    """
     def clear(self) -> None: ...
     def compute(self, k: _Map__K, biFunction: typing.Union[java.util.function.BiFunction[_Map__K, _Map__V, _Map__V], typing.Callable[[_Map__K, _Map__V], _Map__V]]) -> _Map__V: ...
     def computeIfAbsent(self, k: _Map__K, function: typing.Union[java.util.function.Function[_Map__K, _Map__V], typing.Callable[[_Map__K], _Map__V]]) -> _Map__V: ...
@@ -1760,6 +2241,10 @@ class Map(typing.Generic[_Map__K, _Map__V], _JMap[_Map__K, _Map__V]):
     def size(self) -> int: ...
     def values(self) -> Collection[_Map__V]: ...
     class Entry(typing.Generic[_Map__Entry__K, _Map__Entry__V], _JMapEntry[_Map__Entry__K, _Map__Entry__V]):
+        """
+        Java class 'java.util.Map$Entry'
+        
+        """
         _comparingByKey_0__K = typing.TypeVar('_comparingByKey_0__K', bound=java.lang.Comparable)  # <K>
         _comparingByKey_0__V = typing.TypeVar('_comparingByKey_0__V')  # <V>
         _comparingByKey_1__K = typing.TypeVar('_comparingByKey_1__K')  # <K>
@@ -1787,17 +2272,45 @@ class Map(typing.Generic[_Map__K, _Map__V], _JMap[_Map__K, _Map__V]):
         def setValue(self, v: _Map__Entry__V) -> _Map__Entry__V: ...
 
 class MissingResourceException(java.lang.RuntimeException):
+    """
+    Java class 'java.util.MissingResourceException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * MissingResourceException(java.lang.String, java.lang.String, java.lang.String)
+    
+    """
     def __init__(self, string: str, string2: str, string3: str): ...
     def getClassName(self) -> str: ...
     def getKey(self) -> str: ...
 
 class NoSuchElementException(java.lang.RuntimeException):
+    """
+    Java class 'java.util.NoSuchElementException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * NoSuchElementException()
+        * NoSuchElementException(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class Objects:
+    """
+    Java class 'java.util.Objects'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def checkFromIndexSize(int: int, int2: int, int3: int) -> int: ...
     @staticmethod
@@ -1853,6 +2366,16 @@ class Objects:
     def toString(object: typing.Any, string: str) -> str: ...
 
 class Observable:
+    """
+    Java class 'java.util.Observable'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * Observable()
+    
+    """
     def __init__(self): ...
     def addObserver(self, observer: 'Observer') -> None: ...
     def countObservers(self) -> int: ...
@@ -1865,10 +2388,21 @@ class Observable:
     def notifyObservers(self, object: typing.Any) -> None: ...
 
 class Observer:
+    """
+    Java class 'java.util.Observer'
+    
+    """
     def update(self, observable: Observable, object: typing.Any) -> None: ...
 
 _Optional__T = typing.TypeVar('_Optional__T')  # <T>
 class Optional(typing.Generic[_Optional__T]):
+    """
+    Java class 'java.util.Optional'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _empty__T = typing.TypeVar('_empty__T')  # <T>
     @staticmethod
     def empty() -> 'Optional'[_empty__T]: ...
@@ -1901,6 +2435,13 @@ class Optional(typing.Generic[_Optional__T]):
     def toString(self) -> str: ...
 
 class OptionalDouble:
+    """
+    Java class 'java.util.OptionalDouble'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def empty() -> 'OptionalDouble': ...
     def equals(self, object: typing.Any) -> bool: ...
@@ -1923,6 +2464,13 @@ class OptionalDouble:
     def toString(self) -> str: ...
 
 class OptionalInt:
+    """
+    Java class 'java.util.OptionalInt'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def empty() -> 'OptionalInt': ...
     def equals(self, object: typing.Any) -> bool: ...
@@ -1945,6 +2493,13 @@ class OptionalInt:
     def toString(self) -> str: ...
 
 class OptionalLong:
+    """
+    Java class 'java.util.OptionalLong'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def empty() -> 'OptionalLong': ...
     def equals(self, object: typing.Any) -> bool: ...
@@ -1967,6 +2522,16 @@ class OptionalLong:
     def toString(self) -> str: ...
 
 class PropertyPermission(java.security.BasicPermission):
+    """
+    Java class 'java.util.PropertyPermission'
+    
+        Extends:
+            java.security.BasicPermission
+    
+      Constructors:
+        * PropertyPermission(java.lang.String, java.lang.String)
+    
+    """
     def __init__(self, string: str, string2: str): ...
     def equals(self, object: typing.Any) -> bool: ...
     def getActions(self) -> str: ...
@@ -1975,6 +2540,20 @@ class PropertyPermission(java.security.BasicPermission):
     def newPermissionCollection(self) -> java.security.PermissionCollection: ...
 
 class Random(java.io.Serializable):
+    """
+    Java class 'java.util.Random'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * Random()
+        * Random(long)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2018,6 +2597,16 @@ class Random(java.io.Serializable):
 class RandomAccess: ...
 
 class ResourceBundle:
+    """
+    Java class 'java.util.ResourceBundle'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ResourceBundle()
+    
+    """
     def __init__(self): ...
     @typing.overload
     @staticmethod
@@ -2058,6 +2647,20 @@ class ResourceBundle:
     def getStringArray(self, string: str) -> typing.List[str]: ...
     def keySet(self) -> 'Set'[str]: ...
     class Control:
+        """
+        Java class 'java.util.ResourceBundle$Control'
+        
+            Extends:
+                java.lang.Object
+        
+          Attributes:
+            FORMAT_DEFAULT (java.util.List): final static field
+            FORMAT_CLASS (java.util.List): final static field
+            FORMAT_PROPERTIES (java.util.List): final static field
+            TTL_DONT_CACHE (long): final static field
+            TTL_NO_EXPIRATION_CONTROL (long): final static field
+        
+        """
         FORMAT_DEFAULT: typing.ClassVar['List'] = ...
         FORMAT_CLASS: typing.ClassVar['List'] = ...
         FORMAT_PROPERTIES: typing.ClassVar['List'] = ...
@@ -2077,6 +2680,17 @@ class ResourceBundle:
         def toResourceName(self, string: str, string2: str) -> str: ...
 
 class ServiceConfigurationError(java.lang.Error):
+    """
+    Java class 'java.util.ServiceConfigurationError'
+    
+        Extends:
+            java.lang.Error
+    
+      Constructors:
+        * ServiceConfigurationError(java.lang.String)
+        * ServiceConfigurationError(java.lang.String, java.lang.Throwable)
+    
+    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
@@ -2085,6 +2699,16 @@ class ServiceConfigurationError(java.lang.Error):
 _ServiceLoader__Provider__S = typing.TypeVar('_ServiceLoader__Provider__S')  # <S>
 _ServiceLoader__S = typing.TypeVar('_ServiceLoader__S')  # <S>
 class ServiceLoader(java.lang.Iterable[_ServiceLoader__S], typing.Generic[_ServiceLoader__S]):
+    """
+    Java class 'java.util.ServiceLoader'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.Iterable
+    
+    """
     def findFirst(self) -> Optional[_ServiceLoader__S]: ...
     def iterator(self) -> Iterator[_ServiceLoader__S]: ...
     _load_0__S = typing.TypeVar('_load_0__S')  # <S>
@@ -2106,10 +2730,28 @@ class ServiceLoader(java.lang.Iterable[_ServiceLoader__S], typing.Generic[_Servi
     def stream(self) -> java.util.stream.Stream['ServiceLoader.Provider'[_ServiceLoader__S]]: ...
     def toString(self) -> str: ...
     class Provider(java.util.function.Supplier[_ServiceLoader__Provider__S], typing.Generic[_ServiceLoader__Provider__S]):
+        """
+        Java class 'java.util.ServiceLoader$Provider'
+        
+            Interfaces:
+                java.util.function.Supplier
+        
+        """
         def get(self) -> _ServiceLoader__Provider__S: ...
         def type(self) -> typing.Type[_ServiceLoader__Provider__S]: ...
 
 class SplittableRandom:
+    """
+    Java class 'java.util.SplittableRandom'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * SplittableRandom(long)
+        * SplittableRandom()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2161,6 +2803,17 @@ class SplittableRandom:
     def split(self) -> 'SplittableRandom': ...
 
 class StringJoiner:
+    """
+    Java class 'java.util.StringJoiner'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * StringJoiner(java.lang.CharSequence)
+        * StringJoiner(java.lang.CharSequence, java.lang.CharSequence, java.lang.CharSequence)
+    
+    """
     @typing.overload
     def __init__(self, charSequence: typing.Union[java.lang.CharSequence, str]): ...
     @typing.overload
@@ -2172,6 +2825,23 @@ class StringJoiner:
     def toString(self) -> str: ...
 
 class TimeZone(java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'java.util.TimeZone'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * TimeZone()
+    
+      Attributes:
+        SHORT (int): final static field
+        LONG (int): final static field
+    
+    """
     SHORT: typing.ClassVar[int] = ...
     LONG: typing.ClassVar[int] = ...
     def __init__(self): ...
@@ -2216,6 +2886,19 @@ class TimeZone(java.io.Serializable, java.lang.Cloneable):
     def useDaylightTime(self) -> bool: ...
 
 class Timer:
+    """
+    Java class 'java.util.Timer'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * Timer(java.lang.String, boolean)
+        * Timer(boolean)
+        * Timer()
+        * Timer(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2240,17 +2923,51 @@ class Timer:
     def scheduleAtFixedRate(self, timerTask: 'TimerTask', long: int, long2: int) -> None: ...
 
 class TimerTask(java.lang.Runnable):
+    """
+    Java class 'java.util.TimerTask'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.Runnable
+    
+    """
     def cancel(self) -> bool: ...
     def run(self) -> None: ...
     def scheduledExecutionTime(self) -> int: ...
 
 class TooManyListenersException(java.lang.Exception):
+    """
+    Java class 'java.util.TooManyListenersException'
+    
+        Extends:
+            java.lang.Exception
+    
+      Constructors:
+        * TooManyListenersException()
+        * TooManyListenersException(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class UUID(java.io.Serializable, java.lang.Comparable['UUID']):
+    """
+    Java class 'java.util.UUID'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Comparable
+    
+      Constructors:
+        * UUID(long, long)
+    
+    """
     def __init__(self, long: int, long2: int): ...
     def clockSequence(self) -> int: ...
     def compareTo(self, uUID: 'UUID') -> int: ...
@@ -2272,6 +2989,16 @@ class UUID(java.io.Serializable, java.lang.Comparable['UUID']):
 
 _AbstractCollection__E = typing.TypeVar('_AbstractCollection__E')  # <E>
 class AbstractCollection(Collection[_AbstractCollection__E], typing.Generic[_AbstractCollection__E]):
+    """
+    Java class 'java.util.AbstractCollection'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.Collection
+    
+    """
     def add(self, e: _AbstractCollection__E) -> bool: ...
     def addAll(self, collection: typing.Union[Collection[_AbstractCollection__E], typing.Sequence[_AbstractCollection__E]]) -> bool: ...
     def clear(self) -> None: ...
@@ -2300,6 +3027,16 @@ _AbstractMap__SimpleImmutableEntry__V = typing.TypeVar('_AbstractMap__SimpleImmu
 _AbstractMap__K = typing.TypeVar('_AbstractMap__K')  # <K>
 _AbstractMap__V = typing.TypeVar('_AbstractMap__V')  # <V>
 class AbstractMap(Map[_AbstractMap__K, _AbstractMap__V], typing.Generic[_AbstractMap__K, _AbstractMap__V]):
+    """
+    Java class 'java.util.AbstractMap'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.Map
+    
+    """
     def clear(self) -> None: ...
     def containsKey(self, object: typing.Any) -> bool: ...
     def containsValue(self, object: typing.Any) -> bool: ...
@@ -2319,6 +3056,20 @@ class AbstractMap(Map[_AbstractMap__K, _AbstractMap__V], typing.Generic[_Abstrac
     def toString(self) -> str: ...
     def values(self) -> Collection[_AbstractMap__V]: ...
     class SimpleEntry(Map.Entry[_AbstractMap__SimpleEntry__K, _AbstractMap__SimpleEntry__V], java.io.Serializable, typing.Generic[_AbstractMap__SimpleEntry__K, _AbstractMap__SimpleEntry__V]):
+        """
+        Java class 'java.util.AbstractMap$SimpleEntry'
+        
+            Extends:
+                java.lang.Object
+        
+            Interfaces:
+                java.util.Map.Entry, java.io.Serializable
+        
+          Constructors:
+            * SimpleEntry(java.lang.Object, java.lang.Object)
+            * SimpleEntry(java.util.Map.Entry)
+        
+        """
         @typing.overload
         def __init__(self, k: _AbstractMap__SimpleEntry__K, v: _AbstractMap__SimpleEntry__V): ...
         @typing.overload
@@ -2330,6 +3081,20 @@ class AbstractMap(Map[_AbstractMap__K, _AbstractMap__V], typing.Generic[_Abstrac
         def setValue(self, v: _AbstractMap__SimpleEntry__V) -> _AbstractMap__SimpleEntry__V: ...
         def toString(self) -> str: ...
     class SimpleImmutableEntry(Map.Entry[_AbstractMap__SimpleImmutableEntry__K, _AbstractMap__SimpleImmutableEntry__V], java.io.Serializable, typing.Generic[_AbstractMap__SimpleImmutableEntry__K, _AbstractMap__SimpleImmutableEntry__V]):
+        """
+        Java class 'java.util.AbstractMap$SimpleImmutableEntry'
+        
+            Extends:
+                java.lang.Object
+        
+            Interfaces:
+                java.util.Map.Entry, java.io.Serializable
+        
+          Constructors:
+            * SimpleImmutableEntry(java.lang.Object, java.lang.Object)
+            * SimpleImmutableEntry(java.util.Map.Entry)
+        
+        """
         @typing.overload
         def __init__(self, k: _AbstractMap__SimpleImmutableEntry__K, v: _AbstractMap__SimpleImmutableEntry__V): ...
         @typing.overload
@@ -2342,22 +3107,75 @@ class AbstractMap(Map[_AbstractMap__K, _AbstractMap__V], typing.Generic[_Abstrac
         def toString(self) -> str: ...
 
 class DuplicateFormatFlagsException(IllegalFormatException):
+    """
+    Java class 'java.util.DuplicateFormatFlagsException'
+    
+        Extends:
+            java.util.IllegalFormatException
+    
+      Constructors:
+        * DuplicateFormatFlagsException(java.lang.String)
+    
+    """
     def __init__(self, string: str): ...
     def getFlags(self) -> str: ...
     def getMessage(self) -> str: ...
 
 _EventListenerProxy__T = typing.TypeVar('_EventListenerProxy__T', bound=EventListener)  # <T>
 class EventListenerProxy(EventListener, typing.Generic[_EventListenerProxy__T]):
+    """
+    Java class 'java.util.EventListenerProxy'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.EventListener
+    
+      Constructors:
+        * EventListenerProxy(java.util.EventListener)
+    
+    """
     def __init__(self, t: _EventListenerProxy__T): ...
     def getListener(self) -> _EventListenerProxy__T: ...
 
 class FormatFlagsConversionMismatchException(IllegalFormatException):
+    """
+    Java class 'java.util.FormatFlagsConversionMismatchException'
+    
+        Extends:
+            java.util.IllegalFormatException
+    
+      Constructors:
+        * FormatFlagsConversionMismatchException(java.lang.String, char)
+    
+    """
     def __init__(self, string: str, char: str): ...
     def getConversion(self) -> str: ...
     def getFlags(self) -> str: ...
     def getMessage(self) -> str: ...
 
 class GregorianCalendar(Calendar):
+    """
+    Java class 'java.util.GregorianCalendar'
+    
+        Extends:
+            java.util.Calendar
+    
+      Constructors:
+        * GregorianCalendar(int, int, int)
+        * GregorianCalendar(int, int, int, int, int)
+        * GregorianCalendar(int, int, int, int, int, int)
+        * GregorianCalendar()
+        * GregorianCalendar(java.util.TimeZone)
+        * GregorianCalendar(java.util.Locale)
+        * GregorianCalendar(java.util.TimeZone, java.util.Locale)
+    
+      Attributes:
+        BC (int): final static field
+        AD (int): final static field
+    
+    """
     BC: typing.ClassVar[int] = ...
     AD: typing.ClassVar[int] = ...
     @typing.overload
@@ -2403,6 +3221,22 @@ class GregorianCalendar(Calendar):
 _Hashtable__K = typing.TypeVar('_Hashtable__K')  # <K>
 _Hashtable__V = typing.TypeVar('_Hashtable__V')  # <V>
 class Hashtable(Dictionary[_Hashtable__K, _Hashtable__V], Map[_Hashtable__K, _Hashtable__V], java.lang.Cloneable, java.io.Serializable, typing.Generic[_Hashtable__K, _Hashtable__V]):
+    """
+    Java class 'java.util.Hashtable'
+    
+        Extends:
+            java.util.Dictionary
+    
+        Interfaces:
+            java.util.Map, java.lang.Cloneable, java.io.Serializable
+    
+      Constructors:
+        * Hashtable(java.util.Map)
+        * Hashtable()
+        * Hashtable(int)
+        * Hashtable(int, float)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2447,32 +3281,93 @@ class Hashtable(Dictionary[_Hashtable__K, _Hashtable__V], Map[_Hashtable__K, _Ha
     def values(self) -> Collection[_Hashtable__V]: ...
 
 class IllegalFormatCodePointException(IllegalFormatException):
+    """
+    Java class 'java.util.IllegalFormatCodePointException'
+    
+        Extends:
+            java.util.IllegalFormatException
+    
+      Constructors:
+        * IllegalFormatCodePointException(int)
+    
+    """
     def __init__(self, int: int): ...
     def getCodePoint(self) -> int: ...
     def getMessage(self) -> str: ...
 
 class IllegalFormatConversionException(IllegalFormatException):
+    """
+    Java class 'java.util.IllegalFormatConversionException'
+    
+        Extends:
+            java.util.IllegalFormatException
+    
+      Constructors:
+        * IllegalFormatConversionException(char, java.lang.Class)
+    
+    """
     def __init__(self, char: str, class_: typing.Type[typing.Any]): ...
     def getArgumentClass(self) -> typing.Type[typing.Any]: ...
     def getConversion(self) -> str: ...
     def getMessage(self) -> str: ...
 
 class IllegalFormatFlagsException(IllegalFormatException):
+    """
+    Java class 'java.util.IllegalFormatFlagsException'
+    
+        Extends:
+            java.util.IllegalFormatException
+    
+      Constructors:
+        * IllegalFormatFlagsException(java.lang.String)
+    
+    """
     def __init__(self, string: str): ...
     def getFlags(self) -> str: ...
     def getMessage(self) -> str: ...
 
 class IllegalFormatPrecisionException(IllegalFormatException):
+    """
+    Java class 'java.util.IllegalFormatPrecisionException'
+    
+        Extends:
+            java.util.IllegalFormatException
+    
+      Constructors:
+        * IllegalFormatPrecisionException(int)
+    
+    """
     def __init__(self, int: int): ...
     def getMessage(self) -> str: ...
     def getPrecision(self) -> int: ...
 
 class IllegalFormatWidthException(IllegalFormatException):
+    """
+    Java class 'java.util.IllegalFormatWidthException'
+    
+        Extends:
+            java.util.IllegalFormatException
+    
+      Constructors:
+        * IllegalFormatWidthException(int)
+    
+    """
     def __init__(self, int: int): ...
     def getMessage(self) -> str: ...
     def getWidth(self) -> int: ...
 
 class InputMismatchException(NoSuchElementException):
+    """
+    Java class 'java.util.InputMismatchException'
+    
+        Extends:
+            java.util.NoSuchElementException
+    
+      Constructors:
+        * InputMismatchException()
+        * InputMismatchException(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2480,6 +3375,13 @@ class InputMismatchException(NoSuchElementException):
 
 _List__E = typing.TypeVar('_List__E')  # <E>
 class List(Collection[_List__E], typing.Generic[_List__E], _JList[_List__E]):
+    """
+    Java class 'java.util.List'
+    
+        Interfaces:
+            java.util.Collection
+    
+    """
     @typing.overload
     def add(self, e: _List__E) -> bool: ...
     @typing.overload
@@ -2572,6 +3474,13 @@ class List(Collection[_List__E], typing.Generic[_List__E], _JList[_List__E]):
 
 _ListIterator__E = typing.TypeVar('_ListIterator__E')  # <E>
 class ListIterator(Iterator[_ListIterator__E], typing.Generic[_ListIterator__E]):
+    """
+    Java class 'java.util.ListIterator'
+    
+        Interfaces:
+            java.util.Iterator
+    
+    """
     def add(self, e: _ListIterator__E) -> None: ...
     def hasNext(self) -> bool: ...
     def hasPrevious(self) -> bool: ...
@@ -2583,21 +3492,65 @@ class ListIterator(Iterator[_ListIterator__E], typing.Generic[_ListIterator__E])
     def set(self, e: _ListIterator__E) -> None: ...
 
 class ListResourceBundle(ResourceBundle):
+    """
+    Java class 'java.util.ListResourceBundle'
+    
+        Extends:
+            java.util.ResourceBundle
+    
+      Constructors:
+        * ListResourceBundle()
+    
+    """
     def __init__(self): ...
     def getKeys(self) -> Enumeration[str]: ...
     def handleGetObject(self, string: str) -> typing.Any: ...
 
 class MissingFormatArgumentException(IllegalFormatException):
+    """
+    Java class 'java.util.MissingFormatArgumentException'
+    
+        Extends:
+            java.util.IllegalFormatException
+    
+      Constructors:
+        * MissingFormatArgumentException(java.lang.String)
+    
+    """
     def __init__(self, string: str): ...
     def getFormatSpecifier(self) -> str: ...
     def getMessage(self) -> str: ...
 
 class MissingFormatWidthException(IllegalFormatException):
+    """
+    Java class 'java.util.MissingFormatWidthException'
+    
+        Extends:
+            java.util.IllegalFormatException
+    
+      Constructors:
+        * MissingFormatWidthException(java.lang.String)
+    
+    """
     def __init__(self, string: str): ...
     def getFormatSpecifier(self) -> str: ...
     def getMessage(self) -> str: ...
 
 class PropertyResourceBundle(ResourceBundle):
+    """
+    Java class 'java.util.PropertyResourceBundle'
+    
+        Extends:
+            java.util.ResourceBundle
+    
+      Constructors:
+        * PropertyResourceBundle(java.io.InputStream)
+        * PropertyResourceBundle(java.io.Reader)
+    
+      Raises:
+        java.io.IOException: from java
+    
+    """
     @typing.overload
     def __init__(self, inputStream: java.io.InputStream): ...
     @typing.overload
@@ -2607,6 +3560,13 @@ class PropertyResourceBundle(ResourceBundle):
 
 _Queue__E = typing.TypeVar('_Queue__E')  # <E>
 class Queue(Collection[_Queue__E], typing.Generic[_Queue__E]):
+    """
+    Java class 'java.util.Queue'
+    
+        Interfaces:
+            java.util.Collection
+    
+    """
     def add(self, e: _Queue__E) -> bool: ...
     def element(self) -> _Queue__E: ...
     def equals(self, object: typing.Any) -> bool: ...
@@ -2620,6 +3580,36 @@ class Queue(Collection[_Queue__E], typing.Generic[_Queue__E]):
     def remove(self) -> _Queue__E: ...
 
 class Scanner(Iterator[str], java.io.Closeable):
+    """
+    Java class 'java.util.Scanner'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.Iterator, java.io.Closeable
+    
+      Constructors:
+        * Scanner(java.io.InputStream, java.lang.String)
+        * Scanner(java.io.InputStream)
+        * Scanner(java.lang.Readable)
+        * Scanner(java.io.File)
+        * Scanner(java.io.File, java.nio.charset.Charset)
+        * Scanner(java.io.InputStream, java.nio.charset.Charset)
+        * Scanner(java.nio.channels.ReadableByteChannel)
+        * Scanner(java.nio.channels.ReadableByteChannel, java.lang.String)
+        * Scanner(java.nio.channels.ReadableByteChannel, java.nio.charset.Charset)
+        * Scanner(java.io.File, java.lang.String)
+        * Scanner(java.nio.file.Path)
+        * Scanner(java.nio.file.Path, java.lang.String)
+        * Scanner(java.nio.file.Path, java.nio.charset.Charset)
+        * Scanner(java.lang.String)
+    
+      Raises:
+        java.io.IOException: from java
+        java.io.FileNotFoundException: from java
+    
+    """
     @typing.overload
     def __init__(self, file: typing.Union[java.io.File, jpype.protocol.SupportsPath]): ...
     @typing.overload
@@ -2745,6 +3735,13 @@ class Scanner(Iterator[str], java.io.Closeable):
 
 _Set__E = typing.TypeVar('_Set__E')  # <E>
 class Set(Collection[_Set__E], typing.Generic[_Set__E], _JSet[_Set__E]):
+    """
+    Java class 'java.util.Set'
+    
+        Interfaces:
+            java.util.Collection
+    
+    """
     def add(self, e: _Set__E) -> bool: ...
     def addAll(self, collection: typing.Union[Collection[_Set__E], typing.Sequence[_Set__E]]) -> bool: ...
     def clear(self) -> None: ...
@@ -2820,6 +3817,24 @@ class Set(Collection[_Set__E], typing.Generic[_Set__E], _JSet[_Set__E]):
     def toArray(self, intFunction: typing.Union[java.util.function.IntFunction[typing.List[_toArray_2__T]], typing.Callable[[int], typing.List[_toArray_2__T]]]) -> typing.List[_toArray_2__T]: ...
 
 class SimpleTimeZone(TimeZone):
+    """
+    Java class 'java.util.SimpleTimeZone'
+    
+        Extends:
+            java.util.TimeZone
+    
+      Constructors:
+        * SimpleTimeZone(int, java.lang.String, int, int, int, int, int, int, int, int, int, int, int)
+        * SimpleTimeZone(int, java.lang.String, int, int, int, int, int, int, int, int, int)
+        * SimpleTimeZone(int, java.lang.String, int, int, int, int, int, int, int, int)
+        * SimpleTimeZone(int, java.lang.String)
+    
+      Attributes:
+        WALL_TIME (int): final static field
+        STANDARD_TIME (int): final static field
+        UTC_TIME (int): final static field
+    
+    """
     WALL_TIME: typing.ClassVar[int] = ...
     STANDARD_TIME: typing.ClassVar[int] = ...
     UTC_TIME: typing.ClassVar[int] = ...
@@ -2864,6 +3879,13 @@ class SimpleTimeZone(TimeZone):
 _SortedMap__K = typing.TypeVar('_SortedMap__K')  # <K>
 _SortedMap__V = typing.TypeVar('_SortedMap__V')  # <V>
 class SortedMap(Map[_SortedMap__K, _SortedMap__V], typing.Generic[_SortedMap__K, _SortedMap__V]):
+    """
+    Java class 'java.util.SortedMap'
+    
+        Interfaces:
+            java.util.Map
+    
+    """
     def comparator(self) -> Comparator[_SortedMap__K]: ...
     def entrySet(self) -> Set[Map.Entry[_SortedMap__K, _SortedMap__V]]: ...
     def equals(self, object: typing.Any) -> bool: ...
@@ -2877,6 +3899,21 @@ class SortedMap(Map[_SortedMap__K, _SortedMap__V], typing.Generic[_SortedMap__K,
     def values(self) -> Collection[_SortedMap__V]: ...
 
 class StringTokenizer(Enumeration[typing.Any]):
+    """
+    Java class 'java.util.StringTokenizer'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.Enumeration
+    
+      Constructors:
+        * StringTokenizer(java.lang.String, java.lang.String)
+        * StringTokenizer(java.lang.String, java.lang.String, boolean)
+        * StringTokenizer(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
@@ -2893,17 +3930,47 @@ class StringTokenizer(Enumeration[typing.Any]):
     def nextToken(self, string: str) -> str: ...
 
 class UnknownFormatConversionException(IllegalFormatException):
+    """
+    Java class 'java.util.UnknownFormatConversionException'
+    
+        Extends:
+            java.util.IllegalFormatException
+    
+      Constructors:
+        * UnknownFormatConversionException(java.lang.String)
+    
+    """
     def __init__(self, string: str): ...
     def getConversion(self) -> str: ...
     def getMessage(self) -> str: ...
 
 class UnknownFormatFlagsException(IllegalFormatException):
+    """
+    Java class 'java.util.UnknownFormatFlagsException'
+    
+        Extends:
+            java.util.IllegalFormatException
+    
+      Constructors:
+        * UnknownFormatFlagsException(java.lang.String)
+    
+    """
     def __init__(self, string: str): ...
     def getFlags(self) -> str: ...
     def getMessage(self) -> str: ...
 
 _AbstractList__E = typing.TypeVar('_AbstractList__E')  # <E>
 class AbstractList(AbstractCollection[_AbstractList__E], List[_AbstractList__E], typing.Generic[_AbstractList__E]):
+    """
+    Java class 'java.util.AbstractList'
+    
+        Extends:
+            java.util.AbstractCollection
+    
+        Interfaces:
+            java.util.List
+    
+    """
     @typing.overload
     def add(self, e: _AbstractList__E) -> bool: ...
     @typing.overload
@@ -2928,6 +3995,16 @@ class AbstractList(AbstractCollection[_AbstractList__E], List[_AbstractList__E],
 
 _AbstractQueue__E = typing.TypeVar('_AbstractQueue__E')  # <E>
 class AbstractQueue(AbstractCollection[_AbstractQueue__E], Queue[_AbstractQueue__E], typing.Generic[_AbstractQueue__E]):
+    """
+    Java class 'java.util.AbstractQueue'
+    
+        Extends:
+            java.util.AbstractCollection
+    
+        Interfaces:
+            java.util.Queue
+    
+    """
     def add(self, e: _AbstractQueue__E) -> bool: ...
     def addAll(self, collection: typing.Union[Collection[_AbstractQueue__E], typing.Sequence[_AbstractQueue__E]]) -> bool: ...
     def clear(self) -> None: ...
@@ -2939,12 +4016,29 @@ class AbstractQueue(AbstractCollection[_AbstractQueue__E], Queue[_AbstractQueue_
 
 _AbstractSet__E = typing.TypeVar('_AbstractSet__E')  # <E>
 class AbstractSet(AbstractCollection[_AbstractSet__E], Set[_AbstractSet__E], typing.Generic[_AbstractSet__E]):
+    """
+    Java class 'java.util.AbstractSet'
+    
+        Extends:
+            java.util.AbstractCollection
+    
+        Interfaces:
+            java.util.Set
+    
+    """
     def equals(self, object: typing.Any) -> bool: ...
     def hashCode(self) -> int: ...
     def removeAll(self, collection: typing.Union[Collection[typing.Any], typing.Sequence[typing.Any]]) -> bool: ...
 
 _Deque__E = typing.TypeVar('_Deque__E')  # <E>
 class Deque(Queue[_Deque__E], typing.Generic[_Deque__E]):
+    """
+    Java class 'java.util.Deque'
+    
+        Interfaces:
+            java.util.Queue
+    
+    """
     def add(self, e: _Deque__E) -> bool: ...
     def addAll(self, collection: typing.Union[Collection[_Deque__E], typing.Sequence[_Deque__E]]) -> bool: ...
     def addFirst(self, e: _Deque__E) -> None: ...
@@ -2981,6 +4075,21 @@ class Deque(Queue[_Deque__E], typing.Generic[_Deque__E]):
 _EnumMap__K = typing.TypeVar('_EnumMap__K', bound=java.lang.Enum)  # <K>
 _EnumMap__V = typing.TypeVar('_EnumMap__V')  # <V>
 class EnumMap(AbstractMap[_EnumMap__K, _EnumMap__V], java.io.Serializable, java.lang.Cloneable, typing.Generic[_EnumMap__K, _EnumMap__V]):
+    """
+    Java class 'java.util.EnumMap'
+    
+        Extends:
+            java.util.AbstractMap
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * EnumMap(java.lang.Class)
+        * EnumMap(java.util.Map)
+        * EnumMap(java.util.EnumMap)
+    
+    """
     @typing.overload
     def __init__(self, class_: typing.Type[_EnumMap__K]): ...
     @typing.overload
@@ -3008,6 +4117,22 @@ class EnumMap(AbstractMap[_EnumMap__K, _EnumMap__V], java.io.Serializable, java.
 _HashMap__K = typing.TypeVar('_HashMap__K')  # <K>
 _HashMap__V = typing.TypeVar('_HashMap__V')  # <V>
 class HashMap(AbstractMap[_HashMap__K, _HashMap__V], Map[_HashMap__K, _HashMap__V], java.lang.Cloneable, java.io.Serializable, typing.Generic[_HashMap__K, _HashMap__V]):
+    """
+    Java class 'java.util.HashMap'
+    
+        Extends:
+            java.util.AbstractMap
+    
+        Interfaces:
+            java.util.Map, java.lang.Cloneable, java.io.Serializable
+    
+      Constructors:
+        * HashMap(int, float)
+        * HashMap()
+        * HashMap(java.util.Map)
+        * HashMap(int)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3048,6 +4173,21 @@ class HashMap(AbstractMap[_HashMap__K, _HashMap__V], Map[_HashMap__K, _HashMap__
 _IdentityHashMap__K = typing.TypeVar('_IdentityHashMap__K')  # <K>
 _IdentityHashMap__V = typing.TypeVar('_IdentityHashMap__V')  # <V>
 class IdentityHashMap(AbstractMap[_IdentityHashMap__K, _IdentityHashMap__V], Map[_IdentityHashMap__K, _IdentityHashMap__V], java.io.Serializable, java.lang.Cloneable, typing.Generic[_IdentityHashMap__K, _IdentityHashMap__V]):
+    """
+    Java class 'java.util.IdentityHashMap'
+    
+        Extends:
+            java.util.AbstractMap
+    
+        Interfaces:
+            java.util.Map, java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * IdentityHashMap(int)
+        * IdentityHashMap()
+        * IdentityHashMap(java.util.Map)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3078,6 +4218,13 @@ class IdentityHashMap(AbstractMap[_IdentityHashMap__K, _IdentityHashMap__V], Map
 _NavigableMap__K = typing.TypeVar('_NavigableMap__K')  # <K>
 _NavigableMap__V = typing.TypeVar('_NavigableMap__V')  # <V>
 class NavigableMap(SortedMap[_NavigableMap__K, _NavigableMap__V], typing.Generic[_NavigableMap__K, _NavigableMap__V]):
+    """
+    Java class 'java.util.NavigableMap'
+    
+        Interfaces:
+            java.util.SortedMap
+    
+    """
     def ceilingEntry(self, k: _NavigableMap__K) -> Map.Entry[_NavigableMap__K, _NavigableMap__V]: ...
     def ceilingKey(self, k: _NavigableMap__K) -> _NavigableMap__K: ...
     def descendingKeySet(self) -> 'NavigableSet'[_NavigableMap__K]: ...
@@ -3109,6 +4256,18 @@ class NavigableMap(SortedMap[_NavigableMap__K, _NavigableMap__V], typing.Generic
     def tailMap(self, k: _NavigableMap__K) -> SortedMap[_NavigableMap__K, _NavigableMap__V]: ...
 
 class Properties(Hashtable[typing.Any, typing.Any]):
+    """
+    Java class 'java.util.Properties'
+    
+        Extends:
+            java.util.Hashtable
+    
+      Constructors:
+        * Properties(java.util.Properties)
+        * Properties(int)
+        * Properties()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3179,6 +4338,13 @@ class Properties(Hashtable[typing.Any, typing.Any]):
 
 _SortedSet__E = typing.TypeVar('_SortedSet__E')  # <E>
 class SortedSet(Set[_SortedSet__E], typing.Generic[_SortedSet__E]):
+    """
+    Java class 'java.util.SortedSet'
+    
+        Interfaces:
+            java.util.Set
+    
+    """
     def comparator(self) -> Comparator[_SortedSet__E]: ...
     def equals(self, object: typing.Any) -> bool: ...
     def first(self) -> _SortedSet__E: ...
@@ -3192,6 +4358,22 @@ class SortedSet(Set[_SortedSet__E], typing.Generic[_SortedSet__E]):
 _WeakHashMap__K = typing.TypeVar('_WeakHashMap__K')  # <K>
 _WeakHashMap__V = typing.TypeVar('_WeakHashMap__V')  # <V>
 class WeakHashMap(AbstractMap[_WeakHashMap__K, _WeakHashMap__V], Map[_WeakHashMap__K, _WeakHashMap__V], typing.Generic[_WeakHashMap__K, _WeakHashMap__V]):
+    """
+    Java class 'java.util.WeakHashMap'
+    
+        Extends:
+            java.util.AbstractMap
+    
+        Interfaces:
+            java.util.Map
+    
+      Constructors:
+        * WeakHashMap(java.util.Map)
+        * WeakHashMap(int)
+        * WeakHashMap(int, float)
+        * WeakHashMap()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3220,6 +4402,13 @@ class WeakHashMap(AbstractMap[_WeakHashMap__K, _WeakHashMap__V], Map[_WeakHashMa
 
 _AbstractSequentialList__E = typing.TypeVar('_AbstractSequentialList__E')  # <E>
 class AbstractSequentialList(AbstractList[_AbstractSequentialList__E], typing.Generic[_AbstractSequentialList__E]):
+    """
+    Java class 'java.util.AbstractSequentialList'
+    
+        Extends:
+            java.util.AbstractList
+    
+    """
     @typing.overload
     def add(self, e: _AbstractSequentialList__E) -> bool: ...
     @typing.overload
@@ -3238,6 +4427,21 @@ class AbstractSequentialList(AbstractList[_AbstractSequentialList__E], typing.Ge
 
 _ArrayDeque__E = typing.TypeVar('_ArrayDeque__E')  # <E>
 class ArrayDeque(AbstractCollection[_ArrayDeque__E], Deque[_ArrayDeque__E], java.lang.Cloneable, java.io.Serializable, typing.Generic[_ArrayDeque__E]):
+    """
+    Java class 'java.util.ArrayDeque'
+    
+        Extends:
+            java.util.AbstractCollection
+    
+        Interfaces:
+            java.util.Deque, java.lang.Cloneable, java.io.Serializable
+    
+      Constructors:
+        * ArrayDeque(int)
+        * ArrayDeque(java.util.Collection)
+        * ArrayDeque()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3293,6 +4497,22 @@ class ArrayDeque(AbstractCollection[_ArrayDeque__E], Deque[_ArrayDeque__E], java
 
 _ArrayList__E = typing.TypeVar('_ArrayList__E')  # <E>
 class ArrayList(AbstractList[_ArrayList__E], List[_ArrayList__E], RandomAccess, java.lang.Cloneable, java.io.Serializable, typing.Generic[_ArrayList__E]):
+    """
+    Java class 'java.util.ArrayList'
+    
+        Extends:
+            java.util.AbstractList
+    
+        Interfaces:
+            java.util.List, java.util.RandomAccess, java.lang.Cloneable,
+            java.io.Serializable
+    
+      Constructors:
+        * ArrayList(java.util.Collection)
+        * ArrayList()
+        * ArrayList(int)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3344,6 +4564,16 @@ class ArrayList(AbstractList[_ArrayList__E], List[_ArrayList__E], RandomAccess, 
 
 _EnumSet__E = typing.TypeVar('_EnumSet__E', bound=java.lang.Enum)  # <E>
 class EnumSet(AbstractSet[_EnumSet__E], java.lang.Cloneable, java.io.Serializable, typing.Generic[_EnumSet__E]):
+    """
+    Java class 'java.util.EnumSet'
+    
+        Extends:
+            java.util.AbstractSet
+    
+        Interfaces:
+            java.lang.Cloneable, java.io.Serializable
+    
+    """
     _allOf__E = typing.TypeVar('_allOf__E', bound=java.lang.Enum)  # <E>
     @staticmethod
     def allOf(class_: typing.Type[_allOf__E]) -> 'EnumSet'[_allOf__E]: ...
@@ -3392,6 +4622,22 @@ class EnumSet(AbstractSet[_EnumSet__E], java.lang.Cloneable, java.io.Serializabl
 
 _HashSet__E = typing.TypeVar('_HashSet__E')  # <E>
 class HashSet(AbstractSet[_HashSet__E], Set[_HashSet__E], java.lang.Cloneable, java.io.Serializable, typing.Generic[_HashSet__E]):
+    """
+    Java class 'java.util.HashSet'
+    
+        Extends:
+            java.util.AbstractSet
+    
+        Interfaces:
+            java.util.Set, java.lang.Cloneable, java.io.Serializable
+    
+      Constructors:
+        * HashSet(int)
+        * HashSet(int, float)
+        * HashSet(java.util.Collection)
+        * HashSet()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3413,6 +4659,23 @@ class HashSet(AbstractSet[_HashSet__E], Set[_HashSet__E], java.lang.Cloneable, j
 _LinkedHashMap__K = typing.TypeVar('_LinkedHashMap__K')  # <K>
 _LinkedHashMap__V = typing.TypeVar('_LinkedHashMap__V')  # <V>
 class LinkedHashMap(HashMap[_LinkedHashMap__K, _LinkedHashMap__V], Map[_LinkedHashMap__K, _LinkedHashMap__V], typing.Generic[_LinkedHashMap__K, _LinkedHashMap__V]):
+    """
+    Java class 'java.util.LinkedHashMap'
+    
+        Extends:
+            java.util.HashMap
+    
+        Interfaces:
+            java.util.Map
+    
+      Constructors:
+        * LinkedHashMap(int, float, boolean)
+        * LinkedHashMap(java.util.Map)
+        * LinkedHashMap(int)
+        * LinkedHashMap(int, float)
+        * LinkedHashMap()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3435,6 +4698,13 @@ class LinkedHashMap(HashMap[_LinkedHashMap__K, _LinkedHashMap__V], Map[_LinkedHa
 
 _NavigableSet__E = typing.TypeVar('_NavigableSet__E')  # <E>
 class NavigableSet(SortedSet[_NavigableSet__E], typing.Generic[_NavigableSet__E]):
+    """
+    Java class 'java.util.NavigableSet'
+    
+        Interfaces:
+            java.util.SortedSet
+    
+    """
     def ceiling(self, e: _NavigableSet__E) -> _NavigableSet__E: ...
     def descendingIterator(self) -> Iterator[_NavigableSet__E]: ...
     def descendingSet(self) -> 'NavigableSet'[_NavigableSet__E]: ...
@@ -3461,6 +4731,25 @@ class NavigableSet(SortedSet[_NavigableSet__E], typing.Generic[_NavigableSet__E]
 
 _PriorityQueue__E = typing.TypeVar('_PriorityQueue__E')  # <E>
 class PriorityQueue(AbstractQueue[_PriorityQueue__E], java.io.Serializable, typing.Generic[_PriorityQueue__E]):
+    """
+    Java class 'java.util.PriorityQueue'
+    
+        Extends:
+            java.util.AbstractQueue
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * PriorityQueue(int, java.util.Comparator)
+        * PriorityQueue(java.util.Collection)
+        * PriorityQueue(java.util.PriorityQueue)
+        * PriorityQueue(java.util.SortedSet)
+        * PriorityQueue()
+        * PriorityQueue(int)
+        * PriorityQueue(java.util.Comparator)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3505,6 +4794,23 @@ class PriorityQueue(AbstractQueue[_PriorityQueue__E], java.io.Serializable, typi
 _TreeMap__K = typing.TypeVar('_TreeMap__K')  # <K>
 _TreeMap__V = typing.TypeVar('_TreeMap__V')  # <V>
 class TreeMap(AbstractMap[_TreeMap__K, _TreeMap__V], NavigableMap[_TreeMap__K, _TreeMap__V], java.lang.Cloneable, java.io.Serializable, typing.Generic[_TreeMap__K, _TreeMap__V]):
+    """
+    Java class 'java.util.TreeMap'
+    
+        Extends:
+            java.util.AbstractMap
+    
+        Interfaces:
+            java.util.NavigableMap, java.lang.Cloneable,
+            java.io.Serializable
+    
+      Constructors:
+        * TreeMap(java.util.SortedMap)
+        * TreeMap(java.util.Map)
+        * TreeMap(java.util.Comparator)
+        * TreeMap()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3567,6 +4873,23 @@ class TreeMap(AbstractMap[_TreeMap__K, _TreeMap__V], NavigableMap[_TreeMap__K, _
 
 _Vector__E = typing.TypeVar('_Vector__E')  # <E>
 class Vector(AbstractList[_Vector__E], List[_Vector__E], RandomAccess, java.lang.Cloneable, java.io.Serializable, typing.Generic[_Vector__E]):
+    """
+    Java class 'java.util.Vector'
+    
+        Extends:
+            java.util.AbstractList
+    
+        Interfaces:
+            java.util.List, java.util.RandomAccess, java.lang.Cloneable,
+            java.io.Serializable
+    
+      Constructors:
+        * Vector(java.util.Collection)
+        * Vector()
+        * Vector(int)
+        * Vector(int, int)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3641,6 +4964,22 @@ class Vector(AbstractList[_Vector__E], List[_Vector__E], RandomAccess, java.lang
 
 _LinkedHashSet__E = typing.TypeVar('_LinkedHashSet__E')  # <E>
 class LinkedHashSet(HashSet[_LinkedHashSet__E], Set[_LinkedHashSet__E], java.lang.Cloneable, java.io.Serializable, typing.Generic[_LinkedHashSet__E]):
+    """
+    Java class 'java.util.LinkedHashSet'
+    
+        Extends:
+            java.util.HashSet
+    
+        Interfaces:
+            java.util.Set, java.lang.Cloneable, java.io.Serializable
+    
+      Constructors:
+        * LinkedHashSet(java.util.Collection)
+        * LinkedHashSet()
+        * LinkedHashSet(int)
+        * LinkedHashSet(int, float)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3653,6 +4992,21 @@ class LinkedHashSet(HashSet[_LinkedHashSet__E], Set[_LinkedHashSet__E], java.lan
 
 _LinkedList__E = typing.TypeVar('_LinkedList__E')  # <E>
 class LinkedList(AbstractSequentialList[_LinkedList__E], List[_LinkedList__E], Deque[_LinkedList__E], java.lang.Cloneable, java.io.Serializable, typing.Generic[_LinkedList__E]):
+    """
+    Java class 'java.util.LinkedList'
+    
+        Extends:
+            java.util.AbstractSequentialList
+    
+        Interfaces:
+            java.util.List, java.util.Deque, java.lang.Cloneable,
+            java.io.Serializable
+    
+      Constructors:
+        * LinkedList()
+        * LinkedList(java.util.Collection)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3710,6 +5064,16 @@ class LinkedList(AbstractSequentialList[_LinkedList__E], List[_LinkedList__E], D
 
 _Stack__E = typing.TypeVar('_Stack__E')  # <E>
 class Stack(Vector[_Stack__E], typing.Generic[_Stack__E]):
+    """
+    Java class 'java.util.Stack'
+    
+        Extends:
+            java.util.Vector
+    
+      Constructors:
+        * Stack()
+    
+    """
     def __init__(self): ...
     def empty(self) -> bool: ...
     def peek(self) -> _Stack__E: ...
@@ -3719,6 +5083,23 @@ class Stack(Vector[_Stack__E], typing.Generic[_Stack__E]):
 
 _TreeSet__E = typing.TypeVar('_TreeSet__E')  # <E>
 class TreeSet(AbstractSet[_TreeSet__E], NavigableSet[_TreeSet__E], java.lang.Cloneable, java.io.Serializable, typing.Generic[_TreeSet__E]):
+    """
+    Java class 'java.util.TreeSet'
+    
+        Extends:
+            java.util.AbstractSet
+    
+        Interfaces:
+            java.util.NavigableSet, java.lang.Cloneable,
+            java.io.Serializable
+    
+      Constructors:
+        * TreeSet(java.util.SortedSet)
+        * TreeSet(java.util.Collection)
+        * TreeSet(java.util.Comparator)
+        * TreeSet()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3764,11 +5145,25 @@ class TreeSet(AbstractSet[_TreeSet__E], NavigableSet[_TreeSet__E], java.lang.Clo
 _PrimitiveIterator__T = typing.TypeVar('_PrimitiveIterator__T')  # <T>
 _PrimitiveIterator__T_CONS = typing.TypeVar('_PrimitiveIterator__T_CONS')  # <T_CONS>
 class PrimitiveIterator(Iterator[_PrimitiveIterator__T], typing.Generic[_PrimitiveIterator__T, _PrimitiveIterator__T_CONS]):
+    """
+    Java class 'java.util.PrimitiveIterator'
+    
+        Interfaces:
+            java.util.Iterator
+    
+    """
     @typing.overload
     def forEachRemaining(self, t_CONS: _PrimitiveIterator__T_CONS) -> None: ...
     @typing.overload
     def forEachRemaining(self, consumer: typing.Union[java.util.function.Consumer[typing.Any], typing.Callable[[typing.Any], None]]) -> None: ...
     class OfDouble(java.util.PrimitiveIterator[float, java.util.function.DoubleConsumer]):
+        """
+        Java class 'java.util.PrimitiveIterator$OfDouble'
+        
+            Interfaces:
+                java.util.PrimitiveIterator
+        
+        """
         @typing.overload
         def forEachRemaining(self, consumer: typing.Union[java.util.function.Consumer[float], typing.Callable[[float], None]]) -> None: ...
         @typing.overload
@@ -3776,6 +5171,13 @@ class PrimitiveIterator(Iterator[_PrimitiveIterator__T], typing.Generic[_Primiti
         def next(self) -> float: ...
         def nextDouble(self) -> float: ...
     class OfInt(java.util.PrimitiveIterator[int, java.util.function.IntConsumer]):
+        """
+        Java class 'java.util.PrimitiveIterator$OfInt'
+        
+            Interfaces:
+                java.util.PrimitiveIterator
+        
+        """
         @typing.overload
         def forEachRemaining(self, consumer: typing.Union[java.util.function.Consumer[int], typing.Callable[[int], None]]) -> None: ...
         @typing.overload
@@ -3783,6 +5185,13 @@ class PrimitiveIterator(Iterator[_PrimitiveIterator__T], typing.Generic[_Primiti
         def next(self) -> int: ...
         def nextInt(self) -> int: ...
     class OfLong(java.util.PrimitiveIterator[int, java.util.function.LongConsumer]):
+        """
+        Java class 'java.util.PrimitiveIterator$OfLong'
+        
+            Interfaces:
+                java.util.PrimitiveIterator
+        
+        """
         @typing.overload
         def forEachRemaining(self, consumer: typing.Union[java.util.function.Consumer[int], typing.Callable[[int], None]]) -> None: ...
         @typing.overload
@@ -3795,6 +5204,20 @@ _Spliterator__OfPrimitive__T_CONS = typing.TypeVar('_Spliterator__OfPrimitive__T
 _Spliterator__OfPrimitive__T_SPLITR = typing.TypeVar('_Spliterator__OfPrimitive__T_SPLITR', bound='Spliterator.OfPrimitive')  # <T_SPLITR>
 _Spliterator__T = typing.TypeVar('_Spliterator__T')  # <T>
 class Spliterator(typing.Generic[_Spliterator__T]):
+    """
+    Java class 'java.util.Spliterator'
+    
+      Attributes:
+        ORDERED (int): final static field
+        DISTINCT (int): final static field
+        SORTED (int): final static field
+        SIZED (int): final static field
+        NONNULL (int): final static field
+        IMMUTABLE (int): final static field
+        CONCURRENT (int): final static field
+        SUBSIZED (int): final static field
+    
+    """
     ORDERED: typing.ClassVar[int] = ...
     DISTINCT: typing.ClassVar[int] = ...
     SORTED: typing.ClassVar[int] = ...
@@ -3812,6 +5235,13 @@ class Spliterator(typing.Generic[_Spliterator__T]):
     def tryAdvance(self, consumer: typing.Union[java.util.function.Consumer[_Spliterator__T], typing.Callable[[_Spliterator__T], None]]) -> bool: ...
     def trySplit(self) -> 'Spliterator'[_Spliterator__T]: ...
     class OfDouble(java.util.Spliterator.OfPrimitive[float, java.util.function.DoubleConsumer, 'Spliterator.OfDouble']):
+        """
+        Java class 'java.util.Spliterator$OfDouble'
+        
+            Interfaces:
+                java.util.Spliterator.OfPrimitive
+        
+        """
         @typing.overload
         def forEachRemaining(self, consumer: typing.Union[java.util.function.Consumer[float], typing.Callable[[float], None]]) -> None: ...
         @typing.overload
@@ -3822,6 +5252,13 @@ class Spliterator(typing.Generic[_Spliterator__T]):
         def tryAdvance(self, consumer: typing.Union[java.util.function.Consumer[float], typing.Callable[[float], None]]) -> bool: ...
         def trySplit(self) -> 'Spliterator.OfDouble': ...
     class OfInt(java.util.Spliterator.OfPrimitive[int, java.util.function.IntConsumer, 'Spliterator.OfInt']):
+        """
+        Java class 'java.util.Spliterator$OfInt'
+        
+            Interfaces:
+                java.util.Spliterator.OfPrimitive
+        
+        """
         @typing.overload
         def forEachRemaining(self, consumer: typing.Union[java.util.function.Consumer[int], typing.Callable[[int], None]]) -> None: ...
         @typing.overload
@@ -3832,6 +5269,13 @@ class Spliterator(typing.Generic[_Spliterator__T]):
         def tryAdvance(self, consumer: typing.Union[java.util.function.Consumer[int], typing.Callable[[int], None]]) -> bool: ...
         def trySplit(self) -> 'Spliterator.OfInt': ...
     class OfLong(java.util.Spliterator.OfPrimitive[int, java.util.function.LongConsumer, 'Spliterator.OfLong']):
+        """
+        Java class 'java.util.Spliterator$OfLong'
+        
+            Interfaces:
+                java.util.Spliterator.OfPrimitive
+        
+        """
         @typing.overload
         def forEachRemaining(self, consumer: typing.Union[java.util.function.Consumer[int], typing.Callable[[int], None]]) -> None: ...
         @typing.overload
@@ -3842,6 +5286,13 @@ class Spliterator(typing.Generic[_Spliterator__T]):
         def tryAdvance(self, consumer: typing.Union[java.util.function.Consumer[int], typing.Callable[[int], None]]) -> bool: ...
         def trySplit(self) -> 'Spliterator.OfLong': ...
     class OfPrimitive(java.util.Spliterator[_Spliterator__OfPrimitive__T], typing.Generic[_Spliterator__OfPrimitive__T, _Spliterator__OfPrimitive__T_CONS, _Spliterator__OfPrimitive__T_SPLITR]):
+        """
+        Java class 'java.util.Spliterator$OfPrimitive'
+        
+            Interfaces:
+                java.util.Spliterator
+        
+        """
         @typing.overload
         def forEachRemaining(self, t_CONS: _Spliterator__OfPrimitive__T_CONS) -> None: ...
         @typing.overload
@@ -3854,6 +5305,13 @@ class Spliterator(typing.Generic[_Spliterator__T]):
 
 _Spliterators__AbstractSpliterator__T = typing.TypeVar('_Spliterators__AbstractSpliterator__T')  # <T>
 class Spliterators:
+    """
+    Java class 'java.util.Spliterators'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def emptyDoubleSpliterator() -> Spliterator.OfDouble: ...
     @staticmethod
@@ -3933,18 +5391,177 @@ class Spliterators:
     @staticmethod
     def spliteratorUnknownSize(ofLong: PrimitiveIterator.OfLong, int: int) -> Spliterator.OfLong: ...
     class AbstractDoubleSpliterator(Spliterator.OfDouble):
+        """
+        Java class 'java.util.Spliterators$AbstractDoubleSpliterator'
+        
+            Extends:
+                java.lang.Object
+        
+            Interfaces:
+                java.util.Spliterator.OfDouble
+        
+        """
         def characteristics(self) -> int: ...
         def estimateSize(self) -> int: ...
         def trySplit(self) -> Spliterator.OfDouble: ...
     class AbstractIntSpliterator(Spliterator.OfInt):
+        """
+        Java class 'java.util.Spliterators$AbstractIntSpliterator'
+        
+            Extends:
+                java.lang.Object
+        
+            Interfaces:
+                java.util.Spliterator.OfInt
+        
+        """
         def characteristics(self) -> int: ...
         def estimateSize(self) -> int: ...
         def trySplit(self) -> Spliterator.OfInt: ...
     class AbstractLongSpliterator(Spliterator.OfLong):
+        """
+        Java class 'java.util.Spliterators$AbstractLongSpliterator'
+        
+            Extends:
+                java.lang.Object
+        
+            Interfaces:
+                java.util.Spliterator.OfLong
+        
+        """
         def characteristics(self) -> int: ...
         def estimateSize(self) -> int: ...
         def trySplit(self) -> Spliterator.OfLong: ...
     class AbstractSpliterator(Spliterator[_Spliterators__AbstractSpliterator__T], typing.Generic[_Spliterators__AbstractSpliterator__T]):
+        """
+        Java class 'java.util.Spliterators$AbstractSpliterator'
+        
+            Extends:
+                java.lang.Object
+        
+            Interfaces:
+                java.util.Spliterator
+        
+        """
         def characteristics(self) -> int: ...
         def estimateSize(self) -> int: ...
         def trySplit(self) -> Spliterator[_Spliterators__AbstractSpliterator__T]: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.util")``.
+
+    AbstractCollection: typing.Type[AbstractCollection]
+    AbstractList: typing.Type[AbstractList]
+    AbstractMap: typing.Type[AbstractMap]
+    AbstractQueue: typing.Type[AbstractQueue]
+    AbstractSequentialList: typing.Type[AbstractSequentialList]
+    AbstractSet: typing.Type[AbstractSet]
+    ArrayDeque: typing.Type[ArrayDeque]
+    ArrayList: typing.Type[ArrayList]
+    Arrays: typing.Type[Arrays]
+    Base64: typing.Type[Base64]
+    BitSet: typing.Type[BitSet]
+    Calendar: typing.Type[Calendar]
+    Collection: typing.Type[Collection]
+    Collections: typing.Type[Collections]
+    Comparator: typing.Type[Comparator]
+    ConcurrentModificationException: typing.Type[ConcurrentModificationException]
+    Currency: typing.Type[Currency]
+    Date: typing.Type[Date]
+    Deque: typing.Type[Deque]
+    Dictionary: typing.Type[Dictionary]
+    DoubleSummaryStatistics: typing.Type[DoubleSummaryStatistics]
+    DuplicateFormatFlagsException: typing.Type[DuplicateFormatFlagsException]
+    EmptyStackException: typing.Type[EmptyStackException]
+    EnumMap: typing.Type[EnumMap]
+    EnumSet: typing.Type[EnumSet]
+    Enumeration: typing.Type[Enumeration]
+    EventListener: typing.Type[EventListener]
+    EventListenerProxy: typing.Type[EventListenerProxy]
+    EventObject: typing.Type[EventObject]
+    FormatFlagsConversionMismatchException: typing.Type[FormatFlagsConversionMismatchException]
+    Formattable: typing.Type[Formattable]
+    FormattableFlags: typing.Type[FormattableFlags]
+    Formatter: typing.Type[Formatter]
+    FormatterClosedException: typing.Type[FormatterClosedException]
+    GregorianCalendar: typing.Type[GregorianCalendar]
+    HashMap: typing.Type[HashMap]
+    HashSet: typing.Type[HashSet]
+    Hashtable: typing.Type[Hashtable]
+    IdentityHashMap: typing.Type[IdentityHashMap]
+    IllegalFormatCodePointException: typing.Type[IllegalFormatCodePointException]
+    IllegalFormatConversionException: typing.Type[IllegalFormatConversionException]
+    IllegalFormatException: typing.Type[IllegalFormatException]
+    IllegalFormatFlagsException: typing.Type[IllegalFormatFlagsException]
+    IllegalFormatPrecisionException: typing.Type[IllegalFormatPrecisionException]
+    IllegalFormatWidthException: typing.Type[IllegalFormatWidthException]
+    IllformedLocaleException: typing.Type[IllformedLocaleException]
+    InputMismatchException: typing.Type[InputMismatchException]
+    IntSummaryStatistics: typing.Type[IntSummaryStatistics]
+    InvalidPropertiesFormatException: typing.Type[InvalidPropertiesFormatException]
+    Iterator: typing.Type[Iterator]
+    LinkedHashMap: typing.Type[LinkedHashMap]
+    LinkedHashSet: typing.Type[LinkedHashSet]
+    LinkedList: typing.Type[LinkedList]
+    List: typing.Type[List]
+    ListIterator: typing.Type[ListIterator]
+    ListResourceBundle: typing.Type[ListResourceBundle]
+    Locale: typing.Type[Locale]
+    LongSummaryStatistics: typing.Type[LongSummaryStatistics]
+    Map: typing.Type[Map]
+    MissingFormatArgumentException: typing.Type[MissingFormatArgumentException]
+    MissingFormatWidthException: typing.Type[MissingFormatWidthException]
+    MissingResourceException: typing.Type[MissingResourceException]
+    NavigableMap: typing.Type[NavigableMap]
+    NavigableSet: typing.Type[NavigableSet]
+    NoSuchElementException: typing.Type[NoSuchElementException]
+    Objects: typing.Type[Objects]
+    Observable: typing.Type[Observable]
+    Observer: typing.Type[Observer]
+    Optional: typing.Type[Optional]
+    OptionalDouble: typing.Type[OptionalDouble]
+    OptionalInt: typing.Type[OptionalInt]
+    OptionalLong: typing.Type[OptionalLong]
+    PrimitiveIterator: typing.Type[PrimitiveIterator]
+    PriorityQueue: typing.Type[PriorityQueue]
+    Properties: typing.Type[Properties]
+    PropertyPermission: typing.Type[PropertyPermission]
+    PropertyResourceBundle: typing.Type[PropertyResourceBundle]
+    Queue: typing.Type[Queue]
+    Random: typing.Type[Random]
+    RandomAccess: typing.Type[RandomAccess]
+    ResourceBundle: typing.Type[ResourceBundle]
+    Scanner: typing.Type[Scanner]
+    ServiceConfigurationError: typing.Type[ServiceConfigurationError]
+    ServiceLoader: typing.Type[ServiceLoader]
+    Set: typing.Type[Set]
+    SimpleTimeZone: typing.Type[SimpleTimeZone]
+    SortedMap: typing.Type[SortedMap]
+    SortedSet: typing.Type[SortedSet]
+    Spliterator: typing.Type[Spliterator]
+    Spliterators: typing.Type[Spliterators]
+    SplittableRandom: typing.Type[SplittableRandom]
+    Stack: typing.Type[Stack]
+    StringJoiner: typing.Type[StringJoiner]
+    StringTokenizer: typing.Type[StringTokenizer]
+    TimeZone: typing.Type[TimeZone]
+    Timer: typing.Type[Timer]
+    TimerTask: typing.Type[TimerTask]
+    TooManyListenersException: typing.Type[TooManyListenersException]
+    TreeMap: typing.Type[TreeMap]
+    TreeSet: typing.Type[TreeSet]
+    UUID: typing.Type[UUID]
+    UnknownFormatConversionException: typing.Type[UnknownFormatConversionException]
+    UnknownFormatFlagsException: typing.Type[UnknownFormatFlagsException]
+    Vector: typing.Type[Vector]
+    WeakHashMap: typing.Type[WeakHashMap]
+    concurrent: java.util.concurrent.__module_protocol__
+    function: java.util.function.__module_protocol__
+    jar: java.util.jar.__module_protocol__
+    logging: java.util.logging.__module_protocol__
+    prefs: java.util.prefs.__module_protocol__
+    regex: java.util.regex.__module_protocol__
+    spi: java.util.spi.__module_protocol__
+    stream: java.util.stream.__module_protocol__
+    zip: java.util.zip.__module_protocol__

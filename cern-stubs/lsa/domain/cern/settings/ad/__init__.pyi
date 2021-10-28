@@ -6,7 +6,15 @@ import java.util
 import typing
 
 
+
 class AdCycleSegment(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.cern.settings.ad.AdCycleSegment'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def addTimingProcess(self, timingProcess: cern.lsa.domain.cern.timing.TimingProcess, int: int, timingProcessAnchor: cern.lsa.domain.cern.timing.TimingProcessAnchor) -> None: ...
     def getAttribute(self, string: str) -> str: ...
     def getAttributeNames(self) -> java.util.Set[str]: ...
@@ -26,6 +34,13 @@ class AdCycleSegment(cern.accsoft.commons.util.Named):
     def setName(self, string: str) -> None: ...
 
 class AdCycleStructure(cern.lsa.domain.commons.IdentifiedEntity):
+    """
+    Java class 'cern.lsa.domain.cern.settings.ad.AdCycleStructure'
+    
+        Interfaces:
+            cern.lsa.domain.commons.IdentifiedEntity
+    
+    """
     def getId(self) -> int: ...
     def getLength(self) -> int: ...
     def getSegment(self, int: int) -> AdCycleSegment: ...
@@ -37,6 +52,19 @@ class AdCycleStructure(cern.lsa.domain.commons.IdentifiedEntity):
     def removeFlatSegment(self, flatSegment: 'FlatSegment') -> None: ...
 
 class PauseLocation(java.lang.Enum['PauseLocation']):
+    """
+    Java class 'cern.lsa.domain.cern.settings.ad.PauseLocation'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        NONE (cern.lsa.domain.cern.settings.ad.PauseLocation): final static enum constant
+        BEFORE_START (cern.lsa.domain.cern.settings.ad.PauseLocation): final static enum constant
+        BEFORE_END (cern.lsa.domain.cern.settings.ad.PauseLocation): final static enum constant
+        AFTER_END (cern.lsa.domain.cern.settings.ad.PauseLocation): final static enum constant
+    
+    """
     NONE: typing.ClassVar['PauseLocation'] = ...
     BEFORE_START: typing.ClassVar['PauseLocation'] = ...
     BEFORE_END: typing.ClassVar['PauseLocation'] = ...
@@ -52,6 +80,16 @@ class PauseLocation(java.lang.Enum['PauseLocation']):
     def values() -> typing.List['PauseLocation']: ...
 
 class SegmentAttribute(java.lang.Enum['SegmentAttribute']):
+    """
+    Java class 'cern.lsa.domain.cern.settings.ad.SegmentAttribute'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        ELTAG (cern.lsa.domain.cern.settings.ad.SegmentAttribute): final static enum constant
+    
+    """
     ELTAG: typing.ClassVar['SegmentAttribute'] = ...
     _valueOf_1__T = typing.TypeVar('_valueOf_1__T', bound=java.lang.Enum)  # <T>
     @typing.overload
@@ -64,6 +102,17 @@ class SegmentAttribute(java.lang.Enum['SegmentAttribute']):
     def values() -> typing.List['SegmentAttribute']: ...
 
 class SegmentType(java.lang.Enum['SegmentType']):
+    """
+    Java class 'cern.lsa.domain.cern.settings.ad.SegmentType'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        RAMP (cern.lsa.domain.cern.settings.ad.SegmentType): final static enum constant
+        FLAT (cern.lsa.domain.cern.settings.ad.SegmentType): final static enum constant
+    
+    """
     RAMP: typing.ClassVar['SegmentType'] = ...
     FLAT: typing.ClassVar['SegmentType'] = ...
     _valueOf_1__T = typing.TypeVar('_valueOf_1__T', bound=java.lang.Enum)  # <T>
@@ -77,6 +126,13 @@ class SegmentType(java.lang.Enum['SegmentType']):
     def values() -> typing.List['SegmentType']: ...
 
 class FlatSegment(AdCycleSegment):
+    """
+    Java class 'cern.lsa.domain.cern.settings.ad.FlatSegment'
+    
+        Interfaces:
+            cern.lsa.domain.cern.settings.ad.AdCycleSegment
+    
+    """
     def getNumberOfExtractions(self) -> int: ...
     def getNumberOfInjections(self) -> int: ...
     def getPauseLocation(self) -> PauseLocation: ...
@@ -85,8 +141,27 @@ class FlatSegment(AdCycleSegment):
     def setPauseLocation(self, pauseLocation: PauseLocation) -> None: ...
 
 class RampSegment(AdCycleSegment):
+    """
+    Java class 'cern.lsa.domain.cern.settings.ad.RampSegment'
+    
+        Interfaces:
+            cern.lsa.domain.cern.settings.ad.AdCycleSegment
+    
+    """
     def getFlatPartLength(self) -> int: ...
     def getRoundPartLength(self) -> int: ...
     def setEndMomentum(self, int: int) -> None: ...
     def setFlatPartLength(self, int: int) -> None: ...
     def setRoundPartLength(self, int: int) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.cern.settings.ad")``.
+
+    AdCycleSegment: typing.Type[AdCycleSegment]
+    AdCycleStructure: typing.Type[AdCycleStructure]
+    FlatSegment: typing.Type[FlatSegment]
+    PauseLocation: typing.Type[PauseLocation]
+    RampSegment: typing.Type[RampSegment]
+    SegmentAttribute: typing.Type[SegmentAttribute]
+    SegmentType: typing.Type[SegmentType]

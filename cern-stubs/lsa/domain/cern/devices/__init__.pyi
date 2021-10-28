@@ -1,6 +1,7 @@
 import cern.accsoft.commons.domain.beams
 import cern.accsoft.commons.domain.lhc
 import cern.accsoft.commons.util
+import cern.lsa.domain.cern.devices.spi
 import cern.lsa.domain.commons
 import cern.lsa.domain.devices
 import java.io
@@ -9,7 +10,15 @@ import java.util
 import typing
 
 
+
 class BlmCrateInfo(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.cern.devices.BlmCrateInfo'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def getBlecfPresent(self) -> int: ...
     def getBlecsFirmwareVersion(self) -> int: ...
     def getBlecsSerial(self) -> int: ...
@@ -42,11 +51,33 @@ class BlmCrateInfo(cern.accsoft.commons.util.Named):
     def getRgohResetHvPeak(self) -> int: ...
 
 class BlmFamily(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.cern.devices.BlmFamily'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def getAmpsFactor(self) -> float: ...
     def getGysFactor(self) -> float: ...
     def getThresholds(self) -> typing.List[int]: ...
 
 class BlmInfo(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.cern.devices.BlmInfo'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+      Attributes:
+        ALL_THRESHOLDS_INCLUDED ([Z): final static field
+        NUM_CARDS (int): final static field
+        NUM_CHANNELS_PER_CARD (int): final static field
+        NUM_ENERGY_LEVELS (int): final static field
+        NUM_RUNNING_SUMS (int): final static field
+        NUM_MAX_VALUES_PER_CARD (int): final static field
+    
+    """
     ALL_THRESHOLDS_INCLUDED: typing.ClassVar[typing.List[bool]] = ...
     NUM_CARDS: typing.ClassVar[int] = ...
     NUM_CHANNELS_PER_CARD: typing.ClassVar[int] = ...
@@ -73,12 +104,14 @@ class BlmInfo(cern.accsoft.commons.util.Named):
     def isMasked(self) -> bool: ...
     def isSpare(self) -> bool: ...
 
-class CernDevices:
-    def __init__(self): ...
-    @staticmethod
-    def isFgc(device: cern.lsa.domain.devices.Device) -> bool: ...
-
 class CollimatorAlignment(cern.lsa.domain.commons.IdentifiedEntity):
+    """
+    Java class 'cern.lsa.domain.cern.devices.CollimatorAlignment'
+    
+        Interfaces:
+            cern.lsa.domain.commons.IdentifiedEntity
+    
+    """
     def getAlignmentTime(self) -> java.util.Date: ...
     def getBeamModeCategory(self) -> str: ...
     def getCollimatorName(self) -> str: ...
@@ -91,6 +124,26 @@ class CollimatorAlignment(cern.lsa.domain.commons.IdentifiedEntity):
     def getTcp2RightPos(self) -> float: ...
 
 class CollimatorRegion(java.lang.Enum['CollimatorRegion']):
+    """
+    Java class 'cern.lsa.domain.cern.devices.CollimatorRegion'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        LHC_IP1 (cern.lsa.domain.cern.devices.CollimatorRegion): final static enum constant
+        LHC_IP2 (cern.lsa.domain.cern.devices.CollimatorRegion): final static enum constant
+        LHC_IP3 (cern.lsa.domain.cern.devices.CollimatorRegion): final static enum constant
+        LHC_IP4 (cern.lsa.domain.cern.devices.CollimatorRegion): final static enum constant
+        LHC_IP5 (cern.lsa.domain.cern.devices.CollimatorRegion): final static enum constant
+        LHC_IP6 (cern.lsa.domain.cern.devices.CollimatorRegion): final static enum constant
+        LHC_IP7 (cern.lsa.domain.cern.devices.CollimatorRegion): final static enum constant
+        LHC_IP8 (cern.lsa.domain.cern.devices.CollimatorRegion): final static enum constant
+        TI2 (cern.lsa.domain.cern.devices.CollimatorRegion): final static enum constant
+        TI8 (cern.lsa.domain.cern.devices.CollimatorRegion): final static enum constant
+        SPS (cern.lsa.domain.cern.devices.CollimatorRegion): final static enum constant
+    
+    """
     LHC_IP1: typing.ClassVar['CollimatorRegion'] = ...
     LHC_IP2: typing.ClassVar['CollimatorRegion'] = ...
     LHC_IP3: typing.ClassVar['CollimatorRegion'] = ...
@@ -113,6 +166,24 @@ class CollimatorRegion(java.lang.Enum['CollimatorRegion']):
     def values() -> typing.List['CollimatorRegion']: ...
 
 class DeviceGroupTypeEnum(java.lang.Enum['DeviceGroupTypeEnum'], cern.lsa.domain.devices.DeviceGroupType):
+    """
+    Java class 'cern.lsa.domain.cern.devices.DeviceGroupTypeEnum'
+    
+        Extends:
+            java.lang.Enum
+    
+        Interfaces:
+            cern.lsa.domain.devices.DeviceGroupType
+    
+      Attributes:
+        PROCESS (cern.lsa.domain.cern.devices.DeviceGroupTypeEnum): final static enum constant
+        WORKING_SET (cern.lsa.domain.cern.devices.DeviceGroupTypeEnum): final static enum constant
+        DEVICES (cern.lsa.domain.cern.devices.DeviceGroupTypeEnum): final static enum constant
+        SOC (cern.lsa.domain.cern.devices.DeviceGroupTypeEnum): final static enum constant
+        OP_CONFIG (cern.lsa.domain.cern.devices.DeviceGroupTypeEnum): final static enum constant
+        WORKING_SET_DEVICES (cern.lsa.domain.cern.devices.DeviceGroupTypeEnum): final static enum constant
+    
+    """
     PROCESS: typing.ClassVar['DeviceGroupTypeEnum'] = ...
     WORKING_SET: typing.ClassVar['DeviceGroupTypeEnum'] = ...
     DEVICES: typing.ClassVar['DeviceGroupTypeEnum'] = ...
@@ -132,9 +203,20 @@ class DeviceGroupTypeEnum(java.lang.Enum['DeviceGroupTypeEnum'], cern.lsa.domain
     def values() -> typing.List['DeviceGroupTypeEnum']: ...
 
 class LhcBeamLossMap:
+    """
+    Java class 'cern.lsa.domain.cern.devices.LhcBeamLossMap'
+    
+    """
     def getAllEntries(self) -> java.util.List['LhcBeamLossMap.LhcBeamLossMapEntry']: ...
     def getEntry(self, lhcBeam: cern.accsoft.commons.domain.beams.LhcBeam, string: str, string2: str) -> 'LhcBeamLossMap.LhcBeamLossMapEntry': ...
     class LhcBeamLossMapEntry(java.io.Serializable):
+        """
+        Java class 'cern.lsa.domain.cern.devices.LhcBeamLossMap$LhcBeamLossMapEntry'
+        
+            Interfaces:
+                java.io.Serializable
+        
+        """
         def getBeam(self) -> cern.accsoft.commons.domain.beams.LhcBeam: ...
         def getBeamModeCategory(self) -> str: ...
         def getConfigType(self) -> str: ...
@@ -142,6 +224,13 @@ class LhcBeamLossMap:
         def getValidTo(self) -> int: ...
 
 class LhcCollimatorInfo(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.cern.devices.LhcCollimatorInfo'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def getAngle(self) -> float: ...
     def getAutoRetractionLeftDown(self) -> float: ...
     def getAutoRetractionLeftUp(self) -> float: ...
@@ -240,6 +329,10 @@ class LhcCollimatorInfo(cern.accsoft.commons.util.Named):
     def isBpmInstalled(self) -> bool: ...
 
 class RfFgcChannel:
+    """
+    Java class 'cern.lsa.domain.cern.devices.RfFgcChannel'
+    
+    """
     def getChannelName(self) -> str: ...
     def getChannelNumber(self) -> int: ...
     def getDescription(self) -> str: ...
@@ -251,4 +344,27 @@ class RfFgcChannel:
     def getUnit(self) -> str: ...
 
 class ThresholdsAwareBlmInfo(BlmInfo):
+    """
+    Java class 'cern.lsa.domain.cern.devices.ThresholdsAwareBlmInfo'
+    
+        Interfaces:
+            cern.lsa.domain.cern.devices.BlmInfo
+    
+    """
     def getAppliedThresholds(self) -> typing.List[typing.List[int]]: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.cern.devices")``.
+
+    BlmCrateInfo: typing.Type[BlmCrateInfo]
+    BlmFamily: typing.Type[BlmFamily]
+    BlmInfo: typing.Type[BlmInfo]
+    CollimatorAlignment: typing.Type[CollimatorAlignment]
+    CollimatorRegion: typing.Type[CollimatorRegion]
+    DeviceGroupTypeEnum: typing.Type[DeviceGroupTypeEnum]
+    LhcBeamLossMap: typing.Type[LhcBeamLossMap]
+    LhcCollimatorInfo: typing.Type[LhcCollimatorInfo]
+    RfFgcChannel: typing.Type[RfFgcChannel]
+    ThresholdsAwareBlmInfo: typing.Type[ThresholdsAwareBlmInfo]
+    spi: cern.lsa.domain.cern.devices.spi.__module_protocol__

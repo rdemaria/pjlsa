@@ -7,7 +7,23 @@ import java.util
 import typing
 
 
+
 class ParameterBlock(java.lang.Cloneable, java.io.Serializable):
+    """
+    Java class 'java.awt.image.renderable.ParameterBlock'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.Cloneable, java.io.Serializable
+    
+      Constructors:
+        * ParameterBlock(java.util.Vector, java.util.Vector)
+        * ParameterBlock(java.util.Vector)
+        * ParameterBlock()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -72,6 +88,22 @@ class ParameterBlock(java.lang.Cloneable, java.io.Serializable):
     def shallowClone(self) -> typing.Any: ...
 
 class RenderContext(java.lang.Cloneable):
+    """
+    Java class 'java.awt.image.renderable.RenderContext'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.lang.Cloneable
+    
+      Constructors:
+        * RenderContext(java.awt.geom.AffineTransform, java.awt.Shape)
+        * RenderContext(java.awt.geom.AffineTransform, java.awt.RenderingHints)
+        * RenderContext(java.awt.geom.AffineTransform)
+        * RenderContext(java.awt.geom.AffineTransform, java.awt.Shape, java.awt.RenderingHints)
+    
+    """
     @typing.overload
     def __init__(self, affineTransform: java.awt.geom.AffineTransform): ...
     @typing.overload
@@ -93,6 +125,13 @@ class RenderContext(java.lang.Cloneable):
     def setTransform(self, affineTransform: java.awt.geom.AffineTransform) -> None: ...
 
 class RenderableImage:
+    """
+    Java class 'java.awt.image.renderable.RenderableImage'
+    
+      Attributes:
+        HINTS_OBSERVED (java.lang.String): final static field
+    
+    """
     HINTS_OBSERVED: typing.ClassVar[str] = ...
     def createDefaultRendering(self) -> java.awt.image.RenderedImage: ...
     def createRendering(self, renderContext: RenderContext) -> java.awt.image.RenderedImage: ...
@@ -107,6 +146,19 @@ class RenderableImage:
     def isDynamic(self) -> bool: ...
 
 class RenderableImageProducer(java.awt.image.ImageProducer, java.lang.Runnable):
+    """
+    Java class 'java.awt.image.renderable.RenderableImageProducer'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.image.ImageProducer, java.lang.Runnable
+    
+      Constructors:
+        * RenderableImageProducer(java.awt.image.renderable.RenderableImage, java.awt.image.renderable.RenderContext)
+    
+    """
     def __init__(self, renderableImage: RenderableImage, renderContext: RenderContext): ...
     def addConsumer(self, imageConsumer: java.awt.image.ImageConsumer) -> None: ...
     def isConsumer(self, imageConsumer: java.awt.image.ImageConsumer) -> bool: ...
@@ -117,9 +169,20 @@ class RenderableImageProducer(java.awt.image.ImageProducer, java.lang.Runnable):
     def startProduction(self, imageConsumer: java.awt.image.ImageConsumer) -> None: ...
 
 class RenderedImageFactory:
+    """
+    Java class 'java.awt.image.renderable.RenderedImageFactory'
+    
+    """
     def create(self, parameterBlock: ParameterBlock, renderingHints: java.awt.RenderingHints) -> java.awt.image.RenderedImage: ...
 
 class ContextualRenderedImageFactory(RenderedImageFactory):
+    """
+    Java class 'java.awt.image.renderable.ContextualRenderedImageFactory'
+    
+        Interfaces:
+            java.awt.image.renderable.RenderedImageFactory
+    
+    """
     @typing.overload
     def create(self, renderContext: RenderContext, parameterBlock: ParameterBlock) -> java.awt.image.RenderedImage: ...
     @typing.overload
@@ -131,6 +194,19 @@ class ContextualRenderedImageFactory(RenderedImageFactory):
     def mapRenderContext(self, int: int, renderContext: RenderContext, parameterBlock: ParameterBlock, renderableImage: RenderableImage) -> RenderContext: ...
 
 class RenderableImageOp(RenderableImage):
+    """
+    Java class 'java.awt.image.renderable.RenderableImageOp'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.image.renderable.RenderableImage
+    
+      Constructors:
+        * RenderableImageOp(java.awt.image.renderable.ContextualRenderedImageFactory, java.awt.image.renderable.ParameterBlock)
+    
+    """
     def __init__(self, contextualRenderedImageFactory: ContextualRenderedImageFactory, parameterBlock: ParameterBlock): ...
     def createDefaultRendering(self) -> java.awt.image.RenderedImage: ...
     def createRendering(self, renderContext: RenderContext) -> java.awt.image.RenderedImage: ...
@@ -145,3 +221,15 @@ class RenderableImageOp(RenderableImage):
     def getWidth(self) -> float: ...
     def isDynamic(self) -> bool: ...
     def setParameterBlock(self, parameterBlock: ParameterBlock) -> ParameterBlock: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.awt.image.renderable")``.
+
+    ContextualRenderedImageFactory: typing.Type[ContextualRenderedImageFactory]
+    ParameterBlock: typing.Type[ParameterBlock]
+    RenderContext: typing.Type[RenderContext]
+    RenderableImage: typing.Type[RenderableImage]
+    RenderableImageOp: typing.Type[RenderableImageOp]
+    RenderableImageProducer: typing.Type[RenderableImageProducer]
+    RenderedImageFactory: typing.Type[RenderedImageFactory]

@@ -3,13 +3,30 @@ import cern.accsoft.commons.domain.particletransfers
 import cern.accsoft.commons.domain.zones
 import cern.lsa.domain.commons.spi
 import cern.lsa.domain.devices
+import cern.lsa.domain.devices.spi.type
 import cern.lsa.domain.settings
 import java.io
 import java.util
 import typing
 
 
+
 class DeviceGroupImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity[cern.lsa.domain.devices.DeviceGroup], cern.lsa.domain.devices.DeviceGroup):
+    """
+    Java class 'cern.lsa.domain.devices.spi.DeviceGroupImpl'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity
+    
+        Interfaces:
+            cern.lsa.domain.devices.DeviceGroup
+    
+      Constructors:
+        * DeviceGroupImpl(cern.lsa.domain.devices.DeviceGroup)
+        * DeviceGroupImpl(java.lang.String, cern.lsa.domain.devices.DeviceGroupType, cern.accsoft.commons.domain.Accelerator)
+        * DeviceGroupImpl()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -37,6 +54,25 @@ class DeviceGroupImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity[
     def toString(self) -> str: ...
 
 class DeviceGroupsRequestImpl(cern.lsa.domain.commons.spi.AbstractPropertiesHolder, cern.lsa.domain.devices.DeviceGroupsRequest):
+    """
+    Java class 'cern.lsa.domain.devices.spi.DeviceGroupsRequestImpl'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AbstractPropertiesHolder
+    
+        Interfaces:
+            cern.lsa.domain.devices.DeviceGroupsRequest
+    
+      Constructors:
+        * DeviceGroupsRequestImpl(java.util.Map)
+    
+      Attributes:
+        ACCELERATOR (java.lang.String): final static field
+        DEVICE_GROUP_NAME_PATTERN (java.lang.String): final static field
+        DEVICE_GROUP_NAMES (java.lang.String): final static field
+        DEVICE_GROUP_TYPES (java.lang.String): final static field
+    
+    """
     ACCELERATOR: typing.ClassVar[str] = ...
     DEVICE_GROUP_NAME_PATTERN: typing.ClassVar[str] = ...
     DEVICE_GROUP_NAMES: typing.ClassVar[str] = ...
@@ -48,6 +84,20 @@ class DeviceGroupsRequestImpl(cern.lsa.domain.commons.spi.AbstractPropertiesHold
     def getDeviceGroupTypes(self) -> java.util.Set[cern.lsa.domain.devices.DeviceGroupType]: ...
 
 class DeviceImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity[cern.lsa.domain.devices.Device], cern.lsa.domain.devices.Device):
+    """
+    Java class 'cern.lsa.domain.devices.spi.DeviceImpl'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity
+    
+        Interfaces:
+            cern.lsa.domain.devices.Device
+    
+      Constructors:
+        * DeviceImpl(long, java.lang.String)
+        * DeviceImpl(cern.lsa.domain.devices.Device)
+    
+    """
     @typing.overload
     def __init__(self, device: cern.lsa.domain.devices.Device): ...
     @typing.overload
@@ -66,6 +116,7 @@ class DeviceImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity[cern.
     def getSortOrder(self) -> int: ...
     def getState(self) -> cern.lsa.domain.devices.Device.DeviceState: ...
     def isCycleBound(self) -> bool: ...
+    def isLsaImplementation(self) -> bool: ...
     def isMultiplexed(self) -> bool: ...
     def setAcceleratorZone(self, acceleratorZone: cern.accsoft.commons.domain.zones.AcceleratorZone) -> None: ...
     def setAlias(self, string: str) -> None: ...
@@ -74,6 +125,7 @@ class DeviceImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity[cern.
     def setDeviceGroups(self, set: java.util.Set[str]) -> None: ...
     def setDeviceTypeVersion(self, deviceTypeVersion: cern.lsa.domain.devices.DeviceTypeVersion) -> None: ...
     def setFecName(self, string: str) -> None: ...
+    def setLsaImplementation(self, boolean: bool) -> None: ...
     def setMultiplexed(self, boolean: bool) -> None: ...
     def setPosition(self, double: float) -> None: ...
     def setServerName(self, string: str) -> None: ...
@@ -82,6 +134,19 @@ class DeviceImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity[cern.
     def toString(self) -> str: ...
 
 class DeviceTypeImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity[cern.lsa.domain.devices.DeviceType], cern.lsa.domain.devices.DeviceType):
+    """
+    Java class 'cern.lsa.domain.devices.spi.DeviceTypeImpl'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity
+    
+        Interfaces:
+            cern.lsa.domain.devices.DeviceType
+    
+      Constructors:
+        * DeviceTypeImpl(long, java.lang.String)
+    
+    """
     def __init__(self, long: int, string: str): ...
     def addVersion(self, deviceTypeVersion: cern.lsa.domain.devices.DeviceTypeVersion) -> None: ...
     def compareTo(self, deviceType: cern.lsa.domain.devices.DeviceType) -> int: ...
@@ -94,6 +159,19 @@ class DeviceTypeImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity[c
     def toString(self) -> str: ...
 
 class DeviceTypeVersionImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedEntity[cern.lsa.domain.devices.DeviceTypeVersion], cern.lsa.domain.devices.DeviceTypeVersion):
+    """
+    Java class 'cern.lsa.domain.devices.spi.DeviceTypeVersionImpl'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AbstractIdentifiedEntity
+    
+        Interfaces:
+            cern.lsa.domain.devices.DeviceTypeVersion
+    
+      Constructors:
+        * DeviceTypeVersionImpl(long, cern.lsa.domain.devices.DeviceType, cern.lsa.domain.devices.DeviceTypeImplementation, cern.lsa.domain.devices.DeviceTypeVersionNumber)
+    
+    """
     def __init__(self, long: int, deviceType: cern.lsa.domain.devices.DeviceType, deviceTypeImplementation: cern.lsa.domain.devices.DeviceTypeImplementation, deviceTypeVersionNumber: cern.lsa.domain.devices.DeviceTypeVersionNumber): ...
     def compareTo(self, deviceTypeVersion: cern.lsa.domain.devices.DeviceTypeVersion) -> int: ...
     def equals(self, object: typing.Any) -> bool: ...
@@ -104,6 +182,20 @@ class DeviceTypeVersionImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedEntity
     def toString(self) -> str: ...
 
 class DeviceTypeVersionNumberImpl(cern.lsa.domain.devices.DeviceTypeVersionNumber, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.devices.spi.DeviceTypeVersionNumberImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.devices.DeviceTypeVersionNumber,
+            java.io.Serializable
+    
+      Constructors:
+        * DeviceTypeVersionNumberImpl(int, int)
+    
+    """
     def __init__(self, int: int, int2: int): ...
     def compareTo(self, deviceTypeVersionNumber: cern.lsa.domain.devices.DeviceTypeVersionNumber) -> int: ...
     def equals(self, object: typing.Any) -> bool: ...
@@ -113,6 +205,27 @@ class DeviceTypeVersionNumberImpl(cern.lsa.domain.devices.DeviceTypeVersionNumbe
     def toString(self) -> str: ...
 
 class DeviceTypesRequestImpl(cern.lsa.domain.commons.spi.AbstractPropertiesHolder, cern.lsa.domain.devices.DeviceTypesRequest):
+    """
+    Java class 'cern.lsa.domain.devices.spi.DeviceTypesRequestImpl'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AbstractPropertiesHolder
+    
+        Interfaces:
+            cern.lsa.domain.devices.DeviceTypesRequest
+    
+      Constructors:
+        * DeviceTypesRequestImpl(java.util.Map)
+    
+      Attributes:
+        ACCELERATOR (java.lang.String): final static field
+        ALL_DEV_TYPES_REQUESTED (java.lang.String): final static field
+        DEVICE_TYPE_NAMES (java.lang.String): final static field
+        DEVICE_TYPE_NAME_PATTERN (java.lang.String): final static field
+        DEVICE_TYPE_VERSION_NUMBER (java.lang.String): final static field
+        DEVICE_TYPE_IMPLEMENTATION (java.lang.String): final static field
+    
+    """
     ACCELERATOR: typing.ClassVar[str] = ...
     ALL_DEV_TYPES_REQUESTED: typing.ClassVar[str] = ...
     DEVICE_TYPE_NAMES: typing.ClassVar[str] = ...
@@ -128,6 +241,38 @@ class DeviceTypesRequestImpl(cern.lsa.domain.commons.spi.AbstractPropertiesHolde
     def getDeviceTypeVersionNumber(self) -> cern.lsa.domain.devices.DeviceTypeVersionNumber: ...
 
 class DevicesRequestImpl(cern.lsa.domain.commons.spi.AbstractPropertiesHolder, cern.lsa.domain.devices.DevicesRequest):
+    """
+    Java class 'cern.lsa.domain.devices.spi.DevicesRequestImpl'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AbstractPropertiesHolder
+    
+        Interfaces:
+            cern.lsa.domain.devices.DevicesRequest
+    
+      Constructors:
+        * DevicesRequestImpl(java.util.Map)
+    
+      Attributes:
+        ACCELERATOR (java.lang.String): final static field
+        ACCELERATOR_ZONES (java.lang.String): final static field
+        PARTICLE_TRANSFERS (java.lang.String): final static field
+        DEVICE_TYPE_NAMES (java.lang.String): final static field
+        DEVICE_TYPE_NAME_PATTERN (java.lang.String): final static field
+        META_TYPE (java.lang.String): final static field
+        DEVICE_NAMES (java.lang.String): final static field
+        DEVICE_NAME_PATTERN (java.lang.String): final static field
+        MULTIPLEXED (java.lang.String): final static field
+        DEVICE_GROUP_IDS (java.lang.String): final static field
+        DEVICE_GROUP_NAMES (java.lang.String): final static field
+        ELEMENT_NAME (java.lang.String): final static field
+        DEVICE_ALIAS (java.lang.String): final static field
+        FEC_NAMES (java.lang.String): final static field
+        SERVER_NAMES (java.lang.String): final static field
+        DEVICE_TYPE_VERSIONS (java.lang.String): final static field
+        EXIST_IN_LSA_ONLY (java.lang.String): final static field
+    
+    """
     ACCELERATOR: typing.ClassVar[str] = ...
     ACCELERATOR_ZONES: typing.ClassVar[str] = ...
     PARTICLE_TRANSFERS: typing.ClassVar[str] = ...
@@ -165,6 +310,20 @@ class DevicesRequestImpl(cern.lsa.domain.commons.spi.AbstractPropertiesHolder, c
     def isMultiplexed(self) -> bool: ...
 
 class ParameterGroupImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity[cern.lsa.domain.settings.ParameterGroup], cern.lsa.domain.settings.ParameterGroup):
+    """
+    Java class 'cern.lsa.domain.devices.spi.ParameterGroupImpl'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity
+    
+        Interfaces:
+            cern.lsa.domain.settings.ParameterGroup
+    
+      Constructors:
+        * ParameterGroupImpl()
+        * ParameterGroupImpl(long, java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -178,3 +337,18 @@ class ParameterGroupImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEnti
     def setCreator(self, string: str) -> None: ...
     def setDescription(self, string: str) -> None: ...
     def toString(self) -> str: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.devices.spi")``.
+
+    DeviceGroupImpl: typing.Type[DeviceGroupImpl]
+    DeviceGroupsRequestImpl: typing.Type[DeviceGroupsRequestImpl]
+    DeviceImpl: typing.Type[DeviceImpl]
+    DeviceTypeImpl: typing.Type[DeviceTypeImpl]
+    DeviceTypeVersionImpl: typing.Type[DeviceTypeVersionImpl]
+    DeviceTypeVersionNumberImpl: typing.Type[DeviceTypeVersionNumberImpl]
+    DeviceTypesRequestImpl: typing.Type[DeviceTypesRequestImpl]
+    DevicesRequestImpl: typing.Type[DevicesRequestImpl]
+    ParameterGroupImpl: typing.Type[ParameterGroupImpl]
+    type: cern.lsa.domain.devices.spi.type.__module_protocol__

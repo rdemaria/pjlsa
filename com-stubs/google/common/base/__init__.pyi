@@ -1,4 +1,5 @@
 import com
+import com.google.common.base.internal
 import java.io
 import java.lang
 import java.lang.ref
@@ -9,10 +10,61 @@ import java.util
 import java.util.concurrent
 import java.util.function
 import java.util.regex
+import java.util.stream
 import typing
 
 
+
 class Ascii:
+    """
+    Java class 'com.google.common.base.Ascii'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        NUL (byte): final static field
+        SOH (byte): final static field
+        STX (byte): final static field
+        ETX (byte): final static field
+        EOT (byte): final static field
+        ENQ (byte): final static field
+        ACK (byte): final static field
+        BEL (byte): final static field
+        BS (byte): final static field
+        HT (byte): final static field
+        LF (byte): final static field
+        NL (byte): final static field
+        VT (byte): final static field
+        FF (byte): final static field
+        CR (byte): final static field
+        SO (byte): final static field
+        SI (byte): final static field
+        DLE (byte): final static field
+        DC1 (byte): final static field
+        XON (byte): final static field
+        DC2 (byte): final static field
+        DC3 (byte): final static field
+        XOFF (byte): final static field
+        DC4 (byte): final static field
+        NAK (byte): final static field
+        SYN (byte): final static field
+        ETB (byte): final static field
+        CAN (byte): final static field
+        EM (byte): final static field
+        SUB (byte): final static field
+        ESC (byte): final static field
+        FS (byte): final static field
+        GS (byte): final static field
+        RS (byte): final static field
+        US (byte): final static field
+        SP (byte): final static field
+        SPACE (byte): final static field
+        DEL (byte): final static field
+        MIN (char): final static field
+        MAX (char): final static field
+    
+    """
     NUL: typing.ClassVar[int] = ...
     SOH: typing.ClassVar[int] = ...
     STX: typing.ClassVar[int] = ...
@@ -81,6 +133,20 @@ class Ascii:
     def truncate(charSequence: typing.Union[java.lang.CharSequence, str], int: int, string: str) -> str: ...
 
 class CaseFormat(java.lang.Enum['CaseFormat']):
+    """
+    Java class 'com.google.common.base.CaseFormat'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        LOWER_HYPHEN (com.google.common.base.CaseFormat): final static enum constant
+        LOWER_UNDERSCORE (com.google.common.base.CaseFormat): final static enum constant
+        LOWER_CAMEL (com.google.common.base.CaseFormat): final static enum constant
+        UPPER_CAMEL (com.google.common.base.CaseFormat): final static enum constant
+        UPPER_UNDERSCORE (com.google.common.base.CaseFormat): final static enum constant
+    
+    """
     LOWER_HYPHEN: typing.ClassVar['CaseFormat'] = ...
     LOWER_UNDERSCORE: typing.ClassVar['CaseFormat'] = ...
     LOWER_CAMEL: typing.ClassVar['CaseFormat'] = ...
@@ -99,6 +165,21 @@ class CaseFormat(java.lang.Enum['CaseFormat']):
     def values() -> typing.List['CaseFormat']: ...
 
 class Charsets:
+    """
+    Java class 'com.google.common.base.Charsets'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        US_ASCII (java.nio.charset.Charset): final static field
+        ISO_8859_1 (java.nio.charset.Charset): final static field
+        UTF_8 (java.nio.charset.Charset): final static field
+        UTF_16BE (java.nio.charset.Charset): final static field
+        UTF_16LE (java.nio.charset.Charset): final static field
+        UTF_16 (java.nio.charset.Charset): final static field
+    
+    """
     US_ASCII: typing.ClassVar[java.nio.charset.Charset] = ...
     ISO_8859_1: typing.ClassVar[java.nio.charset.Charset] = ...
     UTF_8: typing.ClassVar[java.nio.charset.Charset] = ...
@@ -107,11 +188,25 @@ class Charsets:
     UTF_16: typing.ClassVar[java.nio.charset.Charset] = ...
 
 class Defaults:
+    """
+    Java class 'com.google.common.base.Defaults'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _defaultValue__T = typing.TypeVar('_defaultValue__T')  # <T>
     @staticmethod
     def defaultValue(class_: typing.Type[_defaultValue__T]) -> _defaultValue__T: ...
 
 class Enums:
+    """
+    Java class 'com.google.common.base.Enums'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def getField(enum: java.lang.Enum[typing.Any]) -> java.lang.reflect.Field: ...
     _getIfPresent__T = typing.TypeVar('_getIfPresent__T', bound=java.lang.Enum)  # <T>
@@ -124,6 +219,16 @@ class Enums:
 _Equivalence__Wrapper__T = typing.TypeVar('_Equivalence__Wrapper__T')  # <T>
 _Equivalence__T = typing.TypeVar('_Equivalence__T')  # <T>
 class Equivalence(java.util.function.BiPredicate[_Equivalence__T, _Equivalence__T], typing.Generic[_Equivalence__T]):
+    """
+    Java class 'com.google.common.base.Equivalence'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.function.BiPredicate
+    
+    """
     @typing.overload
     def equals(self, object: typing.Any) -> bool: ...
     @typing.overload
@@ -142,25 +247,66 @@ class Equivalence(java.util.function.BiPredicate[_Equivalence__T, _Equivalence__
     _wrap__S = typing.TypeVar('_wrap__S')  # <S>
     def wrap(self, s2: _wrap__S) -> 'Equivalence.Wrapper'[_wrap__S]: ...
     class Wrapper(java.io.Serializable, typing.Generic[_Equivalence__Wrapper__T]):
+        """
+        Java class 'com.google.common.base.Equivalence$Wrapper'
+        
+            Extends:
+                java.lang.Object
+        
+            Interfaces:
+                java.io.Serializable
+        
+        """
         def equals(self, object: typing.Any) -> bool: ...
         def get(self) -> _Equivalence__Wrapper__T: ...
         def hashCode(self) -> int: ...
         def toString(self) -> str: ...
 
 class FinalizableReference:
+    """
+    Java class 'com.google.common.base.FinalizableReference'
+    
+    """
     def finalizeReferent(self) -> None: ...
 
 class FinalizableReferenceQueue(java.io.Closeable):
+    """
+    Java class 'com.google.common.base.FinalizableReferenceQueue'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Closeable
+    
+      Constructors:
+        * FinalizableReferenceQueue()
+    
+    """
     def __init__(self): ...
     def close(self) -> None: ...
 
 _Function__F = typing.TypeVar('_Function__F')  # <F>
 _Function__T = typing.TypeVar('_Function__T')  # <T>
 class Function(java.util.function.Function[_Function__F, _Function__T], typing.Generic[_Function__F, _Function__T]):
+    """
+    Java class 'com.google.common.base.Function'
+    
+        Interfaces:
+            java.util.function.Function
+    
+    """
     def apply(self, f: _Function__F) -> _Function__T: ...
     def equals(self, object: typing.Any) -> bool: ...
 
 class Functions:
+    """
+    Java class 'com.google.common.base.Functions'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _compose__A = typing.TypeVar('_compose__A')  # <A>
     _compose__B = typing.TypeVar('_compose__B')  # <B>
     _compose__C = typing.TypeVar('_compose__C')  # <C>
@@ -192,6 +338,13 @@ class Functions:
     def toStringFunction() -> Function[typing.Any, str]: ...
 
 class Joiner:
+    """
+    Java class 'com.google.common.base.Joiner'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _appendTo_0__A = typing.TypeVar('_appendTo_0__A', bound=java.lang.Appendable)  # <A>
     _appendTo_1__A = typing.TypeVar('_appendTo_1__A', bound=java.lang.Appendable)  # <A>
     _appendTo_6__A = typing.TypeVar('_appendTo_6__A', bound=java.lang.Appendable)  # <A>
@@ -233,6 +386,13 @@ class Joiner:
     @typing.overload
     def withKeyValueSeparator(self, string: str) -> 'Joiner.MapJoiner': ...
     class MapJoiner:
+        """
+        Java class 'com.google.common.base.Joiner$MapJoiner'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         _appendTo_0__A = typing.TypeVar('_appendTo_0__A', bound=java.lang.Appendable)  # <A>
         _appendTo_1__A = typing.TypeVar('_appendTo_1__A', bound=java.lang.Appendable)  # <A>
         _appendTo_2__A = typing.TypeVar('_appendTo_2__A', bound=java.lang.Appendable)  # <A>
@@ -257,6 +417,13 @@ class Joiner:
         def useForNull(self, string: str) -> 'Joiner.MapJoiner': ...
 
 class MoreObjects:
+    """
+    Java class 'com.google.common.base.MoreObjects'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _firstNonNull__T = typing.TypeVar('_firstNonNull__T')  # <T>
     @staticmethod
     def firstNonNull(t: _firstNonNull__T, t2: _firstNonNull__T) -> _firstNonNull__T: ...
@@ -270,6 +437,13 @@ class MoreObjects:
     @staticmethod
     def toStringHelper(string: str) -> 'MoreObjects.ToStringHelper': ...
     class ToStringHelper:
+        """
+        Java class 'com.google.common.base.MoreObjects$ToStringHelper'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         @typing.overload
         def add(self, string: str, boolean: bool) -> 'MoreObjects.ToStringHelper': ...
         @typing.overload
@@ -303,6 +477,16 @@ class MoreObjects:
 
 _Optional__T = typing.TypeVar('_Optional__T')  # <T>
 class Optional(java.io.Serializable, typing.Generic[_Optional__T]):
+    """
+    Java class 'com.google.common.base.Optional'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     _absent__T = typing.TypeVar('_absent__T')  # <T>
     @staticmethod
     def absent() -> 'Optional'[_absent__T]: ...
@@ -335,6 +519,13 @@ class Optional(java.io.Serializable, typing.Generic[_Optional__T]):
     def transform(self, function: typing.Union[Function[_Optional__T, _transform__V], typing.Callable[[_Optional__T], _transform__V]]) -> 'Optional'[_transform__V]: ...
 
 class Preconditions:
+    """
+    Java class 'com.google.common.base.Preconditions'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @typing.overload
     @staticmethod
     def checkArgument(boolean: bool) -> None: ...
@@ -602,11 +793,25 @@ class Preconditions:
 
 _Predicate__T = typing.TypeVar('_Predicate__T')  # <T>
 class Predicate(java.util.function.Predicate[_Predicate__T], typing.Generic[_Predicate__T]):
+    """
+    Java class 'com.google.common.base.Predicate'
+    
+        Interfaces:
+            java.util.function.Predicate
+    
+    """
     def apply(self, t: _Predicate__T) -> bool: ...
     def equals(self, object: typing.Any) -> bool: ...
     def test(self, t: _Predicate__T) -> bool: ...
 
 class Predicates:
+    """
+    Java class 'com.google.common.base.Predicates'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _alwaysFalse__T = typing.TypeVar('_alwaysFalse__T')  # <T>
     @staticmethod
     def alwaysFalse() -> Predicate[_alwaysFalse__T]: ...
@@ -636,6 +841,13 @@ class Predicates:
     def subtypeOf(class_: typing.Type[typing.Any]) -> Predicate[typing.Type[typing.Any]]: ...
 
 class Splitter:
+    """
+    Java class 'com.google.common.base.Splitter'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def fixedLength(int: int) -> 'Splitter': ...
     def limit(self, int: int) -> 'Splitter': ...
@@ -656,6 +868,7 @@ class Splitter:
     def onPattern(string: str) -> 'Splitter': ...
     def split(self, charSequence: typing.Union[java.lang.CharSequence, str]) -> java.lang.Iterable[str]: ...
     def splitToList(self, charSequence: typing.Union[java.lang.CharSequence, str]) -> java.util.List[str]: ...
+    def splitToStream(self, charSequence: typing.Union[java.lang.CharSequence, str]) -> java.util.stream.Stream[str]: ...
     @typing.overload
     def trimResults(self) -> 'Splitter': ...
     @typing.overload
@@ -667,9 +880,53 @@ class Splitter:
     @typing.overload
     def withKeyValueSeparator(self, string: str) -> 'Splitter.MapSplitter': ...
     class MapSplitter:
+        """
+        Java class 'com.google.common.base.Splitter$MapSplitter'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def split(self, charSequence: typing.Union[java.lang.CharSequence, str]) -> java.util.Map[str, str]: ...
 
 class StandardSystemProperty(java.lang.Enum['StandardSystemProperty']):
+    """
+    Java class 'com.google.common.base.StandardSystemProperty'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        JAVA_VERSION (com.google.common.base.StandardSystemProperty): final static enum constant
+        JAVA_VENDOR (com.google.common.base.StandardSystemProperty): final static enum constant
+        JAVA_VENDOR_URL (com.google.common.base.StandardSystemProperty): final static enum constant
+        JAVA_HOME (com.google.common.base.StandardSystemProperty): final static enum constant
+        JAVA_VM_SPECIFICATION_VERSION (com.google.common.base.StandardSystemProperty): final static enum constant
+        JAVA_VM_SPECIFICATION_VENDOR (com.google.common.base.StandardSystemProperty): final static enum constant
+        JAVA_VM_SPECIFICATION_NAME (com.google.common.base.StandardSystemProperty): final static enum constant
+        JAVA_VM_VERSION (com.google.common.base.StandardSystemProperty): final static enum constant
+        JAVA_VM_VENDOR (com.google.common.base.StandardSystemProperty): final static enum constant
+        JAVA_VM_NAME (com.google.common.base.StandardSystemProperty): final static enum constant
+        JAVA_SPECIFICATION_VERSION (com.google.common.base.StandardSystemProperty): final static enum constant
+        JAVA_SPECIFICATION_VENDOR (com.google.common.base.StandardSystemProperty): final static enum constant
+        JAVA_SPECIFICATION_NAME (com.google.common.base.StandardSystemProperty): final static enum constant
+        JAVA_CLASS_VERSION (com.google.common.base.StandardSystemProperty): final static enum constant
+        JAVA_CLASS_PATH (com.google.common.base.StandardSystemProperty): final static enum constant
+        JAVA_LIBRARY_PATH (com.google.common.base.StandardSystemProperty): final static enum constant
+        JAVA_IO_TMPDIR (com.google.common.base.StandardSystemProperty): final static enum constant
+        JAVA_COMPILER (com.google.common.base.StandardSystemProperty): final static enum constant
+        JAVA_EXT_DIRS (com.google.common.base.StandardSystemProperty): final static enum constant
+        OS_NAME (com.google.common.base.StandardSystemProperty): final static enum constant
+        OS_ARCH (com.google.common.base.StandardSystemProperty): final static enum constant
+        OS_VERSION (com.google.common.base.StandardSystemProperty): final static enum constant
+        FILE_SEPARATOR (com.google.common.base.StandardSystemProperty): final static enum constant
+        PATH_SEPARATOR (com.google.common.base.StandardSystemProperty): final static enum constant
+        LINE_SEPARATOR (com.google.common.base.StandardSystemProperty): final static enum constant
+        USER_NAME (com.google.common.base.StandardSystemProperty): final static enum constant
+        USER_HOME (com.google.common.base.StandardSystemProperty): final static enum constant
+        USER_DIR (com.google.common.base.StandardSystemProperty): final static enum constant
+    
+    """
     JAVA_VERSION: typing.ClassVar['StandardSystemProperty'] = ...
     JAVA_VENDOR: typing.ClassVar['StandardSystemProperty'] = ...
     JAVA_VENDOR_URL: typing.ClassVar['StandardSystemProperty'] = ...
@@ -712,6 +969,13 @@ class StandardSystemProperty(java.lang.Enum['StandardSystemProperty']):
     def values() -> typing.List['StandardSystemProperty']: ...
 
 class Stopwatch:
+    """
+    Java class 'com.google.common.base.Stopwatch'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @typing.overload
     @staticmethod
     def createStarted() -> 'Stopwatch': ...
@@ -735,6 +999,13 @@ class Stopwatch:
     def toString(self) -> str: ...
 
 class Strings:
+    """
+    Java class 'com.google.common.base.Strings'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def commonPrefix(charSequence: typing.Union[java.lang.CharSequence, str], charSequence2: typing.Union[java.lang.CharSequence, str]) -> str: ...
     @staticmethod
@@ -756,9 +1027,23 @@ class Strings:
 
 _Supplier__T = typing.TypeVar('_Supplier__T')  # <T>
 class Supplier(java.util.function.Supplier[_Supplier__T], typing.Generic[_Supplier__T]):
+    """
+    Java class 'com.google.common.base.Supplier'
+    
+        Interfaces:
+            java.util.function.Supplier
+    
+    """
     def get(self) -> _Supplier__T: ...
 
 class Suppliers:
+    """
+    Java class 'com.google.common.base.Suppliers'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _compose__F = typing.TypeVar('_compose__F')  # <F>
     _compose__T = typing.TypeVar('_compose__T')  # <T>
     @staticmethod
@@ -780,6 +1065,13 @@ class Suppliers:
     def synchronizedSupplier(supplier: typing.Union[Supplier[_synchronizedSupplier__T], typing.Callable[[], _synchronizedSupplier__T]]) -> Supplier[_synchronizedSupplier__T]: ...
 
 class Throwables:
+    """
+    Java class 'com.google.common.base.Throwables'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def getCausalChain(throwable: java.lang.Throwable) -> java.util.List[java.lang.Throwable]: ...
     _getCauseAs__X = typing.TypeVar('_getCauseAs__X', bound=java.lang.Throwable)  # <X>
@@ -817,11 +1109,25 @@ class Throwables:
     def throwIfUnchecked(throwable: java.lang.Throwable) -> None: ...
 
 class Ticker:
+    """
+    Java class 'com.google.common.base.Ticker'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     def read(self) -> int: ...
     @staticmethod
     def systemTicker() -> 'Ticker': ...
 
 class Utf8:
+    """
+    Java class 'com.google.common.base.Utf8'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def encodedLength(charSequence: typing.Union[java.lang.CharSequence, str]) -> int: ...
     @typing.overload
@@ -832,6 +1138,13 @@ class Utf8:
     def isWellFormed(byteArray: typing.List[int], int: int, int2: int) -> bool: ...
 
 class Verify:
+    """
+    Java class 'com.google.common.base.Verify'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @typing.overload
     @staticmethod
     def verify(boolean: bool) -> None: ...
@@ -914,6 +1227,19 @@ class Verify:
     def verifyNotNull(t: _verifyNotNull_1__T, string: str, objectArray: typing.List[typing.Any]) -> _verifyNotNull_1__T: ...
 
 class VerifyException(java.lang.RuntimeException):
+    """
+    Java class 'com.google.common.base.VerifyException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * VerifyException(java.lang.String, java.lang.Throwable)
+        * VerifyException(java.lang.Throwable)
+        * VerifyException(java.lang.String)
+        * VerifyException()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -924,6 +1250,16 @@ class VerifyException(java.lang.RuntimeException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class CharMatcher(Predicate[str]):
+    """
+    Java class 'com.google.common.base.CharMatcher'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            com.google.common.base.Predicate
+    
+    """
     @staticmethod
     def any() -> 'CharMatcher': ...
     @staticmethod
@@ -991,6 +1327,16 @@ class CharMatcher(Predicate[str]):
 _Converter__A = typing.TypeVar('_Converter__A')  # <A>
 _Converter__B = typing.TypeVar('_Converter__B')  # <B>
 class Converter(Function[_Converter__A, _Converter__B], typing.Generic[_Converter__A, _Converter__B]):
+    """
+    Java class 'com.google.common.base.Converter'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            com.google.common.base.Function
+    
+    """
     _andThen_0__V = typing.TypeVar('_andThen_0__V')  # <V>
     _andThen_1__C = typing.TypeVar('_andThen_1__C')  # <C>
     @typing.overload
@@ -1016,6 +1362,13 @@ _FinalizableWeakReference__T = typing.TypeVar('_FinalizableWeakReference__T')  #
 class FinalizableWeakReference(java.lang.ref.WeakReference[_FinalizableWeakReference__T], FinalizableReference, typing.Generic[_FinalizableWeakReference__T]): ...
 
 class Objects(com.google.common.base.ExtraObjectsMethodsForWeb):
+    """
+    Java class 'com.google.common.base.Objects'
+    
+        Extends:
+            com.google.common.base.ExtraObjectsMethodsForWeb
+    
+    """
     @staticmethod
     def equal(object: typing.Any, object2: typing.Any) -> bool: ...
     @typing.overload
@@ -1025,3 +1378,43 @@ class Objects(com.google.common.base.ExtraObjectsMethodsForWeb):
     def hashCode(objectArray: typing.List[typing.Any]) -> int: ...
 
 class ExtraObjectsMethodsForWeb: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("com.google.common.base")``.
+
+    Ascii: typing.Type[Ascii]
+    CaseFormat: typing.Type[CaseFormat]
+    CharMatcher: typing.Type[CharMatcher]
+    Charsets: typing.Type[Charsets]
+    Converter: typing.Type[Converter]
+    Defaults: typing.Type[Defaults]
+    Enums: typing.Type[Enums]
+    Equivalence: typing.Type[Equivalence]
+    ExtraObjectsMethodsForWeb: typing.Type[ExtraObjectsMethodsForWeb]
+    FinalizablePhantomReference: typing.Type[FinalizablePhantomReference]
+    FinalizableReference: typing.Type[FinalizableReference]
+    FinalizableReferenceQueue: typing.Type[FinalizableReferenceQueue]
+    FinalizableSoftReference: typing.Type[FinalizableSoftReference]
+    FinalizableWeakReference: typing.Type[FinalizableWeakReference]
+    Function: typing.Type[Function]
+    Functions: typing.Type[Functions]
+    Joiner: typing.Type[Joiner]
+    MoreObjects: typing.Type[MoreObjects]
+    Objects: typing.Type[Objects]
+    Optional: typing.Type[Optional]
+    Preconditions: typing.Type[Preconditions]
+    Predicate: typing.Type[Predicate]
+    Predicates: typing.Type[Predicates]
+    Splitter: typing.Type[Splitter]
+    StandardSystemProperty: typing.Type[StandardSystemProperty]
+    Stopwatch: typing.Type[Stopwatch]
+    Strings: typing.Type[Strings]
+    Supplier: typing.Type[Supplier]
+    Suppliers: typing.Type[Suppliers]
+    Throwables: typing.Type[Throwables]
+    Ticker: typing.Type[Ticker]
+    Utf8: typing.Type[Utf8]
+    Verify: typing.Type[Verify]
+    VerifyException: typing.Type[VerifyException]
+    internal: com.google.common.base.internal.__module_protocol__

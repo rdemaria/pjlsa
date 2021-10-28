@@ -2,7 +2,12 @@ import java.io
 import typing
 
 
+
 class MailSender:
+    """
+    Java class 'cern.accsoft.commons.util.mail.MailSender'
+    
+    """
     @typing.overload
     def send(self, stringArray: typing.List[str], string2: str, string3: str) -> None: ...
     @typing.overload
@@ -11,6 +16,16 @@ class MailSender:
     def send(self, stringArray: typing.List[str], stringArray2: typing.List[str], stringArray3: typing.List[str], string4: str, string5: str, fileArray: typing.List[java.io.File]) -> None: ...
 
 class MailSenderFactory:
+    """
+    Java class 'cern.accsoft.commons.util.mail.MailSenderFactory'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * MailSenderFactory()
+    
+    """
     def __init__(self): ...
     def getFrom(self) -> str: ...
     def getSmtpHost(self) -> str: ...
@@ -29,3 +44,10 @@ class MailSenderFactory:
     def setSmtpPort(self, int: int) -> None: ...
     def setTLSConnection(self, boolean: bool) -> None: ...
     def setUserName(self, string: str) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.accsoft.commons.util.mail")``.
+
+    MailSender: typing.Type[MailSender]
+    MailSenderFactory: typing.Type[MailSenderFactory]

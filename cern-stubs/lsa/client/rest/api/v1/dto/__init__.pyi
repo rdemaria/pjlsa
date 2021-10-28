@@ -5,27 +5,60 @@ import java.util
 import typing
 
 
+
 class AcceleratorZoneRest(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.AcceleratorZoneRest'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     @staticmethod
     def builder() -> 'DefaultAcceleratorZoneRest.Builder': ...
     def getAcceleratorName(self) -> str: ...
 
 class BooleanItemRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.BooleanItemRest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultBooleanItemRest.Builder': ...
     def getStandardMeaning(self) -> str: ...
     def getValue(self) -> bool: ...
 
 class BooleanTypeRest(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.BooleanTypeRest'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     @staticmethod
     def builder() -> 'DefaultBooleanTypeRest.Builder': ...
     def getBooleanItems(self) -> java.util.List[BooleanItemRest]: ...
 
 class DeviceMetaTypeRest(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DeviceMetaTypeRest'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     @staticmethod
     def builder() -> 'DefaultDeviceMetaTypeRest.Builder': ...
 
 class DeviceRest(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DeviceRest'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     @staticmethod
     def builder() -> 'DefaultDeviceRest.Builder': ...
     def getAcceleratorZone(self) -> AcceleratorZoneRest: ...
@@ -43,14 +76,35 @@ class DeviceRest(cern.accsoft.commons.util.Named):
     def isMultiplexed(self) -> bool: ...
 
 class DeviceStateRest(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DeviceStateRest'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     @staticmethod
     def builder() -> 'DefaultDeviceStateRest.Builder': ...
 
 class DeviceTypeImplementationRest(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DeviceTypeImplementationRest'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     @staticmethod
     def builder() -> 'DefaultDeviceTypeImplementationRest.Builder': ...
 
 class DeviceTypeVersionContainerRest(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     @staticmethod
     def builder() -> 'DefaultDeviceTypeVersionContainerRest.Builder': ...
     def getDescription(self) -> str: ...
@@ -60,12 +114,20 @@ class DeviceTypeVersionContainerRest(cern.accsoft.commons.util.Named):
     def getPrimaryVersion(self) -> 'DeviceTypeVersionRest': ...
 
 class DeviceTypeVersionNumberRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberRest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultDeviceTypeVersionNumberRest.Builder': ...
     def getMajor(self) -> int: ...
     def getMinor(self) -> int: ...
 
 class DeviceTypeVersionRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultDeviceTypeVersionRest.Builder': ...
     def getId(self) -> int: ...
@@ -73,6 +135,10 @@ class DeviceTypeVersionRest:
     def getVersionNumber(self) -> DeviceTypeVersionNumberRest: ...
 
 class EnumItemRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.EnumItemRest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultEnumItemRest.Builder': ...
     def getCode(self) -> int: ...
@@ -81,12 +147,23 @@ class EnumItemRest:
     def isSettable(self) -> bool: ...
 
 class EnumTypeRest(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.EnumTypeRest'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     @staticmethod
     def builder() -> 'DefaultEnumTypeRest.Builder': ...
     def getEnumItems(self) -> java.util.List[EnumItemRest]: ...
     def getEnumTypeBitSize(self) -> str: ...
 
 class ErrorDto:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.ErrorDto'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultErrorDto.Builder': ...
     def getErrorType(self) -> str: ...
@@ -95,6 +172,10 @@ class ErrorDto:
     def getTimestamp(self) -> java.time.OffsetDateTime: ...
 
 class IncaPropertyFieldInfoRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultIncaPropertyFieldInfoRest.Builder': ...
     def getAssociatedPropertyFieldRest(self) -> 'PropertyFieldRest': ...
@@ -106,6 +187,10 @@ class IncaPropertyFieldInfoRest:
     def isMainStatus(self) -> bool: ...
 
 class IncaPropertyFieldInfosRequestRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfosRequestRest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultIncaPropertyFieldInfosRequestRest.Builder': ...
     @staticmethod
@@ -115,6 +200,10 @@ class IncaPropertyFieldInfosRequestRest:
     def getPropertyFieldIds(self) -> java.util.Set[int]: ...
 
 class MakeRuleClassInfoRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoRest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultMakeRuleClassInfoRest.Builder': ...
     def getClassName(self) -> str: ...
@@ -122,23 +211,39 @@ class MakeRuleClassInfoRest:
     def getVersion(self) -> str: ...
 
 class MakeRuleConfigInfoRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.MakeRuleConfigInfoRest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultMakeRuleConfigInfoRest.Builder': ...
     def getMakeRuleConfigStatus(self) -> 'MakeRuleConfigStatusRest': ...
     def getMakeRuleInfo(self) -> 'MakeRuleInfoRest': ...
 
 class MakeRuleConfigStatusRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.MakeRuleConfigStatusRest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultMakeRuleConfigStatusRest.Builder': ...
     def getName(self) -> str: ...
 
 class MakeRuleInfoRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.MakeRuleInfoRest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultMakeRuleInfoRest.Builder': ...
     def getMakeRuleClassInfo(self) -> MakeRuleClassInfoRest: ...
     def getMakeRuleName(self) -> str: ...
 
 class ParameterAttributesRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParameterAttributesRest.Builder': ...
     def getAbsoluteTolerance(self) -> float: ...
@@ -158,6 +263,13 @@ class ParameterAttributesRest:
     def isTrimable(self) -> bool: ...
 
 class ParameterGroupRest(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.ParameterGroupRest'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParameterGroupRest.Builder': ...
     def getAcceleratorName(self) -> str: ...
@@ -167,6 +279,13 @@ class ParameterGroupRest(cern.accsoft.commons.util.Named):
     def getId(self) -> int: ...
 
 class ParameterRest(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.ParameterRest'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def belongsToFunctionBeamProcess(self) -> bool: ...
     @staticmethod
     def builder() -> 'DefaultParameterRest.Builder': ...
@@ -180,16 +299,20 @@ class ParameterRest(cern.accsoft.commons.util.Named):
     def getValueType(self) -> 'TypeRest': ...
     def isCritical(self) -> bool: ...
     def isCycleBound(self) -> bool: ...
+    def isLsaImplementation(self) -> bool: ...
     def isMonitorable(self) -> bool: ...
     def isMultiplexed(self) -> bool: ...
     def isPropertySupportingPartialSet(self) -> bool: ...
     def isReadable(self) -> bool: ...
     def isReservedForOpExperts(self) -> bool: ...
     def isTrimable(self) -> bool: ...
-    def isVirtual(self) -> bool: ...
     def isWritable(self) -> bool: ...
 
 class ParameterTreeDataRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.ParameterTreeDataRest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParameterTreeDataRest.Builder': ...
     def getNodes(self) -> java.util.Set['ParameterTreeNodeRest']: ...
@@ -197,18 +320,30 @@ class ParameterTreeDataRest:
     def getStartNodeIds(self) -> java.util.Set[int]: ...
 
 class ParameterTreeNodeRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeRest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParameterTreeNodeRest.Builder': ...
     def getParameter(self) -> ParameterRest: ...
     def isSource(self) -> bool: ...
 
 class ParameterTreeRelationRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationRest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParameterTreeRelationRest.Builder': ...
     def getChildParameterId(self) -> int: ...
     def getParentParameterId(self) -> int: ...
 
 class ParameterTreesRequestRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestRest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParameterTreesRequestRest.Builder': ...
     def getHierarchy(self) -> str: ...
@@ -216,10 +351,24 @@ class ParameterTreesRequestRest:
     def getTreeDirection(self) -> str: ...
 
 class ParameterTypeCategoryRest(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.ParameterTypeCategoryRest'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParameterTypeCategoryRest.Builder': ...
 
 class ParameterTypeRest(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.ParameterTypeRest'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParameterTypeRest.Builder': ...
     def getCategory(self) -> ParameterTypeCategoryRest: ...
@@ -227,10 +376,18 @@ class ParameterTypeRest(cern.accsoft.commons.util.Named):
     def isLinkRuleApplicable(self) -> bool: ...
 
 class ParameterTypesRequestRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.ParameterTypesRequestRest'
+    
+    """
     def getParameterTypeNames(self) -> java.util.Set[str]: ...
     def isAllParameterTypesRequested(self) -> bool: ...
 
 class ParametersRequestRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.ParametersRequestRest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParametersRequestRest.Builder': ...
     def getAcceleratorName(self) -> str: ...
@@ -246,24 +403,36 @@ class ParametersRequestRest:
     def getPropertyNames(self) -> java.util.Set[str]: ...
     def getValueTypes(self) -> java.util.Set[str]: ...
     def isCritical(self) -> bool: ...
+    def isLsaImplementation(self) -> bool: ...
     def isMultiplexed(self) -> bool: ...
     def isReadable(self) -> bool: ...
-    def isVirtual(self) -> bool: ...
     def isWritable(self) -> bool: ...
 
 class ParentToChildrenRelationRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationRest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParentToChildrenRelationRest.Builder': ...
     def getChildrenIds(self) -> java.util.List[int]: ...
     def getParentId(self) -> int: ...
 
 class PropertyAndDeviceRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceRest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultPropertyAndDeviceRest.Builder': ...
     def getDeviceId(self) -> int: ...
     def getPropertyName(self) -> str: ...
 
 class PropertyFieldRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.PropertyFieldRest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultPropertyFieldRest.Builder': ...
     def getDeviceTypeName(self) -> str: ...
@@ -272,20 +441,42 @@ class PropertyFieldRest:
     def getPropertyName(self) -> str: ...
 
 class SaveParameterRelationRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.SaveParameterRelationRest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultSaveParameterRelationRest.Builder': ...
     def getHierarchy(self) -> str: ...
     def getParent2ChildrenRelations(self) -> java.util.List[ParentToChildrenRelationRest]: ...
 
 class TypeRest(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.TypeRest'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     @staticmethod
     def builder() -> 'DefaultTypeRest.Builder': ...
 
 class ValueCompareTypeRest(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.ValueCompareTypeRest'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     @staticmethod
     def builder() -> 'DefaultValueCompareTypeRest.Builder': ...
 
 class ValueDescriptorRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.ValueDescriptorRest'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultValueDescriptorRest.Builder': ...
     def getAbsoluteTolerance(self) -> float: ...
@@ -302,6 +493,16 @@ class ValueDescriptorRest:
     def getYUnit(self) -> str: ...
 
 class DefaultAcceleratorZoneRest(AcceleratorZoneRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultAcceleratorZoneRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.AcceleratorZoneRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultAcceleratorZoneRest.Builder': ...
     @staticmethod
@@ -314,11 +515,28 @@ class DefaultAcceleratorZoneRest(AcceleratorZoneRest):
     def withAcceleratorName(self, string: str) -> 'DefaultAcceleratorZoneRest': ...
     def withName(self, string: str) -> 'DefaultAcceleratorZoneRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultAcceleratorZoneRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def acceleratorName(self, string: str) -> 'DefaultAcceleratorZoneRest.Builder': ...
         def build(self) -> 'DefaultAcceleratorZoneRest': ...
         def name(self, string: str) -> 'DefaultAcceleratorZoneRest.Builder': ...
 
 class DefaultBooleanItemRest(BooleanItemRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultBooleanItemRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.BooleanItemRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultBooleanItemRest.Builder': ...
     @staticmethod
@@ -331,11 +549,28 @@ class DefaultBooleanItemRest(BooleanItemRest):
     def withStandardMeaning(self, string: str) -> 'DefaultBooleanItemRest': ...
     def withValue(self, boolean: bool) -> 'DefaultBooleanItemRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultBooleanItemRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultBooleanItemRest': ...
         def standardMeaning(self, string: str) -> 'DefaultBooleanItemRest.Builder': ...
         def value(self, boolean: bool) -> 'DefaultBooleanItemRest.Builder': ...
 
 class DefaultBooleanTypeRest(BooleanTypeRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultBooleanTypeRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.BooleanTypeRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultBooleanTypeRest.Builder': ...
     @staticmethod
@@ -351,6 +586,13 @@ class DefaultBooleanTypeRest(BooleanTypeRest):
     def withBooleanItems(self, iterable: java.lang.Iterable[BooleanItemRest]) -> 'DefaultBooleanTypeRest': ...
     def withName(self, string: str) -> 'DefaultBooleanTypeRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultBooleanTypeRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def addAllBooleanItems(self, iterable: java.lang.Iterable[BooleanItemRest]) -> 'DefaultBooleanTypeRest.Builder': ...
         def addBooleanItem(self, booleanItemRest: BooleanItemRest) -> 'DefaultBooleanTypeRest.Builder': ...
         def addBooleanItems(self, booleanItemRestArray: typing.List[BooleanItemRest]) -> 'DefaultBooleanTypeRest.Builder': ...
@@ -359,6 +601,16 @@ class DefaultBooleanTypeRest(BooleanTypeRest):
         def name(self, string: str) -> 'DefaultBooleanTypeRest.Builder': ...
 
 class DefaultDeviceMetaTypeRest(DeviceMetaTypeRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultDeviceMetaTypeRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.DeviceMetaTypeRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultDeviceMetaTypeRest.Builder': ...
     @staticmethod
@@ -369,10 +621,27 @@ class DefaultDeviceMetaTypeRest(DeviceMetaTypeRest):
     def toString(self) -> str: ...
     def withName(self, string: str) -> 'DefaultDeviceMetaTypeRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultDeviceMetaTypeRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultDeviceMetaTypeRest': ...
         def name(self, string: str) -> 'DefaultDeviceMetaTypeRest.Builder': ...
 
 class DefaultDeviceRest(DeviceRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultDeviceRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.DeviceRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultDeviceRest.Builder': ...
     @staticmethod
@@ -412,6 +681,13 @@ class DefaultDeviceRest(DeviceRest):
     def withSortOrder(self, int: int) -> 'DefaultDeviceRest': ...
     def withState(self, deviceStateRest: DeviceStateRest) -> 'DefaultDeviceRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultDeviceRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def acceleratorZone(self, acceleratorZoneRest: AcceleratorZoneRest) -> 'DefaultDeviceRest.Builder': ...
         def addAllDeviceGroups(self, iterable: java.lang.Iterable[str]) -> 'DefaultDeviceRest.Builder': ...
         def addDeviceGroup(self, string: str) -> 'DefaultDeviceRest.Builder': ...
@@ -432,6 +708,16 @@ class DefaultDeviceRest(DeviceRest):
         def state(self, deviceStateRest: DeviceStateRest) -> 'DefaultDeviceRest.Builder': ...
 
 class DefaultDeviceStateRest(DeviceStateRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultDeviceStateRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.DeviceStateRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultDeviceStateRest.Builder': ...
     @staticmethod
@@ -442,10 +728,27 @@ class DefaultDeviceStateRest(DeviceStateRest):
     def toString(self) -> str: ...
     def withName(self, string: str) -> 'DefaultDeviceStateRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultDeviceStateRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultDeviceStateRest': ...
         def name(self, string: str) -> 'DefaultDeviceStateRest.Builder': ...
 
 class DefaultDeviceTypeImplementationRest(DeviceTypeImplementationRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultDeviceTypeImplementationRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.DeviceTypeImplementationRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultDeviceTypeImplementationRest.Builder': ...
     @staticmethod
@@ -456,10 +759,27 @@ class DefaultDeviceTypeImplementationRest(DeviceTypeImplementationRest):
     def toString(self) -> str: ...
     def withName(self, string: str) -> 'DefaultDeviceTypeImplementationRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultDeviceTypeImplementationRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultDeviceTypeImplementationRest': ...
         def name(self, string: str) -> 'DefaultDeviceTypeImplementationRest.Builder': ...
 
 class DefaultDeviceTypeVersionContainerRest(DeviceTypeVersionContainerRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultDeviceTypeVersionContainerRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultDeviceTypeVersionContainerRest.Builder': ...
     @staticmethod
@@ -483,6 +803,13 @@ class DefaultDeviceTypeVersionContainerRest(DeviceTypeVersionContainerRest):
     def withOtherVersions(self, iterable: java.lang.Iterable[DeviceTypeVersionRest]) -> 'DefaultDeviceTypeVersionContainerRest': ...
     def withPrimaryVersion(self, deviceTypeVersionRest: DeviceTypeVersionRest) -> 'DefaultDeviceTypeVersionContainerRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultDeviceTypeVersionContainerRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def addAllOtherVersions(self, iterable: java.lang.Iterable[DeviceTypeVersionRest]) -> 'DefaultDeviceTypeVersionContainerRest.Builder': ...
         def addOtherVersion(self, deviceTypeVersionRest: DeviceTypeVersionRest) -> 'DefaultDeviceTypeVersionContainerRest.Builder': ...
         def addOtherVersions(self, deviceTypeVersionRestArray: typing.List[DeviceTypeVersionRest]) -> 'DefaultDeviceTypeVersionContainerRest.Builder': ...
@@ -495,6 +822,16 @@ class DefaultDeviceTypeVersionContainerRest(DeviceTypeVersionContainerRest):
         def primaryVersion(self, deviceTypeVersionRest: DeviceTypeVersionRest) -> 'DefaultDeviceTypeVersionContainerRest.Builder': ...
 
 class DefaultDeviceTypeVersionNumberRest(DeviceTypeVersionNumberRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultDeviceTypeVersionNumberRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultDeviceTypeVersionNumberRest.Builder': ...
     @staticmethod
@@ -507,11 +844,28 @@ class DefaultDeviceTypeVersionNumberRest(DeviceTypeVersionNumberRest):
     def withMajor(self, integer: int) -> 'DefaultDeviceTypeVersionNumberRest': ...
     def withMinor(self, integer: int) -> 'DefaultDeviceTypeVersionNumberRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultDeviceTypeVersionNumberRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultDeviceTypeVersionNumberRest': ...
         def major(self, integer: int) -> 'DefaultDeviceTypeVersionNumberRest.Builder': ...
         def minor(self, integer: int) -> 'DefaultDeviceTypeVersionNumberRest.Builder': ...
 
 class DefaultDeviceTypeVersionRest(DeviceTypeVersionRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultDeviceTypeVersionRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultDeviceTypeVersionRest.Builder': ...
     @staticmethod
@@ -526,12 +880,29 @@ class DefaultDeviceTypeVersionRest(DeviceTypeVersionRest):
     def withImplementation(self, deviceTypeImplementationRest: DeviceTypeImplementationRest) -> 'DefaultDeviceTypeVersionRest': ...
     def withVersionNumber(self, deviceTypeVersionNumberRest: DeviceTypeVersionNumberRest) -> 'DefaultDeviceTypeVersionRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultDeviceTypeVersionRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultDeviceTypeVersionRest': ...
         def id(self, long: int) -> 'DefaultDeviceTypeVersionRest.Builder': ...
         def implementation(self, deviceTypeImplementationRest: DeviceTypeImplementationRest) -> 'DefaultDeviceTypeVersionRest.Builder': ...
         def versionNumber(self, deviceTypeVersionNumberRest: DeviceTypeVersionNumberRest) -> 'DefaultDeviceTypeVersionRest.Builder': ...
 
 class DefaultEnumItemRest(EnumItemRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultEnumItemRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.EnumItemRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultEnumItemRest.Builder': ...
     @staticmethod
@@ -548,6 +919,13 @@ class DefaultEnumItemRest(EnumItemRest):
     def withStandardMeaning(self, string: str) -> 'DefaultEnumItemRest': ...
     def withSymbol(self, string: str) -> 'DefaultEnumItemRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultEnumItemRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultEnumItemRest': ...
         def code(self, long: int) -> 'DefaultEnumItemRest.Builder': ...
         def settable(self, boolean: bool) -> 'DefaultEnumItemRest.Builder': ...
@@ -555,6 +933,16 @@ class DefaultEnumItemRest(EnumItemRest):
         def symbol(self, string: str) -> 'DefaultEnumItemRest.Builder': ...
 
 class DefaultEnumTypeRest(EnumTypeRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultEnumTypeRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.EnumTypeRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultEnumTypeRest.Builder': ...
     @staticmethod
@@ -572,6 +960,13 @@ class DefaultEnumTypeRest(EnumTypeRest):
     def withEnumTypeBitSize(self, string: str) -> 'DefaultEnumTypeRest': ...
     def withName(self, string: str) -> 'DefaultEnumTypeRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultEnumTypeRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def addAllEnumItems(self, iterable: java.lang.Iterable[EnumItemRest]) -> 'DefaultEnumTypeRest.Builder': ...
         def addEnumItem(self, enumItemRest: EnumItemRest) -> 'DefaultEnumTypeRest.Builder': ...
         def addEnumItems(self, enumItemRestArray: typing.List[EnumItemRest]) -> 'DefaultEnumTypeRest.Builder': ...
@@ -581,6 +976,16 @@ class DefaultEnumTypeRest(EnumTypeRest):
         def name(self, string: str) -> 'DefaultEnumTypeRest.Builder': ...
 
 class DefaultErrorDto(ErrorDto):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultErrorDto'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.ErrorDto
+    
+    """
     @staticmethod
     def builder() -> 'DefaultErrorDto.Builder': ...
     @staticmethod
@@ -597,6 +1002,13 @@ class DefaultErrorDto(ErrorDto):
     def withPath(self, string: str) -> 'DefaultErrorDto': ...
     def withTimestamp(self, offsetDateTime: java.time.OffsetDateTime) -> 'DefaultErrorDto': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultErrorDto$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultErrorDto': ...
         def errorType(self, string: str) -> 'DefaultErrorDto.Builder': ...
         def message(self, string: str) -> 'DefaultErrorDto.Builder': ...
@@ -604,6 +1016,16 @@ class DefaultErrorDto(ErrorDto):
         def timestamp(self, offsetDateTime: java.time.OffsetDateTime) -> 'DefaultErrorDto.Builder': ...
 
 class DefaultIncaPropertyFieldInfoRest(IncaPropertyFieldInfoRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultIncaPropertyFieldInfoRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultIncaPropertyFieldInfoRest.Builder': ...
     @staticmethod
@@ -626,6 +1048,13 @@ class DefaultIncaPropertyFieldInfoRest(IncaPropertyFieldInfoRest):
     def withParameterValueCompareType(self, string: str) -> 'DefaultIncaPropertyFieldInfoRest': ...
     def withPropertyFieldRest(self, propertyFieldRest: PropertyFieldRest) -> 'DefaultIncaPropertyFieldInfoRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultIncaPropertyFieldInfoRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def associatedPropertyFieldRest(self, propertyFieldRest: PropertyFieldRest) -> 'DefaultIncaPropertyFieldInfoRest.Builder': ...
         def build(self) -> 'DefaultIncaPropertyFieldInfoRest': ...
         def controlWarningMessage(self, string: str) -> 'DefaultIncaPropertyFieldInfoRest.Builder': ...
@@ -636,6 +1065,17 @@ class DefaultIncaPropertyFieldInfoRest(IncaPropertyFieldInfoRest):
         def propertyFieldRest(self, propertyFieldRest: PropertyFieldRest) -> 'DefaultIncaPropertyFieldInfoRest.Builder': ...
 
 class DefaultIncaPropertyFieldInfosRequestRest(IncaPropertyFieldInfosRequestRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultIncaPropertyFieldInfosRequestRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfosRequestR
+            est
+    
+    """
     @staticmethod
     def builder() -> 'DefaultIncaPropertyFieldInfosRequestRest.Builder': ...
     @staticmethod
@@ -649,6 +1089,13 @@ class DefaultIncaPropertyFieldInfosRequestRest(IncaPropertyFieldInfosRequestRest
     @typing.overload
     def withPropertyFieldIds(self, longArray: typing.List[int]) -> 'DefaultIncaPropertyFieldInfosRequestRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultIncaPropertyFieldInfosRequestRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def addAllPropertyFieldIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultIncaPropertyFieldInfosRequestRest.Builder': ...
         def addPropertyFieldId(self, long: int) -> 'DefaultIncaPropertyFieldInfosRequestRest.Builder': ...
         def addPropertyFieldIds(self, longArray: typing.List[int]) -> 'DefaultIncaPropertyFieldInfosRequestRest.Builder': ...
@@ -656,6 +1103,16 @@ class DefaultIncaPropertyFieldInfosRequestRest(IncaPropertyFieldInfosRequestRest
         def propertyFieldIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultIncaPropertyFieldInfosRequestRest.Builder': ...
 
 class DefaultMakeRuleClassInfoRest(MakeRuleClassInfoRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultMakeRuleClassInfoRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultMakeRuleClassInfoRest.Builder': ...
     @staticmethod
@@ -670,12 +1127,29 @@ class DefaultMakeRuleClassInfoRest(MakeRuleClassInfoRest):
     def withProductName(self, string: str) -> 'DefaultMakeRuleClassInfoRest': ...
     def withVersion(self, string: str) -> 'DefaultMakeRuleClassInfoRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultMakeRuleClassInfoRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultMakeRuleClassInfoRest': ...
         def className(self, string: str) -> 'DefaultMakeRuleClassInfoRest.Builder': ...
         def productName(self, string: str) -> 'DefaultMakeRuleClassInfoRest.Builder': ...
         def version(self, string: str) -> 'DefaultMakeRuleClassInfoRest.Builder': ...
 
 class DefaultMakeRuleConfigInfoRest(MakeRuleConfigInfoRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultMakeRuleConfigInfoRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.MakeRuleConfigInfoRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultMakeRuleConfigInfoRest.Builder': ...
     @staticmethod
@@ -688,11 +1162,28 @@ class DefaultMakeRuleConfigInfoRest(MakeRuleConfigInfoRest):
     def withMakeRuleConfigStatus(self, makeRuleConfigStatusRest: MakeRuleConfigStatusRest) -> 'DefaultMakeRuleConfigInfoRest': ...
     def withMakeRuleInfo(self, makeRuleInfoRest: MakeRuleInfoRest) -> 'DefaultMakeRuleConfigInfoRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultMakeRuleConfigInfoRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultMakeRuleConfigInfoRest': ...
         def makeRuleConfigStatus(self, makeRuleConfigStatusRest: MakeRuleConfigStatusRest) -> 'DefaultMakeRuleConfigInfoRest.Builder': ...
         def makeRuleInfo(self, makeRuleInfoRest: MakeRuleInfoRest) -> 'DefaultMakeRuleConfigInfoRest.Builder': ...
 
 class DefaultMakeRuleConfigStatusRest(MakeRuleConfigStatusRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultMakeRuleConfigStatusRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.MakeRuleConfigStatusRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultMakeRuleConfigStatusRest.Builder': ...
     @staticmethod
@@ -703,10 +1194,27 @@ class DefaultMakeRuleConfigStatusRest(MakeRuleConfigStatusRest):
     def toString(self) -> str: ...
     def withName(self, string: str) -> 'DefaultMakeRuleConfigStatusRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultMakeRuleConfigStatusRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultMakeRuleConfigStatusRest': ...
         def name(self, string: str) -> 'DefaultMakeRuleConfigStatusRest.Builder': ...
 
 class DefaultMakeRuleInfoRest(MakeRuleInfoRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultMakeRuleInfoRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.MakeRuleInfoRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultMakeRuleInfoRest.Builder': ...
     @staticmethod
@@ -719,11 +1227,28 @@ class DefaultMakeRuleInfoRest(MakeRuleInfoRest):
     def withMakeRuleClassInfo(self, makeRuleClassInfoRest: MakeRuleClassInfoRest) -> 'DefaultMakeRuleInfoRest': ...
     def withMakeRuleName(self, string: str) -> 'DefaultMakeRuleInfoRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultMakeRuleInfoRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultMakeRuleInfoRest': ...
         def makeRuleClassInfo(self, makeRuleClassInfoRest: MakeRuleClassInfoRest) -> 'DefaultMakeRuleInfoRest.Builder': ...
         def makeRuleName(self, string: str) -> 'DefaultMakeRuleInfoRest.Builder': ...
 
 class DefaultParameterAttributesRest(ParameterAttributesRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParameterAttributesRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParameterAttributesRest.Builder': ...
     @staticmethod
@@ -762,6 +1287,13 @@ class DefaultParameterAttributesRest(ParameterAttributesRest):
     def withXPrecision(self, integer: int) -> 'DefaultParameterAttributesRest': ...
     def withYPrecision(self, integer: int) -> 'DefaultParameterAttributesRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParameterAttributesRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def absoluteTolerance(self, double: float) -> 'DefaultParameterAttributesRest.Builder': ...
         def belongsToFunctionBProc(self, boolean: bool) -> 'DefaultParameterAttributesRest.Builder': ...
         def build(self) -> 'DefaultParameterAttributesRest': ...
@@ -780,6 +1312,16 @@ class DefaultParameterAttributesRest(ParameterAttributesRest):
         def yPrecision(self, integer: int) -> 'DefaultParameterAttributesRest.Builder': ...
 
 class DefaultParameterGroupRest(ParameterGroupRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParameterGroupRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.ParameterGroupRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParameterGroupRest.Builder': ...
     @staticmethod
@@ -800,6 +1342,13 @@ class DefaultParameterGroupRest(ParameterGroupRest):
     def withId(self, long: int) -> 'DefaultParameterGroupRest': ...
     def withName(self, string: str) -> 'DefaultParameterGroupRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParameterGroupRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def acceleratorName(self, string: str) -> 'DefaultParameterGroupRest.Builder': ...
         def build(self) -> 'DefaultParameterGroupRest': ...
         def createDate(self, offsetDateTime: java.time.OffsetDateTime) -> 'DefaultParameterGroupRest.Builder': ...
@@ -809,6 +1358,16 @@ class DefaultParameterGroupRest(ParameterGroupRest):
         def name(self, string: str) -> 'DefaultParameterGroupRest.Builder': ...
 
 class DefaultParameterRest(ParameterRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParameterRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.ParameterRest
+    
+    """
     def belongsToFunctionBeamProcess(self) -> bool: ...
     @staticmethod
     def builder() -> 'DefaultParameterRest.Builder': ...
@@ -827,13 +1386,13 @@ class DefaultParameterRest(ParameterRest):
     def hashCode(self) -> int: ...
     def isCritical(self) -> bool: ...
     def isCycleBound(self) -> bool: ...
+    def isLsaImplementation(self) -> bool: ...
     def isMonitorable(self) -> bool: ...
     def isMultiplexed(self) -> bool: ...
     def isPropertySupportingPartialSet(self) -> bool: ...
     def isReadable(self) -> bool: ...
     def isReservedForOpExperts(self) -> bool: ...
     def isTrimable(self) -> bool: ...
-    def isVirtual(self) -> bool: ...
     def isWritable(self) -> bool: ...
     def toString(self) -> str: ...
     def withBelongsToFunctionBeamProcess(self, boolean: bool) -> 'DefaultParameterRest': ...
@@ -842,6 +1401,7 @@ class DefaultParameterRest(ParameterRest):
     def withDefaultHierarchy(self, string: str) -> 'DefaultParameterRest': ...
     def withDevice(self, deviceRest: DeviceRest) -> 'DefaultParameterRest': ...
     def withId(self, long: int) -> 'DefaultParameterRest': ...
+    def withLsaImplementation(self, boolean: bool) -> 'DefaultParameterRest': ...
     def withMonitorable(self, boolean: bool) -> 'DefaultParameterRest': ...
     def withMultiplexed(self, boolean: bool) -> 'DefaultParameterRest': ...
     def withName(self, string: str) -> 'DefaultParameterRest': ...
@@ -857,9 +1417,15 @@ class DefaultParameterRest(ParameterRest):
     def withTrimable(self, boolean: bool) -> 'DefaultParameterRest': ...
     def withValueDescriptor(self, valueDescriptorRest: ValueDescriptorRest) -> 'DefaultParameterRest': ...
     def withValueType(self, typeRest: TypeRest) -> 'DefaultParameterRest': ...
-    def withVirtual(self, boolean: bool) -> 'DefaultParameterRest': ...
     def withWritable(self, boolean: bool) -> 'DefaultParameterRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParameterRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def addAllParameterGroups(self, iterable: java.lang.Iterable[str]) -> 'DefaultParameterRest.Builder': ...
         def addParameterGroup(self, string: str) -> 'DefaultParameterRest.Builder': ...
         def addParameterGroups(self, stringArray: typing.List[str]) -> 'DefaultParameterRest.Builder': ...
@@ -870,6 +1436,7 @@ class DefaultParameterRest(ParameterRest):
         def defaultHierarchy(self, string: str) -> 'DefaultParameterRest.Builder': ...
         def device(self, deviceRest: DeviceRest) -> 'DefaultParameterRest.Builder': ...
         def id(self, long: int) -> 'DefaultParameterRest.Builder': ...
+        def lsaImplementation(self, boolean: bool) -> 'DefaultParameterRest.Builder': ...
         def monitorable(self, boolean: bool) -> 'DefaultParameterRest.Builder': ...
         def multiplexed(self, boolean: bool) -> 'DefaultParameterRest.Builder': ...
         def name(self, string: str) -> 'DefaultParameterRest.Builder': ...
@@ -882,10 +1449,19 @@ class DefaultParameterRest(ParameterRest):
         def trimable(self, boolean: bool) -> 'DefaultParameterRest.Builder': ...
         def valueDescriptor(self, valueDescriptorRest: ValueDescriptorRest) -> 'DefaultParameterRest.Builder': ...
         def valueType(self, typeRest: TypeRest) -> 'DefaultParameterRest.Builder': ...
-        def virtual(self, boolean: bool) -> 'DefaultParameterRest.Builder': ...
         def writable(self, boolean: bool) -> 'DefaultParameterRest.Builder': ...
 
 class DefaultParameterTreeDataRest(ParameterTreeDataRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParameterTreeDataRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.ParameterTreeDataRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParameterTreeDataRest.Builder': ...
     @staticmethod
@@ -909,6 +1485,13 @@ class DefaultParameterTreeDataRest(ParameterTreeDataRest):
     @typing.overload
     def withStartNodeIds(self, longArray: typing.List[int]) -> 'DefaultParameterTreeDataRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParameterTreeDataRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def addAllNodes(self, iterable: java.lang.Iterable[ParameterTreeNodeRest]) -> 'DefaultParameterTreeDataRest.Builder': ...
         def addAllRelations(self, iterable: java.lang.Iterable[ParameterTreeRelationRest]) -> 'DefaultParameterTreeDataRest.Builder': ...
         def addAllStartNodeIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParameterTreeDataRest.Builder': ...
@@ -924,6 +1507,16 @@ class DefaultParameterTreeDataRest(ParameterTreeDataRest):
         def startNodeIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParameterTreeDataRest.Builder': ...
 
 class DefaultParameterTreeNodeRest(ParameterTreeNodeRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParameterTreeNodeRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParameterTreeNodeRest.Builder': ...
     @staticmethod
@@ -936,11 +1529,28 @@ class DefaultParameterTreeNodeRest(ParameterTreeNodeRest):
     def withParameter(self, parameterRest: ParameterRest) -> 'DefaultParameterTreeNodeRest': ...
     def withSource(self, boolean: bool) -> 'DefaultParameterTreeNodeRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParameterTreeNodeRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultParameterTreeNodeRest': ...
         def parameter(self, parameterRest: ParameterRest) -> 'DefaultParameterTreeNodeRest.Builder': ...
         def source(self, boolean: bool) -> 'DefaultParameterTreeNodeRest.Builder': ...
 
 class DefaultParameterTreeRelationRest(ParameterTreeRelationRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParameterTreeRelationRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParameterTreeRelationRest.Builder': ...
     @staticmethod
@@ -953,11 +1563,28 @@ class DefaultParameterTreeRelationRest(ParameterTreeRelationRest):
     def withChildParameterId(self, long: int) -> 'DefaultParameterTreeRelationRest': ...
     def withParentParameterId(self, long: int) -> 'DefaultParameterTreeRelationRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParameterTreeRelationRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultParameterTreeRelationRest': ...
         def childParameterId(self, long: int) -> 'DefaultParameterTreeRelationRest.Builder': ...
         def parentParameterId(self, long: int) -> 'DefaultParameterTreeRelationRest.Builder': ...
 
 class DefaultParameterTreesRequestRest(ParameterTreesRequestRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParameterTreesRequestRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParameterTreesRequestRest.Builder': ...
     @staticmethod
@@ -975,6 +1602,13 @@ class DefaultParameterTreesRequestRest(ParameterTreesRequestRest):
     def withParameterNames(self, stringArray: typing.List[str]) -> 'DefaultParameterTreesRequestRest': ...
     def withTreeDirection(self, string: str) -> 'DefaultParameterTreesRequestRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParameterTreesRequestRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def addAllParameterNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParameterTreesRequestRest.Builder': ...
         def addParameterName(self, string: str) -> 'DefaultParameterTreesRequestRest.Builder': ...
         def addParameterNames(self, stringArray: typing.List[str]) -> 'DefaultParameterTreesRequestRest.Builder': ...
@@ -984,6 +1618,16 @@ class DefaultParameterTreesRequestRest(ParameterTreesRequestRest):
         def treeDirection(self, string: str) -> 'DefaultParameterTreesRequestRest.Builder': ...
 
 class DefaultParameterTypeCategoryRest(ParameterTypeCategoryRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParameterTypeCategoryRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.ParameterTypeCategoryRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParameterTypeCategoryRest.Builder': ...
     @staticmethod
@@ -994,10 +1638,27 @@ class DefaultParameterTypeCategoryRest(ParameterTypeCategoryRest):
     def toString(self) -> str: ...
     def withName(self, string: str) -> 'DefaultParameterTypeCategoryRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParameterTypeCategoryRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultParameterTypeCategoryRest': ...
         def name(self, string: str) -> 'DefaultParameterTypeCategoryRest.Builder': ...
 
 class DefaultParameterTypeRest(ParameterTypeRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParameterTypeRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.ParameterTypeRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParameterTypeRest.Builder': ...
     @staticmethod
@@ -1014,6 +1675,13 @@ class DefaultParameterTypeRest(ParameterTypeRest):
     def withLinkRuleApplicable(self, boolean: bool) -> 'DefaultParameterTypeRest': ...
     def withName(self, string: str) -> 'DefaultParameterTypeRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParameterTypeRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultParameterTypeRest': ...
         def category(self, parameterTypeCategoryRest: ParameterTypeCategoryRest) -> 'DefaultParameterTypeRest.Builder': ...
         def id(self, long: int) -> 'DefaultParameterTypeRest.Builder': ...
@@ -1021,6 +1689,16 @@ class DefaultParameterTypeRest(ParameterTypeRest):
         def name(self, string: str) -> 'DefaultParameterTypeRest.Builder': ...
 
 class DefaultParameterTypesRequestRest(ParameterTypesRequestRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParameterTypesRequestRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.ParameterTypesRequestRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParameterTypesRequestRest.Builder': ...
     @staticmethod
@@ -1036,6 +1714,13 @@ class DefaultParameterTypesRequestRest(ParameterTypesRequestRest):
     @typing.overload
     def withParameterTypeNames(self, stringArray: typing.List[str]) -> 'DefaultParameterTypesRequestRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParameterTypesRequestRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def addAllParameterTypeNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParameterTypesRequestRest.Builder': ...
         def addParameterTypeName(self, string: str) -> 'DefaultParameterTypesRequestRest.Builder': ...
         def addParameterTypeNames(self, stringArray: typing.List[str]) -> 'DefaultParameterTypesRequestRest.Builder': ...
@@ -1044,6 +1729,16 @@ class DefaultParameterTypesRequestRest(ParameterTypesRequestRest):
         def parameterTypeNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParameterTypesRequestRest.Builder': ...
 
 class DefaultParametersRequestRest(ParametersRequestRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParametersRequestRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.ParametersRequestRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParametersRequestRest.Builder': ...
     @staticmethod
@@ -1063,9 +1758,9 @@ class DefaultParametersRequestRest(ParametersRequestRest):
     def getValueTypes(self) -> java.util.Set[str]: ...
     def hashCode(self) -> int: ...
     def isCritical(self) -> bool: ...
+    def isLsaImplementation(self) -> bool: ...
     def isMultiplexed(self) -> bool: ...
     def isReadable(self) -> bool: ...
-    def isVirtual(self) -> bool: ...
     def isWritable(self) -> bool: ...
     def toString(self) -> str: ...
     def withAcceleratorName(self, string: str) -> 'DefaultParametersRequestRest': ...
@@ -1082,6 +1777,7 @@ class DefaultParametersRequestRest(ParametersRequestRest):
     def withDeviceNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest': ...
     @typing.overload
     def withDeviceNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestRest': ...
+    def withLsaImplementation(self, boolean: bool) -> 'DefaultParametersRequestRest': ...
     def withMultiplexed(self, boolean: bool) -> 'DefaultParametersRequestRest': ...
     @typing.overload
     def withParameterGroups(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest': ...
@@ -1113,9 +1809,15 @@ class DefaultParametersRequestRest(ParametersRequestRest):
     def withValueTypes(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest': ...
     @typing.overload
     def withValueTypes(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestRest': ...
-    def withVirtual(self, boolean: bool) -> 'DefaultParametersRequestRest': ...
     def withWritable(self, boolean: bool) -> 'DefaultParametersRequestRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParametersRequestRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def acceleratorName(self, string: str) -> 'DefaultParametersRequestRest.Builder': ...
         def acceleratorZoneNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest.Builder': ...
         def addAcceleratorZoneName(self, string: str) -> 'DefaultParametersRequestRest.Builder': ...
@@ -1152,6 +1854,7 @@ class DefaultParametersRequestRest(ParametersRequestRest):
         def critical(self, boolean: bool) -> 'DefaultParametersRequestRest.Builder': ...
         def deviceIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParametersRequestRest.Builder': ...
         def deviceNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest.Builder': ...
+        def lsaImplementation(self, boolean: bool) -> 'DefaultParametersRequestRest.Builder': ...
         def multiplexed(self, boolean: bool) -> 'DefaultParametersRequestRest.Builder': ...
         def parameterGroups(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest.Builder': ...
         def parameterNamePattern(self, string: str) -> 'DefaultParametersRequestRest.Builder': ...
@@ -1162,10 +1865,19 @@ class DefaultParametersRequestRest(ParametersRequestRest):
         def propertyNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest.Builder': ...
         def readable(self, boolean: bool) -> 'DefaultParametersRequestRest.Builder': ...
         def valueTypes(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def virtual(self, boolean: bool) -> 'DefaultParametersRequestRest.Builder': ...
         def writable(self, boolean: bool) -> 'DefaultParametersRequestRest.Builder': ...
 
 class DefaultParentToChildrenRelationRest(ParentToChildrenRelationRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParentToChildrenRelationRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParentToChildrenRelationRest.Builder': ...
     @staticmethod
@@ -1181,6 +1893,13 @@ class DefaultParentToChildrenRelationRest(ParentToChildrenRelationRest):
     def withChildrenIds(self, longArray: typing.List[int]) -> 'DefaultParentToChildrenRelationRest': ...
     def withParentId(self, long: int) -> 'DefaultParentToChildrenRelationRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultParentToChildrenRelationRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def addAllChildrenIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParentToChildrenRelationRest.Builder': ...
         def addChildrenId(self, long: int) -> 'DefaultParentToChildrenRelationRest.Builder': ...
         def addChildrenIds(self, longArray: typing.List[int]) -> 'DefaultParentToChildrenRelationRest.Builder': ...
@@ -1189,6 +1908,16 @@ class DefaultParentToChildrenRelationRest(ParentToChildrenRelationRest):
         def parentId(self, long: int) -> 'DefaultParentToChildrenRelationRest.Builder': ...
 
 class DefaultPropertyAndDeviceRest(PropertyAndDeviceRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultPropertyAndDeviceRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultPropertyAndDeviceRest.Builder': ...
     @staticmethod
@@ -1201,11 +1930,28 @@ class DefaultPropertyAndDeviceRest(PropertyAndDeviceRest):
     def withDeviceId(self, long: int) -> 'DefaultPropertyAndDeviceRest': ...
     def withPropertyName(self, string: str) -> 'DefaultPropertyAndDeviceRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultPropertyAndDeviceRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultPropertyAndDeviceRest': ...
         def deviceId(self, long: int) -> 'DefaultPropertyAndDeviceRest.Builder': ...
         def propertyName(self, string: str) -> 'DefaultPropertyAndDeviceRest.Builder': ...
 
 class DefaultPropertyFieldRest(PropertyFieldRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultPropertyFieldRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.PropertyFieldRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultPropertyFieldRest.Builder': ...
     @staticmethod
@@ -1222,6 +1968,13 @@ class DefaultPropertyFieldRest(PropertyFieldRest):
     def withId(self, long: int) -> 'DefaultPropertyFieldRest': ...
     def withPropertyName(self, string: str) -> 'DefaultPropertyFieldRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultPropertyFieldRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultPropertyFieldRest': ...
         def deviceTypeName(self, string: str) -> 'DefaultPropertyFieldRest.Builder': ...
         def fieldName(self, string: str) -> 'DefaultPropertyFieldRest.Builder': ...
@@ -1229,6 +1982,16 @@ class DefaultPropertyFieldRest(PropertyFieldRest):
         def propertyName(self, string: str) -> 'DefaultPropertyFieldRest.Builder': ...
 
 class DefaultSaveParameterRelationRest(SaveParameterRelationRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultSaveParameterRelationRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.SaveParameterRelationRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultSaveParameterRelationRest.Builder': ...
     @staticmethod
@@ -1244,6 +2007,13 @@ class DefaultSaveParameterRelationRest(SaveParameterRelationRest):
     @typing.overload
     def withParent2ChildrenRelations(self, iterable: java.lang.Iterable[ParentToChildrenRelationRest]) -> 'DefaultSaveParameterRelationRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultSaveParameterRelationRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def addAllParent2ChildrenRelations(self, iterable: java.lang.Iterable[ParentToChildrenRelationRest]) -> 'DefaultSaveParameterRelationRest.Builder': ...
         def addParent2ChildrenRelation(self, parentToChildrenRelationRest: ParentToChildrenRelationRest) -> 'DefaultSaveParameterRelationRest.Builder': ...
         def addParent2ChildrenRelations(self, parentToChildrenRelationRestArray: typing.List[ParentToChildrenRelationRest]) -> 'DefaultSaveParameterRelationRest.Builder': ...
@@ -1252,6 +2022,16 @@ class DefaultSaveParameterRelationRest(SaveParameterRelationRest):
         def parent2ChildrenRelations(self, iterable: java.lang.Iterable[ParentToChildrenRelationRest]) -> 'DefaultSaveParameterRelationRest.Builder': ...
 
 class DefaultTypeRest(TypeRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultTypeRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.TypeRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultTypeRest.Builder': ...
     @staticmethod
@@ -1262,10 +2042,27 @@ class DefaultTypeRest(TypeRest):
     def toString(self) -> str: ...
     def withName(self, string: str) -> 'DefaultTypeRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultTypeRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultTypeRest': ...
         def name(self, string: str) -> 'DefaultTypeRest.Builder': ...
 
 class DefaultValueCompareTypeRest(ValueCompareTypeRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultValueCompareTypeRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.ValueCompareTypeRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultValueCompareTypeRest.Builder': ...
     @staticmethod
@@ -1276,10 +2073,27 @@ class DefaultValueCompareTypeRest(ValueCompareTypeRest):
     def toString(self) -> str: ...
     def withName(self, string: str) -> 'DefaultValueCompareTypeRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultValueCompareTypeRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultValueCompareTypeRest': ...
         def name(self, string: str) -> 'DefaultValueCompareTypeRest.Builder': ...
 
 class DefaultValueDescriptorRest(ValueDescriptorRest):
+    """
+    Java class 'cern.lsa.client.rest.api.v1.dto.DefaultValueDescriptorRest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.client.rest.api.v1.dto.ValueDescriptorRest
+    
+    """
     @staticmethod
     def builder() -> 'DefaultValueDescriptorRest.Builder': ...
     @staticmethod
@@ -1312,6 +2126,13 @@ class DefaultValueDescriptorRest(ValueDescriptorRest):
     def withYPrecision(self, integer: int) -> 'DefaultValueDescriptorRest': ...
     def withYUnit(self, string: str) -> 'DefaultValueDescriptorRest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.client.rest.api.v1.dto.DefaultValueDescriptorRest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def absoluteTolerance(self, double: float) -> 'DefaultValueDescriptorRest.Builder': ...
         def booleanType(self, booleanTypeRest: BooleanTypeRest) -> 'DefaultValueDescriptorRest.Builder': ...
         def build(self) -> 'DefaultValueDescriptorRest': ...
@@ -1325,3 +2146,82 @@ class DefaultValueDescriptorRest(ValueDescriptorRest):
         def xUnit(self, string: str) -> 'DefaultValueDescriptorRest.Builder': ...
         def yPrecision(self, integer: int) -> 'DefaultValueDescriptorRest.Builder': ...
         def yUnit(self, string: str) -> 'DefaultValueDescriptorRest.Builder': ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.client.rest.api.v1.dto")``.
+
+    AcceleratorZoneRest: typing.Type[AcceleratorZoneRest]
+    BooleanItemRest: typing.Type[BooleanItemRest]
+    BooleanTypeRest: typing.Type[BooleanTypeRest]
+    DefaultAcceleratorZoneRest: typing.Type[DefaultAcceleratorZoneRest]
+    DefaultBooleanItemRest: typing.Type[DefaultBooleanItemRest]
+    DefaultBooleanTypeRest: typing.Type[DefaultBooleanTypeRest]
+    DefaultDeviceMetaTypeRest: typing.Type[DefaultDeviceMetaTypeRest]
+    DefaultDeviceRest: typing.Type[DefaultDeviceRest]
+    DefaultDeviceStateRest: typing.Type[DefaultDeviceStateRest]
+    DefaultDeviceTypeImplementationRest: typing.Type[DefaultDeviceTypeImplementationRest]
+    DefaultDeviceTypeVersionContainerRest: typing.Type[DefaultDeviceTypeVersionContainerRest]
+    DefaultDeviceTypeVersionNumberRest: typing.Type[DefaultDeviceTypeVersionNumberRest]
+    DefaultDeviceTypeVersionRest: typing.Type[DefaultDeviceTypeVersionRest]
+    DefaultEnumItemRest: typing.Type[DefaultEnumItemRest]
+    DefaultEnumTypeRest: typing.Type[DefaultEnumTypeRest]
+    DefaultErrorDto: typing.Type[DefaultErrorDto]
+    DefaultIncaPropertyFieldInfoRest: typing.Type[DefaultIncaPropertyFieldInfoRest]
+    DefaultIncaPropertyFieldInfosRequestRest: typing.Type[DefaultIncaPropertyFieldInfosRequestRest]
+    DefaultMakeRuleClassInfoRest: typing.Type[DefaultMakeRuleClassInfoRest]
+    DefaultMakeRuleConfigInfoRest: typing.Type[DefaultMakeRuleConfigInfoRest]
+    DefaultMakeRuleConfigStatusRest: typing.Type[DefaultMakeRuleConfigStatusRest]
+    DefaultMakeRuleInfoRest: typing.Type[DefaultMakeRuleInfoRest]
+    DefaultParameterAttributesRest: typing.Type[DefaultParameterAttributesRest]
+    DefaultParameterGroupRest: typing.Type[DefaultParameterGroupRest]
+    DefaultParameterRest: typing.Type[DefaultParameterRest]
+    DefaultParameterTreeDataRest: typing.Type[DefaultParameterTreeDataRest]
+    DefaultParameterTreeNodeRest: typing.Type[DefaultParameterTreeNodeRest]
+    DefaultParameterTreeRelationRest: typing.Type[DefaultParameterTreeRelationRest]
+    DefaultParameterTreesRequestRest: typing.Type[DefaultParameterTreesRequestRest]
+    DefaultParameterTypeCategoryRest: typing.Type[DefaultParameterTypeCategoryRest]
+    DefaultParameterTypeRest: typing.Type[DefaultParameterTypeRest]
+    DefaultParameterTypesRequestRest: typing.Type[DefaultParameterTypesRequestRest]
+    DefaultParametersRequestRest: typing.Type[DefaultParametersRequestRest]
+    DefaultParentToChildrenRelationRest: typing.Type[DefaultParentToChildrenRelationRest]
+    DefaultPropertyAndDeviceRest: typing.Type[DefaultPropertyAndDeviceRest]
+    DefaultPropertyFieldRest: typing.Type[DefaultPropertyFieldRest]
+    DefaultSaveParameterRelationRest: typing.Type[DefaultSaveParameterRelationRest]
+    DefaultTypeRest: typing.Type[DefaultTypeRest]
+    DefaultValueCompareTypeRest: typing.Type[DefaultValueCompareTypeRest]
+    DefaultValueDescriptorRest: typing.Type[DefaultValueDescriptorRest]
+    DeviceMetaTypeRest: typing.Type[DeviceMetaTypeRest]
+    DeviceRest: typing.Type[DeviceRest]
+    DeviceStateRest: typing.Type[DeviceStateRest]
+    DeviceTypeImplementationRest: typing.Type[DeviceTypeImplementationRest]
+    DeviceTypeVersionContainerRest: typing.Type[DeviceTypeVersionContainerRest]
+    DeviceTypeVersionNumberRest: typing.Type[DeviceTypeVersionNumberRest]
+    DeviceTypeVersionRest: typing.Type[DeviceTypeVersionRest]
+    EnumItemRest: typing.Type[EnumItemRest]
+    EnumTypeRest: typing.Type[EnumTypeRest]
+    ErrorDto: typing.Type[ErrorDto]
+    IncaPropertyFieldInfoRest: typing.Type[IncaPropertyFieldInfoRest]
+    IncaPropertyFieldInfosRequestRest: typing.Type[IncaPropertyFieldInfosRequestRest]
+    MakeRuleClassInfoRest: typing.Type[MakeRuleClassInfoRest]
+    MakeRuleConfigInfoRest: typing.Type[MakeRuleConfigInfoRest]
+    MakeRuleConfigStatusRest: typing.Type[MakeRuleConfigStatusRest]
+    MakeRuleInfoRest: typing.Type[MakeRuleInfoRest]
+    ParameterAttributesRest: typing.Type[ParameterAttributesRest]
+    ParameterGroupRest: typing.Type[ParameterGroupRest]
+    ParameterRest: typing.Type[ParameterRest]
+    ParameterTreeDataRest: typing.Type[ParameterTreeDataRest]
+    ParameterTreeNodeRest: typing.Type[ParameterTreeNodeRest]
+    ParameterTreeRelationRest: typing.Type[ParameterTreeRelationRest]
+    ParameterTreesRequestRest: typing.Type[ParameterTreesRequestRest]
+    ParameterTypeCategoryRest: typing.Type[ParameterTypeCategoryRest]
+    ParameterTypeRest: typing.Type[ParameterTypeRest]
+    ParameterTypesRequestRest: typing.Type[ParameterTypesRequestRest]
+    ParametersRequestRest: typing.Type[ParametersRequestRest]
+    ParentToChildrenRelationRest: typing.Type[ParentToChildrenRelationRest]
+    PropertyAndDeviceRest: typing.Type[PropertyAndDeviceRest]
+    PropertyFieldRest: typing.Type[PropertyFieldRest]
+    SaveParameterRelationRest: typing.Type[SaveParameterRelationRest]
+    TypeRest: typing.Type[TypeRest]
+    ValueCompareTypeRest: typing.Type[ValueCompareTypeRest]
+    ValueDescriptorRest: typing.Type[ValueDescriptorRest]

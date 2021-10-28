@@ -10,7 +10,15 @@ import java.util.stream
 import typing
 
 
+
 class Clock:
+    """
+    Java class 'java.time.Clock'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     def equals(self, object: typing.Any) -> bool: ...
     @staticmethod
     def fixed(instant: typing.Union['Instant', datetime.datetime], zoneId: 'ZoneId') -> 'Clock': ...
@@ -37,12 +45,43 @@ class Clock:
     def withZone(self, zoneId: 'ZoneId') -> 'Clock': ...
 
 class DateTimeException(java.lang.RuntimeException):
+    """
+    Java class 'java.time.DateTimeException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * DateTimeException(java.lang.String)
+        * DateTimeException(java.lang.String, java.lang.Throwable)
+    
+    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
     def __init__(self, string: str, throwable: java.lang.Throwable): ...
 
 class DayOfWeek(java.lang.Enum['DayOfWeek'], java.time.temporal.TemporalAccessor, java.time.temporal.TemporalAdjuster):
+    """
+    Java class 'java.time.DayOfWeek'
+    
+        Extends:
+            java.lang.Enum
+    
+        Interfaces:
+            java.time.temporal.TemporalAccessor,
+            java.time.temporal.TemporalAdjuster
+    
+      Attributes:
+        MONDAY (java.time.DayOfWeek): final static enum constant
+        TUESDAY (java.time.DayOfWeek): final static enum constant
+        WEDNESDAY (java.time.DayOfWeek): final static enum constant
+        THURSDAY (java.time.DayOfWeek): final static enum constant
+        FRIDAY (java.time.DayOfWeek): final static enum constant
+        SATURDAY (java.time.DayOfWeek): final static enum constant
+        SUNDAY (java.time.DayOfWeek): final static enum constant
+    
+    """
     MONDAY: typing.ClassVar['DayOfWeek'] = ...
     TUESDAY: typing.ClassVar['DayOfWeek'] = ...
     WEDNESDAY: typing.ClassVar['DayOfWeek'] = ...
@@ -74,6 +113,20 @@ class DayOfWeek(java.lang.Enum['DayOfWeek'], java.time.temporal.TemporalAccessor
     def values() -> typing.List['DayOfWeek']: ...
 
 class Duration(java.time.temporal.TemporalAmount, java.lang.Comparable['Duration'], java.io.Serializable):
+    """
+    Java class 'java.time.Duration'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.time.temporal.TemporalAmount, java.lang.Comparable,
+            java.io.Serializable
+    
+      Attributes:
+        ZERO (java.time.Duration): final static field
+    
+    """
     ZERO: typing.ClassVar['Duration'] = ...
     def abs(self) -> 'Duration': ...
     def addTo(self, temporal: java.time.temporal.Temporal) -> java.time.temporal.Temporal: ...
@@ -153,6 +206,23 @@ class Duration(java.time.temporal.TemporalAmount, java.lang.Comparable['Duration
     def withSeconds(self, long: int) -> 'Duration': ...
 
 class Instant(java.time.temporal.Temporal, java.time.temporal.TemporalAdjuster, java.lang.Comparable['Instant'], java.io.Serializable):
+    """
+    Java class 'java.time.Instant'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.time.temporal.Temporal,
+            java.time.temporal.TemporalAdjuster, java.lang.Comparable,
+            java.io.Serializable
+    
+      Attributes:
+        EPOCH (java.time.Instant): final static field
+        MIN (java.time.Instant): final static field
+        MAX (java.time.Instant): final static field
+    
+    """
     EPOCH: typing.ClassVar['Instant'] = ...
     MIN: typing.ClassVar['Instant'] = ...
     MAX: typing.ClassVar['Instant'] = ...
@@ -211,6 +281,23 @@ class Instant(java.time.temporal.Temporal, java.time.temporal.TemporalAdjuster, 
     def until(self, temporal: java.time.temporal.Temporal, temporalUnit: java.time.temporal.TemporalUnit) -> int: ...
 
 class LocalDate(java.time.temporal.Temporal, java.time.temporal.TemporalAdjuster, java.time.chrono.ChronoLocalDate, java.io.Serializable):
+    """
+    Java class 'java.time.LocalDate'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.time.temporal.Temporal,
+            java.time.temporal.TemporalAdjuster,
+            java.time.chrono.ChronoLocalDate, java.io.Serializable
+    
+      Attributes:
+        MIN (java.time.LocalDate): final static field
+        MAX (java.time.LocalDate): final static field
+        EPOCH (java.time.LocalDate): final static field
+    
+    """
     MIN: typing.ClassVar['LocalDate'] = ...
     MAX: typing.ClassVar['LocalDate'] = ...
     EPOCH: typing.ClassVar['LocalDate'] = ...
@@ -316,6 +403,22 @@ class LocalDate(java.time.temporal.Temporal, java.time.temporal.TemporalAdjuster
     def withYear(self, int: int) -> 'LocalDate': ...
 
 class LocalDateTime(java.time.temporal.Temporal, java.time.temporal.TemporalAdjuster, java.time.chrono.ChronoLocalDateTime[LocalDate], java.io.Serializable):
+    """
+    Java class 'java.time.LocalDateTime'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.time.temporal.Temporal,
+            java.time.temporal.TemporalAdjuster,
+            java.time.chrono.ChronoLocalDateTime, java.io.Serializable
+    
+      Attributes:
+        MIN (java.time.LocalDateTime): final static field
+        MAX (java.time.LocalDateTime): final static field
+    
+    """
     MIN: typing.ClassVar['LocalDateTime'] = ...
     MAX: typing.ClassVar['LocalDateTime'] = ...
     def adjustInto(self, temporal: java.time.temporal.Temporal) -> java.time.temporal.Temporal: ...
@@ -426,6 +529,24 @@ class LocalDateTime(java.time.temporal.Temporal, java.time.temporal.TemporalAdju
     def withYear(self, int: int) -> 'LocalDateTime': ...
 
 class LocalTime(java.time.temporal.Temporal, java.time.temporal.TemporalAdjuster, java.lang.Comparable['LocalTime'], java.io.Serializable):
+    """
+    Java class 'java.time.LocalTime'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.time.temporal.Temporal,
+            java.time.temporal.TemporalAdjuster, java.lang.Comparable,
+            java.io.Serializable
+    
+      Attributes:
+        MIN (java.time.LocalTime): final static field
+        MAX (java.time.LocalTime): final static field
+        MIDNIGHT (java.time.LocalTime): final static field
+        NOON (java.time.LocalTime): final static field
+    
+    """
     MIN: typing.ClassVar['LocalTime'] = ...
     MAX: typing.ClassVar['LocalTime'] = ...
     MIDNIGHT: typing.ClassVar['LocalTime'] = ...
@@ -510,6 +631,31 @@ class LocalTime(java.time.temporal.Temporal, java.time.temporal.TemporalAdjuster
     def withSecond(self, int: int) -> 'LocalTime': ...
 
 class Month(java.lang.Enum['Month'], java.time.temporal.TemporalAccessor, java.time.temporal.TemporalAdjuster):
+    """
+    Java class 'java.time.Month'
+    
+        Extends:
+            java.lang.Enum
+    
+        Interfaces:
+            java.time.temporal.TemporalAccessor,
+            java.time.temporal.TemporalAdjuster
+    
+      Attributes:
+        JANUARY (java.time.Month): final static enum constant
+        FEBRUARY (java.time.Month): final static enum constant
+        MARCH (java.time.Month): final static enum constant
+        APRIL (java.time.Month): final static enum constant
+        MAY (java.time.Month): final static enum constant
+        JUNE (java.time.Month): final static enum constant
+        JULY (java.time.Month): final static enum constant
+        AUGUST (java.time.Month): final static enum constant
+        SEPTEMBER (java.time.Month): final static enum constant
+        OCTOBER (java.time.Month): final static enum constant
+        NOVEMBER (java.time.Month): final static enum constant
+        DECEMBER (java.time.Month): final static enum constant
+    
+    """
     JANUARY: typing.ClassVar['Month'] = ...
     FEBRUARY: typing.ClassVar['Month'] = ...
     MARCH: typing.ClassVar['Month'] = ...
@@ -551,6 +697,18 @@ class Month(java.lang.Enum['Month'], java.time.temporal.TemporalAccessor, java.t
     def values() -> typing.List['Month']: ...
 
 class MonthDay(java.time.temporal.TemporalAccessor, java.time.temporal.TemporalAdjuster, java.lang.Comparable['MonthDay'], java.io.Serializable):
+    """
+    Java class 'java.time.MonthDay'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.time.temporal.TemporalAccessor,
+            java.time.temporal.TemporalAdjuster, java.lang.Comparable,
+            java.io.Serializable
+    
+    """
     def adjustInto(self, temporal: java.time.temporal.Temporal) -> java.time.temporal.Temporal: ...
     def atYear(self, int: int) -> LocalDate: ...
     def compareTo(self, monthDay: 'MonthDay') -> int: ...
@@ -595,6 +753,22 @@ class MonthDay(java.time.temporal.TemporalAccessor, java.time.temporal.TemporalA
     def withMonth(self, int: int) -> 'MonthDay': ...
 
 class OffsetDateTime(java.time.temporal.Temporal, java.time.temporal.TemporalAdjuster, java.lang.Comparable['OffsetDateTime'], java.io.Serializable):
+    """
+    Java class 'java.time.OffsetDateTime'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.time.temporal.Temporal,
+            java.time.temporal.TemporalAdjuster, java.lang.Comparable,
+            java.io.Serializable
+    
+      Attributes:
+        MIN (java.time.OffsetDateTime): final static field
+        MAX (java.time.OffsetDateTime): final static field
+    
+    """
     MIN: typing.ClassVar['OffsetDateTime'] = ...
     MAX: typing.ClassVar['OffsetDateTime'] = ...
     def adjustInto(self, temporal: java.time.temporal.Temporal) -> java.time.temporal.Temporal: ...
@@ -701,6 +875,22 @@ class OffsetDateTime(java.time.temporal.Temporal, java.time.temporal.TemporalAdj
     def withYear(self, int: int) -> 'OffsetDateTime': ...
 
 class OffsetTime(java.time.temporal.Temporal, java.time.temporal.TemporalAdjuster, java.lang.Comparable['OffsetTime'], java.io.Serializable):
+    """
+    Java class 'java.time.OffsetTime'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.time.temporal.Temporal,
+            java.time.temporal.TemporalAdjuster, java.lang.Comparable,
+            java.io.Serializable
+    
+      Attributes:
+        MIN (java.time.OffsetTime): final static field
+        MAX (java.time.OffsetTime): final static field
+    
+    """
     MIN: typing.ClassVar['OffsetTime'] = ...
     MAX: typing.ClassVar['OffsetTime'] = ...
     def adjustInto(self, temporal: java.time.temporal.Temporal) -> java.time.temporal.Temporal: ...
@@ -778,6 +968,19 @@ class OffsetTime(java.time.temporal.Temporal, java.time.temporal.TemporalAdjuste
     def withSecond(self, int: int) -> 'OffsetTime': ...
 
 class Period(java.time.chrono.ChronoPeriod, java.io.Serializable):
+    """
+    Java class 'java.time.Period'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.time.chrono.ChronoPeriod, java.io.Serializable
+    
+      Attributes:
+        ZERO (java.time.Period): final static field
+    
+    """
     ZERO: typing.ClassVar['Period'] = ...
     def addTo(self, temporal: java.time.temporal.Temporal) -> java.time.temporal.Temporal: ...
     @staticmethod
@@ -823,6 +1026,22 @@ class Period(java.time.chrono.ChronoPeriod, java.io.Serializable):
     def withYears(self, int: int) -> 'Period': ...
 
 class Year(java.time.temporal.Temporal, java.time.temporal.TemporalAdjuster, java.lang.Comparable['Year'], java.io.Serializable):
+    """
+    Java class 'java.time.Year'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.time.temporal.Temporal,
+            java.time.temporal.TemporalAdjuster, java.lang.Comparable,
+            java.io.Serializable
+    
+      Attributes:
+        MIN_VALUE (int): final static field
+        MAX_VALUE (int): final static field
+    
+    """
     MIN_VALUE: typing.ClassVar[int] = ...
     MAX_VALUE: typing.ClassVar[int] = ...
     def adjustInto(self, temporal: java.time.temporal.Temporal) -> java.time.temporal.Temporal: ...
@@ -886,6 +1105,18 @@ class Year(java.time.temporal.Temporal, java.time.temporal.TemporalAdjuster, jav
     def until(self, temporal: java.time.temporal.Temporal, temporalUnit: java.time.temporal.TemporalUnit) -> int: ...
 
 class YearMonth(java.time.temporal.Temporal, java.time.temporal.TemporalAdjuster, java.lang.Comparable['YearMonth'], java.io.Serializable):
+    """
+    Java class 'java.time.YearMonth'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.time.temporal.Temporal,
+            java.time.temporal.TemporalAdjuster, java.lang.Comparable,
+            java.io.Serializable
+    
+    """
     def adjustInto(self, temporal: java.time.temporal.Temporal) -> java.time.temporal.Temporal: ...
     def atDay(self, int: int) -> LocalDate: ...
     def atEndOfMonth(self) -> LocalDate: ...
@@ -950,6 +1181,19 @@ class YearMonth(java.time.temporal.Temporal, java.time.temporal.TemporalAdjuster
     def withYear(self, int: int) -> 'YearMonth': ...
 
 class ZoneId(java.io.Serializable):
+    """
+    Java class 'java.time.ZoneId'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Attributes:
+        SHORT_IDS (java.util.Map): final static field
+    
+    """
     SHORT_IDS: typing.ClassVar[java.util.Map] = ...
     def equals(self, object: typing.Any) -> bool: ...
     @staticmethod
@@ -972,6 +1216,17 @@ class ZoneId(java.io.Serializable):
     def toString(self) -> str: ...
 
 class ZonedDateTime(java.time.temporal.Temporal, java.time.chrono.ChronoZonedDateTime[LocalDate], java.io.Serializable):
+    """
+    Java class 'java.time.ZonedDateTime'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.time.temporal.Temporal,
+            java.time.chrono.ChronoZonedDateTime, java.io.Serializable
+    
+    """
     def equals(self, object: typing.Any) -> bool: ...
     def format(self, dateTimeFormatter: java.time.format.DateTimeFormatter) -> str: ...
     def get(self, temporalField: java.time.temporal.TemporalField) -> int: ...
@@ -1076,6 +1331,23 @@ class ZonedDateTime(java.time.temporal.Temporal, java.time.chrono.ChronoZonedDat
     def withZoneSameLocal(self, zoneId: ZoneId) -> 'ZonedDateTime': ...
 
 class ZoneOffset(ZoneId, java.time.temporal.TemporalAccessor, java.time.temporal.TemporalAdjuster, java.lang.Comparable['ZoneOffset'], java.io.Serializable):
+    """
+    Java class 'java.time.ZoneOffset'
+    
+        Extends:
+            java.time.ZoneId
+    
+        Interfaces:
+            java.time.temporal.TemporalAccessor,
+            java.time.temporal.TemporalAdjuster, java.lang.Comparable,
+            java.io.Serializable
+    
+      Attributes:
+        UTC (java.time.ZoneOffset): final static field
+        MIN (java.time.ZoneOffset): final static field
+        MAX (java.time.ZoneOffset): final static field
+    
+    """
     UTC: typing.ClassVar['ZoneOffset'] = ...
     MIN: typing.ClassVar['ZoneOffset'] = ...
     MAX: typing.ClassVar['ZoneOffset'] = ...
@@ -1110,3 +1382,30 @@ class ZoneOffset(ZoneId, java.time.temporal.TemporalAccessor, java.time.temporal
     def query(self, temporalQuery: typing.Union[java.time.temporal.TemporalQuery[_query__R], typing.Callable[[java.time.temporal.TemporalAccessor], _query__R]]) -> _query__R: ...
     def range(self, temporalField: java.time.temporal.TemporalField) -> java.time.temporal.ValueRange: ...
     def toString(self) -> str: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.time")``.
+
+    Clock: typing.Type[Clock]
+    DateTimeException: typing.Type[DateTimeException]
+    DayOfWeek: typing.Type[DayOfWeek]
+    Duration: typing.Type[Duration]
+    Instant: typing.Type[Instant]
+    LocalDate: typing.Type[LocalDate]
+    LocalDateTime: typing.Type[LocalDateTime]
+    LocalTime: typing.Type[LocalTime]
+    Month: typing.Type[Month]
+    MonthDay: typing.Type[MonthDay]
+    OffsetDateTime: typing.Type[OffsetDateTime]
+    OffsetTime: typing.Type[OffsetTime]
+    Period: typing.Type[Period]
+    Year: typing.Type[Year]
+    YearMonth: typing.Type[YearMonth]
+    ZoneId: typing.Type[ZoneId]
+    ZoneOffset: typing.Type[ZoneOffset]
+    ZonedDateTime: typing.Type[ZonedDateTime]
+    chrono: java.time.chrono.__module_protocol__
+    format: java.time.format.__module_protocol__
+    temporal: java.time.temporal.__module_protocol__
+    zone: java.time.zone.__module_protocol__

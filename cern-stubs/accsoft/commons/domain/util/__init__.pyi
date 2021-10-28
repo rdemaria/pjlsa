@@ -8,7 +8,15 @@ import java.util
 import typing
 
 
+
 class AccsoftDomainUtil:
+    """
+    Java class 'cern.accsoft.commons.domain.util.AccsoftDomainUtil'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _findAcceleratorZone__T = typing.TypeVar('_findAcceleratorZone__T', bound=cern.accsoft.commons.domain.Accelerator)  # <T>
     @staticmethod
     def findAcceleratorZone(class_: typing.Type[_findAcceleratorZone__T], string: str) -> cern.accsoft.commons.domain.zones.AcceleratorZone: ...
@@ -25,6 +33,13 @@ class AccsoftDomainUtil:
 
 _CodeEntityConverter__E = typing.TypeVar('_CodeEntityConverter__E')  # <E>
 class CodeEntityConverter(typing.Generic[_CodeEntityConverter__E]):
+    """
+    Java class 'cern.accsoft.commons.domain.util.CodeEntityConverter'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @typing.overload
     def fromCode(self, int: int) -> _CodeEntityConverter__E: ...
     @typing.overload
@@ -34,6 +49,13 @@ class CodeEntityConverter(typing.Generic[_CodeEntityConverter__E]):
     def toCode(self, e: _CodeEntityConverter__E) -> int: ...
 
 class EnumEmulationUtils:
+    """
+    Java class 'cern.accsoft.commons.domain.util.EnumEmulationUtils'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _getEnumConstants__T = typing.TypeVar('_getEnumConstants__T')  # <T>
     @staticmethod
     def getEnumConstants(class_: typing.Type[_getEnumConstants__T]) -> typing.List[_getEnumConstants__T]: ...
@@ -43,3 +65,11 @@ class EnumEmulationUtils:
     _valueOf__T = typing.TypeVar('_valueOf__T')  # <T>
     @staticmethod
     def valueOf(string: str, class_: typing.Type[_valueOf__T]) -> _valueOf__T: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.accsoft.commons.domain.util")``.
+
+    AccsoftDomainUtil: typing.Type[AccsoftDomainUtil]
+    CodeEntityConverter: typing.Type[CodeEntityConverter]
+    EnumEmulationUtils: typing.Type[EnumEmulationUtils]

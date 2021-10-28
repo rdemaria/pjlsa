@@ -5,7 +5,22 @@ import java.util.function
 import typing
 
 
+
 class AtomicBoolean(java.io.Serializable):
+    """
+    Java class 'java.util.concurrent.atomic.AtomicBoolean'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * AtomicBoolean(boolean)
+        * AtomicBoolean()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -32,6 +47,20 @@ class AtomicBoolean(java.io.Serializable):
     def weakCompareAndSetVolatile(self, boolean: bool, boolean2: bool) -> bool: ...
 
 class AtomicInteger(java.lang.Number, java.io.Serializable):
+    """
+    Java class 'java.util.concurrent.atomic.AtomicInteger'
+    
+        Extends:
+            java.lang.Number
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * AtomicInteger(int)
+        * AtomicInteger()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -72,6 +101,20 @@ class AtomicInteger(java.lang.Number, java.io.Serializable):
     def weakCompareAndSetVolatile(self, int: int, int2: int) -> bool: ...
 
 class AtomicIntegerArray(java.io.Serializable):
+    """
+    Java class 'java.util.concurrent.atomic.AtomicIntegerArray'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * AtomicIntegerArray(int)
+        * AtomicIntegerArray(int[])
+    
+    """
     @typing.overload
     def __init__(self, int: int): ...
     @typing.overload
@@ -110,6 +153,13 @@ class AtomicIntegerArray(java.io.Serializable):
 
 _AtomicIntegerFieldUpdater__T = typing.TypeVar('_AtomicIntegerFieldUpdater__T')  # <T>
 class AtomicIntegerFieldUpdater(typing.Generic[_AtomicIntegerFieldUpdater__T]):
+    """
+    Java class 'java.util.concurrent.atomic.AtomicIntegerFieldUpdater'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     def accumulateAndGet(self, t: _AtomicIntegerFieldUpdater__T, int: int, intBinaryOperator: typing.Union[java.util.function.IntBinaryOperator, typing.Callable]) -> int: ...
     def addAndGet(self, t: _AtomicIntegerFieldUpdater__T, int: int) -> int: ...
     def compareAndSet(self, t: _AtomicIntegerFieldUpdater__T, int: int, int2: int) -> bool: ...
@@ -131,6 +181,20 @@ class AtomicIntegerFieldUpdater(typing.Generic[_AtomicIntegerFieldUpdater__T]):
     def weakCompareAndSet(self, t: _AtomicIntegerFieldUpdater__T, int: int, int2: int) -> bool: ...
 
 class AtomicLong(java.lang.Number, java.io.Serializable):
+    """
+    Java class 'java.util.concurrent.atomic.AtomicLong'
+    
+        Extends:
+            java.lang.Number
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * AtomicLong()
+        * AtomicLong(long)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -171,6 +235,20 @@ class AtomicLong(java.lang.Number, java.io.Serializable):
     def weakCompareAndSetVolatile(self, long: int, long2: int) -> bool: ...
 
 class AtomicLongArray(java.io.Serializable):
+    """
+    Java class 'java.util.concurrent.atomic.AtomicLongArray'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * AtomicLongArray(int)
+        * AtomicLongArray(long[])
+    
+    """
     @typing.overload
     def __init__(self, int: int): ...
     @typing.overload
@@ -209,6 +287,13 @@ class AtomicLongArray(java.io.Serializable):
 
 _AtomicLongFieldUpdater__T = typing.TypeVar('_AtomicLongFieldUpdater__T')  # <T>
 class AtomicLongFieldUpdater(typing.Generic[_AtomicLongFieldUpdater__T]):
+    """
+    Java class 'java.util.concurrent.atomic.AtomicLongFieldUpdater'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     def accumulateAndGet(self, t: _AtomicLongFieldUpdater__T, long: int, longBinaryOperator: typing.Union[java.util.function.LongBinaryOperator, typing.Callable]) -> int: ...
     def addAndGet(self, t: _AtomicLongFieldUpdater__T, long: int) -> int: ...
     def compareAndSet(self, t: _AtomicLongFieldUpdater__T, long: int, long2: int) -> bool: ...
@@ -231,6 +316,16 @@ class AtomicLongFieldUpdater(typing.Generic[_AtomicLongFieldUpdater__T]):
 
 _AtomicMarkableReference__V = typing.TypeVar('_AtomicMarkableReference__V')  # <V>
 class AtomicMarkableReference(typing.Generic[_AtomicMarkableReference__V]):
+    """
+    Java class 'java.util.concurrent.atomic.AtomicMarkableReference'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * AtomicMarkableReference(java.lang.Object, boolean)
+    
+    """
     def __init__(self, v: _AtomicMarkableReference__V, boolean: bool): ...
     def attemptMark(self, v: _AtomicMarkableReference__V, boolean: bool) -> bool: ...
     def compareAndSet(self, v: _AtomicMarkableReference__V, v2: _AtomicMarkableReference__V, boolean: bool, boolean2: bool) -> bool: ...
@@ -242,6 +337,20 @@ class AtomicMarkableReference(typing.Generic[_AtomicMarkableReference__V]):
 
 _AtomicReference__V = typing.TypeVar('_AtomicReference__V')  # <V>
 class AtomicReference(java.io.Serializable, typing.Generic[_AtomicReference__V]):
+    """
+    Java class 'java.util.concurrent.atomic.AtomicReference'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * AtomicReference(java.lang.Object)
+        * AtomicReference()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -273,6 +382,20 @@ class AtomicReference(java.io.Serializable, typing.Generic[_AtomicReference__V])
 
 _AtomicReferenceArray__E = typing.TypeVar('_AtomicReferenceArray__E')  # <E>
 class AtomicReferenceArray(java.io.Serializable, typing.Generic[_AtomicReferenceArray__E]):
+    """
+    Java class 'java.util.concurrent.atomic.AtomicReferenceArray'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * AtomicReferenceArray(int)
+        * AtomicReferenceArray(java.lang.Object[])
+    
+    """
     @typing.overload
     def __init__(self, int: int): ...
     @typing.overload
@@ -306,6 +429,13 @@ class AtomicReferenceArray(java.io.Serializable, typing.Generic[_AtomicReference
 _AtomicReferenceFieldUpdater__T = typing.TypeVar('_AtomicReferenceFieldUpdater__T')  # <T>
 _AtomicReferenceFieldUpdater__V = typing.TypeVar('_AtomicReferenceFieldUpdater__V')  # <V>
 class AtomicReferenceFieldUpdater(typing.Generic[_AtomicReferenceFieldUpdater__T, _AtomicReferenceFieldUpdater__V]):
+    """
+    Java class 'java.util.concurrent.atomic.AtomicReferenceFieldUpdater'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     def accumulateAndGet(self, t: _AtomicReferenceFieldUpdater__T, v: _AtomicReferenceFieldUpdater__V, binaryOperator: typing.Union[java.util.function.BinaryOperator[_AtomicReferenceFieldUpdater__V], typing.Callable]) -> _AtomicReferenceFieldUpdater__V: ...
     def compareAndSet(self, t: _AtomicReferenceFieldUpdater__T, v: _AtomicReferenceFieldUpdater__V, v2: _AtomicReferenceFieldUpdater__V) -> bool: ...
     def get(self, t: _AtomicReferenceFieldUpdater__T) -> _AtomicReferenceFieldUpdater__V: ...
@@ -323,6 +453,16 @@ class AtomicReferenceFieldUpdater(typing.Generic[_AtomicReferenceFieldUpdater__T
 
 _AtomicStampedReference__V = typing.TypeVar('_AtomicStampedReference__V')  # <V>
 class AtomicStampedReference(typing.Generic[_AtomicStampedReference__V]):
+    """
+    Java class 'java.util.concurrent.atomic.AtomicStampedReference'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * AtomicStampedReference(java.lang.Object, int)
+    
+    """
     def __init__(self, v: _AtomicStampedReference__V, int: int): ...
     def attemptStamp(self, v: _AtomicStampedReference__V, int: int) -> bool: ...
     def compareAndSet(self, v: _AtomicStampedReference__V, v2: _AtomicStampedReference__V, int: int, int2: int) -> bool: ...
@@ -333,6 +473,19 @@ class AtomicStampedReference(typing.Generic[_AtomicStampedReference__V]):
     def weakCompareAndSet(self, v: _AtomicStampedReference__V, v2: _AtomicStampedReference__V, int: int, int2: int) -> bool: ...
 
 class DoubleAccumulator(java.util.concurrent.atomic.Striped64, java.io.Serializable):
+    """
+    Java class 'java.util.concurrent.atomic.DoubleAccumulator'
+    
+        Extends:
+            java.util.concurrent.atomic.Striped64
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * DoubleAccumulator(java.util.function.DoubleBinaryOperator, double)
+    
+    """
     def __init__(self, doubleBinaryOperator: typing.Union[java.util.function.DoubleBinaryOperator, typing.Callable], double2: float): ...
     def accumulate(self, double: float) -> None: ...
     def doubleValue(self) -> float: ...
@@ -345,6 +498,19 @@ class DoubleAccumulator(java.util.concurrent.atomic.Striped64, java.io.Serializa
     def toString(self) -> str: ...
 
 class DoubleAdder(java.util.concurrent.atomic.Striped64, java.io.Serializable):
+    """
+    Java class 'java.util.concurrent.atomic.DoubleAdder'
+    
+        Extends:
+            java.util.concurrent.atomic.Striped64
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * DoubleAdder()
+    
+    """
     def __init__(self): ...
     def add(self, double: float) -> None: ...
     def doubleValue(self) -> float: ...
@@ -357,6 +523,19 @@ class DoubleAdder(java.util.concurrent.atomic.Striped64, java.io.Serializable):
     def toString(self) -> str: ...
 
 class LongAccumulator(java.util.concurrent.atomic.Striped64, java.io.Serializable):
+    """
+    Java class 'java.util.concurrent.atomic.LongAccumulator'
+    
+        Extends:
+            java.util.concurrent.atomic.Striped64
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * LongAccumulator(java.util.function.LongBinaryOperator, long)
+    
+    """
     def __init__(self, longBinaryOperator: typing.Union[java.util.function.LongBinaryOperator, typing.Callable], long2: int): ...
     def accumulate(self, long: int) -> None: ...
     def doubleValue(self) -> float: ...
@@ -369,6 +548,19 @@ class LongAccumulator(java.util.concurrent.atomic.Striped64, java.io.Serializabl
     def toString(self) -> str: ...
 
 class LongAdder(java.util.concurrent.atomic.Striped64, java.io.Serializable):
+    """
+    Java class 'java.util.concurrent.atomic.LongAdder'
+    
+        Extends:
+            java.util.concurrent.atomic.Striped64
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * LongAdder()
+    
+    """
     def __init__(self): ...
     def add(self, long: int) -> None: ...
     def decrement(self) -> None: ...
@@ -383,3 +575,25 @@ class LongAdder(java.util.concurrent.atomic.Striped64, java.io.Serializable):
     def toString(self) -> str: ...
 
 class Striped64: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.util.concurrent.atomic")``.
+
+    AtomicBoolean: typing.Type[AtomicBoolean]
+    AtomicInteger: typing.Type[AtomicInteger]
+    AtomicIntegerArray: typing.Type[AtomicIntegerArray]
+    AtomicIntegerFieldUpdater: typing.Type[AtomicIntegerFieldUpdater]
+    AtomicLong: typing.Type[AtomicLong]
+    AtomicLongArray: typing.Type[AtomicLongArray]
+    AtomicLongFieldUpdater: typing.Type[AtomicLongFieldUpdater]
+    AtomicMarkableReference: typing.Type[AtomicMarkableReference]
+    AtomicReference: typing.Type[AtomicReference]
+    AtomicReferenceArray: typing.Type[AtomicReferenceArray]
+    AtomicReferenceFieldUpdater: typing.Type[AtomicReferenceFieldUpdater]
+    AtomicStampedReference: typing.Type[AtomicStampedReference]
+    DoubleAccumulator: typing.Type[DoubleAccumulator]
+    DoubleAdder: typing.Type[DoubleAdder]
+    LongAccumulator: typing.Type[LongAccumulator]
+    LongAdder: typing.Type[LongAdder]
+    Striped64: typing.Type[Striped64]

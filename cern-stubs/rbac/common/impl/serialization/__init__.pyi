@@ -1,9 +1,41 @@
 import cern.rbac.common
+import cern.rbac.common.impl.serialization.decode
 import java.security
 import typing
 
 
+
 class TokenSerialization:
+    """
+    Java class 'cern.rbac.common.impl.serialization.TokenSerialization'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        SIGNATURE_LENGTH_SIZE (int): final static field
+        TOKEN_LENGTH_SIZE (int): final static field
+        SERIAL_ID (java.lang.String): final static field
+        AUTHENTICATION_TIME (java.lang.String): final static field
+        EXPIRATION_TIME (java.lang.String): final static field
+        APPLICATION_NAME (java.lang.String): final static field
+        APPLICATION_CRITICAL (java.lang.String): final static field
+        APPLICATION_TIMEOUT (java.lang.String): final static field
+        LOCATION_NAME (java.lang.String): final static field
+        LOCATION_ADDRESS (java.lang.String): final static field
+        LOCATION_AUTH_REQ (java.lang.String): final static field
+        USER_NAME (java.lang.String): final static field
+        USER_FULLNAME (java.lang.String): final static field
+        USER_EMAIL (java.lang.String): final static field
+        USER_ACCOUNT_TYPE (java.lang.String): final static field
+        USER_ROLES (java.lang.String): final static field
+        USER_ROLES_LIFETIME (java.lang.String): final static field
+        EXTRA_FIELDS (java.lang.String): final static field
+        TOKEN_TYPE (java.lang.String): final static field
+        ROLES_HINT (java.lang.String): final static field
+        ROLES_EXPIRATION (java.lang.String): final static field
+    
+    """
     SIGNATURE_LENGTH_SIZE: typing.ClassVar[int] = ...
     TOKEN_LENGTH_SIZE: typing.ClassVar[int] = ...
     SERIAL_ID: typing.ClassVar[str] = ...
@@ -48,3 +80,10 @@ class TokenSerialization:
     def toString(byteArray: typing.List[int]) -> str: ...
     @staticmethod
     def verifySignature(byteArray: typing.List[int], byteArray2: typing.List[int], rbacConfiguration: cern.rbac.common.RbacConfiguration) -> bool: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.rbac.common.impl.serialization")``.
+
+    TokenSerialization: typing.Type[TokenSerialization]
+    decode: cern.rbac.common.impl.serialization.decode.__module_protocol__

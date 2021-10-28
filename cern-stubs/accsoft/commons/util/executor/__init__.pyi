@@ -5,7 +5,15 @@ import java.util.function
 import typing
 
 
+
 class ContextAwareExecutors:
+    """
+    Java class 'cern.accsoft.commons.util.executor.ContextAwareExecutors'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @typing.overload
     def newCachedThreadPool(self) -> java.util.concurrent.ExecutorService: ...
     @typing.overload
@@ -26,16 +34,35 @@ class ContextAwareExecutors:
     def withContexts(contextDefinitionArray: typing.List['ContextDefinition']) -> 'ContextAwareExecutors': ...
 
 class ContextDefinition:
+    """
+    Java class 'cern.accsoft.commons.util.executor.ContextDefinition'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ContextDefinition(java.util.function.Supplier)
+        * ContextDefinition(java.util.function.Supplier, java.util.function.Supplier)
+    
+    """
     @typing.overload
     def __init__(self, supplier: typing.Union[java.util.function.Supplier['ContextForwarder'], typing.Callable[[], 'ContextForwarder']]): ...
     @typing.overload
     def __init__(self, supplier: typing.Union[java.util.function.Supplier['ContextForwarder'], typing.Callable[[], 'ContextForwarder']], supplier2: typing.Union[java.util.function.Supplier['ExecutionValidator'], typing.Callable[[], 'ExecutionValidator']]): ...
 
 class ContextForwarder:
+    """
+    Java class 'cern.accsoft.commons.util.executor.ContextForwarder'
+    
+    """
     def clearContext(self) -> None: ...
     def setContext(self) -> None: ...
 
 class ExecutionValidator:
+    """
+    Java class 'cern.accsoft.commons.util.executor.ExecutionValidator'
+    
+    """
     def validateExecute(self, runnable: typing.Union[java.lang.Runnable, typing.Callable]) -> None: ...
     _validateInvokeAll_0__T = typing.TypeVar('_validateInvokeAll_0__T')  # <T>
     _validateInvokeAll_1__T = typing.TypeVar('_validateInvokeAll_1__T')  # <T>
@@ -64,3 +91,12 @@ class ExecutionValidator:
     def validateSubmit(self, runnable: typing.Union[java.lang.Runnable, typing.Callable], t: _validateSubmit_1__T) -> None: ...
     @typing.overload
     def validateSubmit(self, callable: typing.Union[java.util.concurrent.Callable[_validateSubmit_2__T], typing.Callable[[], _validateSubmit_2__T]]) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.accsoft.commons.util.executor")``.
+
+    ContextAwareExecutors: typing.Type[ContextAwareExecutors]
+    ContextDefinition: typing.Type[ContextDefinition]
+    ContextForwarder: typing.Type[ContextForwarder]
+    ExecutionValidator: typing.Type[ExecutionValidator]

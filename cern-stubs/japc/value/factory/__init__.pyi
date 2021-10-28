@@ -2,7 +2,18 @@ import cern.japc.value
 import typing
 
 
+
 class DomainValueFactory:
+    """
+    Java class 'cern.japc.value.factory.DomainValueFactory'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * DomainValueFactory()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def newDiscreteFunction(doubleArray: typing.List[float], doubleArray2: typing.List[float]) -> cern.japc.value.DiscreteFunction: ...
@@ -17,3 +28,9 @@ class DomainValueFactory:
     @typing.overload
     @staticmethod
     def newEnumItemSet(enumType: cern.japc.value.EnumType, long: int) -> cern.japc.value.EnumItemSet: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.japc.value.factory")``.
+
+    DomainValueFactory: typing.Type[DomainValueFactory]

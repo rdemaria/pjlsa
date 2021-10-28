@@ -6,7 +6,21 @@ import javax.accessibility
 import typing
 
 
+
 class Applet(java.awt.Panel):
+    """
+    Java class 'java.applet.Applet'
+    
+        Extends:
+            java.awt.Panel
+    
+      Constructors:
+        * Applet()
+    
+      Raises:
+        java.awt.HeadlessException: from java
+    
+    """
     def __init__(self): ...
     def destroy(self) -> None: ...
     def getAccessibleContext(self) -> javax.accessibility.AccessibleContext: ...
@@ -44,6 +58,10 @@ class Applet(java.awt.Panel):
     def stop(self) -> None: ...
 
 class AppletContext:
+    """
+    Java class 'java.applet.AppletContext'
+    
+    """
     def getApplet(self, string: str) -> Applet: ...
     def getApplets(self) -> java.util.Enumeration[Applet]: ...
     def getAudioClip(self, uRL: java.net.URL) -> 'AudioClip': ...
@@ -58,6 +76,10 @@ class AppletContext:
     def showStatus(self, string: str) -> None: ...
 
 class AppletStub:
+    """
+    Java class 'java.applet.AppletStub'
+    
+    """
     def appletResize(self, int: int, int2: int) -> None: ...
     def getAppletContext(self) -> AppletContext: ...
     def getCodeBase(self) -> java.net.URL: ...
@@ -66,6 +88,19 @@ class AppletStub:
     def isActive(self) -> bool: ...
 
 class AudioClip:
+    """
+    Java class 'java.applet.AudioClip'
+    
+    """
     def loop(self) -> None: ...
     def play(self) -> None: ...
     def stop(self) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.applet")``.
+
+    Applet: typing.Type[Applet]
+    AppletContext: typing.Type[AppletContext]
+    AppletStub: typing.Type[AppletStub]
+    AudioClip: typing.Type[AudioClip]

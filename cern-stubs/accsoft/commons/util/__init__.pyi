@@ -1,5 +1,27 @@
 import _jpype
 import cern
+import cern.accsoft.commons.util.annotation
+import cern.accsoft.commons.util.collections
+import cern.accsoft.commons.util.concurrent
+import cern.accsoft.commons.util.enums
+import cern.accsoft.commons.util.event
+import cern.accsoft.commons.util.executor
+import cern.accsoft.commons.util.format
+import cern.accsoft.commons.util.jmx
+import cern.accsoft.commons.util.mail
+import cern.accsoft.commons.util.marker
+import cern.accsoft.commons.util.metric
+import cern.accsoft.commons.util.proc
+import cern.accsoft.commons.util.rba
+import cern.accsoft.commons.util.reflect
+import cern.accsoft.commons.util.regexp
+import cern.accsoft.commons.util.remoting
+import cern.accsoft.commons.util.traceid
+import cern.accsoft.commons.util.trigger
+import cern.accsoft.commons.util.userctx
+import cern.accsoft.commons.util.userinfo
+import cern.accsoft.commons.util.value
+import cern.accsoft.commons.util.xml
 import java.awt
 import java.beans
 import java.io
@@ -14,11 +36,29 @@ import jpype.protocol
 import typing
 
 
+
 class AppLauncher:
+    """
+    Java class 'cern.accsoft.commons.util.AppLauncher'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def launch(stringArray: typing.List[str]) -> None: ...
 
 class ArrayUtils:
+    """
+    Java class 'cern.accsoft.commons.util.ArrayUtils'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ArrayUtils()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def addObjectToArray(objectArray: typing.List[typing.Any], object2: typing.Any) -> typing.List[typing.Any]: ...
@@ -42,6 +82,16 @@ class ArrayUtils:
     def toStringArray(collection: typing.Union[java.util.Collection[str], typing.Sequence[str]]) -> typing.List[str]: ...
 
 class Assert:
+    """
+    Java class 'cern.accsoft.commons.util.Assert'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * Assert()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def argHasText(string: str, string2: str) -> None: ...
@@ -134,6 +184,16 @@ class Assert:
     def state(boolean: bool, string: str) -> None: ...
 
 class BeanSupport:
+    """
+    Java class 'cern.accsoft.commons.util.BeanSupport'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * BeanSupport(java.lang.Object)
+    
+    """
     def __init__(self, object: typing.Any): ...
     @typing.overload
     def addPropertyChangeListener(self, propertyChangeListener: java.beans.PropertyChangeListener) -> None: ...
@@ -145,6 +205,16 @@ class BeanSupport:
     def removePropertyChangeListener(self, string: str, propertyChangeListener: java.beans.PropertyChangeListener) -> None: ...
 
 class BeanUtils:
+    """
+    Java class 'cern.accsoft.commons.util.BeanUtils'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * BeanUtils()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def findDeclaredMethod(class_: typing.Type, string: str, classArray: typing.List[typing.Type]) -> java.lang.reflect.Method: ...
@@ -168,6 +238,16 @@ class BeanUtils:
     def toPropertyValues(objectArray: typing.List[typing.Any], string: str, class_: typing.Type) -> typing.List[typing.Any]: ...
 
 class ClassLoaderJarInfo:
+    """
+    Java class 'cern.accsoft.commons.util.ClassLoaderJarInfo'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        JAR_EXT (java.lang.String): final static field
+    
+    """
     JAR_EXT: typing.ClassVar[str] = ...
     @typing.overload
     @staticmethod
@@ -183,6 +263,16 @@ class ClassLoaderJarInfo:
     def getLoadedJarInfo(object: typing.Any) -> java.util.HashMap[str, 'JarInfo']: ...
 
 class ClassLoaderUtils:
+    """
+    Java class 'cern.accsoft.commons.util.ClassLoaderUtils'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ClassLoaderUtils()
+    
+    """
     def __init__(self): ...
     @typing.overload
     @staticmethod
@@ -198,6 +288,19 @@ class ClassLoaderUtils:
     def showClassLoaderHierarchy(object: typing.Any, string: str, string2: str, string3: str) -> str: ...
 
 class ClassUtils:
+    """
+    Java class 'cern.accsoft.commons.util.ClassUtils'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ClassUtils()
+    
+      Attributes:
+        ARRAY_SUFFIX (java.lang.String): final static field
+    
+    """
     ARRAY_SUFFIX: typing.ClassVar[str] = ...
     def __init__(self): ...
     @staticmethod
@@ -288,18 +391,46 @@ class ClassUtils:
     def resolvePrimitiveClassName(string: str) -> typing.Type: ...
 
 class ClasspathUtils:
+    """
+    Java class 'cern.accsoft.commons.util.ClasspathUtils'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def findSubClassesInPackage(class_: typing.Type[typing.Any], string: str, boolean: bool) -> java.util.Set[typing.Type[typing.Any]]: ...
 
 class Cleanable:
+    """
+    Java class 'cern.accsoft.commons.util.Cleanable'
+    
+    """
     def cleanup(self) -> None: ...
     def isCleaning(self) -> bool: ...
 
 class CleanableUtil:
+    """
+    Java class 'cern.accsoft.commons.util.CleanableUtil'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def cleanupContainer(container: java.awt.Container) -> None: ...
 
 class CollectionUtils:
+    """
+    Java class 'cern.accsoft.commons.util.CollectionUtils'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * CollectionUtils()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def arrayToList(object: typing.Any) -> java.util.List: ...
@@ -351,6 +482,16 @@ class CollectionUtils:
     def toSortedList(collection: typing.Union[java.util.Collection[_toSortedList__T], typing.Sequence[_toSortedList__T]]) -> java.util.List[_toSortedList__T]: ...
 
 class ExceptionUtils:
+    """
+    Java class 'cern.accsoft.commons.util.ExceptionUtils'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ExceptionUtils()
+    
+    """
     def __init__(self): ...
     @typing.overload
     @staticmethod
@@ -368,6 +509,19 @@ class ExceptionUtils:
     def getStackTraceAsString(throwable: java.lang.Throwable) -> str: ...
 
 class FileCopyUtils:
+    """
+    Java class 'cern.accsoft.commons.util.FileCopyUtils'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * FileCopyUtils()
+    
+      Attributes:
+        BUFFER_SIZE (int): final static field
+    
+    """
     BUFFER_SIZE: typing.ClassVar[int] = ...
     def __init__(self): ...
     @typing.overload
@@ -398,6 +552,22 @@ class FileCopyUtils:
     def copyToString(reader: java.io.Reader) -> str: ...
 
 class FileUtils:
+    """
+    Java class 'cern.accsoft.commons.util.FileUtils'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * FileUtils()
+    
+      Attributes:
+        FS (java.lang.String): final static field
+        DATA_URL (java.lang.String): final static field
+        DATA_PATH (java.lang.String): final static field
+        FILE_BY_DATE_COMPARATOR (java.util.Comparator): final static field
+    
+    """
     FS: typing.ClassVar[str] = ...
     DATA_URL: typing.ClassVar[str] = ...
     DATA_PATH: typing.ClassVar[str] = ...
@@ -427,6 +597,25 @@ class FileUtils:
     def readAllText(string: str) -> str: ...
 
 class JarInfo:
+    """
+    Java class 'cern.accsoft.commons.util.JarInfo'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * JarInfo()
+    
+      Attributes:
+        classLoaderName (java.lang.String): field
+        cbngJarName (java.lang.String): field
+        jarName (java.lang.String): field
+        vendor (java.lang.String): field
+        version (java.lang.String): field
+        version2 (java.lang.String): field
+        jarPath (java.lang.String): field
+    
+    """
     classLoaderName: str = ...
     cbngJarName: str = ...
     jarName: str = ...
@@ -438,6 +627,20 @@ class JarInfo:
     def toString(self) -> str: ...
 
 class JdkUtils:
+    """
+    Java class 'cern.accsoft.commons.util.JdkUtils'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * JdkUtils()
+    
+      Attributes:
+        JDK_VERSION (java.lang.String): final static field
+        JDK_PATH_DEFAULT (java.lang.String): final static field
+    
+    """
     JDK_VERSION: typing.ClassVar[str] = ...
     JDK_PATH_DEFAULT: typing.ClassVar[str] = ...
     def __init__(self): ...
@@ -453,6 +656,16 @@ class JdkUtils:
     def getPidLinux() -> int: ...
 
 class MapUtils:
+    """
+    Java class 'cern.accsoft.commons.util.MapUtils'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * MapUtils()
+    
+    """
     def __init__(self): ...
     _extractValues__K = typing.TypeVar('_extractValues__K')  # <K>
     _extractValues__V = typing.TypeVar('_extractValues__V')  # <V>
@@ -482,6 +695,19 @@ class MapUtils:
     @staticmethod
     def valuesIntersection(map: typing.Union[java.util.Map[_valuesIntersection__K, _valuesIntersection__C], typing.Mapping[_valuesIntersection__K, _valuesIntersection__C]]) -> java.util.Set[_valuesIntersection__V]: ...
     class MatchType(java.lang.Enum['MapUtils.MatchType']):
+        """
+        Java class 'cern.accsoft.commons.util.MapUtils$MatchType'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            STARTS_WITH (cern.accsoft.commons.util.MapUtils$MatchType): final static enum constant
+            CONTAINS (cern.accsoft.commons.util.MapUtils$MatchType): final static enum constant
+            ENDS_WITH (cern.accsoft.commons.util.MapUtils$MatchType): final static enum constant
+            REGEXP (cern.accsoft.commons.util.MapUtils$MatchType): final static enum constant
+        
+        """
         STARTS_WITH: typing.ClassVar['MapUtils.MatchType'] = ...
         CONTAINS: typing.ClassVar['MapUtils.MatchType'] = ...
         ENDS_WITH: typing.ClassVar['MapUtils.MatchType'] = ...
@@ -497,6 +723,16 @@ class MapUtils:
         def values() -> typing.List['MapUtils.MatchType']: ...
 
 class MockitoUtil:
+    """
+    Java class 'cern.accsoft.commons.util.MockitoUtil'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * MockitoUtil()
+    
+    """
     def __init__(self): ...
     @typing.overload
     @staticmethod
@@ -506,9 +742,27 @@ class MockitoUtil:
     def wireWithMocks(object: typing.Any, class_: typing.Type[typing.Any]) -> java.util.Map[str, typing.Any]: ...
 
 class Named:
+    """
+    Java class 'cern.accsoft.commons.util.Named'
+    
+    """
     def getName(self) -> str: ...
 
 class Nameds:
+    """
+    Java class 'cern.accsoft.commons.util.Nameds'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * Nameds()
+    
+      Attributes:
+        NAMED_MAPPER (cern.accsoft.commons.util.Mappers$Mapper): final static field
+        NAMED_COMPARATOR (java.util.Comparator): final static field
+    
+    """
     NAMED_MAPPER: typing.ClassVar['Mappers.Mapper'] = ...
     NAMED_COMPARATOR: typing.ClassVar[java.util.Comparator] = ...
     def __init__(self): ...
@@ -587,13 +841,29 @@ class Nameds:
     def sortByNameToSet(collection: typing.Union[java.util.Collection[_sortByNameToSet__T], typing.Sequence[_sortByNameToSet__T]]) -> java.util.Set[_sortByNameToSet__T]: ...
 
 class NumberUtils:
+    """
+    Java class 'cern.accsoft.commons.util.NumberUtils'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * NumberUtils()
+    
+      Attributes:
+        HEXADECIMAL_FORMAT_PREFIX (java.lang.String): final static field
+        HEXADECIMAL_FORMAT_RADIX (int): final static field
+        BINARY_FORMAT_PREFIX (java.lang.String): final static field
+        BINARY_FORMAT_RADIX (int): final static field
+    
+    """
     HEXADECIMAL_FORMAT_PREFIX: typing.ClassVar[str] = ...
     HEXADECIMAL_FORMAT_RADIX: typing.ClassVar[int] = ...
     BINARY_FORMAT_PREFIX: typing.ClassVar[str] = ...
     BINARY_FORMAT_RADIX: typing.ClassVar[int] = ...
     def __init__(self): ...
     @staticmethod
-    def convertNumberToTargetClass(number: typing.Union[_jpype._JNumberLong, _jpype._JNumberFloat, jpype.protocol.SupportsIndex, typing.SupportsFloat], class_: typing.Type) -> java.lang.Number: ...
+    def convertNumberToTargetClass(number: typing.Union[_jpype._JNumberLong, _jpype._JNumberFloat, typing.SupportsIndex, typing.SupportsFloat], class_: typing.Type) -> java.lang.Number: ...
     @typing.overload
     @staticmethod
     def parseNumber(string: str, class_: typing.Type) -> java.lang.Number: ...
@@ -602,11 +872,35 @@ class NumberUtils:
     def parseNumber(string: str, class_: typing.Type, numberFormat: java.text.NumberFormat) -> java.lang.Number: ...
 
 class OSUtils:
+    """
+    Java class 'cern.accsoft.commons.util.OSUtils'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * OSUtils()
+    
+      Attributes:
+        IS_WINDOWS (boolean): final static field
+        IS_LINUX (boolean): final static field
+    
+    """
     IS_WINDOWS: typing.ClassVar[bool] = ...
     IS_LINUX: typing.ClassVar[bool] = ...
     def __init__(self): ...
 
 class ObjectUtils:
+    """
+    Java class 'cern.accsoft.commons.util.ObjectUtils'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ObjectUtils()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def getDisplayString(object: typing.Any) -> str: ...
@@ -698,21 +992,61 @@ class ObjectUtils:
     def nullSafeToString(shortArray: typing.List[int]) -> str: ...
 
 class PcropsRepositoryDownloader:
+    """
+    Java class 'cern.accsoft.commons.util.PcropsRepositoryDownloader'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * PcropsRepositoryDownloader()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def main(stringArray: typing.List[str]) -> None: ...
 
 class PcropsRepositoryJnlpSearcher:
+    """
+    Java class 'cern.accsoft.commons.util.PcropsRepositoryJnlpSearcher'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * PcropsRepositoryJnlpSearcher()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def main(stringArray: typing.List[str]) -> None: ...
 
 class PcropsRepositoryProductUsageSearcher:
+    """
+    Java class 'cern.accsoft.commons.util.PcropsRepositoryProductUsageSearcher'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * PcropsRepositoryProductUsageSearcher()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def main(stringArray: typing.List[str]) -> None: ...
 
 class ProcessUtils:
+    """
+    Java class 'cern.accsoft.commons.util.ProcessUtils'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ProcessUtils()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def getMyPid() -> int: ...
@@ -722,6 +1056,19 @@ class ProcessUtils:
     def getMyShortProcessName() -> str: ...
 
 class ReflectionUtils:
+    """
+    Java class 'cern.accsoft.commons.util.ReflectionUtils'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ReflectionUtils()
+    
+      Attributes:
+        COPYABLE_FIELDS (cern.accsoft.commons.util.ReflectionUtils$FieldFilter): static field
+    
+    """
     COPYABLE_FIELDS: typing.ClassVar['ReflectionUtils.FieldFilter'] = ...
     def __init__(self): ...
     @typing.overload
@@ -763,15 +1110,50 @@ class ReflectionUtils:
     @staticmethod
     def shallowCopyFieldState(object: typing.Any, object2: typing.Any) -> None: ...
     class FieldCallback:
+        """
+        Java class 'cern.accsoft.commons.util.ReflectionUtils$FieldCallback'
+        
+        """
         def doWith(self, field: java.lang.reflect.Field) -> None: ...
     class FieldFilter:
+        """
+        Java class 'cern.accsoft.commons.util.ReflectionUtils$FieldFilter'
+        
+        """
         def matches(self, field: java.lang.reflect.Field) -> bool: ...
     class MethodCallback:
+        """
+        Java class 'cern.accsoft.commons.util.ReflectionUtils$MethodCallback'
+        
+        """
         def doWith(self, method: java.lang.reflect.Method) -> None: ...
     class MethodFilter:
+        """
+        Java class 'cern.accsoft.commons.util.ReflectionUtils$MethodFilter'
+        
+        """
         def matches(self, method: java.lang.reflect.Method) -> bool: ...
 
 class ResourceUtils:
+    """
+    Java class 'cern.accsoft.commons.util.ResourceUtils'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ResourceUtils()
+    
+      Attributes:
+        CLASSPATH_URL_PREFIX (java.lang.String): final static field
+        FILE_URL_PREFIX (java.lang.String): final static field
+        URL_PROTOCOL_FILE (java.lang.String): final static field
+        URL_PROTOCOL_JAR (java.lang.String): final static field
+        URL_PROTOCOL_ZIP (java.lang.String): final static field
+        URL_PROTOCOL_WSJAR (java.lang.String): final static field
+        JAR_URL_SEPARATOR (java.lang.String): final static field
+    
+    """
     CLASSPATH_URL_PREFIX: typing.ClassVar[str] = ...
     FILE_URL_PREFIX: typing.ClassVar[str] = ...
     URL_PROTOCOL_FILE: typing.ClassVar[str] = ...
@@ -799,12 +1181,37 @@ class ResourceUtils:
     def isUrl(string: str) -> bool: ...
 
 class SerializationObjectCloner:
+    """
+    Java class 'cern.accsoft.commons.util.SerializationObjectCloner'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * SerializationObjectCloner()
+    
+    """
     def __init__(self): ...
     _deepCopy__T = typing.TypeVar('_deepCopy__T', bound=java.io.Serializable)  # <T>
     @staticmethod
     def deepCopy(t: _deepCopy__T) -> _deepCopy__T: ...
 
 class StringUtils:
+    """
+    Java class 'cern.accsoft.commons.util.StringUtils'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * StringUtils()
+    
+      Attributes:
+        EMPTY_STRING (java.lang.String): final static field
+        EMPTY_STRING_ARRAY ([Ljava.lang.String;): final static field
+        EMPTY_STRING_ARRAY2D ([[Ljava.lang.String;): final static field
+    
+    """
     EMPTY_STRING: typing.ClassVar[str] = ...
     EMPTY_STRING_ARRAY: typing.ClassVar[typing.List[str]] = ...
     EMPTY_STRING_ARRAY2D: typing.ClassVar[typing.List[typing.List[str]]] = ...
@@ -954,6 +1361,18 @@ class StringUtils:
     @staticmethod
     def unqualify(string: str, char: str) -> str: ...
     class FirstLetterCapitalization(java.lang.Enum['StringUtils.FirstLetterCapitalization']):
+        """
+        Java class 'cern.accsoft.commons.util.StringUtils$FirstLetterCapitalization'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            CAPITALIZE_FIRST_LETTER (cern.accsoft.commons.util.StringUtils$FirstLetterCapitalization): final static enum constant
+            UNCAPITALIZE_FIRST_LETTER (cern.accsoft.commons.util.StringUtils$FirstLetterCapitalization): final static enum constant
+            DO_NOT_CHANGE_FIRST_LETTER (cern.accsoft.commons.util.StringUtils$FirstLetterCapitalization): final static enum constant
+        
+        """
         CAPITALIZE_FIRST_LETTER: typing.ClassVar['StringUtils.FirstLetterCapitalization'] = ...
         UNCAPITALIZE_FIRST_LETTER: typing.ClassVar['StringUtils.FirstLetterCapitalization'] = ...
         DO_NOT_CHANGE_FIRST_LETTER: typing.ClassVar['StringUtils.FirstLetterCapitalization'] = ...
@@ -968,6 +1387,20 @@ class StringUtils:
         def values() -> typing.List['StringUtils.FirstLetterCapitalization']: ...
 
 class SystemPropertyUtils:
+    """
+    Java class 'cern.accsoft.commons.util.SystemPropertyUtils'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * SystemPropertyUtils()
+    
+      Attributes:
+        PLACEHOLDER_PREFIX (java.lang.String): final static field
+        PLACEHOLDER_SUFFIX (java.lang.String): final static field
+    
+    """
     PLACEHOLDER_PREFIX: typing.ClassVar[str] = ...
     PLACEHOLDER_SUFFIX: typing.ClassVar[str] = ...
     def __init__(self): ...
@@ -985,6 +1418,13 @@ class SystemPropertyUtils:
     def resolvePlaceholders(string: str) -> str: ...
 
 class Trace:
+    """
+    Java class 'cern.accsoft.commons.util.Trace'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @typing.overload
     def dumpMeasurement(self, outputStream: java.io.OutputStream) -> None: ...
     @typing.overload
@@ -1012,11 +1452,28 @@ class Trace:
     def startMeasurement(self, boolean: bool, string: str, string2: str) -> None: ...
 
 class UnitExponents:
+    """
+    Java class 'cern.accsoft.commons.util.UnitExponents'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def getUnit(string: str, int: int) -> str: ...
 
 _AbstractImmutableNamed__N = typing.TypeVar('_AbstractImmutableNamed__N', bound=Named)  # <N>
 class AbstractImmutableNamed(Named, java.lang.Comparable[_AbstractImmutableNamed__N], typing.Generic[_AbstractImmutableNamed__N]):
+    """
+    Java class 'cern.accsoft.commons.util.AbstractImmutableNamed'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named, java.lang.Comparable
+    
+    """
     def compareTo(self, n: _AbstractImmutableNamed__N) -> int: ...
     def equals(self, object: typing.Any) -> bool: ...
     def getName(self) -> str: ...
@@ -1025,6 +1482,17 @@ class AbstractImmutableNamed(Named, java.lang.Comparable[_AbstractImmutableNamed
 
 _AbstractImmutableNamedSerializable__N = typing.TypeVar('_AbstractImmutableNamedSerializable__N', bound=Named)  # <N>
 class AbstractImmutableNamedSerializable(Named, java.lang.Comparable[_AbstractImmutableNamedSerializable__N], java.io.Serializable, typing.Generic[_AbstractImmutableNamedSerializable__N]):
+    """
+    Java class 'cern.accsoft.commons.util.AbstractImmutableNamedSerializable'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named, java.lang.Comparable,
+            java.io.Serializable
+    
+    """
     def compareTo(self, n: _AbstractImmutableNamedSerializable__N) -> int: ...
     def equals(self, object: typing.Any) -> bool: ...
     def getName(self) -> str: ...
@@ -1033,6 +1501,16 @@ class AbstractImmutableNamedSerializable(Named, java.lang.Comparable[_AbstractIm
 
 _AbstractNamed__N = typing.TypeVar('_AbstractNamed__N', bound=Named)  # <N>
 class AbstractNamed(Named, java.lang.Comparable[_AbstractNamed__N], typing.Generic[_AbstractNamed__N]):
+    """
+    Java class 'cern.accsoft.commons.util.AbstractNamed'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named, java.lang.Comparable
+    
+    """
     def compareTo(self, n: _AbstractNamed__N) -> int: ...
     def equals(self, object: typing.Any) -> bool: ...
     def getName(self) -> str: ...
@@ -1042,6 +1520,17 @@ class AbstractNamed(Named, java.lang.Comparable[_AbstractNamed__N], typing.Gener
 
 _AbstractNamedSerializable__N = typing.TypeVar('_AbstractNamedSerializable__N', bound=Named)  # <N>
 class AbstractNamedSerializable(Named, java.lang.Comparable[_AbstractNamedSerializable__N], java.io.Serializable, typing.Generic[_AbstractNamedSerializable__N]):
+    """
+    Java class 'cern.accsoft.commons.util.AbstractNamedSerializable'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named, java.lang.Comparable,
+            java.io.Serializable
+    
+    """
     def compareTo(self, n: _AbstractNamedSerializable__N) -> int: ...
     def equals(self, object: typing.Any) -> bool: ...
     def getName(self) -> str: ...
@@ -1055,6 +1544,16 @@ _Filters__FilterSourceAndDestCollectionHolder__D = typing.TypeVar('_Filters__Fil
 _Filters__FilterSourceCollectionHolder__T = typing.TypeVar('_Filters__FilterSourceCollectionHolder__T')  # <T>
 _Filters__FilterSourceCollectionHolder__C = typing.TypeVar('_Filters__FilterSourceCollectionHolder__C', bound=java.util.Collection)  # <C>
 class Filters:
+    """
+    Java class 'cern.accsoft.commons.util.Filters'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * Filters()
+    
+    """
     def __init__(self): ...
     _filter_0__T = typing.TypeVar('_filter_0__T')  # <T>
     _filter_1__T = typing.TypeVar('_filter_1__T')  # <T>
@@ -1069,9 +1568,20 @@ class Filters:
     @staticmethod
     def filter(set: java.util.Set[_filter_2__T]) -> 'Filters.FilterSourceCollectionHolder'[_filter_2__T, java.util.Set[_filter_2__T]]: ...
     class Filter(typing.Generic[_Filters__Filter__T]):
+        """
+        Java class 'cern.accsoft.commons.util.Filters$Filter'
+        
+        """
         def accepts(self, t: _Filters__Filter__T) -> bool: ...
     class FilterSourceAndDestCollectionHolder(cern.accsoft.commons.util.Filters.FilterCollectionHolder[_Filters__FilterSourceAndDestCollectionHolder__T, java.util.Collection[_Filters__FilterSourceAndDestCollectionHolder__T], _Filters__FilterSourceAndDestCollectionHolder__D], typing.Generic[_Filters__FilterSourceAndDestCollectionHolder__T, _Filters__FilterSourceAndDestCollectionHolder__D]): ...
     class FilterSourceCollectionHolder(cern.accsoft.commons.util.Filters.FilterCollectionHolder[_Filters__FilterSourceCollectionHolder__T, _Filters__FilterSourceCollectionHolder__C, _Filters__FilterSourceCollectionHolder__C], typing.Generic[_Filters__FilterSourceCollectionHolder__T, _Filters__FilterSourceCollectionHolder__C]):
+        """
+        Java class 'cern.accsoft.commons.util.Filters$FilterSourceCollectionHolder'
+        
+            Extends:
+                cern.accsoft.commons.util.Filters$FilterCollectionHolder
+        
+        """
         _to__D = typing.TypeVar('_to__D', bound=java.util.Collection)  # <D>
         def to(self, d: _to__D) -> 'Filters.FilterSourceAndDestCollectionHolder'[_Filters__FilterSourceCollectionHolder__T, _to__D]: ...
     class FilterCollectionHolder: ...
@@ -1092,6 +1602,16 @@ _Mappers__MapToSourceAndDestCollectionHolder__C = typing.TypeVar('_Mappers__MapT
 _Mappers__Mapper__S = typing.TypeVar('_Mappers__Mapper__S')  # <S>
 _Mappers__Mapper__D = typing.TypeVar('_Mappers__Mapper__D')  # <D>
 class Mappers:
+    """
+    Java class 'cern.accsoft.commons.util.Mappers'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * Mappers()
+    
+    """
     def __init__(self): ...
     _flatMap__S = typing.TypeVar('_flatMap__S')  # <S>
     @staticmethod
@@ -1112,8 +1632,22 @@ class Mappers:
     @staticmethod
     def map(collection: typing.Union[java.util.Collection[_map__S], typing.Sequence[_map__S]]) -> 'Mappers.MapSourceCollectionHolder'[_map__S]: ...
     class FlatMapSourceAndDestCollectionHolder(cern.accsoft.commons.util.Mappers.SourceCollectionHolder[_Mappers__FlatMapSourceAndDestCollectionHolder__S], typing.Generic[_Mappers__FlatMapSourceAndDestCollectionHolder__S, _Mappers__FlatMapSourceAndDestCollectionHolder__D, _Mappers__FlatMapSourceAndDestCollectionHolder__C]):
+        """
+        Java class 'cern.accsoft.commons.util.Mappers$FlatMapSourceAndDestCollectionHolder'
+        
+            Extends:
+                cern.accsoft.commons.util.Mappers$SourceCollectionHolder
+        
+        """
         def of(self, mapper: 'Mappers.Mapper'[_Mappers__FlatMapSourceAndDestCollectionHolder__S, typing.Union[java.util.Collection[_Mappers__FlatMapSourceAndDestCollectionHolder__D], typing.Sequence[_Mappers__FlatMapSourceAndDestCollectionHolder__D]]]) -> _Mappers__FlatMapSourceAndDestCollectionHolder__C: ...
     class FlatMapSourceCollectionHolder(cern.accsoft.commons.util.Mappers.SourceCollectionHolder[_Mappers__FlatMapSourceCollectionHolder__S], typing.Generic[_Mappers__FlatMapSourceCollectionHolder__S]):
+        """
+        Java class 'cern.accsoft.commons.util.Mappers$FlatMapSourceCollectionHolder'
+        
+            Extends:
+                cern.accsoft.commons.util.Mappers$SourceCollectionHolder
+        
+        """
         _to__D = typing.TypeVar('_to__D')  # <D>
         _to__C = typing.TypeVar('_to__C', bound=java.util.Collection)  # <C>
         def to(self, c: _to__C) -> 'Mappers.FlatMapSourceAndDestCollectionHolder'[_Mappers__FlatMapSourceCollectionHolder__S, _to__D, _to__C]: ...
@@ -1122,11 +1656,32 @@ class Mappers:
         _toSetOf__D = typing.TypeVar('_toSetOf__D')  # <D>
         def toSetOf(self, mapper: 'Mappers.Mapper'[_Mappers__FlatMapSourceCollectionHolder__S, typing.Union[java.util.Collection[_toSetOf__D], typing.Sequence[_toSetOf__D]]]) -> java.util.Set[_toSetOf__D]: ...
     class GroupSourceCollectionHolder(typing.Generic[_Mappers__GroupSourceCollectionHolder__S, _Mappers__GroupSourceCollectionHolder__C]):
+        """
+        Java class 'cern.accsoft.commons.util.Mappers$GroupSourceCollectionHolder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         _by__D = typing.TypeVar('_by__D')  # <D>
         def by(self, mapper: 'Mappers.Mapper'[_Mappers__GroupSourceCollectionHolder__S, _by__D]) -> java.util.Map[_by__D, _Mappers__GroupSourceCollectionHolder__C]: ...
     class MapBySourceAndDestCollectionHolder(cern.accsoft.commons.util.Mappers.SourceCollectionHolder[_Mappers__MapBySourceAndDestCollectionHolder__S], typing.Generic[_Mappers__MapBySourceAndDestCollectionHolder__S, _Mappers__MapBySourceAndDestCollectionHolder__D, _Mappers__MapBySourceAndDestCollectionHolder__M]):
+        """
+        Java class 'cern.accsoft.commons.util.Mappers$MapBySourceAndDestCollectionHolder'
+        
+            Extends:
+                cern.accsoft.commons.util.Mappers$SourceCollectionHolder
+        
+        """
         def by(self, mapper: 'Mappers.Mapper'[_Mappers__MapBySourceAndDestCollectionHolder__S, _Mappers__MapBySourceAndDestCollectionHolder__D]) -> _Mappers__MapBySourceAndDestCollectionHolder__M: ...
     class MapSourceCollectionHolder(cern.accsoft.commons.util.Mappers.SourceCollectionHolder[_Mappers__MapSourceCollectionHolder__S], typing.Generic[_Mappers__MapSourceCollectionHolder__S]):
+        """
+        Java class 'cern.accsoft.commons.util.Mappers$MapSourceCollectionHolder'
+        
+            Extends:
+                cern.accsoft.commons.util.Mappers$SourceCollectionHolder
+        
+        """
         _by__D = typing.TypeVar('_by__D')  # <D>
         def by(self, mapper: 'Mappers.Mapper'[_Mappers__MapSourceCollectionHolder__S, _by__D]) -> java.util.Map[_by__D, _Mappers__MapSourceCollectionHolder__S]: ...
         _to_0__D = typing.TypeVar('_to_0__D')  # <D>
@@ -1142,7 +1697,86 @@ class Mappers:
         _toSetOf__D = typing.TypeVar('_toSetOf__D')  # <D>
         def toSetOf(self, mapper: 'Mappers.Mapper'[_Mappers__MapSourceCollectionHolder__S, _toSetOf__D]) -> java.util.Set[_toSetOf__D]: ...
     class MapToSourceAndDestCollectionHolder(cern.accsoft.commons.util.Mappers.SourceCollectionHolder[_Mappers__MapToSourceAndDestCollectionHolder__S], typing.Generic[_Mappers__MapToSourceAndDestCollectionHolder__S, _Mappers__MapToSourceAndDestCollectionHolder__D, _Mappers__MapToSourceAndDestCollectionHolder__C]):
+        """
+        Java class 'cern.accsoft.commons.util.Mappers$MapToSourceAndDestCollectionHolder'
+        
+            Extends:
+                cern.accsoft.commons.util.Mappers$SourceCollectionHolder
+        
+        """
         def of(self, mapper: 'Mappers.Mapper'[_Mappers__MapToSourceAndDestCollectionHolder__S, _Mappers__MapToSourceAndDestCollectionHolder__D]) -> _Mappers__MapToSourceAndDestCollectionHolder__C: ...
     class Mapper(typing.Generic[_Mappers__Mapper__S, _Mappers__Mapper__D]):
+        """
+        Java class 'cern.accsoft.commons.util.Mappers$Mapper'
+        
+        """
         def map(self, s2: _Mappers__Mapper__S) -> _Mappers__Mapper__D: ...
     class SourceCollectionHolder: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.accsoft.commons.util")``.
+
+    AbstractImmutableNamed: typing.Type[AbstractImmutableNamed]
+    AbstractImmutableNamedSerializable: typing.Type[AbstractImmutableNamedSerializable]
+    AbstractNamed: typing.Type[AbstractNamed]
+    AbstractNamedSerializable: typing.Type[AbstractNamedSerializable]
+    AppLauncher: typing.Type[AppLauncher]
+    ArrayUtils: typing.Type[ArrayUtils]
+    Assert: typing.Type[Assert]
+    BeanSupport: typing.Type[BeanSupport]
+    BeanUtils: typing.Type[BeanUtils]
+    ClassLoaderJarInfo: typing.Type[ClassLoaderJarInfo]
+    ClassLoaderUtils: typing.Type[ClassLoaderUtils]
+    ClassUtils: typing.Type[ClassUtils]
+    ClasspathUtils: typing.Type[ClasspathUtils]
+    Cleanable: typing.Type[Cleanable]
+    CleanableUtil: typing.Type[CleanableUtil]
+    CollectionUtils: typing.Type[CollectionUtils]
+    ExceptionUtils: typing.Type[ExceptionUtils]
+    FileCopyUtils: typing.Type[FileCopyUtils]
+    FileUtils: typing.Type[FileUtils]
+    Filters: typing.Type[Filters]
+    JarInfo: typing.Type[JarInfo]
+    JdkUtils: typing.Type[JdkUtils]
+    MapUtils: typing.Type[MapUtils]
+    Mappers: typing.Type[Mappers]
+    MockitoUtil: typing.Type[MockitoUtil]
+    Named: typing.Type[Named]
+    Nameds: typing.Type[Nameds]
+    NumberUtils: typing.Type[NumberUtils]
+    OSUtils: typing.Type[OSUtils]
+    ObjectUtils: typing.Type[ObjectUtils]
+    PcropsRepositoryDownloader: typing.Type[PcropsRepositoryDownloader]
+    PcropsRepositoryJnlpSearcher: typing.Type[PcropsRepositoryJnlpSearcher]
+    PcropsRepositoryProductUsageSearcher: typing.Type[PcropsRepositoryProductUsageSearcher]
+    ProcessUtils: typing.Type[ProcessUtils]
+    ReflectionUtils: typing.Type[ReflectionUtils]
+    ResourceUtils: typing.Type[ResourceUtils]
+    SerializationObjectCloner: typing.Type[SerializationObjectCloner]
+    StringUtils: typing.Type[StringUtils]
+    SystemPropertyUtils: typing.Type[SystemPropertyUtils]
+    Trace: typing.Type[Trace]
+    UnitExponents: typing.Type[UnitExponents]
+    annotation: cern.accsoft.commons.util.annotation.__module_protocol__
+    collections: cern.accsoft.commons.util.collections.__module_protocol__
+    concurrent: cern.accsoft.commons.util.concurrent.__module_protocol__
+    enums: cern.accsoft.commons.util.enums.__module_protocol__
+    event: cern.accsoft.commons.util.event.__module_protocol__
+    executor: cern.accsoft.commons.util.executor.__module_protocol__
+    format: cern.accsoft.commons.util.format.__module_protocol__
+    jmx: cern.accsoft.commons.util.jmx.__module_protocol__
+    mail: cern.accsoft.commons.util.mail.__module_protocol__
+    marker: cern.accsoft.commons.util.marker.__module_protocol__
+    metric: cern.accsoft.commons.util.metric.__module_protocol__
+    proc: cern.accsoft.commons.util.proc.__module_protocol__
+    rba: cern.accsoft.commons.util.rba.__module_protocol__
+    reflect: cern.accsoft.commons.util.reflect.__module_protocol__
+    regexp: cern.accsoft.commons.util.regexp.__module_protocol__
+    remoting: cern.accsoft.commons.util.remoting.__module_protocol__
+    traceid: cern.accsoft.commons.util.traceid.__module_protocol__
+    trigger: cern.accsoft.commons.util.trigger.__module_protocol__
+    userctx: cern.accsoft.commons.util.userctx.__module_protocol__
+    userinfo: cern.accsoft.commons.util.userinfo.__module_protocol__
+    value: cern.accsoft.commons.util.value.__module_protocol__
+    xml: cern.accsoft.commons.util.xml.__module_protocol__

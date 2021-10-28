@@ -4,7 +4,18 @@ import java.util
 import typing
 
 
+
 class PropertyVersionsRequestBuilder:
+    """
+    Java class 'cern.lsa.domain.devices.factory.type.PropertyVersionsRequestBuilder'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * PropertyVersionsRequestBuilder()
+    
+    """
     def __init__(self): ...
     def build(self) -> cern.lsa.domain.devices.type.PropertyVersionsRequest: ...
     @staticmethod
@@ -27,3 +38,9 @@ class PropertyVersionsRequestBuilder:
     def setDeviceTypeVersions(self, collection: typing.Union[java.util.Collection[cern.lsa.domain.devices.DeviceTypeVersion], typing.Sequence[cern.lsa.domain.devices.DeviceTypeVersion]]) -> 'PropertyVersionsRequestBuilder': ...
     def setPropertyName(self, string: str) -> 'PropertyVersionsRequestBuilder': ...
     def setPropertyNames(self, collection: typing.Union[java.util.Collection[str], typing.Sequence[str]]) -> 'PropertyVersionsRequestBuilder': ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.devices.factory.type")``.
+
+    PropertyVersionsRequestBuilder: typing.Type[PropertyVersionsRequestBuilder]

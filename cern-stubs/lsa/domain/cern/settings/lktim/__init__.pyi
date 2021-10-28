@@ -6,7 +6,15 @@ import java.util
 import typing
 
 
+
 class LktimDevice(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.cern.settings.lktim.LktimDevice'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def getActiveTreeId(self, contextSettings: cern.lsa.domain.settings.ContextSettings) -> int: ...
     def getErrorMessages(self) -> java.util.Set[str]: ...
     def getParameters(self) -> java.util.List[cern.lsa.domain.settings.Parameter]: ...
@@ -20,6 +28,14 @@ class LktimDevice(cern.accsoft.commons.util.Named):
     def setTime(self, contextSettings: cern.lsa.domain.settings.ContextSettings, double: float) -> None: ...
 
 class LktimTree(cern.lsa.domain.commons.IdentifiedEntity, cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.cern.settings.lktim.LktimTree'
+    
+        Interfaces:
+            cern.lsa.domain.commons.IdentifiedEntity,
+            cern.accsoft.commons.util.Named
+    
+    """
     def getErrorMessages(self) -> java.util.Set[str]: ...
     def getName(self) -> str: ...
     def getNode(self, string: str) -> 'LktimTreeNode': ...
@@ -29,6 +45,13 @@ class LktimTree(cern.lsa.domain.commons.IdentifiedEntity, cern.accsoft.commons.u
     def isValid(self) -> bool: ...
 
 class LktimTreeNode(cern.accsoft.commons.util.Named, java.lang.Comparable['LktimTreeNode']):
+    """
+    Java class 'cern.lsa.domain.cern.settings.lktim.LktimTreeNode'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named, java.lang.Comparable
+    
+    """
     @typing.overload
     def addChild(self, lktimTreeNode: 'LktimTreeNode') -> None: ...
     @typing.overload
@@ -48,6 +71,10 @@ class LktimTreeNode(cern.accsoft.commons.util.Named, java.lang.Comparable['Lktim
     def setDescription(self, string: str) -> None: ...
 
 class LktimTreeSettings:
+    """
+    Java class 'cern.lsa.domain.cern.settings.lktim.LktimTreeSettings'
+    
+    """
     def getActiveTreeId(self, lktimTreeNode: LktimTreeNode) -> int: ...
     def getContext(self) -> cern.lsa.domain.settings.StandAloneCycle: ...
     def getContextSettings(self) -> cern.lsa.domain.settings.ContextSettings: ...
@@ -64,6 +91,19 @@ class LktimTreeSettings:
     def statusHasChanged(self) -> bool: ...
 
 class LktimTreeStatus(java.lang.Enum['LktimTreeStatus']):
+    """
+    Java class 'cern.lsa.domain.cern.settings.lktim.LktimTreeStatus'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        IN_USE (cern.lsa.domain.cern.settings.lktim.LktimTreeStatus): final static enum constant
+        NOT_IN_USE (cern.lsa.domain.cern.settings.lktim.LktimTreeStatus): final static enum constant
+        NOT_USABLE (cern.lsa.domain.cern.settings.lktim.LktimTreeStatus): final static enum constant
+        ERROR (cern.lsa.domain.cern.settings.lktim.LktimTreeStatus): final static enum constant
+    
+    """
     IN_USE: typing.ClassVar['LktimTreeStatus'] = ...
     NOT_IN_USE: typing.ClassVar['LktimTreeStatus'] = ...
     NOT_USABLE: typing.ClassVar['LktimTreeStatus'] = ...
@@ -79,6 +119,20 @@ class LktimTreeStatus(java.lang.Enum['LktimTreeStatus']):
     def values() -> typing.List['LktimTreeStatus']: ...
 
 class NodeAdditionCheckResult(java.lang.Enum['NodeAdditionCheckResult']):
+    """
+    Java class 'cern.lsa.domain.cern.settings.lktim.NodeAdditionCheckResult'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        OK (cern.lsa.domain.cern.settings.lktim.NodeAdditionCheckResult): final static enum constant
+        DEVICE_ALREADY_IN_THE_TREE (cern.lsa.domain.cern.settings.lktim.NodeAdditionCheckResult): final static enum constant
+        CANNOT_ADD_TO_HISTORICAL_TREE (cern.lsa.domain.cern.settings.lktim.NodeAdditionCheckResult): final static enum constant
+        UNSUPPORTED_DEVICE (cern.lsa.domain.cern.settings.lktim.NodeAdditionCheckResult): final static enum constant
+        DEVICE_BELONGS_TO_ACTIVE_TREE (cern.lsa.domain.cern.settings.lktim.NodeAdditionCheckResult): final static enum constant
+    
+    """
     OK: typing.ClassVar['NodeAdditionCheckResult'] = ...
     DEVICE_ALREADY_IN_THE_TREE: typing.ClassVar['NodeAdditionCheckResult'] = ...
     CANNOT_ADD_TO_HISTORICAL_TREE: typing.ClassVar['NodeAdditionCheckResult'] = ...
@@ -94,3 +148,14 @@ class NodeAdditionCheckResult(java.lang.Enum['NodeAdditionCheckResult']):
     def valueOf(class_: typing.Type[_valueOf_1__T], string: str) -> _valueOf_1__T: ...
     @staticmethod
     def values() -> typing.List['NodeAdditionCheckResult']: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.cern.settings.lktim")``.
+
+    LktimDevice: typing.Type[LktimDevice]
+    LktimTree: typing.Type[LktimTree]
+    LktimTreeNode: typing.Type[LktimTreeNode]
+    LktimTreeSettings: typing.Type[LktimTreeSettings]
+    LktimTreeStatus: typing.Type[LktimTreeStatus]
+    NodeAdditionCheckResult: typing.Type[NodeAdditionCheckResult]

@@ -1,9 +1,20 @@
 import java.lang
+import java.nio.channels
+import java.nio.charset
+import java.nio.file
 import java.util.stream
 import typing
 
 
+
 class Buffer:
+    """
+    Java class 'java.nio.Buffer'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     def array(self) -> typing.Any: ...
     def arrayOffset(self) -> int: ...
     def capacity(self) -> int: ...
@@ -29,12 +40,43 @@ class Buffer:
     def slice(self) -> 'Buffer': ...
 
 class BufferOverflowException(java.lang.RuntimeException):
+    """
+    Java class 'java.nio.BufferOverflowException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * BufferOverflowException()
+    
+    """
     def __init__(self): ...
 
 class BufferUnderflowException(java.lang.RuntimeException):
+    """
+    Java class 'java.nio.BufferUnderflowException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * BufferUnderflowException()
+    
+    """
     def __init__(self): ...
 
 class ByteOrder:
+    """
+    Java class 'java.nio.ByteOrder'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        BIG_ENDIAN (java.nio.ByteOrder): final static field
+        LITTLE_ENDIAN (java.nio.ByteOrder): final static field
+    
+    """
     BIG_ENDIAN: typing.ClassVar['ByteOrder'] = ...
     LITTLE_ENDIAN: typing.ClassVar['ByteOrder'] = ...
     @staticmethod
@@ -42,12 +84,42 @@ class ByteOrder:
     def toString(self) -> str: ...
 
 class InvalidMarkException(java.lang.IllegalStateException):
+    """
+    Java class 'java.nio.InvalidMarkException'
+    
+        Extends:
+            java.lang.IllegalStateException
+    
+      Constructors:
+        * InvalidMarkException()
+    
+    """
     def __init__(self): ...
 
 class ReadOnlyBufferException(java.lang.UnsupportedOperationException):
+    """
+    Java class 'java.nio.ReadOnlyBufferException'
+    
+        Extends:
+            java.lang.UnsupportedOperationException
+    
+      Constructors:
+        * ReadOnlyBufferException()
+    
+    """
     def __init__(self): ...
 
 class ByteBuffer(Buffer, java.lang.Comparable['ByteBuffer']):
+    """
+    Java class 'java.nio.ByteBuffer'
+    
+        Extends:
+            java.nio.Buffer
+    
+        Interfaces:
+            java.lang.Comparable
+    
+    """
     def alignedSlice(self, int: int) -> 'ByteBuffer': ...
     def alignmentOffset(self, int: int, int2: int) -> int: ...
     @staticmethod
@@ -164,6 +236,17 @@ class ByteBuffer(Buffer, java.lang.Comparable['ByteBuffer']):
     def wrap(byteArray: typing.List[int], int: int, int2: int) -> 'ByteBuffer': ...
 
 class CharBuffer(Buffer, java.lang.Comparable['CharBuffer'], java.lang.Appendable, java.lang.CharSequence, java.lang.Readable):
+    """
+    Java class 'java.nio.CharBuffer'
+    
+        Extends:
+            java.nio.Buffer
+    
+        Interfaces:
+            java.lang.Comparable, java.lang.Appendable,
+            java.lang.CharSequence, java.lang.Readable
+    
+    """
     @staticmethod
     def allocate(int: int) -> 'CharBuffer': ...
     @typing.overload
@@ -240,6 +323,16 @@ class CharBuffer(Buffer, java.lang.Comparable['CharBuffer'], java.lang.Appendabl
     def wrap(charSequence: typing.Union[java.lang.CharSequence, str], int: int, int2: int) -> 'CharBuffer': ...
 
 class DoubleBuffer(Buffer, java.lang.Comparable['DoubleBuffer']):
+    """
+    Java class 'java.nio.DoubleBuffer'
+    
+        Extends:
+            java.nio.Buffer
+    
+        Interfaces:
+            java.lang.Comparable
+    
+    """
     @staticmethod
     def allocate(int: int) -> 'DoubleBuffer': ...
     def array(self) -> typing.List[float]: ...
@@ -295,6 +388,16 @@ class DoubleBuffer(Buffer, java.lang.Comparable['DoubleBuffer']):
     def wrap(doubleArray: typing.List[float], int: int, int2: int) -> 'DoubleBuffer': ...
 
 class FloatBuffer(Buffer, java.lang.Comparable['FloatBuffer']):
+    """
+    Java class 'java.nio.FloatBuffer'
+    
+        Extends:
+            java.nio.Buffer
+    
+        Interfaces:
+            java.lang.Comparable
+    
+    """
     @staticmethod
     def allocate(int: int) -> 'FloatBuffer': ...
     def array(self) -> typing.List[float]: ...
@@ -350,6 +453,16 @@ class FloatBuffer(Buffer, java.lang.Comparable['FloatBuffer']):
     def wrap(floatArray: typing.List[float], int: int, int2: int) -> 'FloatBuffer': ...
 
 class IntBuffer(Buffer, java.lang.Comparable['IntBuffer']):
+    """
+    Java class 'java.nio.IntBuffer'
+    
+        Extends:
+            java.nio.Buffer
+    
+        Interfaces:
+            java.lang.Comparable
+    
+    """
     @staticmethod
     def allocate(int: int) -> 'IntBuffer': ...
     def array(self) -> typing.List[int]: ...
@@ -405,6 +518,16 @@ class IntBuffer(Buffer, java.lang.Comparable['IntBuffer']):
     def wrap(intArray: typing.List[int], int2: int, int3: int) -> 'IntBuffer': ...
 
 class LongBuffer(Buffer, java.lang.Comparable['LongBuffer']):
+    """
+    Java class 'java.nio.LongBuffer'
+    
+        Extends:
+            java.nio.Buffer
+    
+        Interfaces:
+            java.lang.Comparable
+    
+    """
     @staticmethod
     def allocate(int: int) -> 'LongBuffer': ...
     def array(self) -> typing.List[int]: ...
@@ -460,6 +583,16 @@ class LongBuffer(Buffer, java.lang.Comparable['LongBuffer']):
     def wrap(longArray: typing.List[int], int: int, int2: int) -> 'LongBuffer': ...
 
 class ShortBuffer(Buffer, java.lang.Comparable['ShortBuffer']):
+    """
+    Java class 'java.nio.ShortBuffer'
+    
+        Extends:
+            java.nio.Buffer
+    
+        Interfaces:
+            java.lang.Comparable
+    
+    """
     @staticmethod
     def allocate(int: int) -> 'ShortBuffer': ...
     def array(self) -> typing.List[int]: ...
@@ -515,6 +648,13 @@ class ShortBuffer(Buffer, java.lang.Comparable['ShortBuffer']):
     def wrap(shortArray: typing.List[int], int: int, int2: int) -> 'ShortBuffer': ...
 
 class MappedByteBuffer(ByteBuffer):
+    """
+    Java class 'java.nio.MappedByteBuffer'
+    
+        Extends:
+            java.nio.ByteBuffer
+    
+    """
     def clear(self) -> 'MappedByteBuffer': ...
     def flip(self) -> 'MappedByteBuffer': ...
     def force(self) -> 'MappedByteBuffer': ...
@@ -531,3 +671,25 @@ class MappedByteBuffer(ByteBuffer):
     def position(self, int: int) -> 'MappedByteBuffer': ...
     def reset(self) -> 'MappedByteBuffer': ...
     def rewind(self) -> 'MappedByteBuffer': ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.nio")``.
+
+    Buffer: typing.Type[Buffer]
+    BufferOverflowException: typing.Type[BufferOverflowException]
+    BufferUnderflowException: typing.Type[BufferUnderflowException]
+    ByteBuffer: typing.Type[ByteBuffer]
+    ByteOrder: typing.Type[ByteOrder]
+    CharBuffer: typing.Type[CharBuffer]
+    DoubleBuffer: typing.Type[DoubleBuffer]
+    FloatBuffer: typing.Type[FloatBuffer]
+    IntBuffer: typing.Type[IntBuffer]
+    InvalidMarkException: typing.Type[InvalidMarkException]
+    LongBuffer: typing.Type[LongBuffer]
+    MappedByteBuffer: typing.Type[MappedByteBuffer]
+    ReadOnlyBufferException: typing.Type[ReadOnlyBufferException]
+    ShortBuffer: typing.Type[ShortBuffer]
+    channels: java.nio.channels.__module_protocol__
+    charset: java.nio.charset.__module_protocol__
+    file: java.nio.file.__module_protocol__

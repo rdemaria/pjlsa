@@ -6,7 +6,23 @@ import java.util
 import typing
 
 
+
 class OfbKnobOverlayImpl(cern.lsa.domain.cern.optics.ofb.OfbKnobOverlay, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.optics.spi.ofb.OfbKnobOverlayImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.optics.ofb.OfbKnobOverlay,
+            java.io.Serializable
+    
+      Constructors:
+        * OfbKnobOverlayImpl()
+        * OfbKnobOverlayImpl(java.lang.Long, java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -20,6 +36,22 @@ class OfbKnobOverlayImpl(cern.lsa.domain.cern.optics.ofb.OfbKnobOverlay, java.io
     def toString(self) -> str: ...
 
 class OfbMonitorReadingImpl(cern.lsa.domain.cern.optics.ofb.OfbMonitorReading, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.optics.spi.ofb.OfbMonitorReadingImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.optics.ofb.OfbMonitorReading,
+            java.io.Serializable
+    
+      Constructors:
+        * OfbMonitorReadingImpl(java.lang.String, double, double, boolean, double, boolean)
+        * OfbMonitorReadingImpl(java.lang.String, double, double, double)
+        * OfbMonitorReadingImpl()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -43,6 +75,20 @@ class OfbMonitorReadingImpl(cern.lsa.domain.cern.optics.ofb.OfbMonitorReading, j
     def toString(self) -> str: ...
 
 class OfbOpticsTableItemImpl(cern.lsa.domain.optics.spi.OpticsTableItemImpl, cern.lsa.domain.cern.optics.ofb.OfbOpticsTableItem):
+    """
+    Java class 'cern.lsa.domain.cern.optics.spi.ofb.OfbOpticsTableItemImpl'
+    
+        Extends:
+            cern.lsa.domain.optics.spi.OpticsTableItemImpl
+    
+        Interfaces:
+            cern.lsa.domain.cern.optics.ofb.OfbOpticsTableItem
+    
+      Constructors:
+        * OfbOpticsTableItemImpl()
+        * OfbOpticsTableItemImpl(java.lang.String, int, double, long, java.lang.String, boolean, cern.lsa.domain.cern.optics.ofb.OfbOrbit)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -56,6 +102,20 @@ class OfbOpticsTableItemImpl(cern.lsa.domain.optics.spi.OpticsTableItemImpl, cer
     def toString(self) -> str: ...
 
 class OfbOrbitImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity[cern.lsa.domain.cern.optics.ofb.OfbOrbit], cern.lsa.domain.cern.optics.ofb.OfbOrbit):
+    """
+    Java class 'cern.lsa.domain.cern.optics.spi.ofb.OfbOrbitImpl'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity
+    
+        Interfaces:
+            cern.lsa.domain.cern.optics.ofb.OfbOrbit
+    
+      Constructors:
+        * OfbOrbitImpl(java.lang.String)
+        * OfbOrbitImpl(long, java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
@@ -77,6 +137,20 @@ class OfbOrbitImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity[cer
     def toString(self) -> str: ...
 
 class OfbReadingSetImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity[cern.lsa.domain.cern.optics.ofb.OfbReadingSet], cern.lsa.domain.cern.optics.ofb.OfbReadingSet):
+    """
+    Java class 'cern.lsa.domain.cern.optics.spi.ofb.OfbReadingSetImpl'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity
+    
+        Interfaces:
+            cern.lsa.domain.cern.optics.ofb.OfbReadingSet
+    
+      Constructors:
+        * OfbReadingSetImpl(java.lang.String)
+        * OfbReadingSetImpl(long, java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
@@ -89,6 +163,21 @@ class OfbReadingSetImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntit
     def toString(self) -> str: ...
 
 class OfbStaticOverlayImpl(cern.lsa.domain.cern.optics.ofb.OfbStaticOverlay, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.cern.optics.spi.ofb.OfbStaticOverlayImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.cern.optics.ofb.OfbStaticOverlay,
+            java.io.Serializable
+    
+      Constructors:
+        * OfbStaticOverlayImpl()
+        * OfbStaticOverlayImpl(cern.lsa.domain.cern.optics.ofb.OfbReadingSet, double)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -98,3 +187,14 @@ class OfbStaticOverlayImpl(cern.lsa.domain.cern.optics.ofb.OfbStaticOverlay, jav
     def setReadingSet(self, ofbReadingSet: cern.lsa.domain.cern.optics.ofb.OfbReadingSet) -> None: ...
     def setScaling(self, double: float) -> None: ...
     def toString(self) -> str: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.cern.optics.spi.ofb")``.
+
+    OfbKnobOverlayImpl: typing.Type[OfbKnobOverlayImpl]
+    OfbMonitorReadingImpl: typing.Type[OfbMonitorReadingImpl]
+    OfbOpticsTableItemImpl: typing.Type[OfbOpticsTableItemImpl]
+    OfbOrbitImpl: typing.Type[OfbOrbitImpl]
+    OfbReadingSetImpl: typing.Type[OfbReadingSetImpl]
+    OfbStaticOverlayImpl: typing.Type[OfbStaticOverlayImpl]

@@ -4,7 +4,12 @@ import java.io
 import typing
 
 
+
 class ParameterTypeRelation:
+    """
+    Java class 'cern.lsa.domain.settings.parameter.type.relation.ParameterTypeRelation'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParameterTypeRelation.Builder': ...
     def getDependentParameterType(self) -> cern.lsa.domain.settings.ParameterType: ...
@@ -12,12 +17,20 @@ class ParameterTypeRelation:
     def getSourceParameterType(self) -> cern.lsa.domain.settings.ParameterType: ...
 
 class ParameterTypeRelationInfo:
+    """
+    Java class 'cern.lsa.domain.settings.parameter.type.relation.ParameterTypeRelationInfo'
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParameterTypeRelationInfo.Builder': ...
     def getMakeRuleName(self) -> str: ...
     def getParameterTypeRelation(self) -> ParameterTypeRelation: ...
 
 class ParameterTypeRelationInfosRequest:
+    """
+    Java class 'cern.lsa.domain.settings.parameter.type.relation.ParameterTypeRelationInfosRequest'
+    
+    """
     @staticmethod
     def all() -> 'ParameterTypeRelationInfosRequest': ...
     @staticmethod
@@ -30,6 +43,17 @@ class ParameterTypeRelationInfosRequest:
     def getParticleTransfer(self) -> cern.accsoft.commons.domain.particletransfers.ParticleTransfer: ...
 
 class DefaultParameterTypeRelation(ParameterTypeRelation, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.settings.parameter.type.relation.DefaultParameterTypeRelation'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.settings.parameter.type.relation.ParameterType
+            Relation, java.io.Serializable
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParameterTypeRelation.Builder': ...
     @staticmethod
@@ -44,12 +68,30 @@ class DefaultParameterTypeRelation(ParameterTypeRelation, java.io.Serializable):
     def withParticleTransfer(self, particleTransfer: cern.accsoft.commons.domain.particletransfers.ParticleTransfer) -> 'DefaultParameterTypeRelation': ...
     def withSourceParameterType(self, parameterType: cern.lsa.domain.settings.ParameterType) -> 'DefaultParameterTypeRelation': ...
     class Builder:
+        """
+        Java class 'cern.lsa.domain.settings.parameter.type.relation.DefaultParameterTypeRelation$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultParameterTypeRelation': ...
         def dependentParameterType(self, parameterType: cern.lsa.domain.settings.ParameterType) -> 'DefaultParameterTypeRelation.Builder': ...
         def particleTransfer(self, particleTransfer: cern.accsoft.commons.domain.particletransfers.ParticleTransfer) -> 'DefaultParameterTypeRelation.Builder': ...
         def sourceParameterType(self, parameterType: cern.lsa.domain.settings.ParameterType) -> 'DefaultParameterTypeRelation.Builder': ...
 
 class DefaultParameterTypeRelationInfo(ParameterTypeRelationInfo, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.settings.parameter.type.relation.DefaultParameterTypeRelationInfo'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.settings.parameter.type.relation.ParameterType
+            RelationInfo, java.io.Serializable
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParameterTypeRelationInfo.Builder': ...
     @staticmethod
@@ -62,11 +104,29 @@ class DefaultParameterTypeRelationInfo(ParameterTypeRelationInfo, java.io.Serial
     def withMakeRuleName(self, string: str) -> 'DefaultParameterTypeRelationInfo': ...
     def withParameterTypeRelation(self, parameterTypeRelation: ParameterTypeRelation) -> 'DefaultParameterTypeRelationInfo': ...
     class Builder:
+        """
+        Java class 'cern.lsa.domain.settings.parameter.type.relation.DefaultParameterTypeRelationInfo$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultParameterTypeRelationInfo': ...
         def makeRuleName(self, string: str) -> 'DefaultParameterTypeRelationInfo.Builder': ...
         def parameterTypeRelation(self, parameterTypeRelation: ParameterTypeRelation) -> 'DefaultParameterTypeRelationInfo.Builder': ...
 
 class DefaultParameterTypeRelationInfosRequest(ParameterTypeRelationInfosRequest, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.settings.parameter.type.relation.DefaultParameterTypeRelationInfosRequest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.settings.parameter.type.relation.ParameterType
+            RelationInfosRequest, java.io.Serializable
+    
+    """
     @staticmethod
     def builder() -> 'DefaultParameterTypeRelationInfosRequest.Builder': ...
     @staticmethod
@@ -79,6 +139,24 @@ class DefaultParameterTypeRelationInfosRequest(ParameterTypeRelationInfosRequest
     def withMakeRuleName(self, string: str) -> 'DefaultParameterTypeRelationInfosRequest': ...
     def withParticleTransfer(self, particleTransfer: cern.accsoft.commons.domain.particletransfers.ParticleTransfer) -> 'DefaultParameterTypeRelationInfosRequest': ...
     class Builder:
+        """
+        Java class 'cern.lsa.domain.settings.parameter.type.relation.DefaultParameterTypeRelationInfosRequest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
         def build(self) -> 'DefaultParameterTypeRelationInfosRequest': ...
         def makeRuleName(self, string: str) -> 'DefaultParameterTypeRelationInfosRequest.Builder': ...
         def particleTransfer(self, particleTransfer: cern.accsoft.commons.domain.particletransfers.ParticleTransfer) -> 'DefaultParameterTypeRelationInfosRequest.Builder': ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.settings.parameter.type.relation")``.
+
+    DefaultParameterTypeRelation: typing.Type[DefaultParameterTypeRelation]
+    DefaultParameterTypeRelationInfo: typing.Type[DefaultParameterTypeRelationInfo]
+    DefaultParameterTypeRelationInfosRequest: typing.Type[DefaultParameterTypeRelationInfosRequest]
+    ParameterTypeRelation: typing.Type[ParameterTypeRelation]
+    ParameterTypeRelationInfo: typing.Type[ParameterTypeRelationInfo]
+    ParameterTypeRelationInfosRequest: typing.Type[ParameterTypeRelationInfosRequest]

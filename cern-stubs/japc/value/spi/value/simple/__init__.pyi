@@ -5,7 +5,22 @@ import java.lang
 import typing
 
 
+
 class AbstractMapSimpleValue(cern.japc.value.spi.value.core.ParameterValueImpl, cern.japc.value.SimpleParameterValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.AbstractMapSimpleValue'
+    
+        Extends:
+            cern.japc.value.spi.value.core.ParameterValueImpl
+    
+        Interfaces:
+            cern.japc.value.SimpleParameterValue, java.io.Serializable,
+            java.lang.Cloneable
+    
+      Constructors:
+        * AbstractMapSimpleValue()
+    
+    """
     def __init__(self): ...
     def get(self, string: str) -> cern.japc.value.SimpleParameterValue: ...
     @typing.overload
@@ -411,6 +426,19 @@ class AbstractMapSimpleValue(cern.japc.value.spi.value.core.ParameterValueImpl, 
     def size(self) -> int: ...
 
 class Array2DImpl(cern.japc.value.Array2D, java.io.Serializable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.Array2DImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.value.Array2D, java.io.Serializable
+    
+      Constructors:
+        * Array2DImpl(cern.japc.value.SimpleParameterValue, int[])
+    
+    """
     def __init__(self, simpleParameterValue: cern.japc.value.SimpleParameterValue, intArray: typing.List[int]): ...
     def getArray1D(self) -> typing.Any: ...
     def getBoolean(self, int: int, int2: int) -> bool: ...
@@ -459,6 +487,16 @@ class Array2DImpl(cern.japc.value.Array2D, java.io.Serializable):
     def toString(self) -> str: ...
 
 class ObsoleteFunctionCodec:
+    """
+    Java class 'cern.japc.value.spi.value.simple.ObsoleteFunctionCodec'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ObsoleteFunctionCodec()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def convertToDiscreteFunction(doubleArray: typing.List[float]) -> cern.japc.value.DiscreteFunction: ...
@@ -472,6 +510,10 @@ class ObsoleteFunctionCodec:
     def convertToDoubleArray(discreteFunctionList: cern.japc.value.DiscreteFunctionList) -> typing.List[float]: ...
 
 class UpdatableParameterValue:
+    """
+    Java class 'cern.japc.value.spi.value.simple.UpdatableParameterValue'
+    
+    """
     def setMaxValue(self, double: float) -> None: ...
     def setMinValue(self, double: float) -> None: ...
     def setString(self, string: str) -> None: ...
@@ -484,6 +526,13 @@ class UpdatableParameterValue:
     def setYUnit(self, string: str) -> None: ...
 
 class ValueConverter:
+    """
+    Java class 'cern.japc.value.spi.value.simple.ValueConverter'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def conversionNotPossibleException(valueType: cern.japc.value.ValueType, valueType2: cern.japc.value.ValueType) -> cern.japc.value.ValueConversionException: ...
     @typing.overload
@@ -1264,6 +1313,21 @@ class ValueConverter:
     def convertToStringArray(shortArray: typing.List[int]) -> typing.List[str]: ...
 
 class AbstractSimpleValue(AbstractMapSimpleValue, cern.japc.value.SimpleParameterValue, UpdatableParameterValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.AbstractSimpleValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractMapSimpleValue
+    
+        Interfaces:
+            cern.japc.value.SimpleParameterValue,
+            cern.japc.value.spi.value.simple.UpdatableParameterValue,
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * AbstractSimpleValue(cern.japc.value.ValueType)
+    
+    """
     def __init__(self, valueType: cern.japc.value.ValueType): ...
     def equals(self, object: typing.Any) -> bool: ...
     @typing.overload
@@ -1390,6 +1454,20 @@ class AbstractSimpleValue(AbstractMapSimpleValue, cern.japc.value.SimpleParamete
     def toString(self) -> str: ...
 
 class AbstractArrayValue(AbstractSimpleValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.AbstractArrayValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractSimpleValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * AbstractArrayValue(cern.japc.value.ValueType, int)
+        * AbstractArrayValue(cern.japc.value.ValueType)
+    
+    """
     @typing.overload
     def __init__(self, valueType: cern.japc.value.ValueType): ...
     @typing.overload
@@ -1734,6 +1812,19 @@ class AbstractArrayValue(AbstractSimpleValue, java.io.Serializable, java.lang.Cl
     def setStrings2D(self, string: str, stringArray: typing.List[str], intArray: typing.List[int]) -> None: ...
 
 class AbstractScalarValue(AbstractSimpleValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.AbstractScalarValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractSimpleValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * AbstractScalarValue(cern.japc.value.ValueType)
+    
+    """
     def __init__(self, valueType: cern.japc.value.ValueType): ...
     @typing.overload
     def getArray2D(self, string: str) -> cern.japc.value.Array2D: ...
@@ -2019,6 +2110,21 @@ class AbstractScalarValue(AbstractSimpleValue, java.io.Serializable, java.lang.C
     def setStrings2D(self, stringArray: typing.List[str], intArray: typing.List[int]) -> None: ...
 
 class BooleanArrayValue(AbstractArrayValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.BooleanArrayValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractArrayValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * BooleanArrayValue(boolean[], int[])
+        * BooleanArrayValue(boolean[])
+        * BooleanArrayValue()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2179,6 +2285,20 @@ class BooleanArrayValue(AbstractArrayValue, java.io.Serializable, java.lang.Clon
     def setString(self, int: int, string: str) -> None: ...
 
 class BooleanValue(AbstractScalarValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.BooleanValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractScalarValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * BooleanValue(boolean)
+        * BooleanValue()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2363,6 +2483,21 @@ class BooleanValue(AbstractScalarValue, java.io.Serializable, java.lang.Cloneabl
     def setString(self, string: str) -> None: ...
 
 class ByteArrayValue(AbstractArrayValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.ByteArrayValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractArrayValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * ByteArrayValue(byte[], int[])
+        * ByteArrayValue(byte[])
+        * ByteArrayValue()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2523,6 +2658,20 @@ class ByteArrayValue(AbstractArrayValue, java.io.Serializable, java.lang.Cloneab
     def setString(self, string: str) -> None: ...
 
 class ByteValue(AbstractScalarValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.ByteValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractScalarValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * ByteValue(byte)
+        * ByteValue()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2707,6 +2856,20 @@ class ByteValue(AbstractScalarValue, java.io.Serializable, java.lang.Cloneable):
     def setString(self, string: str) -> None: ...
 
 class DiscreteFunctionListValue(AbstractScalarValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.DiscreteFunctionListValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractScalarValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * DiscreteFunctionListValue(cern.japc.value.DiscreteFunctionList)
+        * DiscreteFunctionListValue()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2992,6 +3155,20 @@ class DiscreteFunctionListValue(AbstractScalarValue, java.io.Serializable, java.
     def setStrings(self, stringArray: typing.List[str]) -> None: ...
 
 class DiscreteFunctionValue(AbstractScalarValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.DiscreteFunctionValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractScalarValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * DiscreteFunctionValue(cern.japc.value.DiscreteFunction)
+        * DiscreteFunctionValue()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3277,6 +3454,21 @@ class DiscreteFunctionValue(AbstractScalarValue, java.io.Serializable, java.lang
     def setStrings(self, stringArray: typing.List[str]) -> None: ...
 
 class DoubleArrayValue(AbstractArrayValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.DoubleArrayValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractArrayValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * DoubleArrayValue(double[], int[])
+        * DoubleArrayValue(double[])
+        * DoubleArrayValue()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3453,6 +3645,20 @@ class DoubleArrayValue(AbstractArrayValue, java.io.Serializable, java.lang.Clone
     def setString(self, int: int, string: str) -> None: ...
 
 class DoubleValue(AbstractScalarValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.DoubleValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractScalarValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * DoubleValue(double)
+        * DoubleValue()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3637,6 +3843,22 @@ class DoubleValue(AbstractScalarValue, java.io.Serializable, java.lang.Cloneable
     def setString(self, string: str) -> None: ...
 
 class EnumArrayValue(AbstractArrayValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.EnumArrayValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractArrayValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * EnumArrayValue(cern.japc.value.EnumItem[])
+        * EnumArrayValue(cern.japc.value.EnumItem[], int[])
+        * EnumArrayValue()
+        * EnumArrayValue(cern.japc.value.EnumType)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3808,6 +4030,22 @@ class EnumArrayValue(AbstractArrayValue, java.io.Serializable, java.lang.Cloneab
     def setString(self, string: str) -> None: ...
 
 class EnumSetArrayValue(AbstractArrayValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.EnumSetArrayValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractArrayValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * EnumSetArrayValue(cern.japc.value.EnumItemSet[])
+        * EnumSetArrayValue(cern.japc.value.EnumItemSet[], int[])
+        * EnumSetArrayValue()
+        * EnumSetArrayValue(cern.japc.value.EnumType)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3979,6 +4217,21 @@ class EnumSetArrayValue(AbstractArrayValue, java.io.Serializable, java.lang.Clon
     def setString(self, string: str) -> None: ...
 
 class EnumSetValue(AbstractScalarValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.EnumSetValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractScalarValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * EnumSetValue(cern.japc.value.EnumItemSet)
+        * EnumSetValue(cern.japc.value.EnumType)
+        * EnumSetValue()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -4266,6 +4519,21 @@ class EnumSetValue(AbstractScalarValue, java.io.Serializable, java.lang.Cloneabl
     def setStrings(self, stringArray: typing.List[str]) -> None: ...
 
 class EnumValue(AbstractScalarValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.EnumValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractScalarValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * EnumValue(cern.japc.value.EnumItem)
+        * EnumValue(cern.japc.value.EnumType)
+        * EnumValue()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -4552,6 +4820,21 @@ class EnumValue(AbstractScalarValue, java.io.Serializable, java.lang.Cloneable):
     def setStrings(self, stringArray: typing.List[str]) -> None: ...
 
 class FloatArrayValue(AbstractArrayValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.FloatArrayValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractArrayValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * FloatArrayValue(float[], int[])
+        * FloatArrayValue(float[])
+        * FloatArrayValue()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -4712,6 +4995,20 @@ class FloatArrayValue(AbstractArrayValue, java.io.Serializable, java.lang.Clonea
     def setString(self, int: int, string: str) -> None: ...
 
 class FloatValue(AbstractScalarValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.FloatValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractScalarValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * FloatValue(float)
+        * FloatValue()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -4896,6 +5193,21 @@ class FloatValue(AbstractScalarValue, java.io.Serializable, java.lang.Cloneable)
     def setString(self, string: str) -> None: ...
 
 class IntArrayValue(AbstractArrayValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.IntArrayValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractArrayValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * IntArrayValue(int[], int[])
+        * IntArrayValue(int[])
+        * IntArrayValue()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -5056,6 +5368,20 @@ class IntArrayValue(AbstractArrayValue, java.io.Serializable, java.lang.Cloneabl
     def setString(self, int: int, string: str) -> None: ...
 
 class IntValue(AbstractScalarValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.IntValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractScalarValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * IntValue(int)
+        * IntValue()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -5240,6 +5566,21 @@ class IntValue(AbstractScalarValue, java.io.Serializable, java.lang.Cloneable):
     def setString(self, string: str) -> None: ...
 
 class LongArrayValue(AbstractArrayValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.LongArrayValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractArrayValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * LongArrayValue(long[], int[])
+        * LongArrayValue(long[])
+        * LongArrayValue()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -5400,6 +5741,20 @@ class LongArrayValue(AbstractArrayValue, java.io.Serializable, java.lang.Cloneab
     def setString(self, int: int, string: str) -> None: ...
 
 class LongValue(AbstractScalarValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.LongValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractScalarValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * LongValue(long)
+        * LongValue()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -5584,6 +5939,21 @@ class LongValue(AbstractScalarValue, java.io.Serializable, java.lang.Cloneable):
     def setString(self, string: str) -> None: ...
 
 class ShortArrayValue(AbstractArrayValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.ShortArrayValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractArrayValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * ShortArrayValue(short[], int[])
+        * ShortArrayValue(short[])
+        * ShortArrayValue()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -5744,6 +6114,20 @@ class ShortArrayValue(AbstractArrayValue, java.io.Serializable, java.lang.Clonea
     def setString(self, int: int, string: str) -> None: ...
 
 class ShortValue(AbstractScalarValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.ShortValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractScalarValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * ShortValue(short)
+        * ShortValue()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -5928,6 +6312,21 @@ class ShortValue(AbstractScalarValue, java.io.Serializable, java.lang.Cloneable)
     def setString(self, string: str) -> None: ...
 
 class StringArrayValue(AbstractArrayValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.StringArrayValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractArrayValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * StringArrayValue(java.lang.String[], int[])
+        * StringArrayValue(java.lang.String[])
+        * StringArrayValue()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -6096,6 +6495,20 @@ class StringArrayValue(AbstractArrayValue, java.io.Serializable, java.lang.Clone
     def setString(self, int: int, string: str) -> None: ...
 
 class StringValue(AbstractScalarValue, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.japc.value.spi.value.simple.StringValue'
+    
+        Extends:
+            cern.japc.value.spi.value.simple.AbstractScalarValue
+    
+        Interfaces:
+            java.io.Serializable, java.lang.Cloneable
+    
+      Constructors:
+        * StringValue(java.lang.String)
+        * StringValue()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -6306,3 +6719,38 @@ class StringValue(AbstractScalarValue, java.io.Serializable, java.lang.Cloneable
     def setString(self, int: int, string: str) -> None: ...
     @typing.overload
     def setString(self, string: str) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.japc.value.spi.value.simple")``.
+
+    AbstractArrayValue: typing.Type[AbstractArrayValue]
+    AbstractMapSimpleValue: typing.Type[AbstractMapSimpleValue]
+    AbstractScalarValue: typing.Type[AbstractScalarValue]
+    AbstractSimpleValue: typing.Type[AbstractSimpleValue]
+    Array2DImpl: typing.Type[Array2DImpl]
+    BooleanArrayValue: typing.Type[BooleanArrayValue]
+    BooleanValue: typing.Type[BooleanValue]
+    ByteArrayValue: typing.Type[ByteArrayValue]
+    ByteValue: typing.Type[ByteValue]
+    DiscreteFunctionListValue: typing.Type[DiscreteFunctionListValue]
+    DiscreteFunctionValue: typing.Type[DiscreteFunctionValue]
+    DoubleArrayValue: typing.Type[DoubleArrayValue]
+    DoubleValue: typing.Type[DoubleValue]
+    EnumArrayValue: typing.Type[EnumArrayValue]
+    EnumSetArrayValue: typing.Type[EnumSetArrayValue]
+    EnumSetValue: typing.Type[EnumSetValue]
+    EnumValue: typing.Type[EnumValue]
+    FloatArrayValue: typing.Type[FloatArrayValue]
+    FloatValue: typing.Type[FloatValue]
+    IntArrayValue: typing.Type[IntArrayValue]
+    IntValue: typing.Type[IntValue]
+    LongArrayValue: typing.Type[LongArrayValue]
+    LongValue: typing.Type[LongValue]
+    ObsoleteFunctionCodec: typing.Type[ObsoleteFunctionCodec]
+    ShortArrayValue: typing.Type[ShortArrayValue]
+    ShortValue: typing.Type[ShortValue]
+    StringArrayValue: typing.Type[StringArrayValue]
+    StringValue: typing.Type[StringValue]
+    UpdatableParameterValue: typing.Type[UpdatableParameterValue]
+    ValueConverter: typing.Type[ValueConverter]

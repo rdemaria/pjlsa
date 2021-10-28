@@ -5,13 +5,35 @@ import java.util
 import typing
 
 
+
 class ParticleTransfer(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.accsoft.commons.domain.particletransfers.ParticleTransfer'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def getAccelerator(self) -> cern.accsoft.commons.domain.Accelerator: ...
     def getAcceleratorZones(self) -> java.util.List[cern.accsoft.commons.domain.zones.AcceleratorZone]: ...
     def getDescription(self) -> str: ...
     def getParticleTransferType(self) -> 'ParticleTransferType': ...
 
 class ParticleTransferType(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['ParticleTransferType']):
+    """
+    Java class 'cern.accsoft.commons.domain.particletransfers.ParticleTransferType'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+      Attributes:
+        RING (cern.accsoft.commons.domain.particletransfers.ParticleTransferType): final static field
+        TRANSFER (cern.accsoft.commons.domain.particletransfers.ParticleTransferType): final static field
+        SOURCE (cern.accsoft.commons.domain.particletransfers.ParticleTransferType): final static field
+        EXPERIMENT (cern.accsoft.commons.domain.particletransfers.ParticleTransferType): final static field
+        COOLER (cern.accsoft.commons.domain.particletransfers.ParticleTransferType): final static field
+    
+    """
     RING: typing.ClassVar['ParticleTransferType'] = ...
     TRANSFER: typing.ClassVar['ParticleTransferType'] = ...
     SOURCE: typing.ClassVar['ParticleTransferType'] = ...
@@ -23,6 +45,19 @@ class ParticleTransferType(cern.accsoft.commons.util.AbstractImmutableNamedSeria
     def values() -> typing.List['ParticleTransferType']: ...
 
 class AdParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['AdParticleTransfer'], ParticleTransfer):
+    """
+    Java class 'cern.accsoft.commons.domain.particletransfers.AdParticleTransfer'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.particletransfers.ParticleTransfer
+    
+      Attributes:
+        ADRING (cern.accsoft.commons.domain.particletransfers.AdParticleTransfer): final static field
+    
+    """
     ADRING: typing.ClassVar['AdParticleTransfer'] = ...
     def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator: ...
     def getAcceleratorZones(self) -> java.util.List[cern.accsoft.commons.domain.zones.AcceleratorZone]: ...
@@ -34,6 +69,20 @@ class AdParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSeriali
     def values() -> typing.List['AdParticleTransfer']: ...
 
 class AwakeParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['AwakeParticleTransfer'], ParticleTransfer):
+    """
+    Java class 'cern.accsoft.commons.domain.particletransfers.AwakeParticleTransfer'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.particletransfers.ParticleTransfer
+    
+      Attributes:
+        AWAKE (cern.accsoft.commons.domain.particletransfers.AwakeParticleTransfer): final static field
+        AWAKEElectronTransfer (cern.accsoft.commons.domain.particletransfers.AwakeParticleTransfer): final static field
+    
+    """
     AWAKE: typing.ClassVar['AwakeParticleTransfer'] = ...
     AWAKEElectronTransfer: typing.ClassVar['AwakeParticleTransfer'] = ...
     def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator: ...
@@ -46,6 +95,19 @@ class AwakeParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSeri
     def values() -> typing.List['AwakeParticleTransfer']: ...
 
 class CtfParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['CtfParticleTransfer'], ParticleTransfer):
+    """
+    Java class 'cern.accsoft.commons.domain.particletransfers.CtfParticleTransfer'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.particletransfers.ParticleTransfer
+    
+      Attributes:
+        CTF (cern.accsoft.commons.domain.particletransfers.CtfParticleTransfer): final static field
+    
+    """
     CTF: typing.ClassVar['CtfParticleTransfer'] = ...
     def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator: ...
     def getAcceleratorZones(self) -> java.util.List[cern.accsoft.commons.domain.zones.AcceleratorZone]: ...
@@ -57,6 +119,29 @@ class CtfParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerial
     def values() -> typing.List['CtfParticleTransfer']: ...
 
 class ElenaParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['ElenaParticleTransfer'], ParticleTransfer):
+    """
+    Java class 'cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.particletransfers.ParticleTransfer
+    
+      Attributes:
+        ELENA (cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer): final static field
+        ElenaLNE00Extraction (cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer): final static field
+        LNE01Transfer (cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer): final static field
+        LNE02Transfer (cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer): final static field
+        LNE03Transfer (cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer): final static field
+        LNE04Transfer (cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer): final static field
+        LNE05Transfer (cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer): final static field
+        LNE06Transfer (cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer): final static field
+        LNE07Transfer (cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer): final static field
+        LNE50Transfer (cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer): final static field
+        LNE51Transfer (cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer): final static field
+    
+    """
     ELENA: typing.ClassVar['ElenaParticleTransfer'] = ...
     ElenaLNE00Extraction: typing.ClassVar['ElenaParticleTransfer'] = ...
     LNE01Transfer: typing.ClassVar['ElenaParticleTransfer'] = ...
@@ -78,6 +163,20 @@ class ElenaParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSeri
     def values() -> typing.List['ElenaParticleTransfer']: ...
 
 class IsoldeParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['IsoldeParticleTransfer'], ParticleTransfer):
+    """
+    Java class 'cern.accsoft.commons.domain.particletransfers.IsoldeParticleTransfer'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.particletransfers.ParticleTransfer
+    
+      Attributes:
+        ISOLDE (cern.accsoft.commons.domain.particletransfers.IsoldeParticleTransfer): final static field
+        HIE (cern.accsoft.commons.domain.particletransfers.IsoldeParticleTransfer): final static field
+    
+    """
     ISOLDE: typing.ClassVar['IsoldeParticleTransfer'] = ...
     HIE: typing.ClassVar['IsoldeParticleTransfer'] = ...
     def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator: ...
@@ -90,6 +189,22 @@ class IsoldeParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSer
     def values() -> typing.List['IsoldeParticleTransfer']: ...
 
 class LeirParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['LeirParticleTransfer'], ParticleTransfer):
+    """
+    Java class 'cern.accsoft.commons.domain.particletransfers.LeirParticleTransfer'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.particletransfers.ParticleTransfer
+    
+      Attributes:
+        LEIRRING (cern.accsoft.commons.domain.particletransfers.LeirParticleTransfer): final static field
+        LINAC3 (cern.accsoft.commons.domain.particletransfers.LeirParticleTransfer): final static field
+        LEIRInjection (cern.accsoft.commons.domain.particletransfers.LeirParticleTransfer): final static field
+        LEIREjection (cern.accsoft.commons.domain.particletransfers.LeirParticleTransfer): final static field
+    
+    """
     LEIRRING: typing.ClassVar['LeirParticleTransfer'] = ...
     LINAC3: typing.ClassVar['LeirParticleTransfer'] = ...
     LEIRInjection: typing.ClassVar['LeirParticleTransfer'] = ...
@@ -104,6 +219,19 @@ class LeirParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSeria
     def values() -> typing.List['LeirParticleTransfer']: ...
 
 class LhcParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['LhcParticleTransfer'], ParticleTransfer):
+    """
+    Java class 'cern.accsoft.commons.domain.particletransfers.LhcParticleTransfer'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.particletransfers.ParticleTransfer
+    
+      Attributes:
+        LHCRING (cern.accsoft.commons.domain.particletransfers.LhcParticleTransfer): final static field
+    
+    """
     LHCRING: typing.ClassVar['LhcParticleTransfer'] = ...
     def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator: ...
     def getAcceleratorZones(self) -> java.util.List[cern.accsoft.commons.domain.zones.AcceleratorZone]: ...
@@ -115,6 +243,28 @@ class LhcParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerial
     def values() -> typing.List['LhcParticleTransfer']: ...
 
 class NorthParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['NorthParticleTransfer'], ParticleTransfer):
+    """
+    Java class 'cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.particletransfers.ParticleTransfer
+    
+      Attributes:
+        H2 (cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer): final static field
+        H4 (cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer): final static field
+        H6 (cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer): final static field
+        H8 (cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer): final static field
+        K12 (cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer): final static field
+        M2 (cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer): final static field
+        T2 (cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer): final static field
+        T4 (cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer): final static field
+        T6 (cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer): final static field
+        T10 (cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer): final static field
+    
+    """
     H2: typing.ClassVar['NorthParticleTransfer'] = ...
     H4: typing.ClassVar['NorthParticleTransfer'] = ...
     H6: typing.ClassVar['NorthParticleTransfer'] = ...
@@ -135,6 +285,24 @@ class NorthParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSeri
     def values() -> typing.List['NorthParticleTransfer']: ...
 
 class PsParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['PsParticleTransfer'], ParticleTransfer):
+    """
+    Java class 'cern.accsoft.commons.domain.particletransfers.PsParticleTransfer'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.particletransfers.ParticleTransfer
+    
+      Attributes:
+        PSRING (cern.accsoft.commons.domain.particletransfers.PsParticleTransfer): final static field
+        PSExtractionTT2 (cern.accsoft.commons.domain.particletransfers.PsParticleTransfer): final static field
+        T08Transfer (cern.accsoft.commons.domain.particletransfers.PsParticleTransfer): final static field
+        T09Transfer (cern.accsoft.commons.domain.particletransfers.PsParticleTransfer): final static field
+        T11Transfer (cern.accsoft.commons.domain.particletransfers.PsParticleTransfer): final static field
+        PSExtractionEast (cern.accsoft.commons.domain.particletransfers.PsParticleTransfer): final static field
+    
+    """
     PSRING: typing.ClassVar['PsParticleTransfer'] = ...
     PSExtractionTT2: typing.ClassVar['PsParticleTransfer'] = ...
     T08Transfer: typing.ClassVar['PsParticleTransfer'] = ...
@@ -151,6 +319,26 @@ class PsParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSeriali
     def values() -> typing.List['PsParticleTransfer']: ...
 
 class PsbParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['PsbParticleTransfer'], ParticleTransfer):
+    """
+    Java class 'cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.particletransfers.ParticleTransfer
+    
+      Attributes:
+        LINAC4 (cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer): final static field
+        PSBInjection (cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer): final static field
+        PSBRING (cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer): final static field
+        PSBExtraction (cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer): final static field
+        PSTransfer (cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer): final static field
+        GPSTransfer (cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer): final static field
+        HRSTransfer (cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer): final static field
+        PSBDumpTransfer (cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer): final static field
+    
+    """
     LINAC4: typing.ClassVar['PsbParticleTransfer'] = ...
     PSBInjection: typing.ClassVar['PsbParticleTransfer'] = ...
     PSBRING: typing.ClassVar['PsbParticleTransfer'] = ...
@@ -169,6 +357,30 @@ class PsbParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerial
     def values() -> typing.List['PsbParticleTransfer']: ...
 
 class SpsParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['SpsParticleTransfer'], ParticleTransfer):
+    """
+    Java class 'cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.particletransfers.ParticleTransfer
+    
+      Attributes:
+        AWAKETransfer (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
+        EastExtraction (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
+        HiRadMatTransfer (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
+        LHCB1Transfer (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
+        LHCB2Transfer (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
+        NorthExtraction (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
+        SPSInjection (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
+        SPSRING (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
+        T2Transfer (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
+        T4Transfer (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
+        T6Transfer (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
+        WestExtraction (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
+    
+    """
     AWAKETransfer: typing.ClassVar['SpsParticleTransfer'] = ...
     EastExtraction: typing.ClassVar['SpsParticleTransfer'] = ...
     HiRadMatTransfer: typing.ClassVar['SpsParticleTransfer'] = ...
@@ -189,3 +401,21 @@ class SpsParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerial
     def valueOf(string: str) -> 'SpsParticleTransfer': ...
     @staticmethod
     def values() -> typing.List['SpsParticleTransfer']: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.accsoft.commons.domain.particletransfers")``.
+
+    AdParticleTransfer: typing.Type[AdParticleTransfer]
+    AwakeParticleTransfer: typing.Type[AwakeParticleTransfer]
+    CtfParticleTransfer: typing.Type[CtfParticleTransfer]
+    ElenaParticleTransfer: typing.Type[ElenaParticleTransfer]
+    IsoldeParticleTransfer: typing.Type[IsoldeParticleTransfer]
+    LeirParticleTransfer: typing.Type[LeirParticleTransfer]
+    LhcParticleTransfer: typing.Type[LhcParticleTransfer]
+    NorthParticleTransfer: typing.Type[NorthParticleTransfer]
+    ParticleTransfer: typing.Type[ParticleTransfer]
+    ParticleTransferType: typing.Type[ParticleTransferType]
+    PsParticleTransfer: typing.Type[PsParticleTransfer]
+    PsbParticleTransfer: typing.Type[PsbParticleTransfer]
+    SpsParticleTransfer: typing.Type[SpsParticleTransfer]

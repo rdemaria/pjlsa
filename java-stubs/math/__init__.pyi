@@ -6,7 +6,49 @@ import java.util
 import typing
 
 
+
 class BigDecimal(java.lang.Number, java.lang.Comparable['BigDecimal'], _JBigDecimal):
+    """
+    Java class 'java.math.BigDecimal'
+    
+        Extends:
+            java.lang.Number
+    
+        Interfaces:
+            java.lang.Comparable
+    
+      Constructors:
+        * BigDecimal(java.math.BigInteger, int)
+        * BigDecimal(java.math.BigInteger, java.math.MathContext)
+        * BigDecimal(java.math.BigInteger)
+        * BigDecimal(double, java.math.MathContext)
+        * BigDecimal(double)
+        * BigDecimal(long)
+        * BigDecimal(int, java.math.MathContext)
+        * BigDecimal(int)
+        * BigDecimal(java.math.BigInteger, int, java.math.MathContext)
+        * BigDecimal(long, java.math.MathContext)
+        * BigDecimal(char[], int, int, java.math.MathContext)
+        * BigDecimal(char[], int, int)
+        * BigDecimal(java.lang.String, java.math.MathContext)
+        * BigDecimal(java.lang.String)
+        * BigDecimal(char[], java.math.MathContext)
+        * BigDecimal(char[])
+    
+      Attributes:
+        ZERO (java.math.BigDecimal): final static field
+        ONE (java.math.BigDecimal): final static field
+        TEN (java.math.BigDecimal): final static field
+        ROUND_UP (int): final static field
+        ROUND_DOWN (int): final static field
+        ROUND_CEILING (int): final static field
+        ROUND_FLOOR (int): final static field
+        ROUND_HALF_UP (int): final static field
+        ROUND_HALF_DOWN (int): final static field
+        ROUND_HALF_EVEN (int): final static field
+        ROUND_UNNECESSARY (int): final static field
+    
+    """
     ZERO: typing.ClassVar['BigDecimal'] = ...
     ONE: typing.ClassVar['BigDecimal'] = ...
     TEN: typing.ClassVar['BigDecimal'] = ...
@@ -148,6 +190,32 @@ class BigDecimal(java.lang.Number, java.lang.Comparable['BigDecimal'], _JBigDeci
     def valueOf(long: int, int: int) -> 'BigDecimal': ...
 
 class BigInteger(java.lang.Number, java.lang.Comparable['BigInteger']):
+    """
+    Java class 'java.math.BigInteger'
+    
+        Extends:
+            java.lang.Number
+    
+        Interfaces:
+            java.lang.Comparable
+    
+      Constructors:
+        * BigInteger(int, java.util.Random)
+        * BigInteger(java.lang.String)
+        * BigInteger(int, int, java.util.Random)
+        * BigInteger(int, byte[], int, int)
+        * BigInteger(byte[])
+        * BigInteger(byte[], int, int)
+        * BigInteger(java.lang.String, int)
+        * BigInteger(int, byte[])
+    
+      Attributes:
+        ZERO (java.math.BigInteger): final static field
+        ONE (java.math.BigInteger): final static field
+        TWO (java.math.BigInteger): final static field
+        TEN (java.math.BigInteger): final static field
+    
+    """
     ZERO: typing.ClassVar['BigInteger'] = ...
     ONE: typing.ClassVar['BigInteger'] = ...
     TWO: typing.ClassVar['BigInteger'] = ...
@@ -221,6 +289,27 @@ class BigInteger(java.lang.Number, java.lang.Comparable['BigInteger']):
     def xor(self, bigInteger: 'BigInteger') -> 'BigInteger': ...
 
 class MathContext(java.io.Serializable):
+    """
+    Java class 'java.math.MathContext'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * MathContext(java.lang.String)
+        * MathContext(int, java.math.RoundingMode)
+        * MathContext(int)
+    
+      Attributes:
+        UNLIMITED (java.math.MathContext): final static field
+        DECIMAL32 (java.math.MathContext): final static field
+        DECIMAL64 (java.math.MathContext): final static field
+        DECIMAL128 (java.math.MathContext): final static field
+    
+    """
     UNLIMITED: typing.ClassVar['MathContext'] = ...
     DECIMAL32: typing.ClassVar['MathContext'] = ...
     DECIMAL64: typing.ClassVar['MathContext'] = ...
@@ -238,6 +327,23 @@ class MathContext(java.io.Serializable):
     def toString(self) -> str: ...
 
 class RoundingMode(java.lang.Enum['RoundingMode']):
+    """
+    Java class 'java.math.RoundingMode'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        UP (java.math.RoundingMode): final static enum constant
+        DOWN (java.math.RoundingMode): final static enum constant
+        CEILING (java.math.RoundingMode): final static enum constant
+        FLOOR (java.math.RoundingMode): final static enum constant
+        HALF_UP (java.math.RoundingMode): final static enum constant
+        HALF_DOWN (java.math.RoundingMode): final static enum constant
+        HALF_EVEN (java.math.RoundingMode): final static enum constant
+        UNNECESSARY (java.math.RoundingMode): final static enum constant
+    
+    """
     UP: typing.ClassVar['RoundingMode'] = ...
     DOWN: typing.ClassVar['RoundingMode'] = ...
     CEILING: typing.ClassVar['RoundingMode'] = ...
@@ -258,3 +364,12 @@ class RoundingMode(java.lang.Enum['RoundingMode']):
     def valueOf(string: str) -> 'RoundingMode': ...
     @staticmethod
     def values() -> typing.List['RoundingMode']: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.math")``.
+
+    BigDecimal: typing.Type[BigDecimal]
+    BigInteger: typing.Type[BigInteger]
+    MathContext: typing.Type[MathContext]
+    RoundingMode: typing.Type[RoundingMode]

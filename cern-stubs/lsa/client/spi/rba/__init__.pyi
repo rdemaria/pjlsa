@@ -3,7 +3,18 @@ import java.util.concurrent
 import typing
 
 
+
 class RbaUtils:
+    """
+    Java class 'cern.lsa.client.spi.rba.RbaUtils'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * RbaUtils()
+    
+    """
     def __init__(self): ...
     _fireActionWithRbaToken__T = typing.TypeVar('_fireActionWithRbaToken__T')  # <T>
     @staticmethod
@@ -11,3 +22,9 @@ class RbaUtils:
     _fireActionWithRbaTokenInSeparateThread__T = typing.TypeVar('_fireActionWithRbaTokenInSeparateThread__T')  # <T>
     @staticmethod
     def fireActionWithRbaTokenInSeparateThread(callable: typing.Union[java.util.concurrent.Callable[_fireActionWithRbaTokenInSeparateThread__T], typing.Callable[[], _fireActionWithRbaTokenInSeparateThread__T]], rbaToken: cern.rbac.common.RbaToken) -> java.util.concurrent.Future[_fireActionWithRbaTokenInSeparateThread__T]: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.client.spi.rba")``.
+
+    RbaUtils: typing.Type[RbaUtils]

@@ -1,8 +1,17 @@
 import cern.accsoft.commons.util.collections
 import cern.japc.core
+import cern.japc.core.spi.adaptation
+import cern.japc.core.spi.arraycall
+import cern.japc.core.spi.beans
 import cern.japc.core.spi.cache
+import cern.japc.core.spi.factory
+import cern.japc.core.spi.group
+import cern.japc.core.spi.jmx
 import cern.japc.core.spi.provider
+import cern.japc.core.spi.subscription
 import cern.japc.core.spi.transaction
+import cern.japc.core.spi.util
+import cern.japc.core.spi.value
 import cern.japc.core.transaction
 import cern.japc.value
 import cern.japc.value.spi.value.core
@@ -11,7 +20,22 @@ import java.util
 import typing
 
 
+
 class AbstractImmutableParameter(cern.japc.core.ImmutableParameter, cern.japc.core.spi.cache.JapcCache):
+    """
+    Java class 'cern.japc.core.spi.AbstractImmutableParameter'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.ImmutableParameter,
+            cern.japc.core.spi.cache.JapcCache
+    
+      Constructors:
+        * AbstractImmutableParameter(java.lang.String)
+    
+    """
     def __init__(self, string: str): ...
     def clearAll(self) -> None: ...
     def createSubscription(self, selector: cern.japc.core.Selector, parameterValueListener: cern.japc.core.ParameterValueListener) -> cern.japc.core.SubscriptionHandle: ...
@@ -35,6 +59,16 @@ class AbstractImmutableParameter(cern.japc.core.ImmutableParameter, cern.japc.co
     def toString(self) -> str: ...
 
 class CumulativeWait:
+    """
+    Java class 'cern.japc.core.spi.CumulativeWait'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * CumulativeWait(long)
+    
+    """
     def __init__(self, long: int): ...
     @staticmethod
     def cleanThreadTimeToWait() -> None: ...
@@ -44,6 +78,19 @@ class CumulativeWait:
     def updateTimeWaited(self, long: int) -> None: ...
 
 class DeviceDescriptorImpl(cern.japc.core.DeviceDescriptor, java.io.Serializable):
+    """
+    Java class 'cern.japc.core.spi.DeviceDescriptorImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.DeviceDescriptor, java.io.Serializable
+    
+      Constructors:
+        * DeviceDescriptorImpl(java.lang.String)
+    
+    """
     def __init__(self, string: str): ...
     def addExtraCharacteristic(self, string: str, string2: str) -> None: ...
     def getControlProperty(self) -> str: ...
@@ -76,6 +123,19 @@ class DeviceDescriptorImpl(cern.japc.core.DeviceDescriptor, java.io.Serializable
     def toString(self) -> str: ...
 
 class DeviceDescriptorSupport(cern.japc.core.DeviceDescriptor, java.io.Serializable):
+    """
+    Java class 'cern.japc.core.spi.DeviceDescriptorSupport'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.DeviceDescriptor, java.io.Serializable
+    
+      Constructors:
+        * DeviceDescriptorSupport()
+    
+    """
     def __init__(self): ...
     def getControlProperty(self) -> str: ...
     def getDescription(self) -> str: ...
@@ -98,6 +158,16 @@ class FspvCollector(cern.accsoft.commons.util.collections.ValueCollector[cern.ja
 class FspvPeekingStrategy(cern.accsoft.commons.util.collections.ValuePeekingStrategy[cern.japc.core.FailSafeParameterValue]): ...
 
 class IgnoreSetParameterDecorator(cern.japc.core.spi.transaction.TransactionalParameterDecorator):
+    """
+    Java class 'cern.japc.core.spi.IgnoreSetParameterDecorator'
+    
+        Extends:
+            cern.japc.core.spi.transaction.TransactionalParameterDecorator
+    
+      Constructors:
+        * IgnoreSetParameterDecorator(cern.japc.core.transaction.TransactionalParameter)
+    
+    """
     def __init__(self, transactionalParameter: cern.japc.core.transaction.TransactionalParameter): ...
     @typing.overload
     def setValue(self, selector: cern.japc.core.Selector, parameterValue: cern.japc.value.ParameterValue) -> None: ...
@@ -105,6 +175,19 @@ class IgnoreSetParameterDecorator(cern.japc.core.spi.transaction.TransactionalPa
     def setValue(self, selector: cern.japc.core.Selector, parameterValue: cern.japc.value.ParameterValue, parameterValueListener: cern.japc.core.ParameterValueListener) -> None: ...
 
 class ImmutableParameterDecorator(cern.japc.core.ImmutableParameter):
+    """
+    Java class 'cern.japc.core.spi.ImmutableParameterDecorator'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.ImmutableParameter
+    
+      Constructors:
+        * ImmutableParameterDecorator(cern.japc.core.ImmutableParameter)
+    
+    """
     def __init__(self, immutableParameter: cern.japc.core.ImmutableParameter): ...
     def createSubscription(self, selector: cern.japc.core.Selector, parameterValueListener: cern.japc.core.ParameterValueListener) -> cern.japc.core.SubscriptionHandle: ...
     def getDeviceName(self) -> str: ...
@@ -119,6 +202,19 @@ class ImmutableParameterDecorator(cern.japc.core.ImmutableParameter):
     def toString(self) -> str: ...
 
 class ParameterDescriptorImpl(cern.japc.value.spi.value.core.TypedObject, cern.japc.core.ParameterDescriptor):
+    """
+    Java class 'cern.japc.core.spi.ParameterDescriptorImpl'
+    
+        Extends:
+            cern.japc.value.spi.value.core.TypedObject
+    
+        Interfaces:
+            cern.japc.core.ParameterDescriptor
+    
+      Constructors:
+        * ParameterDescriptorImpl(cern.japc.value.Type, java.lang.String)
+    
+    """
     def __init__(self, type: cern.japc.value.Type, string: str): ...
     def addExtraCharacteristic(self, string: str, string2: str) -> None: ...
     def getDescription(self) -> str: ...
@@ -145,6 +241,19 @@ class ParameterDescriptorImpl(cern.japc.value.spi.value.core.TypedObject, cern.j
     def toString(self) -> str: ...
 
 class ParameterDescriptorSupport(cern.japc.core.ParameterDescriptor, java.io.Serializable):
+    """
+    Java class 'cern.japc.core.spi.ParameterDescriptorSupport'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.ParameterDescriptor, java.io.Serializable
+    
+      Constructors:
+        * ParameterDescriptorSupport()
+    
+    """
     def __init__(self): ...
     def getDescription(self) -> str: ...
     def getExtraCharacteristic(self, string: str) -> str: ...
@@ -160,6 +269,16 @@ class ParameterDescriptorSupport(cern.japc.core.ParameterDescriptor, java.io.Ser
     def isWritable(self) -> bool: ...
 
 class ParameterUrl:
+    """
+    Java class 'cern.japc.core.spi.ParameterUrl'
+    
+      Attributes:
+        PROTOCOL_SEPARATOR (java.lang.String): final static field
+        SERVICE_SEPARATOR (java.lang.String): final static field
+        DEVICE_PROPERTY_NAME_SEPARATOR (char): final static field
+        PROPERTY_NAME_FIELD_SEPARATOR (char): final static field
+    
+    """
     PROTOCOL_SEPARATOR: typing.ClassVar[str] = ...
     SERVICE_SEPARATOR: typing.ClassVar[str] = ...
     DEVICE_PROPERTY_NAME_SEPARATOR: typing.ClassVar[str] = ...
@@ -177,6 +296,21 @@ class ParameterUrl:
     def isFull(self) -> bool: ...
 
 class SelectorImpl(cern.japc.core.Selector, java.io.Serializable):
+    """
+    Java class 'cern.japc.core.spi.SelectorImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.Selector, java.io.Serializable
+    
+      Constructors:
+        * SelectorImpl(cern.japc.core.Selector)
+        * SelectorImpl(java.lang.String, cern.japc.value.ParameterValue)
+        * SelectorImpl(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self, selector: cern.japc.core.Selector): ...
     @typing.overload
@@ -192,11 +326,34 @@ class SelectorImpl(cern.japc.core.Selector, java.io.Serializable):
     def toString(self) -> str: ...
 
 class SubscriptionConfigurationImpl(cern.japc.core.SubscriptionConfigurator):
+    """
+    Java class 'cern.japc.core.spi.SubscriptionConfigurationImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.SubscriptionConfigurator
+    
+    """
     def getDataDeliveryMode(self) -> int: ...
     def getSelector(self) -> cern.japc.core.Selector: ...
     def setDataDeliveryMode(self, int: int) -> None: ...
 
 class SubscriptionHandleDecorator(cern.japc.core.SubscriptionHandle):
+    """
+    Java class 'cern.japc.core.spi.SubscriptionHandleDecorator'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.SubscriptionHandle
+    
+      Constructors:
+        * SubscriptionHandleDecorator(cern.japc.core.SubscriptionHandle)
+    
+    """
     def __init__(self, subscriptionHandle: cern.japc.core.SubscriptionHandle): ...
     def getDataDeliveryMode(self) -> int: ...
     def getListener(self) -> cern.japc.core.ParameterValueListener: ...
@@ -209,22 +366,48 @@ class SubscriptionHandleDecorator(cern.japc.core.SubscriptionHandle):
     def stopMonitoring(self) -> None: ...
 
 class SubscriptionSource:
+    """
+    Java class 'cern.japc.core.spi.SubscriptionSource'
+    
+    """
     def getSelector(self) -> cern.japc.core.Selector: ...
     def initializeSubscriptionSource(self, parameterValueListener: cern.japc.core.ParameterValueListener) -> None: ...
     def startSubscription(self) -> None: ...
     def stopSubscription(self) -> None: ...
 
 class SubscriptionStrategy:
+    """
+    Java class 'cern.japc.core.spi.SubscriptionStrategy'
+    
+    """
     def exceptionOccured(self, string: str, string2: str, parameterException: cern.japc.core.ParameterException) -> None: ...
     def peekValue(self, long: int) -> cern.japc.core.AcquiredParameterValue: ...
     def valueReceived(self, string: str, acquiredParameterValue: cern.japc.core.AcquiredParameterValue) -> None: ...
 
 class UpdatableAcquiredParameterValue:
+    """
+    Java class 'cern.japc.core.spi.UpdatableAcquiredParameterValue'
+    
+    """
     def addAdditionalError(self, string: str) -> None: ...
     def setHeader(self, valueHeader: cern.japc.core.ValueHeader) -> None: ...
     def setStatus(self, valueStatus: cern.japc.value.ValueStatus) -> None: ...
 
 class ValueHeaderImpl(cern.japc.core.ValueHeader, java.io.Serializable):
+    """
+    Java class 'cern.japc.core.spi.ValueHeaderImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.ValueHeader, java.io.Serializable
+    
+      Constructors:
+        * ValueHeaderImpl(long, cern.japc.core.Selector)
+        * ValueHeaderImpl(long, long, cern.japc.core.Selector)
+    
+    """
     @typing.overload
     def __init__(self, long: int, selector: cern.japc.core.Selector): ...
     @typing.overload
@@ -250,6 +433,19 @@ class ValueHeaderImpl(cern.japc.core.ValueHeader, java.io.Serializable):
     def toString(self) -> str: ...
 
 class AbstractParameter(AbstractImmutableParameter, cern.japc.core.Parameter):
+    """
+    Java class 'cern.japc.core.spi.AbstractParameter'
+    
+        Extends:
+            cern.japc.core.spi.AbstractImmutableParameter
+    
+        Interfaces:
+            cern.japc.core.Parameter
+    
+      Constructors:
+        * AbstractParameter(java.lang.String)
+    
+    """
     def __init__(self, string: str): ...
     @typing.overload
     def setValue(self, selector: cern.japc.core.Selector, parameterValue: cern.japc.value.ParameterValue) -> None: ...
@@ -257,6 +453,20 @@ class AbstractParameter(AbstractImmutableParameter, cern.japc.core.Parameter):
     def setValue(self, selector: cern.japc.core.Selector, parameterValue: cern.japc.value.ParameterValue, parameterValueListener: cern.japc.core.ParameterValueListener) -> None: ...
 
 class AbstractWeakSubscriptionSource(SubscriptionSource, cern.japc.core.ParameterValueListener):
+    """
+    Java class 'cern.japc.core.spi.AbstractWeakSubscriptionSource'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.spi.SubscriptionSource,
+            cern.japc.core.ParameterValueListener
+    
+      Constructors:
+        * AbstractWeakSubscriptionSource(java.lang.String, cern.japc.core.Selector)
+    
+    """
     def __init__(self, string: str, selector: cern.japc.core.Selector): ...
     def exceptionOccured(self, string: str, string2: str, parameterException: cern.japc.core.ParameterException) -> None: ...
     def getSelector(self) -> cern.japc.core.Selector: ...
@@ -266,6 +476,25 @@ class AbstractWeakSubscriptionSource(SubscriptionSource, cern.japc.core.Paramete
     def valueReceived(self, string: str, acquiredParameterValue: cern.japc.core.AcquiredParameterValue) -> None: ...
 
 class AcquiredParameterValueImpl(cern.japc.core.AcquiredParameterValue, UpdatableAcquiredParameterValue, java.io.Serializable):
+    """
+    Java class 'cern.japc.core.spi.AcquiredParameterValueImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.AcquiredParameterValue,
+            cern.japc.core.spi.UpdatableAcquiredParameterValue,
+            java.io.Serializable
+    
+      Constructors:
+        * AcquiredParameterValueImpl(java.lang.String, cern.japc.value.ParameterValue, long, cern.japc.core.Selector)
+        * AcquiredParameterValueImpl(java.lang.String, cern.japc.value.ParameterValue, long, long, cern.japc.core.Selector)
+        * AcquiredParameterValueImpl(java.lang.String, cern.japc.value.ParameterValue)
+        * AcquiredParameterValueImpl(java.lang.String, cern.japc.core.ValueHeader, cern.japc.value.ParameterValue)
+        * AcquiredParameterValueImpl(cern.japc.core.AcquiredParameterValue)
+    
+    """
     @typing.overload
     def __init__(self, acquiredParameterValue: cern.japc.core.AcquiredParameterValue): ...
     @typing.overload
@@ -291,15 +520,57 @@ class AcquiredParameterValueImpl(cern.japc.core.AcquiredParameterValue, Updatabl
     def toString(self) -> str: ...
 
 class CycleStampValuePeekingStrategy(FspvPeekingStrategy):
+    """
+    Java class 'cern.japc.core.spi.CycleStampValuePeekingStrategy'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.spi.FspvPeekingStrategy
+    
+      Constructors:
+        * CycleStampValuePeekingStrategy(long)
+    
+    """
     def __init__(self, long: int): ...
     def getCycleStamp(self) -> int: ...
     def peek(self, circularBuffer: cern.accsoft.commons.util.collections.CircularBuffer[cern.japc.core.FailSafeParameterValue], boolean: bool) -> java.util.Collection[cern.japc.core.FailSafeParameterValue]: ...
 
 class FirstValueInWindowPeekingStrategy(FspvPeekingStrategy):
+    """
+    Java class 'cern.japc.core.spi.FirstValueInWindowPeekingStrategy'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.spi.FspvPeekingStrategy
+    
+      Constructors:
+        * FirstValueInWindowPeekingStrategy(long, long)
+    
+    """
     def __init__(self, long: int, long2: int): ...
     def peek(self, circularBuffer: cern.accsoft.commons.util.collections.CircularBuffer[cern.japc.core.FailSafeParameterValue], boolean: bool) -> java.util.Collection[cern.japc.core.FailSafeParameterValue]: ...
 
 class FspvCollectorImpl(cern.accsoft.commons.util.collections.AbstractValueCollector[cern.japc.core.FailSafeParameterValue], FspvCollector):
+    """
+    Java class 'cern.japc.core.spi.FspvCollectorImpl'
+    
+        Extends:
+            cern.accsoft.commons.util.collections.AbstractValueCollector
+    
+        Interfaces:
+            cern.japc.core.spi.FspvCollector
+    
+      Constructors:
+        * FspvCollectorImpl(cern.japc.core.Parameter, cern.japc.core.Selector, int)
+        * FspvCollectorImpl(cern.japc.core.Parameter, cern.japc.core.Selector)
+        * FspvCollectorImpl(int)
+        * FspvCollectorImpl()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -314,10 +585,37 @@ class FspvCollectorImpl(cern.accsoft.commons.util.collections.AbstractValueColle
     def valueReceived(self, string: str, acquiredParameterValue: cern.japc.core.AcquiredParameterValue) -> None: ...
 
 class LastBeforeTimestampStrategy(FspvPeekingStrategy):
+    """
+    Java class 'cern.japc.core.spi.LastBeforeTimestampStrategy'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.spi.FspvPeekingStrategy
+    
+      Constructors:
+        * LastBeforeTimestampStrategy(long)
+    
+    """
     def __init__(self, long: int): ...
     def peek(self, circularBuffer: cern.accsoft.commons.util.collections.CircularBuffer[cern.japc.core.FailSafeParameterValue], boolean: bool) -> java.util.Collection[cern.japc.core.FailSafeParameterValue]: ...
 
 class MapParameterDescriptorImpl(ParameterDescriptorImpl, cern.japc.core.MapParameterDescriptor):
+    """
+    Java class 'cern.japc.core.spi.MapParameterDescriptorImpl'
+    
+        Extends:
+            cern.japc.core.spi.ParameterDescriptorImpl
+    
+        Interfaces:
+            cern.japc.core.MapParameterDescriptor
+    
+      Constructors:
+        * MapParameterDescriptorImpl(java.lang.String)
+        * MapParameterDescriptorImpl(java.lang.String, java.util.Map)
+    
+    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
@@ -332,6 +630,19 @@ class MapParameterDescriptorImpl(ParameterDescriptorImpl, cern.japc.core.MapPara
     def toString(self) -> str: ...
 
 class ParameterDecorator(ImmutableParameterDecorator, cern.japc.core.Parameter):
+    """
+    Java class 'cern.japc.core.spi.ParameterDecorator'
+    
+        Extends:
+            cern.japc.core.spi.ImmutableParameterDecorator
+    
+        Interfaces:
+            cern.japc.core.Parameter
+    
+      Constructors:
+        * ParameterDecorator(cern.japc.core.Parameter)
+    
+    """
     def __init__(self, parameter: cern.japc.core.Parameter): ...
     @typing.overload
     def setValue(self, selector: cern.japc.core.Selector, parameterValue: cern.japc.value.ParameterValue) -> None: ...
@@ -339,6 +650,23 @@ class ParameterDecorator(ImmutableParameterDecorator, cern.japc.core.Parameter):
     def setValue(self, selector: cern.japc.core.Selector, parameterValue: cern.japc.value.ParameterValue, parameterValueListener: cern.japc.core.ParameterValueListener) -> None: ...
 
 class ParameterUrlImpl(ParameterUrl, java.io.Serializable):
+    """
+    Java class 'cern.japc.core.spi.ParameterUrlImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.spi.ParameterUrl, java.io.Serializable
+    
+      Constructors:
+        * ParameterUrlImpl(java.lang.String)
+        * ParameterUrlImpl(java.lang.String, java.lang.String)
+        * ParameterUrlImpl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+        * ParameterUrlImpl(java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+        * ParameterUrlImpl(java.lang.String, java.lang.String, java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
@@ -365,24 +693,78 @@ class ParameterUrlImpl(ParameterUrl, java.io.Serializable):
     def toString(self) -> str: ...
 
 class PullSubscriptionStrategy(SubscriptionStrategy):
+    """
+    Java class 'cern.japc.core.spi.PullSubscriptionStrategy'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.spi.SubscriptionStrategy
+    
+      Constructors:
+        * PullSubscriptionStrategy(cern.japc.core.ParameterValueListener, java.lang.String)
+    
+    """
     def __init__(self, parameterValueListener: cern.japc.core.ParameterValueListener, string: str): ...
     def exceptionOccured(self, string: str, string2: str, parameterException: cern.japc.core.ParameterException) -> None: ...
     def peekValue(self, long: int) -> cern.japc.core.AcquiredParameterValue: ...
     def valueReceived(self, string: str, acquiredParameterValue: cern.japc.core.AcquiredParameterValue) -> None: ...
 
 class PushSubscriptionStrategy(SubscriptionStrategy):
+    """
+    Java class 'cern.japc.core.spi.PushSubscriptionStrategy'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.spi.SubscriptionStrategy
+    
+      Constructors:
+        * PushSubscriptionStrategy(cern.japc.core.ParameterValueListener)
+    
+    """
     def __init__(self, parameterValueListener: cern.japc.core.ParameterValueListener): ...
     def exceptionOccured(self, string: str, string2: str, parameterException: cern.japc.core.ParameterException) -> None: ...
     def peekValue(self, long: int) -> cern.japc.core.AcquiredParameterValue: ...
     def valueReceived(self, string: str, acquiredParameterValue: cern.japc.core.AcquiredParameterValue) -> None: ...
 
 class SimpleParameterDescriptorImpl(ParameterDescriptorImpl, cern.japc.core.SimpleParameterDescriptor):
+    """
+    Java class 'cern.japc.core.spi.SimpleParameterDescriptorImpl'
+    
+        Extends:
+            cern.japc.core.spi.ParameterDescriptorImpl
+    
+        Interfaces:
+            cern.japc.core.SimpleParameterDescriptor
+    
+      Constructors:
+        * SimpleParameterDescriptorImpl(java.lang.String)
+    
+    """
     def __init__(self, string: str): ...
     def get(self, string: str) -> cern.japc.core.SimpleParameterDescriptor: ...
     def getNames(self) -> typing.List[str]: ...
     def size(self) -> int: ...
 
 class SubscriptionHandleImpl(SubscriptionConfigurationImpl, cern.japc.core.SubscriptionHandle, cern.japc.core.ParameterValueListener):
+    """
+    Java class 'cern.japc.core.spi.SubscriptionHandleImpl'
+    
+        Extends:
+            cern.japc.core.spi.SubscriptionConfigurationImpl
+    
+        Interfaces:
+            cern.japc.core.SubscriptionHandle,
+            cern.japc.core.ParameterValueListener
+    
+      Constructors:
+        * SubscriptionHandleImpl(cern.japc.core.ImmutableParameter, cern.japc.core.spi.SubscriptionSource, cern.japc.core.ParameterValueListener)
+        * SubscriptionHandleImpl(cern.japc.core.ImmutableParameter, cern.japc.core.spi.SubscriptionSource, cern.japc.core.ParameterValueListener, int)
+    
+    """
     @typing.overload
     def __init__(self, immutableParameter: cern.japc.core.ImmutableParameter, subscriptionSource: SubscriptionSource, parameterValueListener: cern.japc.core.ParameterValueListener): ...
     @typing.overload
@@ -397,6 +779,21 @@ class SubscriptionHandleImpl(SubscriptionConfigurationImpl, cern.japc.core.Subsc
     def valueReceived(self, string: str, acquiredParameterValue: cern.japc.core.AcquiredParameterValue) -> None: ...
 
 class FailSafeParameterValueImpl(AcquiredParameterValueImpl, cern.japc.core.FailSafeParameterValue):
+    """
+    Java class 'cern.japc.core.spi.FailSafeParameterValueImpl'
+    
+        Extends:
+            cern.japc.core.spi.AcquiredParameterValueImpl
+    
+        Interfaces:
+            cern.japc.core.FailSafeParameterValue
+    
+      Constructors:
+        * FailSafeParameterValueImpl(java.lang.String, cern.japc.core.ParameterException)
+        * FailSafeParameterValueImpl(java.lang.String, cern.japc.core.ValueHeader, cern.japc.value.ParameterValue)
+        * FailSafeParameterValueImpl(cern.japc.core.AcquiredParameterValue)
+    
+    """
     @typing.overload
     def __init__(self, acquiredParameterValue: cern.japc.core.AcquiredParameterValue): ...
     @typing.overload
@@ -412,4 +809,65 @@ class FailSafeParameterValueImpl(AcquiredParameterValueImpl, cern.japc.core.Fail
     def value(self) -> cern.japc.core.AcquiredParameterValue: ...
 
 class PullingSubscriptionSource(AbstractWeakSubscriptionSource):
+    """
+    Java class 'cern.japc.core.spi.PullingSubscriptionSource'
+    
+        Extends:
+            cern.japc.core.spi.AbstractWeakSubscriptionSource
+    
+      Constructors:
+        * PullingSubscriptionSource(cern.japc.core.Selector, cern.japc.core.ImmutableParameter)
+    
+    """
     def __init__(self, selector: cern.japc.core.Selector, immutableParameter: cern.japc.core.ImmutableParameter): ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.japc.core.spi")``.
+
+    AbstractImmutableParameter: typing.Type[AbstractImmutableParameter]
+    AbstractParameter: typing.Type[AbstractParameter]
+    AbstractWeakSubscriptionSource: typing.Type[AbstractWeakSubscriptionSource]
+    AcquiredParameterValueImpl: typing.Type[AcquiredParameterValueImpl]
+    CumulativeWait: typing.Type[CumulativeWait]
+    CycleStampValuePeekingStrategy: typing.Type[CycleStampValuePeekingStrategy]
+    DeviceDescriptorImpl: typing.Type[DeviceDescriptorImpl]
+    DeviceDescriptorSupport: typing.Type[DeviceDescriptorSupport]
+    FailSafeParameterValueImpl: typing.Type[FailSafeParameterValueImpl]
+    FirstValueInWindowPeekingStrategy: typing.Type[FirstValueInWindowPeekingStrategy]
+    FspvCollector: typing.Type[FspvCollector]
+    FspvCollectorImpl: typing.Type[FspvCollectorImpl]
+    FspvPeekingStrategy: typing.Type[FspvPeekingStrategy]
+    IgnoreSetParameterDecorator: typing.Type[IgnoreSetParameterDecorator]
+    ImmutableParameterDecorator: typing.Type[ImmutableParameterDecorator]
+    LastBeforeTimestampStrategy: typing.Type[LastBeforeTimestampStrategy]
+    MapParameterDescriptorImpl: typing.Type[MapParameterDescriptorImpl]
+    ParameterDecorator: typing.Type[ParameterDecorator]
+    ParameterDescriptorImpl: typing.Type[ParameterDescriptorImpl]
+    ParameterDescriptorSupport: typing.Type[ParameterDescriptorSupport]
+    ParameterUrl: typing.Type[ParameterUrl]
+    ParameterUrlImpl: typing.Type[ParameterUrlImpl]
+    PullSubscriptionStrategy: typing.Type[PullSubscriptionStrategy]
+    PullingSubscriptionSource: typing.Type[PullingSubscriptionSource]
+    PushSubscriptionStrategy: typing.Type[PushSubscriptionStrategy]
+    SelectorImpl: typing.Type[SelectorImpl]
+    SimpleParameterDescriptorImpl: typing.Type[SimpleParameterDescriptorImpl]
+    SubscriptionConfigurationImpl: typing.Type[SubscriptionConfigurationImpl]
+    SubscriptionHandleDecorator: typing.Type[SubscriptionHandleDecorator]
+    SubscriptionHandleImpl: typing.Type[SubscriptionHandleImpl]
+    SubscriptionSource: typing.Type[SubscriptionSource]
+    SubscriptionStrategy: typing.Type[SubscriptionStrategy]
+    UpdatableAcquiredParameterValue: typing.Type[UpdatableAcquiredParameterValue]
+    ValueHeaderImpl: typing.Type[ValueHeaderImpl]
+    adaptation: cern.japc.core.spi.adaptation.__module_protocol__
+    arraycall: cern.japc.core.spi.arraycall.__module_protocol__
+    beans: cern.japc.core.spi.beans.__module_protocol__
+    cache: cern.japc.core.spi.cache.__module_protocol__
+    factory: cern.japc.core.spi.factory.__module_protocol__
+    group: cern.japc.core.spi.group.__module_protocol__
+    jmx: cern.japc.core.spi.jmx.__module_protocol__
+    provider: cern.japc.core.spi.provider.__module_protocol__
+    subscription: cern.japc.core.spi.subscription.__module_protocol__
+    transaction: cern.japc.core.spi.transaction.__module_protocol__
+    util: cern.japc.core.spi.util.__module_protocol__
+    value: cern.japc.core.spi.value.__module_protocol__

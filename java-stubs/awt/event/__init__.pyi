@@ -6,10 +6,39 @@ import java.util
 import typing
 
 
+
 class AWTEventListener(java.util.EventListener):
+    """
+    Java class 'java.awt.event.AWTEventListener'
+    
+        Interfaces:
+            java.util.EventListener
+    
+    """
     def eventDispatched(self, aWTEvent: java.awt.AWTEvent) -> None: ...
 
 class ActionEvent(java.awt.AWTEvent):
+    """
+    Java class 'java.awt.event.ActionEvent'
+    
+        Extends:
+            java.awt.AWTEvent
+    
+      Constructors:
+        * ActionEvent(java.lang.Object, int, java.lang.String, long, int)
+        * ActionEvent(java.lang.Object, int, java.lang.String, int)
+        * ActionEvent(java.lang.Object, int, java.lang.String)
+    
+      Attributes:
+        SHIFT_MASK (int): final static field
+        CTRL_MASK (int): final static field
+        META_MASK (int): final static field
+        ALT_MASK (int): final static field
+        ACTION_FIRST (int): final static field
+        ACTION_LAST (int): final static field
+        ACTION_PERFORMED (int): final static field
+    
+    """
     SHIFT_MASK: typing.ClassVar[int] = ...
     CTRL_MASK: typing.ClassVar[int] = ...
     META_MASK: typing.ClassVar[int] = ...
@@ -29,9 +58,37 @@ class ActionEvent(java.awt.AWTEvent):
     def paramString(self) -> str: ...
 
 class ActionListener(java.util.EventListener):
+    """
+    Java class 'java.awt.event.ActionListener'
+    
+        Interfaces:
+            java.util.EventListener
+    
+    """
     def actionPerformed(self, actionEvent: ActionEvent) -> None: ...
 
 class AdjustmentEvent(java.awt.AWTEvent):
+    """
+    Java class 'java.awt.event.AdjustmentEvent'
+    
+        Extends:
+            java.awt.AWTEvent
+    
+      Constructors:
+        * AdjustmentEvent(java.awt.Adjustable, int, int, int)
+        * AdjustmentEvent(java.awt.Adjustable, int, int, int, boolean)
+    
+      Attributes:
+        ADJUSTMENT_FIRST (int): final static field
+        ADJUSTMENT_LAST (int): final static field
+        ADJUSTMENT_VALUE_CHANGED (int): final static field
+        UNIT_INCREMENT (int): final static field
+        UNIT_DECREMENT (int): final static field
+        BLOCK_DECREMENT (int): final static field
+        BLOCK_INCREMENT (int): final static field
+        TRACK (int): final static field
+    
+    """
     ADJUSTMENT_FIRST: typing.ClassVar[int] = ...
     ADJUSTMENT_LAST: typing.ClassVar[int] = ...
     ADJUSTMENT_VALUE_CHANGED: typing.ClassVar[int] = ...
@@ -51,9 +108,34 @@ class AdjustmentEvent(java.awt.AWTEvent):
     def paramString(self) -> str: ...
 
 class AdjustmentListener(java.util.EventListener):
+    """
+    Java class 'java.awt.event.AdjustmentListener'
+    
+        Interfaces:
+            java.util.EventListener
+    
+    """
     def adjustmentValueChanged(self, adjustmentEvent: AdjustmentEvent) -> None: ...
 
 class ComponentEvent(java.awt.AWTEvent):
+    """
+    Java class 'java.awt.event.ComponentEvent'
+    
+        Extends:
+            java.awt.AWTEvent
+    
+      Constructors:
+        * ComponentEvent(java.awt.Component, int)
+    
+      Attributes:
+        COMPONENT_FIRST (int): final static field
+        COMPONENT_LAST (int): final static field
+        COMPONENT_MOVED (int): final static field
+        COMPONENT_RESIZED (int): final static field
+        COMPONENT_SHOWN (int): final static field
+        COMPONENT_HIDDEN (int): final static field
+    
+    """
     COMPONENT_FIRST: typing.ClassVar[int] = ...
     COMPONENT_LAST: typing.ClassVar[int] = ...
     COMPONENT_MOVED: typing.ClassVar[int] = ...
@@ -65,24 +147,73 @@ class ComponentEvent(java.awt.AWTEvent):
     def paramString(self) -> str: ...
 
 class ComponentListener(java.util.EventListener):
+    """
+    Java class 'java.awt.event.ComponentListener'
+    
+        Interfaces:
+            java.util.EventListener
+    
+    """
     def componentHidden(self, componentEvent: ComponentEvent) -> None: ...
     def componentMoved(self, componentEvent: ComponentEvent) -> None: ...
     def componentResized(self, componentEvent: ComponentEvent) -> None: ...
     def componentShown(self, componentEvent: ComponentEvent) -> None: ...
 
 class ContainerListener(java.util.EventListener):
+    """
+    Java class 'java.awt.event.ContainerListener'
+    
+        Interfaces:
+            java.util.EventListener
+    
+    """
     def componentAdded(self, containerEvent: 'ContainerEvent') -> None: ...
     def componentRemoved(self, containerEvent: 'ContainerEvent') -> None: ...
 
 class FocusListener(java.util.EventListener):
+    """
+    Java class 'java.awt.event.FocusListener'
+    
+        Interfaces:
+            java.util.EventListener
+    
+    """
     def focusGained(self, focusEvent: 'FocusEvent') -> None: ...
     def focusLost(self, focusEvent: 'FocusEvent') -> None: ...
 
 class HierarchyBoundsListener(java.util.EventListener):
+    """
+    Java class 'java.awt.event.HierarchyBoundsListener'
+    
+        Interfaces:
+            java.util.EventListener
+    
+    """
     def ancestorMoved(self, hierarchyEvent: 'HierarchyEvent') -> None: ...
     def ancestorResized(self, hierarchyEvent: 'HierarchyEvent') -> None: ...
 
 class HierarchyEvent(java.awt.AWTEvent):
+    """
+    Java class 'java.awt.event.HierarchyEvent'
+    
+        Extends:
+            java.awt.AWTEvent
+    
+      Constructors:
+        * HierarchyEvent(java.awt.Component, int, java.awt.Component, java.awt.Container)
+        * HierarchyEvent(java.awt.Component, int, java.awt.Component, java.awt.Container, long)
+    
+      Attributes:
+        HIERARCHY_FIRST (int): final static field
+        HIERARCHY_CHANGED (int): final static field
+        ANCESTOR_MOVED (int): final static field
+        ANCESTOR_RESIZED (int): final static field
+        HIERARCHY_LAST (int): final static field
+        PARENT_CHANGED (int): final static field
+        DISPLAYABILITY_CHANGED (int): final static field
+        SHOWING_CHANGED (int): final static field
+    
+    """
     HIERARCHY_FIRST: typing.ClassVar[int] = ...
     HIERARCHY_CHANGED: typing.ClassVar[int] = ...
     ANCESTOR_MOVED: typing.ClassVar[int] = ...
@@ -102,9 +233,34 @@ class HierarchyEvent(java.awt.AWTEvent):
     def paramString(self) -> str: ...
 
 class HierarchyListener(java.util.EventListener):
+    """
+    Java class 'java.awt.event.HierarchyListener'
+    
+        Interfaces:
+            java.util.EventListener
+    
+    """
     def hierarchyChanged(self, hierarchyEvent: HierarchyEvent) -> None: ...
 
 class InputMethodEvent(java.awt.AWTEvent):
+    """
+    Java class 'java.awt.event.InputMethodEvent'
+    
+        Extends:
+            java.awt.AWTEvent
+    
+      Constructors:
+        * InputMethodEvent(java.awt.Component, int, java.awt.font.TextHitInfo, java.awt.font.TextHitInfo)
+        * InputMethodEvent(java.awt.Component, int, java.text.AttributedCharacterIterator, int, java.awt.font.TextHitInfo, java.awt.font.TextHitInfo)
+        * InputMethodEvent(java.awt.Component, int, long, java.text.AttributedCharacterIterator, int, java.awt.font.TextHitInfo, java.awt.font.TextHitInfo)
+    
+      Attributes:
+        INPUT_METHOD_FIRST (int): final static field
+        INPUT_METHOD_TEXT_CHANGED (int): final static field
+        CARET_POSITION_CHANGED (int): final static field
+        INPUT_METHOD_LAST (int): final static field
+    
+    """
     INPUT_METHOD_FIRST: typing.ClassVar[int] = ...
     INPUT_METHOD_TEXT_CHANGED: typing.ClassVar[int] = ...
     CARET_POSITION_CHANGED: typing.ClassVar[int] = ...
@@ -125,10 +281,37 @@ class InputMethodEvent(java.awt.AWTEvent):
     def paramString(self) -> str: ...
 
 class InputMethodListener(java.util.EventListener):
+    """
+    Java class 'java.awt.event.InputMethodListener'
+    
+        Interfaces:
+            java.util.EventListener
+    
+    """
     def caretPositionChanged(self, inputMethodEvent: InputMethodEvent) -> None: ...
     def inputMethodTextChanged(self, inputMethodEvent: InputMethodEvent) -> None: ...
 
 class InvocationEvent(java.awt.AWTEvent, java.awt.ActiveEvent):
+    """
+    Java class 'java.awt.event.InvocationEvent'
+    
+        Extends:
+            java.awt.AWTEvent
+    
+        Interfaces:
+            java.awt.ActiveEvent
+    
+      Constructors:
+        * InvocationEvent(java.lang.Object, java.lang.Runnable, java.lang.Runnable, boolean)
+        * InvocationEvent(java.lang.Object, java.lang.Runnable, java.lang.Object, boolean)
+        * InvocationEvent(java.lang.Object, java.lang.Runnable)
+    
+      Attributes:
+        INVOCATION_FIRST (int): final static field
+        INVOCATION_DEFAULT (int): final static field
+        INVOCATION_LAST (int): final static field
+    
+    """
     INVOCATION_FIRST: typing.ClassVar[int] = ...
     INVOCATION_DEFAULT: typing.ClassVar[int] = ...
     INVOCATION_LAST: typing.ClassVar[int] = ...
@@ -146,6 +329,23 @@ class InvocationEvent(java.awt.AWTEvent, java.awt.ActiveEvent):
     def paramString(self) -> str: ...
 
 class ItemEvent(java.awt.AWTEvent):
+    """
+    Java class 'java.awt.event.ItemEvent'
+    
+        Extends:
+            java.awt.AWTEvent
+    
+      Constructors:
+        * ItemEvent(java.awt.ItemSelectable, int, java.lang.Object, int)
+    
+      Attributes:
+        ITEM_FIRST (int): final static field
+        ITEM_LAST (int): final static field
+        ITEM_STATE_CHANGED (int): final static field
+        SELECTED (int): final static field
+        DESELECTED (int): final static field
+    
+    """
     ITEM_FIRST: typing.ClassVar[int] = ...
     ITEM_LAST: typing.ClassVar[int] = ...
     ITEM_STATE_CHANGED: typing.ClassVar[int] = ...
@@ -158,14 +358,35 @@ class ItemEvent(java.awt.AWTEvent):
     def paramString(self) -> str: ...
 
 class ItemListener(java.util.EventListener):
+    """
+    Java class 'java.awt.event.ItemListener'
+    
+        Interfaces:
+            java.util.EventListener
+    
+    """
     def itemStateChanged(self, itemEvent: ItemEvent) -> None: ...
 
 class KeyListener(java.util.EventListener):
+    """
+    Java class 'java.awt.event.KeyListener'
+    
+        Interfaces:
+            java.util.EventListener
+    
+    """
     def keyPressed(self, keyEvent: 'KeyEvent') -> None: ...
     def keyReleased(self, keyEvent: 'KeyEvent') -> None: ...
     def keyTyped(self, keyEvent: 'KeyEvent') -> None: ...
 
 class MouseListener(java.util.EventListener):
+    """
+    Java class 'java.awt.event.MouseListener'
+    
+        Interfaces:
+            java.util.EventListener
+    
+    """
     def mouseClicked(self, mouseEvent: 'MouseEvent') -> None: ...
     def mouseEntered(self, mouseEvent: 'MouseEvent') -> None: ...
     def mouseExited(self, mouseEvent: 'MouseEvent') -> None: ...
@@ -173,13 +394,42 @@ class MouseListener(java.util.EventListener):
     def mouseReleased(self, mouseEvent: 'MouseEvent') -> None: ...
 
 class MouseMotionListener(java.util.EventListener):
+    """
+    Java class 'java.awt.event.MouseMotionListener'
+    
+        Interfaces:
+            java.util.EventListener
+    
+    """
     def mouseDragged(self, mouseEvent: 'MouseEvent') -> None: ...
     def mouseMoved(self, mouseEvent: 'MouseEvent') -> None: ...
 
 class MouseWheelListener(java.util.EventListener):
+    """
+    Java class 'java.awt.event.MouseWheelListener'
+    
+        Interfaces:
+            java.util.EventListener
+    
+    """
     def mouseWheelMoved(self, mouseWheelEvent: 'MouseWheelEvent') -> None: ...
 
 class TextEvent(java.awt.AWTEvent):
+    """
+    Java class 'java.awt.event.TextEvent'
+    
+        Extends:
+            java.awt.AWTEvent
+    
+      Constructors:
+        * TextEvent(java.lang.Object, int)
+    
+      Attributes:
+        TEXT_FIRST (int): final static field
+        TEXT_LAST (int): final static field
+        TEXT_VALUE_CHANGED (int): final static field
+    
+    """
     TEXT_FIRST: typing.ClassVar[int] = ...
     TEXT_LAST: typing.ClassVar[int] = ...
     TEXT_VALUE_CHANGED: typing.ClassVar[int] = ...
@@ -187,13 +437,34 @@ class TextEvent(java.awt.AWTEvent):
     def paramString(self) -> str: ...
 
 class TextListener(java.util.EventListener):
+    """
+    Java class 'java.awt.event.TextListener'
+    
+        Interfaces:
+            java.util.EventListener
+    
+    """
     def textValueChanged(self, textEvent: TextEvent) -> None: ...
 
 class WindowFocusListener(java.util.EventListener):
+    """
+    Java class 'java.awt.event.WindowFocusListener'
+    
+        Interfaces:
+            java.util.EventListener
+    
+    """
     def windowGainedFocus(self, windowEvent: 'WindowEvent') -> None: ...
     def windowLostFocus(self, windowEvent: 'WindowEvent') -> None: ...
 
 class WindowListener(java.util.EventListener):
+    """
+    Java class 'java.awt.event.WindowListener'
+    
+        Interfaces:
+            java.util.EventListener
+    
+    """
     def windowActivated(self, windowEvent: 'WindowEvent') -> None: ...
     def windowClosed(self, windowEvent: 'WindowEvent') -> None: ...
     def windowClosing(self, windowEvent: 'WindowEvent') -> None: ...
@@ -203,14 +474,47 @@ class WindowListener(java.util.EventListener):
     def windowOpened(self, windowEvent: 'WindowEvent') -> None: ...
 
 class WindowStateListener(java.util.EventListener):
+    """
+    Java class 'java.awt.event.WindowStateListener'
+    
+        Interfaces:
+            java.util.EventListener
+    
+    """
     def windowStateChanged(self, windowEvent: 'WindowEvent') -> None: ...
 
 class AWTEventListenerProxy(java.util.EventListenerProxy[AWTEventListener], AWTEventListener):
+    """
+    Java class 'java.awt.event.AWTEventListenerProxy'
+    
+        Extends:
+            java.util.EventListenerProxy
+    
+        Interfaces:
+            java.awt.event.AWTEventListener
+    
+      Constructors:
+        * AWTEventListenerProxy(long, java.awt.event.AWTEventListener)
+    
+    """
     def __init__(self, long: int, aWTEventListener: AWTEventListener): ...
     def eventDispatched(self, aWTEvent: java.awt.AWTEvent) -> None: ...
     def getEventMask(self) -> int: ...
 
 class ComponentAdapter(ComponentListener):
+    """
+    Java class 'java.awt.event.ComponentAdapter'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.event.ComponentListener
+    
+      Constructors:
+        * ComponentAdapter()
+    
+    """
     def __init__(self): ...
     def componentHidden(self, componentEvent: ComponentEvent) -> None: ...
     def componentMoved(self, componentEvent: ComponentEvent) -> None: ...
@@ -218,11 +522,40 @@ class ComponentAdapter(ComponentListener):
     def componentShown(self, componentEvent: ComponentEvent) -> None: ...
 
 class ContainerAdapter(ContainerListener):
+    """
+    Java class 'java.awt.event.ContainerAdapter'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.event.ContainerListener
+    
+      Constructors:
+        * ContainerAdapter()
+    
+    """
     def __init__(self): ...
     def componentAdded(self, containerEvent: 'ContainerEvent') -> None: ...
     def componentRemoved(self, containerEvent: 'ContainerEvent') -> None: ...
 
 class ContainerEvent(ComponentEvent):
+    """
+    Java class 'java.awt.event.ContainerEvent'
+    
+        Extends:
+            java.awt.event.ComponentEvent
+    
+      Constructors:
+        * ContainerEvent(java.awt.Component, int, java.awt.Component)
+    
+      Attributes:
+        CONTAINER_FIRST (int): final static field
+        CONTAINER_LAST (int): final static field
+        COMPONENT_ADDED (int): final static field
+        COMPONENT_REMOVED (int): final static field
+    
+    """
     CONTAINER_FIRST: typing.ClassVar[int] = ...
     CONTAINER_LAST: typing.ClassVar[int] = ...
     COMPONENT_ADDED: typing.ClassVar[int] = ...
@@ -233,11 +566,43 @@ class ContainerEvent(ComponentEvent):
     def paramString(self) -> str: ...
 
 class FocusAdapter(FocusListener):
+    """
+    Java class 'java.awt.event.FocusAdapter'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.event.FocusListener
+    
+      Constructors:
+        * FocusAdapter()
+    
+    """
     def __init__(self): ...
     def focusGained(self, focusEvent: 'FocusEvent') -> None: ...
     def focusLost(self, focusEvent: 'FocusEvent') -> None: ...
 
 class FocusEvent(ComponentEvent):
+    """
+    Java class 'java.awt.event.FocusEvent'
+    
+        Extends:
+            java.awt.event.ComponentEvent
+    
+      Constructors:
+        * FocusEvent(java.awt.Component, int)
+        * FocusEvent(java.awt.Component, int, boolean)
+        * FocusEvent(java.awt.Component, int, boolean, java.awt.Component, java.awt.event.FocusEvent.Cause)
+        * FocusEvent(java.awt.Component, int, boolean, java.awt.Component)
+    
+      Attributes:
+        FOCUS_FIRST (int): final static field
+        FOCUS_LAST (int): final static field
+        FOCUS_GAINED (int): final static field
+        FOCUS_LOST (int): final static field
+    
+    """
     FOCUS_FIRST: typing.ClassVar[int] = ...
     FOCUS_LAST: typing.ClassVar[int] = ...
     FOCUS_GAINED: typing.ClassVar[int] = ...
@@ -255,6 +620,26 @@ class FocusEvent(ComponentEvent):
     def isTemporary(self) -> bool: ...
     def paramString(self) -> str: ...
     class Cause(java.lang.Enum['FocusEvent.Cause']):
+        """
+        Java class 'java.awt.event.FocusEvent$Cause'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            UNKNOWN (java.awt.event.FocusEvent$Cause): final static enum constant
+            MOUSE_EVENT (java.awt.event.FocusEvent$Cause): final static enum constant
+            TRAVERSAL (java.awt.event.FocusEvent$Cause): final static enum constant
+            TRAVERSAL_UP (java.awt.event.FocusEvent$Cause): final static enum constant
+            TRAVERSAL_DOWN (java.awt.event.FocusEvent$Cause): final static enum constant
+            TRAVERSAL_FORWARD (java.awt.event.FocusEvent$Cause): final static enum constant
+            TRAVERSAL_BACKWARD (java.awt.event.FocusEvent$Cause): final static enum constant
+            ROLLBACK (java.awt.event.FocusEvent$Cause): final static enum constant
+            UNEXPECTED (java.awt.event.FocusEvent$Cause): final static enum constant
+            ACTIVATION (java.awt.event.FocusEvent$Cause): final static enum constant
+            CLEAR_GLOBAL_FOCUS_OWNER (java.awt.event.FocusEvent$Cause): final static enum constant
+        
+        """
         UNKNOWN: typing.ClassVar['FocusEvent.Cause'] = ...
         MOUSE_EVENT: typing.ClassVar['FocusEvent.Cause'] = ...
         TRAVERSAL: typing.ClassVar['FocusEvent.Cause'] = ...
@@ -277,11 +662,49 @@ class FocusEvent(ComponentEvent):
         def values() -> typing.List['FocusEvent.Cause']: ...
 
 class HierarchyBoundsAdapter(HierarchyBoundsListener):
+    """
+    Java class 'java.awt.event.HierarchyBoundsAdapter'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.event.HierarchyBoundsListener
+    
+      Constructors:
+        * HierarchyBoundsAdapter()
+    
+    """
     def __init__(self): ...
     def ancestorMoved(self, hierarchyEvent: HierarchyEvent) -> None: ...
     def ancestorResized(self, hierarchyEvent: HierarchyEvent) -> None: ...
 
 class InputEvent(ComponentEvent):
+    """
+    Java class 'java.awt.event.InputEvent'
+    
+        Extends:
+            java.awt.event.ComponentEvent
+    
+      Attributes:
+        SHIFT_MASK (int): final static field
+        CTRL_MASK (int): final static field
+        META_MASK (int): final static field
+        ALT_MASK (int): final static field
+        ALT_GRAPH_MASK (int): final static field
+        BUTTON1_MASK (int): final static field
+        BUTTON2_MASK (int): final static field
+        BUTTON3_MASK (int): final static field
+        SHIFT_DOWN_MASK (int): final static field
+        CTRL_DOWN_MASK (int): final static field
+        META_DOWN_MASK (int): final static field
+        ALT_DOWN_MASK (int): final static field
+        BUTTON1_DOWN_MASK (int): final static field
+        BUTTON2_DOWN_MASK (int): final static field
+        BUTTON3_DOWN_MASK (int): final static field
+        ALT_GRAPH_DOWN_MASK (int): final static field
+    
+    """
     SHIFT_MASK: typing.ClassVar[int] = ...
     CTRL_MASK: typing.ClassVar[int] = ...
     META_MASK: typing.ClassVar[int] = ...
@@ -314,12 +737,40 @@ class InputEvent(ComponentEvent):
     def isShiftDown(self) -> bool: ...
 
 class KeyAdapter(KeyListener):
+    """
+    Java class 'java.awt.event.KeyAdapter'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.event.KeyListener
+    
+      Constructors:
+        * KeyAdapter()
+    
+    """
     def __init__(self): ...
     def keyPressed(self, keyEvent: 'KeyEvent') -> None: ...
     def keyReleased(self, keyEvent: 'KeyEvent') -> None: ...
     def keyTyped(self, keyEvent: 'KeyEvent') -> None: ...
 
 class MouseAdapter(MouseListener, MouseWheelListener, MouseMotionListener):
+    """
+    Java class 'java.awt.event.MouseAdapter'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.event.MouseListener,
+            java.awt.event.MouseWheelListener,
+            java.awt.event.MouseMotionListener
+    
+      Constructors:
+        * MouseAdapter()
+    
+    """
     def __init__(self): ...
     def mouseClicked(self, mouseEvent: 'MouseEvent') -> None: ...
     def mouseDragged(self, mouseEvent: 'MouseEvent') -> None: ...
@@ -331,11 +782,40 @@ class MouseAdapter(MouseListener, MouseWheelListener, MouseMotionListener):
     def mouseWheelMoved(self, mouseWheelEvent: 'MouseWheelEvent') -> None: ...
 
 class MouseMotionAdapter(MouseMotionListener):
+    """
+    Java class 'java.awt.event.MouseMotionAdapter'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.event.MouseMotionListener
+    
+      Constructors:
+        * MouseMotionAdapter()
+    
+    """
     def __init__(self): ...
     def mouseDragged(self, mouseEvent: 'MouseEvent') -> None: ...
     def mouseMoved(self, mouseEvent: 'MouseEvent') -> None: ...
 
 class PaintEvent(ComponentEvent):
+    """
+    Java class 'java.awt.event.PaintEvent'
+    
+        Extends:
+            java.awt.event.ComponentEvent
+    
+      Constructors:
+        * PaintEvent(java.awt.Component, int, java.awt.Rectangle)
+    
+      Attributes:
+        PAINT_FIRST (int): final static field
+        PAINT_LAST (int): final static field
+        PAINT (int): final static field
+        UPDATE (int): final static field
+    
+    """
     PAINT_FIRST: typing.ClassVar[int] = ...
     PAINT_LAST: typing.ClassVar[int] = ...
     PAINT: typing.ClassVar[int] = ...
@@ -346,6 +826,21 @@ class PaintEvent(ComponentEvent):
     def setUpdateRect(self, rectangle: java.awt.Rectangle) -> None: ...
 
 class WindowAdapter(WindowListener, WindowStateListener, WindowFocusListener):
+    """
+    Java class 'java.awt.event.WindowAdapter'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.awt.event.WindowListener,
+            java.awt.event.WindowStateListener,
+            java.awt.event.WindowFocusListener
+    
+      Constructors:
+        * WindowAdapter()
+    
+    """
     def __init__(self): ...
     def windowActivated(self, windowEvent: 'WindowEvent') -> None: ...
     def windowClosed(self, windowEvent: 'WindowEvent') -> None: ...
@@ -359,6 +854,33 @@ class WindowAdapter(WindowListener, WindowStateListener, WindowFocusListener):
     def windowStateChanged(self, windowEvent: 'WindowEvent') -> None: ...
 
 class WindowEvent(ComponentEvent):
+    """
+    Java class 'java.awt.event.WindowEvent'
+    
+        Extends:
+            java.awt.event.ComponentEvent
+    
+      Constructors:
+        * WindowEvent(java.awt.Window, int)
+        * WindowEvent(java.awt.Window, int, int, int)
+        * WindowEvent(java.awt.Window, int, java.awt.Window)
+        * WindowEvent(java.awt.Window, int, java.awt.Window, int, int)
+    
+      Attributes:
+        WINDOW_FIRST (int): final static field
+        WINDOW_OPENED (int): final static field
+        WINDOW_CLOSING (int): final static field
+        WINDOW_CLOSED (int): final static field
+        WINDOW_ICONIFIED (int): final static field
+        WINDOW_DEICONIFIED (int): final static field
+        WINDOW_ACTIVATED (int): final static field
+        WINDOW_DEACTIVATED (int): final static field
+        WINDOW_GAINED_FOCUS (int): final static field
+        WINDOW_LOST_FOCUS (int): final static field
+        WINDOW_STATE_CHANGED (int): final static field
+        WINDOW_LAST (int): final static field
+    
+    """
     WINDOW_FIRST: typing.ClassVar[int] = ...
     WINDOW_OPENED: typing.ClassVar[int] = ...
     WINDOW_CLOSING: typing.ClassVar[int] = ...
@@ -386,6 +908,220 @@ class WindowEvent(ComponentEvent):
     def paramString(self) -> str: ...
 
 class KeyEvent(InputEvent):
+    """
+    Java class 'java.awt.event.KeyEvent'
+    
+        Extends:
+            java.awt.event.InputEvent
+    
+      Constructors:
+        * KeyEvent(java.awt.Component, int, long, int, int, char)
+        * KeyEvent(java.awt.Component, int, long, int, int, char, int)
+        * KeyEvent(java.awt.Component, int, long, int, int)
+    
+      Attributes:
+        KEY_FIRST (int): final static field
+        KEY_LAST (int): final static field
+        KEY_TYPED (int): final static field
+        KEY_PRESSED (int): final static field
+        KEY_RELEASED (int): final static field
+        VK_ENTER (int): final static field
+        VK_BACK_SPACE (int): final static field
+        VK_TAB (int): final static field
+        VK_CANCEL (int): final static field
+        VK_CLEAR (int): final static field
+        VK_SHIFT (int): final static field
+        VK_CONTROL (int): final static field
+        VK_ALT (int): final static field
+        VK_PAUSE (int): final static field
+        VK_CAPS_LOCK (int): final static field
+        VK_ESCAPE (int): final static field
+        VK_SPACE (int): final static field
+        VK_PAGE_UP (int): final static field
+        VK_PAGE_DOWN (int): final static field
+        VK_END (int): final static field
+        VK_HOME (int): final static field
+        VK_LEFT (int): final static field
+        VK_UP (int): final static field
+        VK_RIGHT (int): final static field
+        VK_DOWN (int): final static field
+        VK_COMMA (int): final static field
+        VK_MINUS (int): final static field
+        VK_PERIOD (int): final static field
+        VK_SLASH (int): final static field
+        VK_0 (int): final static field
+        VK_1 (int): final static field
+        VK_2 (int): final static field
+        VK_3 (int): final static field
+        VK_4 (int): final static field
+        VK_5 (int): final static field
+        VK_6 (int): final static field
+        VK_7 (int): final static field
+        VK_8 (int): final static field
+        VK_9 (int): final static field
+        VK_SEMICOLON (int): final static field
+        VK_EQUALS (int): final static field
+        VK_A (int): final static field
+        VK_B (int): final static field
+        VK_C (int): final static field
+        VK_D (int): final static field
+        VK_E (int): final static field
+        VK_F (int): final static field
+        VK_G (int): final static field
+        VK_H (int): final static field
+        VK_I (int): final static field
+        VK_J (int): final static field
+        VK_K (int): final static field
+        VK_L (int): final static field
+        VK_M (int): final static field
+        VK_N (int): final static field
+        VK_O (int): final static field
+        VK_P (int): final static field
+        VK_Q (int): final static field
+        VK_R (int): final static field
+        VK_S (int): final static field
+        VK_T (int): final static field
+        VK_U (int): final static field
+        VK_V (int): final static field
+        VK_W (int): final static field
+        VK_X (int): final static field
+        VK_Y (int): final static field
+        VK_Z (int): final static field
+        VK_OPEN_BRACKET (int): final static field
+        VK_BACK_SLASH (int): final static field
+        VK_CLOSE_BRACKET (int): final static field
+        VK_NUMPAD0 (int): final static field
+        VK_NUMPAD1 (int): final static field
+        VK_NUMPAD2 (int): final static field
+        VK_NUMPAD3 (int): final static field
+        VK_NUMPAD4 (int): final static field
+        VK_NUMPAD5 (int): final static field
+        VK_NUMPAD6 (int): final static field
+        VK_NUMPAD7 (int): final static field
+        VK_NUMPAD8 (int): final static field
+        VK_NUMPAD9 (int): final static field
+        VK_MULTIPLY (int): final static field
+        VK_ADD (int): final static field
+        VK_SEPARATER (int): final static field
+        VK_SEPARATOR (int): final static field
+        VK_SUBTRACT (int): final static field
+        VK_DECIMAL (int): final static field
+        VK_DIVIDE (int): final static field
+        VK_DELETE (int): final static field
+        VK_NUM_LOCK (int): final static field
+        VK_SCROLL_LOCK (int): final static field
+        VK_F1 (int): final static field
+        VK_F2 (int): final static field
+        VK_F3 (int): final static field
+        VK_F4 (int): final static field
+        VK_F5 (int): final static field
+        VK_F6 (int): final static field
+        VK_F7 (int): final static field
+        VK_F8 (int): final static field
+        VK_F9 (int): final static field
+        VK_F10 (int): final static field
+        VK_F11 (int): final static field
+        VK_F12 (int): final static field
+        VK_F13 (int): final static field
+        VK_F14 (int): final static field
+        VK_F15 (int): final static field
+        VK_F16 (int): final static field
+        VK_F17 (int): final static field
+        VK_F18 (int): final static field
+        VK_F19 (int): final static field
+        VK_F20 (int): final static field
+        VK_F21 (int): final static field
+        VK_F22 (int): final static field
+        VK_F23 (int): final static field
+        VK_F24 (int): final static field
+        VK_PRINTSCREEN (int): final static field
+        VK_INSERT (int): final static field
+        VK_HELP (int): final static field
+        VK_META (int): final static field
+        VK_BACK_QUOTE (int): final static field
+        VK_QUOTE (int): final static field
+        VK_KP_UP (int): final static field
+        VK_KP_DOWN (int): final static field
+        VK_KP_LEFT (int): final static field
+        VK_KP_RIGHT (int): final static field
+        VK_DEAD_GRAVE (int): final static field
+        VK_DEAD_ACUTE (int): final static field
+        VK_DEAD_CIRCUMFLEX (int): final static field
+        VK_DEAD_TILDE (int): final static field
+        VK_DEAD_MACRON (int): final static field
+        VK_DEAD_BREVE (int): final static field
+        VK_DEAD_ABOVEDOT (int): final static field
+        VK_DEAD_DIAERESIS (int): final static field
+        VK_DEAD_ABOVERING (int): final static field
+        VK_DEAD_DOUBLEACUTE (int): final static field
+        VK_DEAD_CARON (int): final static field
+        VK_DEAD_CEDILLA (int): final static field
+        VK_DEAD_OGONEK (int): final static field
+        VK_DEAD_IOTA (int): final static field
+        VK_DEAD_VOICED_SOUND (int): final static field
+        VK_DEAD_SEMIVOICED_SOUND (int): final static field
+        VK_AMPERSAND (int): final static field
+        VK_ASTERISK (int): final static field
+        VK_QUOTEDBL (int): final static field
+        VK_LESS (int): final static field
+        VK_GREATER (int): final static field
+        VK_BRACELEFT (int): final static field
+        VK_BRACERIGHT (int): final static field
+        VK_AT (int): final static field
+        VK_COLON (int): final static field
+        VK_CIRCUMFLEX (int): final static field
+        VK_DOLLAR (int): final static field
+        VK_EURO_SIGN (int): final static field
+        VK_EXCLAMATION_MARK (int): final static field
+        VK_INVERTED_EXCLAMATION_MARK (int): final static field
+        VK_LEFT_PARENTHESIS (int): final static field
+        VK_NUMBER_SIGN (int): final static field
+        VK_PLUS (int): final static field
+        VK_RIGHT_PARENTHESIS (int): final static field
+        VK_UNDERSCORE (int): final static field
+        VK_WINDOWS (int): final static field
+        VK_CONTEXT_MENU (int): final static field
+        VK_FINAL (int): final static field
+        VK_CONVERT (int): final static field
+        VK_NONCONVERT (int): final static field
+        VK_ACCEPT (int): final static field
+        VK_MODECHANGE (int): final static field
+        VK_KANA (int): final static field
+        VK_KANJI (int): final static field
+        VK_ALPHANUMERIC (int): final static field
+        VK_KATAKANA (int): final static field
+        VK_HIRAGANA (int): final static field
+        VK_FULL_WIDTH (int): final static field
+        VK_HALF_WIDTH (int): final static field
+        VK_ROMAN_CHARACTERS (int): final static field
+        VK_ALL_CANDIDATES (int): final static field
+        VK_PREVIOUS_CANDIDATE (int): final static field
+        VK_CODE_INPUT (int): final static field
+        VK_JAPANESE_KATAKANA (int): final static field
+        VK_JAPANESE_HIRAGANA (int): final static field
+        VK_JAPANESE_ROMAN (int): final static field
+        VK_KANA_LOCK (int): final static field
+        VK_INPUT_METHOD_ON_OFF (int): final static field
+        VK_CUT (int): final static field
+        VK_COPY (int): final static field
+        VK_PASTE (int): final static field
+        VK_UNDO (int): final static field
+        VK_AGAIN (int): final static field
+        VK_FIND (int): final static field
+        VK_PROPS (int): final static field
+        VK_STOP (int): final static field
+        VK_COMPOSE (int): final static field
+        VK_ALT_GRAPH (int): final static field
+        VK_BEGIN (int): final static field
+        VK_UNDEFINED (int): final static field
+        CHAR_UNDEFINED (char): final static field
+        KEY_LOCATION_UNKNOWN (int): final static field
+        KEY_LOCATION_STANDARD (int): final static field
+        KEY_LOCATION_LEFT (int): final static field
+        KEY_LOCATION_RIGHT (int): final static field
+        KEY_LOCATION_NUMPAD (int): final static field
+    
+    """
     KEY_FIRST: typing.ClassVar[int] = ...
     KEY_LAST: typing.ClassVar[int] = ...
     KEY_TYPED: typing.ClassVar[int] = ...
@@ -609,6 +1345,34 @@ class KeyEvent(InputEvent):
     def setModifiers(self, int: int) -> None: ...
 
 class MouseEvent(InputEvent):
+    """
+    Java class 'java.awt.event.MouseEvent'
+    
+        Extends:
+            java.awt.event.InputEvent
+    
+      Constructors:
+        * MouseEvent(java.awt.Component, int, long, int, int, int, int, boolean, int)
+        * MouseEvent(java.awt.Component, int, long, int, int, int, int, boolean)
+        * MouseEvent(java.awt.Component, int, long, int, int, int, int, int, int, boolean, int)
+    
+      Attributes:
+        MOUSE_FIRST (int): final static field
+        MOUSE_LAST (int): final static field
+        MOUSE_CLICKED (int): final static field
+        MOUSE_PRESSED (int): final static field
+        MOUSE_RELEASED (int): final static field
+        MOUSE_MOVED (int): final static field
+        MOUSE_ENTERED (int): final static field
+        MOUSE_EXITED (int): final static field
+        MOUSE_DRAGGED (int): final static field
+        MOUSE_WHEEL (int): final static field
+        NOBUTTON (int): final static field
+        BUTTON1 (int): final static field
+        BUTTON2 (int): final static field
+        BUTTON3 (int): final static field
+    
+    """
     MOUSE_FIRST: typing.ClassVar[int] = ...
     MOUSE_LAST: typing.ClassVar[int] = ...
     MOUSE_CLICKED: typing.ClassVar[int] = ...
@@ -645,6 +1409,22 @@ class MouseEvent(InputEvent):
     def translatePoint(self, int: int, int2: int) -> None: ...
 
 class MouseWheelEvent(MouseEvent):
+    """
+    Java class 'java.awt.event.MouseWheelEvent'
+    
+        Extends:
+            java.awt.event.MouseEvent
+    
+      Constructors:
+        * MouseWheelEvent(java.awt.Component, int, long, int, int, int, int, int, int, boolean, int, int, int, double)
+        * MouseWheelEvent(java.awt.Component, int, long, int, int, int, int, int, int, boolean, int, int, int)
+        * MouseWheelEvent(java.awt.Component, int, long, int, int, int, int, boolean, int, int, int)
+    
+      Attributes:
+        WHEEL_UNIT_SCROLL (int): final static field
+        WHEEL_BLOCK_SCROLL (int): final static field
+    
+    """
     WHEEL_UNIT_SCROLL: typing.ClassVar[int] = ...
     WHEEL_BLOCK_SCROLL: typing.ClassVar[int] = ...
     @typing.overload
@@ -659,3 +1439,51 @@ class MouseWheelEvent(MouseEvent):
     def getUnitsToScroll(self) -> int: ...
     def getWheelRotation(self) -> int: ...
     def paramString(self) -> str: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.awt.event")``.
+
+    AWTEventListener: typing.Type[AWTEventListener]
+    AWTEventListenerProxy: typing.Type[AWTEventListenerProxy]
+    ActionEvent: typing.Type[ActionEvent]
+    ActionListener: typing.Type[ActionListener]
+    AdjustmentEvent: typing.Type[AdjustmentEvent]
+    AdjustmentListener: typing.Type[AdjustmentListener]
+    ComponentAdapter: typing.Type[ComponentAdapter]
+    ComponentEvent: typing.Type[ComponentEvent]
+    ComponentListener: typing.Type[ComponentListener]
+    ContainerAdapter: typing.Type[ContainerAdapter]
+    ContainerEvent: typing.Type[ContainerEvent]
+    ContainerListener: typing.Type[ContainerListener]
+    FocusAdapter: typing.Type[FocusAdapter]
+    FocusEvent: typing.Type[FocusEvent]
+    FocusListener: typing.Type[FocusListener]
+    HierarchyBoundsAdapter: typing.Type[HierarchyBoundsAdapter]
+    HierarchyBoundsListener: typing.Type[HierarchyBoundsListener]
+    HierarchyEvent: typing.Type[HierarchyEvent]
+    HierarchyListener: typing.Type[HierarchyListener]
+    InputEvent: typing.Type[InputEvent]
+    InputMethodEvent: typing.Type[InputMethodEvent]
+    InputMethodListener: typing.Type[InputMethodListener]
+    InvocationEvent: typing.Type[InvocationEvent]
+    ItemEvent: typing.Type[ItemEvent]
+    ItemListener: typing.Type[ItemListener]
+    KeyAdapter: typing.Type[KeyAdapter]
+    KeyEvent: typing.Type[KeyEvent]
+    KeyListener: typing.Type[KeyListener]
+    MouseAdapter: typing.Type[MouseAdapter]
+    MouseEvent: typing.Type[MouseEvent]
+    MouseListener: typing.Type[MouseListener]
+    MouseMotionAdapter: typing.Type[MouseMotionAdapter]
+    MouseMotionListener: typing.Type[MouseMotionListener]
+    MouseWheelEvent: typing.Type[MouseWheelEvent]
+    MouseWheelListener: typing.Type[MouseWheelListener]
+    PaintEvent: typing.Type[PaintEvent]
+    TextEvent: typing.Type[TextEvent]
+    TextListener: typing.Type[TextListener]
+    WindowAdapter: typing.Type[WindowAdapter]
+    WindowEvent: typing.Type[WindowEvent]
+    WindowFocusListener: typing.Type[WindowFocusListener]
+    WindowListener: typing.Type[WindowListener]
+    WindowStateListener: typing.Type[WindowStateListener]

@@ -2,11 +2,23 @@ import cern.accsoft.commons.domain
 import cern.accsoft.commons.domain.particletransfers
 import cern.accsoft.commons.domain.zones
 import cern.lsa.domain.devices
+import cern.lsa.domain.devices.factory.type
 import java.util
 import typing
 
 
+
 class DeviceGroupsRequestBuilder:
+    """
+    Java class 'cern.lsa.domain.devices.factory.DeviceGroupsRequestBuilder'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * DeviceGroupsRequestBuilder()
+    
+    """
     def __init__(self): ...
     def build(self) -> cern.lsa.domain.devices.DeviceGroupsRequest: ...
     @staticmethod
@@ -27,6 +39,19 @@ class DeviceGroupsRequestBuilder:
     def setDeviceGroupTypes(self, collection: typing.Union[java.util.Collection[cern.lsa.domain.devices.DeviceGroupType], typing.Sequence[cern.lsa.domain.devices.DeviceGroupType]]) -> 'DeviceGroupsRequestBuilder': ...
 
 class DeviceTypesRequestBuilder:
+    """
+    Java class 'cern.lsa.domain.devices.factory.DeviceTypesRequestBuilder'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * DeviceTypesRequestBuilder()
+    
+      Attributes:
+        ALL_DEVICE_TYPES (cern.lsa.domain.devices.DeviceTypesRequest): final static field
+    
+    """
     ALL_DEVICE_TYPES: typing.ClassVar[cern.lsa.domain.devices.DeviceTypesRequest] = ...
     def __init__(self): ...
     def build(self) -> cern.lsa.domain.devices.DeviceTypesRequest: ...
@@ -45,6 +70,16 @@ class DeviceTypesRequestBuilder:
     def setDeviceTypeVersionNumber(self, deviceTypeVersionNumber: cern.lsa.domain.devices.DeviceTypeVersionNumber) -> 'DeviceTypesRequestBuilder': ...
 
 class DevicesRequestBuilder:
+    """
+    Java class 'cern.lsa.domain.devices.factory.DevicesRequestBuilder'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * DevicesRequestBuilder()
+    
+    """
     def __init__(self): ...
     def build(self) -> cern.lsa.domain.devices.DevicesRequest: ...
     @staticmethod
@@ -115,3 +150,12 @@ class DevicesRequestBuilder:
     def setParticleTransfers(self, collection: typing.Union[java.util.Collection[cern.accsoft.commons.domain.particletransfers.ParticleTransfer], typing.Sequence[cern.accsoft.commons.domain.particletransfers.ParticleTransfer]]) -> 'DevicesRequestBuilder': ...
     def setServerName(self, string: str) -> 'DevicesRequestBuilder': ...
     def setServerNames(self, collection: typing.Union[java.util.Collection[str], typing.Sequence[str]]) -> 'DevicesRequestBuilder': ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.devices.factory")``.
+
+    DeviceGroupsRequestBuilder: typing.Type[DeviceGroupsRequestBuilder]
+    DeviceTypesRequestBuilder: typing.Type[DeviceTypesRequestBuilder]
+    DevicesRequestBuilder: typing.Type[DevicesRequestBuilder]
+    type: cern.lsa.domain.devices.factory.type.__module_protocol__

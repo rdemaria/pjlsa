@@ -7,6 +7,9 @@ import cern.accsoft.commons.value
 import cern.lsa.domain.commons
 import cern.lsa.domain.devices
 import cern.lsa.domain.optics.factory
+import cern.lsa.domain.optics.spi
+import cern.lsa.domain.settings
+import cern.lsa.domain.settings.type
 import com.google.common.collect
 import java.io
 import java.lang
@@ -14,7 +17,21 @@ import java.util
 import typing
 
 
+
 class BeamEnum(java.lang.Enum['BeamEnum']):
+    """
+    Java class 'cern.lsa.domain.optics.BeamEnum'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        B1 (cern.lsa.domain.optics.BeamEnum): final static enum constant
+        B2 (cern.lsa.domain.optics.BeamEnum): final static enum constant
+        B3 (cern.lsa.domain.optics.BeamEnum): final static enum constant
+        B4 (cern.lsa.domain.optics.BeamEnum): final static enum constant
+    
+    """
     B1: typing.ClassVar['BeamEnum'] = ...
     B2: typing.ClassVar['BeamEnum'] = ...
     B3: typing.ClassVar['BeamEnum'] = ...
@@ -32,18 +49,57 @@ class BeamEnum(java.lang.Enum['BeamEnum']):
     def values() -> typing.List['BeamEnum']: ...
 
 class Calibration(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.optics.Calibration'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def getCalibrationFunctionByType(self, calibrationFunctionTypes: 'CalibrationFunctionTypes') -> cern.accsoft.commons.value.ImmutableDiscreteFunction: ...
     def getCalibrationFunctionMap(self) -> java.util.Map['CalibrationFunctionTypes', cern.accsoft.commons.value.ImmutableDiscreteFunction]: ...
     def getCreationDate(self) -> java.util.Date: ...
     def getFidelModelId(self) -> int: ...
 
 class CalibrationException(java.lang.Exception):
+    """
+    Java class 'cern.lsa.domain.optics.CalibrationException'
+    
+        Extends:
+            java.lang.Exception
+    
+      Constructors:
+        * CalibrationException(java.lang.String)
+        * CalibrationException(java.lang.String, java.lang.Throwable)
+    
+    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
     def __init__(self, string: str, throwable: java.lang.Throwable): ...
 
 class CalibrationFunctionTypes(java.lang.Enum['CalibrationFunctionTypes']):
+    """
+    Java class 'cern.lsa.domain.optics.CalibrationFunctionTypes'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        B_FIELD (cern.lsa.domain.optics.CalibrationFunctionTypes): final static enum constant
+        BL_FIELD (cern.lsa.domain.optics.CalibrationFunctionTypes): final static enum constant
+        SLOPE (cern.lsa.domain.optics.CalibrationFunctionTypes): final static enum constant
+        CURRENT2INDUCTANCE (cern.lsa.domain.optics.CalibrationFunctionTypes): final static enum constant
+        CURRENT2COUPLING_INDUCTANCE (cern.lsa.domain.optics.CalibrationFunctionTypes): final static enum constant
+        MAG_INTFIELD2CURRENT (cern.lsa.domain.optics.CalibrationFunctionTypes): final static enum constant
+        EL_INTFIELD2VOLTAGE (cern.lsa.domain.optics.CalibrationFunctionTypes): final static enum constant
+        LOCAL_FIELD2CURRENT (cern.lsa.domain.optics.CalibrationFunctionTypes): final static enum constant
+        CURRENT2HALL_VOLTAGE (cern.lsa.domain.optics.CalibrationFunctionTypes): final static enum constant
+        B_FIELD_RDOWN (cern.lsa.domain.optics.CalibrationFunctionTypes): final static enum constant
+        MAG_INTFIELD2VOLTAGE (cern.lsa.domain.optics.CalibrationFunctionTypes): final static enum constant
+        BL_FIELD_RDOWN (cern.lsa.domain.optics.CalibrationFunctionTypes): final static enum constant
+    
+    """
     B_FIELD: typing.ClassVar['CalibrationFunctionTypes'] = ...
     BL_FIELD: typing.ClassVar['CalibrationFunctionTypes'] = ...
     SLOPE: typing.ClassVar['CalibrationFunctionTypes'] = ...
@@ -70,6 +126,13 @@ class CalibrationFunctionTypes(java.lang.Enum['CalibrationFunctionTypes']):
     def values() -> typing.List['CalibrationFunctionTypes']: ...
 
 class ChromaticModel(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.optics.ChromaticModel'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def getAlphaH(self) -> float: ...
     def getAlphaV(self) -> float: ...
     def getBetaH(self) -> float: ...
@@ -88,6 +151,14 @@ class ChromaticModel(cern.accsoft.commons.util.Named):
     def getLatticeChromaV(self) -> float: ...
 
 class ElementBase(cern.accsoft.commons.util.Named, cern.lsa.domain.commons.IdentifiedEntity):
+    """
+    Java class 'cern.lsa.domain.optics.ElementBase'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named,
+            cern.lsa.domain.commons.IdentifiedEntity
+    
+    """
     def getAcceleratorZone(self) -> cern.accsoft.commons.domain.zones.AcceleratorZone: ...
     def getLength(self) -> float: ...
     def getMadParent(self) -> str: ...
@@ -96,6 +167,22 @@ class ElementBase(cern.accsoft.commons.util.Named, cern.lsa.domain.commons.Ident
     def getType(self) -> 'ElementType': ...
 
 class ElementPlane(java.lang.Enum['ElementPlane'], cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.optics.ElementPlane'
+    
+        Extends:
+            java.lang.Enum
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+      Attributes:
+        VERTICAL (cern.lsa.domain.optics.ElementPlane): final static enum constant
+        HORIZONTAL (cern.lsa.domain.optics.ElementPlane): final static enum constant
+        BOTH (cern.lsa.domain.optics.ElementPlane): final static enum constant
+        NONE (cern.lsa.domain.optics.ElementPlane): final static enum constant
+    
+    """
     VERTICAL: typing.ClassVar['ElementPlane'] = ...
     HORIZONTAL: typing.ClassVar['ElementPlane'] = ...
     BOTH: typing.ClassVar['ElementPlane'] = ...
@@ -115,6 +202,38 @@ class ElementPlane(java.lang.Enum['ElementPlane'], cern.accsoft.commons.util.Nam
     def values() -> typing.List['ElementPlane']: ...
 
 class ElementType(java.lang.Enum['ElementType'], cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.optics.ElementType'
+    
+        Extends:
+            java.lang.Enum
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+      Attributes:
+        DRIFT (cern.lsa.domain.optics.ElementType): final static enum constant
+        HKICKER (cern.lsa.domain.optics.ElementType): final static enum constant
+        HMONITOR (cern.lsa.domain.optics.ElementType): final static enum constant
+        INSTRUMENT (cern.lsa.domain.optics.ElementType): final static enum constant
+        IP (cern.lsa.domain.optics.ElementType): final static enum constant
+        KICKER (cern.lsa.domain.optics.ElementType): final static enum constant
+        MARKER (cern.lsa.domain.optics.ElementType): final static enum constant
+        MONITOR (cern.lsa.domain.optics.ElementType): final static enum constant
+        MULTIPOLE (cern.lsa.domain.optics.ElementType): final static enum constant
+        OCTUPOLE (cern.lsa.domain.optics.ElementType): final static enum constant
+        QUADRUPOLE (cern.lsa.domain.optics.ElementType): final static enum constant
+        RBEND (cern.lsa.domain.optics.ElementType): final static enum constant
+        RCOLLIMATOR (cern.lsa.domain.optics.ElementType): final static enum constant
+        RFCAVITY (cern.lsa.domain.optics.ElementType): final static enum constant
+        SBEND (cern.lsa.domain.optics.ElementType): final static enum constant
+        SEXTUPOLE (cern.lsa.domain.optics.ElementType): final static enum constant
+        SOLENOID (cern.lsa.domain.optics.ElementType): final static enum constant
+        TKICKER (cern.lsa.domain.optics.ElementType): final static enum constant
+        VKICKER (cern.lsa.domain.optics.ElementType): final static enum constant
+        VMONITOR (cern.lsa.domain.optics.ElementType): final static enum constant
+    
+    """
     DRIFT: typing.ClassVar['ElementType'] = ...
     HKICKER: typing.ClassVar['ElementType'] = ...
     HMONITOR: typing.ClassVar['ElementType'] = ...
@@ -147,6 +266,10 @@ class ElementType(java.lang.Enum['ElementType'], cern.accsoft.commons.util.Named
     def values() -> typing.List['ElementType']: ...
 
 class ElementsRequest:
+    """
+    Java class 'cern.lsa.domain.optics.ElementsRequest'
+    
+    """
     @staticmethod
     def builder() -> cern.lsa.domain.optics.factory.ElementsRequestBuilder: ...
     def excludeObsolete(self) -> bool: ...
@@ -158,6 +281,13 @@ class ElementsRequest:
     def getTypes(self) -> java.util.Set[ElementType]: ...
 
 class LogicalHardware(cern.lsa.domain.devices.Device):
+    """
+    Java class 'cern.lsa.domain.optics.LogicalHardware'
+    
+        Interfaces:
+            cern.lsa.domain.devices.Device
+    
+    """
     def getCalibrationName(self) -> str: ...
     def getCalibrationSign(self) -> int: ...
     def getLinkRuleName(self) -> str: ...
@@ -173,6 +303,10 @@ class LogicalHardware(cern.lsa.domain.devices.Device):
     def getTau(self) -> float: ...
 
 class MeasuredTwiss:
+    """
+    Java class 'cern.lsa.domain.optics.MeasuredTwiss'
+    
+    """
     def getAlfxError(self) -> float: ...
     def getAlfxMeas(self) -> float: ...
     def getAlfyError(self) -> float: ...
@@ -194,6 +328,14 @@ class MeasuredTwiss:
     def getTwiss(self) -> 'Twiss': ...
 
 class Optic(cern.accsoft.commons.util.Named, cern.lsa.domain.commons.IdentifiedEntity):
+    """
+    Java class 'cern.lsa.domain.optics.Optic'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named,
+            cern.lsa.domain.commons.IdentifiedEntity
+    
+    """
     def getBaseStrengthFile(self) -> str: ...
     def getCreationDate(self) -> java.util.Date: ...
     def getModelUri(self) -> str: ...
@@ -206,12 +348,31 @@ class Optic(cern.accsoft.commons.util.Named, cern.lsa.domain.commons.IdentifiedE
     def setName(self, string: str) -> None: ...
 
 class OpticStrength:
+    """
+    Java class 'cern.lsa.domain.optics.OpticStrength'
+    
+    """
+    @staticmethod
+    def builder() -> cern.lsa.domain.optics.spi.OpticStrengthImpl.Builder: ...
     def getBeam(self) -> str: ...
     def getLogicalHardwareName(self) -> str: ...
     def getStrength(self) -> float: ...
     def getStrengthL(self) -> float: ...
 
 class Optics(java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.optics.Optics'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Constructors:
+        * Optics(java.util.Set)
+    
+    """
     def __init__(self, set: java.util.Set[Optic]): ...
     def getBeam(self, stringArray: typing.List[str], string2: str) -> typing.List[str]: ...
     def getOptic(self, string: str) -> Optic: ...
@@ -223,6 +384,10 @@ class Optics(java.io.Serializable):
     def size(self) -> int: ...
 
 class OpticsRequest:
+    """
+    Java class 'cern.lsa.domain.optics.OpticsRequest'
+    
+    """
     @staticmethod
     def builder() -> cern.lsa.domain.optics.factory.OpticsRequestBuilder: ...
     def getAccelerator(self) -> cern.accsoft.commons.domain.Accelerator: ...
@@ -231,6 +396,13 @@ class OpticsRequest:
     def getParticleTransfer(self) -> cern.accsoft.commons.domain.particletransfers.ParticleTransfer: ...
 
 class OpticsTable(java.lang.Iterable['OpticsTableItem']):
+    """
+    Java class 'cern.lsa.domain.optics.OpticsTable'
+    
+        Interfaces:
+            java.lang.Iterable
+    
+    """
     def getBeamProcessTypeName(self) -> str: ...
     def getErrorMessages(self) -> java.util.Set[str]: ...
     def getLength(self) -> int: ...
@@ -243,6 +415,10 @@ class OpticsTable(java.lang.Iterable['OpticsTableItem']):
     def isValid(self) -> bool: ...
 
 class OpticsTableItem:
+    """
+    Java class 'cern.lsa.domain.optics.OpticsTableItem'
+    
+    """
     def clone(self) -> 'OpticsTableItem': ...
     def getBeamProcessTypeName(self) -> str: ...
     def getEnergy(self) -> float: ...
@@ -251,13 +427,63 @@ class OpticsTableItem:
     def getTime(self) -> int: ...
 
 class OpticsTables:
+    """
+    Java class 'cern.lsa.domain.optics.OpticsTables'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * OpticsTables()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def getEnergyFunction(opticsTable: OpticsTable) -> cern.accsoft.commons.value.ImmutableDiscreteFunction: ...
     @staticmethod
     def getOpticTimesCoordinates(opticsTable: OpticsTable) -> typing.List[float]: ...
 
+class OpticsTablesRequest:
+    """
+    Java class 'cern.lsa.domain.optics.OpticsTablesRequest'
+    
+    """
+    @staticmethod
+    def builder() -> 'DefaultOpticsTablesRequest.Builder': ...
+    @staticmethod
+    def byBeamProcess(beamProcess: cern.lsa.domain.settings.BeamProcess) -> 'OpticsTablesRequest': ...
+    @staticmethod
+    def byBeamProcessType(beamProcessType: cern.lsa.domain.settings.type.BeamProcessType) -> 'OpticsTablesRequest': ...
+    @staticmethod
+    def byBeamProcessTypeName(string: str) -> 'OpticsTablesRequest': ...
+    @staticmethod
+    def byBeamProcessTypeNames(collection: typing.Union[java.util.Collection[str], typing.Sequence[str]]) -> 'OpticsTablesRequest': ...
+    @staticmethod
+    def byBeamProcessTypes(collection: typing.Union[java.util.Collection[cern.lsa.domain.settings.type.BeamProcessType], typing.Sequence[cern.lsa.domain.settings.type.BeamProcessType]]) -> 'OpticsTablesRequest': ...
+    @staticmethod
+    def byBeamProcesses(collection: typing.Union[java.util.Collection[cern.lsa.domain.settings.BeamProcess], typing.Sequence[cern.lsa.domain.settings.BeamProcess]]) -> 'OpticsTablesRequest': ...
+    @staticmethod
+    def byOptic(optic: Optic) -> 'OpticsTablesRequest': ...
+    @staticmethod
+    def byOptics(collection: typing.Union[java.util.Collection[Optic], typing.Sequence[Optic]]) -> 'OpticsTablesRequest': ...
+    @staticmethod
+    def byStandAloneContext(standAloneContext: cern.lsa.domain.settings.StandAloneContext) -> 'OpticsTablesRequest': ...
+    @staticmethod
+    def byStandAloneContexts(collection: typing.Union[java.util.Collection[cern.lsa.domain.settings.StandAloneContext], typing.Sequence[cern.lsa.domain.settings.StandAloneContext]]) -> 'OpticsTablesRequest': ...
+    def check(self) -> None: ...
+    def getBeamProcessTypeNames(self) -> java.util.Set[str]: ...
+    def getOptics(self) -> java.util.Set[Optic]: ...
+    def getStandAloneContexts(self) -> java.util.Set[cern.lsa.domain.settings.StandAloneContext]: ...
+
 class PowerConverterInfo(cern.accsoft.commons.util.Named, cern.lsa.domain.commons.IdentifiedEntity):
+    """
+    Java class 'cern.lsa.domain.optics.PowerConverterInfo'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named,
+            cern.lsa.domain.commons.IdentifiedEntity
+    
+    """
     def getAccelerationLimit(self) -> float: ...
     def getAdvance(self) -> float: ...
     def getBeam(self) -> str: ...
@@ -273,12 +499,23 @@ class PowerConverterInfo(cern.accsoft.commons.util.Named, cern.lsa.domain.common
     def isPolaritySwitch(self) -> bool: ...
 
 class PreCyclingPrescription:
+    """
+    Java class 'cern.lsa.domain.optics.PreCyclingPrescription'
+    
+    """
     def getAttributeValue(self, string: str) -> float: ...
     def getMagnetType(self) -> str: ...
     def getPrecyclingPrescriptionMode(self) -> str: ...
     def getPrecyclingPrescriptionType(self) -> str: ...
 
 class RFCalibration(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.lsa.domain.optics.RFCalibration'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def getCavityQ(self, double: float) -> float: ...
     def getCavityQ2CouplerPosFunction(self) -> cern.accsoft.commons.value.ImmutableDiscreteFunction: ...
     def getCouplerPos(self, double: float) -> float: ...
@@ -286,6 +523,10 @@ class RFCalibration(cern.accsoft.commons.util.Named):
     def getDeviceName(self) -> str: ...
 
 class Twiss:
+    """
+    Java class 'cern.lsa.domain.optics.Twiss'
+    
+    """
     def getAlfx(self) -> float: ...
     def getAlfy(self) -> float: ...
     def getBeam(self) -> cern.accsoft.commons.domain.beams.Beam: ...
@@ -317,6 +558,19 @@ class Twiss:
     def updateOpticName(self, string: str) -> None: ...
 
 class TwissFilter(cern.accsoft.commons.util.Filters.Filter[Twiss]):
+    """
+    Java class 'cern.lsa.domain.optics.TwissFilter'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.accsoft.commons.util.Filters.Filter
+    
+      Constructors:
+        * TwissFilter()
+    
+    """
     def __init__(self): ...
     def accepts(self, twiss: Twiss) -> bool: ...
     @staticmethod
@@ -327,6 +581,16 @@ class TwissFilter(cern.accsoft.commons.util.Filters.Filter[Twiss]):
     def setElementTypes(self, collection: typing.Union[java.util.Collection[ElementType], typing.Sequence[ElementType]]) -> 'TwissFilter': ...
 
 class TwissHelper:
+    """
+    Java class 'cern.lsa.domain.optics.TwissHelper'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * TwissHelper()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def mapByDate(collection: typing.Union[java.util.Collection[MeasuredTwiss], typing.Sequence[MeasuredTwiss]]) -> java.util.Map[java.util.Date, java.util.Set[MeasuredTwiss]]: ...
@@ -338,6 +602,21 @@ class TwissHelper:
     def mapByTwiss(collection: typing.Union[java.util.Collection[MeasuredTwiss], typing.Sequence[MeasuredTwiss]]) -> java.util.Map[Twiss, java.util.Set[MeasuredTwiss]]: ...
 
 class Twisses:
+    """
+    Java class 'cern.lsa.domain.optics.Twisses'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * Twisses()
+    
+      Attributes:
+        BEAMS (cern.accsoft.commons.util.Mappers$Mapper): final static field
+        ELEMENT_TYPES (cern.accsoft.commons.util.Mappers$Mapper): final static field
+        ELEMENT_NAMES (cern.accsoft.commons.util.Mappers$Mapper): final static field
+    
+    """
     BEAMS: typing.ClassVar[cern.accsoft.commons.util.Mappers.Mapper] = ...
     ELEMENT_TYPES: typing.ClassVar[cern.accsoft.commons.util.Mappers.Mapper] = ...
     ELEMENT_NAMES: typing.ClassVar[cern.accsoft.commons.util.Mappers.Mapper] = ...
@@ -350,6 +629,10 @@ class Twisses:
     def toElementNamesMap(collection: typing.Union[java.util.Collection[Twiss], typing.Sequence[Twiss]]) -> java.util.Map[str, Twiss]: ...
 
 class TwissesRequest:
+    """
+    Java class 'cern.lsa.domain.optics.TwissesRequest'
+    
+    """
     @staticmethod
     def builder() -> cern.lsa.domain.optics.factory.TwissesRequestBuilder: ...
     def getBeam(self) -> cern.accsoft.commons.domain.beams.Beam: ...
@@ -358,7 +641,70 @@ class TwissesRequest:
     def getElementTypes(self) -> java.util.Set[ElementType]: ...
     def getOpticName(self) -> str: ...
 
+class DefaultOpticsTablesRequest(OpticsTablesRequest, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.optics.DefaultOpticsTablesRequest'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.optics.OpticsTablesRequest,
+            java.io.Serializable
+    
+    """
+    @staticmethod
+    def builder() -> 'DefaultOpticsTablesRequest.Builder': ...
+    @staticmethod
+    def copyOf(opticsTablesRequest: OpticsTablesRequest) -> 'DefaultOpticsTablesRequest': ...
+    def equals(self, object: typing.Any) -> bool: ...
+    def getBeamProcessTypeNames(self) -> java.util.Set[str]: ...
+    def getOptics(self) -> java.util.Set[Optic]: ...
+    def getStandAloneContexts(self) -> java.util.Set[cern.lsa.domain.settings.StandAloneContext]: ...
+    def hashCode(self) -> int: ...
+    def toString(self) -> str: ...
+    @typing.overload
+    def withBeamProcessTypeNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultOpticsTablesRequest': ...
+    @typing.overload
+    def withBeamProcessTypeNames(self, stringArray: typing.List[str]) -> 'DefaultOpticsTablesRequest': ...
+    @typing.overload
+    def withOptics(self, opticArray: typing.List[Optic]) -> 'DefaultOpticsTablesRequest': ...
+    @typing.overload
+    def withOptics(self, iterable: java.lang.Iterable[Optic]) -> 'DefaultOpticsTablesRequest': ...
+    @typing.overload
+    def withStandAloneContexts(self, standAloneContextArray: typing.List[cern.lsa.domain.settings.StandAloneContext]) -> 'DefaultOpticsTablesRequest': ...
+    @typing.overload
+    def withStandAloneContexts(self, iterable: java.lang.Iterable[cern.lsa.domain.settings.StandAloneContext]) -> 'DefaultOpticsTablesRequest': ...
+    class Builder:
+        """
+        Java class 'cern.lsa.domain.optics.DefaultOpticsTablesRequest$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+        """
+        def addAllBeamProcessTypeNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultOpticsTablesRequest.Builder': ...
+        def addAllOptics(self, iterable: java.lang.Iterable[Optic]) -> 'DefaultOpticsTablesRequest.Builder': ...
+        def addAllStandAloneContexts(self, iterable: java.lang.Iterable[cern.lsa.domain.settings.StandAloneContext]) -> 'DefaultOpticsTablesRequest.Builder': ...
+        def addBeamProcessTypeName(self, string: str) -> 'DefaultOpticsTablesRequest.Builder': ...
+        def addBeamProcessTypeNames(self, stringArray: typing.List[str]) -> 'DefaultOpticsTablesRequest.Builder': ...
+        def addOptic(self, optic: Optic) -> 'DefaultOpticsTablesRequest.Builder': ...
+        def addOptics(self, opticArray: typing.List[Optic]) -> 'DefaultOpticsTablesRequest.Builder': ...
+        def addStandAloneContext(self, standAloneContext: cern.lsa.domain.settings.StandAloneContext) -> 'DefaultOpticsTablesRequest.Builder': ...
+        def addStandAloneContexts(self, standAloneContextArray: typing.List[cern.lsa.domain.settings.StandAloneContext]) -> 'DefaultOpticsTablesRequest.Builder': ...
+        def beamProcessTypeNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultOpticsTablesRequest.Builder': ...
+        def build(self) -> 'DefaultOpticsTablesRequest': ...
+        def optics(self, iterable: java.lang.Iterable[Optic]) -> 'DefaultOpticsTablesRequest.Builder': ...
+        def standAloneContexts(self, iterable: java.lang.Iterable[cern.lsa.domain.settings.StandAloneContext]) -> 'DefaultOpticsTablesRequest.Builder': ...
+
 class Element(ElementBase):
+    """
+    Java class 'cern.lsa.domain.optics.Element'
+    
+        Interfaces:
+            cern.lsa.domain.optics.ElementBase
+    
+    """
     def getAffectedRings(self) -> java.util.Set[BeamEnum]: ...
     def getLogicalHwName(self) -> str: ...
     def getLogicalHwNames(self) -> java.util.Set[str]: ...
@@ -371,3 +717,39 @@ class Element(ElementBase):
     def setPosition(self, double: float) -> None: ...
     def setSteeringPlane(self, elementPlane: ElementPlane) -> None: ...
     def setType(self, elementType: ElementType) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.optics")``.
+
+    BeamEnum: typing.Type[BeamEnum]
+    Calibration: typing.Type[Calibration]
+    CalibrationException: typing.Type[CalibrationException]
+    CalibrationFunctionTypes: typing.Type[CalibrationFunctionTypes]
+    ChromaticModel: typing.Type[ChromaticModel]
+    DefaultOpticsTablesRequest: typing.Type[DefaultOpticsTablesRequest]
+    Element: typing.Type[Element]
+    ElementBase: typing.Type[ElementBase]
+    ElementPlane: typing.Type[ElementPlane]
+    ElementType: typing.Type[ElementType]
+    ElementsRequest: typing.Type[ElementsRequest]
+    LogicalHardware: typing.Type[LogicalHardware]
+    MeasuredTwiss: typing.Type[MeasuredTwiss]
+    Optic: typing.Type[Optic]
+    OpticStrength: typing.Type[OpticStrength]
+    Optics: typing.Type[Optics]
+    OpticsRequest: typing.Type[OpticsRequest]
+    OpticsTable: typing.Type[OpticsTable]
+    OpticsTableItem: typing.Type[OpticsTableItem]
+    OpticsTables: typing.Type[OpticsTables]
+    OpticsTablesRequest: typing.Type[OpticsTablesRequest]
+    PowerConverterInfo: typing.Type[PowerConverterInfo]
+    PreCyclingPrescription: typing.Type[PreCyclingPrescription]
+    RFCalibration: typing.Type[RFCalibration]
+    Twiss: typing.Type[Twiss]
+    TwissFilter: typing.Type[TwissFilter]
+    TwissHelper: typing.Type[TwissHelper]
+    Twisses: typing.Type[Twisses]
+    TwissesRequest: typing.Type[TwissesRequest]
+    factory: cern.lsa.domain.optics.factory.__module_protocol__
+    spi: cern.lsa.domain.optics.spi.__module_protocol__

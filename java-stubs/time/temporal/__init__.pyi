@@ -8,7 +8,23 @@ import java.util.function
 import typing
 
 
+
 class IsoFields:
+    """
+    Java class 'java.time.temporal.IsoFields'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        DAY_OF_QUARTER (java.time.temporal.TemporalField): final static field
+        QUARTER_OF_YEAR (java.time.temporal.TemporalField): final static field
+        WEEK_OF_WEEK_BASED_YEAR (java.time.temporal.TemporalField): final static field
+        WEEK_BASED_YEAR (java.time.temporal.TemporalField): final static field
+        WEEK_BASED_YEARS (java.time.temporal.TemporalUnit): final static field
+        QUARTER_YEARS (java.time.temporal.TemporalUnit): final static field
+    
+    """
     DAY_OF_QUARTER: typing.ClassVar['TemporalField'] = ...
     QUARTER_OF_YEAR: typing.ClassVar['TemporalField'] = ...
     WEEK_OF_WEEK_BASED_YEAR: typing.ClassVar['TemporalField'] = ...
@@ -17,11 +33,27 @@ class IsoFields:
     QUARTER_YEARS: typing.ClassVar['TemporalUnit'] = ...
 
 class JulianFields:
+    """
+    Java class 'java.time.temporal.JulianFields'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        JULIAN_DAY (java.time.temporal.TemporalField): final static field
+        MODIFIED_JULIAN_DAY (java.time.temporal.TemporalField): final static field
+        RATA_DIE (java.time.temporal.TemporalField): final static field
+    
+    """
     JULIAN_DAY: typing.ClassVar['TemporalField'] = ...
     MODIFIED_JULIAN_DAY: typing.ClassVar['TemporalField'] = ...
     RATA_DIE: typing.ClassVar['TemporalField'] = ...
 
 class TemporalAccessor:
+    """
+    Java class 'java.time.temporal.TemporalAccessor'
+    
+    """
     def get(self, temporalField: 'TemporalField') -> int: ...
     def getLong(self, temporalField: 'TemporalField') -> int: ...
     def isSupported(self, temporalField: 'TemporalField') -> bool: ...
@@ -30,9 +62,20 @@ class TemporalAccessor:
     def range(self, temporalField: 'TemporalField') -> 'ValueRange': ...
 
 class TemporalAdjuster:
+    """
+    Java class 'java.time.temporal.TemporalAdjuster'
+    
+    """
     def adjustInto(self, temporal: 'Temporal') -> 'Temporal': ...
 
 class TemporalAdjusters:
+    """
+    Java class 'java.time.temporal.TemporalAdjusters'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def dayOfWeekInMonth(int: int, dayOfWeek: java.time.DayOfWeek) -> TemporalAdjuster: ...
     @staticmethod
@@ -63,12 +106,20 @@ class TemporalAdjusters:
     def previousOrSame(dayOfWeek: java.time.DayOfWeek) -> TemporalAdjuster: ...
 
 class TemporalAmount:
+    """
+    Java class 'java.time.temporal.TemporalAmount'
+    
+    """
     def addTo(self, temporal: 'Temporal') -> 'Temporal': ...
     def get(self, temporalUnit: 'TemporalUnit') -> int: ...
     def getUnits(self) -> java.util.List['TemporalUnit']: ...
     def subtractFrom(self, temporal: 'Temporal') -> 'Temporal': ...
 
 class TemporalField:
+    """
+    Java class 'java.time.temporal.TemporalField'
+    
+    """
     _adjustInto__R = typing.TypeVar('_adjustInto__R', bound='Temporal')  # <R>
     def adjustInto(self, r: _adjustInto__R, long: int) -> _adjustInto__R: ...
     def getBaseUnit(self) -> 'TemporalUnit': ...
@@ -84,6 +135,13 @@ class TemporalField:
     def toString(self) -> str: ...
 
 class TemporalQueries:
+    """
+    Java class 'java.time.temporal.TemporalQueries'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def chronology() -> 'TemporalQuery'[java.time.chrono.Chronology]: ...
     @staticmethod
@@ -101,9 +159,17 @@ class TemporalQueries:
 
 _TemporalQuery__R = typing.TypeVar('_TemporalQuery__R')  # <R>
 class TemporalQuery(typing.Generic[_TemporalQuery__R]):
+    """
+    Java class 'java.time.temporal.TemporalQuery'
+    
+    """
     def queryFrom(self, temporalAccessor: TemporalAccessor) -> _TemporalQuery__R: ...
 
 class TemporalUnit:
+    """
+    Java class 'java.time.temporal.TemporalUnit'
+    
+    """
     _addTo__R = typing.TypeVar('_addTo__R', bound='Temporal')  # <R>
     def addTo(self, r: _addTo__R, long: int) -> _addTo__R: ...
     def between(self, temporal: 'Temporal', temporal2: 'Temporal') -> int: ...
@@ -115,12 +181,33 @@ class TemporalUnit:
     def toString(self) -> str: ...
 
 class UnsupportedTemporalTypeException(java.time.DateTimeException):
+    """
+    Java class 'java.time.temporal.UnsupportedTemporalTypeException'
+    
+        Extends:
+            java.time.DateTimeException
+    
+      Constructors:
+        * UnsupportedTemporalTypeException(java.lang.String)
+        * UnsupportedTemporalTypeException(java.lang.String, java.lang.Throwable)
+    
+    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
     def __init__(self, string: str, throwable: java.lang.Throwable): ...
 
 class ValueRange(java.io.Serializable):
+    """
+    Java class 'java.time.temporal.ValueRange'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+    """
     def checkValidIntValue(self, long: int, temporalField: TemporalField) -> int: ...
     def checkValidValue(self, long: int, temporalField: TemporalField) -> int: ...
     def equals(self, object: typing.Any) -> bool: ...
@@ -145,6 +232,21 @@ class ValueRange(java.io.Serializable):
     def toString(self) -> str: ...
 
 class WeekFields(java.io.Serializable):
+    """
+    Java class 'java.time.temporal.WeekFields'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.io.Serializable
+    
+      Attributes:
+        ISO (java.time.temporal.WeekFields): final static field
+        SUNDAY_START (java.time.temporal.WeekFields): final static field
+        WEEK_BASED_YEARS (java.time.temporal.TemporalUnit): final static field
+    
+    """
     ISO: typing.ClassVar['WeekFields'] = ...
     SUNDAY_START: typing.ClassVar['WeekFields'] = ...
     WEEK_BASED_YEARS: typing.ClassVar[TemporalUnit] = ...
@@ -166,6 +268,48 @@ class WeekFields(java.io.Serializable):
     def weekOfYear(self) -> TemporalField: ...
 
 class ChronoField(java.lang.Enum['ChronoField'], TemporalField):
+    """
+    Java class 'java.time.temporal.ChronoField'
+    
+        Extends:
+            java.lang.Enum
+    
+        Interfaces:
+            java.time.temporal.TemporalField
+    
+      Attributes:
+        NANO_OF_SECOND (java.time.temporal.ChronoField): final static enum constant
+        NANO_OF_DAY (java.time.temporal.ChronoField): final static enum constant
+        MICRO_OF_SECOND (java.time.temporal.ChronoField): final static enum constant
+        MICRO_OF_DAY (java.time.temporal.ChronoField): final static enum constant
+        MILLI_OF_SECOND (java.time.temporal.ChronoField): final static enum constant
+        MILLI_OF_DAY (java.time.temporal.ChronoField): final static enum constant
+        SECOND_OF_MINUTE (java.time.temporal.ChronoField): final static enum constant
+        SECOND_OF_DAY (java.time.temporal.ChronoField): final static enum constant
+        MINUTE_OF_HOUR (java.time.temporal.ChronoField): final static enum constant
+        MINUTE_OF_DAY (java.time.temporal.ChronoField): final static enum constant
+        HOUR_OF_AMPM (java.time.temporal.ChronoField): final static enum constant
+        CLOCK_HOUR_OF_AMPM (java.time.temporal.ChronoField): final static enum constant
+        HOUR_OF_DAY (java.time.temporal.ChronoField): final static enum constant
+        CLOCK_HOUR_OF_DAY (java.time.temporal.ChronoField): final static enum constant
+        AMPM_OF_DAY (java.time.temporal.ChronoField): final static enum constant
+        DAY_OF_WEEK (java.time.temporal.ChronoField): final static enum constant
+        ALIGNED_DAY_OF_WEEK_IN_MONTH (java.time.temporal.ChronoField): final static enum constant
+        ALIGNED_DAY_OF_WEEK_IN_YEAR (java.time.temporal.ChronoField): final static enum constant
+        DAY_OF_MONTH (java.time.temporal.ChronoField): final static enum constant
+        DAY_OF_YEAR (java.time.temporal.ChronoField): final static enum constant
+        EPOCH_DAY (java.time.temporal.ChronoField): final static enum constant
+        ALIGNED_WEEK_OF_MONTH (java.time.temporal.ChronoField): final static enum constant
+        ALIGNED_WEEK_OF_YEAR (java.time.temporal.ChronoField): final static enum constant
+        MONTH_OF_YEAR (java.time.temporal.ChronoField): final static enum constant
+        PROLEPTIC_MONTH (java.time.temporal.ChronoField): final static enum constant
+        YEAR_OF_ERA (java.time.temporal.ChronoField): final static enum constant
+        YEAR (java.time.temporal.ChronoField): final static enum constant
+        ERA (java.time.temporal.ChronoField): final static enum constant
+        INSTANT_SECONDS (java.time.temporal.ChronoField): final static enum constant
+        OFFSET_SECONDS (java.time.temporal.ChronoField): final static enum constant
+    
+    """
     NANO_OF_SECOND: typing.ClassVar['ChronoField'] = ...
     NANO_OF_DAY: typing.ClassVar['ChronoField'] = ...
     MICRO_OF_SECOND: typing.ClassVar['ChronoField'] = ...
@@ -221,6 +365,34 @@ class ChronoField(java.lang.Enum['ChronoField'], TemporalField):
     def values() -> typing.List['ChronoField']: ...
 
 class ChronoUnit(java.lang.Enum['ChronoUnit'], TemporalUnit):
+    """
+    Java class 'java.time.temporal.ChronoUnit'
+    
+        Extends:
+            java.lang.Enum
+    
+        Interfaces:
+            java.time.temporal.TemporalUnit
+    
+      Attributes:
+        NANOS (java.time.temporal.ChronoUnit): final static enum constant
+        MICROS (java.time.temporal.ChronoUnit): final static enum constant
+        MILLIS (java.time.temporal.ChronoUnit): final static enum constant
+        SECONDS (java.time.temporal.ChronoUnit): final static enum constant
+        MINUTES (java.time.temporal.ChronoUnit): final static enum constant
+        HOURS (java.time.temporal.ChronoUnit): final static enum constant
+        HALF_DAYS (java.time.temporal.ChronoUnit): final static enum constant
+        DAYS (java.time.temporal.ChronoUnit): final static enum constant
+        WEEKS (java.time.temporal.ChronoUnit): final static enum constant
+        MONTHS (java.time.temporal.ChronoUnit): final static enum constant
+        YEARS (java.time.temporal.ChronoUnit): final static enum constant
+        DECADES (java.time.temporal.ChronoUnit): final static enum constant
+        CENTURIES (java.time.temporal.ChronoUnit): final static enum constant
+        MILLENNIA (java.time.temporal.ChronoUnit): final static enum constant
+        ERAS (java.time.temporal.ChronoUnit): final static enum constant
+        FOREVER (java.time.temporal.ChronoUnit): final static enum constant
+    
+    """
     NANOS: typing.ClassVar['ChronoUnit'] = ...
     MICROS: typing.ClassVar['ChronoUnit'] = ...
     MILLIS: typing.ClassVar['ChronoUnit'] = ...
@@ -257,6 +429,13 @@ class ChronoUnit(java.lang.Enum['ChronoUnit'], TemporalUnit):
     def values() -> typing.List['ChronoUnit']: ...
 
 class Temporal(TemporalAccessor):
+    """
+    Java class 'java.time.temporal.Temporal'
+    
+        Interfaces:
+            java.time.temporal.TemporalAccessor
+    
+    """
     @typing.overload
     def isSupported(self, temporalUnit: TemporalUnit) -> bool: ...
     @typing.overload
@@ -270,3 +449,24 @@ class Temporal(TemporalAccessor):
     @typing.overload
     def plus(self, temporalAmount: TemporalAmount) -> 'Temporal': ...
     def until(self, temporal: 'Temporal', temporalUnit: TemporalUnit) -> int: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.time.temporal")``.
+
+    ChronoField: typing.Type[ChronoField]
+    ChronoUnit: typing.Type[ChronoUnit]
+    IsoFields: typing.Type[IsoFields]
+    JulianFields: typing.Type[JulianFields]
+    Temporal: typing.Type[Temporal]
+    TemporalAccessor: typing.Type[TemporalAccessor]
+    TemporalAdjuster: typing.Type[TemporalAdjuster]
+    TemporalAdjusters: typing.Type[TemporalAdjusters]
+    TemporalAmount: typing.Type[TemporalAmount]
+    TemporalField: typing.Type[TemporalField]
+    TemporalQueries: typing.Type[TemporalQueries]
+    TemporalQuery: typing.Type[TemporalQuery]
+    TemporalUnit: typing.Type[TemporalUnit]
+    UnsupportedTemporalTypeException: typing.Type[UnsupportedTemporalTypeException]
+    ValueRange: typing.Type[ValueRange]
+    WeekFields: typing.Type[WeekFields]

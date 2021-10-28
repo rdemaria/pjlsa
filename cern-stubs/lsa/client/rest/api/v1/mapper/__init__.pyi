@@ -11,7 +11,18 @@ import java.util.function
 import typing
 
 
+
 class FromRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.mapper.FromRest'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * FromRest()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def toDevice(deviceRest: cern.lsa.client.rest.api.v1.dto.DeviceRest) -> cern.lsa.domain.devices.Device: ...
@@ -40,6 +51,13 @@ class FromRest:
     def toValueDescriptor(self, valueDescriptorRest: cern.lsa.client.rest.api.v1.dto.ValueDescriptorRest) -> cern.accsoft.commons.value.ValueDescriptor: ...
 
 class MapperUtils:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.mapper.MapperUtils'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     _collectionToList__U = typing.TypeVar('_collectionToList__U')  # <U>
     @staticmethod
     def collectionToList(collection: typing.Union[java.util.Collection[_collectionToList__U], typing.Sequence[_collectionToList__U]]) -> java.util.List[_collectionToList__U]: ...
@@ -91,6 +109,16 @@ class MapperUtils:
     def safeSetCollection(collection: typing.Union[java.util.Collection[_safeSetCollection_1__U], typing.Sequence[_safeSetCollection_1__U]], function: typing.Union[java.util.function.Function[typing.Union[java.util.Collection[_safeSetCollection_1__U], typing.Sequence[_safeSetCollection_1__U]], typing.Union[java.util.Collection[_safeSetCollection_1__T], typing.Sequence[_safeSetCollection_1__T]]], typing.Callable[[typing.Union[java.util.Collection[_safeSetCollection_1__U], typing.Sequence[_safeSetCollection_1__U]]], typing.Union[java.util.Collection[_safeSetCollection_1__T], typing.Sequence[_safeSetCollection_1__T]]]], consumer: typing.Union[java.util.function.Consumer[typing.Union[java.util.Collection[_safeSetCollection_1__T], typing.Sequence[_safeSetCollection_1__T]]], typing.Callable[[typing.Union[java.util.Collection[_safeSetCollection_1__T], typing.Sequence[_safeSetCollection_1__T]]], None]], function2: typing.Union[java.util.function.Function[typing.Union[java.util.Collection[_safeSetCollection_1__U], typing.Sequence[_safeSetCollection_1__U]], bool], typing.Callable[[typing.Union[java.util.Collection[_safeSetCollection_1__U], typing.Sequence[_safeSetCollection_1__U]]], bool]]) -> None: ...
 
 class ToRest:
+    """
+    Java class 'cern.lsa.client.rest.api.v1.mapper.ToRest'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ToRest()
+    
+    """
     def __init__(self): ...
     def fromAcceleratorZone(self, acceleratorZone: cern.accsoft.commons.domain.zones.AcceleratorZone) -> cern.lsa.client.rest.api.v1.dto.AcceleratorZoneRest: ...
     def fromDevice(self, device: cern.lsa.domain.devices.Device) -> cern.lsa.client.rest.api.v1.dto.DeviceRest: ...
@@ -116,3 +144,11 @@ class ToRest:
     def fromPropertyAndDevice(self, propertyVersion: cern.lsa.domain.devices.type.PropertyVersion, device: cern.lsa.domain.devices.Device) -> cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceRest: ...
     def fromType(self, type: cern.accsoft.commons.value.Type) -> cern.lsa.client.rest.api.v1.dto.TypeRest: ...
     def fromValueDescriptor(self, valueDescriptor: cern.accsoft.commons.value.ValueDescriptor) -> cern.lsa.client.rest.api.v1.dto.ValueDescriptorRest: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.client.rest.api.v1.mapper")``.
+
+    FromRest: typing.Type[FromRest]
+    MapperUtils: typing.Type[MapperUtils]
+    ToRest: typing.Type[ToRest]

@@ -1,14 +1,27 @@
 import cern.accsoft.commons.domain.beamdestinations
 import cern.accsoft.commons.domain.beams
+import cern.accsoft.commons.domain.constants
+import cern.accsoft.commons.domain.devicepropertymodel
+import cern.accsoft.commons.domain.helper
+import cern.accsoft.commons.domain.lhc
 import cern.accsoft.commons.domain.modes
 import cern.accsoft.commons.domain.particletransfers
+import cern.accsoft.commons.domain.util
 import cern.accsoft.commons.domain.zones
 import cern.accsoft.commons.util
 import java.util
 import typing
 
 
+
 class Accelerator(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.accsoft.commons.domain.Accelerator'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def getAcceleratorModes(self) -> java.util.Set[cern.accsoft.commons.domain.modes.AcceleratorMode]: ...
     def getAcceleratorZones(self) -> java.util.Set[cern.accsoft.commons.domain.zones.AcceleratorZone]: ...
     def getBeamDestinations(self) -> java.util.Set[cern.accsoft.commons.domain.beamdestinations.BeamDestination]: ...
@@ -19,6 +32,33 @@ class Accelerator(cern.accsoft.commons.util.Named):
     def isMultiplexed(self) -> bool: ...
 
 class ParticleType(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['ParticleType']):
+    """
+    Java class 'cern.accsoft.commons.domain.ParticleType'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+      Attributes:
+        ELECTRON (cern.accsoft.commons.domain.ParticleType): final static field
+        PROTON (cern.accsoft.commons.domain.ParticleType): final static field
+        PBAR (cern.accsoft.commons.domain.ParticleType): final static field
+        MUON (cern.accsoft.commons.domain.ParticleType): final static field
+        PION_PLUS (cern.accsoft.commons.domain.ParticleType): final static field
+        PION_MINUS (cern.accsoft.commons.domain.ParticleType): final static field
+        KAON (cern.accsoft.commons.domain.ParticleType): final static field
+        PB54 (cern.accsoft.commons.domain.ParticleType): final static field
+        PB80 (cern.accsoft.commons.domain.ParticleType): final static field
+        PB81 (cern.accsoft.commons.domain.ParticleType): final static field
+        PB82 (cern.accsoft.commons.domain.ParticleType): final static field
+        XE39 (cern.accsoft.commons.domain.ParticleType): final static field
+        XE54 (cern.accsoft.commons.domain.ParticleType): final static field
+        AR11 (cern.accsoft.commons.domain.ParticleType): final static field
+        AR18 (cern.accsoft.commons.domain.ParticleType): final static field
+        HMINUS (cern.accsoft.commons.domain.ParticleType): final static field
+        O4 (cern.accsoft.commons.domain.ParticleType): final static field
+        O8 (cern.accsoft.commons.domain.ParticleType): final static field
+    
+    """
     ELECTRON: typing.ClassVar['ParticleType'] = ...
     PROTON: typing.ClassVar['ParticleType'] = ...
     PBAR: typing.ClassVar['ParticleType'] = ...
@@ -45,10 +85,43 @@ class ParticleType(cern.accsoft.commons.util.AbstractImmutableNamedSerializable[
     def values() -> typing.List['ParticleType']: ...
 
 class TimingDomain(cern.accsoft.commons.util.Named):
+    """
+    Java class 'cern.accsoft.commons.domain.TimingDomain'
+    
+        Interfaces:
+            cern.accsoft.commons.util.Named
+    
+    """
     def isCycling(self) -> bool: ...
     def isMultiplexed(self) -> bool: ...
 
 class CernAccelerator(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['CernAccelerator'], Accelerator):
+    """
+    Java class 'cern.accsoft.commons.domain.CernAccelerator'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.Accelerator
+    
+      Attributes:
+        AD (cern.accsoft.commons.domain.CernAccelerator): final static field
+        CTF (cern.accsoft.commons.domain.CernAccelerator): final static field
+        ISOLDE (cern.accsoft.commons.domain.CernAccelerator): final static field
+        LEIR (cern.accsoft.commons.domain.CernAccelerator): final static field
+        LHC (cern.accsoft.commons.domain.CernAccelerator): final static field
+        PS (cern.accsoft.commons.domain.CernAccelerator): final static field
+        PSB (cern.accsoft.commons.domain.CernAccelerator): final static field
+        SPS (cern.accsoft.commons.domain.CernAccelerator): final static field
+        NORTH (cern.accsoft.commons.domain.CernAccelerator): final static field
+        AWAKE (cern.accsoft.commons.domain.CernAccelerator): final static field
+        ELENA (cern.accsoft.commons.domain.CernAccelerator): final static field
+        LINAC3 (cern.accsoft.commons.domain.CernAccelerator): final static field
+        LINAC4 (cern.accsoft.commons.domain.CernAccelerator): final static field
+        REX (cern.accsoft.commons.domain.CernAccelerator): final static field
+    
+    """
     AD: typing.ClassVar['CernAccelerator'] = ...
     CTF: typing.ClassVar['CernAccelerator'] = ...
     ISOLDE: typing.ClassVar['CernAccelerator'] = ...
@@ -84,6 +157,26 @@ class CernAccelerator(cern.accsoft.commons.util.AbstractImmutableNamedSerializab
     def values() -> typing.List['CernAccelerator']: ...
 
 class CernTimingDomain(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['CernTimingDomain'], TimingDomain):
+    """
+    Java class 'cern.accsoft.commons.domain.CernTimingDomain'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+    
+        Interfaces:
+            cern.accsoft.commons.domain.TimingDomain
+    
+      Attributes:
+        LHC (cern.accsoft.commons.domain.CernTimingDomain): final static field
+        SPS (cern.accsoft.commons.domain.CernTimingDomain): final static field
+        CPS (cern.accsoft.commons.domain.CernTimingDomain): final static field
+        PSB (cern.accsoft.commons.domain.CernTimingDomain): final static field
+        LEI (cern.accsoft.commons.domain.CernTimingDomain): final static field
+        ADE (cern.accsoft.commons.domain.CernTimingDomain): final static field
+        SCT (cern.accsoft.commons.domain.CernTimingDomain): final static field
+        LNA (cern.accsoft.commons.domain.CernTimingDomain): final static field
+    
+    """
     LHC: typing.ClassVar['CernTimingDomain'] = ...
     SPS: typing.ClassVar['CernTimingDomain'] = ...
     CPS: typing.ClassVar['CernTimingDomain'] = ...
@@ -97,3 +190,23 @@ class CernTimingDomain(cern.accsoft.commons.util.AbstractImmutableNamedSerializa
     def valueOf(string: str) -> 'CernTimingDomain': ...
     @staticmethod
     def values() -> typing.List['CernTimingDomain']: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.accsoft.commons.domain")``.
+
+    Accelerator: typing.Type[Accelerator]
+    CernAccelerator: typing.Type[CernAccelerator]
+    CernTimingDomain: typing.Type[CernTimingDomain]
+    ParticleType: typing.Type[ParticleType]
+    TimingDomain: typing.Type[TimingDomain]
+    beamdestinations: cern.accsoft.commons.domain.beamdestinations.__module_protocol__
+    beams: cern.accsoft.commons.domain.beams.__module_protocol__
+    constants: cern.accsoft.commons.domain.constants.__module_protocol__
+    devicepropertymodel: cern.accsoft.commons.domain.devicepropertymodel.__module_protocol__
+    helper: cern.accsoft.commons.domain.helper.__module_protocol__
+    lhc: cern.accsoft.commons.domain.lhc.__module_protocol__
+    modes: cern.accsoft.commons.domain.modes.__module_protocol__
+    particletransfers: cern.accsoft.commons.domain.particletransfers.__module_protocol__
+    util: cern.accsoft.commons.domain.util.__module_protocol__
+    zones: cern.accsoft.commons.domain.zones.__module_protocol__

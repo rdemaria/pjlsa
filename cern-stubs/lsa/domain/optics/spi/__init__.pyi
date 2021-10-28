@@ -16,7 +16,21 @@ import java.util
 import typing
 
 
+
 class CalibrationImpl(cern.accsoft.commons.util.AbstractNamedSerializable[cern.lsa.domain.optics.Calibration], cern.lsa.domain.optics.Calibration, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.optics.spi.CalibrationImpl'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractNamedSerializable
+    
+        Interfaces:
+            cern.lsa.domain.optics.Calibration, java.io.Serializable
+    
+      Constructors:
+        * CalibrationImpl()
+    
+    """
     def __init__(self): ...
     def addCalibrationFunctionForType(self, calibrationFunctionTypes: cern.lsa.domain.optics.CalibrationFunctionTypes, immutableDiscreteFunction: cern.accsoft.commons.value.ImmutableDiscreteFunction) -> None: ...
     def getCalibrationFunctionByType(self, calibrationFunctionTypes: cern.lsa.domain.optics.CalibrationFunctionTypes) -> cern.accsoft.commons.value.ImmutableDiscreteFunction: ...
@@ -27,6 +41,19 @@ class CalibrationImpl(cern.accsoft.commons.util.AbstractNamedSerializable[cern.l
     def setFidelModelId(self, long: int) -> None: ...
 
 class ChromaticModelImpl(cern.accsoft.commons.util.AbstractNamedSerializable[cern.lsa.domain.optics.ChromaticModel], cern.lsa.domain.optics.ChromaticModel):
+    """
+    Java class 'cern.lsa.domain.optics.spi.ChromaticModelImpl'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractNamedSerializable
+    
+        Interfaces:
+            cern.lsa.domain.optics.ChromaticModel
+    
+      Constructors:
+        * ChromaticModelImpl()
+    
+    """
     def __init__(self): ...
     def getAlphaH(self) -> float: ...
     def getAlphaV(self) -> float: ...
@@ -62,6 +89,19 @@ class ChromaticModelImpl(cern.accsoft.commons.util.AbstractNamedSerializable[cer
     def setLatticeChromaV(self, double: float) -> None: ...
 
 class ElementImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity[cern.lsa.domain.optics.Element], cern.lsa.domain.optics.Element):
+    """
+    Java class 'cern.lsa.domain.optics.spi.ElementImpl'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity
+    
+        Interfaces:
+            cern.lsa.domain.optics.Element
+    
+      Constructors:
+        * ElementImpl()
+    
+    """
     def __init__(self): ...
     def addLogicalHwName(self, string: str) -> None: ...
     def getAcceleratorZone(self) -> cern.accsoft.commons.domain.zones.AcceleratorZone: ...
@@ -87,6 +127,28 @@ class ElementImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity[cern
     def toString(self) -> str: ...
 
 class ElementsRequestImpl(cern.lsa.domain.commons.spi.AbstractPropertiesHolder, cern.lsa.domain.optics.ElementsRequest):
+    """
+    Java class 'cern.lsa.domain.optics.spi.ElementsRequestImpl'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AbstractPropertiesHolder
+    
+        Interfaces:
+            cern.lsa.domain.optics.ElementsRequest
+    
+      Constructors:
+        * ElementsRequestImpl(java.util.Map)
+    
+      Attributes:
+        ACCELERATOR_ZONE (java.lang.String): final static field
+        PARTICLE_TRANSFER (java.lang.String): final static field
+        ELEMENT_NAMES (java.lang.String): final static field
+        LOGICAL_HW_NAMES (java.lang.String): final static field
+        TYPES (java.lang.String): final static field
+        STEERING (java.lang.String): final static field
+        EXCLUDE_OBSOLETE (java.lang.String): final static field
+    
+    """
     ACCELERATOR_ZONE: typing.ClassVar[str] = ...
     PARTICLE_TRANSFER: typing.ClassVar[str] = ...
     ELEMENT_NAMES: typing.ClassVar[str] = ...
@@ -104,6 +166,21 @@ class ElementsRequestImpl(cern.lsa.domain.commons.spi.AbstractPropertiesHolder, 
     def getTypes(self) -> java.util.Set[cern.lsa.domain.optics.ElementType]: ...
 
 class LogicalHardwareImpl(cern.lsa.domain.devices.spi.DeviceImpl, cern.lsa.domain.optics.LogicalHardware):
+    """
+    Java class 'cern.lsa.domain.optics.spi.LogicalHardwareImpl'
+    
+        Extends:
+            cern.lsa.domain.devices.spi.DeviceImpl
+    
+        Interfaces:
+            cern.lsa.domain.optics.LogicalHardware
+    
+      Constructors:
+        * LogicalHardwareImpl(cern.lsa.domain.devices.Device)
+        * LogicalHardwareImpl(cern.lsa.domain.optics.LogicalHardware)
+        * LogicalHardwareImpl(long, java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self, device: cern.lsa.domain.devices.Device): ...
     @typing.overload
@@ -138,6 +215,19 @@ class LogicalHardwareImpl(cern.lsa.domain.devices.spi.DeviceImpl, cern.lsa.domai
     def setTau(self, double: float) -> None: ...
 
 class MeasuredTwissImpl(cern.lsa.domain.optics.MeasuredTwiss, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.optics.spi.MeasuredTwissImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.optics.MeasuredTwiss, java.io.Serializable
+    
+      Constructors:
+        * MeasuredTwissImpl(cern.lsa.domain.optics.Twiss, double, java.util.Date, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double)
+    
+    """
     def __init__(self, twiss: cern.lsa.domain.optics.Twiss, double: float, date: java.util.Date, double2: float, double3: float, double4: float, double5: float, double6: float, double7: float, double8: float, double9: float, double10: float, double11: float, double12: float, double13: float, double14: float, double15: float, double16: float, double17: float): ...
     def equals(self, object: typing.Any) -> bool: ...
     def getAlfxError(self) -> float: ...
@@ -163,6 +253,19 @@ class MeasuredTwissImpl(cern.lsa.domain.optics.MeasuredTwiss, java.io.Serializab
     def toString(self) -> str: ...
 
 class OpticImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity[cern.lsa.domain.optics.Optic], cern.lsa.domain.optics.Optic):
+    """
+    Java class 'cern.lsa.domain.optics.spi.OpticImpl'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity
+    
+        Interfaces:
+            cern.lsa.domain.optics.Optic
+    
+      Constructors:
+        * OpticImpl()
+    
+    """
     def __init__(self): ...
     def equals(self, object: typing.Any) -> bool: ...
     def getBaseStrengthFile(self) -> str: ...
@@ -184,6 +287,19 @@ class OpticImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity[cern.l
     def setParticleTransfer(self, particleTransfer: cern.accsoft.commons.domain.particletransfers.ParticleTransfer) -> None: ...
 
 class OpticStrengthImpl(cern.lsa.domain.optics.OpticStrength, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.optics.spi.OpticStrengthImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.optics.OpticStrength, java.io.Serializable
+    
+      Constructors:
+        * OpticStrengthImpl()
+    
+    """
     def __init__(self): ...
     def equals(self, object: typing.Any) -> bool: ...
     def getBeam(self) -> str: ...
@@ -195,8 +311,44 @@ class OpticStrengthImpl(cern.lsa.domain.optics.OpticStrength, java.io.Serializab
     def setLogicalHWName(self, string: str) -> None: ...
     def setStrength(self, double: float) -> None: ...
     def setStrengthL(self, double: float) -> None: ...
+    class Builder:
+        """
+        Java class 'cern.lsa.domain.optics.spi.OpticStrengthImpl$Builder'
+        
+            Extends:
+                java.lang.Object
+        
+          Constructors:
+            * Builder()
+        
+        """
+        def __init__(self): ...
+        def beam(self, string: str) -> 'OpticStrengthImpl.Builder': ...
+        def build(self) -> cern.lsa.domain.optics.OpticStrength: ...
+        def logicalHWName(self, string: str) -> 'OpticStrengthImpl.Builder': ...
+        def strength(self, double: float) -> 'OpticStrengthImpl.Builder': ...
+        def strengthL(self, double: float) -> 'OpticStrengthImpl.Builder': ...
 
 class OpticsRequestImpl(cern.lsa.domain.commons.spi.AbstractPropertiesHolder, cern.lsa.domain.optics.OpticsRequest):
+    """
+    Java class 'cern.lsa.domain.optics.spi.OpticsRequestImpl'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AbstractPropertiesHolder
+    
+        Interfaces:
+            cern.lsa.domain.optics.OpticsRequest
+    
+      Constructors:
+        * OpticsRequestImpl(java.util.Map)
+    
+      Attributes:
+        ACCELERATOR (java.lang.String): final static field
+        PARTICLE_TRANSFER (java.lang.String): final static field
+        BEAM_RPOCESS_TYPE_NAMES (java.lang.String): final static field
+        OPTIC_IDS (java.lang.String): final static field
+    
+    """
     ACCELERATOR: typing.ClassVar[str] = ...
     PARTICLE_TRANSFER: typing.ClassVar[str] = ...
     BEAM_RPOCESS_TYPE_NAMES: typing.ClassVar[str] = ...
@@ -208,6 +360,21 @@ class OpticsRequestImpl(cern.lsa.domain.commons.spi.AbstractPropertiesHolder, ce
     def getParticleTransfer(self) -> cern.accsoft.commons.domain.particletransfers.ParticleTransfer: ...
 
 class OpticsTableImpl(cern.lsa.domain.optics.OpticsTable, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.optics.spi.OpticsTableImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.optics.OpticsTable, java.io.Serializable
+    
+      Constructors:
+        * OpticsTableImpl(cern.lsa.domain.settings.type.BeamProcessType, java.util.List)
+        * OpticsTableImpl(cern.lsa.domain.optics.OpticsTable, java.util.List)
+        * OpticsTableImpl(java.lang.String, int, java.util.List)
+    
+    """
     @typing.overload
     def __init__(self, opticsTable: cern.lsa.domain.optics.OpticsTable, list: java.util.List[cern.lsa.domain.optics.OpticsTableItem]): ...
     @typing.overload
@@ -227,6 +394,22 @@ class OpticsTableImpl(cern.lsa.domain.optics.OpticsTable, java.io.Serializable):
     def iterator(self) -> java.util.Iterator[cern.lsa.domain.optics.OpticsTableItem]: ...
 
 class OpticsTableItemImpl(cern.lsa.domain.optics.OpticsTableItem, java.io.Serializable, java.lang.Cloneable):
+    """
+    Java class 'cern.lsa.domain.optics.spi.OpticsTableItemImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.optics.OpticsTableItem, java.io.Serializable,
+            java.lang.Cloneable
+    
+      Constructors:
+        * OpticsTableItemImpl(java.lang.String, int, double, long, java.lang.String)
+        * OpticsTableItemImpl(java.lang.String, int, double, java.lang.String)
+        * OpticsTableItemImpl()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -249,6 +432,21 @@ class OpticsTableItemImpl(cern.lsa.domain.optics.OpticsTableItem, java.io.Serial
     def toString(self) -> str: ...
 
 class PowerConverterInfoImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity[cern.lsa.domain.optics.PowerConverterInfo], cern.lsa.domain.optics.PowerConverterInfo):
+    """
+    Java class 'cern.lsa.domain.optics.spi.PowerConverterInfoImpl'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AbstractIdentifiedNamedEntity
+    
+        Interfaces:
+            cern.lsa.domain.optics.PowerConverterInfo
+    
+      Constructors:
+        * PowerConverterInfoImpl(cern.lsa.domain.optics.PowerConverterInfo)
+        * PowerConverterInfoImpl()
+        * PowerConverterInfoImpl(long, java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -284,6 +482,19 @@ class PowerConverterInfoImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedNamed
     def toString(self) -> str: ...
 
 class PreCyclingPrescriptionImpl(cern.lsa.domain.optics.PreCyclingPrescription):
+    """
+    Java class 'cern.lsa.domain.optics.spi.PreCyclingPrescriptionImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.optics.PreCyclingPrescription
+    
+      Constructors:
+        * PreCyclingPrescriptionImpl(java.lang.String)
+    
+    """
     def __init__(self, string: str): ...
     def addAttribute(self, string: str, double: float) -> None: ...
     def getAttributeValue(self, string: str) -> float: ...
@@ -297,6 +508,19 @@ class PreCyclingPrescriptionImpl(cern.lsa.domain.optics.PreCyclingPrescription):
     def setPrecyclingPrescriptionType(self, string: str) -> None: ...
 
 class RFCalibrationImpl(cern.accsoft.commons.util.AbstractNamedSerializable[cern.lsa.domain.optics.RFCalibration], cern.lsa.domain.optics.RFCalibration):
+    """
+    Java class 'cern.lsa.domain.optics.spi.RFCalibrationImpl'
+    
+        Extends:
+            cern.accsoft.commons.util.AbstractNamedSerializable
+    
+        Interfaces:
+            cern.lsa.domain.optics.RFCalibration
+    
+      Constructors:
+        * RFCalibrationImpl()
+    
+    """
     def __init__(self): ...
     def getCavityQ(self, double: float) -> float: ...
     def getCavityQ2CouplerPosFunction(self) -> cern.accsoft.commons.value.ImmutableDiscreteFunction: ...
@@ -308,6 +532,19 @@ class RFCalibrationImpl(cern.accsoft.commons.util.AbstractNamedSerializable[cern
     def setRFCalibrationFunction(self, immutableDiscreteFunction: cern.accsoft.commons.value.ImmutableDiscreteFunction) -> None: ...
 
 class TwissImpl(cern.lsa.domain.optics.Twiss, java.io.Serializable):
+    """
+    Java class 'cern.lsa.domain.optics.spi.TwissImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.lsa.domain.optics.Twiss, java.io.Serializable
+    
+      Constructors:
+        * TwissImpl()
+    
+    """
     def __init__(self): ...
     def equals(self, object: typing.Any) -> bool: ...
     def getAlfx(self) -> float: ...
@@ -371,6 +608,26 @@ class TwissImpl(cern.lsa.domain.optics.Twiss, java.io.Serializable):
     def updateOpticName(self, string: str) -> None: ...
 
 class TwissesRequestImpl(cern.lsa.domain.commons.spi.AbstractPropertiesHolder, cern.lsa.domain.optics.TwissesRequest):
+    """
+    Java class 'cern.lsa.domain.optics.spi.TwissesRequestImpl'
+    
+        Extends:
+            cern.lsa.domain.commons.spi.AbstractPropertiesHolder
+    
+        Interfaces:
+            cern.lsa.domain.optics.TwissesRequest
+    
+      Constructors:
+        * TwissesRequestImpl(java.util.Map)
+    
+      Attributes:
+        OPTIC_NAME (java.lang.String): final static field
+        BEAM (java.lang.String): final static field
+        ELEMENT_NAMES (java.lang.String): final static field
+        ELEMENT_TYPES (java.lang.String): final static field
+        ELEMENT_POSITION_RANGE (java.lang.String): final static field
+    
+    """
     OPTIC_NAME: typing.ClassVar[str] = ...
     BEAM: typing.ClassVar[str] = ...
     ELEMENT_NAMES: typing.ClassVar[str] = ...
@@ -382,3 +639,24 @@ class TwissesRequestImpl(cern.lsa.domain.commons.spi.AbstractPropertiesHolder, c
     def getElementPositionRange(self) -> com.google.common.collect.Range[float]: ...
     def getElementTypes(self) -> java.util.Set[cern.lsa.domain.optics.ElementType]: ...
     def getOpticName(self) -> str: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.optics.spi")``.
+
+    CalibrationImpl: typing.Type[CalibrationImpl]
+    ChromaticModelImpl: typing.Type[ChromaticModelImpl]
+    ElementImpl: typing.Type[ElementImpl]
+    ElementsRequestImpl: typing.Type[ElementsRequestImpl]
+    LogicalHardwareImpl: typing.Type[LogicalHardwareImpl]
+    MeasuredTwissImpl: typing.Type[MeasuredTwissImpl]
+    OpticImpl: typing.Type[OpticImpl]
+    OpticStrengthImpl: typing.Type[OpticStrengthImpl]
+    OpticsRequestImpl: typing.Type[OpticsRequestImpl]
+    OpticsTableImpl: typing.Type[OpticsTableImpl]
+    OpticsTableItemImpl: typing.Type[OpticsTableItemImpl]
+    PowerConverterInfoImpl: typing.Type[PowerConverterInfoImpl]
+    PreCyclingPrescriptionImpl: typing.Type[PreCyclingPrescriptionImpl]
+    RFCalibrationImpl: typing.Type[RFCalibrationImpl]
+    TwissImpl: typing.Type[TwissImpl]
+    TwissesRequestImpl: typing.Type[TwissesRequestImpl]

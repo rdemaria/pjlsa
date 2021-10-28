@@ -6,6 +6,10 @@ import cern.accsoft.commons.domain.modes
 import cern.accsoft.commons.util.value
 import cern.accsoft.commons.value
 import cern.lsa.client.common
+import cern.lsa.client.reference
+import cern.lsa.client.rest
+import cern.lsa.client.spi
+import cern.lsa.client.test
 import cern.lsa.domain.cern.devices
 import cern.lsa.domain.cern.exploitation
 import cern.lsa.domain.cern.optics
@@ -27,7 +31,15 @@ import java.util
 import typing
 
 
+
 class AcceleratorService(cern.lsa.client.common.CommonAcceleratorService):
+    """
+    Java class 'cern.lsa.client.AcceleratorService'
+    
+        Interfaces:
+            cern.lsa.client.common.CommonAcceleratorService
+    
+    """
     def findActiveAcceleratorMode(self, accelerator: cern.accsoft.commons.domain.Accelerator) -> cern.accsoft.commons.domain.modes.AcceleratorMode: ...
     def findActiveBeamDestinationEndPoint(self, beamDestination: cern.accsoft.commons.domain.beamdestinations.BeamDestination) -> cern.accsoft.commons.domain.beamdestinations.BeamDestinationEndPoint: ...
     def findOpConfigs(self, accelerator: cern.accsoft.commons.domain.Accelerator) -> java.util.Set[str]: ...
@@ -35,16 +47,34 @@ class AcceleratorService(cern.lsa.client.common.CommonAcceleratorService):
     def setActiveBeamDestinationEndPoint(self, beamDestination: cern.accsoft.commons.domain.beamdestinations.BeamDestination, beamDestinationEndPoint: cern.accsoft.commons.domain.beamdestinations.BeamDestinationEndPoint) -> None: ...
 
 class AdService:
+    """
+    Java class 'cern.lsa.client.AdService'
+    
+    """
+    @typing.overload
+    def convertCycleTimeToKTime(self, standAloneCycle: cern.lsa.domain.settings.StandAloneCycle, duration: java.time.Duration) -> java.time.Duration: ...
+    @typing.overload
     def convertCycleTimeToKTime(self, duration: java.time.Duration) -> java.time.Duration: ...
     @typing.overload
     def findCycleStructure(self) -> cern.lsa.domain.cern.settings.ad.AdCycleStructure: ...
     @typing.overload
     def findCycleStructure(self, adCycleStructure: cern.lsa.domain.cern.settings.ad.AdCycleStructure, trimHeader: cern.lsa.domain.settings.TrimHeader) -> cern.lsa.domain.cern.settings.ad.AdCycleStructure: ...
+    @typing.overload
+    def findCycleStructure(self, standAloneCycle: cern.lsa.domain.settings.StandAloneCycle) -> cern.lsa.domain.cern.settings.ad.AdCycleStructure: ...
+    @typing.overload
+    def findCycleStructure(self, standAloneCycle: cern.lsa.domain.settings.StandAloneCycle, trimHeader: cern.lsa.domain.settings.TrimHeader) -> cern.lsa.domain.cern.settings.ad.AdCycleStructure: ...
+    @typing.overload
     def findCycleStructureTrims(self, adCycleStructure: cern.lsa.domain.cern.settings.ad.AdCycleStructure) -> java.util.List[cern.lsa.domain.settings.TrimHeader]: ...
+    @typing.overload
+    def findCycleStructureTrims(self, standAloneCycle: cern.lsa.domain.settings.StandAloneCycle) -> java.util.List[cern.lsa.domain.settings.TrimHeader]: ...
     def findEltagNames(self) -> java.util.Set[str]: ...
+    @typing.overload
+    def findFlatTopTimeByEltag(self, standAloneCycle: cern.lsa.domain.settings.StandAloneCycle, string: str) -> int: ...
+    @typing.overload
     def findFlatTopTimeByEltag(self, string: str) -> int: ...
     def findTestCycleStructure(self) -> cern.lsa.domain.cern.settings.ad.AdCycleStructure: ...
     def findTimingProcesses(self) -> java.util.Set[cern.lsa.domain.cern.timing.TimingProcess]: ...
+    def saveCycleSettings(self, trimRequest: cern.lsa.domain.settings.TrimRequest, adCycleStructure: cern.lsa.domain.cern.settings.ad.AdCycleStructure) -> cern.lsa.domain.settings.TrimResponse: ...
     def saveCycleStructure(self, adCycleStructure: cern.lsa.domain.cern.settings.ad.AdCycleStructure, map: typing.Union[java.util.Map[cern.lsa.domain.settings.Parameter, cern.accsoft.commons.value.ImmutableDiscreteFunctionList], typing.Mapping[cern.lsa.domain.settings.Parameter, cern.accsoft.commons.value.ImmutableDiscreteFunctionList]], string: str) -> cern.lsa.domain.settings.TrimResponse: ...
 
 class ArchiveReferenceService(cern.lsa.client.common.CommonArchiveReferenceService): ...
@@ -52,6 +82,16 @@ class ArchiveReferenceService(cern.lsa.client.common.CommonArchiveReferenceServi
 class CacheService(cern.lsa.client.common.CommonCacheService): ...
 
 class ClientApplicationConfig:
+    """
+    Java class 'cern.lsa.client.ClientApplicationConfig'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ClientApplicationConfig()
+    
+    """
     def __init__(self): ...
     def acceleratorService(self) -> AcceleratorService: ...
     def archiveReferenceService(self) -> ArchiveReferenceService: ...
@@ -68,20 +108,38 @@ class ClientApplicationConfig:
     def parameterService(self) -> 'ParameterService': ...
     def settingService(self) -> 'SettingService': ...
     def spsService(self) -> 'SpsService': ...
-    def testService(self) -> 'TestService': ...
     def timingService(self) -> 'TimingService': ...
     def transactionService(self) -> cern.lsa.client.common.TransactionService: ...
     def trimService(self) -> 'TrimService': ...
 
 class ContextService(cern.lsa.client.common.CommonContextService):
+    """
+    Java class 'cern.lsa.client.ContextService'
+    
+        Interfaces:
+            cern.lsa.client.common.CommonContextService
+    
+    """
     def findActiveContexts(self, accelerator: cern.accsoft.commons.domain.Accelerator) -> java.util.Set[cern.lsa.domain.settings.StandAloneContext]: ...
     def findActiveTimingUsers(self, accelerator: cern.accsoft.commons.domain.Accelerator) -> cern.lsa.domain.cern.timing.ActiveTimingUsers: ...
     def findLoggingHistory(self, long: int, long2: int, accelerator: cern.accsoft.commons.domain.Accelerator) -> java.util.List[cern.lsa.domain.settings.UserContextMapping]: ...
 
 class DeviceService(cern.lsa.client.common.CommonDeviceService):
+    """
+    Java class 'cern.lsa.client.DeviceService'
+    
+        Interfaces:
+            cern.lsa.client.common.CommonDeviceService
+    
+    """
     def findPowerConverterInfosByDeviceIds(self, collection: typing.Union[java.util.Collection[int], typing.Sequence[int]]) -> java.util.Set[cern.lsa.domain.optics.PowerConverterInfo]: ...
+    def findPowerConverterNestedCircuitInfos(self, powerConverterNestedCircuitInfosRequest: cern.lsa.domain.devices.PowerConverterNestedCircuitInfosRequest) -> java.util.Set[cern.lsa.domain.devices.PowerConverterNestedCircuitInfo]: ...
 
 class ElenaService:
+    """
+    Java class 'cern.lsa.client.ElenaService'
+    
+    """
     @typing.overload
     def findCycleStructure(self, standAloneCycle: cern.lsa.domain.settings.StandAloneCycle) -> cern.lsa.domain.cern.settings.elena.ElenaCycleStructure: ...
     @typing.overload
@@ -92,9 +150,20 @@ class ElenaService:
     def saveCycleSettings(self, standAloneCycle: cern.lsa.domain.settings.StandAloneCycle, elenaCycleSettings: cern.lsa.domain.cern.settings.elena.ElenaCycleSettings, string: str) -> cern.lsa.domain.settings.TrimResponse: ...
 
 class ExploitationService(cern.lsa.client.common.CommonExploitationService):
+    """
+    Java class 'cern.lsa.client.ExploitationService'
+    
+        Interfaces:
+            cern.lsa.client.common.CommonExploitationService
+    
+    """
     def calculateTimeToReachNewValues(self, contextSettings: cern.lsa.domain.settings.ContextSettings) -> cern.lsa.domain.cern.exploitation.TimeToReachNewValues: ...
 
 class FidelService:
+    """
+    Java class 'cern.lsa.client.FidelService'
+    
+    """
     def findAllCalibrations(self) -> typing.List[cern.lsa.domain.optics.Calibration]: ...
     def findAllHarmonics(self) -> typing.List[cern.lsa.domain.cern.optics.FieldHarmonic]: ...
     def findCalibrationByLogicalHardware(self, string: str) -> cern.lsa.domain.optics.Calibration: ...
@@ -115,6 +184,13 @@ class FidelService:
     def updateMainCalibration(self, calibration: cern.lsa.domain.optics.Calibration) -> None: ...
 
 class GenerationService(cern.lsa.client.common.CommonGenerationService):
+    """
+    Java class 'cern.lsa.client.GenerationService'
+    
+        Interfaces:
+            cern.lsa.client.common.CommonGenerationService
+    
+    """
     @typing.overload
     def findIncorporationRanges(self, string: str, string2: str) -> java.util.List[cern.lsa.domain.settings.type.IncorporationRange]: ...
     @typing.overload
@@ -122,6 +198,10 @@ class GenerationService(cern.lsa.client.common.CommonGenerationService):
     def previewEnergy(self, beamProcessType: cern.lsa.domain.settings.type.BeamProcessType) -> cern.accsoft.commons.value.DiscreteFunction: ...
 
 class HyperCycleService:
+    """
+    Java class 'cern.lsa.client.HyperCycleService'
+    
+    """
     def findActiveHyperCycle(self) -> cern.lsa.domain.settings.HyperCycle: ...
     def findHyperCycle(self, string: str) -> cern.lsa.domain.settings.HyperCycle: ...
     def findHyperCycles(self) -> java.util.Set[cern.lsa.domain.settings.HyperCycle]: ...
@@ -130,6 +210,10 @@ class HyperCycleService:
     def saveHyperCycle(self, hyperCycle: cern.lsa.domain.settings.HyperCycle) -> None: ...
 
 class IncaService:
+    """
+    Java class 'cern.lsa.client.IncaService'
+    
+    """
     def findIncaPropertyFieldInfos(self, incaPropertyFieldInfosRequest: cern.lsa.domain.devices.inca.IncaPropertyFieldInfosRequest) -> java.util.Set[cern.lsa.domain.devices.inca.IncaPropertyFieldInfo]: ...
     def saveIncaPropertyFieldInfos(self, collection: typing.Union[java.util.Collection[cern.lsa.domain.devices.inca.IncaPropertyFieldInfo], typing.Sequence[cern.lsa.domain.devices.inca.IncaPropertyFieldInfo]]) -> None: ...
 
@@ -138,6 +222,10 @@ class JapcService(cern.lsa.client.common.CommonJapcService): ...
 class KnobService(cern.lsa.client.common.CommonKnobService): ...
 
 class LhcService:
+    """
+    Java class 'cern.lsa.client.LhcService'
+    
+    """
     def calculateKfromIREF(self, map: typing.Union[java.util.Map[str, float], typing.Mapping[str, float]], double: float) -> java.util.Map[str, float]: ...
     def computeTuneFeedbackResponseMatrix(self, standAloneBeamProcess: cern.lsa.domain.settings.StandAloneBeamProcess, list: java.util.List[str], list2: java.util.List[cern.accsoft.commons.value.ImmutableScalar], collection: typing.Union[java.util.Collection[str], typing.Sequence[str]]) -> typing.List[typing.List[float]]: ...
     def createFillDirectory(self, int: int) -> None: ...
@@ -196,6 +284,10 @@ class LhcService:
     def updateBeamLossMap(self, lhcBeam: cern.accsoft.commons.domain.beams.LhcBeam, string: str, string2: str, long: int, long2: int) -> None: ...
 
 class LktimService:
+    """
+    Java class 'cern.lsa.client.LktimService'
+    
+    """
     def canAddDeviceToTree(self, string: str, lktimTree: cern.lsa.domain.cern.settings.lktim.LktimTree) -> cern.lsa.domain.cern.settings.lktim.NodeAdditionCheckResult: ...
     def createNode(self, string: str) -> cern.lsa.domain.cern.settings.lktim.LktimTreeNode: ...
     def createTree(self, string: str) -> cern.lsa.domain.cern.settings.lktim.LktimTree: ...
@@ -215,6 +307,13 @@ class LktimService:
     def saveTree(self, lktimTree: cern.lsa.domain.cern.settings.lktim.LktimTree) -> cern.lsa.domain.cern.settings.lktim.LktimTree: ...
 
 class LsaServiceLocator:
+    """
+    Java class 'cern.lsa.client.LsaServiceLocator'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def builder() -> 'LsaServiceLocator.LsaServiceLocatorBuilder': ...
     _get__T = typing.TypeVar('_get__T')  # <T>
@@ -229,6 +328,34 @@ class LsaServiceLocator:
     def isRbacEnabled(self) -> bool: ...
     def isTwoTier(self) -> bool: ...
     class LsaServer(java.lang.Enum['LsaServiceLocator.LsaServer']):
+        """
+        Java class 'cern.lsa.client.LsaServiceLocator$LsaServer'
+        
+            Extends:
+                java.lang.Enum
+        
+          Attributes:
+            AD (cern.lsa.client.LsaServiceLocator$LsaServer): final static enum constant
+            CTF (cern.lsa.client.LsaServiceLocator$LsaServer): final static enum constant
+            ISOLDE (cern.lsa.client.LsaServiceLocator$LsaServer): final static enum constant
+            SPS (cern.lsa.client.LsaServiceLocator$LsaServer): final static enum constant
+            LHC (cern.lsa.client.LsaServiceLocator$LsaServer): final static enum constant
+            PS (cern.lsa.client.LsaServiceLocator$LsaServer): final static enum constant
+            PSB (cern.lsa.client.LsaServiceLocator$LsaServer): final static enum constant
+            LEIR (cern.lsa.client.LsaServiceLocator$LsaServer): final static enum constant
+            GPN (cern.lsa.client.LsaServiceLocator$LsaServer): final static enum constant
+            ELENA (cern.lsa.client.LsaServiceLocator$LsaServer): final static enum constant
+            AWAKE (cern.lsa.client.LsaServiceLocator$LsaServer): final static enum constant
+            TESTBED (cern.lsa.client.LsaServiceLocator$LsaServer): final static enum constant
+            NEXT (cern.lsa.client.LsaServiceLocator$LsaServer): final static enum constant
+            NEXT_INCA (cern.lsa.client.LsaServiceLocator$LsaServer): final static enum constant
+            NEXT_INCA_PSB (cern.lsa.client.LsaServiceLocator$LsaServer): final static enum constant
+            NEXT_INCA_PS (cern.lsa.client.LsaServiceLocator$LsaServer): final static enum constant
+            INTEGRATION (cern.lsa.client.LsaServiceLocator$LsaServer): final static enum constant
+            DEV (cern.lsa.client.LsaServiceLocator$LsaServer): final static enum constant
+            LOCAL (cern.lsa.client.LsaServiceLocator$LsaServer): final static enum constant
+        
+        """
         AD: typing.ClassVar['LsaServiceLocator.LsaServer'] = ...
         CTF: typing.ClassVar['LsaServiceLocator.LsaServer'] = ...
         ISOLDE: typing.ClassVar['LsaServiceLocator.LsaServer'] = ...
@@ -258,6 +385,16 @@ class LsaServiceLocator:
         @staticmethod
         def values() -> typing.List['LsaServiceLocator.LsaServer']: ...
     class LsaServiceLocatorBuilder:
+        """
+        Java class 'cern.lsa.client.LsaServiceLocator$LsaServiceLocatorBuilder'
+        
+            Extends:
+                java.lang.Object
+        
+          Constructors:
+            * LsaServiceLocatorBuilder()
+        
+        """
         def __init__(self): ...
         def accelerator(self, accelerator: cern.accsoft.commons.domain.Accelerator) -> 'LsaServiceLocator.LsaServiceLocatorBuilder': ...
         def build(self) -> 'LsaServiceLocator': ...
@@ -265,6 +402,14 @@ class LsaServiceLocator:
         def lsaServer(self, lsaServer: 'LsaServiceLocator.LsaServer') -> 'LsaServiceLocator.LsaServiceLocatorBuilder': ...
 
 class OpticService(cern.lsa.client.common.CommonOpticService):
+    """
+    Java class 'cern.lsa.client.OpticService'
+    
+        Interfaces:
+            cern.lsa.client.common.CommonOpticService
+    
+    """
+    def deleteOptic(self, optic: cern.lsa.domain.optics.Optic) -> None: ...
     def findConfigurationParameters(self, string: str) -> java.util.Map[str, str]: ...
     def findContextOpticsTables(self, standAloneContext: cern.lsa.domain.settings.StandAloneContext) -> java.util.Collection[cern.lsa.domain.optics.OpticsTable]: ...
     def saveOptic(self, optic: cern.lsa.domain.optics.Optic) -> None: ...
@@ -274,10 +419,35 @@ class OpticService(cern.lsa.client.common.CommonOpticService):
     def updateTwisses(self, collection: typing.Union[java.util.Collection[cern.lsa.domain.optics.Twiss], typing.Sequence[cern.lsa.domain.optics.Twiss]]) -> None: ...
 
 class ParameterService(cern.lsa.client.common.CommonParameterService):
+    """
+    Java class 'cern.lsa.client.ParameterService'
+    
+        Interfaces:
+            cern.lsa.client.common.CommonParameterService
+    
+    """
     def findParametersInKnobs(self, accelerator: cern.accsoft.commons.domain.Accelerator) -> java.util.Set[str]: ...
     def findParametersInWorkingSets(self, accelerator: cern.accsoft.commons.domain.Accelerator) -> java.util.Set[str]: ...
 
 class ServiceLocator:
+    """
+    Java class 'cern.lsa.client.ServiceLocator'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        JDBC_PROPERTIES (java.lang.String): final static field
+        DATABASE_PROPERTY_NAME (java.lang.String): final static field
+        SERVER_PROPERTIES (java.lang.String): final static field
+        SERVER_PROPERTY_NAME (java.lang.String): final static field
+        PROTOCOL_PROPERTY (java.lang.String): final static field
+        MODE_PROPERTY_NAME (java.lang.String): final static field
+        MODE_3_TIER (java.lang.String): final static field
+        MODE_2_TIER (java.lang.String): final static field
+        MODE_DEFAULT (java.lang.String): final static field
+    
+    """
     JDBC_PROPERTIES: typing.ClassVar[str] = ...
     DATABASE_PROPERTY_NAME: typing.ClassVar[str] = ...
     SERVER_PROPERTIES: typing.ClassVar[str] = ...
@@ -298,29 +468,47 @@ class ServiceLocator:
     def isTwoTier() -> bool: ...
 
 class SettingService(cern.lsa.client.common.CommonSettingService):
+    """
+    Java class 'cern.lsa.client.SettingService'
+    
+        Interfaces:
+            cern.lsa.client.common.CommonSettingService
+    
+    """
     def compareSettings(self, settingComparisonRequest: cern.lsa.domain.settings.SettingComparisonRequest) -> cern.lsa.domain.settings.SettingComparisonResponse: ...
 
 class SettingsComparator:
+    """
+    Java class 'cern.lsa.client.SettingsComparator'
+    
+    """
     def compare(self, settingComparisonRequest: cern.lsa.domain.settings.SettingComparisonRequest, errorsAwareContextSettings: cern.lsa.domain.settings.ErrorsAwareContextSettings, errorsAwareContextSettings2: cern.lsa.domain.settings.ErrorsAwareContextSettings, parameterArray: typing.List[cern.lsa.domain.settings.Parameter]) -> java.util.Map[cern.lsa.domain.settings.Parameter, cern.lsa.domain.settings.SettingComparisonParameterResult]: ...
 
 class SettingsLoader:
+    """
+    Java class 'cern.lsa.client.SettingsLoader'
+    
+    """
     def loadSettings(self, standAloneContext: cern.lsa.domain.settings.StandAloneContext, settingsSource: cern.lsa.domain.settings.SettingsSource, standAloneContext2: cern.lsa.domain.settings.StandAloneContext, settingsSource2: cern.lsa.domain.settings.SettingsSource, parameterArray: typing.List[cern.lsa.domain.settings.Parameter]) -> cern.accsoft.commons.util.value.Pair[cern.lsa.domain.settings.ErrorsAwareContextSettings, cern.lsa.domain.settings.ErrorsAwareContextSettings]: ...
 
 class SpsService:
+    """
+    Java class 'cern.lsa.client.SpsService'
+    
+    """
     def findBctMarkers(self, standAloneContext: cern.lsa.domain.settings.StandAloneContext) -> java.util.Set[cern.lsa.domain.cern.exploitation.BctMarker]: ...
     def findBctMarkersForActiveContexts(self) -> java.util.Map[str, java.util.Set[cern.lsa.domain.cern.exploitation.BctMarker]]: ...
     def findBctMarkersForResidentContexts(self) -> java.util.Map[str, java.util.Set[cern.lsa.domain.cern.exploitation.BctMarker]]: ...
     def findBctMarkersForTimingUsers(self, collection: typing.Union[java.util.Collection[str], typing.Sequence[str]]) -> java.util.Map[str, java.util.Set[cern.lsa.domain.cern.exploitation.BctMarker]]: ...
 
-class TestService:
-    def fakeDrive(self) -> str: ...
-    @typing.overload
-    def fakeTrim(self, trimRequest: cern.lsa.domain.settings.TrimRequest) -> str: ...
-    @typing.overload
-    def fakeTrim(self, trimRequestArray: typing.List[cern.lsa.domain.settings.TrimRequest]) -> str: ...
-    def saveActiveBeamMode(self, string: str, string2: str) -> None: ...
-
 class TimingService(cern.lsa.client.common.CommonTimingService):
+    """
+    Java class 'cern.lsa.client.TimingService'
+    
+        Interfaces:
+            cern.lsa.client.common.CommonTimingService
+    
+    """
     def abortEventTable(self, eventTable: cern.lsa.domain.cern.timing.EventTable) -> None: ...
     def clearCirculatingBunchConfig(self, lhcBeam: cern.accsoft.commons.domain.beams.LhcBeam) -> None: ...
     def clearSequencerReservation(self) -> None: ...
@@ -391,3 +579,40 @@ class TimingService(cern.lsa.client.common.CommonTimingService):
     def updateStartConditionOnLoadedTable(self, string: str, string2: str, int: int, int2: int) -> None: ...
 
 class TrimService(cern.lsa.client.common.CommonTrimService): ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.client")``.
+
+    AcceleratorService: typing.Type[AcceleratorService]
+    AdService: typing.Type[AdService]
+    ArchiveReferenceService: typing.Type[ArchiveReferenceService]
+    CacheService: typing.Type[CacheService]
+    ClientApplicationConfig: typing.Type[ClientApplicationConfig]
+    ContextService: typing.Type[ContextService]
+    DeviceService: typing.Type[DeviceService]
+    ElenaService: typing.Type[ElenaService]
+    ExploitationService: typing.Type[ExploitationService]
+    FidelService: typing.Type[FidelService]
+    GenerationService: typing.Type[GenerationService]
+    HyperCycleService: typing.Type[HyperCycleService]
+    IncaService: typing.Type[IncaService]
+    JapcService: typing.Type[JapcService]
+    KnobService: typing.Type[KnobService]
+    LhcService: typing.Type[LhcService]
+    LktimService: typing.Type[LktimService]
+    LsaServiceLocator: typing.Type[LsaServiceLocator]
+    OpticService: typing.Type[OpticService]
+    ParameterService: typing.Type[ParameterService]
+    ServiceLocator: typing.Type[ServiceLocator]
+    SettingService: typing.Type[SettingService]
+    SettingsComparator: typing.Type[SettingsComparator]
+    SettingsLoader: typing.Type[SettingsLoader]
+    SpsService: typing.Type[SpsService]
+    TimingService: typing.Type[TimingService]
+    TrimService: typing.Type[TrimService]
+    common: cern.lsa.client.common.__module_protocol__
+    reference: cern.lsa.client.reference.__module_protocol__
+    rest: cern.lsa.client.rest.__module_protocol__
+    spi: cern.lsa.client.spi.__module_protocol__
+    test: cern.lsa.client.test.__module_protocol__

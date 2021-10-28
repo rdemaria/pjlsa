@@ -5,24 +5,54 @@ import java.util.jar
 import typing
 
 
+
 class ClassDefinition:
+    """
+    Java class 'java.lang.instrument.ClassDefinition'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ClassDefinition(java.lang.Class, byte[])
+    
+    """
     def __init__(self, class_: typing.Type[typing.Any], byteArray: typing.List[int]): ...
     def getDefinitionClass(self) -> typing.Type[typing.Any]: ...
     def getDefinitionClassFile(self) -> typing.List[int]: ...
 
 class ClassFileTransformer:
+    """
+    Java class 'java.lang.instrument.ClassFileTransformer'
+    
+    """
     @typing.overload
     def transform(self, classLoader: java.lang.ClassLoader, string: str, class2: typing.Type[typing.Any], protectionDomain: java.security.ProtectionDomain, byteArray: typing.List[int]) -> typing.List[int]: ...
     @typing.overload
     def transform(self, module: java.lang.Module, classLoader: java.lang.ClassLoader, string: str, class2: typing.Type[typing.Any], protectionDomain: java.security.ProtectionDomain, byteArray: typing.List[int]) -> typing.List[int]: ...
 
 class IllegalClassFormatException(java.lang.Exception):
+    """
+    Java class 'java.lang.instrument.IllegalClassFormatException'
+    
+        Extends:
+            java.lang.Exception
+    
+      Constructors:
+        * IllegalClassFormatException()
+        * IllegalClassFormatException(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class Instrumentation:
+    """
+    Java class 'java.lang.instrument.Instrumentation'
+    
+    """
     @typing.overload
     def addTransformer(self, classFileTransformer: ClassFileTransformer) -> None: ...
     @typing.overload
@@ -44,13 +74,46 @@ class Instrumentation:
     def setNativeMethodPrefix(self, classFileTransformer: ClassFileTransformer, string: str) -> None: ...
 
 class UnmodifiableClassException(java.lang.Exception):
+    """
+    Java class 'java.lang.instrument.UnmodifiableClassException'
+    
+        Extends:
+            java.lang.Exception
+    
+      Constructors:
+        * UnmodifiableClassException()
+        * UnmodifiableClassException(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class UnmodifiableModuleException(java.lang.RuntimeException):
+    """
+    Java class 'java.lang.instrument.UnmodifiableModuleException'
+    
+        Extends:
+            java.lang.RuntimeException
+    
+      Constructors:
+        * UnmodifiableModuleException()
+        * UnmodifiableModuleException(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.lang.instrument")``.
+
+    ClassDefinition: typing.Type[ClassDefinition]
+    ClassFileTransformer: typing.Type[ClassFileTransformer]
+    IllegalClassFormatException: typing.Type[IllegalClassFormatException]
+    Instrumentation: typing.Type[Instrumentation]
+    UnmodifiableClassException: typing.Type[UnmodifiableClassException]
+    UnmodifiableModuleException: typing.Type[UnmodifiableModuleException]

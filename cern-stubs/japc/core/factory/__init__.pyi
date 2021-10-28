@@ -9,7 +9,15 @@ import java.util
 import typing
 
 
+
 class AcquiredParameterValueFactory:
+    """
+    Java class 'cern.japc.core.factory.AcquiredParameterValueFactory'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @typing.overload
     @staticmethod
     def newAcquiredParameterValue(acquiredParameterValue: cern.japc.core.AcquiredParameterValue, valueHeader: cern.japc.core.ValueHeader) -> cern.japc.core.AcquiredParameterValue: ...
@@ -24,6 +32,19 @@ class AcquiredParameterValueFactory:
     def newValue(string: str, valueHeader: cern.japc.core.ValueHeader, parameterValue: cern.japc.value.ParameterValue) -> cern.japc.core.AcquiredParameterValue: ...
 
 class FactoryConfigurationError(java.lang.Error):
+    """
+    Java class 'cern.japc.core.factory.FactoryConfigurationError'
+    
+        Extends:
+            java.lang.Error
+    
+      Constructors:
+        * FactoryConfigurationError(java.lang.String, java.lang.Exception)
+        * FactoryConfigurationError(java.lang.Exception)
+        * FactoryConfigurationError(java.lang.String)
+        * FactoryConfigurationError()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -34,6 +55,13 @@ class FactoryConfigurationError(java.lang.Error):
     def __init__(self, string: str, exception: java.lang.Exception): ...
 
 class FailSafeParameterValueFactory:
+    """
+    Java class 'cern.japc.core.factory.FailSafeParameterValueFactory'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @typing.overload
     @staticmethod
     def newFailSafeParameterValue(acquiredParameterValue: cern.japc.core.AcquiredParameterValue) -> cern.japc.core.FailSafeParameterValue: ...
@@ -51,6 +79,10 @@ class FailSafeParameterValueFactory:
     def newValue(string: str, valueHeader: cern.japc.core.ValueHeader, parameterValue: cern.japc.value.ParameterValue) -> cern.japc.core.FailSafeParameterValue: ...
 
 class IParameterFactory:
+    """
+    Java class 'cern.japc.core.factory.IParameterFactory'
+    
+    """
     @typing.overload
     def newParameter(self, parameterUrl: cern.japc.core.spi.ParameterUrl) -> cern.japc.core.transaction.TransactionalParameter: ...
     @typing.overload
@@ -63,6 +95,13 @@ class IParameterFactory:
     def newParameter(self, string: str, string2: str) -> cern.japc.core.transaction.TransactionalParameter: ...
 
 class MapParameterValueFactory:
+    """
+    Java class 'cern.japc.core.factory.MapParameterValueFactory'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @typing.overload
     @staticmethod
     def newMapParameterValue() -> cern.japc.value.MapParameterValue: ...
@@ -95,12 +134,29 @@ class MapParameterValueFactory:
     def newValue(map: typing.Union[java.util.Map[str, cern.japc.value.SimpleParameterValue], typing.Mapping[str, cern.japc.value.SimpleParameterValue]]) -> cern.japc.value.MapParameterValue: ...
 
 class ObjectParameterValueFactory:
+    """
+    Java class 'cern.japc.core.factory.ObjectParameterValueFactory'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def newObjectParameterValue(object: typing.Any) -> cern.japc.core.ObjectParameterValue: ...
     @staticmethod
     def newValue(object: typing.Any) -> cern.japc.core.ObjectParameterValue: ...
 
 class ParameterCharacteristicsFactory:
+    """
+    Java class 'cern.japc.core.factory.ParameterCharacteristicsFactory'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ParameterCharacteristicsFactory()
+    
+    """
     def __init__(self): ...
     @staticmethod
     def getNormalCharacteristics() -> cern.japc.core.ParameterCharacteristics: ...
@@ -110,6 +166,20 @@ class ParameterCharacteristicsFactory:
     def getWildcardCharacteristics() -> cern.japc.core.ParameterCharacteristics: ...
 
 class ParameterCharacteristicsImpl(cern.japc.core.ParameterCharacteristics, java.io.Serializable):
+    """
+    Java class 'cern.japc.core.factory.ParameterCharacteristicsImpl'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.ParameterCharacteristics, java.io.Serializable
+    
+      Attributes:
+        CHARACHTERISTICS_N (cern.japc.core.ParameterCharacteristics): final static field
+        CHARACHTERISTICS_W (cern.japc.core.ParameterCharacteristics): final static field
+    
+    """
     CHARACHTERISTICS_N: typing.ClassVar[cern.japc.core.ParameterCharacteristics] = ...
     CHARACHTERISTICS_W: typing.ClassVar[cern.japc.core.ParameterCharacteristics] = ...
     def getAdditionalInformation(self) -> java.util.Map[str, typing.Any]: ...
@@ -117,6 +187,16 @@ class ParameterCharacteristicsImpl(cern.japc.core.ParameterCharacteristics, java
     def toString(self) -> str: ...
 
 class ParameterExceptionFactory:
+    """
+    Java class 'cern.japc.core.factory.ParameterExceptionFactory'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * ParameterExceptionFactory()
+    
+    """
     def __init__(self): ...
     @typing.overload
     @staticmethod
@@ -126,6 +206,28 @@ class ParameterExceptionFactory:
     def newException(string: str, exception: java.lang.Exception, acquiredParameterValue: cern.japc.core.AcquiredParameterValue) -> cern.japc.core.ParameterException: ...
 
 class ParameterMetaFactoryConstants:
+    """
+    Java class 'cern.japc.core.factory.ParameterMetaFactoryConstants'
+    
+      Attributes:
+        RDA_SERVICE_NAME (java.lang.String): final static field
+        RDA3_SERVICE_NAME (java.lang.String): final static field
+        TGM_SERVICE_NAME (java.lang.String): final static field
+        SNMP_SERVICE_NAME (java.lang.String): final static field
+        RMI_SERVICE_NAME (java.lang.String): final static field
+        RDA_PROTOCOL (java.lang.String): final static field
+        RDA3_PROTOCOL (java.lang.String): final static field
+        TGM_PROTOCOL (java.lang.String): final static field
+        SYSPROP_DEFAULT_SERVICE_NAME (java.lang.String): final static field
+        SYSPROP_DEFAULT_PROTOCOL_NAME (java.lang.String): final static field
+        DEFAULT_SERVICE_NAME (java.lang.String): final static field
+        DEFAULT_PROTOCOL_NAME (java.lang.String): final static field
+        SYSPROP_SERVICE_NAME_RESOLVERS (java.lang.String): final static field
+        SYSPROP_SERVICE_CONFIG_LOOKUPS (java.lang.String): final static field
+        SYSPROP_WILDCARD_SELECTOR_RESOLVER (java.lang.String): final static field
+        SYSPROP_DEFAULT_WILDCARD_SUBSCRIPTION_ON (java.lang.String): final static field
+    
+    """
     RDA_SERVICE_NAME: typing.ClassVar[str] = ...
     RDA3_SERVICE_NAME: typing.ClassVar[str] = ...
     TGM_SERVICE_NAME: typing.ClassVar[str] = ...
@@ -144,6 +246,13 @@ class ParameterMetaFactoryConstants:
     SYSPROP_DEFAULT_WILDCARD_SUBSCRIPTION_ON: typing.ClassVar[str] = ...
 
 class SelectorFactory:
+    """
+    Java class 'cern.japc.core.factory.SelectorFactory'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @typing.overload
     @staticmethod
     def newSelector(parameterValue: cern.japc.value.ParameterValue) -> cern.japc.core.Selector: ...
@@ -155,9 +264,20 @@ class SelectorFactory:
     def newSelector(string: str, parameterValue: cern.japc.value.ParameterValue) -> cern.japc.core.Selector: ...
 
 class ServiceNameResolver:
+    """
+    Java class 'cern.japc.core.factory.ServiceNameResolver'
+    
+    """
     def getServiceName(self, string: str, parameterDescriptor: cern.japc.core.ParameterDescriptor) -> str: ...
 
 class SimpleParameterValueFactory:
+    """
+    Java class 'cern.japc.core.factory.SimpleParameterValueFactory'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @typing.overload
     @staticmethod
     def newSimpleParameterValue() -> cern.japc.value.SimpleParameterValue: ...
@@ -598,10 +718,28 @@ class SimpleParameterValueFactory:
     def newValue(shortArray: typing.List[int], intArray: typing.List[int], immutableParameter: cern.japc.core.ImmutableParameter) -> cern.japc.value.SimpleParameterValue: ...
 
 class TransactionFactory:
+    """
+    Java class 'cern.japc.core.factory.TransactionFactory'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     @staticmethod
     def newCompositeTransaction() -> cern.japc.core.transaction.CompositeTransaction: ...
 
 class ValueHeaderFactory:
+    """
+    Java class 'cern.japc.core.factory.ValueHeaderFactory'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        NO_CYCLE_STAMP (long): final static field
+        NO_SET_STAMP (long): final static field
+    
+    """
     NO_CYCLE_STAMP: typing.ClassVar[int] = ...
     NO_SET_STAMP: typing.ClassVar[int] = ...
     @typing.overload
@@ -648,6 +786,23 @@ class ValueHeaderFactory:
     def toRegularUpdateHeader(valueHeader: cern.japc.core.ValueHeader) -> cern.japc.core.ValueHeader: ...
 
 class ParameterFactory(IParameterFactory):
+    """
+    Java class 'cern.japc.core.factory.ParameterFactory'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            cern.japc.core.factory.IParameterFactory
+    
+      Attributes:
+        FACTORY_ID (java.lang.String): final static field
+        DESCRIPTOR_PROVIDER_ID (java.lang.String): final static field
+        SYSPROP_JAPC_DIRSERVICE_PROVIDER_ENABLED (java.lang.String): final static field
+        SYSPROP_JAPC_CCS_DESCRIPTORS_ENABLED (java.lang.String): final static field
+        SYSPROP_JAPC_IGNORE_SET (java.lang.String): final static field
+    
+    """
     FACTORY_ID: typing.ClassVar[str] = ...
     DESCRIPTOR_PROVIDER_ID: typing.ClassVar[str] = ...
     SYSPROP_JAPC_DIRSERVICE_PROVIDER_ENABLED: typing.ClassVar[str] = ...
@@ -697,3 +852,24 @@ class ParameterFactory(IParameterFactory):
     def newParameter(self, string: str, string2: str) -> cern.japc.core.transaction.TransactionalParameter: ...
     def newParameterExplorer(self) -> cern.japc.core.ParameterExplorer: ...
     def setUnknownParameterSupported(self, boolean: bool) -> None: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("cern.japc.core.factory")``.
+
+    AcquiredParameterValueFactory: typing.Type[AcquiredParameterValueFactory]
+    FactoryConfigurationError: typing.Type[FactoryConfigurationError]
+    FailSafeParameterValueFactory: typing.Type[FailSafeParameterValueFactory]
+    IParameterFactory: typing.Type[IParameterFactory]
+    MapParameterValueFactory: typing.Type[MapParameterValueFactory]
+    ObjectParameterValueFactory: typing.Type[ObjectParameterValueFactory]
+    ParameterCharacteristicsFactory: typing.Type[ParameterCharacteristicsFactory]
+    ParameterCharacteristicsImpl: typing.Type[ParameterCharacteristicsImpl]
+    ParameterExceptionFactory: typing.Type[ParameterExceptionFactory]
+    ParameterFactory: typing.Type[ParameterFactory]
+    ParameterMetaFactoryConstants: typing.Type[ParameterMetaFactoryConstants]
+    SelectorFactory: typing.Type[SelectorFactory]
+    ServiceNameResolver: typing.Type[ServiceNameResolver]
+    SimpleParameterValueFactory: typing.Type[SimpleParameterValueFactory]
+    TransactionFactory: typing.Type[TransactionFactory]
+    ValueHeaderFactory: typing.Type[ValueHeaderFactory]

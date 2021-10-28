@@ -5,13 +5,42 @@ import javax.management
 import typing
 
 
+
 class LockInfo:
+    """
+    Java class 'java.lang.management.LockInfo'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * LockInfo(java.lang.String, int)
+    
+    """
     def __init__(self, string: str, int: int): ...
     def getClassName(self) -> str: ...
     def getIdentityHashCode(self) -> int: ...
     def toString(self) -> str: ...
 
 class ManagementFactory:
+    """
+    Java class 'java.lang.management.ManagementFactory'
+    
+        Extends:
+            java.lang.Object
+    
+      Attributes:
+        CLASS_LOADING_MXBEAN_NAME (java.lang.String): final static field
+        COMPILATION_MXBEAN_NAME (java.lang.String): final static field
+        MEMORY_MXBEAN_NAME (java.lang.String): final static field
+        OPERATING_SYSTEM_MXBEAN_NAME (java.lang.String): final static field
+        RUNTIME_MXBEAN_NAME (java.lang.String): final static field
+        THREAD_MXBEAN_NAME (java.lang.String): final static field
+        GARBAGE_COLLECTOR_MXBEAN_DOMAIN_TYPE (java.lang.String): final static field
+        MEMORY_MANAGER_MXBEAN_DOMAIN_TYPE (java.lang.String): final static field
+        MEMORY_POOL_MXBEAN_DOMAIN_TYPE (java.lang.String): final static field
+    
+    """
     CLASS_LOADING_MXBEAN_NAME: typing.ClassVar[str] = ...
     COMPILATION_MXBEAN_NAME: typing.ClassVar[str] = ...
     MEMORY_MXBEAN_NAME: typing.ClassVar[str] = ...
@@ -64,12 +93,40 @@ class ManagementFactory:
     def newPlatformMXBeanProxy(mBeanServerConnection: javax.management.MBeanServerConnection, string: str, class_: typing.Type[_newPlatformMXBeanProxy__T]) -> _newPlatformMXBeanProxy__T: ...
 
 class ManagementPermission(java.security.BasicPermission):
+    """
+    Java class 'java.lang.management.ManagementPermission'
+    
+        Extends:
+            java.security.BasicPermission
+    
+      Constructors:
+        * ManagementPermission(java.lang.String)
+        * ManagementPermission(java.lang.String, java.lang.String)
+    
+      Raises:
+        java.lang.IllegalArgumentException: from java
+    
+    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
     def __init__(self, string: str, string2: str): ...
 
 class MemoryNotificationInfo:
+    """
+    Java class 'java.lang.management.MemoryNotificationInfo'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * MemoryNotificationInfo(java.lang.String, java.lang.management.MemoryUsage, long)
+    
+      Attributes:
+        MEMORY_THRESHOLD_EXCEEDED (java.lang.String): final static field
+        MEMORY_COLLECTION_THRESHOLD_EXCEEDED (java.lang.String): final static field
+    
+    """
     MEMORY_THRESHOLD_EXCEEDED: typing.ClassVar[str] = ...
     MEMORY_COLLECTION_THRESHOLD_EXCEEDED: typing.ClassVar[str] = ...
     def __init__(self, string: str, memoryUsage: 'MemoryUsage', long: int): ...
@@ -78,6 +135,17 @@ class MemoryNotificationInfo:
     def getUsage(self) -> 'MemoryUsage': ...
 
 class MemoryType(java.lang.Enum['MemoryType']):
+    """
+    Java class 'java.lang.management.MemoryType'
+    
+        Extends:
+            java.lang.Enum
+    
+      Attributes:
+        HEAP (java.lang.management.MemoryType): final static enum constant
+        NON_HEAP (java.lang.management.MemoryType): final static enum constant
+    
+    """
     HEAP: typing.ClassVar['MemoryType'] = ...
     NON_HEAP: typing.ClassVar['MemoryType'] = ...
     def toString(self) -> str: ...
@@ -92,6 +160,16 @@ class MemoryType(java.lang.Enum['MemoryType']):
     def values() -> typing.List['MemoryType']: ...
 
 class MemoryUsage:
+    """
+    Java class 'java.lang.management.MemoryUsage'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * MemoryUsage(long, long, long, long)
+    
+    """
     def __init__(self, long: int, long2: int, long3: int, long4: int): ...
     def getCommitted(self) -> int: ...
     def getInit(self) -> int: ...
@@ -100,9 +178,20 @@ class MemoryUsage:
     def toString(self) -> str: ...
 
 class PlatformManagedObject:
+    """
+    Java class 'java.lang.management.PlatformManagedObject'
+    
+    """
     def getObjectName(self) -> javax.management.ObjectName: ...
 
 class ThreadInfo:
+    """
+    Java class 'java.lang.management.ThreadInfo'
+    
+        Extends:
+            java.lang.Object
+    
+    """
     def getBlockedCount(self) -> int: ...
     def getBlockedTime(self) -> int: ...
     def getLockInfo(self) -> LockInfo: ...
@@ -124,12 +213,26 @@ class ThreadInfo:
     def toString(self) -> str: ...
 
 class BufferPoolMXBean(PlatformManagedObject):
+    """
+    Java class 'java.lang.management.BufferPoolMXBean'
+    
+        Interfaces:
+            java.lang.management.PlatformManagedObject
+    
+    """
     def getCount(self) -> int: ...
     def getMemoryUsed(self) -> int: ...
     def getName(self) -> str: ...
     def getTotalCapacity(self) -> int: ...
 
 class ClassLoadingMXBean(PlatformManagedObject):
+    """
+    Java class 'java.lang.management.ClassLoadingMXBean'
+    
+        Interfaces:
+            java.lang.management.PlatformManagedObject
+    
+    """
     def getLoadedClassCount(self) -> int: ...
     def getTotalLoadedClassCount(self) -> int: ...
     def getUnloadedClassCount(self) -> int: ...
@@ -137,11 +240,25 @@ class ClassLoadingMXBean(PlatformManagedObject):
     def setVerbose(self, boolean: bool) -> None: ...
 
 class CompilationMXBean(PlatformManagedObject):
+    """
+    Java class 'java.lang.management.CompilationMXBean'
+    
+        Interfaces:
+            java.lang.management.PlatformManagedObject
+    
+    """
     def getName(self) -> str: ...
     def getTotalCompilationTime(self) -> int: ...
     def isCompilationTimeMonitoringSupported(self) -> bool: ...
 
 class MemoryMXBean(PlatformManagedObject):
+    """
+    Java class 'java.lang.management.MemoryMXBean'
+    
+        Interfaces:
+            java.lang.management.PlatformManagedObject
+    
+    """
     def gc(self) -> None: ...
     def getHeapMemoryUsage(self) -> MemoryUsage: ...
     def getNonHeapMemoryUsage(self) -> MemoryUsage: ...
@@ -150,11 +267,25 @@ class MemoryMXBean(PlatformManagedObject):
     def setVerbose(self, boolean: bool) -> None: ...
 
 class MemoryManagerMXBean(PlatformManagedObject):
+    """
+    Java class 'java.lang.management.MemoryManagerMXBean'
+    
+        Interfaces:
+            java.lang.management.PlatformManagedObject
+    
+    """
     def getMemoryPoolNames(self) -> typing.List[str]: ...
     def getName(self) -> str: ...
     def isValid(self) -> bool: ...
 
 class MemoryPoolMXBean(PlatformManagedObject):
+    """
+    Java class 'java.lang.management.MemoryPoolMXBean'
+    
+        Interfaces:
+            java.lang.management.PlatformManagedObject
+    
+    """
     def getCollectionUsage(self) -> MemoryUsage: ...
     def getCollectionUsageThreshold(self) -> int: ...
     def getCollectionUsageThresholdCount(self) -> int: ...
@@ -175,11 +306,28 @@ class MemoryPoolMXBean(PlatformManagedObject):
     def setUsageThreshold(self, long: int) -> None: ...
 
 class MonitorInfo(LockInfo):
+    """
+    Java class 'java.lang.management.MonitorInfo'
+    
+        Extends:
+            java.lang.management.LockInfo
+    
+      Constructors:
+        * MonitorInfo(java.lang.String, int, int, java.lang.StackTraceElement)
+    
+    """
     def __init__(self, string: str, int: int, int2: int, stackTraceElement: java.lang.StackTraceElement): ...
     def getLockedStackDepth(self) -> int: ...
     def getLockedStackFrame(self) -> java.lang.StackTraceElement: ...
 
 class OperatingSystemMXBean(PlatformManagedObject):
+    """
+    Java class 'java.lang.management.OperatingSystemMXBean'
+    
+        Interfaces:
+            java.lang.management.PlatformManagedObject
+    
+    """
     def getArch(self) -> str: ...
     def getAvailableProcessors(self) -> int: ...
     def getName(self) -> str: ...
@@ -187,12 +335,26 @@ class OperatingSystemMXBean(PlatformManagedObject):
     def getVersion(self) -> str: ...
 
 class PlatformLoggingMXBean(PlatformManagedObject):
+    """
+    Java class 'java.lang.management.PlatformLoggingMXBean'
+    
+        Interfaces:
+            java.lang.management.PlatformManagedObject
+    
+    """
     def getLoggerLevel(self, string: str) -> str: ...
     def getLoggerNames(self) -> java.util.List[str]: ...
     def getParentLoggerName(self, string: str) -> str: ...
     def setLoggerLevel(self, string: str, string2: str) -> None: ...
 
 class RuntimeMXBean(PlatformManagedObject):
+    """
+    Java class 'java.lang.management.RuntimeMXBean'
+    
+        Interfaces:
+            java.lang.management.PlatformManagedObject
+    
+    """
     def getBootClassPath(self) -> str: ...
     def getClassPath(self) -> str: ...
     def getInputArguments(self) -> java.util.List[str]: ...
@@ -212,6 +374,13 @@ class RuntimeMXBean(PlatformManagedObject):
     def isBootClassPathSupported(self) -> bool: ...
 
 class ThreadMXBean(PlatformManagedObject):
+    """
+    Java class 'java.lang.management.ThreadMXBean'
+    
+        Interfaces:
+            java.lang.management.PlatformManagedObject
+    
+    """
     @typing.overload
     def dumpAllThreads(self, boolean: bool, boolean2: bool) -> typing.List[ThreadInfo]: ...
     @typing.overload
@@ -251,5 +420,37 @@ class ThreadMXBean(PlatformManagedObject):
     def setThreadCpuTimeEnabled(self, boolean: bool) -> None: ...
 
 class GarbageCollectorMXBean(MemoryManagerMXBean):
+    """
+    Java class 'java.lang.management.GarbageCollectorMXBean'
+    
+        Interfaces:
+            java.lang.management.MemoryManagerMXBean
+    
+    """
     def getCollectionCount(self) -> int: ...
     def getCollectionTime(self) -> int: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.lang.management")``.
+
+    BufferPoolMXBean: typing.Type[BufferPoolMXBean]
+    ClassLoadingMXBean: typing.Type[ClassLoadingMXBean]
+    CompilationMXBean: typing.Type[CompilationMXBean]
+    GarbageCollectorMXBean: typing.Type[GarbageCollectorMXBean]
+    LockInfo: typing.Type[LockInfo]
+    ManagementFactory: typing.Type[ManagementFactory]
+    ManagementPermission: typing.Type[ManagementPermission]
+    MemoryMXBean: typing.Type[MemoryMXBean]
+    MemoryManagerMXBean: typing.Type[MemoryManagerMXBean]
+    MemoryNotificationInfo: typing.Type[MemoryNotificationInfo]
+    MemoryPoolMXBean: typing.Type[MemoryPoolMXBean]
+    MemoryType: typing.Type[MemoryType]
+    MemoryUsage: typing.Type[MemoryUsage]
+    MonitorInfo: typing.Type[MonitorInfo]
+    OperatingSystemMXBean: typing.Type[OperatingSystemMXBean]
+    PlatformLoggingMXBean: typing.Type[PlatformLoggingMXBean]
+    PlatformManagedObject: typing.Type[PlatformManagedObject]
+    RuntimeMXBean: typing.Type[RuntimeMXBean]
+    ThreadInfo: typing.Type[ThreadInfo]
+    ThreadMXBean: typing.Type[ThreadMXBean]

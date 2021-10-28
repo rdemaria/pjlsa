@@ -11,7 +11,18 @@ import jpype.protocol
 import typing
 
 
+
 class CheckedInputStream(java.io.FilterInputStream):
+    """
+    Java class 'java.util.zip.CheckedInputStream'
+    
+        Extends:
+            java.io.FilterInputStream
+    
+      Constructors:
+        * CheckedInputStream(java.io.InputStream, java.util.zip.Checksum)
+    
+    """
     def __init__(self, inputStream: java.io.InputStream, checksum: 'Checksum'): ...
     def getChecksum(self) -> 'Checksum': ...
     @typing.overload
@@ -23,6 +34,16 @@ class CheckedInputStream(java.io.FilterInputStream):
     def skip(self, long: int) -> int: ...
 
 class CheckedOutputStream(java.io.FilterOutputStream):
+    """
+    Java class 'java.util.zip.CheckedOutputStream'
+    
+        Extends:
+            java.io.FilterOutputStream
+    
+      Constructors:
+        * CheckedOutputStream(java.io.OutputStream, java.util.zip.Checksum)
+    
+    """
     def __init__(self, outputStream: java.io.OutputStream, checksum: 'Checksum'): ...
     def getChecksum(self) -> 'Checksum': ...
     @typing.overload
@@ -33,6 +54,10 @@ class CheckedOutputStream(java.io.FilterOutputStream):
     def write(self, int: int) -> None: ...
 
 class Checksum:
+    """
+    Java class 'java.util.zip.Checksum'
+    
+    """
     def getValue(self) -> int: ...
     def reset(self) -> None: ...
     @typing.overload
@@ -45,12 +70,48 @@ class Checksum:
     def update(self, byteBuffer: java.nio.ByteBuffer) -> None: ...
 
 class DataFormatException(java.lang.Exception):
+    """
+    Java class 'java.util.zip.DataFormatException'
+    
+        Extends:
+            java.lang.Exception
+    
+      Constructors:
+        * DataFormatException()
+        * DataFormatException(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class Deflater:
+    """
+    Java class 'java.util.zip.Deflater'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * Deflater()
+        * Deflater(int)
+        * Deflater(int, boolean)
+    
+      Attributes:
+        DEFLATED (int): final static field
+        NO_COMPRESSION (int): final static field
+        BEST_SPEED (int): final static field
+        BEST_COMPRESSION (int): final static field
+        DEFAULT_COMPRESSION (int): final static field
+        FILTERED (int): final static field
+        HUFFMAN_ONLY (int): final static field
+        DEFAULT_STRATEGY (int): final static field
+        NO_FLUSH (int): final static field
+        SYNC_FLUSH (int): final static field
+        FULL_FLUSH (int): final static field
+    
+    """
     DEFLATED: typing.ClassVar[int] = ...
     NO_COMPRESSION: typing.ClassVar[int] = ...
     BEST_SPEED: typing.ClassVar[int] = ...
@@ -104,6 +165,18 @@ class Deflater:
     def setStrategy(self, int: int) -> None: ...
 
 class DeflaterInputStream(java.io.FilterInputStream):
+    """
+    Java class 'java.util.zip.DeflaterInputStream'
+    
+        Extends:
+            java.io.FilterInputStream
+    
+      Constructors:
+        * DeflaterInputStream(java.io.InputStream, java.util.zip.Deflater, int)
+        * DeflaterInputStream(java.io.InputStream)
+        * DeflaterInputStream(java.io.InputStream, java.util.zip.Deflater)
+    
+    """
     @typing.overload
     def __init__(self, inputStream: java.io.InputStream): ...
     @typing.overload
@@ -124,6 +197,21 @@ class DeflaterInputStream(java.io.FilterInputStream):
     def skip(self, long: int) -> int: ...
 
 class DeflaterOutputStream(java.io.FilterOutputStream):
+    """
+    Java class 'java.util.zip.DeflaterOutputStream'
+    
+        Extends:
+            java.io.FilterOutputStream
+    
+      Constructors:
+        * DeflaterOutputStream(java.io.OutputStream)
+        * DeflaterOutputStream(java.io.OutputStream, boolean)
+        * DeflaterOutputStream(java.io.OutputStream, java.util.zip.Deflater)
+        * DeflaterOutputStream(java.io.OutputStream, java.util.zip.Deflater, int, boolean)
+        * DeflaterOutputStream(java.io.OutputStream, java.util.zip.Deflater, int)
+        * DeflaterOutputStream(java.io.OutputStream, java.util.zip.Deflater, boolean)
+    
+    """
     @typing.overload
     def __init__(self, outputStream: java.io.OutputStream): ...
     @typing.overload
@@ -147,6 +235,17 @@ class DeflaterOutputStream(java.io.FilterOutputStream):
     def write(self, int: int) -> None: ...
 
 class Inflater:
+    """
+    Java class 'java.util.zip.Inflater'
+    
+        Extends:
+            java.lang.Object
+    
+      Constructors:
+        * Inflater(boolean)
+        * Inflater()
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -182,6 +281,18 @@ class Inflater:
     def setInput(self, byteBuffer: java.nio.ByteBuffer) -> None: ...
 
 class InflaterInputStream(java.io.FilterInputStream):
+    """
+    Java class 'java.util.zip.InflaterInputStream'
+    
+        Extends:
+            java.io.FilterInputStream
+    
+      Constructors:
+        * InflaterInputStream(java.io.InputStream, java.util.zip.Inflater)
+        * InflaterInputStream(java.io.InputStream, java.util.zip.Inflater, int)
+        * InflaterInputStream(java.io.InputStream)
+    
+    """
     @typing.overload
     def __init__(self, inputStream: java.io.InputStream): ...
     @typing.overload
@@ -202,6 +313,18 @@ class InflaterInputStream(java.io.FilterInputStream):
     def skip(self, long: int) -> int: ...
 
 class InflaterOutputStream(java.io.FilterOutputStream):
+    """
+    Java class 'java.util.zip.InflaterOutputStream'
+    
+        Extends:
+            java.io.FilterOutputStream
+    
+      Constructors:
+        * InflaterOutputStream(java.io.OutputStream, java.util.zip.Inflater)
+        * InflaterOutputStream(java.io.OutputStream)
+        * InflaterOutputStream(java.io.OutputStream, java.util.zip.Inflater, int)
+    
+    """
     @typing.overload
     def __init__(self, outputStream: java.io.OutputStream): ...
     @typing.overload
@@ -219,15 +342,49 @@ class InflaterOutputStream(java.io.FilterOutputStream):
     def write(self, int: int) -> None: ...
 
 class ZipError(java.lang.InternalError):
+    """
+    Java class 'java.util.zip.ZipError'
+    
+        Extends:
+            java.lang.InternalError
+    
+      Constructors:
+        * ZipError(java.lang.String)
+    
+    """
     def __init__(self, string: str): ...
 
 class ZipException(java.io.IOException):
+    """
+    Java class 'java.util.zip.ZipException'
+    
+        Extends:
+            java.io.IOException
+    
+      Constructors:
+        * ZipException()
+        * ZipException(java.lang.String)
+    
+    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class Adler32(Checksum):
+    """
+    Java class 'java.util.zip.Adler32'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.zip.Checksum
+    
+      Constructors:
+        * Adler32()
+    
+    """
     def __init__(self): ...
     def getValue(self) -> int: ...
     def reset(self) -> None: ...
@@ -241,6 +398,19 @@ class Adler32(Checksum):
     def update(self, byteBuffer: java.nio.ByteBuffer) -> None: ...
 
 class CRC32(Checksum):
+    """
+    Java class 'java.util.zip.CRC32'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.zip.Checksum
+    
+      Constructors:
+        * CRC32()
+    
+    """
     def __init__(self): ...
     def getValue(self) -> int: ...
     def reset(self) -> None: ...
@@ -254,6 +424,19 @@ class CRC32(Checksum):
     def update(self, byteBuffer: java.nio.ByteBuffer) -> None: ...
 
 class CRC32C(Checksum):
+    """
+    Java class 'java.util.zip.CRC32C'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.zip.Checksum
+    
+      Constructors:
+        * CRC32C()
+    
+    """
     def __init__(self): ...
     def getValue(self) -> int: ...
     def reset(self) -> None: ...
@@ -267,6 +450,23 @@ class CRC32C(Checksum):
     def update(self, byteBuffer: java.nio.ByteBuffer) -> None: ...
 
 class GZIPInputStream(InflaterInputStream):
+    """
+    Java class 'java.util.zip.GZIPInputStream'
+    
+        Extends:
+            java.util.zip.InflaterInputStream
+    
+      Constructors:
+        * GZIPInputStream(java.io.InputStream)
+        * GZIPInputStream(java.io.InputStream, int)
+    
+      Raises:
+        java.io.IOException: from java
+    
+      Attributes:
+        GZIP_MAGIC (int): final static field
+    
+    """
     GZIP_MAGIC: typing.ClassVar[int] = ...
     @typing.overload
     def __init__(self, inputStream: java.io.InputStream): ...
@@ -281,6 +481,22 @@ class GZIPInputStream(InflaterInputStream):
     def read(self) -> int: ...
 
 class GZIPOutputStream(DeflaterOutputStream):
+    """
+    Java class 'java.util.zip.GZIPOutputStream'
+    
+        Extends:
+            java.util.zip.DeflaterOutputStream
+    
+      Constructors:
+        * GZIPOutputStream(java.io.OutputStream, boolean)
+        * GZIPOutputStream(java.io.OutputStream)
+        * GZIPOutputStream(java.io.OutputStream, int, boolean)
+        * GZIPOutputStream(java.io.OutputStream, int)
+    
+      Raises:
+        java.io.IOException: from java
+    
+    """
     @typing.overload
     def __init__(self, outputStream: java.io.OutputStream): ...
     @typing.overload
@@ -298,6 +514,24 @@ class GZIPOutputStream(DeflaterOutputStream):
     def write(self, int: int) -> None: ...
 
 class ZipEntry(java.util.zip.ZipConstants, java.lang.Cloneable):
+    """
+    Java class 'java.util.zip.ZipEntry'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.zip.ZipConstants, java.lang.Cloneable
+    
+      Constructors:
+        * ZipEntry(java.lang.String)
+        * ZipEntry(java.util.zip.ZipEntry)
+    
+      Attributes:
+        STORED (int): final static field
+        DEFLATED (int): final static field
+    
+    """
     STORED: typing.ClassVar[int] = ...
     DEFLATED: typing.ClassVar[int] = ...
     @typing.overload
@@ -333,6 +567,32 @@ class ZipEntry(java.util.zip.ZipConstants, java.lang.Cloneable):
     def toString(self) -> str: ...
 
 class ZipFile(java.util.zip.ZipConstants, java.io.Closeable):
+    """
+    Java class 'java.util.zip.ZipFile'
+    
+        Extends:
+            java.lang.Object
+    
+        Interfaces:
+            java.util.zip.ZipConstants, java.io.Closeable
+    
+      Constructors:
+        * ZipFile(java.lang.String, java.nio.charset.Charset)
+        * ZipFile(java.io.File, java.nio.charset.Charset)
+        * ZipFile(java.lang.String)
+        * ZipFile(java.io.File, int)
+        * ZipFile(java.io.File)
+        * ZipFile(java.io.File, int, java.nio.charset.Charset)
+    
+      Raises:
+        java.io.IOException: from java
+        java.util.zip.ZipException: from java
+    
+      Attributes:
+        OPEN_READ (int): final static field
+        OPEN_DELETE (int): final static field
+    
+    """
     OPEN_READ: typing.ClassVar[int] = ...
     OPEN_DELETE: typing.ClassVar[int] = ...
     @typing.overload
@@ -357,6 +617,20 @@ class ZipFile(java.util.zip.ZipConstants, java.io.Closeable):
     def stream(self) -> java.util.stream.Stream[ZipEntry]: ...
 
 class ZipInputStream(InflaterInputStream, java.util.zip.ZipConstants):
+    """
+    Java class 'java.util.zip.ZipInputStream'
+    
+        Extends:
+            java.util.zip.InflaterInputStream
+    
+        Interfaces:
+            java.util.zip.ZipConstants
+    
+      Constructors:
+        * ZipInputStream(java.io.InputStream, java.nio.charset.Charset)
+        * ZipInputStream(java.io.InputStream)
+    
+    """
     @typing.overload
     def __init__(self, inputStream: java.io.InputStream): ...
     @typing.overload
@@ -374,6 +648,24 @@ class ZipInputStream(InflaterInputStream, java.util.zip.ZipConstants):
     def skip(self, long: int) -> int: ...
 
 class ZipOutputStream(DeflaterOutputStream, java.util.zip.ZipConstants):
+    """
+    Java class 'java.util.zip.ZipOutputStream'
+    
+        Extends:
+            java.util.zip.DeflaterOutputStream
+    
+        Interfaces:
+            java.util.zip.ZipConstants
+    
+      Constructors:
+        * ZipOutputStream(java.io.OutputStream, java.nio.charset.Charset)
+        * ZipOutputStream(java.io.OutputStream)
+    
+      Attributes:
+        STORED (int): final static field
+        DEFLATED (int): final static field
+    
+    """
     STORED: typing.ClassVar[int] = ...
     DEFLATED: typing.ClassVar[int] = ...
     @typing.overload
@@ -395,3 +687,30 @@ class ZipOutputStream(DeflaterOutputStream, java.util.zip.ZipConstants):
     def write(self, int: int) -> None: ...
 
 class ZipConstants: ...
+
+
+class __module_protocol__(typing.Protocol):
+    # A module protocol which reflects the result of ``jp.JPackage("java.util.zip")``.
+
+    Adler32: typing.Type[Adler32]
+    CRC32: typing.Type[CRC32]
+    CRC32C: typing.Type[CRC32C]
+    CheckedInputStream: typing.Type[CheckedInputStream]
+    CheckedOutputStream: typing.Type[CheckedOutputStream]
+    Checksum: typing.Type[Checksum]
+    DataFormatException: typing.Type[DataFormatException]
+    Deflater: typing.Type[Deflater]
+    DeflaterInputStream: typing.Type[DeflaterInputStream]
+    DeflaterOutputStream: typing.Type[DeflaterOutputStream]
+    GZIPInputStream: typing.Type[GZIPInputStream]
+    GZIPOutputStream: typing.Type[GZIPOutputStream]
+    Inflater: typing.Type[Inflater]
+    InflaterInputStream: typing.Type[InflaterInputStream]
+    InflaterOutputStream: typing.Type[InflaterOutputStream]
+    ZipConstants: typing.Type[ZipConstants]
+    ZipEntry: typing.Type[ZipEntry]
+    ZipError: typing.Type[ZipError]
+    ZipException: typing.Type[ZipException]
+    ZipFile: typing.Type[ZipFile]
+    ZipInputStream: typing.Type[ZipInputStream]
+    ZipOutputStream: typing.Type[ZipOutputStream]
