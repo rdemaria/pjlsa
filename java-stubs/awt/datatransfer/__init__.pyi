@@ -6,16 +6,6 @@ import typing
 
 
 class Clipboard:
-    """
-    Java class 'java.awt.datatransfer.Clipboard'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * Clipboard(java.lang.String)
-    
-    """
     def __init__(self, string: str): ...
     def addFlavorListener(self, flavorListener: 'FlavorListener') -> None: ...
     def getAvailableDataFlavors(self) -> typing.List['DataFlavor']: ...
@@ -28,45 +18,9 @@ class Clipboard:
     def setContents(self, transferable: 'Transferable', clipboardOwner: 'ClipboardOwner') -> None: ...
 
 class ClipboardOwner:
-    """
-    Java class 'java.awt.datatransfer.ClipboardOwner'
-    
-    """
     def lostOwnership(self, clipboard: Clipboard, transferable: 'Transferable') -> None: ...
 
 class DataFlavor(java.io.Externalizable, java.lang.Cloneable):
-    """
-    Java class 'java.awt.datatransfer.DataFlavor'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Externalizable, java.lang.Cloneable
-    
-      Constructors:
-        * DataFlavor()
-        * DataFlavor(java.lang.String)
-        * DataFlavor(java.lang.Class, java.lang.String)
-        * DataFlavor(java.lang.String, java.lang.String)
-        * DataFlavor(java.lang.String, java.lang.String, java.lang.ClassLoader)
-    
-      Raises:
-        java.lang.ClassNotFoundException: from java
-    
-      Attributes:
-        stringFlavor (java.awt.datatransfer.DataFlavor): final static field
-        imageFlavor (java.awt.datatransfer.DataFlavor): final static field
-        plainTextFlavor (java.awt.datatransfer.DataFlavor): final static field
-        javaSerializedObjectMimeType (java.lang.String): final static field
-        javaFileListFlavor (java.awt.datatransfer.DataFlavor): final static field
-        javaJVMLocalObjectMimeType (java.lang.String): final static field
-        javaRemoteObjectMimeType (java.lang.String): final static field
-        selectionHtmlFlavor (java.awt.datatransfer.DataFlavor): static field
-        fragmentHtmlFlavor (java.awt.datatransfer.DataFlavor): static field
-        allHtmlFlavor (java.awt.datatransfer.DataFlavor): static field
-    
-    """
     stringFlavor: typing.ClassVar['DataFlavor'] = ...
     imageFlavor: typing.ClassVar['DataFlavor'] = ...
     plainTextFlavor: typing.ClassVar['DataFlavor'] = ...
@@ -130,101 +84,34 @@ class DataFlavor(java.io.Externalizable, java.lang.Cloneable):
     def writeExternal(self, objectOutput: java.io.ObjectOutput) -> None: ...
 
 class FlavorEvent(java.util.EventObject):
-    """
-    Java class 'java.awt.datatransfer.FlavorEvent'
-    
-        Extends:
-            java.util.EventObject
-    
-      Constructors:
-        * FlavorEvent(java.awt.datatransfer.Clipboard)
-    
-    """
     def __init__(self, clipboard: Clipboard): ...
 
 class FlavorListener(java.util.EventListener):
-    """
-    Java class 'java.awt.datatransfer.FlavorListener'
-    
-        Interfaces:
-            java.util.EventListener
-    
-    """
     def flavorsChanged(self, flavorEvent: FlavorEvent) -> None: ...
 
 class FlavorMap:
-    """
-    Java class 'java.awt.datatransfer.FlavorMap'
-    
-    """
     def getFlavorsForNatives(self, stringArray: typing.List[str]) -> java.util.Map[str, DataFlavor]: ...
     def getNativesForFlavors(self, dataFlavorArray: typing.List[DataFlavor]) -> java.util.Map[DataFlavor, str]: ...
 
 class MimeTypeParseException(java.lang.Exception):
-    """
-    Java class 'java.awt.datatransfer.MimeTypeParseException'
-    
-        Extends:
-            java.lang.Exception
-    
-      Constructors:
-        * MimeTypeParseException()
-        * MimeTypeParseException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class Transferable:
-    """
-    Java class 'java.awt.datatransfer.Transferable'
-    
-    """
     def getTransferData(self, dataFlavor: DataFlavor) -> typing.Any: ...
     def getTransferDataFlavors(self) -> typing.List[DataFlavor]: ...
     def isDataFlavorSupported(self, dataFlavor: DataFlavor) -> bool: ...
 
 class UnsupportedFlavorException(java.lang.Exception):
-    """
-    Java class 'java.awt.datatransfer.UnsupportedFlavorException'
-    
-        Extends:
-            java.lang.Exception
-    
-      Constructors:
-        * UnsupportedFlavorException(java.awt.datatransfer.DataFlavor)
-    
-    """
     def __init__(self, dataFlavor: DataFlavor): ...
 
 class FlavorTable(FlavorMap):
-    """
-    Java class 'java.awt.datatransfer.FlavorTable'
-    
-        Interfaces:
-            java.awt.datatransfer.FlavorMap
-    
-    """
     def getFlavorsForNative(self, string: str) -> java.util.List[DataFlavor]: ...
     def getNativesForFlavor(self, dataFlavor: DataFlavor) -> java.util.List[str]: ...
 
 class StringSelection(Transferable, ClipboardOwner):
-    """
-    Java class 'java.awt.datatransfer.StringSelection'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.awt.datatransfer.Transferable,
-            java.awt.datatransfer.ClipboardOwner
-    
-      Constructors:
-        * StringSelection(java.lang.String)
-    
-    """
     def __init__(self, string: str): ...
     def getTransferData(self, dataFlavor: DataFlavor) -> typing.Any: ...
     def getTransferDataFlavors(self) -> typing.List[DataFlavor]: ...
@@ -232,17 +119,6 @@ class StringSelection(Transferable, ClipboardOwner):
     def lostOwnership(self, clipboard: Clipboard, transferable: Transferable) -> None: ...
 
 class SystemFlavorMap(FlavorMap, FlavorTable):
-    """
-    Java class 'java.awt.datatransfer.SystemFlavorMap'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.awt.datatransfer.FlavorMap,
-            java.awt.datatransfer.FlavorTable
-    
-    """
     def addFlavorForUnencodedNative(self, string: str, dataFlavor: DataFlavor) -> None: ...
     def addUnencodedNativeForFlavor(self, dataFlavor: DataFlavor, string: str) -> None: ...
     @staticmethod

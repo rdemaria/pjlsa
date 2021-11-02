@@ -4,10 +4,17 @@ import typing
 
 class InitAware:
     """
-    Java class 'cern.accsoft.commons.util.marker.InitAware'
+    public interface InitAware
     
+        Adds init awareness to the implementing classes. It's used to initialize the instance after all necessary setters have
+        been called.
     """
-    def init(self) -> None: ...
+    def init(self) -> None:
+        """
+            Do all necessary work to initialize the instance (called usually after setters).
+        
+        """
+        ...
 
 
 class __module_protocol__(typing.Protocol):

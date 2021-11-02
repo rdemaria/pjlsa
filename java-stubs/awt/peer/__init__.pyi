@@ -14,19 +14,6 @@ import typing
 
 
 class ComponentPeer:
-    """
-    Java class 'java.awt.peer.ComponentPeer'
-    
-      Attributes:
-        SET_LOCATION (int): final static field
-        SET_SIZE (int): final static field
-        SET_BOUNDS (int): final static field
-        SET_CLIENT_SIZE (int): final static field
-        RESET_OPERATION (int): final static field
-        NO_EMBEDDED_CHECK (int): final static field
-        DEFAULT_OPERATION (int): final static field
-    
-    """
     SET_LOCATION: typing.ClassVar[int] = ...
     SET_SIZE: typing.ClassVar[int] = ...
     SET_BOUNDS: typing.ClassVar[int] = ...
@@ -76,10 +63,6 @@ class ComponentPeer:
     def updateGraphicsData(self, graphicsConfiguration: java.awt.GraphicsConfiguration) -> bool: ...
 
 class DesktopPeer:
-    """
-    Java class 'java.awt.peer.DesktopPeer'
-    
-    """
     def addAppEventListener(self, systemEventListener: java.awt.desktop.SystemEventListener) -> None: ...
     def browse(self, uRI: java.net.URI) -> None: ...
     def browseFileDirectory(self, file: typing.Union[java.io.File, jpype.protocol.SupportsPath]) -> bool: ...
@@ -105,10 +88,6 @@ class DesktopPeer:
 class FontPeer: ...
 
 class KeyboardFocusManagerPeer:
-    """
-    Java class 'java.awt.peer.KeyboardFocusManagerPeer'
-    
-    """
     def clearGlobalFocusOwner(self, window: java.awt.Window) -> None: ...
     def getCurrentFocusOwner(self) -> java.awt.Component: ...
     def getCurrentFocusedWindow(self) -> java.awt.Window: ...
@@ -116,26 +95,14 @@ class KeyboardFocusManagerPeer:
     def setCurrentFocusedWindow(self, window: java.awt.Window) -> None: ...
 
 class MenuComponentPeer:
-    """
-    Java class 'java.awt.peer.MenuComponentPeer'
-    
-    """
     def dispose(self) -> None: ...
     def setFont(self, font: java.awt.Font) -> None: ...
 
 class MouseInfoPeer:
-    """
-    Java class 'java.awt.peer.MouseInfoPeer'
-    
-    """
     def fillPointWithCoords(self, point: java.awt.Point) -> int: ...
     def isWindowUnderMouse(self, window: java.awt.Window) -> bool: ...
 
 class RobotPeer:
-    """
-    Java class 'java.awt.peer.RobotPeer'
-    
-    """
     def dispose(self) -> None: ...
     def getRGBPixel(self, int: int, int2: int) -> int: ...
     def getRGBPixels(self, rectangle: java.awt.Rectangle) -> typing.List[int]: ...
@@ -147,17 +114,9 @@ class RobotPeer:
     def mouseWheel(self, int: int) -> None: ...
 
 class SystemTrayPeer:
-    """
-    Java class 'java.awt.peer.SystemTrayPeer'
-    
-    """
     def getTrayIconSize(self) -> java.awt.Dimension: ...
 
 class TaskbarPeer:
-    """
-    Java class 'java.awt.peer.TaskbarPeer'
-    
-    """
     def getIconImage(self) -> java.awt.Image: ...
     def getMenu(self) -> java.awt.PopupMenu: ...
     def isSupported(self, feature: java.awt.Taskbar.Feature) -> bool: ...
@@ -172,10 +131,6 @@ class TaskbarPeer:
     def setWindowProgressValue(self, window: java.awt.Window, int: int) -> None: ...
 
 class TrayIconPeer:
-    """
-    Java class 'java.awt.peer.TrayIconPeer'
-    
-    """
     def displayMessage(self, string: str, string2: str, string3: str) -> None: ...
     def dispose(self) -> None: ...
     def setToolTip(self, string: str) -> None: ...
@@ -183,58 +138,23 @@ class TrayIconPeer:
     def updateImage(self) -> None: ...
 
 class ButtonPeer(ComponentPeer):
-    """
-    Java class 'java.awt.peer.ButtonPeer'
-    
-        Interfaces:
-            java.awt.peer.ComponentPeer
-    
-    """
     def setLabel(self, string: str) -> None: ...
 
 class CanvasPeer(ComponentPeer):
-    """
-    Java class 'java.awt.peer.CanvasPeer'
-    
-        Interfaces:
-            java.awt.peer.ComponentPeer
-    
-    """
     def getAppropriateGraphicsConfiguration(self, graphicsConfiguration: java.awt.GraphicsConfiguration) -> java.awt.GraphicsConfiguration: ...
 
 class CheckboxPeer(ComponentPeer):
-    """
-    Java class 'java.awt.peer.CheckboxPeer'
-    
-        Interfaces:
-            java.awt.peer.ComponentPeer
-    
-    """
     def setCheckboxGroup(self, checkboxGroup: java.awt.CheckboxGroup) -> None: ...
     def setLabel(self, string: str) -> None: ...
     def setState(self, boolean: bool) -> None: ...
 
 class ChoicePeer(ComponentPeer):
-    """
-    Java class 'java.awt.peer.ChoicePeer'
-    
-        Interfaces:
-            java.awt.peer.ComponentPeer
-    
-    """
     def add(self, string: str, int: int) -> None: ...
     def remove(self, int: int) -> None: ...
     def removeAll(self) -> None: ...
     def select(self, int: int) -> None: ...
 
 class ContainerPeer(ComponentPeer):
-    """
-    Java class 'java.awt.peer.ContainerPeer'
-    
-        Interfaces:
-            java.awt.peer.ComponentPeer
-    
-    """
     def beginLayout(self) -> None: ...
     def beginValidate(self) -> None: ...
     def endLayout(self) -> None: ...
@@ -242,26 +162,12 @@ class ContainerPeer(ComponentPeer):
     def getInsets(self) -> java.awt.Insets: ...
 
 class LabelPeer(ComponentPeer):
-    """
-    Java class 'java.awt.peer.LabelPeer'
-    
-        Interfaces:
-            java.awt.peer.ComponentPeer
-    
-    """
     def setAlignment(self, int: int) -> None: ...
     def setText(self, string: str) -> None: ...
 
 class LightweightPeer(ComponentPeer): ...
 
 class ListPeer(ComponentPeer):
-    """
-    Java class 'java.awt.peer.ListPeer'
-    
-        Interfaces:
-            java.awt.peer.ComponentPeer
-    
-    """
     def add(self, string: str, int: int) -> None: ...
     def delItems(self, int: int, int2: int) -> None: ...
     def deselect(self, int: int) -> None: ...
@@ -280,48 +186,20 @@ class ListPeer(ComponentPeer):
     def setMultipleMode(self, boolean: bool) -> None: ...
 
 class MenuBarPeer(MenuComponentPeer):
-    """
-    Java class 'java.awt.peer.MenuBarPeer'
-    
-        Interfaces:
-            java.awt.peer.MenuComponentPeer
-    
-    """
     def addHelpMenu(self, menu: java.awt.Menu) -> None: ...
     def addMenu(self, menu: java.awt.Menu) -> None: ...
     def delMenu(self, int: int) -> None: ...
 
 class MenuItemPeer(MenuComponentPeer):
-    """
-    Java class 'java.awt.peer.MenuItemPeer'
-    
-        Interfaces:
-            java.awt.peer.MenuComponentPeer
-    
-    """
     def setEnabled(self, boolean: bool) -> None: ...
     def setLabel(self, string: str) -> None: ...
 
 class ScrollbarPeer(ComponentPeer):
-    """
-    Java class 'java.awt.peer.ScrollbarPeer'
-    
-        Interfaces:
-            java.awt.peer.ComponentPeer
-    
-    """
     def setLineIncrement(self, int: int) -> None: ...
     def setPageIncrement(self, int: int) -> None: ...
     def setValues(self, int: int, int2: int, int3: int, int4: int) -> None: ...
 
 class TextComponentPeer(ComponentPeer):
-    """
-    Java class 'java.awt.peer.TextComponentPeer'
-    
-        Interfaces:
-            java.awt.peer.ComponentPeer
-    
-    """
     def getCaretPosition(self) -> int: ...
     def getInputMethodRequests(self) -> java.awt.im.InputMethodRequests: ...
     def getSelectionEnd(self) -> int: ...
@@ -333,23 +211,9 @@ class TextComponentPeer(ComponentPeer):
     def setText(self, string: str) -> None: ...
 
 class CheckboxMenuItemPeer(MenuItemPeer):
-    """
-    Java class 'java.awt.peer.CheckboxMenuItemPeer'
-    
-        Interfaces:
-            java.awt.peer.MenuItemPeer
-    
-    """
     def setState(self, boolean: bool) -> None: ...
 
 class MenuPeer(MenuItemPeer):
-    """
-    Java class 'java.awt.peer.MenuPeer'
-    
-        Interfaces:
-            java.awt.peer.MenuItemPeer
-    
-    """
     def addItem(self, menuItem: java.awt.MenuItem) -> None: ...
     def addSeparator(self) -> None: ...
     def delItem(self, int: int) -> None: ...
@@ -357,13 +221,6 @@ class MenuPeer(MenuItemPeer):
 class PanelPeer(ContainerPeer): ...
 
 class ScrollPanePeer(ContainerPeer):
-    """
-    Java class 'java.awt.peer.ScrollPanePeer'
-    
-        Interfaces:
-            java.awt.peer.ContainerPeer
-    
-    """
     def childResized(self, int: int, int2: int) -> None: ...
     def getHScrollbarHeight(self) -> int: ...
     def getVScrollbarWidth(self) -> int: ...
@@ -372,13 +229,6 @@ class ScrollPanePeer(ContainerPeer):
     def setValue(self, adjustable: java.awt.Adjustable, int: int) -> None: ...
 
 class TextAreaPeer(TextComponentPeer):
-    """
-    Java class 'java.awt.peer.TextAreaPeer'
-    
-        Interfaces:
-            java.awt.peer.TextComponentPeer
-    
-    """
     @typing.overload
     def getMinimumSize(self) -> java.awt.Dimension: ...
     @typing.overload
@@ -391,13 +241,6 @@ class TextAreaPeer(TextComponentPeer):
     def replaceRange(self, string: str, int: int, int2: int) -> None: ...
 
 class TextFieldPeer(TextComponentPeer):
-    """
-    Java class 'java.awt.peer.TextFieldPeer'
-    
-        Interfaces:
-            java.awt.peer.TextComponentPeer
-    
-    """
     @typing.overload
     def getMinimumSize(self) -> java.awt.Dimension: ...
     @typing.overload
@@ -409,13 +252,6 @@ class TextFieldPeer(TextComponentPeer):
     def setEchoChar(self, char: str) -> None: ...
 
 class WindowPeer(ContainerPeer):
-    """
-    Java class 'java.awt.peer.WindowPeer'
-    
-        Interfaces:
-            java.awt.peer.ContainerPeer
-    
-    """
     def repositionSecurityWarning(self) -> None: ...
     def setModalBlocked(self, dialog: java.awt.Dialog, boolean: bool) -> None: ...
     def setOpacity(self, float: float) -> None: ...
@@ -429,25 +265,11 @@ class WindowPeer(ContainerPeer):
     def updateWindow(self) -> None: ...
 
 class DialogPeer(WindowPeer):
-    """
-    Java class 'java.awt.peer.DialogPeer'
-    
-        Interfaces:
-            java.awt.peer.WindowPeer
-    
-    """
     def blockWindows(self, list: java.util.List[java.awt.Window]) -> None: ...
     def setResizable(self, boolean: bool) -> None: ...
     def setTitle(self, string: str) -> None: ...
 
 class FramePeer(WindowPeer):
-    """
-    Java class 'java.awt.peer.FramePeer'
-    
-        Interfaces:
-            java.awt.peer.WindowPeer
-    
-    """
     def emulateActivation(self, boolean: bool) -> None: ...
     def getBoundsPrivate(self) -> java.awt.Rectangle: ...
     def getState(self) -> int: ...
@@ -459,23 +281,9 @@ class FramePeer(WindowPeer):
     def setTitle(self, string: str) -> None: ...
 
 class PopupMenuPeer(MenuPeer):
-    """
-    Java class 'java.awt.peer.PopupMenuPeer'
-    
-        Interfaces:
-            java.awt.peer.MenuPeer
-    
-    """
     def show(self, event: java.awt.Event) -> None: ...
 
 class FileDialogPeer(DialogPeer):
-    """
-    Java class 'java.awt.peer.FileDialogPeer'
-    
-        Interfaces:
-            java.awt.peer.DialogPeer
-    
-    """
     def setDirectory(self, string: str) -> None: ...
     def setFile(self, string: str) -> None: ...
     def setFilenameFilter(self, filenameFilter: typing.Union[java.io.FilenameFilter, typing.Callable]) -> None: ...

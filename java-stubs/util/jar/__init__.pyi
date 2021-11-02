@@ -11,21 +11,6 @@ import typing
 
 
 class Attributes(java.util.Map[typing.Any, typing.Any], java.lang.Cloneable):
-    """
-    Java class 'java.util.jar.Attributes'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.util.Map, java.lang.Cloneable
-    
-      Constructors:
-        * Attributes(java.util.jar.Attributes)
-        * Attributes(int)
-        * Attributes()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -56,36 +41,6 @@ class Attributes(java.util.Map[typing.Any, typing.Any], java.lang.Cloneable):
     def size(self) -> int: ...
     def values(self) -> java.util.Collection[typing.Any]: ...
     class Name:
-        """
-        Java class 'java.util.jar.Attributes$Name'
-        
-            Extends:
-                java.lang.Object
-        
-          Constructors:
-            * Name(java.lang.String)
-        
-          Attributes:
-            MANIFEST_VERSION (java.util.jar.Attributes$Name): final static field
-            SIGNATURE_VERSION (java.util.jar.Attributes$Name): final static field
-            CONTENT_TYPE (java.util.jar.Attributes$Name): final static field
-            CLASS_PATH (java.util.jar.Attributes$Name): final static field
-            MAIN_CLASS (java.util.jar.Attributes$Name): final static field
-            SEALED (java.util.jar.Attributes$Name): final static field
-            EXTENSION_LIST (java.util.jar.Attributes$Name): final static field
-            EXTENSION_NAME (java.util.jar.Attributes$Name): final static field
-            EXTENSION_INSTALLATION (java.util.jar.Attributes$Name): final static field
-            IMPLEMENTATION_TITLE (java.util.jar.Attributes$Name): final static field
-            IMPLEMENTATION_VERSION (java.util.jar.Attributes$Name): final static field
-            IMPLEMENTATION_VENDOR (java.util.jar.Attributes$Name): final static field
-            IMPLEMENTATION_VENDOR_ID (java.util.jar.Attributes$Name): final static field
-            IMPLEMENTATION_URL (java.util.jar.Attributes$Name): final static field
-            SPECIFICATION_TITLE (java.util.jar.Attributes$Name): final static field
-            SPECIFICATION_VERSION (java.util.jar.Attributes$Name): final static field
-            SPECIFICATION_VENDOR (java.util.jar.Attributes$Name): final static field
-            MULTI_RELEASE (java.util.jar.Attributes$Name): final static field
-        
-        """
         MANIFEST_VERSION: typing.ClassVar['Attributes.Name'] = ...
         SIGNATURE_VERSION: typing.ClassVar['Attributes.Name'] = ...
         CONTENT_TYPE: typing.ClassVar['Attributes.Name'] = ...
@@ -110,18 +65,6 @@ class Attributes(java.util.Map[typing.Any, typing.Any], java.lang.Cloneable):
         def toString(self) -> str: ...
 
 class JarEntry(java.util.zip.ZipEntry):
-    """
-    Java class 'java.util.jar.JarEntry'
-    
-        Extends:
-            java.util.zip.ZipEntry
-    
-      Constructors:
-        * JarEntry(java.util.jar.JarEntry)
-        * JarEntry(java.util.zip.ZipEntry)
-        * JarEntry(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
@@ -134,44 +77,12 @@ class JarEntry(java.util.zip.ZipEntry):
     def getRealName(self) -> str: ...
 
 class JarException(java.util.zip.ZipException):
-    """
-    Java class 'java.util.jar.JarException'
-    
-        Extends:
-            java.util.zip.ZipException
-    
-      Constructors:
-        * JarException()
-        * JarException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class JarFile(java.util.zip.ZipFile):
-    """
-    Java class 'java.util.jar.JarFile'
-    
-        Extends:
-            java.util.zip.ZipFile
-    
-      Constructors:
-        * JarFile(java.lang.String, boolean)
-        * JarFile(java.io.File, boolean, int, java.lang.Runtime.Version)
-        * JarFile(java.io.File, boolean)
-        * JarFile(java.io.File, boolean, int)
-        * JarFile(java.io.File)
-        * JarFile(java.lang.String)
-    
-      Raises:
-        java.io.IOException: from java
-    
-      Attributes:
-        MANIFEST_NAME (java.lang.String): final static field
-    
-    """
     MANIFEST_NAME: typing.ClassVar[str] = ...
     @typing.overload
     def __init__(self, file: typing.Union[java.io.File, jpype.protocol.SupportsPath]): ...
@@ -200,20 +111,6 @@ class JarFile(java.util.zip.ZipFile):
     def versionedStream(self) -> java.util.stream.Stream[JarEntry]: ...
 
 class JarInputStream(java.util.zip.ZipInputStream):
-    """
-    Java class 'java.util.jar.JarInputStream'
-    
-        Extends:
-            java.util.zip.ZipInputStream
-    
-      Constructors:
-        * JarInputStream(java.io.InputStream)
-        * JarInputStream(java.io.InputStream, boolean)
-    
-      Raises:
-        java.io.IOException: from java
-    
-    """
     @typing.overload
     def __init__(self, inputStream: java.io.InputStream): ...
     @typing.overload
@@ -229,20 +126,6 @@ class JarInputStream(java.util.zip.ZipInputStream):
     def read(self) -> int: ...
 
 class JarOutputStream(java.util.zip.ZipOutputStream):
-    """
-    Java class 'java.util.jar.JarOutputStream'
-    
-        Extends:
-            java.util.zip.ZipOutputStream
-    
-      Constructors:
-        * JarOutputStream(java.io.OutputStream, java.util.jar.Manifest)
-        * JarOutputStream(java.io.OutputStream)
-    
-      Raises:
-        java.io.IOException: from java
-    
-    """
     @typing.overload
     def __init__(self, outputStream: java.io.OutputStream): ...
     @typing.overload
@@ -250,24 +133,6 @@ class JarOutputStream(java.util.zip.ZipOutputStream):
     def putNextEntry(self, zipEntry: java.util.zip.ZipEntry) -> None: ...
 
 class Manifest(java.lang.Cloneable):
-    """
-    Java class 'java.util.jar.Manifest'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.lang.Cloneable
-    
-      Constructors:
-        * Manifest(java.util.jar.Manifest)
-        * Manifest(java.io.InputStream)
-        * Manifest()
-    
-      Raises:
-        java.io.IOException: from java
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -285,43 +150,11 @@ class Manifest(java.lang.Cloneable):
     def write(self, outputStream: java.io.OutputStream) -> None: ...
 
 class Pack200:
-    """
-    Java class 'java.util.jar.Pack200'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     @staticmethod
     def newPacker() -> 'Pack200.Packer': ...
     @staticmethod
     def newUnpacker() -> 'Pack200.Unpacker': ...
     class Packer:
-        """
-        Java class 'java.util.jar.Pack200$Packer'
-        
-          Attributes:
-            SEGMENT_LIMIT (java.lang.String): final static field
-            KEEP_FILE_ORDER (java.lang.String): final static field
-            EFFORT (java.lang.String): final static field
-            DEFLATE_HINT (java.lang.String): final static field
-            MODIFICATION_TIME (java.lang.String): final static field
-            PASS_FILE_PFX (java.lang.String): final static field
-            UNKNOWN_ATTRIBUTE (java.lang.String): final static field
-            CLASS_ATTRIBUTE_PFX (java.lang.String): final static field
-            FIELD_ATTRIBUTE_PFX (java.lang.String): final static field
-            METHOD_ATTRIBUTE_PFX (java.lang.String): final static field
-            CODE_ATTRIBUTE_PFX (java.lang.String): final static field
-            PROGRESS (java.lang.String): final static field
-            KEEP (java.lang.String): final static field
-            PASS (java.lang.String): final static field
-            STRIP (java.lang.String): final static field
-            ERROR (java.lang.String): final static field
-            TRUE (java.lang.String): final static field
-            FALSE (java.lang.String): final static field
-            LATEST (java.lang.String): final static field
-        
-        """
         SEGMENT_LIMIT: typing.ClassVar[str] = ...
         KEEP_FILE_ORDER: typing.ClassVar[str] = ...
         EFFORT: typing.ClassVar[str] = ...
@@ -347,17 +180,6 @@ class Pack200:
         def pack(self, jarInputStream: JarInputStream, outputStream: java.io.OutputStream) -> None: ...
         def properties(self) -> java.util.SortedMap[str, str]: ...
     class Unpacker:
-        """
-        Java class 'java.util.jar.Pack200$Unpacker'
-        
-          Attributes:
-            KEEP (java.lang.String): final static field
-            TRUE (java.lang.String): final static field
-            FALSE (java.lang.String): final static field
-            DEFLATE_HINT (java.lang.String): final static field
-            PROGRESS (java.lang.String): final static field
-        
-        """
         KEEP: typing.ClassVar[str] = ...
         TRUE: typing.ClassVar[str] = ...
         FALSE: typing.ClassVar[str] = ...

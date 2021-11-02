@@ -10,8 +10,10 @@ _Either__L = typing.TypeVar('_Either__L')  # <L>
 _Either__R = typing.TypeVar('_Either__R')  # <R>
 class Either(typing.Generic[_Either__L, _Either__R]):
     """
-    Java class 'cern.accsoft.commons.util.value.Either'
+    public interface Either<L, R>
     
+        Inspired by Haskell's either type, contains either L or R type. Values cannot be null. The convention is to use the left
+        for errors, and right for values.
     """
     def accept(self, consumer: typing.Union[java.util.function.Consumer[_Either__L], typing.Callable[[_Either__L], None]], consumer2: typing.Union[java.util.function.Consumer[_Either__R], typing.Callable[[_Either__R], None]]) -> None: ...
     _bimap__LM = typing.TypeVar('_bimap__LM')  # <LM>
@@ -63,8 +65,7 @@ _FailSafe__E = typing.TypeVar('_FailSafe__E', bound=java.lang.Exception)  # <E>
 _FailSafe__T = typing.TypeVar('_FailSafe__T')  # <T>
 class FailSafe(typing.Generic[_FailSafe__E, _FailSafe__T]):
     """
-    Java class 'cern.accsoft.commons.util.value.FailSafe'
-    
+    public interface FailSafe<E extends `Exception <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Exception.html?is-external=true>`, T>
     """
     def accept(self, consumer: typing.Union[java.util.function.Consumer[_FailSafe__E], typing.Callable[[_FailSafe__E], None]], consumer2: typing.Union[java.util.function.Consumer[_FailSafe__T], typing.Callable[[_FailSafe__T], None]]) -> None: ...
     def exception(self) -> _FailSafe__E: ...
@@ -102,83 +103,161 @@ class FailSafe(typing.Generic[_FailSafe__E, _FailSafe__T]):
 _FailSafeValue__V = typing.TypeVar('_FailSafeValue__V')  # <V>
 class FailSafeValue(typing.Generic[_FailSafeValue__V]):
     """
-    Java class 'cern.accsoft.commons.util.value.FailSafeValue'
+    `@Deprecated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Deprecated.html?is-external=true>` public class FailSafeValue<V> extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * FailSafeValue(java.lang.Object)
-        * FailSafeValue(java.lang.Exception)
-    
+        Deprecated.
+        Please use the :class:`~cern.accsoft.commons.util.value.FailSafe` type, please note that
+        :class:`~cern.accsoft.commons.util.value.FailSafe` no longer accept null values.
+        Value holder which can contain either a value or an exception.
     """
     @typing.overload
     def __init__(self, exception: java.lang.Exception): ...
     @typing.overload
     def __init__(self, v: _FailSafeValue__V): ...
-    def containsException(self) -> bool: ...
-    def containsValue(self) -> bool: ...
+    def containsException(self) -> bool:
+        """
+            Deprecated.
+        
+            Returns:
+                :code:`true` if the :class:`~cern.accsoft.commons.util.value.FailSafeValue` contains an exception
+        
+        
+        """
+        ...
+    def containsValue(self) -> bool:
+        """
+            Deprecated.
+        
+            Returns:
+                :code:`true` if the :class:`~cern.accsoft.commons.util.value.FailSafeValue` contains a value
+        
+        
+        """
+        ...
     _emptyValue__V = typing.TypeVar('_emptyValue__V')  # <V>
     @staticmethod
     def emptyValue() -> 'FailSafeValue'[_emptyValue__V]: ...
-    def getException(self) -> java.lang.Exception: ...
-    def getValue(self) -> _FailSafeValue__V: ...
-    def isEmpty(self) -> bool: ...
-    def toString(self) -> str: ...
+    def getException(self) -> java.lang.Exception:
+        """
+            Deprecated.
+        
+            Returns:
+                the exception
+        
+        
+        """
+        ...
+    def getValue(self) -> _FailSafeValue__V:
+        """
+            Deprecated.
+        
+            Returns:
+                the value
+        
+        
+        """
+        ...
+    def isEmpty(self) -> bool:
+        """
+            Deprecated.
+        
+            Returns:
+                :code:`true` if the :class:`~cern.accsoft.commons.util.value.FailSafeValue` contains neither value nor exception.
+        
+        
+        """
+        ...
+    def toString(self) -> str:
+        """
+            Deprecated.
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
 
 _Pair__E = typing.TypeVar('_Pair__E')  # <E>
 _Pair__T = typing.TypeVar('_Pair__T')  # <T>
 class Pair(java.io.Serializable, typing.Generic[_Pair__E, _Pair__T]):
     """
-    Java class 'cern.accsoft.commons.util.value.Pair'
+    public class Pair<E, T> extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements `Serializable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/io/Serializable.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
+        This generic class :code:`Pair<E, T>` reflects a pair of two objects of type :code:`<E>` and :code:`<T>`. Instances of
+        this class are immutable.
     
-        Interfaces:
-            java.io.Serializable
     
-      Constructors:
-        * Pair(java.lang.Object, java.lang.Object)
+        The class can be used, for instance, when in a map the key value needs to be a pair of two objects or when a method
+        needs to return two different objects. Because of this purpose the
+        :meth:`~cern.accsoft.commons.util.value.Pair.hashCode` and :meth:`~cern.accsoft.commons.util.value.Pair.equals` methods
+        have been implemented and the classes of the objects that are used in the pair also must implement these methods. TODO:
+        Greg: Consider if we need here newInstance(..) method or rather we should use directly constructor..
     
+        Also see:
+            :meth:`~serialized`
     """
     def __init__(self, e: _Pair__E, t: _Pair__T): ...
-    def equals(self, object: typing.Any) -> bool: ...
-    def getFirst(self) -> _Pair__E: ...
-    def getSecond(self) -> _Pair__T: ...
-    def hashCode(self) -> int: ...
+    def equals(self, object: typing.Any) -> bool:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
+    def getFirst(self) -> _Pair__E:
+        """
+            Returns the first part of the pair.
+        
+            Returns:
+                the first.
+        
+        
+        """
+        ...
+    def getSecond(self) -> _Pair__T:
+        """
+            Return the second part of the pair.
+        
+            Returns:
+                the second.
+        
+        
+        """
+        ...
+    def hashCode(self) -> int:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
     _newInstance__R = typing.TypeVar('_newInstance__R')  # <R>
     _newInstance__S = typing.TypeVar('_newInstance__S')  # <S>
     @staticmethod
     def newInstance(r: _newInstance__R, s: _newInstance__S) -> 'Pair'[_newInstance__R, _newInstance__S]: ...
-    def toString(self) -> str: ...
+    def toString(self) -> str:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
 
 class Ranges:
     """
-    Java class 'cern.accsoft.commons.util.value.Ranges'
+    public class Ranges extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * Ranges()
-    
+        Operations on :code:`Range`'s.
     """
     def __init__(self): ...
     class DoubleRanges:
-        """
-        Java class 'cern.accsoft.commons.util.value.Ranges$DoubleRanges'
-        
-            Extends:
-                java.lang.Object
-        
-          Constructors:
-            * DoubleRanges()
-        
-          Attributes:
-            EMPTY_RANGE (com.google.common.collect.Range): final static field
-        
-        """
         EMPTY_RANGE: typing.ClassVar[com.google.common.collect.Range] = ...
         def __init__(self): ...
         @staticmethod
@@ -188,16 +267,6 @@ class Ranges:
         @staticmethod
         def getLength(range: com.google.common.collect.Range[float]) -> float: ...
     class LongRanges:
-        """
-        Java class 'cern.accsoft.commons.util.value.Ranges$LongRanges'
-        
-            Extends:
-                java.lang.Object
-        
-          Constructors:
-            * LongRanges()
-        
-        """
         def __init__(self): ...
         @staticmethod
         def contains(range: com.google.common.collect.Range[int], long: int) -> bool: ...
@@ -210,84 +279,215 @@ _FailSafeImpl__E = typing.TypeVar('_FailSafeImpl__E', bound=java.lang.Exception)
 _FailSafeImpl__T = typing.TypeVar('_FailSafeImpl__T')  # <T>
 class FailSafeImpl(FailSafe[_FailSafeImpl__E, _FailSafeImpl__T], typing.Generic[_FailSafeImpl__E, _FailSafeImpl__T]):
     """
-    Java class 'cern.accsoft.commons.util.value.FailSafeImpl'
+    public class FailSafeImpl<E extends `Exception <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Exception.html?is-external=true>`, T> extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.accsoft.commons.util.value.FailSafe`<E, T>
     
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            cern.accsoft.commons.util.value.FailSafe
-    
+        This class is designed for inheritance, you can extend it to build your own
+        :class:`~cern.accsoft.commons.util.value.FailSafe` type.
     """
-    def equals(self, object: typing.Any) -> bool: ...
-    def exception(self) -> _FailSafeImpl__E: ...
-    def hashCode(self) -> int: ...
-    def isValue(self) -> bool: ...
-    def toString(self) -> str: ...
-    def value(self) -> _FailSafeImpl__T: ...
+    def equals(self, object: typing.Any) -> bool:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
+    def exception(self) -> _FailSafeImpl__E:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.util.value.FailSafe.exception`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.util.value.FailSafe`
+        
+        
+        """
+        ...
+    def hashCode(self) -> int:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
+    def isValue(self) -> bool:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.util.value.FailSafe.isValue`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.util.value.FailSafe`
+        
+        
+        """
+        ...
+    def toString(self) -> str:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
+    def value(self) -> _FailSafeImpl__T:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.util.value.FailSafe.value` in interface :class:`~cern.accsoft.commons.util.value.FailSafe`
+        
+        
+        """
+        ...
 
 _Left__L = typing.TypeVar('_Left__L')  # <L>
 _Left__R = typing.TypeVar('_Left__R')  # <R>
 class Left(Either[_Left__L, _Left__R], typing.Generic[_Left__L, _Left__R]):
     """
-    Java class 'cern.accsoft.commons.util.value.Left'
+    public class Left<L, R> extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.accsoft.commons.util.value.Either`<L, R>
     
-        Extends:
-            java.lang.Object
     
-        Interfaces:
-            cern.accsoft.commons.util.value.Either
-    
+        Also see:
+            :class:`~cern.accsoft.commons.util.value.Either`
     """
-    def equals(self, object: typing.Any) -> bool: ...
-    def hashCode(self) -> int: ...
-    def isRight(self) -> bool: ...
+    def equals(self, object: typing.Any) -> bool:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
+    def hashCode(self) -> int:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
+    def isRight(self) -> bool:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.util.value.Either.isRight` in interface :class:`~cern.accsoft.commons.util.value.Either`
+        
+        
+        """
+        ...
     def left(self) -> _Left__L: ...
     def right(self) -> _Left__R: ...
-    def toString(self) -> str: ...
+    def toString(self) -> str:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
 
 _Right__L = typing.TypeVar('_Right__L')  # <L>
 _Right__R = typing.TypeVar('_Right__R')  # <R>
 class Right(Either[_Right__L, _Right__R], typing.Generic[_Right__L, _Right__R]):
     """
-    Java class 'cern.accsoft.commons.util.value.Right'
+    public class Right<L, R> extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.accsoft.commons.util.value.Either`<L, R>
     
-        Extends:
-            java.lang.Object
     
-        Interfaces:
-            cern.accsoft.commons.util.value.Either
-    
+        Also see:
+            :class:`~cern.accsoft.commons.util.value.Either`
     """
-    def equals(self, object: typing.Any) -> bool: ...
-    def hashCode(self) -> int: ...
-    def isRight(self) -> bool: ...
+    def equals(self, object: typing.Any) -> bool:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
+    def hashCode(self) -> int:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
+    def isRight(self) -> bool:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.util.value.Either.isRight` in interface :class:`~cern.accsoft.commons.util.value.Either`
+        
+        
+        """
+        ...
     def left(self) -> _Right__L: ...
     def right(self) -> _Right__R: ...
-    def toString(self) -> str: ...
+    def toString(self) -> str:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
 
 _SerializablePair__E = typing.TypeVar('_SerializablePair__E', bound=java.io.Serializable)  # <E>
 _SerializablePair__T = typing.TypeVar('_SerializablePair__T', bound=java.io.Serializable)  # <T>
 class SerializablePair(Pair[_SerializablePair__E, _SerializablePair__T], java.io.Serializable, typing.Generic[_SerializablePair__E, _SerializablePair__T]):
     """
-    Java class 'cern.accsoft.commons.util.value.SerializablePair'
+    `@Deprecated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Deprecated.html?is-external=true>` public class SerializablePair<E extends `Serializable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/io/Serializable.html?is-external=true>`, T extends `Serializable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/io/Serializable.html?is-external=true>`> extends :class:`~cern.accsoft.commons.util.value.Pair`<E, T> implements `Serializable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/io/Serializable.html?is-external=true>`
     
-        Extends:
-            cern.accsoft.commons.util.value.Pair
+        Deprecated.
+        Use :class:`~cern.accsoft.commons.util.value.Pair` class instead. It has been made :code:`Serializable`
+        Serializable version of cern.accsoft.commons.util.value.Pair .
     
-        Interfaces:
-            java.io.Serializable
-    
+        Also see:
+            :meth:`~serialized`
     """
     @staticmethod
-    def main(stringArray: typing.List[str]) -> None: ...
+    def main(stringArray: typing.List[str]) -> None:
+        """
+            Deprecated.
+            The main method is for testing purpose and contains examples.
+        
+            Parameters:
+                args (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`[]): the command line arguments to pass.
+        
+        
+        """
+        ...
     _newInstance_0__R = typing.TypeVar('_newInstance_0__R')  # <R>
     _newInstance_0__S = typing.TypeVar('_newInstance_0__S')  # <S>
     _newInstance_1__R = typing.TypeVar('_newInstance_1__R', bound=java.io.Serializable)  # <R>
     _newInstance_1__S = typing.TypeVar('_newInstance_1__S', bound=java.io.Serializable)  # <S>
     @typing.overload
     @staticmethod
-    def newInstance(r: _newInstance_0__R, s: _newInstance_0__S) -> Pair[_newInstance_0__R, _newInstance_0__S]: ...
+    def newInstance(r: _newInstance_0__R, s: _newInstance_0__S) -> Pair[_newInstance_0__R, _newInstance_0__S]:
+        """
+            Deprecated.
+            Convenience method to be able to instantiate this class easily:
+        
+        
+            :code:`SerializablePair<String, Integer> stringIntPair = SerializablePair.newInstance(first, second);`
+        
+            Parameters:
+                first (R): the first part of the pair
+                second (S): the second part of the pair
+        
+            Returns:
+                a new instance of this class.
+        
+        
+        """
+        ...
     @typing.overload
     @staticmethod
     def newInstance(r: _newInstance_1__R, s: _newInstance_1__S) -> 'SerializablePair'[_newInstance_1__R, _newInstance_1__S]: ...

@@ -19,10 +19,6 @@ import typing
 
 
 class Array:
-    """
-    Java class 'java.sql.Array'
-    
-    """
     def free(self) -> None: ...
     @typing.overload
     def getArray(self) -> typing.Any: ...
@@ -44,10 +40,6 @@ class Array:
     def getResultSet(self, long: int, int: int, map: typing.Union[java.util.Map[str, typing.Type[typing.Any]], typing.Mapping[str, typing.Type[typing.Any]]]) -> 'ResultSet': ...
 
 class Blob:
-    """
-    Java class 'java.sql.Blob'
-    
-    """
     def free(self) -> None: ...
     @typing.overload
     def getBinaryStream(self) -> java.io.InputStream: ...
@@ -67,19 +59,6 @@ class Blob:
     def truncate(self, long: int) -> None: ...
 
 class ClientInfoStatus(java.lang.Enum['ClientInfoStatus']):
-    """
-    Java class 'java.sql.ClientInfoStatus'
-    
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        REASON_UNKNOWN (java.sql.ClientInfoStatus): final static enum constant
-        REASON_UNKNOWN_PROPERTY (java.sql.ClientInfoStatus): final static enum constant
-        REASON_VALUE_INVALID (java.sql.ClientInfoStatus): final static enum constant
-        REASON_VALUE_TRUNCATED (java.sql.ClientInfoStatus): final static enum constant
-    
-    """
     REASON_UNKNOWN: typing.ClassVar['ClientInfoStatus'] = ...
     REASON_UNKNOWN_PROPERTY: typing.ClassVar['ClientInfoStatus'] = ...
     REASON_VALUE_INVALID: typing.ClassVar['ClientInfoStatus'] = ...
@@ -95,10 +74,6 @@ class ClientInfoStatus(java.lang.Enum['ClientInfoStatus']):
     def values() -> typing.List['ClientInfoStatus']: ...
 
 class Clob:
-    """
-    Java class 'java.sql.Clob'
-    
-    """
     def free(self) -> None: ...
     def getAsciiStream(self) -> java.io.InputStream: ...
     @typing.overload
@@ -120,10 +95,6 @@ class Clob:
     def truncate(self, long: int) -> None: ...
 
 class ConnectionBuilder:
-    """
-    Java class 'java.sql.ConnectionBuilder'
-    
-    """
     def build(self) -> 'Connection': ...
     def password(self, string: str) -> 'ConnectionBuilder': ...
     def shardingKey(self, shardingKey: 'ShardingKey') -> 'ConnectionBuilder': ...
@@ -131,17 +102,6 @@ class ConnectionBuilder:
     def user(self, string: str) -> 'ConnectionBuilder': ...
 
 class Date(java.util.Date, _JSQLDate):
-    """
-    Java class 'java.sql.Date'
-    
-        Extends:
-            java.util.Date
-    
-      Constructors:
-        * Date(int, int, int)
-        * Date(long)
-    
-    """
     @typing.overload
     def __init__(self, int: int, int2: int, int3: int): ...
     @typing.overload
@@ -164,10 +124,6 @@ class Date(java.util.Date, _JSQLDate):
     def valueOf(localDate: java.time.LocalDate) -> 'Date': ...
 
 class Driver:
-    """
-    Java class 'java.sql.Driver'
-    
-    """
     def acceptsURL(self, string: str) -> bool: ...
     def connect(self, string: str, properties: java.util.Properties) -> 'Connection': ...
     def getMajorVersion(self) -> int: ...
@@ -177,20 +133,9 @@ class Driver:
     def jdbcCompliant(self) -> bool: ...
 
 class DriverAction:
-    """
-    Java class 'java.sql.DriverAction'
-    
-    """
     def deregister(self) -> None: ...
 
 class DriverManager:
-    """
-    Java class 'java.sql.DriverManager'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     @staticmethod
     def deregisterDriver(driver: Driver) -> None: ...
     @staticmethod
@@ -230,23 +175,6 @@ class DriverManager:
     def setLoginTimeout(int: int) -> None: ...
 
 class DriverPropertyInfo:
-    """
-    Java class 'java.sql.DriverPropertyInfo'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * DriverPropertyInfo(java.lang.String, java.lang.String)
-    
-      Attributes:
-        name (java.lang.String): field
-        description (java.lang.String): field
-        required (boolean): field
-        value (java.lang.String): field
-        choices ([Ljava.lang.String;): field
-    
-    """
     name: str = ...
     description: str = ...
     required: bool = ...
@@ -255,19 +183,6 @@ class DriverPropertyInfo:
     def __init__(self, string: str, string2: str): ...
 
 class PseudoColumnUsage(java.lang.Enum['PseudoColumnUsage']):
-    """
-    Java class 'java.sql.PseudoColumnUsage'
-    
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        SELECT_LIST_ONLY (java.sql.PseudoColumnUsage): final static enum constant
-        WHERE_CLAUSE_ONLY (java.sql.PseudoColumnUsage): final static enum constant
-        NO_USAGE_RESTRICTIONS (java.sql.PseudoColumnUsage): final static enum constant
-        USAGE_UNKNOWN (java.sql.PseudoColumnUsage): final static enum constant
-    
-    """
     SELECT_LIST_ONLY: typing.ClassVar['PseudoColumnUsage'] = ...
     WHERE_CLAUSE_ONLY: typing.ClassVar['PseudoColumnUsage'] = ...
     NO_USAGE_RESTRICTIONS: typing.ClassVar['PseudoColumnUsage'] = ...
@@ -283,10 +198,6 @@ class PseudoColumnUsage(java.lang.Enum['PseudoColumnUsage']):
     def values() -> typing.List['PseudoColumnUsage']: ...
 
 class Ref:
-    """
-    Java class 'java.sql.Ref'
-    
-    """
     def getBaseTypeName(self) -> str: ...
     @typing.overload
     def getObject(self) -> typing.Any: ...
@@ -295,30 +206,12 @@ class Ref:
     def setObject(self, object: typing.Any) -> None: ...
 
 class RowId:
-    """
-    Java class 'java.sql.RowId'
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def getBytes(self) -> typing.List[int]: ...
     def hashCode(self) -> int: ...
     def toString(self) -> str: ...
 
 class RowIdLifetime(java.lang.Enum['RowIdLifetime']):
-    """
-    Java class 'java.sql.RowIdLifetime'
-    
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        ROWID_UNSUPPORTED (java.sql.RowIdLifetime): final static enum constant
-        ROWID_VALID_OTHER (java.sql.RowIdLifetime): final static enum constant
-        ROWID_VALID_SESSION (java.sql.RowIdLifetime): final static enum constant
-        ROWID_VALID_TRANSACTION (java.sql.RowIdLifetime): final static enum constant
-        ROWID_VALID_FOREVER (java.sql.RowIdLifetime): final static enum constant
-    
-    """
     ROWID_UNSUPPORTED: typing.ClassVar['RowIdLifetime'] = ...
     ROWID_VALID_OTHER: typing.ClassVar['RowIdLifetime'] = ...
     ROWID_VALID_SESSION: typing.ClassVar['RowIdLifetime'] = ...
@@ -335,35 +228,11 @@ class RowIdLifetime(java.lang.Enum['RowIdLifetime']):
     def values() -> typing.List['RowIdLifetime']: ...
 
 class SQLData:
-    """
-    Java class 'java.sql.SQLData'
-    
-    """
     def getSQLTypeName(self) -> str: ...
     def readSQL(self, sQLInput: 'SQLInput', string: str) -> None: ...
     def writeSQL(self, sQLOutput: 'SQLOutput') -> None: ...
 
 class SQLException(java.lang.Exception, java.lang.Iterable[java.lang.Throwable]):
-    """
-    Java class 'java.sql.SQLException'
-    
-        Extends:
-            java.lang.Exception
-    
-        Interfaces:
-            java.lang.Iterable
-    
-      Constructors:
-        * SQLException(java.lang.Throwable)
-        * SQLException(java.lang.String, java.lang.Throwable)
-        * SQLException(java.lang.String, java.lang.String, java.lang.Throwable)
-        * SQLException(java.lang.String, java.lang.String, int, java.lang.Throwable)
-        * SQLException(java.lang.String, java.lang.String, int)
-        * SQLException(java.lang.String, java.lang.String)
-        * SQLException(java.lang.String)
-        * SQLException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -387,10 +256,6 @@ class SQLException(java.lang.Exception, java.lang.Iterable[java.lang.Throwable])
     def setNextException(self, sQLException: 'SQLException') -> None: ...
 
 class SQLInput:
-    """
-    Java class 'java.sql.SQLInput'
-    
-    """
     def readArray(self) -> Array: ...
     def readAsciiStream(self) -> java.io.InputStream: ...
     def readBigDecimal(self) -> java.math.BigDecimal: ...
@@ -424,10 +289,6 @@ class SQLInput:
     def wasNull(self) -> bool: ...
 
 class SQLOutput:
-    """
-    Java class 'java.sql.SQLOutput'
-    
-    """
     def writeArray(self, array: Array) -> None: ...
     def writeAsciiStream(self, inputStream: java.io.InputStream) -> None: ...
     def writeBigDecimal(self, bigDecimal: typing.Union[java.math.BigDecimal, decimal.Decimal]) -> None: ...
@@ -460,36 +321,17 @@ class SQLOutput:
     def writeURL(self, uRL: java.net.URL) -> None: ...
 
 class SQLPermission(java.security.BasicPermission):
-    """
-    Java class 'java.sql.SQLPermission'
-    
-        Extends:
-            java.security.BasicPermission
-    
-      Constructors:
-        * SQLPermission(java.lang.String)
-        * SQLPermission(java.lang.String, java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
     def __init__(self, string: str, string2: str): ...
 
 class SQLType:
-    """
-    Java class 'java.sql.SQLType'
-    
-    """
     def getName(self) -> str: ...
     def getVendor(self) -> str: ...
     def getVendorTypeNumber(self) -> int: ...
 
 class SQLXML:
-    """
-    Java class 'java.sql.SQLXML'
-    
-    """
     def free(self) -> None: ...
     def getBinaryStream(self) -> java.io.InputStream: ...
     def getCharacterStream(self) -> java.io.Reader: ...
@@ -503,28 +345,16 @@ class SQLXML:
     def setString(self, string: str) -> None: ...
 
 class Savepoint:
-    """
-    Java class 'java.sql.Savepoint'
-    
-    """
     def getSavepointId(self) -> int: ...
     def getSavepointName(self) -> str: ...
 
 class ShardingKey: ...
 
 class ShardingKeyBuilder:
-    """
-    Java class 'java.sql.ShardingKeyBuilder'
-    
-    """
     def build(self) -> ShardingKey: ...
     def subkey(self, object: typing.Any, sQLType: SQLType) -> 'ShardingKeyBuilder': ...
 
 class Struct:
-    """
-    Java class 'java.sql.Struct'
-    
-    """
     @typing.overload
     def getAttributes(self) -> typing.List[typing.Any]: ...
     @typing.overload
@@ -532,17 +362,6 @@ class Struct:
     def getSQLTypeName(self) -> str: ...
 
 class Time(java.util.Date, _JSQLTime):
-    """
-    Java class 'java.sql.Time'
-    
-        Extends:
-            java.util.Date
-    
-      Constructors:
-        * Time(int, int, int)
-        * Time(long)
-    
-    """
     @typing.overload
     def __init__(self, int: int, int2: int, int3: int): ...
     @typing.overload
@@ -566,17 +385,6 @@ class Time(java.util.Date, _JSQLTime):
     def valueOf(localTime: java.time.LocalTime) -> 'Time': ...
 
 class Timestamp(java.util.Date, _JDate):
-    """
-    Java class 'java.sql.Timestamp'
-    
-        Extends:
-            java.util.Date
-    
-      Constructors:
-        * Timestamp(int, int, int, int, int, int, int)
-        * Timestamp(long)
-    
-    """
     @typing.overload
     def __init__(self, int: int, int2: int, int3: int, int4: int, int5: int, int6: int, int7: int): ...
     @typing.overload
@@ -613,54 +421,6 @@ class Timestamp(java.util.Date, _JDate):
     def valueOf(localDateTime: java.time.LocalDateTime) -> 'Timestamp': ...
 
 class Types:
-    """
-    Java class 'java.sql.Types'
-    
-        Extends:
-            java.lang.Object
-    
-      Attributes:
-        BIT (int): final static field
-        TINYINT (int): final static field
-        SMALLINT (int): final static field
-        INTEGER (int): final static field
-        BIGINT (int): final static field
-        FLOAT (int): final static field
-        REAL (int): final static field
-        DOUBLE (int): final static field
-        NUMERIC (int): final static field
-        DECIMAL (int): final static field
-        CHAR (int): final static field
-        VARCHAR (int): final static field
-        LONGVARCHAR (int): final static field
-        DATE (int): final static field
-        TIME (int): final static field
-        TIMESTAMP (int): final static field
-        BINARY (int): final static field
-        VARBINARY (int): final static field
-        LONGVARBINARY (int): final static field
-        NULL (int): final static field
-        OTHER (int): final static field
-        JAVA_OBJECT (int): final static field
-        DISTINCT (int): final static field
-        STRUCT (int): final static field
-        ARRAY (int): final static field
-        BLOB (int): final static field
-        CLOB (int): final static field
-        REF (int): final static field
-        DATALINK (int): final static field
-        BOOLEAN (int): final static field
-        ROWID (int): final static field
-        NCHAR (int): final static field
-        NVARCHAR (int): final static field
-        LONGNVARCHAR (int): final static field
-        NCLOB (int): final static field
-        SQLXML (int): final static field
-        REF_CURSOR (int): final static field
-        TIME_WITH_TIMEZONE (int): final static field
-        TIMESTAMP_WITH_TIMEZONE (int): final static field
-    
-    """
     BIT: typing.ClassVar[int] = ...
     TINYINT: typing.ClassVar[int] = ...
     SMALLINT: typing.ClassVar[int] = ...
@@ -702,35 +462,11 @@ class Types:
     TIMESTAMP_WITH_TIMEZONE: typing.ClassVar[int] = ...
 
 class Wrapper:
-    """
-    Java class 'java.sql.Wrapper'
-    
-    """
     def isWrapperFor(self, class_: typing.Type[typing.Any]) -> bool: ...
     _unwrap__T = typing.TypeVar('_unwrap__T')  # <T>
     def unwrap(self, class_: typing.Type[_unwrap__T]) -> _unwrap__T: ...
 
 class BatchUpdateException(SQLException):
-    """
-    Java class 'java.sql.BatchUpdateException'
-    
-        Extends:
-            java.sql.SQLException
-    
-      Constructors:
-        * BatchUpdateException(java.lang.Throwable)
-        * BatchUpdateException(int[], java.lang.Throwable)
-        * BatchUpdateException(java.lang.String, int[], java.lang.Throwable)
-        * BatchUpdateException(java.lang.String, java.lang.String, int[], java.lang.Throwable)
-        * BatchUpdateException(java.lang.String, java.lang.String, int, int[], java.lang.Throwable)
-        * BatchUpdateException(java.lang.String, java.lang.String, int, long[], java.lang.Throwable)
-        * BatchUpdateException(java.lang.String, java.lang.String, int, int[])
-        * BatchUpdateException(java.lang.String, java.lang.String, int[])
-        * BatchUpdateException(java.lang.String, int[])
-        * BatchUpdateException()
-        * BatchUpdateException(int[])
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -757,20 +493,6 @@ class BatchUpdateException(SQLException):
     def getUpdateCounts(self) -> typing.List[int]: ...
 
 class Connection(Wrapper, java.lang.AutoCloseable):
-    """
-    Java class 'java.sql.Connection'
-    
-        Interfaces:
-            java.sql.Wrapper, java.lang.AutoCloseable
-    
-      Attributes:
-        TRANSACTION_NONE (int): final static field
-        TRANSACTION_READ_UNCOMMITTED (int): final static field
-        TRANSACTION_READ_COMMITTED (int): final static field
-        TRANSACTION_REPEATABLE_READ (int): final static field
-        TRANSACTION_SERIALIZABLE (int): final static field
-    
-    """
     TRANSACTION_NONE: typing.ClassVar[int] = ...
     TRANSACTION_READ_UNCOMMITTED: typing.ClassVar[int] = ...
     TRANSACTION_READ_COMMITTED: typing.ClassVar[int] = ...
@@ -860,76 +582,6 @@ class Connection(Wrapper, java.lang.AutoCloseable):
     def setTypeMap(self, map: typing.Union[java.util.Map[str, typing.Type[typing.Any]], typing.Mapping[str, typing.Type[typing.Any]]]) -> None: ...
 
 class DatabaseMetaData(Wrapper):
-    """
-    Java class 'java.sql.DatabaseMetaData'
-    
-        Interfaces:
-            java.sql.Wrapper
-    
-      Attributes:
-        procedureResultUnknown (int): final static field
-        procedureNoResult (int): final static field
-        procedureReturnsResult (int): final static field
-        procedureColumnUnknown (int): final static field
-        procedureColumnIn (int): final static field
-        procedureColumnInOut (int): final static field
-        procedureColumnOut (int): final static field
-        procedureColumnReturn (int): final static field
-        procedureColumnResult (int): final static field
-        procedureNoNulls (int): final static field
-        procedureNullable (int): final static field
-        procedureNullableUnknown (int): final static field
-        columnNoNulls (int): final static field
-        columnNullable (int): final static field
-        columnNullableUnknown (int): final static field
-        bestRowTemporary (int): final static field
-        bestRowTransaction (int): final static field
-        bestRowSession (int): final static field
-        bestRowUnknown (int): final static field
-        bestRowNotPseudo (int): final static field
-        bestRowPseudo (int): final static field
-        versionColumnUnknown (int): final static field
-        versionColumnNotPseudo (int): final static field
-        versionColumnPseudo (int): final static field
-        importedKeyCascade (int): final static field
-        importedKeyRestrict (int): final static field
-        importedKeySetNull (int): final static field
-        importedKeyNoAction (int): final static field
-        importedKeySetDefault (int): final static field
-        importedKeyInitiallyDeferred (int): final static field
-        importedKeyInitiallyImmediate (int): final static field
-        importedKeyNotDeferrable (int): final static field
-        typeNoNulls (int): final static field
-        typeNullable (int): final static field
-        typeNullableUnknown (int): final static field
-        typePredNone (int): final static field
-        typePredChar (int): final static field
-        typePredBasic (int): final static field
-        typeSearchable (int): final static field
-        tableIndexStatistic (short): final static field
-        tableIndexClustered (short): final static field
-        tableIndexHashed (short): final static field
-        tableIndexOther (short): final static field
-        attributeNoNulls (short): final static field
-        attributeNullable (short): final static field
-        attributeNullableUnknown (short): final static field
-        sqlStateXOpen (int): final static field
-        sqlStateSQL (int): final static field
-        sqlStateSQL99 (int): final static field
-        functionColumnUnknown (int): final static field
-        functionColumnIn (int): final static field
-        functionColumnInOut (int): final static field
-        functionColumnOut (int): final static field
-        functionReturn (int): final static field
-        functionColumnResult (int): final static field
-        functionNoNulls (int): final static field
-        functionNullable (int): final static field
-        functionNullableUnknown (int): final static field
-        functionResultUnknown (int): final static field
-        functionNoTable (int): final static field
-        functionReturnsTable (int): final static field
-    
-    """
     procedureResultUnknown: typing.ClassVar[int] = ...
     procedureNoResult: typing.ClassVar[int] = ...
     procedureReturnsResult: typing.ClassVar[int] = ...
@@ -1174,57 +826,6 @@ class DatabaseMetaData(Wrapper):
     def usesLocalFiles(self) -> bool: ...
 
 class JDBCType(java.lang.Enum['JDBCType'], SQLType):
-    """
-    Java class 'java.sql.JDBCType'
-    
-        Extends:
-            java.lang.Enum
-    
-        Interfaces:
-            java.sql.SQLType
-    
-      Attributes:
-        BIT (java.sql.JDBCType): final static enum constant
-        TINYINT (java.sql.JDBCType): final static enum constant
-        SMALLINT (java.sql.JDBCType): final static enum constant
-        INTEGER (java.sql.JDBCType): final static enum constant
-        BIGINT (java.sql.JDBCType): final static enum constant
-        FLOAT (java.sql.JDBCType): final static enum constant
-        REAL (java.sql.JDBCType): final static enum constant
-        DOUBLE (java.sql.JDBCType): final static enum constant
-        NUMERIC (java.sql.JDBCType): final static enum constant
-        DECIMAL (java.sql.JDBCType): final static enum constant
-        CHAR (java.sql.JDBCType): final static enum constant
-        VARCHAR (java.sql.JDBCType): final static enum constant
-        LONGVARCHAR (java.sql.JDBCType): final static enum constant
-        DATE (java.sql.JDBCType): final static enum constant
-        TIME (java.sql.JDBCType): final static enum constant
-        TIMESTAMP (java.sql.JDBCType): final static enum constant
-        BINARY (java.sql.JDBCType): final static enum constant
-        VARBINARY (java.sql.JDBCType): final static enum constant
-        LONGVARBINARY (java.sql.JDBCType): final static enum constant
-        NULL (java.sql.JDBCType): final static enum constant
-        OTHER (java.sql.JDBCType): final static enum constant
-        JAVA_OBJECT (java.sql.JDBCType): final static enum constant
-        DISTINCT (java.sql.JDBCType): final static enum constant
-        STRUCT (java.sql.JDBCType): final static enum constant
-        ARRAY (java.sql.JDBCType): final static enum constant
-        BLOB (java.sql.JDBCType): final static enum constant
-        CLOB (java.sql.JDBCType): final static enum constant
-        REF (java.sql.JDBCType): final static enum constant
-        DATALINK (java.sql.JDBCType): final static enum constant
-        BOOLEAN (java.sql.JDBCType): final static enum constant
-        ROWID (java.sql.JDBCType): final static enum constant
-        NCHAR (java.sql.JDBCType): final static enum constant
-        NVARCHAR (java.sql.JDBCType): final static enum constant
-        LONGNVARCHAR (java.sql.JDBCType): final static enum constant
-        NCLOB (java.sql.JDBCType): final static enum constant
-        SQLXML (java.sql.JDBCType): final static enum constant
-        REF_CURSOR (java.sql.JDBCType): final static enum constant
-        TIME_WITH_TIMEZONE (java.sql.JDBCType): final static enum constant
-        TIMESTAMP_WITH_TIMEZONE (java.sql.JDBCType): final static enum constant
-    
-    """
     BIT: typing.ClassVar['JDBCType'] = ...
     TINYINT: typing.ClassVar['JDBCType'] = ...
     SMALLINT: typing.ClassVar['JDBCType'] = ...
@@ -1283,22 +884,6 @@ class JDBCType(java.lang.Enum['JDBCType'], SQLType):
 class NClob(Clob): ...
 
 class ParameterMetaData(Wrapper):
-    """
-    Java class 'java.sql.ParameterMetaData'
-    
-        Interfaces:
-            java.sql.Wrapper
-    
-      Attributes:
-        parameterNoNulls (int): final static field
-        parameterNullable (int): final static field
-        parameterNullableUnknown (int): final static field
-        parameterModeUnknown (int): final static field
-        parameterModeIn (int): final static field
-        parameterModeInOut (int): final static field
-        parameterModeOut (int): final static field
-    
-    """
     parameterNoNulls: typing.ClassVar[int] = ...
     parameterNullable: typing.ClassVar[int] = ...
     parameterNullableUnknown: typing.ClassVar[int] = ...
@@ -1317,25 +902,6 @@ class ParameterMetaData(Wrapper):
     def isSigned(self, int: int) -> bool: ...
 
 class ResultSet(Wrapper, java.lang.AutoCloseable):
-    """
-    Java class 'java.sql.ResultSet'
-    
-        Interfaces:
-            java.sql.Wrapper, java.lang.AutoCloseable
-    
-      Attributes:
-        FETCH_FORWARD (int): final static field
-        FETCH_REVERSE (int): final static field
-        FETCH_UNKNOWN (int): final static field
-        TYPE_FORWARD_ONLY (int): final static field
-        TYPE_SCROLL_INSENSITIVE (int): final static field
-        TYPE_SCROLL_SENSITIVE (int): final static field
-        CONCUR_READ_ONLY (int): final static field
-        CONCUR_UPDATABLE (int): final static field
-        HOLD_CURSORS_OVER_COMMIT (int): final static field
-        CLOSE_CURSORS_AT_COMMIT (int): final static field
-    
-    """
     FETCH_FORWARD: typing.ClassVar[int] = ...
     FETCH_REVERSE: typing.ClassVar[int] = ...
     FETCH_UNKNOWN: typing.ClassVar[int] = ...
@@ -1697,18 +1263,6 @@ class ResultSet(Wrapper, java.lang.AutoCloseable):
     def wasNull(self) -> bool: ...
 
 class ResultSetMetaData(Wrapper):
-    """
-    Java class 'java.sql.ResultSetMetaData'
-    
-        Interfaces:
-            java.sql.Wrapper
-    
-      Attributes:
-        columnNoNulls (int): final static field
-        columnNullable (int): final static field
-        columnNullableUnknown (int): final static field
-    
-    """
     columnNoNulls: typing.ClassVar[int] = ...
     columnNullable: typing.ClassVar[int] = ...
     columnNullableUnknown: typing.ClassVar[int] = ...
@@ -1735,24 +1289,6 @@ class ResultSetMetaData(Wrapper):
     def isWritable(self, int: int) -> bool: ...
 
 class SQLClientInfoException(SQLException):
-    """
-    Java class 'java.sql.SQLClientInfoException'
-    
-        Extends:
-            java.sql.SQLException
-    
-      Constructors:
-        * SQLClientInfoException(java.lang.String, java.util.Map, java.lang.Throwable)
-        * SQLClientInfoException(java.lang.String, java.lang.String, java.util.Map)
-        * SQLClientInfoException(java.lang.String, java.lang.String, java.util.Map, java.lang.Throwable)
-        * SQLClientInfoException(java.lang.String, java.lang.String, int, java.util.Map)
-        * SQLClientInfoException(java.lang.String, java.lang.String, int, java.util.Map, java.lang.Throwable)
-        * SQLClientInfoException()
-        * SQLClientInfoException(java.util.Map)
-        * SQLClientInfoException(java.util.Map, java.lang.Throwable)
-        * SQLClientInfoException(java.lang.String, java.util.Map)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1774,23 +1310,6 @@ class SQLClientInfoException(SQLException):
     def getFailedProperties(self) -> java.util.Map[str, ClientInfoStatus]: ...
 
 class SQLNonTransientException(SQLException):
-    """
-    Java class 'java.sql.SQLNonTransientException'
-    
-        Extends:
-            java.sql.SQLException
-    
-      Constructors:
-        * SQLNonTransientException(java.lang.Throwable)
-        * SQLNonTransientException(java.lang.String, java.lang.Throwable)
-        * SQLNonTransientException(java.lang.String, java.lang.String, java.lang.Throwable)
-        * SQLNonTransientException(java.lang.String, java.lang.String, int, java.lang.Throwable)
-        * SQLNonTransientException()
-        * SQLNonTransientException(java.lang.String)
-        * SQLNonTransientException(java.lang.String, java.lang.String)
-        * SQLNonTransientException(java.lang.String, java.lang.String, int)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1809,23 +1328,6 @@ class SQLNonTransientException(SQLException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class SQLRecoverableException(SQLException):
-    """
-    Java class 'java.sql.SQLRecoverableException'
-    
-        Extends:
-            java.sql.SQLException
-    
-      Constructors:
-        * SQLRecoverableException(java.lang.Throwable)
-        * SQLRecoverableException(java.lang.String, java.lang.Throwable)
-        * SQLRecoverableException(java.lang.String, java.lang.String, java.lang.Throwable)
-        * SQLRecoverableException(java.lang.String, java.lang.String, int, java.lang.Throwable)
-        * SQLRecoverableException()
-        * SQLRecoverableException(java.lang.String)
-        * SQLRecoverableException(java.lang.String, java.lang.String)
-        * SQLRecoverableException(java.lang.String, java.lang.String, int)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1844,23 +1346,6 @@ class SQLRecoverableException(SQLException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class SQLTransientException(SQLException):
-    """
-    Java class 'java.sql.SQLTransientException'
-    
-        Extends:
-            java.sql.SQLException
-    
-      Constructors:
-        * SQLTransientException(java.lang.Throwable)
-        * SQLTransientException(java.lang.String, java.lang.Throwable)
-        * SQLTransientException(java.lang.String, java.lang.String, java.lang.Throwable)
-        * SQLTransientException(java.lang.String, java.lang.String, int, java.lang.Throwable)
-        * SQLTransientException()
-        * SQLTransientException(java.lang.String)
-        * SQLTransientException(java.lang.String, java.lang.String)
-        * SQLTransientException(java.lang.String, java.lang.String, int)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1879,23 +1364,6 @@ class SQLTransientException(SQLException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class SQLWarning(SQLException):
-    """
-    Java class 'java.sql.SQLWarning'
-    
-        Extends:
-            java.sql.SQLException
-    
-      Constructors:
-        * SQLWarning(java.lang.Throwable)
-        * SQLWarning(java.lang.String, java.lang.Throwable)
-        * SQLWarning(java.lang.String, java.lang.String, java.lang.Throwable)
-        * SQLWarning(java.lang.String, java.lang.String, int, java.lang.Throwable)
-        * SQLWarning(java.lang.String, java.lang.String, int)
-        * SQLWarning(java.lang.String, java.lang.String)
-        * SQLWarning(java.lang.String)
-        * SQLWarning()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1916,22 +1384,6 @@ class SQLWarning(SQLException):
     def setNextWarning(self, sQLWarning: 'SQLWarning') -> None: ...
 
 class Statement(Wrapper, java.lang.AutoCloseable):
-    """
-    Java class 'java.sql.Statement'
-    
-        Interfaces:
-            java.sql.Wrapper, java.lang.AutoCloseable
-    
-      Attributes:
-        CLOSE_CURRENT_RESULT (int): final static field
-        KEEP_CURRENT_RESULT (int): final static field
-        CLOSE_ALL_RESULTS (int): final static field
-        SUCCESS_NO_INFO (int): final static field
-        EXECUTE_FAILED (int): final static field
-        RETURN_GENERATED_KEYS (int): final static field
-        NO_GENERATED_KEYS (int): final static field
-    
-    """
     CLOSE_CURRENT_RESULT: typing.ClassVar[int] = ...
     KEEP_CURRENT_RESULT: typing.ClassVar[int] = ...
     CLOSE_ALL_RESULTS: typing.ClassVar[int] = ...
@@ -2009,17 +1461,6 @@ class Statement(Wrapper, java.lang.AutoCloseable):
     def setQueryTimeout(self, int: int) -> None: ...
 
 class DataTruncation(SQLWarning):
-    """
-    Java class 'java.sql.DataTruncation'
-    
-        Extends:
-            java.sql.SQLWarning
-    
-      Constructors:
-        * DataTruncation(int, boolean, boolean, int, int)
-        * DataTruncation(int, boolean, boolean, int, int, java.lang.Throwable)
-    
-    """
     @typing.overload
     def __init__(self, int: int, boolean: bool, boolean2: bool, int2: int, int3: int): ...
     @typing.overload
@@ -2031,13 +1472,6 @@ class DataTruncation(SQLWarning):
     def getTransferSize(self) -> int: ...
 
 class PreparedStatement(Statement):
-    """
-    Java class 'java.sql.PreparedStatement'
-    
-        Interfaces:
-            java.sql.Statement
-    
-    """
     @typing.overload
     def addBatch(self) -> None: ...
     @typing.overload
@@ -2164,23 +1598,6 @@ class PreparedStatement(Statement):
     def setUnicodeStream(self, int: int, inputStream: java.io.InputStream, int2: int) -> None: ...
 
 class SQLDataException(SQLNonTransientException):
-    """
-    Java class 'java.sql.SQLDataException'
-    
-        Extends:
-            java.sql.SQLNonTransientException
-    
-      Constructors:
-        * SQLDataException(java.lang.Throwable)
-        * SQLDataException(java.lang.String, java.lang.Throwable)
-        * SQLDataException(java.lang.String, java.lang.String, java.lang.Throwable)
-        * SQLDataException(java.lang.String, java.lang.String, int, java.lang.Throwable)
-        * SQLDataException()
-        * SQLDataException(java.lang.String)
-        * SQLDataException(java.lang.String, java.lang.String)
-        * SQLDataException(java.lang.String, java.lang.String, int)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2199,23 +1616,6 @@ class SQLDataException(SQLNonTransientException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class SQLFeatureNotSupportedException(SQLNonTransientException):
-    """
-    Java class 'java.sql.SQLFeatureNotSupportedException'
-    
-        Extends:
-            java.sql.SQLNonTransientException
-    
-      Constructors:
-        * SQLFeatureNotSupportedException(java.lang.Throwable)
-        * SQLFeatureNotSupportedException(java.lang.String, java.lang.Throwable)
-        * SQLFeatureNotSupportedException(java.lang.String, java.lang.String, java.lang.Throwable)
-        * SQLFeatureNotSupportedException(java.lang.String, java.lang.String, int, java.lang.Throwable)
-        * SQLFeatureNotSupportedException()
-        * SQLFeatureNotSupportedException(java.lang.String)
-        * SQLFeatureNotSupportedException(java.lang.String, java.lang.String)
-        * SQLFeatureNotSupportedException(java.lang.String, java.lang.String, int)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2234,23 +1634,6 @@ class SQLFeatureNotSupportedException(SQLNonTransientException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class SQLIntegrityConstraintViolationException(SQLNonTransientException):
-    """
-    Java class 'java.sql.SQLIntegrityConstraintViolationException'
-    
-        Extends:
-            java.sql.SQLNonTransientException
-    
-      Constructors:
-        * SQLIntegrityConstraintViolationException(java.lang.Throwable)
-        * SQLIntegrityConstraintViolationException(java.lang.String, java.lang.Throwable)
-        * SQLIntegrityConstraintViolationException(java.lang.String, java.lang.String, java.lang.Throwable)
-        * SQLIntegrityConstraintViolationException(java.lang.String, java.lang.String, int, java.lang.Throwable)
-        * SQLIntegrityConstraintViolationException()
-        * SQLIntegrityConstraintViolationException(java.lang.String)
-        * SQLIntegrityConstraintViolationException(java.lang.String, java.lang.String)
-        * SQLIntegrityConstraintViolationException(java.lang.String, java.lang.String, int)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2269,23 +1652,6 @@ class SQLIntegrityConstraintViolationException(SQLNonTransientException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class SQLInvalidAuthorizationSpecException(SQLNonTransientException):
-    """
-    Java class 'java.sql.SQLInvalidAuthorizationSpecException'
-    
-        Extends:
-            java.sql.SQLNonTransientException
-    
-      Constructors:
-        * SQLInvalidAuthorizationSpecException(java.lang.Throwable)
-        * SQLInvalidAuthorizationSpecException(java.lang.String, java.lang.Throwable)
-        * SQLInvalidAuthorizationSpecException(java.lang.String, java.lang.String, java.lang.Throwable)
-        * SQLInvalidAuthorizationSpecException(java.lang.String, java.lang.String, int, java.lang.Throwable)
-        * SQLInvalidAuthorizationSpecException()
-        * SQLInvalidAuthorizationSpecException(java.lang.String)
-        * SQLInvalidAuthorizationSpecException(java.lang.String, java.lang.String)
-        * SQLInvalidAuthorizationSpecException(java.lang.String, java.lang.String, int)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2304,23 +1670,6 @@ class SQLInvalidAuthorizationSpecException(SQLNonTransientException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class SQLNonTransientConnectionException(SQLNonTransientException):
-    """
-    Java class 'java.sql.SQLNonTransientConnectionException'
-    
-        Extends:
-            java.sql.SQLNonTransientException
-    
-      Constructors:
-        * SQLNonTransientConnectionException(java.lang.Throwable)
-        * SQLNonTransientConnectionException(java.lang.String, java.lang.Throwable)
-        * SQLNonTransientConnectionException(java.lang.String, java.lang.String, java.lang.Throwable)
-        * SQLNonTransientConnectionException(java.lang.String, java.lang.String, int, java.lang.Throwable)
-        * SQLNonTransientConnectionException()
-        * SQLNonTransientConnectionException(java.lang.String)
-        * SQLNonTransientConnectionException(java.lang.String, java.lang.String)
-        * SQLNonTransientConnectionException(java.lang.String, java.lang.String, int)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2339,23 +1688,6 @@ class SQLNonTransientConnectionException(SQLNonTransientException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class SQLSyntaxErrorException(SQLNonTransientException):
-    """
-    Java class 'java.sql.SQLSyntaxErrorException'
-    
-        Extends:
-            java.sql.SQLNonTransientException
-    
-      Constructors:
-        * SQLSyntaxErrorException(java.lang.Throwable)
-        * SQLSyntaxErrorException(java.lang.String, java.lang.Throwable)
-        * SQLSyntaxErrorException(java.lang.String, java.lang.String, java.lang.Throwable)
-        * SQLSyntaxErrorException(java.lang.String, java.lang.String, int, java.lang.Throwable)
-        * SQLSyntaxErrorException()
-        * SQLSyntaxErrorException(java.lang.String)
-        * SQLSyntaxErrorException(java.lang.String, java.lang.String)
-        * SQLSyntaxErrorException(java.lang.String, java.lang.String, int)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2374,23 +1706,6 @@ class SQLSyntaxErrorException(SQLNonTransientException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class SQLTimeoutException(SQLTransientException):
-    """
-    Java class 'java.sql.SQLTimeoutException'
-    
-        Extends:
-            java.sql.SQLTransientException
-    
-      Constructors:
-        * SQLTimeoutException(java.lang.Throwable)
-        * SQLTimeoutException(java.lang.String, java.lang.Throwable)
-        * SQLTimeoutException(java.lang.String, java.lang.String, java.lang.Throwable)
-        * SQLTimeoutException(java.lang.String, java.lang.String, int, java.lang.Throwable)
-        * SQLTimeoutException()
-        * SQLTimeoutException(java.lang.String)
-        * SQLTimeoutException(java.lang.String, java.lang.String)
-        * SQLTimeoutException(java.lang.String, java.lang.String, int)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2409,23 +1724,6 @@ class SQLTimeoutException(SQLTransientException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class SQLTransactionRollbackException(SQLTransientException):
-    """
-    Java class 'java.sql.SQLTransactionRollbackException'
-    
-        Extends:
-            java.sql.SQLTransientException
-    
-      Constructors:
-        * SQLTransactionRollbackException(java.lang.Throwable)
-        * SQLTransactionRollbackException(java.lang.String, java.lang.Throwable)
-        * SQLTransactionRollbackException(java.lang.String, java.lang.String, java.lang.Throwable)
-        * SQLTransactionRollbackException(java.lang.String, java.lang.String, int, java.lang.Throwable)
-        * SQLTransactionRollbackException()
-        * SQLTransactionRollbackException(java.lang.String)
-        * SQLTransactionRollbackException(java.lang.String, java.lang.String)
-        * SQLTransactionRollbackException(java.lang.String, java.lang.String, int)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2444,23 +1742,6 @@ class SQLTransactionRollbackException(SQLTransientException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class SQLTransientConnectionException(SQLTransientException):
-    """
-    Java class 'java.sql.SQLTransientConnectionException'
-    
-        Extends:
-            java.sql.SQLTransientException
-    
-      Constructors:
-        * SQLTransientConnectionException(java.lang.Throwable)
-        * SQLTransientConnectionException(java.lang.String, java.lang.Throwable)
-        * SQLTransientConnectionException(java.lang.String, java.lang.String, java.lang.Throwable)
-        * SQLTransientConnectionException(java.lang.String, java.lang.String, int, java.lang.Throwable)
-        * SQLTransientConnectionException()
-        * SQLTransientConnectionException(java.lang.String)
-        * SQLTransientConnectionException(java.lang.String, java.lang.String)
-        * SQLTransientConnectionException(java.lang.String, java.lang.String, int)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2479,13 +1760,6 @@ class SQLTransientConnectionException(SQLTransientException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class CallableStatement(PreparedStatement):
-    """
-    Java class 'java.sql.CallableStatement'
-    
-        Interfaces:
-            java.sql.PreparedStatement
-    
-    """
     @typing.overload
     def getArray(self, int: int) -> Array: ...
     @typing.overload

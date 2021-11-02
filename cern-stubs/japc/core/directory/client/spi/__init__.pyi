@@ -6,19 +6,21 @@ import typing
 
 class ServerInfoUtil:
     """
-    Java class 'cern.japc.core.directory.client.spi.ServerInfoUtil'
+    public class ServerInfoUtil extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * ServerInfoUtil()
-    
-      Attributes:
-        MAX_SERVICE_URL_LENGTH (int): final static field
-    
+        Utility methods to encode and decode the configuration of services into/from :code:`ServerInfo`.
     """
     MAX_SERVICE_URL_LENGTH: typing.ClassVar[int] = ...
+    """
+    public static final int MAX_SERVICE_URL_LENGTH
+    
+        The maximum allowed service url length
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     def __init__(self): ...
     @staticmethod
     def getProperties(serverInfo: cern.cmw.directory.client.ServerInfo) -> typing.List[java.util.Properties]: ...

@@ -11,52 +11,74 @@ import typing
 
 class CcdbServiceConfigLookup(cern.japc.core.spi.factory.ServiceConfigLookup):
     """
-    Java class 'cern.japc.core.directory.client.CcdbServiceConfigLookup'
+    public class CcdbServiceConfigLookup extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.japc.core.spi.factory.ServiceConfigLookup`
     
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            cern.japc.core.spi.factory.ServiceConfigLookup
-    
-      Constructors:
-        * CcdbServiceConfigLookup()
-    
+        :class:`~cern.japc.core.spi.factory.ServiceConfigLookup` implementation which uses CCDB as a source.
     """
     def __init__(self): ...
-    def getConfig(self, string: str) -> typing.List[java.util.Properties]: ...
+    def getConfig(self, string: str) -> typing.List[java.util.Properties]:
+        """
+            Description copied from interface: :meth:`~cern.japc.core.spi.factory.ServiceConfigLookup.getConfig`
+            Returns an array of configurations for a service with the given name. Different configurations could come from that
+            fact, that service could provide more than one way of connecting to it: http or JMS or something else.
+        
+            Specified by:
+                :meth:`~cern.japc.core.spi.factory.ServiceConfigLookup.getConfig`Â in
+                interfaceÂ :class:`~cern.japc.core.spi.factory.ServiceConfigLookup`
+        
+            Parameters:
+                serviceName (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): the name of the service
+        
+            Returns:
+                an array of properties containing configurations for a service. If no configurations found an empty array should be
+                returned.
+        
+        
+        """
+        ...
 
 class CcdbServiceNameResolver(cern.japc.core.factory.ServiceNameResolver):
     """
-    Java class 'cern.japc.core.directory.client.CcdbServiceNameResolver'
+    public class CcdbServiceNameResolver extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.japc.core.factory.ServiceNameResolver`
     
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            cern.japc.core.factory.ServiceNameResolver
-    
-      Constructors:
-        * CcdbServiceNameResolver()
-    
-      Attributes:
-        SYSPROP_JAPC_CCDB_SERVICE_NAME_RESOLVER_DISABLED (java.lang.String): final static field
-    
+        :class:`~cern.japc.core.factory.ServiceNameResolver` implementation which uses CCDB as a source.
     """
     SYSPROP_JAPC_CCDB_SERVICE_NAME_RESOLVER_DISABLED: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` SYSPROP_JAPC_CCDB_SERVICE_NAME_RESOLVER_DISABLED
+    
+        System property to disable JAPC CCDB service name resolver
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     def __init__(self): ...
-    def getServiceName(self, string: str, parameterDescriptor: cern.japc.core.ParameterDescriptor) -> str: ...
+    def getServiceName(self, string: str, parameterDescriptor: cern.japc.core.ParameterDescriptor) -> str:
+        """
+            Description copied from interface: :meth:`~cern.japc.core.factory.ServiceNameResolver.getServiceName`
+            This method returns the name of the service to use for parameter or null if this parameter name is unknown to this
+            resolver.
+        
+            Specified by:
+                :meth:`~cern.japc.core.factory.ServiceNameResolver.getServiceName`Â in
+                interfaceÂ :class:`~cern.japc.core.factory.ServiceNameResolver`
+        
+            Parameters:
+                parameterName (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): the name of the parameter
+                parameterDescriptor (:class:`~cern.japc.core.ParameterDescriptor`): the descriptor of the parameter
+        
+            Returns:
+                the name of the creator to use or :code:`null` if this parameter name is unknown to this resolver
+        
+        
+        """
+        ...
 
 class DirectoryLocator:
     """
-    Java class 'cern.japc.core.directory.client.DirectoryLocator'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * DirectoryLocator()
-    
+    public abstract class DirectoryLocator extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     """
     def __init__(self): ...
     @staticmethod
@@ -64,14 +86,12 @@ class DirectoryLocator:
 
 class ServiceBinder:
     """
-    Java class 'cern.japc.core.directory.client.ServiceBinder'
+    public class ServiceBinder extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
+        This class is used to bind a new service to the CCDB directory.
     
-      Constructors:
-        * ServiceBinder()
-    
+        Essentially, this class is just a script to send the information about a new service (or an update) to the CMW
+        Directory.
     """
     def __init__(self): ...
     @staticmethod

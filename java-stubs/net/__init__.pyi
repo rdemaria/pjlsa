@@ -14,16 +14,6 @@ import typing
 
 
 class Authenticator:
-    """
-    Java class 'java.net.Authenticator'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * Authenticator()
-    
-    """
     def __init__(self): ...
     @staticmethod
     def getDefault() -> 'Authenticator': ...
@@ -43,17 +33,6 @@ class Authenticator:
     @staticmethod
     def setDefault(authenticator: 'Authenticator') -> None: ...
     class RequestorType(java.lang.Enum['Authenticator.RequestorType']):
-        """
-        Java class 'java.net.Authenticator$RequestorType'
-        
-            Extends:
-                java.lang.Enum
-        
-          Attributes:
-            PROXY (java.net.Authenticator$RequestorType): final static enum constant
-            SERVER (java.net.Authenticator$RequestorType): final static enum constant
-        
-        """
         PROXY: typing.ClassVar['Authenticator.RequestorType'] = ...
         SERVER: typing.ClassVar['Authenticator.RequestorType'] = ...
         _valueOf_0__T = typing.TypeVar('_valueOf_0__T', bound=java.lang.Enum)  # <T>
@@ -67,46 +46,16 @@ class Authenticator:
         def values() -> typing.List['Authenticator.RequestorType']: ...
 
 class CacheRequest:
-    """
-    Java class 'java.net.CacheRequest'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * CacheRequest()
-    
-    """
     def __init__(self): ...
     def abort(self) -> None: ...
     def getBody(self) -> java.io.OutputStream: ...
 
 class CacheResponse:
-    """
-    Java class 'java.net.CacheResponse'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * CacheResponse()
-    
-    """
     def __init__(self): ...
     def getBody(self) -> java.io.InputStream: ...
     def getHeaders(self) -> java.util.Map[str, java.util.List[str]]: ...
 
 class ContentHandler:
-    """
-    Java class 'java.net.ContentHandler'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * ContentHandler()
-    
-    """
     def __init__(self): ...
     @typing.overload
     def getContent(self, uRLConnection: 'URLConnection') -> typing.Any: ...
@@ -114,23 +63,9 @@ class ContentHandler:
     def getContent(self, uRLConnection: 'URLConnection', classArray: typing.List[typing.Type]) -> typing.Any: ...
 
 class ContentHandlerFactory:
-    """
-    Java class 'java.net.ContentHandlerFactory'
-    
-    """
     def createContentHandler(self, string: str) -> ContentHandler: ...
 
 class CookieHandler:
-    """
-    Java class 'java.net.CookieHandler'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * CookieHandler()
-    
-    """
     def __init__(self): ...
     def get(self, uRI: 'URI', map: typing.Union[java.util.Map[str, java.util.List[str]], typing.Mapping[str, java.util.List[str]]]) -> java.util.Map[str, java.util.List[str]]: ...
     @staticmethod
@@ -140,25 +75,12 @@ class CookieHandler:
     def setDefault(cookieHandler: 'CookieHandler') -> None: ...
 
 class CookiePolicy:
-    """
-    Java class 'java.net.CookiePolicy'
-    
-      Attributes:
-        ACCEPT_ALL (java.net.CookiePolicy): final static field
-        ACCEPT_NONE (java.net.CookiePolicy): final static field
-        ACCEPT_ORIGINAL_SERVER (java.net.CookiePolicy): final static field
-    
-    """
     ACCEPT_ALL: typing.ClassVar['CookiePolicy'] = ...
     ACCEPT_NONE: typing.ClassVar['CookiePolicy'] = ...
     ACCEPT_ORIGINAL_SERVER: typing.ClassVar['CookiePolicy'] = ...
     def shouldAccept(self, uRI: 'URI', httpCookie: 'HttpCookie') -> bool: ...
 
 class CookieStore:
-    """
-    Java class 'java.net.CookieStore'
-    
-    """
     def add(self, uRI: 'URI', httpCookie: 'HttpCookie') -> None: ...
     def get(self, uRI: 'URI') -> java.util.List['HttpCookie']: ...
     def getCookies(self) -> java.util.List['HttpCookie']: ...
@@ -167,21 +89,6 @@ class CookieStore:
     def removeAll(self) -> bool: ...
 
 class DatagramPacket:
-    """
-    Java class 'java.net.DatagramPacket'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * DatagramPacket(byte[], int, java.net.SocketAddress)
-        * DatagramPacket(byte[], int, java.net.InetAddress, int)
-        * DatagramPacket(byte[], int, int, java.net.SocketAddress)
-        * DatagramPacket(byte[], int, int)
-        * DatagramPacket(byte[], int)
-        * DatagramPacket(byte[], int, int, java.net.InetAddress, int)
-    
-    """
     @typing.overload
     def __init__(self, byteArray: typing.List[int], int: int): ...
     @typing.overload
@@ -210,25 +117,6 @@ class DatagramPacket:
     def setSocketAddress(self, socketAddress: 'SocketAddress') -> None: ...
 
 class DatagramSocket(java.io.Closeable):
-    """
-    Java class 'java.net.DatagramSocket'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Closeable
-    
-      Constructors:
-        * DatagramSocket(int)
-        * DatagramSocket(java.net.SocketAddress)
-        * DatagramSocket()
-        * DatagramSocket(int, java.net.InetAddress)
-    
-      Raises:
-        java.net.SocketException: from java
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -277,33 +165,12 @@ class DatagramSocket(java.io.Closeable):
     def supportedOptions(self) -> java.util.Set['SocketOption'[typing.Any]]: ...
 
 class DatagramSocketImplFactory:
-    """
-    Java class 'java.net.DatagramSocketImplFactory'
-    
-    """
     def createDatagramSocketImpl(self) -> 'DatagramSocketImpl': ...
 
 class FileNameMap:
-    """
-    Java class 'java.net.FileNameMap'
-    
-    """
     def getContentTypeFor(self, string: str) -> str: ...
 
 class HttpCookie(java.lang.Cloneable):
-    """
-    Java class 'java.net.HttpCookie'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.lang.Cloneable
-    
-      Constructors:
-        * HttpCookie(java.lang.String, java.lang.String)
-    
-    """
     def __init__(self, string: str, string2: str): ...
     def clone(self) -> typing.Any: ...
     @staticmethod
@@ -339,17 +206,6 @@ class HttpCookie(java.lang.Cloneable):
     def toString(self) -> str: ...
 
 class HttpRetryException(java.io.IOException):
-    """
-    Java class 'java.net.HttpRetryException'
-    
-        Extends:
-            java.io.IOException
-    
-      Constructors:
-        * HttpRetryException(java.lang.String, int)
-        * HttpRetryException(java.lang.String, int, java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self, string: str, int: int): ...
     @typing.overload
@@ -359,17 +215,6 @@ class HttpRetryException(java.io.IOException):
     def responseCode(self) -> int: ...
 
 class IDN:
-    """
-    Java class 'java.net.IDN'
-    
-        Extends:
-            java.lang.Object
-    
-      Attributes:
-        ALLOW_UNASSIGNED (int): final static field
-        USE_STD3_ASCII_RULES (int): final static field
-    
-    """
     ALLOW_UNASSIGNED: typing.ClassVar[int] = ...
     USE_STD3_ASCII_RULES: typing.ClassVar[int] = ...
     @typing.overload
@@ -386,16 +231,6 @@ class IDN:
     def toUnicode(string: str, int: int) -> str: ...
 
 class InetAddress(java.io.Serializable):
-    """
-    Java class 'java.net.InetAddress'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def getAddress(self) -> typing.List[int]: ...
     @staticmethod
@@ -433,13 +268,6 @@ class InetAddress(java.io.Serializable):
     def toString(self) -> str: ...
 
 class InterfaceAddress:
-    """
-    Java class 'java.net.InterfaceAddress'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def getAddress(self) -> InetAddress: ...
     def getBroadcast(self) -> InetAddress: ...
@@ -448,47 +276,18 @@ class InterfaceAddress:
     def toString(self) -> str: ...
 
 class MalformedURLException(java.io.IOException):
-    """
-    Java class 'java.net.MalformedURLException'
-    
-        Extends:
-            java.io.IOException
-    
-      Constructors:
-        * MalformedURLException()
-        * MalformedURLException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class NetPermission(java.security.BasicPermission):
-    """
-    Java class 'java.net.NetPermission'
-    
-        Extends:
-            java.security.BasicPermission
-    
-      Constructors:
-        * NetPermission(java.lang.String)
-        * NetPermission(java.lang.String, java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
     def __init__(self, string: str, string2: str): ...
 
 class NetworkInterface:
-    """
-    Java class 'java.net.NetworkInterface'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     @staticmethod
     def getByIndex(int: int) -> 'NetworkInterface': ...
@@ -520,58 +319,20 @@ class NetworkInterface:
     def toString(self) -> str: ...
 
 class PasswordAuthentication:
-    """
-    Java class 'java.net.PasswordAuthentication'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * PasswordAuthentication(java.lang.String, char[])
-    
-    """
     def __init__(self, string: str, charArray: typing.List[str]): ...
     def getPassword(self) -> typing.List[str]: ...
     def getUserName(self) -> str: ...
 
 class ProtocolException(java.io.IOException):
-    """
-    Java class 'java.net.ProtocolException'
-    
-        Extends:
-            java.io.IOException
-    
-      Constructors:
-        * ProtocolException(java.lang.String)
-        * ProtocolException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class ProtocolFamily:
-    """
-    Java class 'java.net.ProtocolFamily'
-    
-    """
     def name(self) -> str: ...
 
 class Proxy:
-    """
-    Java class 'java.net.Proxy'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * Proxy(java.net.Proxy.Type, java.net.SocketAddress)
-    
-      Attributes:
-        NO_PROXY (java.net.Proxy): final static field
-    
-    """
     NO_PROXY: typing.ClassVar['Proxy'] = ...
     def __init__(self, type: 'Proxy.Type', socketAddress: 'SocketAddress'): ...
     def address(self) -> 'SocketAddress': ...
@@ -580,18 +341,6 @@ class Proxy:
     def toString(self) -> str: ...
     def type(self) -> 'Proxy.Type': ...
     class Type(java.lang.Enum['Proxy.Type']):
-        """
-        Java class 'java.net.Proxy$Type'
-        
-            Extends:
-                java.lang.Enum
-        
-          Attributes:
-            DIRECT (java.net.Proxy$Type): final static enum constant
-            HTTP (java.net.Proxy$Type): final static enum constant
-            SOCKS (java.net.Proxy$Type): final static enum constant
-        
-        """
         DIRECT: typing.ClassVar['Proxy.Type'] = ...
         HTTP: typing.ClassVar['Proxy.Type'] = ...
         SOCKS: typing.ClassVar['Proxy.Type'] = ...
@@ -606,16 +355,6 @@ class Proxy:
         def values() -> typing.List['Proxy.Type']: ...
 
 class ProxySelector:
-    """
-    Java class 'java.net.ProxySelector'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * ProxySelector()
-    
-    """
     def __init__(self): ...
     def connectFailed(self, uRI: 'URI', socketAddress: 'SocketAddress', iOException: java.io.IOException) -> None: ...
     @staticmethod
@@ -627,16 +366,6 @@ class ProxySelector:
     def setDefault(proxySelector: 'ProxySelector') -> None: ...
 
 class ResponseCache:
-    """
-    Java class 'java.net.ResponseCache'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * ResponseCache()
-    
-    """
     def __init__(self): ...
     def get(self, uRI: 'URI', string: str, map: typing.Union[java.util.Map[str, java.util.List[str]], typing.Mapping[str, java.util.List[str]]]) -> CacheResponse: ...
     @staticmethod
@@ -646,25 +375,6 @@ class ResponseCache:
     def setDefault(responseCache: 'ResponseCache') -> None: ...
 
 class ServerSocket(java.io.Closeable):
-    """
-    Java class 'java.net.ServerSocket'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Closeable
-    
-      Constructors:
-        * ServerSocket(int, int, java.net.InetAddress)
-        * ServerSocket(int, int)
-        * ServerSocket(int)
-        * ServerSocket()
-    
-      Raises:
-        java.io.IOException: from java
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -702,30 +412,6 @@ class ServerSocket(java.io.Closeable):
     def toString(self) -> str: ...
 
 class Socket(java.io.Closeable):
-    """
-    Java class 'java.net.Socket'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Closeable
-    
-      Constructors:
-        * Socket(java.net.InetAddress, int)
-        * Socket(java.lang.String, int, java.net.InetAddress, int)
-        * Socket(java.net.InetAddress, int, java.net.InetAddress, int)
-        * Socket(java.lang.String, int, boolean)
-        * Socket(java.net.InetAddress, int, boolean)
-        * Socket()
-        * Socket(java.net.Proxy)
-        * Socket(java.lang.String, int)
-    
-      Raises:
-        java.io.IOException: from java
-        java.net.UnknownHostException: from java
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -794,76 +480,23 @@ class Socket(java.io.Closeable):
     def toString(self) -> str: ...
 
 class SocketAddress(java.io.Serializable):
-    """
-    Java class 'java.net.SocketAddress'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable
-    
-      Constructors:
-        * SocketAddress()
-    
-    """
     def __init__(self): ...
 
 class SocketException(java.io.IOException):
-    """
-    Java class 'java.net.SocketException'
-    
-        Extends:
-            java.io.IOException
-    
-      Constructors:
-        * SocketException(java.lang.String)
-        * SocketException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class SocketImplFactory:
-    """
-    Java class 'java.net.SocketImplFactory'
-    
-    """
     def createSocketImpl(self) -> 'SocketImpl': ...
 
 _SocketOption__T = typing.TypeVar('_SocketOption__T')  # <T>
 class SocketOption(typing.Generic[_SocketOption__T]):
-    """
-    Java class 'java.net.SocketOption'
-    
-    """
     def name(self) -> str: ...
     def type(self) -> typing.Type[_SocketOption__T]: ...
 
 class SocketOptions:
-    """
-    Java class 'java.net.SocketOptions'
-    
-      Attributes:
-        TCP_NODELAY (int): final static field
-        SO_BINDADDR (int): final static field
-        SO_REUSEADDR (int): final static field
-        SO_REUSEPORT (int): final static field
-        SO_BROADCAST (int): final static field
-        IP_MULTICAST_IF (int): final static field
-        IP_MULTICAST_IF2 (int): final static field
-        IP_MULTICAST_LOOP (int): final static field
-        IP_TOS (int): final static field
-        SO_LINGER (int): final static field
-        SO_TIMEOUT (int): final static field
-        SO_SNDBUF (int): final static field
-        SO_RCVBUF (int): final static field
-        SO_KEEPALIVE (int): final static field
-        SO_OOBINLINE (int): final static field
-    
-    """
     TCP_NODELAY: typing.ClassVar[int] = ...
     SO_BINDADDR: typing.ClassVar[int] = ...
     SO_REUSEADDR: typing.ClassVar[int] = ...
@@ -883,19 +516,6 @@ class SocketOptions:
     def setOption(self, int: int, object: typing.Any) -> None: ...
 
 class SocketPermission(java.security.Permission, java.io.Serializable):
-    """
-    Java class 'java.net.SocketPermission'
-    
-        Extends:
-            java.security.Permission
-    
-        Interfaces:
-            java.io.Serializable
-    
-      Constructors:
-        * SocketPermission(java.lang.String, java.lang.String)
-    
-    """
     def __init__(self, string: str, string2: str): ...
     def equals(self, object: typing.Any) -> bool: ...
     def getActions(self) -> str: ...
@@ -904,44 +524,12 @@ class SocketPermission(java.security.Permission, java.io.Serializable):
     def newPermissionCollection(self) -> java.security.PermissionCollection: ...
 
 class SocketTimeoutException(java.io.InterruptedIOException):
-    """
-    Java class 'java.net.SocketTimeoutException'
-    
-        Extends:
-            java.io.InterruptedIOException
-    
-      Constructors:
-        * SocketTimeoutException(java.lang.String)
-        * SocketTimeoutException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class StandardSocketOptions:
-    """
-    Java class 'java.net.StandardSocketOptions'
-    
-        Extends:
-            java.lang.Object
-    
-      Attributes:
-        SO_BROADCAST (java.net.SocketOption): final static field
-        SO_KEEPALIVE (java.net.SocketOption): final static field
-        SO_SNDBUF (java.net.SocketOption): final static field
-        SO_RCVBUF (java.net.SocketOption): final static field
-        SO_REUSEADDR (java.net.SocketOption): final static field
-        SO_REUSEPORT (java.net.SocketOption): final static field
-        SO_LINGER (java.net.SocketOption): final static field
-        IP_TOS (java.net.SocketOption): final static field
-        IP_MULTICAST_IF (java.net.SocketOption): final static field
-        IP_MULTICAST_TTL (java.net.SocketOption): final static field
-        IP_MULTICAST_LOOP (java.net.SocketOption): final static field
-        TCP_NODELAY (java.net.SocketOption): final static field
-    
-    """
     SO_BROADCAST: typing.ClassVar[SocketOption] = ...
     SO_KEEPALIVE: typing.ClassVar[SocketOption] = ...
     SO_SNDBUF: typing.ClassVar[SocketOption] = ...
@@ -956,26 +544,6 @@ class StandardSocketOptions:
     TCP_NODELAY: typing.ClassVar[SocketOption] = ...
 
 class URI(java.lang.Comparable['URI'], java.io.Serializable):
-    """
-    Java class 'java.net.URI'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.lang.Comparable, java.io.Serializable
-    
-      Constructors:
-        * URI(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
-        * URI(java.lang.String, java.lang.String, java.lang.String, java.lang.String)
-        * URI(java.lang.String, java.lang.String, java.lang.String)
-        * URI(java.lang.String)
-        * URI(java.lang.String, java.lang.String, java.lang.String, int, java.lang.String, java.lang.String, java.lang.String)
-    
-      Raises:
-        java.net.URISyntaxException: from java
-    
-    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
@@ -1020,17 +588,6 @@ class URI(java.lang.Comparable['URI'], java.io.Serializable):
     def toURL(self) -> 'URL': ...
 
 class URISyntaxException(java.lang.Exception):
-    """
-    Java class 'java.net.URISyntaxException'
-    
-        Extends:
-            java.lang.Exception
-    
-      Constructors:
-        * URISyntaxException(java.lang.String, java.lang.String, int)
-        * URISyntaxException(java.lang.String, java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self, string: str, string2: str): ...
     @typing.overload
@@ -1041,27 +598,6 @@ class URISyntaxException(java.lang.Exception):
     def getReason(self) -> str: ...
 
 class URL(java.io.Serializable):
-    """
-    Java class 'java.net.URL'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable
-    
-      Constructors:
-        * URL(java.net.URL, java.lang.String, java.net.URLStreamHandler)
-        * URL(java.net.URL, java.lang.String)
-        * URL(java.lang.String)
-        * URL(java.lang.String, java.lang.String, int, java.lang.String)
-        * URL(java.lang.String, java.lang.String, java.lang.String)
-        * URL(java.lang.String, java.lang.String, int, java.lang.String, java.net.URLStreamHandler)
-    
-      Raises:
-        java.net.MalformedURLException: from java
-    
-    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
@@ -1103,23 +639,6 @@ class URL(java.io.Serializable):
     def toURI(self) -> URI: ...
 
 class URLClassLoader(java.security.SecureClassLoader, java.io.Closeable):
-    """
-    Java class 'java.net.URLClassLoader'
-    
-        Extends:
-            java.security.SecureClassLoader
-    
-        Interfaces:
-            java.io.Closeable
-    
-      Constructors:
-        * URLClassLoader(java.net.URL[], java.lang.ClassLoader, java.net.URLStreamHandlerFactory)
-        * URLClassLoader(java.lang.String, java.net.URL[], java.lang.ClassLoader)
-        * URLClassLoader(java.lang.String, java.net.URL[], java.lang.ClassLoader, java.net.URLStreamHandlerFactory)
-        * URLClassLoader(java.net.URL[], java.lang.ClassLoader)
-        * URLClassLoader(java.net.URL[])
-    
-    """
     @typing.overload
     def __init__(self, string: str, uRLArray: typing.List[URL], classLoader: java.lang.ClassLoader): ...
     @typing.overload
@@ -1143,13 +662,6 @@ class URLClassLoader(java.security.SecureClassLoader, java.io.Closeable):
     def newInstance(uRLArray: typing.List[URL], classLoader: java.lang.ClassLoader) -> 'URLClassLoader': ...
 
 class URLConnection:
-    """
-    Java class 'java.net.URLConnection'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def addRequestProperty(self, string: str, string2: str) -> None: ...
     def connect(self) -> None: ...
     def getAllowUserInteraction(self) -> bool: ...
@@ -1224,16 +736,6 @@ class URLConnection:
     def toString(self) -> str: ...
 
 class URLDecoder:
-    """
-    Java class 'java.net.URLDecoder'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * URLDecoder()
-    
-    """
     def __init__(self): ...
     @typing.overload
     @staticmethod
@@ -1246,13 +748,6 @@ class URLDecoder:
     def decode(string: str, charset: java.nio.charset.Charset) -> str: ...
 
 class URLEncoder:
-    """
-    Java class 'java.net.URLEncoder'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     @typing.overload
     @staticmethod
     def encode(string: str) -> str: ...
@@ -1264,17 +759,6 @@ class URLEncoder:
     def encode(string: str, charset: java.nio.charset.Charset) -> str: ...
 
 class URLPermission(java.security.Permission):
-    """
-    Java class 'java.net.URLPermission'
-    
-        Extends:
-            java.security.Permission
-    
-      Constructors:
-        * URLPermission(java.lang.String)
-        * URLPermission(java.lang.String, java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
@@ -1285,105 +769,36 @@ class URLPermission(java.security.Permission):
     def implies(self, permission: java.security.Permission) -> bool: ...
 
 class URLStreamHandler:
-    """
-    Java class 'java.net.URLStreamHandler'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * URLStreamHandler()
-    
-    """
     def __init__(self): ...
 
 class URLStreamHandlerFactory:
-    """
-    Java class 'java.net.URLStreamHandlerFactory'
-    
-    """
     def createURLStreamHandler(self, string: str) -> URLStreamHandler: ...
 
 class UnknownHostException(java.io.IOException):
-    """
-    Java class 'java.net.UnknownHostException'
-    
-        Extends:
-            java.io.IOException
-    
-      Constructors:
-        * UnknownHostException(java.lang.String)
-        * UnknownHostException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class UnknownServiceException(java.io.IOException):
-    """
-    Java class 'java.net.UnknownServiceException'
-    
-        Extends:
-            java.io.IOException
-    
-      Constructors:
-        * UnknownServiceException()
-        * UnknownServiceException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class BindException(SocketException):
-    """
-    Java class 'java.net.BindException'
-    
-        Extends:
-            java.net.SocketException
-    
-      Constructors:
-        * BindException(java.lang.String)
-        * BindException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class ConnectException(SocketException):
-    """
-    Java class 'java.net.ConnectException'
-    
-        Extends:
-            java.net.SocketException
-    
-      Constructors:
-        * ConnectException(java.lang.String)
-        * ConnectException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class CookieManager(CookieHandler):
-    """
-    Java class 'java.net.CookieManager'
-    
-        Extends:
-            java.net.CookieHandler
-    
-      Constructors:
-        * CookieManager()
-        * CookieManager(java.net.CookieStore, java.net.CookiePolicy)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1394,67 +809,9 @@ class CookieManager(CookieHandler):
     def setCookiePolicy(self, cookiePolicy: CookiePolicy) -> None: ...
 
 class DatagramSocketImpl(SocketOptions):
-    """
-    Java class 'java.net.DatagramSocketImpl'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.net.SocketOptions
-    
-      Constructors:
-        * DatagramSocketImpl()
-    
-    """
     def __init__(self): ...
 
 class HttpURLConnection(URLConnection):
-    """
-    Java class 'java.net.HttpURLConnection'
-    
-        Extends:
-            java.net.URLConnection
-    
-      Attributes:
-        HTTP_OK (int): final static field
-        HTTP_CREATED (int): final static field
-        HTTP_ACCEPTED (int): final static field
-        HTTP_NOT_AUTHORITATIVE (int): final static field
-        HTTP_NO_CONTENT (int): final static field
-        HTTP_RESET (int): final static field
-        HTTP_PARTIAL (int): final static field
-        HTTP_MULT_CHOICE (int): final static field
-        HTTP_MOVED_PERM (int): final static field
-        HTTP_MOVED_TEMP (int): final static field
-        HTTP_SEE_OTHER (int): final static field
-        HTTP_NOT_MODIFIED (int): final static field
-        HTTP_USE_PROXY (int): final static field
-        HTTP_BAD_REQUEST (int): final static field
-        HTTP_UNAUTHORIZED (int): final static field
-        HTTP_PAYMENT_REQUIRED (int): final static field
-        HTTP_FORBIDDEN (int): final static field
-        HTTP_NOT_FOUND (int): final static field
-        HTTP_BAD_METHOD (int): final static field
-        HTTP_NOT_ACCEPTABLE (int): final static field
-        HTTP_PROXY_AUTH (int): final static field
-        HTTP_CLIENT_TIMEOUT (int): final static field
-        HTTP_CONFLICT (int): final static field
-        HTTP_GONE (int): final static field
-        HTTP_LENGTH_REQUIRED (int): final static field
-        HTTP_PRECON_FAILED (int): final static field
-        HTTP_ENTITY_TOO_LARGE (int): final static field
-        HTTP_REQ_TOO_LONG (int): final static field
-        HTTP_UNSUPPORTED_TYPE (int): final static field
-        HTTP_SERVER_ERROR (int): final static field
-        HTTP_INTERNAL_ERROR (int): final static field
-        HTTP_NOT_IMPLEMENTED (int): final static field
-        HTTP_BAD_GATEWAY (int): final static field
-        HTTP_UNAVAILABLE (int): final static field
-        HTTP_GATEWAY_TIMEOUT (int): final static field
-        HTTP_VERSION (int): final static field
-    
-    """
     HTTP_OK: typing.ClassVar[int] = ...
     HTTP_CREATED: typing.ClassVar[int] = ...
     HTTP_ACCEPTED: typing.ClassVar[int] = ...
@@ -1519,13 +876,6 @@ class HttpURLConnection(URLConnection):
     def usingProxy(self) -> bool: ...
 
 class Inet4Address(InetAddress):
-    """
-    Java class 'java.net.Inet4Address'
-    
-        Extends:
-            java.net.InetAddress
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def getAddress(self) -> typing.List[int]: ...
     def getHostAddress(self) -> str: ...
@@ -1542,13 +892,6 @@ class Inet4Address(InetAddress):
     def isSiteLocalAddress(self) -> bool: ...
 
 class Inet6Address(InetAddress):
-    """
-    Java class 'java.net.Inet6Address'
-    
-        Extends:
-            java.net.InetAddress
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def getAddress(self) -> typing.List[int]: ...
     @typing.overload
@@ -1580,18 +923,6 @@ class Inet6Address(InetAddress):
     def isSiteLocalAddress(self) -> bool: ...
 
 class InetSocketAddress(SocketAddress):
-    """
-    Java class 'java.net.InetSocketAddress'
-    
-        Extends:
-            java.net.SocketAddress
-    
-      Constructors:
-        * InetSocketAddress(java.net.InetAddress, int)
-        * InetSocketAddress(int)
-        * InetSocketAddress(java.lang.String, int)
-    
-    """
     @typing.overload
     def __init__(self, int: int): ...
     @typing.overload
@@ -1610,13 +941,6 @@ class InetSocketAddress(SocketAddress):
     def toString(self) -> str: ...
 
 class JarURLConnection(URLConnection):
-    """
-    Java class 'java.net.JarURLConnection'
-    
-        Extends:
-            java.net.URLConnection
-    
-    """
     def getAttributes(self) -> java.util.jar.Attributes: ...
     def getCertificates(self) -> typing.List[java.security.cert.Certificate]: ...
     def getEntryName(self) -> str: ...
@@ -1627,21 +951,6 @@ class JarURLConnection(URLConnection):
     def getManifest(self) -> java.util.jar.Manifest: ...
 
 class MulticastSocket(DatagramSocket):
-    """
-    Java class 'java.net.MulticastSocket'
-    
-        Extends:
-            java.net.DatagramSocket
-    
-      Constructors:
-        * MulticastSocket(java.net.SocketAddress)
-        * MulticastSocket(int)
-        * MulticastSocket()
-    
-      Raises:
-        java.io.IOException: from java
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1673,50 +982,18 @@ class MulticastSocket(DatagramSocket):
     def supportedOptions(self) -> java.util.Set[SocketOption[typing.Any]]: ...
 
 class NoRouteToHostException(SocketException):
-    """
-    Java class 'java.net.NoRouteToHostException'
-    
-        Extends:
-            java.net.SocketException
-    
-      Constructors:
-        * NoRouteToHostException(java.lang.String)
-        * NoRouteToHostException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class PortUnreachableException(SocketException):
-    """
-    Java class 'java.net.PortUnreachableException'
-    
-        Extends:
-            java.net.SocketException
-    
-      Constructors:
-        * PortUnreachableException(java.lang.String)
-        * PortUnreachableException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class SecureCacheResponse(CacheResponse):
-    """
-    Java class 'java.net.SecureCacheResponse'
-    
-        Extends:
-            java.net.CacheResponse
-    
-      Constructors:
-        * SecureCacheResponse()
-    
-    """
     def __init__(self): ...
     def getCipherSuite(self) -> str: ...
     def getLocalCertificateChain(self) -> java.util.List[java.security.cert.Certificate]: ...
@@ -1725,37 +1002,10 @@ class SecureCacheResponse(CacheResponse):
     def getServerCertificateChain(self) -> java.util.List[java.security.cert.Certificate]: ...
 
 class SocketImpl(SocketOptions):
-    """
-    Java class 'java.net.SocketImpl'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.net.SocketOptions
-    
-      Constructors:
-        * SocketImpl()
-    
-    """
     def __init__(self): ...
     def toString(self) -> str: ...
 
 class StandardProtocolFamily(java.lang.Enum['StandardProtocolFamily'], ProtocolFamily):
-    """
-    Java class 'java.net.StandardProtocolFamily'
-    
-        Extends:
-            java.lang.Enum
-    
-        Interfaces:
-            java.net.ProtocolFamily
-    
-      Attributes:
-        INET (java.net.StandardProtocolFamily): final static enum constant
-        INET6 (java.net.StandardProtocolFamily): final static enum constant
-    
-    """
     INET: typing.ClassVar['StandardProtocolFamily'] = ...
     INET6: typing.ClassVar['StandardProtocolFamily'] = ...
     _valueOf_0__T = typing.TypeVar('_valueOf_0__T', bound=java.lang.Enum)  # <T>

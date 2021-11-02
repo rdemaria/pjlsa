@@ -8,21 +8,32 @@ import typing
 
 class GlobalConstants:
     """
-    Java class 'cern.accsoft.commons.domain.constants.GlobalConstants'
+    public class GlobalConstants extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * GlobalConstants()
-    
-      Attributes:
-        SPEED_OF_LIGHT (double): final static field
-        UNIFIED_ATOMIC_MASS_UNIT (double): final static field
-    
+        Global world constants.
     """
     SPEED_OF_LIGHT: typing.ClassVar[float] = ...
+    """
+    public static final double SPEED_OF_LIGHT
+    
+        The speed of light in m/s.
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     UNIFIED_ATOMIC_MASS_UNIT: typing.ClassVar[float] = ...
+    """
+    public static final double UNIFIED_ATOMIC_MASS_UNIT
+    
+        Unified Atomic Mass Unit in MeV/c2
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     def __init__(self): ...
 
 

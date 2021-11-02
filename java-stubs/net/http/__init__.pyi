@@ -16,13 +16,6 @@ import typing
 
 
 class HttpClient:
-    """
-    Java class 'java.net.http.HttpClient'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def authenticator(self) -> java.util.Optional[java.net.Authenticator]: ...
     def connectTimeout(self) -> java.util.Optional[java.time.Duration]: ...
     def cookieHandler(self) -> java.util.Optional[java.net.CookieHandler]: ...
@@ -46,13 +39,6 @@ class HttpClient:
     def sslParameters(self) -> javax.net.ssl.SSLParameters: ...
     def version(self) -> 'HttpClient.Version': ...
     class Builder:
-        """
-        Java class 'java.net.http.HttpClient$Builder'
-        
-          Attributes:
-            NO_PROXY (java.net.ProxySelector): final static field
-        
-        """
         NO_PROXY: typing.ClassVar[java.net.ProxySelector] = ...
         def authenticator(self, authenticator: java.net.Authenticator) -> 'HttpClient.Builder': ...
         def build(self) -> 'HttpClient': ...
@@ -66,18 +52,6 @@ class HttpClient:
         def sslParameters(self, sSLParameters: javax.net.ssl.SSLParameters) -> 'HttpClient.Builder': ...
         def version(self, version: 'HttpClient.Version') -> 'HttpClient.Builder': ...
     class Redirect(java.lang.Enum['HttpClient.Redirect']):
-        """
-        Java class 'java.net.http.HttpClient$Redirect'
-        
-            Extends:
-                java.lang.Enum
-        
-          Attributes:
-            NEVER (java.net.http.HttpClient$Redirect): final static enum constant
-            ALWAYS (java.net.http.HttpClient$Redirect): final static enum constant
-            NORMAL (java.net.http.HttpClient$Redirect): final static enum constant
-        
-        """
         NEVER: typing.ClassVar['HttpClient.Redirect'] = ...
         ALWAYS: typing.ClassVar['HttpClient.Redirect'] = ...
         NORMAL: typing.ClassVar['HttpClient.Redirect'] = ...
@@ -91,17 +65,6 @@ class HttpClient:
         @staticmethod
         def values() -> typing.List['HttpClient.Redirect']: ...
     class Version(java.lang.Enum['HttpClient.Version']):
-        """
-        Java class 'java.net.http.HttpClient$Version'
-        
-            Extends:
-                java.lang.Enum
-        
-          Attributes:
-            HTTP_1_1 (java.net.http.HttpClient$Version): final static enum constant
-            HTTP_2 (java.net.http.HttpClient$Version): final static enum constant
-        
-        """
         HTTP_1_1: typing.ClassVar['HttpClient.Version'] = ...
         HTTP_2: typing.ClassVar['HttpClient.Version'] = ...
         _valueOf_0__T = typing.TypeVar('_valueOf_0__T', bound=java.lang.Enum)  # <T>
@@ -115,13 +78,6 @@ class HttpClient:
         def values() -> typing.List['HttpClient.Version']: ...
 
 class HttpHeaders:
-    """
-    Java class 'java.net.http.HttpHeaders'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def allValues(self, string: str) -> java.util.List[str]: ...
     def equals(self, object: typing.Any) -> bool: ...
     def firstValue(self, string: str) -> java.util.Optional[str]: ...
@@ -133,13 +89,6 @@ class HttpHeaders:
     def toString(self) -> str: ...
 
 class HttpRequest:
-    """
-    Java class 'java.net.http.HttpRequest'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def bodyPublisher(self) -> java.util.Optional['HttpRequest.BodyPublisher']: ...
     def equals(self, object: typing.Any) -> bool: ...
     def expectContinue(self) -> bool: ...
@@ -156,22 +105,8 @@ class HttpRequest:
     def uri(self) -> java.net.URI: ...
     def version(self) -> java.util.Optional[HttpClient.Version]: ...
     class BodyPublisher(java.util.concurrent.Flow.Publisher[java.nio.ByteBuffer]):
-        """
-        Java class 'java.net.http.HttpRequest$BodyPublisher'
-        
-            Interfaces:
-                java.util.concurrent.Flow.Publisher
-        
-        """
         def contentLength(self) -> int: ...
     class BodyPublishers:
-        """
-        Java class 'java.net.http.HttpRequest$BodyPublishers'
-        
-            Extends:
-                java.lang.Object
-        
-        """
         @typing.overload
         @staticmethod
         def fromPublisher(publisher: typing.Union[java.util.concurrent.Flow.Publisher[java.nio.ByteBuffer], typing.Callable[[java.util.concurrent.Flow.Subscriber[typing.Any]], None]]) -> 'HttpRequest.BodyPublisher': ...
@@ -199,10 +134,6 @@ class HttpRequest:
         @staticmethod
         def ofString(string: str, charset: java.nio.charset.Charset) -> 'HttpRequest.BodyPublisher': ...
     class Builder:
-        """
-        Java class 'java.net.http.HttpRequest$Builder'
-        
-        """
         def DELETE(self) -> 'HttpRequest.Builder': ...
         def GET(self) -> 'HttpRequest.Builder': ...
         def POST(self, bodyPublisher: 'HttpRequest.BodyPublisher') -> 'HttpRequest.Builder': ...
@@ -223,10 +154,6 @@ _HttpResponse__BodySubscriber__T = typing.TypeVar('_HttpResponse__BodySubscriber
 _HttpResponse__PushPromiseHandler__T = typing.TypeVar('_HttpResponse__PushPromiseHandler__T')  # <T>
 _HttpResponse__T = typing.TypeVar('_HttpResponse__T')  # <T>
 class HttpResponse(typing.Generic[_HttpResponse__T]):
-    """
-    Java class 'java.net.http.HttpResponse'
-    
-    """
     def body(self) -> _HttpResponse__T: ...
     def headers(self) -> HttpHeaders: ...
     def previousResponse(self) -> java.util.Optional['HttpResponse'[_HttpResponse__T]]: ...
@@ -236,19 +163,8 @@ class HttpResponse(typing.Generic[_HttpResponse__T]):
     def uri(self) -> java.net.URI: ...
     def version(self) -> HttpClient.Version: ...
     class BodyHandler(typing.Generic[_HttpResponse__BodyHandler__T]):
-        """
-        Java class 'java.net.http.HttpResponse$BodyHandler'
-        
-        """
         def apply(self, responseInfo: 'HttpResponse.ResponseInfo') -> 'HttpResponse.BodySubscriber'[_HttpResponse__BodyHandler__T]: ...
     class BodyHandlers:
-        """
-        Java class 'java.net.http.HttpResponse$BodyHandlers'
-        
-            Extends:
-                java.lang.Object
-        
-        """
         _buffering__T = typing.TypeVar('_buffering__T')  # <T>
         @staticmethod
         def buffering(bodyHandler: typing.Union['HttpResponse.BodyHandler'[_buffering__T], typing.Callable[['HttpResponse.ResponseInfo'], 'HttpResponse.BodySubscriber'[typing.Any]]], int: int) -> 'HttpResponse.BodyHandler'[_buffering__T]: ...
@@ -298,22 +214,8 @@ class HttpResponse(typing.Generic[_HttpResponse__T]):
         @staticmethod
         def replacing(u: _replacing__U) -> 'HttpResponse.BodyHandler'[_replacing__U]: ...
     class BodySubscriber(java.util.concurrent.Flow.Subscriber[java.util.List[java.nio.ByteBuffer]], typing.Generic[_HttpResponse__BodySubscriber__T]):
-        """
-        Java class 'java.net.http.HttpResponse$BodySubscriber'
-        
-            Interfaces:
-                java.util.concurrent.Flow.Subscriber
-        
-        """
         def getBody(self) -> java.util.concurrent.CompletionStage[_HttpResponse__BodySubscriber__T]: ...
     class BodySubscribers:
-        """
-        Java class 'java.net.http.HttpResponse$BodySubscribers'
-        
-            Extends:
-                java.lang.Object
-        
-        """
         _buffering__T = typing.TypeVar('_buffering__T')  # <T>
         @staticmethod
         def buffering(bodySubscriber: 'HttpResponse.BodySubscriber'[_buffering__T], int: int) -> 'HttpResponse.BodySubscriber'[_buffering__T]: ...
@@ -361,44 +263,19 @@ class HttpResponse(typing.Generic[_HttpResponse__T]):
         @staticmethod
         def replacing(u: _replacing__U) -> 'HttpResponse.BodySubscriber'[_replacing__U]: ...
     class PushPromiseHandler(typing.Generic[_HttpResponse__PushPromiseHandler__T]):
-        """
-        Java class 'java.net.http.HttpResponse$PushPromiseHandler'
-        
-        """
         def applyPushPromise(self, httpRequest: HttpRequest, httpRequest2: HttpRequest, function: typing.Union[java.util.function.Function[typing.Union['HttpResponse.BodyHandler'[_HttpResponse__PushPromiseHandler__T], typing.Callable[['HttpResponse.ResponseInfo'], 'HttpResponse.BodySubscriber'[typing.Any]]], java.util.concurrent.CompletableFuture['HttpResponse'[_HttpResponse__PushPromiseHandler__T]]], typing.Callable[[typing.Union['HttpResponse.BodyHandler'[_HttpResponse__PushPromiseHandler__T], typing.Callable[['HttpResponse.ResponseInfo'], 'HttpResponse.BodySubscriber'[typing.Any]]]], java.util.concurrent.CompletableFuture['HttpResponse'[_HttpResponse__PushPromiseHandler__T]]]]) -> None: ...
         _of__T = typing.TypeVar('_of__T')  # <T>
         @staticmethod
         def of(function: typing.Union[java.util.function.Function[HttpRequest, typing.Union['HttpResponse.BodyHandler'[_of__T], typing.Callable[['HttpResponse.ResponseInfo'], 'HttpResponse.BodySubscriber'[typing.Any]]]], typing.Callable[[HttpRequest], typing.Union['HttpResponse.BodyHandler'[_of__T], typing.Callable[['HttpResponse.ResponseInfo'], 'HttpResponse.BodySubscriber'[typing.Any]]]]], concurrentMap: java.util.concurrent.ConcurrentMap[HttpRequest, java.util.concurrent.CompletableFuture['HttpResponse'[_of__T]]]) -> 'HttpResponse.PushPromiseHandler'[_of__T]: ...
     class ResponseInfo:
-        """
-        Java class 'java.net.http.HttpResponse$ResponseInfo'
-        
-        """
         def headers(self) -> HttpHeaders: ...
         def statusCode(self) -> int: ...
         def version(self) -> HttpClient.Version: ...
 
 class HttpTimeoutException(java.io.IOException):
-    """
-    Java class 'java.net.http.HttpTimeoutException'
-    
-        Extends:
-            java.io.IOException
-    
-      Constructors:
-        * HttpTimeoutException(java.lang.String)
-    
-    """
     def __init__(self, string: str): ...
 
 class WebSocket:
-    """
-    Java class 'java.net.http.WebSocket'
-    
-      Attributes:
-        NORMAL_CLOSURE (int): final static field
-    
-    """
     NORMAL_CLOSURE: typing.ClassVar[int] = ...
     def abort(self) -> None: ...
     def getSubprotocol(self) -> str: ...
@@ -411,19 +288,11 @@ class WebSocket:
     def sendPong(self, byteBuffer: java.nio.ByteBuffer) -> java.util.concurrent.CompletableFuture['WebSocket']: ...
     def sendText(self, charSequence: typing.Union[java.lang.CharSequence, str], boolean: bool) -> java.util.concurrent.CompletableFuture['WebSocket']: ...
     class Builder:
-        """
-        Java class 'java.net.http.WebSocket$Builder'
-        
-        """
         def buildAsync(self, uRI: java.net.URI, listener: 'WebSocket.Listener') -> java.util.concurrent.CompletableFuture['WebSocket']: ...
         def connectTimeout(self, duration: java.time.Duration) -> 'WebSocket.Builder': ...
         def header(self, string: str, string2: str) -> 'WebSocket.Builder': ...
         def subprotocols(self, string: str, stringArray: typing.List[str]) -> 'WebSocket.Builder': ...
     class Listener:
-        """
-        Java class 'java.net.http.WebSocket$Listener'
-        
-        """
         def onBinary(self, webSocket: 'WebSocket', byteBuffer: java.nio.ByteBuffer, boolean: bool) -> java.util.concurrent.CompletionStage[typing.Any]: ...
         def onClose(self, webSocket: 'WebSocket', int: int, string: str) -> java.util.concurrent.CompletionStage[typing.Any]: ...
         def onError(self, webSocket: 'WebSocket', throwable: java.lang.Throwable) -> None: ...
@@ -433,31 +302,11 @@ class WebSocket:
         def onText(self, webSocket: 'WebSocket', charSequence: typing.Union[java.lang.CharSequence, str], boolean: bool) -> java.util.concurrent.CompletionStage[typing.Any]: ...
 
 class WebSocketHandshakeException(java.io.IOException):
-    """
-    Java class 'java.net.http.WebSocketHandshakeException'
-    
-        Extends:
-            java.io.IOException
-    
-      Constructors:
-        * WebSocketHandshakeException(java.net.http.HttpResponse)
-    
-    """
     def __init__(self, httpResponse: HttpResponse[typing.Any]): ...
     def getResponse(self) -> HttpResponse[typing.Any]: ...
     def initCause(self, throwable: java.lang.Throwable) -> 'WebSocketHandshakeException': ...
 
 class HttpConnectTimeoutException(HttpTimeoutException):
-    """
-    Java class 'java.net.http.HttpConnectTimeoutException'
-    
-        Extends:
-            java.net.http.HttpTimeoutException
-    
-      Constructors:
-        * HttpConnectTimeoutException(java.lang.String)
-    
-    """
     def __init__(self, string: str): ...
 
 

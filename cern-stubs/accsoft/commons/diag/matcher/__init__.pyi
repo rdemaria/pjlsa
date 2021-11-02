@@ -12,109 +12,233 @@ import typing
 
 class ThrowableMatcher(cern.accsoft.commons.util.Named):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.ThrowableMatcher'
+    public interface ThrowableMatcher extends cern.accsoft.commons.util.Named
     
-        Interfaces:
-            cern.accsoft.commons.util.Named
-    
+        Matcher recognizing a certain group of `null
+        <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`'s.
     """
-    def findThrowableDescriptor(self, throwable: java.lang.Throwable, throwable2: java.lang.Throwable) -> cern.accsoft.commons.diag.ThrowableDescriptor: ...
+    def findThrowableDescriptor(self, throwable: java.lang.Throwable, throwable2: java.lang.Throwable) -> cern.accsoft.commons.diag.ThrowableDescriptor:
+        """
+        
+            Parameters:
+                potentialyMatchingThrowable (`Throwable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`): a `null <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>` to check for
+                    matching
+                fullThrowable (`Throwable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`): full original `null <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`
+                    containing :code:`potentialyMatchingThrowable`
+        
+            Returns:
+                descriptor of the `null <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`
+                if it is recognized and :code:`null` otherwise
+        
+        
+        """
+        ...
 
 class ThrowableMatcherHierarchyImpl(cern.accsoft.commons.diag.HierarchyImpl[ThrowableMatcher]):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.ThrowableMatcherHierarchyImpl'
+    public abstract class ThrowableMatcherHierarchyImpl extends :class:`~cern.accsoft.commons.diag.HierarchyImpl`<:class:`~cern.accsoft.commons.diag.matcher.ThrowableMatcher`>
     
-        Extends:
-            cern.accsoft.commons.diag.HierarchyImpl
+        Container for :class:`~cern.accsoft.commons.diag.matcher.ThrowableMatcher`'s.
     
-      Constructors:
-        * ThrowableMatcherHierarchyImpl()
-    
+        Contains reusable methods for real implementations.
     """
     def __init__(self): ...
 
 class AbstractThrowableMatcher(ThrowableMatcherHierarchyImpl, ThrowableMatcher):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.AbstractThrowableMatcher'
+    public abstract class AbstractThrowableMatcher extends :class:`~cern.accsoft.commons.diag.matcher.ThrowableMatcherHierarchyImpl` implements :class:`~cern.accsoft.commons.diag.matcher.ThrowableMatcher`
     
-        Extends:
-            cern.accsoft.commons.diag.matcher.ThrowableMatcherHierarchyImpl
-    
-        Interfaces:
-            cern.accsoft.commons.diag.matcher.ThrowableMatcher
-    
-      Constructors:
-        * AbstractThrowableMatcher(java.lang.String)
-    
+        Base class for all the :class:`~cern.accsoft.commons.diag.matcher.ThrowableMatcher` implementations.
     """
     def __init__(self, string: str): ...
     @staticmethod
-    def extractExceptionMessage(throwable: java.lang.Throwable, boolean: bool) -> str: ...
-    def findThrowableDescriptor(self, throwable: java.lang.Throwable, throwable2: java.lang.Throwable) -> cern.accsoft.commons.diag.ThrowableDescriptor: ...
-    def getName(self) -> str: ...
-    def toString(self) -> str: ...
+    def extractExceptionMessage(throwable: java.lang.Throwable, boolean: bool) -> str:
+        """
+            Extracts a nice message describing exceptions, causes and messages they contain.
+        
+            For instance:
+        
+            .. code-block: java
+            
+             extractExceptionMessage(new RuntimeException("message", new IllegalArgumentException("cause")));
+             
+            returns the String
+        
+            .. code-block: java
+            
+             "RuntimeException [message] caused by: IllegalArgumentException [cause]"
+             
+        
+            Parameters:
+                exception (`Throwable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`): the exception
+                shouldPrintInSeparateLines (boolean): specifies if each cause in the stack trace should be printed in separate lines.
+        
+            Returns:
+                the message String extracted from the exception
+        
+        
+        """
+        ...
+    def findThrowableDescriptor(self, throwable: java.lang.Throwable, throwable2: java.lang.Throwable) -> cern.accsoft.commons.diag.ThrowableDescriptor:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.diag.matcher.ThrowableMatcher.findThrowableDescriptor`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.diag.matcher.ThrowableMatcher`
+        
+            Overrides:
+                :meth:`~cern.accsoft.commons.diag.matcher.ThrowableMatcherHierarchyImpl.findThrowableDescriptor`Â in
+                classÂ :class:`~cern.accsoft.commons.diag.matcher.ThrowableMatcherHierarchyImpl`
+        
+            Parameters:
+                potentialyMatchingThrowable (`Throwable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`): a `null <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>` to check for
+                    matching
+                fullThrowable (`Throwable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`): full original `null <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`
+                    containing :code:`potentialyMatchingThrowable`
+        
+            Returns:
+                descriptor of the `null <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`
+                if it is recognized and :code:`null` otherwise
+        
+        
+        """
+        ...
+    def getName(self) -> str:
+        """
+        
+            Specified by:
+                :code:`getName` in interface :code:`cern.accsoft.commons.util.Named`
+        
+        
+        """
+        ...
+    def toString(self) -> str:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
 
 class ProxyThrowableMatcher(ThrowableMatcher):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.ProxyThrowableMatcher'
+    public class ProxyThrowableMatcher extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.accsoft.commons.diag.matcher.ThrowableMatcher`
     
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            cern.accsoft.commons.diag.matcher.ThrowableMatcher
-    
-      Constructors:
-        * ProxyThrowableMatcher(java.lang.Class, cern.accsoft.commons.diag.matcher.ThrowableMatcher)
-    
+        :class:`~cern.accsoft.commons.diag.matcher.ThrowableMatcher` implementation deciding at runtime if it should use a
+        string-based actual matcher implementation or a class-based.
     """
     def __init__(self, class_: typing.Type[ThrowableMatcher], throwableMatcher: ThrowableMatcher): ...
-    def findThrowableDescriptor(self, throwable: java.lang.Throwable, throwable2: java.lang.Throwable) -> cern.accsoft.commons.diag.ThrowableDescriptor: ...
-    def getName(self) -> str: ...
-    def toString(self) -> str: ...
+    def findThrowableDescriptor(self, throwable: java.lang.Throwable, throwable2: java.lang.Throwable) -> cern.accsoft.commons.diag.ThrowableDescriptor:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.diag.matcher.ThrowableMatcher.findThrowableDescriptor`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.diag.matcher.ThrowableMatcher`
+        
+            Parameters:
+                throwable (`Throwable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`): a `null <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>` to check for
+                    matching
+                fullThrowable (`Throwable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`): full original `null <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`
+                    containing :code:`potentialyMatchingThrowable`
+        
+            Returns:
+                descriptor of the `null <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`
+                if it is recognized and :code:`null` otherwise
+        
+        
+        """
+        ...
+    def getName(self) -> str:
+        """
+        
+            Specified by:
+                :code:`getName` in interface :code:`cern.accsoft.commons.util.Named`
+        
+        
+        """
+        ...
+    def toString(self) -> str:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
 
 class ThrowableMatcherDecoratorSupport(ThrowableMatcher):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.ThrowableMatcherDecoratorSupport'
+    public abstract class ThrowableMatcherDecoratorSupport extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.accsoft.commons.diag.matcher.ThrowableMatcher`
     
-        Extends:
-            java.lang.Object
+        Base class providing the possibility to modify the descriptors on-the-fly.
     
-        Interfaces:
-            cern.accsoft.commons.diag.matcher.ThrowableMatcher
-    
-      Constructors:
-        * ThrowableMatcherDecoratorSupport(cern.accsoft.commons.diag.matcher.ThrowableMatcher)
-    
+        Useful to modify the information provided by original :class:`~cern.accsoft.commons.diag.matcher.ThrowableMatcher` in
+        different contexts (ex. LSA, InCA, CESAR, etc.)
     """
     def __init__(self, throwableMatcher: ThrowableMatcher): ...
-    def findThrowableDescriptor(self, throwable: java.lang.Throwable, throwable2: java.lang.Throwable) -> cern.accsoft.commons.diag.ThrowableDescriptor: ...
-    def getName(self) -> str: ...
-    def toString(self) -> str: ...
+    def findThrowableDescriptor(self, throwable: java.lang.Throwable, throwable2: java.lang.Throwable) -> cern.accsoft.commons.diag.ThrowableDescriptor:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.diag.matcher.ThrowableMatcher.findThrowableDescriptor`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.diag.matcher.ThrowableMatcher`
+        
+            Parameters:
+                potentialyMatchingThrowable (`Throwable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`): a `null <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>` to check for
+                    matching
+                fullThrowable (`Throwable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`): full original `null <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`
+                    containing :code:`potentialyMatchingThrowable`
+        
+            Returns:
+                descriptor of the `null <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`
+                if it is recognized and :code:`null` otherwise
+        
+        
+        """
+        ...
+    def getName(self) -> str:
+        """
+        
+            Specified by:
+                :code:`getName` in interface :code:`cern.accsoft.commons.util.Named`
+        
+        
+        """
+        ...
+    def toString(self) -> str:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
 
 class ExceptionClassThrowableMatcher(AbstractThrowableMatcher):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.ExceptionClassThrowableMatcher'
+    public class ExceptionClassThrowableMatcher extends :class:`~cern.accsoft.commons.diag.matcher.AbstractThrowableMatcher`
     
-        Extends:
-            cern.accsoft.commons.diag.matcher.AbstractThrowableMatcher
+        Basic :class:`~cern.accsoft.commons.diag.matcher.ThrowableMatcher` based on exception classes.
     
-      Constructors:
-        * ExceptionClassThrowableMatcher(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.Class, java.lang.String)
-    
+        It allows to specify :code:`root throwable` and :code:`throwable message pattern` and only if both are satisfied the
+        matcher is considered matching a throwable. At least one matching criterion must be specified otherwise the matcher is
+        ignored. Non-specified matching criteria are ignored.
     """
     def __init__(self, string: str, string2: str, string3: str, string4: str, class_: typing.Type[java.lang.Throwable], string5: str): ...
 
 class StringThrowableMatcher(AbstractThrowableMatcher):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.StringThrowableMatcher'
+    public class StringThrowableMatcher extends :class:`~cern.accsoft.commons.diag.matcher.AbstractThrowableMatcher`
     
-        Extends:
-            cern.accsoft.commons.diag.matcher.AbstractThrowableMatcher
+        Basic :class:`~cern.accsoft.commons.diag.matcher.ThrowableMatcher` based on strings.
     
-      Constructors:
-        * StringThrowableMatcher(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
-    
+        It allows to specify :code:`throwable class name pattern` and :code:`throwable message pattern` and only if both are
+        satisfied the matcher is considered matching a throwable. At least one matching criterion must be specified otherwise
+        the matcher is ignored. Non-specified matching criteria are ignored.
     """
     def __init__(self, string: str, string2: str, string3: str, string4: str, string5: str, string6: str): ...
 

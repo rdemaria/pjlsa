@@ -8,29 +8,9 @@ import typing
 
 
 class CharacterCodingException(java.io.IOException):
-    """
-    Java class 'java.nio.charset.CharacterCodingException'
-    
-        Extends:
-            java.io.IOException
-    
-      Constructors:
-        * CharacterCodingException()
-    
-    """
     def __init__(self): ...
 
 class Charset(java.lang.Comparable['Charset']):
-    """
-    Java class 'java.nio.charset.Charset'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.lang.Comparable
-    
-    """
     def aliases(self) -> java.util.Set[str]: ...
     @staticmethod
     def availableCharsets() -> java.util.SortedMap[str, 'Charset']: ...
@@ -61,13 +41,6 @@ class Charset(java.lang.Comparable['Charset']):
     def toString(self) -> str: ...
 
 class CharsetDecoder:
-    """
-    Java class 'java.nio.charset.CharsetDecoder'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def averageCharsPerByte(self) -> float: ...
     def charset(self) -> Charset: ...
     @typing.overload
@@ -88,13 +61,6 @@ class CharsetDecoder:
     def unmappableCharacterAction(self) -> 'CodingErrorAction': ...
 
 class CharsetEncoder:
-    """
-    Java class 'java.nio.charset.CharsetEncoder'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def averageBytesPerChar(self) -> float: ...
     @typing.overload
     def canEncode(self, char: str) -> bool: ...
@@ -117,30 +83,9 @@ class CharsetEncoder:
     def unmappableCharacterAction(self) -> 'CodingErrorAction': ...
 
 class CoderMalfunctionError(java.lang.Error):
-    """
-    Java class 'java.nio.charset.CoderMalfunctionError'
-    
-        Extends:
-            java.lang.Error
-    
-      Constructors:
-        * CoderMalfunctionError(java.lang.Exception)
-    
-    """
     def __init__(self, exception: java.lang.Exception): ...
 
 class CoderResult:
-    """
-    Java class 'java.nio.charset.CoderResult'
-    
-        Extends:
-            java.lang.Object
-    
-      Attributes:
-        UNDERFLOW (java.nio.charset.CoderResult): final static field
-        OVERFLOW (java.nio.charset.CoderResult): final static field
-    
-    """
     UNDERFLOW: typing.ClassVar['CoderResult'] = ...
     OVERFLOW: typing.ClassVar['CoderResult'] = ...
     def isError(self) -> bool: ...
@@ -157,53 +102,16 @@ class CoderResult:
     def unmappableForLength(int: int) -> 'CoderResult': ...
 
 class CodingErrorAction:
-    """
-    Java class 'java.nio.charset.CodingErrorAction'
-    
-        Extends:
-            java.lang.Object
-    
-      Attributes:
-        IGNORE (java.nio.charset.CodingErrorAction): final static field
-        REPLACE (java.nio.charset.CodingErrorAction): final static field
-        REPORT (java.nio.charset.CodingErrorAction): final static field
-    
-    """
     IGNORE: typing.ClassVar['CodingErrorAction'] = ...
     REPLACE: typing.ClassVar['CodingErrorAction'] = ...
     REPORT: typing.ClassVar['CodingErrorAction'] = ...
     def toString(self) -> str: ...
 
 class IllegalCharsetNameException(java.lang.IllegalArgumentException):
-    """
-    Java class 'java.nio.charset.IllegalCharsetNameException'
-    
-        Extends:
-            java.lang.IllegalArgumentException
-    
-      Constructors:
-        * IllegalCharsetNameException(java.lang.String)
-    
-    """
     def __init__(self, string: str): ...
     def getCharsetName(self) -> str: ...
 
 class StandardCharsets:
-    """
-    Java class 'java.nio.charset.StandardCharsets'
-    
-        Extends:
-            java.lang.Object
-    
-      Attributes:
-        US_ASCII (java.nio.charset.Charset): final static field
-        ISO_8859_1 (java.nio.charset.Charset): final static field
-        UTF_8 (java.nio.charset.Charset): final static field
-        UTF_16BE (java.nio.charset.Charset): final static field
-        UTF_16LE (java.nio.charset.Charset): final static field
-        UTF_16 (java.nio.charset.Charset): final static field
-    
-    """
     US_ASCII: typing.ClassVar[Charset] = ...
     ISO_8859_1: typing.ClassVar[Charset] = ...
     UTF_8: typing.ClassVar[Charset] = ...
@@ -212,45 +120,15 @@ class StandardCharsets:
     UTF_16: typing.ClassVar[Charset] = ...
 
 class UnsupportedCharsetException(java.lang.IllegalArgumentException):
-    """
-    Java class 'java.nio.charset.UnsupportedCharsetException'
-    
-        Extends:
-            java.lang.IllegalArgumentException
-    
-      Constructors:
-        * UnsupportedCharsetException(java.lang.String)
-    
-    """
     def __init__(self, string: str): ...
     def getCharsetName(self) -> str: ...
 
 class MalformedInputException(CharacterCodingException):
-    """
-    Java class 'java.nio.charset.MalformedInputException'
-    
-        Extends:
-            java.nio.charset.CharacterCodingException
-    
-      Constructors:
-        * MalformedInputException(int)
-    
-    """
     def __init__(self, int: int): ...
     def getInputLength(self) -> int: ...
     def getMessage(self) -> str: ...
 
 class UnmappableCharacterException(CharacterCodingException):
-    """
-    Java class 'java.nio.charset.UnmappableCharacterException'
-    
-        Extends:
-            java.nio.charset.CharacterCodingException
-    
-      Constructors:
-        * UnmappableCharacterException(int)
-    
-    """
     def __init__(self, int: int): ...
     def getInputLength(self) -> int: ...
     def getMessage(self) -> str: ...

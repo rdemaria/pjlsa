@@ -9,13 +9,6 @@ import typing
 
 
 class InputContext:
-    """
-    Java class 'java.awt.im.InputContext'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def dispatchEvent(self, aWTEvent: java.awt.AWTEvent) -> None: ...
     def dispose(self) -> None: ...
     def endComposition(self) -> None: ...
@@ -31,26 +24,6 @@ class InputContext:
     def setCompositionEnabled(self, boolean: bool) -> None: ...
 
 class InputMethodHighlight:
-    """
-    Java class 'java.awt.im.InputMethodHighlight'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * InputMethodHighlight(boolean, int, int, java.util.Map)
-        * InputMethodHighlight(boolean, int, int)
-        * InputMethodHighlight(boolean, int)
-    
-      Attributes:
-        RAW_TEXT (int): final static field
-        CONVERTED_TEXT (int): final static field
-        UNSELECTED_RAW_TEXT_HIGHLIGHT (java.awt.im.InputMethodHighlight): final static field
-        SELECTED_RAW_TEXT_HIGHLIGHT (java.awt.im.InputMethodHighlight): final static field
-        UNSELECTED_CONVERTED_TEXT_HIGHLIGHT (java.awt.im.InputMethodHighlight): final static field
-        SELECTED_CONVERTED_TEXT_HIGHLIGHT (java.awt.im.InputMethodHighlight): final static field
-    
-    """
     RAW_TEXT: typing.ClassVar[int] = ...
     CONVERTED_TEXT: typing.ClassVar[int] = ...
     UNSELECTED_RAW_TEXT_HIGHLIGHT: typing.ClassVar['InputMethodHighlight'] = ...
@@ -69,10 +42,6 @@ class InputMethodHighlight:
     def isSelected(self) -> bool: ...
 
 class InputMethodRequests:
-    """
-    Java class 'java.awt.im.InputMethodRequests'
-    
-    """
     def cancelLatestCommittedText(self, attributeArray: typing.List[java.text.AttributedCharacterIterator.Attribute]) -> java.text.AttributedCharacterIterator: ...
     def getCommittedText(self, int: int, int2: int, attributeArray: typing.List[java.text.AttributedCharacterIterator.Attribute]) -> java.text.AttributedCharacterIterator: ...
     def getCommittedTextLength(self) -> int: ...
@@ -82,24 +51,6 @@ class InputMethodRequests:
     def getTextLocation(self, textHitInfo: java.awt.font.TextHitInfo) -> java.awt.Rectangle: ...
 
 class InputSubset(java.lang.Character.Subset):
-    """
-    Java class 'java.awt.im.InputSubset'
-    
-        Extends:
-            java.lang.Character$Subset
-    
-      Attributes:
-        LATIN (java.awt.im.InputSubset): final static field
-        LATIN_DIGITS (java.awt.im.InputSubset): final static field
-        TRADITIONAL_HANZI (java.awt.im.InputSubset): final static field
-        SIMPLIFIED_HANZI (java.awt.im.InputSubset): final static field
-        KANJI (java.awt.im.InputSubset): final static field
-        HANJA (java.awt.im.InputSubset): final static field
-        HALFWIDTH_KATAKANA (java.awt.im.InputSubset): final static field
-        FULLWIDTH_LATIN (java.awt.im.InputSubset): final static field
-        FULLWIDTH_DIGITS (java.awt.im.InputSubset): final static field
-    
-    """
     LATIN: typing.ClassVar['InputSubset'] = ...
     LATIN_DIGITS: typing.ClassVar['InputSubset'] = ...
     TRADITIONAL_HANZI: typing.ClassVar['InputSubset'] = ...

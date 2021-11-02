@@ -6,24 +6,17 @@ import typing
 
 class ReloadableThrowableResolver(cern.accsoft.commons.diag.ThrowableResolver):
     """
-    Java class 'cern.accsoft.commons.diag.config.ReloadableThrowableResolver'
-    
-        Interfaces:
-            cern.accsoft.commons.diag.ThrowableResolver
-    
+    public interface ReloadableThrowableResolver extends :class:`~cern.accsoft.commons.diag.ThrowableResolver`
     """
     def reloadThrowableMatcherHierarchy(self) -> None: ...
 
 class ThrowableMatcherException(java.lang.Exception):
     """
-    Java class 'cern.accsoft.commons.diag.config.ThrowableMatcherException'
+    public class ThrowableMatcherException extends `Exception <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Exception.html?is-external=true>`
     
-        Extends:
-            java.lang.Exception
     
-      Constructors:
-        * ThrowableMatcherException(java.lang.String, java.lang.Throwable)
-    
+        Also see:
+            :meth:`~serialized`
     """
     def __init__(self, string: str, throwable: java.lang.Throwable): ...
 

@@ -5,11 +5,9 @@ import typing
 
 class AccsoftDomainHelper:
     """
-    Java class 'cern.accsoft.commons.domain.helper.AccsoftDomainHelper'
+    public class AccsoftDomainHelper extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
-    
+        Helper methods intended to be used internally.
     """
     _immutableListOf__E = typing.TypeVar('_immutableListOf__E')  # <E>
     @staticmethod

@@ -9,16 +9,53 @@ import typing
 
 class JapcDevice(cern.accsoft.commons.util.Named):
     """
-    Java class 'cern.japc.core.device.JapcDevice'
+    public interface JapcDevice extends cern.accsoft.commons.util.Named
     
-        Interfaces:
-            cern.accsoft.commons.util.Named
-    
+        JAPC device which is represented as a collection of parameters corresponding to its properties.
     """
-    def getImmutableParameter(self, string: str) -> cern.japc.core.ImmutableParameter: ...
-    def getParameter(self, string: str) -> cern.japc.core.Parameter: ...
+    def getImmutableParameter(self, string: str) -> cern.japc.core.ImmutableParameter:
+        """
+        
+            Parameters:
+                propertyName (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): 
+            Returns:
+                the parameter
+        
+            Raises:
+                : if the parameter is not found in the device
+        
+        
+        """
+        ...
+    def getParameter(self, string: str) -> cern.japc.core.Parameter:
+        """
+        
+            Parameters:
+                propertyName (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): 
+            Returns:
+                the parameter
+        
+            Raises:
+                : if the parameter is not found in the device or is not writable
+        
+        
+        """
+        ...
     def getPropertyNames(self) -> java.util.Set[str]: ...
-    def getTransactionalParameter(self, string: str) -> cern.japc.core.transaction.TransactionalParameter: ...
+    def getTransactionalParameter(self, string: str) -> cern.japc.core.transaction.TransactionalParameter:
+        """
+        
+            Parameters:
+                propertyName (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): 
+            Returns:
+                the parameter
+        
+            Raises:
+                : if the parameter is not found in the device or is not transactional
+        
+        
+        """
+        ...
     def getWritablePropertyNames(self) -> java.util.Set[str]: ...
 
 

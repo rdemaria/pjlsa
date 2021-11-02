@@ -5,28 +5,12 @@ import typing
 
 
 class Annotation:
-    """
-    Java class 'java.lang.annotation.Annotation'
-    
-    """
     def annotationType(self) -> typing.Type['Annotation']: ...
     def equals(self, object: typing.Any) -> bool: ...
     def hashCode(self) -> int: ...
     def toString(self) -> str: ...
 
 class AnnotationFormatError(java.lang.Error):
-    """
-    Java class 'java.lang.annotation.AnnotationFormatError'
-    
-        Extends:
-            java.lang.Error
-    
-      Constructors:
-        * AnnotationFormatError(java.lang.String)
-        * AnnotationFormatError(java.lang.String, java.lang.Throwable)
-        * AnnotationFormatError(java.lang.Throwable)
-    
-    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
@@ -35,41 +19,11 @@ class AnnotationFormatError(java.lang.Error):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class AnnotationTypeMismatchException(java.lang.RuntimeException):
-    """
-    Java class 'java.lang.annotation.AnnotationTypeMismatchException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * AnnotationTypeMismatchException(java.lang.reflect.Method, java.lang.String)
-    
-    """
     def __init__(self, method: java.lang.reflect.Method, string: str): ...
     def element(self) -> java.lang.reflect.Method: ...
     def foundType(self) -> str: ...
 
 class ElementType(java.lang.Enum['ElementType']):
-    """
-    Java class 'java.lang.annotation.ElementType'
-    
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        TYPE (java.lang.annotation.ElementType): final static enum constant
-        FIELD (java.lang.annotation.ElementType): final static enum constant
-        METHOD (java.lang.annotation.ElementType): final static enum constant
-        PARAMETER (java.lang.annotation.ElementType): final static enum constant
-        CONSTRUCTOR (java.lang.annotation.ElementType): final static enum constant
-        LOCAL_VARIABLE (java.lang.annotation.ElementType): final static enum constant
-        ANNOTATION_TYPE (java.lang.annotation.ElementType): final static enum constant
-        PACKAGE (java.lang.annotation.ElementType): final static enum constant
-        TYPE_PARAMETER (java.lang.annotation.ElementType): final static enum constant
-        TYPE_USE (java.lang.annotation.ElementType): final static enum constant
-        MODULE (java.lang.annotation.ElementType): final static enum constant
-    
-    """
     TYPE: typing.ClassVar['ElementType'] = ...
     FIELD: typing.ClassVar['ElementType'] = ...
     METHOD: typing.ClassVar['ElementType'] = ...
@@ -92,33 +46,11 @@ class ElementType(java.lang.Enum['ElementType']):
     def values() -> typing.List['ElementType']: ...
 
 class IncompleteAnnotationException(java.lang.RuntimeException):
-    """
-    Java class 'java.lang.annotation.IncompleteAnnotationException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * IncompleteAnnotationException(java.lang.Class, java.lang.String)
-    
-    """
     def __init__(self, class_: typing.Type[Annotation], string: str): ...
     def annotationType(self) -> typing.Type[Annotation]: ...
     def elementName(self) -> str: ...
 
 class RetentionPolicy(java.lang.Enum['RetentionPolicy']):
-    """
-    Java class 'java.lang.annotation.RetentionPolicy'
-    
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        SOURCE (java.lang.annotation.RetentionPolicy): final static enum constant
-        CLASS (java.lang.annotation.RetentionPolicy): final static enum constant
-        RUNTIME (java.lang.annotation.RetentionPolicy): final static enum constant
-    
-    """
     SOURCE: typing.ClassVar['RetentionPolicy'] = ...
     CLASS: typing.ClassVar['RetentionPolicy'] = ...
     RUNTIME: typing.ClassVar['RetentionPolicy'] = ...
@@ -133,75 +65,33 @@ class RetentionPolicy(java.lang.Enum['RetentionPolicy']):
     def values() -> typing.List['RetentionPolicy']: ...
 
 class Documented(Annotation):
-    """
-    Java class 'java.lang.annotation.Documented'
-    
-        Interfaces:
-            java.lang.annotation.Annotation
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def hashCode(self) -> int: ...
     def toString(self) -> str: ...
 
 class Inherited(Annotation):
-    """
-    Java class 'java.lang.annotation.Inherited'
-    
-        Interfaces:
-            java.lang.annotation.Annotation
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def hashCode(self) -> int: ...
     def toString(self) -> str: ...
 
 class Native(Annotation):
-    """
-    Java class 'java.lang.annotation.Native'
-    
-        Interfaces:
-            java.lang.annotation.Annotation
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def hashCode(self) -> int: ...
     def toString(self) -> str: ...
 
 class Repeatable(Annotation):
-    """
-    Java class 'java.lang.annotation.Repeatable'
-    
-        Interfaces:
-            java.lang.annotation.Annotation
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def hashCode(self) -> int: ...
     def toString(self) -> str: ...
     def value(self) -> typing.Type[Annotation]: ...
 
 class Retention(Annotation):
-    """
-    Java class 'java.lang.annotation.Retention'
-    
-        Interfaces:
-            java.lang.annotation.Annotation
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def hashCode(self) -> int: ...
     def toString(self) -> str: ...
     def value(self) -> RetentionPolicy: ...
 
 class Target(Annotation):
-    """
-    Java class 'java.lang.annotation.Target'
-    
-        Interfaces:
-            java.lang.annotation.Annotation
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def hashCode(self) -> int: ...
     def toString(self) -> str: ...

@@ -9,13 +9,6 @@ import typing
 _BaseStream__T = typing.TypeVar('_BaseStream__T')  # <T>
 _BaseStream__S = typing.TypeVar('_BaseStream__S', bound='BaseStream')  # <S>
 class BaseStream(java.lang.AutoCloseable, typing.Generic[_BaseStream__T, _BaseStream__S]):
-    """
-    Java class 'java.util.stream.BaseStream'
-    
-        Interfaces:
-            java.lang.AutoCloseable
-    
-    """
     def close(self) -> None: ...
     def isParallel(self) -> bool: ...
     def iterator(self) -> java.util.Iterator[_BaseStream__T]: ...
@@ -29,10 +22,6 @@ _Collector__T = typing.TypeVar('_Collector__T')  # <T>
 _Collector__A = typing.TypeVar('_Collector__A')  # <A>
 _Collector__R = typing.TypeVar('_Collector__R')  # <R>
 class Collector(typing.Generic[_Collector__T, _Collector__A, _Collector__R]):
-    """
-    Java class 'java.util.stream.Collector'
-    
-    """
     def accumulator(self) -> java.util.function.BiConsumer[_Collector__A, _Collector__T]: ...
     def characteristics(self) -> java.util.Set['Collector.Characteristics']: ...
     def combiner(self) -> java.util.function.BinaryOperator[_Collector__A]: ...
@@ -50,18 +39,6 @@ class Collector(typing.Generic[_Collector__T, _Collector__A, _Collector__R]):
     def of(supplier: typing.Union[java.util.function.Supplier[_of_1__R], typing.Callable[[], _of_1__R]], biConsumer: typing.Union[java.util.function.BiConsumer[_of_1__R, _of_1__T], typing.Callable[[_of_1__R, _of_1__T], None]], binaryOperator: typing.Union[java.util.function.BinaryOperator[_of_1__R], typing.Callable], characteristicsArray: typing.List['Collector.Characteristics']) -> 'Collector'[_of_1__T, _of_1__R, _of_1__R]: ...
     def supplier(self) -> java.util.function.Supplier[_Collector__A]: ...
     class Characteristics(java.lang.Enum['Collector.Characteristics']):
-        """
-        Java class 'java.util.stream.Collector$Characteristics'
-        
-            Extends:
-                java.lang.Enum
-        
-          Attributes:
-            CONCURRENT (java.util.stream.Collector$Characteristics): final static enum constant
-            UNORDERED (java.util.stream.Collector$Characteristics): final static enum constant
-            IDENTITY_FINISH (java.util.stream.Collector$Characteristics): final static enum constant
-        
-        """
         CONCURRENT: typing.ClassVar['Collector.Characteristics'] = ...
         UNORDERED: typing.ClassVar['Collector.Characteristics'] = ...
         IDENTITY_FINISH: typing.ClassVar['Collector.Characteristics'] = ...
@@ -76,13 +53,6 @@ class Collector(typing.Generic[_Collector__T, _Collector__A, _Collector__R]):
         def values() -> typing.List['Collector.Characteristics']: ...
 
 class Collectors:
-    """
-    Java class 'java.util.stream.Collectors'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     _averagingDouble__T = typing.TypeVar('_averagingDouble__T')  # <T>
     @staticmethod
     def averagingDouble(toDoubleFunction: typing.Union[java.util.function.ToDoubleFunction[_averagingDouble__T], typing.Callable[[_averagingDouble__T], float]]) -> Collector[_averagingDouble__T, typing.Any, float]: ...
@@ -282,13 +252,6 @@ class Collectors:
     def toUnmodifiableSet() -> Collector[_toUnmodifiableSet__T, typing.Any, java.util.Set[_toUnmodifiableSet__T]]: ...
 
 class StreamSupport:
-    """
-    Java class 'java.util.stream.StreamSupport'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     @typing.overload
     @staticmethod
     def doubleStream(ofDouble: java.util.Spliterator.OfDouble, boolean: bool) -> 'DoubleStream': ...
@@ -317,13 +280,6 @@ class StreamSupport:
     def stream(supplier: typing.Union[java.util.function.Supplier[java.util.Spliterator[_stream_1__T]], typing.Callable[[], java.util.Spliterator[_stream_1__T]]], int: int, boolean: bool) -> 'Stream'[_stream_1__T]: ...
 
 class DoubleStream(BaseStream[float, 'DoubleStream']):
-    """
-    Java class 'java.util.stream.DoubleStream'
-    
-        Interfaces:
-            java.util.stream.BaseStream
-    
-    """
     def allMatch(self, doublePredicate: typing.Union[java.util.function.DoublePredicate, typing.Callable]) -> bool: ...
     def anyMatch(self, doublePredicate: typing.Union[java.util.function.DoublePredicate, typing.Callable]) -> bool: ...
     def average(self) -> java.util.OptionalDouble: ...
@@ -384,25 +340,11 @@ class DoubleStream(BaseStream[float, 'DoubleStream']):
     def takeWhile(self, doublePredicate: typing.Union[java.util.function.DoublePredicate, typing.Callable]) -> 'DoubleStream': ...
     def toArray(self) -> typing.List[float]: ...
     class Builder(java.util.function.DoubleConsumer):
-        """
-        Java class 'java.util.stream.DoubleStream$Builder'
-        
-            Interfaces:
-                java.util.function.DoubleConsumer
-        
-        """
         def accept(self, double: float) -> None: ...
         def add(self, double: float) -> 'DoubleStream.Builder': ...
         def build(self) -> 'DoubleStream': ...
 
 class IntStream(BaseStream[int, 'IntStream']):
-    """
-    Java class 'java.util.stream.IntStream'
-    
-        Interfaces:
-            java.util.stream.BaseStream
-    
-    """
     def allMatch(self, intPredicate: typing.Union[java.util.function.IntPredicate, typing.Callable]) -> bool: ...
     def anyMatch(self, intPredicate: typing.Union[java.util.function.IntPredicate, typing.Callable]) -> bool: ...
     def asDoubleStream(self) -> DoubleStream: ...
@@ -469,25 +411,11 @@ class IntStream(BaseStream[int, 'IntStream']):
     def takeWhile(self, intPredicate: typing.Union[java.util.function.IntPredicate, typing.Callable]) -> 'IntStream': ...
     def toArray(self) -> typing.List[int]: ...
     class Builder(java.util.function.IntConsumer):
-        """
-        Java class 'java.util.stream.IntStream$Builder'
-        
-            Interfaces:
-                java.util.function.IntConsumer
-        
-        """
         def accept(self, int: int) -> None: ...
         def add(self, int: int) -> 'IntStream.Builder': ...
         def build(self) -> 'IntStream': ...
 
 class LongStream(BaseStream[int, 'LongStream']):
-    """
-    Java class 'java.util.stream.LongStream'
-    
-        Interfaces:
-            java.util.stream.BaseStream
-    
-    """
     def allMatch(self, longPredicate: typing.Union[java.util.function.LongPredicate, typing.Callable]) -> bool: ...
     def anyMatch(self, longPredicate: typing.Union[java.util.function.LongPredicate, typing.Callable]) -> bool: ...
     def asDoubleStream(self) -> DoubleStream: ...
@@ -553,13 +481,6 @@ class LongStream(BaseStream[int, 'LongStream']):
     def takeWhile(self, longPredicate: typing.Union[java.util.function.LongPredicate, typing.Callable]) -> 'LongStream': ...
     def toArray(self) -> typing.List[int]: ...
     class Builder(java.util.function.LongConsumer):
-        """
-        Java class 'java.util.stream.LongStream$Builder'
-        
-            Interfaces:
-                java.util.function.LongConsumer
-        
-        """
         def accept(self, long: int) -> None: ...
         def add(self, long: int) -> 'LongStream.Builder': ...
         def build(self) -> 'LongStream': ...
@@ -567,13 +488,6 @@ class LongStream(BaseStream[int, 'LongStream']):
 _Stream__Builder__T = typing.TypeVar('_Stream__Builder__T')  # <T>
 _Stream__T = typing.TypeVar('_Stream__T')  # <T>
 class Stream(BaseStream[_Stream__T, 'Stream'[_Stream__T]], typing.Generic[_Stream__T]):
-    """
-    Java class 'java.util.stream.Stream'
-    
-        Interfaces:
-            java.util.stream.BaseStream
-    
-    """
     def allMatch(self, predicate: typing.Union[java.util.function.Predicate[_Stream__T], typing.Callable[[_Stream__T], bool]]) -> bool: ...
     def anyMatch(self, predicate: typing.Union[java.util.function.Predicate[_Stream__T], typing.Callable[[_Stream__T], bool]]) -> bool: ...
     _builder__T = typing.TypeVar('_builder__T')  # <T>
@@ -656,13 +570,6 @@ class Stream(BaseStream[_Stream__T, 'Stream'[_Stream__T]], typing.Generic[_Strea
     @typing.overload
     def toArray(self, intFunction: typing.Union[java.util.function.IntFunction[typing.List[_toArray_1__A]], typing.Callable[[int], typing.List[_toArray_1__A]]]) -> typing.List[_toArray_1__A]: ...
     class Builder(java.util.function.Consumer[_Stream__Builder__T], typing.Generic[_Stream__Builder__T]):
-        """
-        Java class 'java.util.stream.Stream$Builder'
-        
-            Interfaces:
-                java.util.function.Consumer
-        
-        """
         def accept(self, t: _Stream__Builder__T) -> None: ...
         def add(self, t: _Stream__Builder__T) -> 'Stream.Builder'[_Stream__Builder__T]: ...
         def build(self) -> 'Stream'[_Stream__Builder__T]: ...

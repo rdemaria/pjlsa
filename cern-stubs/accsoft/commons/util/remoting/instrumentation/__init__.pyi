@@ -8,60 +8,146 @@ import typing
 
 class InstrumentationRemoteInvocationExecutor(cern.accsoft.commons.util.userctx.ContextAwareRemoteInvocationExecutor):
     """
-    Java class 'cern.accsoft.commons.util.remoting.instrumentation.InstrumentationRemoteInvocationExecutor'
+    public class InstrumentationRemoteInvocationExecutor extends :class:`~cern.accsoft.commons.util.userctx.ContextAwareRemoteInvocationExecutor`
     
-        Extends:
-            cern.accsoft.commons.util.userctx.ContextAwareRemoteInvocationExecutor
-    
-      Constructors:
-        * InstrumentationRemoteInvocationExecutor(java.util.List)
-    
+        A :code:`RemoteInvocationExecutor` that provides the ability to register instrumentations to be invoked during the
+        processing of :code:`RemoteInvocation`.
     """
     def __init__(self, list: java.util.List['RemoteInvocationInstrumentation']): ...
 
 class RemoteInstrumentationUtils:
     """
-    Java class 'cern.accsoft.commons.util.remoting.instrumentation.RemoteInstrumentationUtils'
-    
-        Extends:
-            java.lang.Object
-    
+    public final class RemoteInstrumentationUtils extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     """
     @staticmethod
     def getClassForLogging(object: typing.Any) -> typing.Type[typing.Any]: ...
     @staticmethod
-    def getClientId(remoteInvocation: org.springframework.remoting.support.RemoteInvocation) -> str: ...
+    def getClientId(remoteInvocation: org.springframework.remoting.support.RemoteInvocation) -> str:
+        """
+            Gets the client id from this remote invocation if available otherwise returns an empty string.
+        
+            Parameters:
+                remoteInvocation (org.springframework.remoting.support.RemoteInvocation): the remote invocation from which to extract the client id
+        
+            Returns:
+                the client id or an empty string
+        
+        
+        """
+        ...
     @staticmethod
-    def getRbacUser() -> str: ...
+    def getRbacUser() -> str:
+        """
+        
+            Returns:
+                the RBAC username
+        
+        
+        """
+        ...
 
 class RemoteInvocationInstrumentation:
     """
-    Java class 'cern.accsoft.commons.util.remoting.instrumentation.RemoteInvocationInstrumentation'
+    public interface RemoteInvocationInstrumentation
     
+        A remote invocation instrumentation used to perform action before and after each invocation.
     """
-    def afterInvocationFailure(self, remoteInvocation: org.springframework.remoting.support.RemoteInvocation, object: typing.Any, exception: java.lang.Exception) -> None: ...
-    def afterInvocationSuccess(self, remoteInvocation: org.springframework.remoting.support.RemoteInvocation, object: typing.Any, object2: typing.Any) -> None: ...
-    def beforeInvocation(self, remoteInvocation: org.springframework.remoting.support.RemoteInvocation, object: typing.Any) -> None: ...
+    def afterInvocationFailure(self, remoteInvocation: org.springframework.remoting.support.RemoteInvocation, object: typing.Any, exception: java.lang.Exception) -> None:
+        """
+            Invoked when the invocation is finished with exception.
+        
+            Parameters:
+                invocation (org.springframework.remoting.support.RemoteInvocation): the invocation object
+                targetObject (`Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`): the target object of the invocation
+                exception (`Exception <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Exception.html?is-external=true>`): the reason the invocation failed
+        
+        
+        """
+        ...
+    def afterInvocationSuccess(self, remoteInvocation: org.springframework.remoting.support.RemoteInvocation, object: typing.Any, object2: typing.Any) -> None:
+        """
+            Invoked when the invocation is finished successfully.
+        
+            Parameters:
+                invocation (org.springframework.remoting.support.RemoteInvocation): the invocation object
+                targetObject (`Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`): the target object of the invocation
+                result (`Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`): the result of the invocation
+        
+        
+        """
+        ...
+    def beforeInvocation(self, remoteInvocation: org.springframework.remoting.support.RemoteInvocation, object: typing.Any) -> None:
+        """
+            Invoked before the actual invocation takes place.
+        
+            Parameters:
+                invocation (org.springframework.remoting.support.RemoteInvocation): the invocation object
+                targetObject (`Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`): the target object of the invocation
+        
+        
+        """
+        ...
 
 class Slf4jRmiLogger(RemoteInvocationInstrumentation):
     """
-    Java class 'cern.accsoft.commons.util.remoting.instrumentation.Slf4jRmiLogger'
+    public class Slf4jRmiLogger extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.accsoft.commons.util.remoting.instrumentation.RemoteInvocationInstrumentation`
     
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            cern.accsoft.commons.util.remoting.instrumentation.RemoteInvoc
-            ationInstrumentation
-    
-      Constructors:
-        * Slf4jRmiLogger(java.lang.String)
-    
+        Logs the service invocation together with its arguments, some process information and the rbac token
     """
     def __init__(self, string: str): ...
-    def afterInvocationFailure(self, remoteInvocation: org.springframework.remoting.support.RemoteInvocation, object: typing.Any, exception: java.lang.Exception) -> None: ...
-    def afterInvocationSuccess(self, remoteInvocation: org.springframework.remoting.support.RemoteInvocation, object: typing.Any, object2: typing.Any) -> None: ...
-    def beforeInvocation(self, remoteInvocation: org.springframework.remoting.support.RemoteInvocation, object: typing.Any) -> None: ...
+    def afterInvocationFailure(self, remoteInvocation: org.springframework.remoting.support.RemoteInvocation, object: typing.Any, exception: java.lang.Exception) -> None:
+        """
+            Description copied from
+            interface:Â :meth:`~cern.accsoft.commons.util.remoting.instrumentation.RemoteInvocationInstrumentation.afterInvocationFailure`
+            Invoked when the invocation is finished with exception.
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.util.remoting.instrumentation.RemoteInvocationInstrumentation.afterInvocationFailure`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.util.remoting.instrumentation.RemoteInvocationInstrumentation`
+        
+            Parameters:
+                invocation (org.springframework.remoting.support.RemoteInvocation): the invocation object
+                targetObject (`Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`): the target object of the invocation
+                exception (`Exception <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Exception.html?is-external=true>`): the reason the invocation failed
+        
+        
+        """
+        ...
+    def afterInvocationSuccess(self, remoteInvocation: org.springframework.remoting.support.RemoteInvocation, object: typing.Any, object2: typing.Any) -> None:
+        """
+            Description copied from
+            interface:Â :meth:`~cern.accsoft.commons.util.remoting.instrumentation.RemoteInvocationInstrumentation.afterInvocationSuccess`
+            Invoked when the invocation is finished successfully.
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.util.remoting.instrumentation.RemoteInvocationInstrumentation.afterInvocationSuccess`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.util.remoting.instrumentation.RemoteInvocationInstrumentation`
+        
+            Parameters:
+                invocation (org.springframework.remoting.support.RemoteInvocation): the invocation object
+                targetObject (`Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`): the target object of the invocation
+                result (`Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`): the result of the invocation
+        
+        
+        """
+        ...
+    def beforeInvocation(self, remoteInvocation: org.springframework.remoting.support.RemoteInvocation, object: typing.Any) -> None:
+        """
+            Description copied from
+            interface:Â :meth:`~cern.accsoft.commons.util.remoting.instrumentation.RemoteInvocationInstrumentation.beforeInvocation`
+            Invoked before the actual invocation takes place.
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.util.remoting.instrumentation.RemoteInvocationInstrumentation.beforeInvocation`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.util.remoting.instrumentation.RemoteInvocationInstrumentation`
+        
+            Parameters:
+                invocation (org.springframework.remoting.support.RemoteInvocation): the invocation object
+                targetObject (`Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`): the target object of the invocation
+        
+        
+        """
+        ...
 
 
 class __module_protocol__(typing.Protocol):

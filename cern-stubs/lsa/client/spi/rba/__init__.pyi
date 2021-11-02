@@ -6,14 +6,9 @@ import typing
 
 class RbaUtils:
     """
-    Java class 'cern.lsa.client.spi.rba.RbaUtils'
+    public class RbaUtils extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * RbaUtils()
-    
+        Utility class containing common methods dealing with RBAC
     """
     def __init__(self): ...
     _fireActionWithRbaToken__T = typing.TypeVar('_fireActionWithRbaToken__T')  # <T>

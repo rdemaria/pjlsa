@@ -9,28 +9,29 @@ import typing
 
 class DefaultErrorDecoder(feign.codec.ErrorDecoder.Default):
     """
-    Java class 'cern.lsa.client.rest.api.v1.error.DefaultErrorDecoder'
-    
-        Extends:
-            feign.codec.ErrorDecoder$Default
-    
-      Constructors:
-        * DefaultErrorDecoder(com.fasterxml.jackson.databind.ObjectMapper)
-    
+    public class DefaultErrorDecoder extends feign.codec.ErrorDecoder.Default
     """
     def __init__(self, objectMapper: com.fasterxml.jackson.databind.ObjectMapper): ...
-    def decode(self, string: str, response: feign.Response) -> java.lang.Exception: ...
+    def decode(self, string: str, response: feign.Response) -> java.lang.Exception:
+        """
+        
+            Specified by:
+                :code:`decode` in interface :code:`feign.codec.ErrorDecoder`
+        
+            Overrides:
+                :code:`decode` in class :code:`feign.codec.ErrorDecoder.Default`
+        
+        
+        """
+        ...
 
 class RestResponseException(java.lang.RuntimeException):
     """
-    Java class 'cern.lsa.client.rest.api.v1.error.RestResponseException'
+    public class RestResponseException extends `RuntimeException <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/RuntimeException.html?is-external=true>`
     
-        Extends:
-            java.lang.RuntimeException
     
-      Constructors:
-        * RestResponseException(cern.lsa.client.rest.api.v1.dto.ErrorDto)
-    
+        Also see:
+            :meth:`~serialized`
     """
     def __init__(self, errorDto: cern.lsa.client.rest.api.v1.dto.ErrorDto): ...
     def getErrorDto(self) -> cern.lsa.client.rest.api.v1.dto.ErrorDto: ...

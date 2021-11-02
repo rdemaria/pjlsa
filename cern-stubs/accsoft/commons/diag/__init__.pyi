@@ -9,35 +9,48 @@ import typing
 
 class ApplicationThrowableMatcher(cern.accsoft.commons.diag.matcher.StringThrowableMatcher):
     """
-    Java class 'cern.accsoft.commons.diag.ApplicationThrowableMatcher'
-    
-        Extends:
-            cern.accsoft.commons.diag.matcher.StringThrowableMatcher
-    
-      Constructors:
-        * ApplicationThrowableMatcher()
-    
-      Attributes:
-        APPLICATION_PROBLEM_DOMAIN (java.lang.String): final static field
-        APPLICATION_MATCHER_NAME (java.lang.String): final static field
-    
+    public class ApplicationThrowableMatcher extends :class:`~cern.accsoft.commons.diag.matcher.StringThrowableMatcher`
     """
     APPLICATION_PROBLEM_DOMAIN: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` APPLICATION_PROBLEM_DOMAIN
+    
+        InCA problem domain
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     APPLICATION_MATCHER_NAME: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` APPLICATION_MATCHER_NAME
+    
+        InCA matcher name
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     def __init__(self): ...
-    def buildThrowableDescriptor(self, throwable: java.lang.Throwable, throwable2: java.lang.Throwable) -> 'ThrowableDescriptor': ...
+    def buildThrowableDescriptor(self, throwable: java.lang.Throwable, throwable2: java.lang.Throwable) -> 'ThrowableDescriptor':
+        """
+        
+            Overrides:
+                :meth:`~cern.accsoft.commons.diag.matcher.AbstractThrowableMatcher.buildThrowableDescriptor`Â in
+                classÂ :class:`~cern.accsoft.commons.diag.matcher.AbstractThrowableMatcher`
+        
+        
+        """
+        ...
 
 _HierarchyImpl__T = typing.TypeVar('_HierarchyImpl__T', bound=cern.accsoft.commons.util.Named)  # <T>
 class HierarchyImpl(typing.Generic[_HierarchyImpl__T]):
     """
-    Java class 'cern.accsoft.commons.diag.HierarchyImpl'
+    public abstract class HierarchyImpl<T extends cern.accsoft.commons.util.Named> extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * HierarchyImpl()
-    
+        General implementation of a container for objects respecting their order.
     """
     def __init__(self): ...
     def addChildToEnd(self, t: _HierarchyImpl__T) -> None: ...
@@ -45,34 +58,77 @@ class HierarchyImpl(typing.Generic[_HierarchyImpl__T]):
 
 class ThrowableConstants:
     """
-    Java class 'cern.accsoft.commons.diag.ThrowableConstants'
-    
-      Attributes:
-        INDENTATION (java.lang.String): final static field
-        BR (java.lang.String): final static field
-        END (java.lang.String): final static field
-        START_NAME (java.lang.String): final static field
-        START_CHILDREN (java.lang.String): final static field
-        RESOLVER (java.lang.String): final static field
-    
+    public interface ThrowableConstants
     """
     INDENTATION: typing.ClassVar[str] = ...
+    """
+    static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` INDENTATION
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     BR: typing.ClassVar[str] = ...
+    """
+    static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` BR
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     END: typing.ClassVar[str] = ...
+    """
+    static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` END
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     START_NAME: typing.ClassVar[str] = ...
+    """
+    static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` START_NAME
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     START_CHILDREN: typing.ClassVar[str] = ...
+    """
+    static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` START_CHILDREN
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     RESOLVER: typing.ClassVar[str] = ...
+    """
+    static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` RESOLVER
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
 
 class ThrowableDescriptor(java.io.Serializable):
     """
-    Java class 'cern.accsoft.commons.diag.ThrowableDescriptor'
+    public class ThrowableDescriptor extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements `Serializable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/io/Serializable.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
+        Descriptor for a `null <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`.
     
-        Interfaces:
-            java.io.Serializable
-    
+        Also see:
+            :meth:`~serialized`
     """
     def getContactUrl(self) -> str: ...
     def getFullThrowableStackTrace(self) -> str: ...
@@ -82,19 +138,16 @@ class ThrowableDescriptor(java.io.Serializable):
     def getMatcherName(self) -> str: ...
     def getMessage(self) -> str: ...
     def getProblemDomain(self) -> str: ...
-    def toString(self) -> str: ...
+    def toString(self) -> str:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
     class ThrowableDescriptorBuilder:
-        """
-        Java class 'cern.accsoft.commons.diag.ThrowableDescriptor$ThrowableDescriptorBuilder'
-        
-            Extends:
-                java.lang.Object
-        
-          Constructors:
-            * ThrowableDescriptorBuilder()
-            * ThrowableDescriptorBuilder(cern.accsoft.commons.diag.ThrowableDescriptor)
-        
-        """
         @typing.overload
         def __init__(self): ...
         @typing.overload
@@ -111,54 +164,105 @@ class ThrowableDescriptor(java.io.Serializable):
 
 class ThrowableMessageComposer:
     """
-    Java class 'cern.accsoft.commons.diag.ThrowableMessageComposer'
+    public interface ThrowableMessageComposer
     
+        Composes a message describing a `null
+        <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`.
     """
-    def composeMessage(self, throwable: java.lang.Throwable) -> str: ...
+    def composeMessage(self, throwable: java.lang.Throwable) -> str:
+        """
+        
+            Parameters:
+                throwable (`Throwable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`): 
+            Returns:
+                message describing a `null
+                <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`
+        
+        
+        """
+        ...
 
 class ThrowableResolver:
     """
-    Java class 'cern.accsoft.commons.diag.ThrowableResolver'
+    public interface ThrowableResolver
     
+        Resolver for throwables.
     """
-    def resolve(self, throwable: java.lang.Throwable) -> ThrowableDescriptor: ...
+    def resolve(self, throwable: java.lang.Throwable) -> ThrowableDescriptor:
+        """
+        
+            Parameters:
+                throwable (`Throwable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`): 
+            Returns:
+                the `null <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`'s description
+        
+        
+        """
+        ...
 
 class DefaultThrowableMessageComposer(ThrowableMessageComposer):
     """
-    Java class 'cern.accsoft.commons.diag.DefaultThrowableMessageComposer'
+    public class DefaultThrowableMessageComposer extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.accsoft.commons.diag.ThrowableMessageComposer`
     
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            cern.accsoft.commons.diag.ThrowableMessageComposer
-    
-      Constructors:
-        * DefaultThrowableMessageComposer()
-    
+        Basic implementation of :class:`~cern.accsoft.commons.diag.ThrowableMessageComposer`.
     """
     def __init__(self): ...
-    def composeMessage(self, throwable: java.lang.Throwable) -> str: ...
+    def composeMessage(self, throwable: java.lang.Throwable) -> str:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.diag.ThrowableMessageComposer.composeMessage`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.diag.ThrowableMessageComposer`
+        
+            Returns:
+                message describing a `null
+                <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`
+        
+        
+        """
+        ...
 
 class EmptyThrowableResolver(cern.accsoft.commons.diag.matcher.ThrowableMatcherHierarchyImpl, ThrowableResolver):
     """
-    Java class 'cern.accsoft.commons.diag.EmptyThrowableResolver'
+    public abstract class EmptyThrowableResolver extends :class:`~cern.accsoft.commons.diag.matcher.ThrowableMatcherHierarchyImpl` implements :class:`~cern.accsoft.commons.diag.ThrowableResolver`
     
-        Extends:
-            cern.accsoft.commons.diag.matcher.ThrowableMatcherHierarchyImpl
+        :class:`~cern.accsoft.commons.diag.ThrowableResolver` which does not contain any matcher by default.
     
-        Interfaces:
-            cern.accsoft.commons.diag.ThrowableResolver
-    
-      Constructors:
-        * EmptyThrowableResolver()
-    
+        Matchers can be added manually via :code:`#addChildToTop(ThrowableMatcher)` and
+        :code:`#addChildToEnd(ThrowableMatcher)`.
     """
     def __init__(self): ...
-    def resolve(self, throwable: java.lang.Throwable) -> ThrowableDescriptor: ...
-    def toString(self) -> str: ...
+    def resolve(self, throwable: java.lang.Throwable) -> ThrowableDescriptor:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.diag.ThrowableResolver.resolve`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.diag.ThrowableResolver`
+        
+            Returns:
+                the `null <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`'s description
+        
+        
+        """
+        ...
+    def toString(self) -> str:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
 
-class DefaultThrowableResolver(EmptyThrowableResolver): ...
+class DefaultThrowableResolver(EmptyThrowableResolver):
+    """
+    public abstract class DefaultThrowableResolver extends :class:`~cern.accsoft.commons.diag.EmptyThrowableResolver`
+    
+        :class:`~cern.accsoft.commons.diag.ThrowableResolver` with some default matchers recognizing problems related to RBAC,
+        CMW, TGM, CCDB and JAPC.
+    """
+    ...
 
 
 class __module_protocol__(typing.Protocol):

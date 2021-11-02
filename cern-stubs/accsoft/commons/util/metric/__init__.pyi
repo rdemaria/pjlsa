@@ -5,16 +5,6 @@ import typing
 
 _RequestCounter__T = typing.TypeVar('_RequestCounter__T')  # <T>
 class RequestCounter(typing.Generic[_RequestCounter__T]):
-    """
-    Java class 'cern.accsoft.commons.util.metric.RequestCounter'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * RequestCounter()
-    
-    """
     def __init__(self): ...
     @typing.overload
     def getNumberOfRequests(self) -> java.util.Map[_RequestCounter__T, int]: ...

@@ -8,114 +8,207 @@ import typing
 
 class AbstractRequest(java.lang.Cloneable):
     """
-    Java class 'cern.rbac.common.impl.request.AbstractRequest'
+    public abstract class AbstractRequest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements `Cloneable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Cloneable.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.lang.Cloneable
-    
-      Constructors:
-        * AbstractRequest()
-    
+        This class represents abstract collection of the parameters for HTTP RBAC server.
     """
     def __init__(self): ...
-    def clone(self) -> typing.Any: ...
+    def clone(self) -> typing.Any:
+        """
+            Return clone of the object
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
     def getParameters(self) -> java.util.Map['RequestParameterType', typing.Any]: ...
-    def getRequestType(self) -> 'RequestType': ...
-    def getVersion(self) -> str: ...
-    def isVerbose(self) -> bool: ...
-    def toString(self) -> str: ...
+    def getRequestType(self) -> 'RequestType':
+        """
+            Returns the request type.
+        
+        """
+        ...
+    def getVersion(self) -> str:
+        """
+            Returns version string
+        
+            Returns:
+                Version string
+        
+        
+        """
+        ...
+    def isVerbose(self) -> bool:
+        """
+            Returns verbose flag
+        
+        """
+        ...
+    def toString(self) -> str:
+        """
+            Converts parameters into String. If the password is present, it's value replaced with stars.
+        
+            Overrides:
+                 in class 
+        
+            Returns:
+                String representation of the abstract parameters
+        
+        
+        """
+        ...
 
 class AccessMapCommand(java.lang.Enum['AccessMapCommand']):
     """
-    Java class 'cern.rbac.common.impl.request.AccessMapCommand'
+    public enum AccessMapCommand extends `Enum <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Enum.html?is-external=true>`<:class:`~cern.rbac.common.impl.request.AccessMapCommand`>
     
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        MAPS_FOR_SERVER (cern.rbac.common.impl.request.AccessMapCommand): final static enum constant
-        MAPS_FOR_CLASS (cern.rbac.common.impl.request.AccessMapCommand): final static enum constant
-        MAPS_FOR_CLASS_TEST (cern.rbac.common.impl.request.AccessMapCommand): final static enum constant
-        MAPS_FOR_FRONT_END (cern.rbac.common.impl.request.AccessMapCommand): final static enum constant
-    
+        This enumeration represents a set of commands acceptable for the access map generation.
     """
     MAPS_FOR_SERVER: typing.ClassVar['AccessMapCommand'] = ...
     MAPS_FOR_CLASS: typing.ClassVar['AccessMapCommand'] = ...
     MAPS_FOR_CLASS_TEST: typing.ClassVar['AccessMapCommand'] = ...
     MAPS_FOR_FRONT_END: typing.ClassVar['AccessMapCommand'] = ...
     @staticmethod
-    def fromString(string: str) -> 'AccessMapCommand': ...
-    def getBunchSize(self) -> int: ...
-    def getName(self) -> str: ...
-    def getScriptName(self) -> str: ...
-    def toString(self) -> str: ...
+    def fromString(string: str) -> 'AccessMapCommand':
+        """
+            Returns enumeration value by it's name.
+        
+            Parameters:
+                name (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): Name of the command
+        
+            Returns:
+                enumeration value by it's name.
+        
+            Raises:
+                : if there is no entry with such name.
+        
+        
+        """
+        ...
+    def getBunchSize(self) -> int:
+        """
+            Returns bunch size for command.
+        
+            Returns:
+                bunch size for command.
+        
+        
+        """
+        ...
+    def getName(self) -> str:
+        """
+            Returns command name.
+        
+            Returns:
+                Command name.
+        
+        
+        """
+        ...
+    def getScriptName(self) -> str:
+        """
+            Returns script name.
+        
+            Returns:
+                Script name.
+        
+        
+        """
+        ...
+    def toString(self) -> str:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
     _valueOf_1__T = typing.TypeVar('_valueOf_1__T', bound=java.lang.Enum)  # <T>
     @typing.overload
     @staticmethod
-    def valueOf(string: str) -> 'AccessMapCommand': ...
+    def valueOf(string: str) -> 'AccessMapCommand':
+        """
+            Returns the enum constant of this type with the specified name. The string must match *exactly* an identifier used to
+            declare an enum constant in this type. (Extraneous whitespace characters are not permitted.)
+        
+            Parameters:
+                name (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): the name of the enum constant to be returned.
+        
+            Returns:
+                the enum constant with the specified name
+        
+            Raises:
+                : if this enum type has no constant with the specified name
+                : if the argument is null
+        
+        
+        """
+        ...
     @typing.overload
     @staticmethod
     def valueOf(class_: typing.Type[_valueOf_1__T], string: str) -> _valueOf_1__T: ...
     @staticmethod
-    def values() -> typing.List['AccessMapCommand']: ...
+    def values() -> typing.List['AccessMapCommand']:
+        """
+            Returns an array containing the constants of this enum type, in the order they are declared. This method may be used to
+            iterate over the constants as follows:
+        
+            .. code-block: java
+            
+            for (AccessMapCommand c : AccessMapCommand.values())
+                System.out.println(c);
+            
+        
+            Returns:
+                an array containing the constants of this enum type, in the order they are declared
+        
+        
+        """
+        ...
 
 _RequestBuilder__Request = typing.TypeVar('_RequestBuilder__Request', bound=AbstractRequest)  # <Request>
 class RequestBuilder(typing.Generic[_RequestBuilder__Request]):
     """
-    Java class 'cern.rbac.common.impl.request.RequestBuilder'
+    public abstract class RequestBuilder<Request extends :class:`~cern.rbac.common.impl.request.AbstractRequest`> extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * RequestBuilder(cern.rbac.common.impl.request.AbstractRequest)
-    
+        Abstract builder base class for subclasses of the :class:`~cern.rbac.common.impl.request.AbstractRequest`.
     """
     def __init__(self, request: _RequestBuilder__Request): ...
     def addParameters(self, map: typing.Union[java.util.Map['RequestParameterType', typing.Any], typing.Mapping['RequestParameterType', typing.Any]]) -> None: ...
-    def buildRequest(self) -> _RequestBuilder__Request: ...
-    def setRequestType(self, requestType: 'RequestType') -> None: ...
+    def buildRequest(self) -> _RequestBuilder__Request:
+        """
+            Builds the target request
+        
+            Returns:
+                Target request
+        
+            Raises:
+                : if some arguments are missing or not correct
+        
+        
+        """
+        ...
+    def setRequestType(self, requestType: 'RequestType') -> None:
+        """
+            Sets the request type
+        
+            Parameters:
+                requestType (:class:`~cern.rbac.common.impl.request.RequestType`): the type of the request to set
+        
+        
+        """
+        ...
     def setVerbose(self, boolean: bool) -> 'RequestBuilder'[_RequestBuilder__Request]: ...
     def setVersion(self, string: str) -> 'RequestBuilder'[_RequestBuilder__Request]: ...
 
 class RequestParameterType(java.lang.Enum['RequestParameterType']):
     """
-    Java class 'cern.rbac.common.impl.request.RequestParameterType'
+    public enum RequestParameterType extends `Enum <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Enum.html?is-external=true>`<:class:`~cern.rbac.common.impl.request.RequestParameterType`>
     
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        SERVER_ADDR_SUFFIX (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        APPLICATION (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        APPLICATION_ID (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        TOKEN_FORMAT (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        TOKEN_TYPE (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        LIFETIME (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        ACCOUNT_NAME (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        USER_NAME (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        PASSWORD (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        ORIGIN (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        ROLE (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        TOKEN (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        SIGN_BUFFER (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        VERBOSE (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        BUILD (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        PARAMETER (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        CLASS (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        DEVICE (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        PROPERTY (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        OPERATION (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        MCS_ROLE (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        VERSION (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        SAML_RESPONSE (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        OAUTH_ACCESS_TOKEN (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        KRB5_TICKET (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-        CHECKING_POLICY (cern.rbac.common.impl.request.RequestParameterType): final static enum constant
-    
+        This enumeration defines all the possible request parameters to the remote RBAC server.
     """
     SERVER_ADDR_SUFFIX: typing.ClassVar['RequestParameterType'] = ...
     APPLICATION: typing.ClassVar['RequestParameterType'] = ...
@@ -144,56 +237,66 @@ class RequestParameterType(java.lang.Enum['RequestParameterType']):
     KRB5_TICKET: typing.ClassVar['RequestParameterType'] = ...
     CHECKING_POLICY: typing.ClassVar['RequestParameterType'] = ...
     @staticmethod
-    def fromString(string: str) -> 'RequestParameterType': ...
+    def fromString(string: str) -> 'RequestParameterType':
+        """
+            Converts String value into enumeration entry.
+        
+            Parameters:
+                name (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): Name of the entry
+        
+            Returns:
+                Enumeration entry
+        
+            Raises:
+                : if unable to find an entry with given name
+        
+        
+        """
+        ...
     def getName(self) -> str: ...
     _valueOf_1__T = typing.TypeVar('_valueOf_1__T', bound=java.lang.Enum)  # <T>
     @typing.overload
     @staticmethod
-    def valueOf(string: str) -> 'RequestParameterType': ...
+    def valueOf(string: str) -> 'RequestParameterType':
+        """
+            Returns the enum constant of this type with the specified name. The string must match *exactly* an identifier used to
+            declare an enum constant in this type. (Extraneous whitespace characters are not permitted.)
+        
+            Parameters:
+                name (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): the name of the enum constant to be returned.
+        
+            Returns:
+                the enum constant with the specified name
+        
+            Raises:
+                : if this enum type has no constant with the specified name
+                : if the argument is null
+        
+        
+        """
+        ...
     @typing.overload
     @staticmethod
     def valueOf(class_: typing.Type[_valueOf_1__T], string: str) -> _valueOf_1__T: ...
     @staticmethod
-    def values() -> typing.List['RequestParameterType']: ...
+    def values() -> typing.List['RequestParameterType']:
+        """
+            Returns an array containing the constants of this enum type, in the order they are declared. This method may be used to
+            iterate over the constants as follows:
+        
+            .. code-block: java
+            
+            for (RequestParameterType c : RequestParameterType.values())
+                System.out.println(c);
+            
+        
+            Returns:
+                an array containing the constants of this enum type, in the order they are declared
+        
+        
+        """
+        ...
     class ParameterTypeConstants:
-        """
-        Java class 'cern.rbac.common.impl.request.RequestParameterType$ParameterTypeConstants'
-        
-            Extends:
-                java.lang.Object
-        
-          Constructors:
-            * ParameterTypeConstants(cern.rbac.common.impl.request.RequestParameterType)
-        
-          Attributes:
-            SERVER_ADDR_SUFFIX_CONSTANT (java.lang.String): final static field
-            APPLICATION_CONSTANT (java.lang.String): final static field
-            APPLICATION_ID_CONSTANT (java.lang.String): final static field
-            TOKEN_FORMAT_CONSTANT (java.lang.String): final static field
-            TOKEN_TYPE_CONSTANT (java.lang.String): final static field
-            LIFETIME_CONSTANT (java.lang.String): final static field
-            ACCOUNT_NAME_CONSTANT (java.lang.String): final static field
-            USER_NAME_CONSTANT (java.lang.String): final static field
-            PASSWORD_CONSTANT (java.lang.String): final static field
-            ORIGIN_CONSTANT (java.lang.String): final static field
-            ROLE_CONSTANT (java.lang.String): final static field
-            TOKEN_CONSTANT (java.lang.String): final static field
-            SIGN_BUFFER_CONSTANT (java.lang.String): final static field
-            VERBOSE_CONSTANT (java.lang.String): final static field
-            BUILD_CONSTANT (java.lang.String): final static field
-            PARAMETER_CONSTANT (java.lang.String): final static field
-            CLASS_CONSTANT (java.lang.String): final static field
-            DEVICE_CONSTANT (java.lang.String): final static field
-            PROPERTY_CONSTANT (java.lang.String): final static field
-            OPERATION_CONSTANT (java.lang.String): final static field
-            MCS_ROLE_CONSTANT (java.lang.String): final static field
-            VERSION_CONSTANT (java.lang.String): final static field
-            SAML_RESPONSE_CONSTANT (java.lang.String): final static field
-            OAUTH_ACCESS_TOKEN_CONSTANT (java.lang.String): final static field
-            KRB5_TICKET_CONSTANT (java.lang.String): final static field
-            CHECKING_POLICY_CONSTANT (java.lang.String): final static field
-        
-        """
         SERVER_ADDR_SUFFIX_CONSTANT: typing.ClassVar[str] = ...
         APPLICATION_CONSTANT: typing.ClassVar[str] = ...
         APPLICATION_ID_CONSTANT: typing.ClassVar[str] = ...
@@ -224,24 +327,7 @@ class RequestParameterType(java.lang.Enum['RequestParameterType']):
 
 class RequestType(java.lang.Enum['RequestType']):
     """
-    Java class 'cern.rbac.common.impl.request.RequestType'
-    
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        AUTHENTICATE_EXPLICIT (cern.rbac.common.impl.request.RequestType): final static enum constant
-        AUTHENTICATE_LOCATION (cern.rbac.common.impl.request.RequestType): final static enum constant
-        AUTHENTICATE_KERBEROS (cern.rbac.common.impl.request.RequestType): final static enum constant
-        AUTHENTICATE_SAML (cern.rbac.common.impl.request.RequestType): final static enum constant
-        AUTHENTICATE_OAUTH (cern.rbac.common.impl.request.RequestType): final static enum constant
-        AUTHENTICATE_RENEWAL (cern.rbac.common.impl.request.RequestType): final static enum constant
-        CHECK_ACCESS (cern.rbac.common.impl.request.RequestType): final static enum constant
-        GENERATE_MAP (cern.rbac.common.impl.request.RequestType): final static enum constant
-        MCS_ROLE (cern.rbac.common.impl.request.RequestType): final static enum constant
-        MCS_PUBLIC_KEY (cern.rbac.common.impl.request.RequestType): final static enum constant
-        MCS_SIGN (cern.rbac.common.impl.request.RequestType): final static enum constant
-    
+    public enum RequestType extends `Enum <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Enum.html?is-external=true>`<:class:`~cern.rbac.common.impl.request.RequestType`>
     """
     AUTHENTICATE_EXPLICIT: typing.ClassVar['RequestType'] = ...
     AUTHENTICATE_LOCATION: typing.ClassVar['RequestType'] = ...
@@ -260,33 +346,46 @@ class RequestType(java.lang.Enum['RequestType']):
     _valueOf_1__T = typing.TypeVar('_valueOf_1__T', bound=java.lang.Enum)  # <T>
     @typing.overload
     @staticmethod
-    def valueOf(string: str) -> 'RequestType': ...
+    def valueOf(string: str) -> 'RequestType':
+        """
+            Returns the enum constant of this type with the specified name. The string must match *exactly* an identifier used to
+            declare an enum constant in this type. (Extraneous whitespace characters are not permitted.)
+        
+            Parameters:
+                name (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): the name of the enum constant to be returned.
+        
+            Returns:
+                the enum constant with the specified name
+        
+            Raises:
+                : if this enum type has no constant with the specified name
+                : if the argument is null
+        
+        
+        """
+        ...
     @typing.overload
     @staticmethod
     def valueOf(class_: typing.Type[_valueOf_1__T], string: str) -> _valueOf_1__T: ...
     @staticmethod
-    def values() -> typing.List['RequestType']: ...
+    def values() -> typing.List['RequestType']:
+        """
+            Returns an array containing the constants of this enum type, in the order they are declared. This method may be used to
+            iterate over the constants as follows:
+        
+            .. code-block: java
+            
+            for (RequestType c : RequestType.values())
+                System.out.println(c);
+            
+        
+            Returns:
+                an array containing the constants of this enum type, in the order they are declared
+        
+        
+        """
+        ...
     class UriConstants:
-        """
-        Java class 'cern.rbac.common.impl.request.RequestType$UriConstants'
-        
-            Extends:
-                java.lang.Object
-        
-          Attributes:
-            AUTHENTICATE_EXPLICIT_URI (java.lang.String): final static field
-            AUTHENTICATE_LOCATION_URI (java.lang.String): final static field
-            AUTHENTICATE_KERBEROS_URI (java.lang.String): final static field
-            AUTHENTICATE_SAML_URI (java.lang.String): final static field
-            AUTHENTICATE_OAUTH_URI (java.lang.String): final static field
-            AUTHENTICATE_RENEWAL_URI (java.lang.String): final static field
-            CHECK_ACCESS_URI (java.lang.String): final static field
-            GENERATE_MAP_URI (java.lang.String): final static field
-            MCS_ROLE_URI (java.lang.String): final static field
-            MCS_PUBLIC_KEY_URI (java.lang.String): final static field
-            MCS_SIGN_URI (java.lang.String): final static field
-        
-        """
         AUTHENTICATE_EXPLICIT_URI: typing.ClassVar[str] = ...
         AUTHENTICATE_LOCATION_URI: typing.ClassVar[str] = ...
         AUTHENTICATE_KERBEROS_URI: typing.ClassVar[str] = ...
@@ -301,141 +400,521 @@ class RequestType(java.lang.Enum['RequestType']):
 
 class ServerErrorCode(java.lang.Enum['ServerErrorCode']):
     """
-    Java class 'cern.rbac.common.impl.request.ServerErrorCode'
+    public enum ServerErrorCode extends `Enum <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Enum.html?is-external=true>`<:class:`~cern.rbac.common.impl.request.ServerErrorCode`>
     
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        BAD_REQUEST (cern.rbac.common.impl.request.ServerErrorCode): final static enum constant
-        AUTHENTICATION_FAILED (cern.rbac.common.impl.request.ServerErrorCode): final static enum constant
-        PROCESSING_ERROR (cern.rbac.common.impl.request.ServerErrorCode): final static enum constant
-    
+        This enumeration keeps all HTTP error codes for all Rba servers
     """
     BAD_REQUEST: typing.ClassVar['ServerErrorCode'] = ...
     AUTHENTICATION_FAILED: typing.ClassVar['ServerErrorCode'] = ...
     PROCESSING_ERROR: typing.ClassVar['ServerErrorCode'] = ...
     @staticmethod
-    def fromInt(int: int) -> 'ServerErrorCode': ...
-    def getCode(self) -> int: ...
+    def fromInt(int: int) -> 'ServerErrorCode':
+        """
+            Converts error code into enumeration entry.
+        
+            Parameters:
+                code (int): Error code as integer
+        
+            Returns:
+                Enumeration entry
+        
+            Raises:
+                : if unable to find an entry with given code
+        
+        
+        """
+        ...
+    def getCode(self) -> int:
+        """
+            Retrieves HTTP error code as integer
+        
+        """
+        ...
     _valueOf_1__T = typing.TypeVar('_valueOf_1__T', bound=java.lang.Enum)  # <T>
     @typing.overload
     @staticmethod
-    def valueOf(string: str) -> 'ServerErrorCode': ...
+    def valueOf(string: str) -> 'ServerErrorCode':
+        """
+            Returns the enum constant of this type with the specified name. The string must match *exactly* an identifier used to
+            declare an enum constant in this type. (Extraneous whitespace characters are not permitted.)
+        
+            Parameters:
+                name (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): the name of the enum constant to be returned.
+        
+            Returns:
+                the enum constant with the specified name
+        
+            Raises:
+                : if this enum type has no constant with the specified name
+                : if the argument is null
+        
+        
+        """
+        ...
     @typing.overload
     @staticmethod
     def valueOf(class_: typing.Type[_valueOf_1__T], string: str) -> _valueOf_1__T: ...
     @staticmethod
-    def values() -> typing.List['ServerErrorCode']: ...
+    def values() -> typing.List['ServerErrorCode']:
+        """
+            Returns an array containing the constants of this enum type, in the order they are declared. This method may be used to
+            iterate over the constants as follows:
+        
+            .. code-block: java
+            
+            for (ServerErrorCode c : ServerErrorCode.values())
+                System.out.println(c);
+            
+        
+            Returns:
+                an array containing the constants of this enum type, in the order they are declared
+        
+        
+        """
+        ...
 
 class AccessCheckerRequest(AbstractRequest):
     """
-    Java class 'cern.rbac.common.impl.request.AccessCheckerRequest'
+    public abstract class AccessCheckerRequest extends :class:`~cern.rbac.common.impl.request.AbstractRequest`
     
-        Extends:
-            cern.rbac.common.impl.request.AbstractRequest
-    
-      Constructors:
-        * AccessCheckerRequest()
-    
+        Represents access checker request parameters
     """
     def __init__(self): ...
-    def getCheckingPolicy(self) -> cern.rbac.common.authorization.CheckingPolicy: ...
-    def getDevice(self) -> str: ...
-    def getDeviceClass(self) -> str: ...
-    def getOperation(self) -> cern.rbac.common.authorization.Operation: ...
-    def getProperty(self) -> str: ...
-    def getToken(self) -> cern.rbac.common.RbaToken: ...
+    def getCheckingPolicy(self) -> cern.rbac.common.authorization.CheckingPolicy:
+        """
+            Returns the checking policy
+        
+            Returns:
+                the checking policy
+        
+        
+        """
+        ...
+    def getDevice(self) -> str:
+        """
+            Returns the device name
+        
+            Returns:
+                the device name
+        
+        
+        """
+        ...
+    def getDeviceClass(self) -> str:
+        """
+            Returns the device class
+        
+            Returns:
+                the device class
+        
+        
+        """
+        ...
+    def getOperation(self) -> cern.rbac.common.authorization.Operation:
+        """
+            Returns the operation
+        
+            Returns:
+                the operation
+        
+        
+        """
+        ...
+    def getProperty(self) -> str:
+        """
+            Returns the property
+        
+            Returns:
+                the property
+        
+        
+        """
+        ...
+    def getToken(self) -> cern.rbac.common.RbaToken:
+        """
+            Returns the token
+        
+            Returns:
+                the token
+        
+        
+        """
+        ...
 
 class AccessCheckerRequestBuilder(RequestBuilder[AccessCheckerRequest]):
     """
-    Java class 'cern.rbac.common.impl.request.AccessCheckerRequestBuilder'
+    public class AccessCheckerRequestBuilder extends :class:`~cern.rbac.common.impl.request.RequestBuilder`<:class:`~cern.rbac.common.impl.request.AccessCheckerRequest`>
     
-        Extends:
-            cern.rbac.common.impl.request.RequestBuilder
-    
+        Builder for the :class:`~cern.rbac.common.impl.request.AccessCheckerRequest` instances.
     """
-    def buildRequest(self) -> AccessCheckerRequest: ...
+    def buildRequest(self) -> AccessCheckerRequest:
+        """
+            Description copied from class: :meth:`~cern.rbac.common.impl.request.RequestBuilder.buildRequest`
+            Builds the target request
+        
+            Overrides:
+                :meth:`~cern.rbac.common.impl.request.RequestBuilder.buildRequest`Â in
+                classÂ :class:`~cern.rbac.common.impl.request.RequestBuilder`
+        
+            Returns:
+                Target request
+        
+        
+        """
+        ...
     @staticmethod
-    def newInstance() -> 'AccessCheckerRequestBuilder': ...
-    def setCheckingPolicy(self, checkingPolicy: cern.rbac.common.authorization.CheckingPolicy) -> 'AccessCheckerRequestBuilder': ...
-    def setDevice(self, string: str) -> 'AccessCheckerRequestBuilder': ...
-    def setDeviceClass(self, string: str) -> 'AccessCheckerRequestBuilder': ...
-    def setOperation(self, operation: cern.rbac.common.authorization.Operation) -> 'AccessCheckerRequestBuilder': ...
-    def setProperty(self, string: str) -> 'AccessCheckerRequestBuilder': ...
-    def setToken(self, rbaToken: cern.rbac.common.RbaToken) -> 'AccessCheckerRequestBuilder': ...
+    def newInstance() -> 'AccessCheckerRequestBuilder':
+        """
+            Creates a new instance of the builder.
+        
+            Returns:
+                new instance of the builder
+        
+        
+        """
+        ...
+    def setCheckingPolicy(self, checkingPolicy: cern.rbac.common.authorization.CheckingPolicy) -> 'AccessCheckerRequestBuilder':
+        """
+            Sets the checking policy
+        
+            Parameters:
+                checkingPolicy (:class:`~cern.rbac.common.authorization.CheckingPolicy`): Checking policy to set
+        
+            Returns:
+                Reference to itself
+        
+        
+        """
+        ...
+    def setDevice(self, string: str) -> 'AccessCheckerRequestBuilder':
+        """
+            Sets the device
+        
+            Parameters:
+                device (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): Device to set
+        
+            Returns:
+                Reference to itself
+        
+        
+        """
+        ...
+    def setDeviceClass(self, string: str) -> 'AccessCheckerRequestBuilder':
+        """
+            Sets the device class
+        
+            Parameters:
+                deviceClass (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): Device class to set
+        
+            Returns:
+                Reference to itself
+        
+        
+        """
+        ...
+    def setOperation(self, operation: cern.rbac.common.authorization.Operation) -> 'AccessCheckerRequestBuilder':
+        """
+            Sets the operation
+        
+            Parameters:
+                operation (:class:`~cern.rbac.common.authorization.Operation`): Operation to set
+        
+            Returns:
+                Reference to itself
+        
+        
+        """
+        ...
+    def setProperty(self, string: str) -> 'AccessCheckerRequestBuilder':
+        """
+            Sets the property
+        
+            Parameters:
+                property (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): Property to set
+        
+            Returns:
+                Reference to itself
+        
+        
+        """
+        ...
+    def setToken(self, rbaToken: cern.rbac.common.RbaToken) -> 'AccessCheckerRequestBuilder':
+        """
+            Sets the token
+        
+            Parameters:
+                token (:class:`~cern.rbac.common.RbaToken`): Token to set
+        
+            Returns:
+                Reference to itself
+        
+        
+        """
+        ...
 
 class AccessMapRequest(AbstractRequest):
     """
-    Java class 'cern.rbac.common.impl.request.AccessMapRequest'
+    public abstract class AccessMapRequest extends :class:`~cern.rbac.common.impl.request.AbstractRequest`
     
-        Extends:
-            cern.rbac.common.impl.request.AbstractRequest
-    
-      Constructors:
-        * AccessMapRequest()
-    
+        Represents access map builder parameters
     """
     def __init__(self): ...
-    def getCommand(self) -> AccessMapCommand: ...
-    def getParameter(self) -> str: ...
-    def getToken(self) -> cern.rbac.common.RbaToken: ...
+    def getCommand(self) -> AccessMapCommand:
+        """
+            Returns access map command
+        
+            Returns:
+                access map command
+        
+        
+        """
+        ...
+    def getParameter(self) -> str:
+        """
+            Returns command parameters (comma-separated list of strings)
+        
+            Returns:
+                command parameters
+        
+        
+        """
+        ...
+    def getToken(self) -> cern.rbac.common.RbaToken:
+        """
+            Returns the token
+        
+            Returns:
+                the token
+        
+        
+        """
+        ...
 
 class AccessMapRequestBuilder(RequestBuilder[AccessMapRequest]):
     """
-    Java class 'cern.rbac.common.impl.request.AccessMapRequestBuilder'
+    public class AccessMapRequestBuilder extends :class:`~cern.rbac.common.impl.request.RequestBuilder`<:class:`~cern.rbac.common.impl.request.AccessMapRequest`>
     
-        Extends:
-            cern.rbac.common.impl.request.RequestBuilder
-    
+        Builder for the :class:`~cern.rbac.common.impl.request.AccessMapRequest` instances.
     """
-    def buildRequest(self) -> AccessMapRequest: ...
+    def buildRequest(self) -> AccessMapRequest:
+        """
+            Description copied from class: :meth:`~cern.rbac.common.impl.request.RequestBuilder.buildRequest`
+            Builds the target request
+        
+            Overrides:
+                :meth:`~cern.rbac.common.impl.request.RequestBuilder.buildRequest`Â in
+                classÂ :class:`~cern.rbac.common.impl.request.RequestBuilder`
+        
+            Returns:
+                Target request
+        
+        
+        """
+        ...
     @staticmethod
-    def newInstance() -> 'AccessMapRequestBuilder': ...
-    def setCommand(self, accessMapCommand: AccessMapCommand) -> 'AccessMapRequestBuilder': ...
-    def setParameter(self, string: str) -> 'AccessMapRequestBuilder': ...
-    def setToken(self, rbaToken: cern.rbac.common.RbaToken) -> 'AccessMapRequestBuilder': ...
+    def newInstance() -> 'AccessMapRequestBuilder':
+        """
+            Creates a new instance of the builder.
+        
+            Returns:
+                new instance of the builder
+        
+        
+        """
+        ...
+    def setCommand(self, accessMapCommand: AccessMapCommand) -> 'AccessMapRequestBuilder':
+        """
+            Sets :class:`~cern.rbac.common.impl.request.AccessMapCommand` for request
+        
+            Parameters:
+                command (:class:`~cern.rbac.common.impl.request.AccessMapCommand`): :class:`~cern.rbac.common.impl.request.AccessMapCommand` for request
+        
+            Returns:
+                Reference to itself
+        
+        
+        """
+        ...
+    def setParameter(self, string: str) -> 'AccessMapRequestBuilder':
+        """
+            Sets parameter for the request
+        
+            Parameters:
+                parameter (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): Parameter to set
+        
+            Returns:
+                Reference to itself
+        
+        
+        """
+        ...
+    def setToken(self, rbaToken: cern.rbac.common.RbaToken) -> 'AccessMapRequestBuilder':
+        """
+            Sets the token
+        
+            Parameters:
+                token (:class:`~cern.rbac.common.RbaToken`): Token to set
+        
+            Returns:
+                Reference to itself
+        
+        
+        """
+        ...
 
 class AuthenticationRequest(AbstractRequest):
     """
-    Java class 'cern.rbac.common.impl.request.AuthenticationRequest'
+    public abstract class AuthenticationRequest extends :class:`~cern.rbac.common.impl.request.AbstractRequest`
     
-        Extends:
-            cern.rbac.common.impl.request.AbstractRequest
-    
-      Constructors:
-        * AuthenticationRequest()
-    
+        This class represents parameters for all types of authentication requests
     """
     def __init__(self): ...
-    def getAccountName(self) -> str: ...
-    def getApplication(self) -> str: ...
-    def getKerberosTicket(self) -> str: ...
-    def getLifetime(self) -> int: ...
-    def getOauthAccessToken(self) -> str: ...
-    def getOrigin(self) -> cern.rbac.common.RbaToken: ...
-    def getPassword(self) -> str: ...
-    def getRoles(self) -> typing.List[str]: ...
-    def getSamlResponse(self) -> str: ...
-    def getTokenType(self) -> cern.rbac.common.TokenType: ...
-    def getUserName(self) -> str: ...
+    def getAccountName(self) -> str:
+        """
+            Returns account name
+        
+            Returns:
+                the account name
+        
+        
+        """
+        ...
+    def getApplication(self) -> str:
+        """
+            Returns application name
+        
+            Returns:
+                application name
+        
+        
+        """
+        ...
+    def getKerberosTicket(self) -> str:
+        """
+            Returns Kerberos ticket encoded in Base64
+        
+            Returns:
+                Kerberos ticket encoded in Base64
+        
+        
+        """
+        ...
+    def getLifetime(self) -> int:
+        """
+            Returns token lifetime
+        
+            Returns:
+                the token lifetime
+        
+        
+        """
+        ...
+    def getOauthAccessToken(self) -> str:
+        """
+            Returns OAuth 2.0 access token
+        
+            Returns:
+                OAuth 2.0 access token
+        
+        
+        """
+        ...
+    def getOrigin(self) -> cern.rbac.common.RbaToken:
+        """
+            Returns the original token
+        
+            Returns:
+                the original token
+        
+        
+        """
+        ...
+    def getPassword(self) -> str:
+        """
+            Returns the password
+        
+            Returns:
+                the password
+        
+        
+        """
+        ...
+    def getRoles(self) -> typing.List[str]:
+        """
+            Returns roles
+        
+            Returns:
+                the roles
+        
+        
+        """
+        ...
+    def getSamlResponse(self) -> str:
+        """
+            Returns SAML response
+        
+            Returns:
+                SAML response
+        
+        
+        """
+        ...
+    def getTokenType(self) -> cern.rbac.common.TokenType:
+        """
+            Returns token type
+        
+            Returns:
+                the token type
+        
+        
+        """
+        ...
+    def getUserName(self) -> str:
+        """
+            Returns user name
+        
+            Returns:
+                the user name
+        
+        
+        """
+        ...
 
 class AuthenticationRequestBuilder(RequestBuilder[AuthenticationRequest]):
     """
-    Java class 'cern.rbac.common.impl.request.AuthenticationRequestBuilder'
+    public class AuthenticationRequestBuilder extends :class:`~cern.rbac.common.impl.request.RequestBuilder`<:class:`~cern.rbac.common.impl.request.AuthenticationRequest`>
     
-        Extends:
-            cern.rbac.common.impl.request.RequestBuilder
-    
+        Builder for the :class:`~cern.rbac.common.impl.request.AuthenticationRequest` instances.
     """
     @staticmethod
-    def newInstance() -> 'AuthenticationRequestBuilder': ...
+    def newInstance() -> 'AuthenticationRequestBuilder':
+        """
+            Creates a new instance of the builder.
+        
+            Returns:
+                new instance of the builder
+        
+        
+        """
+        ...
     def setAccountName(self, string: str) -> 'AuthenticationRequestBuilder': ...
     def setApplication(self, string: str) -> 'AuthenticationRequestBuilder': ...
     def setKerberosTicket(self, byteArray: typing.List[int]) -> 'AuthenticationRequestBuilder': ...
     def setLifetime(self, int: int) -> 'AuthenticationRequestBuilder': ...
     def setOauthAccessToken(self, string: str) -> 'AuthenticationRequestBuilder': ...
-    def setOrigin(self, rbaToken: cern.rbac.common.RbaToken) -> 'AuthenticationRequestBuilder': ...
+    def setOrigin(self, rbaToken: cern.rbac.common.RbaToken) -> 'AuthenticationRequestBuilder':
+        """
+            Sets original token
+        
+            Parameters:
+                origin (:class:`~cern.rbac.common.RbaToken`): the original token to set
+        
+            Returns:
+                Reference to itself
+        
+        
+        """
+        ...
     def setPassword(self, string: str) -> 'AuthenticationRequestBuilder': ...
     def setRoles(self, stringArray: typing.List[str]) -> 'AuthenticationRequestBuilder': ...
     def setSamlResponse(self, string: str) -> 'AuthenticationRequestBuilder': ...
@@ -444,48 +923,140 @@ class AuthenticationRequestBuilder(RequestBuilder[AuthenticationRequest]):
 
 class McsKeyRequest(AbstractRequest):
     """
-    Java class 'cern.rbac.common.impl.request.McsKeyRequest'
+    public abstract class McsKeyRequest extends :class:`~cern.rbac.common.impl.request.AbstractRequest`
     
-        Extends:
-            cern.rbac.common.impl.request.AbstractRequest
-    
-      Constructors:
-        * McsKeyRequest()
-    
+        Represents parameters for MSC request for getting public key
     """
     def __init__(self): ...
-    def getDevice(self) -> str: ...
-    def getDeviceClass(self) -> str: ...
-    def getMCSRole(self) -> str: ...
-    def getProperty(self) -> str: ...
+    def getDevice(self) -> str:
+        """
+            Returns device name
+        
+            Returns:
+                device name
+        
+        
+        """
+        ...
+    def getDeviceClass(self) -> str:
+        """
+            Returns device class name
+        
+            Returns:
+                device class name
+        
+        
+        """
+        ...
+    def getMCSRole(self) -> str:
+        """
+            Returns MCS role
+        
+            Returns:
+                MCS role
+        
+        
+        """
+        ...
+    def getProperty(self) -> str:
+        """
+            Returns property name
+        
+            Returns:
+                property name
+        
+        
+        """
+        ...
 
 class McsKeyRequestBuilder(RequestBuilder[McsKeyRequest]):
     """
-    Java class 'cern.rbac.common.impl.request.McsKeyRequestBuilder'
+    public class McsKeyRequestBuilder extends :class:`~cern.rbac.common.impl.request.RequestBuilder`<:class:`~cern.rbac.common.impl.request.McsKeyRequest`>
     
-        Extends:
-            cern.rbac.common.impl.request.RequestBuilder
-    
+        Builder for the :class:`~cern.rbac.common.impl.request.McsKeyRequest` instances.
     """
-    def buildRequest(self) -> McsKeyRequest: ...
+    def buildRequest(self) -> McsKeyRequest:
+        """
+            Description copied from class: :meth:`~cern.rbac.common.impl.request.RequestBuilder.buildRequest`
+            Builds the target request
+        
+            Overrides:
+                :meth:`~cern.rbac.common.impl.request.RequestBuilder.buildRequest`Â in
+                classÂ :class:`~cern.rbac.common.impl.request.RequestBuilder`
+        
+            Returns:
+                Target request
+        
+        
+        """
+        ...
     @staticmethod
-    def newInstance() -> 'McsKeyRequestBuilder': ...
-    def setDevice(self, string: str) -> 'McsKeyRequestBuilder': ...
-    def setDeviceClass(self, string: str) -> 'McsKeyRequestBuilder': ...
-    def setMCSRole(self, string: str) -> 'McsKeyRequestBuilder': ...
-    def setProperty(self, string: str) -> 'McsKeyRequestBuilder': ...
+    def newInstance() -> 'McsKeyRequestBuilder':
+        """
+            Creates a new instance of the builder.
+        
+            Returns:
+                new instance of the builder
+        
+        
+        """
+        ...
+    def setDevice(self, string: str) -> 'McsKeyRequestBuilder':
+        """
+            Sets the device
+        
+            Parameters:
+                device (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): Device to set
+        
+            Returns:
+                Reference to itself
+        
+        
+        """
+        ...
+    def setDeviceClass(self, string: str) -> 'McsKeyRequestBuilder':
+        """
+            Sets the device class
+        
+            Parameters:
+                deviceClass (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): Device class to set
+        
+            Returns:
+                Reference to itself
+        
+        
+        """
+        ...
+    def setMCSRole(self, string: str) -> 'McsKeyRequestBuilder':
+        """
+            Sets the MCS role
+        
+            Parameters:
+                role (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): MCS role to set
+        
+            Returns:
+                Reference to itself
+        
+        
+        """
+        ...
+    def setProperty(self, string: str) -> 'McsKeyRequestBuilder':
+        """
+            Sets the property
+        
+            Parameters:
+                property (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): Property to set
+        
+            Returns:
+                Reference to itself
+        
+        
+        """
+        ...
 
 class McsRoleRequest(AbstractRequest):
     """
-    Java class 'cern.rbac.common.impl.request.McsRoleRequest'
-    
-        Extends:
-            cern.rbac.common.impl.request.AbstractRequest
-    
-      Constructors:
-        * McsRoleRequest(java.util.Map)
-        * McsRoleRequest(java.lang.String, java.lang.String, java.lang.String)
-    
+    public class McsRoleRequest extends :class:`~cern.rbac.common.impl.request.AbstractRequest`
     """
     @typing.overload
     def __init__(self, string: str, string2: str, string3: str): ...
@@ -497,85 +1068,150 @@ class McsRoleRequest(AbstractRequest):
 
 class McsSignRequest(AbstractRequest):
     """
-    Java class 'cern.rbac.common.impl.request.McsSignRequest'
+    public abstract class McsSignRequest extends :class:`~cern.rbac.common.impl.request.AbstractRequest`
     
-        Extends:
-            cern.rbac.common.impl.request.AbstractRequest
-    
-      Constructors:
-        * McsSignRequest()
-    
+        Represents parameters for MSC request for signing buffer of bytes
     """
     def __init__(self): ...
-    def getSignBuffer(self) -> typing.List[int]: ...
-    def getToken(self) -> cern.rbac.common.RbaToken: ...
+    def getSignBuffer(self) -> typing.List[int]:
+        """
+            Returns sign buffer
+        
+            Returns:
+                sign buffer
+        
+        
+        """
+        ...
+    def getToken(self) -> cern.rbac.common.RbaToken:
+        """
+            Returns the token
+        
+            Returns:
+                the token
+        
+        
+        """
+        ...
 
 class McsSignRequestBuilder(RequestBuilder[McsSignRequest]):
     """
-    Java class 'cern.rbac.common.impl.request.McsSignRequestBuilder'
+    public class McsSignRequestBuilder extends :class:`~cern.rbac.common.impl.request.RequestBuilder`<:class:`~cern.rbac.common.impl.request.McsSignRequest`>
     
-        Extends:
-            cern.rbac.common.impl.request.RequestBuilder
-    
+        Builder for the :class:`~cern.rbac.common.impl.request.McsSignRequest` instances.
     """
-    def buildRequest(self) -> McsSignRequest: ...
+    def buildRequest(self) -> McsSignRequest:
+        """
+            Description copied from class: :meth:`~cern.rbac.common.impl.request.RequestBuilder.buildRequest`
+            Builds the target request
+        
+            Overrides:
+                :meth:`~cern.rbac.common.impl.request.RequestBuilder.buildRequest`Â in
+                classÂ :class:`~cern.rbac.common.impl.request.RequestBuilder`
+        
+            Returns:
+                Target request
+        
+        
+        """
+        ...
     @staticmethod
-    def newInstance() -> 'McsSignRequestBuilder': ...
-    def setSignBuffer(self, byteArray: typing.List[int]) -> 'McsSignRequestBuilder': ...
-    def setToken(self, rbaToken: cern.rbac.common.RbaToken) -> 'McsSignRequestBuilder': ...
+    def newInstance() -> 'McsSignRequestBuilder':
+        """
+            Creates a new instance of the builder.
+        
+            Returns:
+                new instance of the builder
+        
+        
+        """
+        ...
+    def setSignBuffer(self, byteArray: typing.List[int]) -> 'McsSignRequestBuilder':
+        """
+            Sets sign buffer
+        
+            Parameters:
+                signBuffer (byte[]): Bytes buffer to sign
+        
+            Returns:
+                Reference to itself
+        
+        
+        """
+        ...
+    def setToken(self, rbaToken: cern.rbac.common.RbaToken) -> 'McsSignRequestBuilder':
+        """
+            Sets the token
+        
+            Parameters:
+                token (:class:`~cern.rbac.common.RbaToken`): Token to set
+        
+            Returns:
+                Reference to itself
+        
+        
+        """
+        ...
 
 class AccessCheckerRequestImpl(AccessCheckerRequest):
     """
-    Java class 'cern.rbac.common.impl.request.AccessCheckerRequestImpl'
+    public class AccessCheckerRequestImpl extends :class:`~cern.rbac.common.impl.request.AccessCheckerRequest`
     
-        Extends:
-            cern.rbac.common.impl.request.AccessCheckerRequest
-    
-      Constructors:
-        * AccessCheckerRequestImpl()
-    
+        Represents access checker request parameters
     """
     def __init__(self): ...
 
 class AccessMapRequestImpl(AccessMapRequest):
     """
-    Java class 'cern.rbac.common.impl.request.AccessMapRequestImpl'
+    public class AccessMapRequestImpl extends :class:`~cern.rbac.common.impl.request.AccessMapRequest`
     
-        Extends:
-            cern.rbac.common.impl.request.AccessMapRequest
-    
-      Constructors:
-        * AccessMapRequestImpl()
-    
+        Represents access checker request parameters
     """
     def __init__(self): ...
-    def setCommand(self, accessMapCommand: AccessMapCommand) -> None: ...
-    def setParameter(self, string: str) -> None: ...
-    def setToken(self, rbaToken: cern.rbac.common.RbaToken) -> None: ...
+    def setCommand(self, accessMapCommand: AccessMapCommand) -> None:
+        """
+            Sets :class:`~cern.rbac.common.impl.request.AccessMapCommand` for request
+        
+            Parameters:
+                command (:class:`~cern.rbac.common.impl.request.AccessMapCommand`): :class:`~cern.rbac.common.impl.request.AccessMapCommand` for request
+        
+        
+        """
+        ...
+    def setParameter(self, string: str) -> None:
+        """
+            Sets parameter for the request
+        
+            Parameters:
+                parameter (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): Parameter to set
+        
+        
+        """
+        ...
+    def setToken(self, rbaToken: cern.rbac.common.RbaToken) -> None:
+        """
+            Sets the token
+        
+            Parameters:
+                token (:class:`~cern.rbac.common.RbaToken`): Token to set
+        
+        
+        """
+        ...
 
 class McsKeyRequestImpl(McsKeyRequest):
     """
-    Java class 'cern.rbac.common.impl.request.McsKeyRequestImpl'
+    public class McsKeyRequestImpl extends :class:`~cern.rbac.common.impl.request.McsKeyRequest`
     
-        Extends:
-            cern.rbac.common.impl.request.McsKeyRequest
-    
-      Constructors:
-        * McsKeyRequestImpl()
-    
+        Represents parameters for MCS public key request
     """
     def __init__(self): ...
 
 class McsSignRequestImpl(McsSignRequest):
     """
-    Java class 'cern.rbac.common.impl.request.McsSignRequestImpl'
+    public class McsSignRequestImpl extends :class:`~cern.rbac.common.impl.request.McsSignRequest`
     
-        Extends:
-            cern.rbac.common.impl.request.McsSignRequest
-    
-      Constructors:
-        * McsSignRequestImpl()
-    
+        Represents parameters for MSC request for signing buffer of bytes
     """
     def __init__(self): ...
 

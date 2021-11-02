@@ -28,10 +28,6 @@ import typing
 
 
 class Appendable:
-    """
-    Java class 'java.lang.Appendable'
-    
-    """
     @typing.overload
     def append(self, char: str) -> 'Appendable': ...
     @typing.overload
@@ -40,17 +36,9 @@ class Appendable:
     def append(self, charSequence: typing.Union['CharSequence', str], int: int, int2: int) -> 'Appendable': ...
 
 class AutoCloseable(_JCloseable):
-    """
-    Java class 'java.lang.AutoCloseable'
-    
-    """
     def close(self) -> None: ...
 
 class CharSequence:
-    """
-    Java class 'java.lang.CharSequence'
-    
-    """
     def charAt(self, int: int) -> str: ...
     def chars(self) -> java.util.stream.IntStream: ...
     def codePoints(self) -> java.util.stream.IntStream: ...
@@ -62,17 +50,6 @@ class CharSequence:
 
 _Class__T = typing.TypeVar('_Class__T')  # <T>
 class Class(java.io.Serializable, java.lang.reflect.GenericDeclaration, java.lang.reflect.Type, java.lang.reflect.AnnotatedElement, typing.Generic[_Class__T]):
-    """
-    Java class 'java.lang.Class'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable, java.lang.reflect.GenericDeclaration,
-            java.lang.reflect.Type, java.lang.reflect.AnnotatedElement
-    
-    """
     _asSubclass__U = typing.TypeVar('_asSubclass__U')  # <U>
     def asSubclass(self, class_: typing.Type[_asSubclass__U]) -> typing.Type[_asSubclass__U]: ...
     def cast(self, object: typing.Any) -> _Class__T: ...
@@ -156,13 +133,6 @@ class Class(java.io.Serializable, java.lang.reflect.GenericDeclaration, java.lan
     def toString(self) -> str: ...
 
 class ClassLoader:
-    """
-    Java class 'java.lang.ClassLoader'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def clearAssertionStatus(self) -> None: ...
     def getDefinedPackage(self, string: str) -> 'Package': ...
     def getDefinedPackages(self) -> typing.List['Package']: ...
@@ -191,13 +161,6 @@ class ClassLoader:
 
 _ClassValue__T = typing.TypeVar('_ClassValue__T')  # <T>
 class ClassValue(typing.Generic[_ClassValue__T]):
-    """
-    Java class 'java.lang.ClassValue'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def get(self, class_: typing.Type[typing.Any]) -> _ClassValue__T: ...
     def remove(self, class_: typing.Type[typing.Any]) -> None: ...
 
@@ -205,20 +168,9 @@ class Cloneable: ...
 
 _Comparable__T = typing.TypeVar('_Comparable__T')  # <T>
 class Comparable(typing.Generic[_Comparable__T]):
-    """
-    Java class 'java.lang.Comparable'
-    
-    """
     def compareTo(self, t: _Comparable__T) -> int: ...
 
 class Compiler:
-    """
-    Java class 'java.lang.Compiler'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     @staticmethod
     def command(object: typing.Any) -> typing.Any: ...
     @staticmethod
@@ -231,13 +183,6 @@ class Compiler:
     def enable() -> None: ...
 
 class Deprecated(java.lang.annotation.Annotation):
-    """
-    Java class 'java.lang.Deprecated'
-    
-        Interfaces:
-            java.lang.annotation.Annotation
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def forRemoval(self) -> bool: ...
     def hashCode(self) -> int: ...
@@ -245,39 +190,17 @@ class Deprecated(java.lang.annotation.Annotation):
     def toString(self) -> str: ...
 
 class FunctionalInterface(java.lang.annotation.Annotation):
-    """
-    Java class 'java.lang.FunctionalInterface'
-    
-        Interfaces:
-            java.lang.annotation.Annotation
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def hashCode(self) -> int: ...
     def toString(self) -> str: ...
 
 _Iterable__T = typing.TypeVar('_Iterable__T')  # <T>
 class Iterable(typing.Generic[_Iterable__T], _JIterable[_Iterable__T]):
-    """
-    Java class 'java.lang.Iterable'
-    
-    """
     def forEach(self, consumer: typing.Union[java.util.function.Consumer[_Iterable__T], typing.Callable[[_Iterable__T], None]]) -> None: ...
     def iterator(self) -> java.util.Iterator[_Iterable__T]: ...
     def spliterator(self) -> java.util.Spliterator[_Iterable__T]: ...
 
 class Math:
-    """
-    Java class 'java.lang.Math'
-    
-        Extends:
-            java.lang.Object
-    
-      Attributes:
-        E (double): final static field
-        PI (double): final static field
-    
-    """
     E: typing.ClassVar[float] = ...
     PI: typing.ClassVar[float] = ...
     @staticmethod
@@ -493,16 +416,6 @@ class Math:
     def ulp(float: float) -> float: ...
 
 class Module(java.lang.reflect.AnnotatedElement):
-    """
-    Java class 'java.lang.Module'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.lang.reflect.AnnotatedElement
-    
-    """
     def addExports(self, string: str, module: 'Module') -> 'Module': ...
     def addOpens(self, string: str, module: 'Module') -> 'Module': ...
     def addReads(self, module: 'Module') -> 'Module': ...
@@ -531,13 +444,6 @@ class Module(java.lang.reflect.AnnotatedElement):
     def toString(self) -> str: ...
 
 class ModuleLayer:
-    """
-    Java class 'java.lang.ModuleLayer'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     @staticmethod
     def boot() -> 'ModuleLayer': ...
     def configuration(self) -> java.lang.module.Configuration: ...
@@ -564,32 +470,12 @@ class ModuleLayer:
     def parents(self) -> java.util.List['ModuleLayer']: ...
     def toString(self) -> str: ...
     class Controller:
-        """
-        Java class 'java.lang.ModuleLayer$Controller'
-        
-            Extends:
-                java.lang.Object
-        
-        """
         def addExports(self, module: Module, string: str, module2: Module) -> 'ModuleLayer.Controller': ...
         def addOpens(self, module: Module, string: str, module2: Module) -> 'ModuleLayer.Controller': ...
         def addReads(self, module: Module, module2: Module) -> 'ModuleLayer.Controller': ...
         def layer(self) -> 'ModuleLayer': ...
 
 class Number(java.io.Serializable):
-    """
-    Java class 'java.lang.Number'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable
-    
-      Constructors:
-        * Number()
-    
-    """
     def __init__(self): ...
     def byteValue(self) -> int: ...
     def doubleValue(self) -> float: ...
@@ -599,13 +485,6 @@ class Number(java.io.Serializable):
     def shortValue(self) -> int: ...
 
 class Object:
-    """
-    Java class 'java.lang.Object'
-    
-      Constructors:
-        * Object()
-    
-    """
     def __init__(self): ...
     def equals(self, object: typing.Any) -> bool: ...
     def getClass(self) -> typing.Type[typing.Any]: ...
@@ -621,28 +500,11 @@ class Object:
     def wait(self, long: int, int: int) -> None: ...
 
 class Override(java.lang.annotation.Annotation):
-    """
-    Java class 'java.lang.Override'
-    
-        Interfaces:
-            java.lang.annotation.Annotation
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def hashCode(self) -> int: ...
     def toString(self) -> str: ...
 
 class Process:
-    """
-    Java class 'java.lang.Process'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * Process()
-    
-    """
     def __init__(self): ...
     def children(self) -> java.util.stream.Stream['ProcessHandle']: ...
     def descendants(self) -> java.util.stream.Stream['ProcessHandle']: ...
@@ -664,59 +526,23 @@ class Process:
     def waitFor(self, long: int, timeUnit: java.util.concurrent.TimeUnit) -> bool: ...
 
 class Readable:
-    """
-    Java class 'java.lang.Readable'
-    
-    """
     def read(self, charBuffer: java.nio.CharBuffer) -> int: ...
 
 class Runnable:
-    """
-    Java class 'java.lang.Runnable'
-    
-    """
     def run(self) -> None: ...
 
 class RuntimePermission(java.security.BasicPermission):
-    """
-    Java class 'java.lang.RuntimePermission'
-    
-        Extends:
-            java.security.BasicPermission
-    
-      Constructors:
-        * RuntimePermission(java.lang.String)
-        * RuntimePermission(java.lang.String, java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
     def __init__(self, string: str, string2: str): ...
 
 class SafeVarargs(java.lang.annotation.Annotation):
-    """
-    Java class 'java.lang.SafeVarargs'
-    
-        Interfaces:
-            java.lang.annotation.Annotation
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def hashCode(self) -> int: ...
     def toString(self) -> str: ...
 
 class SecurityManager:
-    """
-    Java class 'java.lang.SecurityManager'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * SecurityManager()
-    
-    """
     def __init__(self): ...
     def checkAccept(self, string: str, int: int) -> None: ...
     @typing.overload
@@ -762,20 +588,6 @@ class SecurityManager:
     def getThreadGroup(self) -> 'ThreadGroup': ...
 
 class StackTraceElement(java.io.Serializable):
-    """
-    Java class 'java.lang.StackTraceElement'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable
-    
-      Constructors:
-        * StackTraceElement(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, int)
-        * StackTraceElement(java.lang.String, java.lang.String, java.lang.String, int)
-    
-    """
     @typing.overload
     def __init__(self, string: str, string2: str, string3: str, int: int): ...
     @typing.overload
@@ -793,17 +605,6 @@ class StackTraceElement(java.io.Serializable):
     def toString(self) -> str: ...
 
 class StrictMath:
-    """
-    Java class 'java.lang.StrictMath'
-    
-        Extends:
-            java.lang.Object
-    
-      Attributes:
-        E (double): final static field
-        PI (double): final static field
-    
-    """
     E: typing.ClassVar[float] = ...
     PI: typing.ClassVar[float] = ...
     @staticmethod
@@ -1001,13 +802,6 @@ class StrictMath:
     def ulp(float: float) -> float: ...
 
 class SuppressWarnings(java.lang.annotation.Annotation):
-    """
-    Java class 'java.lang.SuppressWarnings'
-    
-        Interfaces:
-            java.lang.annotation.Annotation
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def hashCode(self) -> int: ...
     def toString(self) -> str: ...
@@ -1015,16 +809,6 @@ class SuppressWarnings(java.lang.annotation.Annotation):
 
 _ThreadLocal__T = typing.TypeVar('_ThreadLocal__T')  # <T>
 class ThreadLocal(typing.Generic[_ThreadLocal__T]):
-    """
-    Java class 'java.lang.ThreadLocal'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * ThreadLocal()
-    
-    """
     def __init__(self): ...
     def get(self) -> _ThreadLocal__T: ...
     def remove(self) -> None: ...
@@ -1034,22 +818,6 @@ class ThreadLocal(typing.Generic[_ThreadLocal__T]):
     def withInitial(supplier: typing.Union[java.util.function.Supplier[_withInitial__S], typing.Callable[[], _withInitial__S]]) -> 'ThreadLocal'[_withInitial__S]: ...
 
 class Throwable(java.io.Serializable):
-    """
-    Java class 'java.lang.Throwable'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable
-    
-      Constructors:
-        * Throwable(java.lang.Throwable)
-        * Throwable(java.lang.String, java.lang.Throwable)
-        * Throwable(java.lang.String)
-        * Throwable()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1076,38 +844,9 @@ class Throwable(java.io.Serializable):
     def toString(self) -> str: ...
 
 class Void:
-    """
-    Java class 'java.lang.Void'
-    
-        Extends:
-            java.lang.Object
-    
-      Attributes:
-        TYPE (java.lang.Class): final static field
-    
-    """
     TYPE: typing.ClassVar[typing.Type] = ...
 
 class Boolean(java.io.Serializable, Comparable[bool]):
-    """
-    Java class 'java.lang.Boolean'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable, java.lang.Comparable
-    
-      Constructors:
-        * Boolean(boolean)
-        * Boolean(java.lang.String)
-    
-      Attributes:
-        TRUE (java.lang.Boolean): final static field
-        FALSE (java.lang.Boolean): final static field
-        TYPE (java.lang.Class): final static field
-    
-    """
     TRUE: typing.ClassVar[bool] = ...
     FALSE: typing.ClassVar[bool] = ...
     TYPE: typing.ClassVar[typing.Type] = ...
@@ -1148,30 +887,6 @@ class Boolean(java.io.Serializable, Comparable[bool]):
     def valueOf(string: str) -> bool: ...
 
 class Byte(Number, Comparable[int]):
-    """
-    Java class 'java.lang.Byte'
-    
-        Extends:
-            java.lang.Number
-    
-        Interfaces:
-            java.lang.Comparable
-    
-      Constructors:
-        * Byte(byte)
-        * Byte(java.lang.String)
-    
-      Raises:
-        java.lang.NumberFormatException: from java
-    
-      Attributes:
-        MIN_VALUE (byte): final static field
-        MAX_VALUE (byte): final static field
-        TYPE (java.lang.Class): final static field
-        SIZE (int): final static field
-        BYTES (int): final static field
-    
-    """
     MIN_VALUE: typing.ClassVar[int] = ...
     MAX_VALUE: typing.ClassVar[int] = ...
     TYPE: typing.ClassVar[typing.Type] = ...
@@ -1226,36 +941,6 @@ class Byte(Number, Comparable[int]):
     def valueOf(string: str, int: int) -> int: ...
 
 class Double(Number, Comparable[float]):
-    """
-    Java class 'java.lang.Double'
-    
-        Extends:
-            java.lang.Number
-    
-        Interfaces:
-            java.lang.Comparable
-    
-      Constructors:
-        * Double(double)
-        * Double(java.lang.String)
-    
-      Raises:
-        java.lang.NumberFormatException: from java
-    
-      Attributes:
-        POSITIVE_INFINITY (double): final static field
-        NEGATIVE_INFINITY (double): final static field
-        NaN (double): final static field
-        MAX_VALUE (double): final static field
-        MIN_NORMAL (double): final static field
-        MIN_VALUE (double): final static field
-        MAX_EXPONENT (int): final static field
-        MIN_EXPONENT (int): final static field
-        SIZE (int): final static field
-        BYTES (int): final static field
-        TYPE (java.lang.Class): final static field
-    
-    """
     POSITIVE_INFINITY: typing.ClassVar[float] = ...
     NEGATIVE_INFINITY: typing.ClassVar[float] = ...
     NaN: typing.ClassVar[float] = ...
@@ -1328,16 +1013,6 @@ class Double(Number, Comparable[float]):
 
 _Enum__E = typing.TypeVar('_Enum__E', bound='Enum')  # <E>
 class Enum(Comparable[_Enum__E], java.io.Serializable, typing.Generic[_Enum__E]):
-    """
-    Java class 'java.lang.Enum'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.lang.Comparable, java.io.Serializable
-    
-    """
     def compareTo(self, e: _Enum__E) -> int: ...
     def equals(self, object: typing.Any) -> bool: ...
     def getDeclaringClass(self) -> typing.Type[_Enum__E]: ...
@@ -1350,19 +1025,6 @@ class Enum(Comparable[_Enum__E], java.io.Serializable, typing.Generic[_Enum__E])
     def valueOf(class_: typing.Type[_valueOf__T], string: str) -> _valueOf__T: ...
 
 class Error(Throwable):
-    """
-    Java class 'java.lang.Error'
-    
-        Extends:
-            java.lang.Throwable
-    
-      Constructors:
-        * Error(java.lang.Throwable)
-        * Error(java.lang.String, java.lang.Throwable)
-        * Error(java.lang.String)
-        * Error()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1373,19 +1035,6 @@ class Error(Throwable):
     def __init__(self, throwable: Throwable): ...
 
 class Exception(Throwable):
-    """
-    Java class 'java.lang.Exception'
-    
-        Extends:
-            java.lang.Throwable
-    
-      Constructors:
-        * Exception(java.lang.Throwable)
-        * Exception(java.lang.String, java.lang.Throwable)
-        * Exception(java.lang.String)
-        * Exception()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1396,37 +1045,6 @@ class Exception(Throwable):
     def __init__(self, throwable: Throwable): ...
 
 class Float(Number, Comparable[float]):
-    """
-    Java class 'java.lang.Float'
-    
-        Extends:
-            java.lang.Number
-    
-        Interfaces:
-            java.lang.Comparable
-    
-      Constructors:
-        * Float(java.lang.String)
-        * Float(double)
-        * Float(float)
-    
-      Raises:
-        java.lang.NumberFormatException: from java
-    
-      Attributes:
-        POSITIVE_INFINITY (float): final static field
-        NEGATIVE_INFINITY (float): final static field
-        NaN (float): final static field
-        MAX_VALUE (float): final static field
-        MIN_NORMAL (float): final static field
-        MIN_VALUE (float): final static field
-        MAX_EXPONENT (int): final static field
-        MIN_EXPONENT (int): final static field
-        SIZE (int): final static field
-        BYTES (int): final static field
-        TYPE (java.lang.Class): final static field
-    
-    """
     POSITIVE_INFINITY: typing.ClassVar[float] = ...
     NEGATIVE_INFINITY: typing.ClassVar[float] = ...
     NaN: typing.ClassVar[float] = ...
@@ -1501,43 +1119,9 @@ class Float(Number, Comparable[float]):
 
 _InheritableThreadLocal__T = typing.TypeVar('_InheritableThreadLocal__T')  # <T>
 class InheritableThreadLocal(ThreadLocal[_InheritableThreadLocal__T], typing.Generic[_InheritableThreadLocal__T]):
-    """
-    Java class 'java.lang.InheritableThreadLocal'
-    
-        Extends:
-            java.lang.ThreadLocal
-    
-      Constructors:
-        * InheritableThreadLocal()
-    
-    """
     def __init__(self): ...
 
 class Integer(Number, Comparable[int]):
-    """
-    Java class 'java.lang.Integer'
-    
-        Extends:
-            java.lang.Number
-    
-        Interfaces:
-            java.lang.Comparable
-    
-      Constructors:
-        * Integer(java.lang.String)
-        * Integer(int)
-    
-      Raises:
-        java.lang.NumberFormatException: from java
-    
-      Attributes:
-        MIN_VALUE (int): final static field
-        MAX_VALUE (int): final static field
-        TYPE (java.lang.Class): final static field
-        SIZE (int): final static field
-        BYTES (int): final static field
-    
-    """
     MIN_VALUE: typing.ClassVar[int] = ...
     MAX_VALUE: typing.ClassVar[int] = ...
     TYPE: typing.ClassVar[typing.Type] = ...
@@ -1656,30 +1240,6 @@ class Integer(Number, Comparable[int]):
     def valueOf(string: str, int: int) -> int: ...
 
 class Long(Number, Comparable[int]):
-    """
-    Java class 'java.lang.Long'
-    
-        Extends:
-            java.lang.Number
-    
-        Interfaces:
-            java.lang.Comparable
-    
-      Constructors:
-        * Long(java.lang.String)
-        * Long(long)
-    
-      Raises:
-        java.lang.NumberFormatException: from java
-    
-      Attributes:
-        MIN_VALUE (long): final static field
-        MAX_VALUE (long): final static field
-        TYPE (java.lang.Class): final static field
-        SIZE (int): final static field
-        BYTES (int): final static field
-    
-    """
     MIN_VALUE: typing.ClassVar[int] = ...
     MAX_VALUE: typing.ClassVar[int] = ...
     TYPE: typing.ClassVar[typing.Type] = ...
@@ -1796,13 +1356,6 @@ class Long(Number, Comparable[int]):
     def valueOf(long: int) -> int: ...
 
 class ProcessHandle(Comparable['ProcessHandle']):
-    """
-    Java class 'java.lang.ProcessHandle'
-    
-        Interfaces:
-            java.lang.Comparable
-    
-    """
     @staticmethod
     def allProcesses() -> java.util.stream.Stream['ProcessHandle']: ...
     def children(self) -> java.util.stream.Stream['ProcessHandle']: ...
@@ -1823,10 +1376,6 @@ class ProcessHandle(Comparable['ProcessHandle']):
     def pid(self) -> int: ...
     def supportsNormalTermination(self) -> bool: ...
     class Info:
-        """
-        Java class 'java.lang.ProcessHandle$Info'
-        
-        """
         def arguments(self) -> java.util.Optional[typing.List[str]]: ...
         def command(self) -> java.util.Optional[str]: ...
         def commandLine(self) -> java.util.Optional[str]: ...
@@ -1835,13 +1384,6 @@ class ProcessHandle(Comparable['ProcessHandle']):
         def user(self) -> java.util.Optional[str]: ...
 
 class Runtime(_JRuntime):
-    """
-    Java class 'java.lang.Runtime'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def availableProcessors(self) -> int: ...
     def exit(self, int: int) -> None: ...
     def freeMemory(self) -> int: ...
@@ -1859,16 +1401,6 @@ class Runtime(_JRuntime):
     @staticmethod
     def version() -> 'Runtime.Version': ...
     class Version(Comparable['Runtime.Version']):
-        """
-        Java class 'java.lang.Runtime$Version'
-        
-            Extends:
-                java.lang.Object
-        
-            Interfaces:
-                java.lang.Comparable
-        
-        """
         def build(self) -> java.util.Optional[int]: ...
         def compareTo(self, version: 'Runtime.Version') -> int: ...
         def compareToIgnoreOptional(self, version: 'Runtime.Version') -> int: ...
@@ -1890,30 +1422,6 @@ class Runtime(_JRuntime):
         def version(self) -> java.util.List[int]: ...
 
 class Short(Number, Comparable[int]):
-    """
-    Java class 'java.lang.Short'
-    
-        Extends:
-            java.lang.Number
-    
-        Interfaces:
-            java.lang.Comparable
-    
-      Constructors:
-        * Short(short)
-        * Short(java.lang.String)
-    
-      Raises:
-        java.lang.NumberFormatException: from java
-    
-      Attributes:
-        MIN_VALUE (short): final static field
-        MAX_VALUE (short): final static field
-        TYPE (java.lang.Class): final static field
-        SIZE (int): final static field
-        BYTES (int): final static field
-    
-    """
     MIN_VALUE: typing.ClassVar[int] = ...
     MAX_VALUE: typing.ClassVar[int] = ...
     TYPE: typing.ClassVar[typing.Type] = ...
@@ -1970,40 +1478,6 @@ class Short(Number, Comparable[int]):
     def valueOf(short: int) -> int: ...
 
 class String(java.io.Serializable, Comparable[str], CharSequence, _JStringProto):
-    """
-    Java class 'java.lang.String'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable, java.lang.Comparable,
-            java.lang.CharSequence
-    
-      Constructors:
-        * String(byte[])
-        * String(byte[], int, int)
-        * String(byte[], java.nio.charset.Charset)
-        * String(byte[], java.lang.String)
-        * String(byte[], int, int, java.nio.charset.Charset)
-        * String(java.lang.StringBuilder)
-        * String(java.lang.StringBuffer)
-        * String(char[], int, int)
-        * String(char[])
-        * String(java.lang.String)
-        * String()
-        * String(byte[], int, int, java.lang.String)
-        * String(byte[], int)
-        * String(byte[], int, int, int)
-        * String(int[], int, int)
-    
-      Raises:
-        java.io.UnsupportedEncodingException: from java
-    
-      Attributes:
-        CASE_INSENSITIVE_ORDER (java.util.Comparator): final static field
-    
-    """
     CASE_INSENSITIVE_ORDER: typing.ClassVar[java.util.Comparator] = ...
     @typing.overload
     def __init__(self): ...
@@ -2170,24 +1644,6 @@ class String(java.io.Serializable, Comparable[str], CharSequence, _JStringProto)
     def valueOf(long: int) -> str: ...
 
 class AssertionError(Error):
-    """
-    Java class 'java.lang.AssertionError'
-    
-        Extends:
-            java.lang.Error
-    
-      Constructors:
-        * AssertionError(int)
-        * AssertionError(long)
-        * AssertionError(float)
-        * AssertionError(double)
-        * AssertionError(java.lang.String, java.lang.Throwable)
-        * AssertionError()
-        * AssertionError(java.lang.Object)
-        * AssertionError(boolean)
-        * AssertionError(char)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2208,52 +1664,18 @@ class AssertionError(Error):
     def __init__(self, long: int): ...
 
 class CloneNotSupportedException(Exception):
-    """
-    Java class 'java.lang.CloneNotSupportedException'
-    
-        Extends:
-            java.lang.Exception
-    
-      Constructors:
-        * CloneNotSupportedException()
-        * CloneNotSupportedException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class InterruptedException(Exception):
-    """
-    Java class 'java.lang.InterruptedException'
-    
-        Extends:
-            java.lang.Exception
-    
-      Constructors:
-        * InterruptedException()
-        * InterruptedException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class LinkageError(Error):
-    """
-    Java class 'java.lang.LinkageError'
-    
-        Extends:
-            java.lang.Error
-    
-      Constructors:
-        * LinkageError()
-        * LinkageError(java.lang.String)
-        * LinkageError(java.lang.String, java.lang.Throwable)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2262,17 +1684,6 @@ class LinkageError(Error):
     def __init__(self, string: str, throwable: Throwable): ...
 
 class ProcessBuilder:
-    """
-    Java class 'java.lang.ProcessBuilder'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * ProcessBuilder(java.util.List)
-        * ProcessBuilder(java.lang.String[])
-    
-    """
     @typing.overload
     def __init__(self, stringArray: typing.List[str]): ...
     @typing.overload
@@ -2315,18 +1726,6 @@ class ProcessBuilder:
     @staticmethod
     def startPipeline(list: java.util.List['ProcessBuilder']) -> java.util.List[Process]: ...
     class Redirect:
-        """
-        Java class 'java.lang.ProcessBuilder$Redirect'
-        
-            Extends:
-                java.lang.Object
-        
-          Attributes:
-            PIPE (java.lang.ProcessBuilder$Redirect): final static field
-            INHERIT (java.lang.ProcessBuilder$Redirect): final static field
-            DISCARD (java.lang.ProcessBuilder$Redirect): final static field
-        
-        """
         PIPE: typing.ClassVar['ProcessBuilder.Redirect'] = ...
         INHERIT: typing.ClassVar['ProcessBuilder.Redirect'] = ...
         DISCARD: typing.ClassVar['ProcessBuilder.Redirect'] = ...
@@ -2339,20 +1738,6 @@ class ProcessBuilder:
         def to(file: typing.Union[java.io.File, jpype.protocol.SupportsPath]) -> 'ProcessBuilder.Redirect': ...
         def type(self) -> 'ProcessBuilder.Redirect.Type': ...
         class Type(Enum['ProcessBuilder.Redirect.Type']):
-            """
-            Java class 'java.lang.ProcessBuilder$Redirect$Type'
-            
-                Extends:
-                    java.lang.Enum
-            
-              Attributes:
-                PIPE (java.lang.ProcessBuilder$Redirect$Type): final static enum constant
-                INHERIT (java.lang.ProcessBuilder$Redirect$Type): final static enum constant
-                READ (java.lang.ProcessBuilder$Redirect$Type): final static enum constant
-                WRITE (java.lang.ProcessBuilder$Redirect$Type): final static enum constant
-                APPEND (java.lang.ProcessBuilder$Redirect$Type): final static enum constant
-            
-            """
             PIPE: typing.ClassVar['ProcessBuilder.Redirect.Type'] = ...
             INHERIT: typing.ClassVar['ProcessBuilder.Redirect.Type'] = ...
             READ: typing.ClassVar['ProcessBuilder.Redirect.Type'] = ...
@@ -2369,19 +1754,6 @@ class ProcessBuilder:
             def values() -> typing.List['ProcessBuilder.Redirect.Type']: ...
 
 class ReflectiveOperationException(Exception):
-    """
-    Java class 'java.lang.ReflectiveOperationException'
-    
-        Extends:
-            java.lang.Exception
-    
-      Constructors:
-        * ReflectiveOperationException(java.lang.Throwable)
-        * ReflectiveOperationException(java.lang.String, java.lang.Throwable)
-        * ReflectiveOperationException(java.lang.String)
-        * ReflectiveOperationException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2392,19 +1764,6 @@ class ReflectiveOperationException(Exception):
     def __init__(self, throwable: Throwable): ...
 
 class RuntimeException(Exception):
-    """
-    Java class 'java.lang.RuntimeException'
-    
-        Extends:
-            java.lang.Exception
-    
-      Constructors:
-        * RuntimeException(java.lang.Throwable)
-        * RuntimeException(java.lang.String, java.lang.Throwable)
-        * RuntimeException(java.lang.String)
-        * RuntimeException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2415,13 +1774,6 @@ class RuntimeException(Exception):
     def __init__(self, throwable: Throwable): ...
 
 class StackWalker:
-    """
-    Java class 'java.lang.StackWalker'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def forEach(self, consumer: typing.Union[java.util.function.Consumer['StackWalker.StackFrame'], typing.Callable[['StackWalker.StackFrame'], None]]) -> None: ...
     def getCallerClass(self) -> typing.Type[typing.Any]: ...
     @typing.overload
@@ -2439,18 +1791,6 @@ class StackWalker:
     _walk__T = typing.TypeVar('_walk__T')  # <T>
     def walk(self, function: typing.Union[java.util.function.Function[java.util.stream.Stream['StackWalker.StackFrame'], _walk__T], typing.Callable[[java.util.stream.Stream['StackWalker.StackFrame']], _walk__T]]) -> _walk__T: ...
     class Option(Enum['StackWalker.Option']):
-        """
-        Java class 'java.lang.StackWalker$Option'
-        
-            Extends:
-                java.lang.Enum
-        
-          Attributes:
-            RETAIN_CLASS_REFERENCE (java.lang.StackWalker$Option): final static enum constant
-            SHOW_REFLECT_FRAMES (java.lang.StackWalker$Option): final static enum constant
-            SHOW_HIDDEN_FRAMES (java.lang.StackWalker$Option): final static enum constant
-        
-        """
         RETAIN_CLASS_REFERENCE: typing.ClassVar['StackWalker.Option'] = ...
         SHOW_REFLECT_FRAMES: typing.ClassVar['StackWalker.Option'] = ...
         SHOW_HIDDEN_FRAMES: typing.ClassVar['StackWalker.Option'] = ...
@@ -2464,10 +1804,6 @@ class StackWalker:
         @staticmethod
         def values() -> typing.List['StackWalker.Option']: ...
     class StackFrame:
-        """
-        Java class 'java.lang.StackWalker$StackFrame'
-        
-        """
         def getByteCodeIndex(self) -> int: ...
         def getClassName(self) -> str: ...
         def getDeclaringClass(self) -> typing.Type[typing.Any]: ...
@@ -2480,18 +1816,6 @@ class StackWalker:
         def toStackTraceElement(self) -> StackTraceElement: ...
 
 class System:
-    """
-    Java class 'java.lang.System'
-    
-        Extends:
-            java.lang.Object
-    
-      Attributes:
-        in (java.io.InputStream): final static field
-        out (java.io.PrintStream): final static field
-        err (java.io.PrintStream): final static field
-    
-    """
     in_: typing.ClassVar[java.io.InputStream] = ...
     out: typing.ClassVar[java.io.PrintStream] = ...
     err: typing.ClassVar[java.io.PrintStream] = ...
@@ -2558,10 +1882,6 @@ class System:
     @staticmethod
     def setSecurityManager(securityManager: SecurityManager) -> None: ...
     class Logger:
-        """
-        Java class 'java.lang.System$Logger'
-        
-        """
         def getName(self) -> str: ...
         def isLoggable(self, level: 'System.Logger.Level') -> bool: ...
         @typing.overload
@@ -2581,22 +1901,6 @@ class System:
         @typing.overload
         def log(self, level: 'System.Logger.Level', supplier: typing.Union[java.util.function.Supplier[str], typing.Callable[[], str]], throwable: Throwable) -> None: ...
         class Level(Enum['System.Logger.Level']):
-            """
-            Java class 'java.lang.System$Logger$Level'
-            
-                Extends:
-                    java.lang.Enum
-            
-              Attributes:
-                ALL (java.lang.System$Logger$Level): final static enum constant
-                TRACE (java.lang.System$Logger$Level): final static enum constant
-                DEBUG (java.lang.System$Logger$Level): final static enum constant
-                INFO (java.lang.System$Logger$Level): final static enum constant
-                WARNING (java.lang.System$Logger$Level): final static enum constant
-                ERROR (java.lang.System$Logger$Level): final static enum constant
-                OFF (java.lang.System$Logger$Level): final static enum constant
-            
-            """
             ALL: typing.ClassVar['System.Logger.Level'] = ...
             TRACE: typing.ClassVar['System.Logger.Level'] = ...
             DEBUG: typing.ClassVar['System.Logger.Level'] = ...
@@ -2616,45 +1920,12 @@ class System:
             @staticmethod
             def values() -> typing.List['System.Logger.Level']: ...
     class LoggerFinder:
-        """
-        Java class 'java.lang.System$LoggerFinder'
-        
-            Extends:
-                java.lang.Object
-        
-        """
         def getLocalizedLogger(self, string: str, resourceBundle: java.util.ResourceBundle, module: Module) -> 'System.Logger': ...
         def getLogger(self, string: str, module: Module) -> 'System.Logger': ...
         @staticmethod
         def getLoggerFinder() -> 'System.LoggerFinder': ...
 
 class Thread(Runnable, _JThread):
-    """
-    Java class 'java.lang.Thread'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.lang.Runnable
-    
-      Constructors:
-        * Thread(java.lang.ThreadGroup, java.lang.Runnable)
-        * Thread(java.lang.String)
-        * Thread()
-        * Thread(java.lang.Runnable)
-        * Thread(java.lang.ThreadGroup, java.lang.Runnable, java.lang.String, long, boolean)
-        * Thread(java.lang.ThreadGroup, java.lang.Runnable, java.lang.String, long)
-        * Thread(java.lang.ThreadGroup, java.lang.Runnable, java.lang.String)
-        * Thread(java.lang.Runnable, java.lang.String)
-        * Thread(java.lang.ThreadGroup, java.lang.String)
-    
-      Attributes:
-        MIN_PRIORITY (int): final static field
-        NORM_PRIORITY (int): final static field
-        MAX_PRIORITY (int): final static field
-    
-    """
     MIN_PRIORITY: typing.ClassVar[int] = ...
     NORM_PRIORITY: typing.ClassVar[int] = ...
     MAX_PRIORITY: typing.ClassVar[int] = ...
@@ -2734,21 +2005,6 @@ class Thread(Runnable, _JThread):
     def suspend(self) -> None: ...
     def toString(self) -> str: ...
     class State(Enum['Thread.State']):
-        """
-        Java class 'java.lang.Thread$State'
-        
-            Extends:
-                java.lang.Enum
-        
-          Attributes:
-            NEW (java.lang.Thread$State): final static enum constant
-            RUNNABLE (java.lang.Thread$State): final static enum constant
-            BLOCKED (java.lang.Thread$State): final static enum constant
-            WAITING (java.lang.Thread$State): final static enum constant
-            TIMED_WAITING (java.lang.Thread$State): final static enum constant
-            TERMINATED (java.lang.Thread$State): final static enum constant
-        
-        """
         NEW: typing.ClassVar['Thread.State'] = ...
         RUNNABLE: typing.ClassVar['Thread.State'] = ...
         BLOCKED: typing.ClassVar['Thread.State'] = ...
@@ -2765,39 +2021,12 @@ class Thread(Runnable, _JThread):
         @staticmethod
         def values() -> typing.List['Thread.State']: ...
     class UncaughtExceptionHandler:
-        """
-        Java class 'java.lang.Thread$UncaughtExceptionHandler'
-        
-        """
         def uncaughtException(self, thread: 'Thread', throwable: Throwable) -> None: ...
 
 class ThreadDeath(Error):
-    """
-    Java class 'java.lang.ThreadDeath'
-    
-        Extends:
-            java.lang.Error
-    
-      Constructors:
-        * ThreadDeath()
-    
-    """
     def __init__(self): ...
 
 class VirtualMachineError(Error):
-    """
-    Java class 'java.lang.VirtualMachineError'
-    
-        Extends:
-            java.lang.Error
-    
-      Constructors:
-        * VirtualMachineError(java.lang.Throwable)
-        * VirtualMachineError(java.lang.String, java.lang.Throwable)
-        * VirtualMachineError(java.lang.String)
-        * VirtualMachineError()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2808,53 +2037,18 @@ class VirtualMachineError(Error):
     def __init__(self, throwable: Throwable): ...
 
 class ArithmeticException(RuntimeException):
-    """
-    Java class 'java.lang.ArithmeticException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * ArithmeticException()
-        * ArithmeticException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class ArrayStoreException(RuntimeException):
-    """
-    Java class 'java.lang.ArrayStoreException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * ArrayStoreException()
-        * ArrayStoreException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class BootstrapMethodError(LinkageError):
-    """
-    Java class 'java.lang.BootstrapMethodError'
-    
-        Extends:
-            java.lang.LinkageError
-    
-      Constructors:
-        * BootstrapMethodError(java.lang.Throwable)
-        * BootstrapMethodError(java.lang.String, java.lang.Throwable)
-        * BootstrapMethodError(java.lang.String)
-        * BootstrapMethodError()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2865,69 +2059,24 @@ class BootstrapMethodError(LinkageError):
     def __init__(self, throwable: Throwable): ...
 
 class ClassCastException(RuntimeException):
-    """
-    Java class 'java.lang.ClassCastException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * ClassCastException()
-        * ClassCastException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class ClassCircularityError(LinkageError):
-    """
-    Java class 'java.lang.ClassCircularityError'
-    
-        Extends:
-            java.lang.LinkageError
-    
-      Constructors:
-        * ClassCircularityError()
-        * ClassCircularityError(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class ClassFormatError(LinkageError):
-    """
-    Java class 'java.lang.ClassFormatError'
-    
-        Extends:
-            java.lang.LinkageError
-    
-      Constructors:
-        * ClassFormatError()
-        * ClassFormatError(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class ClassNotFoundException(ReflectiveOperationException):
-    """
-    Java class 'java.lang.ClassNotFoundException'
-    
-        Extends:
-            java.lang.ReflectiveOperationException
-    
-      Constructors:
-        * ClassNotFoundException(java.lang.String, java.lang.Throwable)
-        * ClassNotFoundException(java.lang.String)
-        * ClassNotFoundException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2938,33 +2087,11 @@ class ClassNotFoundException(ReflectiveOperationException):
     def getException(self) -> Throwable: ...
 
 class EnumConstantNotPresentException(RuntimeException):
-    """
-    Java class 'java.lang.EnumConstantNotPresentException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * EnumConstantNotPresentException(java.lang.Class, java.lang.String)
-    
-    """
     def __init__(self, class_: typing.Type[Enum], string: str): ...
     def constantName(self) -> str: ...
     def enumType(self) -> typing.Type[Enum]: ...
 
 class ExceptionInInitializerError(LinkageError):
-    """
-    Java class 'java.lang.ExceptionInInitializerError'
-    
-        Extends:
-            java.lang.LinkageError
-    
-      Constructors:
-        * ExceptionInInitializerError(java.lang.String)
-        * ExceptionInInitializerError(java.lang.Throwable)
-        * ExceptionInInitializerError()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -2975,36 +2102,12 @@ class ExceptionInInitializerError(LinkageError):
     def getException(self) -> Throwable: ...
 
 class IllegalAccessException(ReflectiveOperationException):
-    """
-    Java class 'java.lang.IllegalAccessException'
-    
-        Extends:
-            java.lang.ReflectiveOperationException
-    
-      Constructors:
-        * IllegalAccessException()
-        * IllegalAccessException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class IllegalArgumentException(RuntimeException):
-    """
-    Java class 'java.lang.IllegalArgumentException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * IllegalArgumentException(java.lang.Throwable)
-        * IllegalArgumentException(java.lang.String, java.lang.Throwable)
-        * IllegalArgumentException(java.lang.String)
-        * IllegalArgumentException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3015,19 +2118,6 @@ class IllegalArgumentException(RuntimeException):
     def __init__(self, throwable: Throwable): ...
 
 class IllegalCallerException(RuntimeException):
-    """
-    Java class 'java.lang.IllegalCallerException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * IllegalCallerException(java.lang.Throwable)
-        * IllegalCallerException(java.lang.String, java.lang.Throwable)
-        * IllegalCallerException(java.lang.String)
-        * IllegalCallerException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3038,36 +2128,12 @@ class IllegalCallerException(RuntimeException):
     def __init__(self, throwable: Throwable): ...
 
 class IllegalMonitorStateException(RuntimeException):
-    """
-    Java class 'java.lang.IllegalMonitorStateException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * IllegalMonitorStateException()
-        * IllegalMonitorStateException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class IllegalStateException(RuntimeException):
-    """
-    Java class 'java.lang.IllegalStateException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * IllegalStateException(java.lang.Throwable)
-        * IllegalStateException(java.lang.String, java.lang.Throwable)
-        * IllegalStateException(java.lang.String)
-        * IllegalStateException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3078,35 +2144,12 @@ class IllegalStateException(RuntimeException):
     def __init__(self, throwable: Throwable): ...
 
 class IncompatibleClassChangeError(LinkageError):
-    """
-    Java class 'java.lang.IncompatibleClassChangeError'
-    
-        Extends:
-            java.lang.LinkageError
-    
-      Constructors:
-        * IncompatibleClassChangeError()
-        * IncompatibleClassChangeError(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class IndexOutOfBoundsException(RuntimeException):
-    """
-    Java class 'java.lang.IndexOutOfBoundsException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * IndexOutOfBoundsException()
-        * IndexOutOfBoundsException(java.lang.String)
-        * IndexOutOfBoundsException(int)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3115,36 +2158,12 @@ class IndexOutOfBoundsException(RuntimeException):
     def __init__(self, string: str): ...
 
 class InstantiationException(ReflectiveOperationException):
-    """
-    Java class 'java.lang.InstantiationException'
-    
-        Extends:
-            java.lang.ReflectiveOperationException
-    
-      Constructors:
-        * InstantiationException()
-        * InstantiationException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class InternalError(VirtualMachineError):
-    """
-    Java class 'java.lang.InternalError'
-    
-        Extends:
-            java.lang.VirtualMachineError
-    
-      Constructors:
-        * InternalError(java.lang.Throwable)
-        * InternalError(java.lang.String, java.lang.Throwable)
-        * InternalError(java.lang.String)
-        * InternalError()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3155,19 +2174,6 @@ class InternalError(VirtualMachineError):
     def __init__(self, throwable: Throwable): ...
 
 class LayerInstantiationException(RuntimeException):
-    """
-    Java class 'java.lang.LayerInstantiationException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * LayerInstantiationException(java.lang.String, java.lang.Throwable)
-        * LayerInstantiationException(java.lang.Throwable)
-        * LayerInstantiationException(java.lang.String)
-        * LayerInstantiationException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3178,121 +2184,42 @@ class LayerInstantiationException(RuntimeException):
     def __init__(self, throwable: Throwable): ...
 
 class NegativeArraySizeException(RuntimeException):
-    """
-    Java class 'java.lang.NegativeArraySizeException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * NegativeArraySizeException()
-        * NegativeArraySizeException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class NoClassDefFoundError(LinkageError):
-    """
-    Java class 'java.lang.NoClassDefFoundError'
-    
-        Extends:
-            java.lang.LinkageError
-    
-      Constructors:
-        * NoClassDefFoundError()
-        * NoClassDefFoundError(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class NoSuchFieldException(ReflectiveOperationException):
-    """
-    Java class 'java.lang.NoSuchFieldException'
-    
-        Extends:
-            java.lang.ReflectiveOperationException
-    
-      Constructors:
-        * NoSuchFieldException()
-        * NoSuchFieldException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class NoSuchMethodException(ReflectiveOperationException):
-    """
-    Java class 'java.lang.NoSuchMethodException'
-    
-        Extends:
-            java.lang.ReflectiveOperationException
-    
-      Constructors:
-        * NoSuchMethodException()
-        * NoSuchMethodException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class NullPointerException(RuntimeException):
-    """
-    Java class 'java.lang.NullPointerException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * NullPointerException()
-        * NullPointerException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class OutOfMemoryError(VirtualMachineError):
-    """
-    Java class 'java.lang.OutOfMemoryError'
-    
-        Extends:
-            java.lang.VirtualMachineError
-    
-      Constructors:
-        * OutOfMemoryError()
-        * OutOfMemoryError(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class SecurityException(RuntimeException):
-    """
-    Java class 'java.lang.SecurityException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * SecurityException(java.lang.Throwable)
-        * SecurityException(java.lang.String, java.lang.Throwable)
-        * SecurityException(java.lang.String)
-        * SecurityException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3303,37 +2230,12 @@ class SecurityException(RuntimeException):
     def __init__(self, throwable: Throwable): ...
 
 class StackOverflowError(VirtualMachineError):
-    """
-    Java class 'java.lang.StackOverflowError'
-    
-        Extends:
-            java.lang.VirtualMachineError
-    
-      Constructors:
-        * StackOverflowError()
-        * StackOverflowError(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class ThreadGroup(Thread.UncaughtExceptionHandler):
-    """
-    Java class 'java.lang.ThreadGroup'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.lang.Thread.UncaughtExceptionHandler
-    
-      Constructors:
-        * ThreadGroup(java.lang.String)
-        * ThreadGroup(java.lang.ThreadGroup, java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
@@ -3368,67 +2270,22 @@ class ThreadGroup(Thread.UncaughtExceptionHandler):
     def uncaughtException(self, thread: Thread, throwable: Throwable) -> None: ...
 
 class TypeNotPresentException(RuntimeException):
-    """
-    Java class 'java.lang.TypeNotPresentException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * TypeNotPresentException(java.lang.String, java.lang.Throwable)
-    
-    """
     def __init__(self, string: str, throwable: Throwable): ...
     def typeName(self) -> str: ...
 
 class UnknownError(VirtualMachineError):
-    """
-    Java class 'java.lang.UnknownError'
-    
-        Extends:
-            java.lang.VirtualMachineError
-    
-      Constructors:
-        * UnknownError()
-        * UnknownError(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class UnsatisfiedLinkError(LinkageError):
-    """
-    Java class 'java.lang.UnsatisfiedLinkError'
-    
-        Extends:
-            java.lang.LinkageError
-    
-      Constructors:
-        * UnsatisfiedLinkError()
-        * UnsatisfiedLinkError(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class UnsupportedOperationException(RuntimeException):
-    """
-    Java class 'java.lang.UnsupportedOperationException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * UnsupportedOperationException(java.lang.Throwable)
-        * UnsupportedOperationException(java.lang.String, java.lang.Throwable)
-        * UnsupportedOperationException(java.lang.String)
-        * UnsupportedOperationException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3439,52 +2296,18 @@ class UnsupportedOperationException(RuntimeException):
     def __init__(self, throwable: Throwable): ...
 
 class VerifyError(LinkageError):
-    """
-    Java class 'java.lang.VerifyError'
-    
-        Extends:
-            java.lang.LinkageError
-    
-      Constructors:
-        * VerifyError()
-        * VerifyError(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class AbstractMethodError(IncompatibleClassChangeError):
-    """
-    Java class 'java.lang.AbstractMethodError'
-    
-        Extends:
-            java.lang.IncompatibleClassChangeError
-    
-      Constructors:
-        * AbstractMethodError()
-        * AbstractMethodError(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class ArrayIndexOutOfBoundsException(IndexOutOfBoundsException):
-    """
-    Java class 'java.lang.ArrayIndexOutOfBoundsException'
-    
-        Extends:
-            java.lang.IndexOutOfBoundsException
-    
-      Constructors:
-        * ArrayIndexOutOfBoundsException()
-        * ArrayIndexOutOfBoundsException(java.lang.String)
-        * ArrayIndexOutOfBoundsException(int)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3493,120 +2316,42 @@ class ArrayIndexOutOfBoundsException(IndexOutOfBoundsException):
     def __init__(self, string: str): ...
 
 class IllegalAccessError(IncompatibleClassChangeError):
-    """
-    Java class 'java.lang.IllegalAccessError'
-    
-        Extends:
-            java.lang.IncompatibleClassChangeError
-    
-      Constructors:
-        * IllegalAccessError()
-        * IllegalAccessError(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class IllegalThreadStateException(IllegalArgumentException):
-    """
-    Java class 'java.lang.IllegalThreadStateException'
-    
-        Extends:
-            java.lang.IllegalArgumentException
-    
-      Constructors:
-        * IllegalThreadStateException()
-        * IllegalThreadStateException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class InstantiationError(IncompatibleClassChangeError):
-    """
-    Java class 'java.lang.InstantiationError'
-    
-        Extends:
-            java.lang.IncompatibleClassChangeError
-    
-      Constructors:
-        * InstantiationError()
-        * InstantiationError(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class NoSuchFieldError(IncompatibleClassChangeError):
-    """
-    Java class 'java.lang.NoSuchFieldError'
-    
-        Extends:
-            java.lang.IncompatibleClassChangeError
-    
-      Constructors:
-        * NoSuchFieldError()
-        * NoSuchFieldError(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class NoSuchMethodError(IncompatibleClassChangeError):
-    """
-    Java class 'java.lang.NoSuchMethodError'
-    
-        Extends:
-            java.lang.IncompatibleClassChangeError
-    
-      Constructors:
-        * NoSuchMethodError()
-        * NoSuchMethodError(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class NumberFormatException(IllegalArgumentException):
-    """
-    Java class 'java.lang.NumberFormatException'
-    
-        Extends:
-            java.lang.IllegalArgumentException
-    
-      Constructors:
-        * NumberFormatException()
-        * NumberFormatException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class StringIndexOutOfBoundsException(IndexOutOfBoundsException):
-    """
-    Java class 'java.lang.StringIndexOutOfBoundsException'
-    
-        Extends:
-            java.lang.IndexOutOfBoundsException
-    
-      Constructors:
-        * StringIndexOutOfBoundsException()
-        * StringIndexOutOfBoundsException(java.lang.String)
-        * StringIndexOutOfBoundsException(int)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -3615,108 +2360,12 @@ class StringIndexOutOfBoundsException(IndexOutOfBoundsException):
     def __init__(self, string: str): ...
 
 class UnsupportedClassVersionError(ClassFormatError):
-    """
-    Java class 'java.lang.UnsupportedClassVersionError'
-    
-        Extends:
-            java.lang.ClassFormatError
-    
-      Constructors:
-        * UnsupportedClassVersionError()
-        * UnsupportedClassVersionError(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class Character(java.io.Serializable, Comparable[str]):
-    """
-    Java class 'java.lang.Character'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable, java.lang.Comparable
-    
-      Constructors:
-        * Character(char)
-    
-      Attributes:
-        MIN_RADIX (int): final static field
-        MAX_RADIX (int): final static field
-        MIN_VALUE (char): final static field
-        MAX_VALUE (char): final static field
-        TYPE (java.lang.Class): final static field
-        UNASSIGNED (byte): final static field
-        UPPERCASE_LETTER (byte): final static field
-        LOWERCASE_LETTER (byte): final static field
-        TITLECASE_LETTER (byte): final static field
-        MODIFIER_LETTER (byte): final static field
-        OTHER_LETTER (byte): final static field
-        NON_SPACING_MARK (byte): final static field
-        ENCLOSING_MARK (byte): final static field
-        COMBINING_SPACING_MARK (byte): final static field
-        DECIMAL_DIGIT_NUMBER (byte): final static field
-        LETTER_NUMBER (byte): final static field
-        OTHER_NUMBER (byte): final static field
-        SPACE_SEPARATOR (byte): final static field
-        LINE_SEPARATOR (byte): final static field
-        PARAGRAPH_SEPARATOR (byte): final static field
-        CONTROL (byte): final static field
-        FORMAT (byte): final static field
-        PRIVATE_USE (byte): final static field
-        SURROGATE (byte): final static field
-        DASH_PUNCTUATION (byte): final static field
-        START_PUNCTUATION (byte): final static field
-        END_PUNCTUATION (byte): final static field
-        CONNECTOR_PUNCTUATION (byte): final static field
-        OTHER_PUNCTUATION (byte): final static field
-        MATH_SYMBOL (byte): final static field
-        CURRENCY_SYMBOL (byte): final static field
-        MODIFIER_SYMBOL (byte): final static field
-        OTHER_SYMBOL (byte): final static field
-        INITIAL_QUOTE_PUNCTUATION (byte): final static field
-        FINAL_QUOTE_PUNCTUATION (byte): final static field
-        DIRECTIONALITY_UNDEFINED (byte): final static field
-        DIRECTIONALITY_LEFT_TO_RIGHT (byte): final static field
-        DIRECTIONALITY_RIGHT_TO_LEFT (byte): final static field
-        DIRECTIONALITY_RIGHT_TO_LEFT_ARABIC (byte): final static field
-        DIRECTIONALITY_EUROPEAN_NUMBER (byte): final static field
-        DIRECTIONALITY_EUROPEAN_NUMBER_SEPARATOR (byte): final static field
-        DIRECTIONALITY_EUROPEAN_NUMBER_TERMINATOR (byte): final static field
-        DIRECTIONALITY_ARABIC_NUMBER (byte): final static field
-        DIRECTIONALITY_COMMON_NUMBER_SEPARATOR (byte): final static field
-        DIRECTIONALITY_NONSPACING_MARK (byte): final static field
-        DIRECTIONALITY_BOUNDARY_NEUTRAL (byte): final static field
-        DIRECTIONALITY_PARAGRAPH_SEPARATOR (byte): final static field
-        DIRECTIONALITY_SEGMENT_SEPARATOR (byte): final static field
-        DIRECTIONALITY_WHITESPACE (byte): final static field
-        DIRECTIONALITY_OTHER_NEUTRALS (byte): final static field
-        DIRECTIONALITY_LEFT_TO_RIGHT_EMBEDDING (byte): final static field
-        DIRECTIONALITY_LEFT_TO_RIGHT_OVERRIDE (byte): final static field
-        DIRECTIONALITY_RIGHT_TO_LEFT_EMBEDDING (byte): final static field
-        DIRECTIONALITY_RIGHT_TO_LEFT_OVERRIDE (byte): final static field
-        DIRECTIONALITY_POP_DIRECTIONAL_FORMAT (byte): final static field
-        DIRECTIONALITY_LEFT_TO_RIGHT_ISOLATE (byte): final static field
-        DIRECTIONALITY_RIGHT_TO_LEFT_ISOLATE (byte): final static field
-        DIRECTIONALITY_FIRST_STRONG_ISOLATE (byte): final static field
-        DIRECTIONALITY_POP_DIRECTIONAL_ISOLATE (byte): final static field
-        MIN_HIGH_SURROGATE (char): final static field
-        MAX_HIGH_SURROGATE (char): final static field
-        MIN_LOW_SURROGATE (char): final static field
-        MAX_LOW_SURROGATE (char): final static field
-        MIN_SURROGATE (char): final static field
-        MAX_SURROGATE (char): final static field
-        MIN_SUPPLEMENTARY_CODE_POINT (int): final static field
-        MIN_CODE_POINT (int): final static field
-        MAX_CODE_POINT (int): final static field
-        SIZE (int): final static field
-        BYTES (int): final static field
-    
-    """
     MIN_RADIX: typing.ClassVar[int] = ...
     MAX_RADIX: typing.ClassVar[int] = ...
     MIN_VALUE: typing.ClassVar[str] = ...
@@ -4023,307 +2672,10 @@ class Character(java.io.Serializable, Comparable[str]):
     @staticmethod
     def valueOf(char: str) -> str: ...
     class Subset:
-        """
-        Java class 'java.lang.Character$Subset'
-        
-            Extends:
-                java.lang.Object
-        
-        """
         def equals(self, object: typing.Any) -> bool: ...
         def hashCode(self) -> int: ...
         def toString(self) -> str: ...
     class UnicodeBlock(java.lang.Character.Subset):
-        """
-        Java class 'java.lang.Character$UnicodeBlock'
-        
-            Extends:
-                java.lang.Character$Subset
-        
-          Attributes:
-            BASIC_LATIN (java.lang.Character$UnicodeBlock): final static field
-            LATIN_1_SUPPLEMENT (java.lang.Character$UnicodeBlock): final static field
-            LATIN_EXTENDED_A (java.lang.Character$UnicodeBlock): final static field
-            LATIN_EXTENDED_B (java.lang.Character$UnicodeBlock): final static field
-            IPA_EXTENSIONS (java.lang.Character$UnicodeBlock): final static field
-            SPACING_MODIFIER_LETTERS (java.lang.Character$UnicodeBlock): final static field
-            COMBINING_DIACRITICAL_MARKS (java.lang.Character$UnicodeBlock): final static field
-            GREEK (java.lang.Character$UnicodeBlock): final static field
-            CYRILLIC (java.lang.Character$UnicodeBlock): final static field
-            ARMENIAN (java.lang.Character$UnicodeBlock): final static field
-            HEBREW (java.lang.Character$UnicodeBlock): final static field
-            ARABIC (java.lang.Character$UnicodeBlock): final static field
-            DEVANAGARI (java.lang.Character$UnicodeBlock): final static field
-            BENGALI (java.lang.Character$UnicodeBlock): final static field
-            GURMUKHI (java.lang.Character$UnicodeBlock): final static field
-            GUJARATI (java.lang.Character$UnicodeBlock): final static field
-            ORIYA (java.lang.Character$UnicodeBlock): final static field
-            TAMIL (java.lang.Character$UnicodeBlock): final static field
-            TELUGU (java.lang.Character$UnicodeBlock): final static field
-            KANNADA (java.lang.Character$UnicodeBlock): final static field
-            MALAYALAM (java.lang.Character$UnicodeBlock): final static field
-            THAI (java.lang.Character$UnicodeBlock): final static field
-            LAO (java.lang.Character$UnicodeBlock): final static field
-            TIBETAN (java.lang.Character$UnicodeBlock): final static field
-            GEORGIAN (java.lang.Character$UnicodeBlock): final static field
-            HANGUL_JAMO (java.lang.Character$UnicodeBlock): final static field
-            LATIN_EXTENDED_ADDITIONAL (java.lang.Character$UnicodeBlock): final static field
-            GREEK_EXTENDED (java.lang.Character$UnicodeBlock): final static field
-            GENERAL_PUNCTUATION (java.lang.Character$UnicodeBlock): final static field
-            SUPERSCRIPTS_AND_SUBSCRIPTS (java.lang.Character$UnicodeBlock): final static field
-            CURRENCY_SYMBOLS (java.lang.Character$UnicodeBlock): final static field
-            COMBINING_MARKS_FOR_SYMBOLS (java.lang.Character$UnicodeBlock): final static field
-            LETTERLIKE_SYMBOLS (java.lang.Character$UnicodeBlock): final static field
-            NUMBER_FORMS (java.lang.Character$UnicodeBlock): final static field
-            ARROWS (java.lang.Character$UnicodeBlock): final static field
-            MATHEMATICAL_OPERATORS (java.lang.Character$UnicodeBlock): final static field
-            MISCELLANEOUS_TECHNICAL (java.lang.Character$UnicodeBlock): final static field
-            CONTROL_PICTURES (java.lang.Character$UnicodeBlock): final static field
-            OPTICAL_CHARACTER_RECOGNITION (java.lang.Character$UnicodeBlock): final static field
-            ENCLOSED_ALPHANUMERICS (java.lang.Character$UnicodeBlock): final static field
-            BOX_DRAWING (java.lang.Character$UnicodeBlock): final static field
-            BLOCK_ELEMENTS (java.lang.Character$UnicodeBlock): final static field
-            GEOMETRIC_SHAPES (java.lang.Character$UnicodeBlock): final static field
-            MISCELLANEOUS_SYMBOLS (java.lang.Character$UnicodeBlock): final static field
-            DINGBATS (java.lang.Character$UnicodeBlock): final static field
-            CJK_SYMBOLS_AND_PUNCTUATION (java.lang.Character$UnicodeBlock): final static field
-            HIRAGANA (java.lang.Character$UnicodeBlock): final static field
-            KATAKANA (java.lang.Character$UnicodeBlock): final static field
-            BOPOMOFO (java.lang.Character$UnicodeBlock): final static field
-            HANGUL_COMPATIBILITY_JAMO (java.lang.Character$UnicodeBlock): final static field
-            KANBUN (java.lang.Character$UnicodeBlock): final static field
-            ENCLOSED_CJK_LETTERS_AND_MONTHS (java.lang.Character$UnicodeBlock): final static field
-            CJK_COMPATIBILITY (java.lang.Character$UnicodeBlock): final static field
-            CJK_UNIFIED_IDEOGRAPHS (java.lang.Character$UnicodeBlock): final static field
-            HANGUL_SYLLABLES (java.lang.Character$UnicodeBlock): final static field
-            PRIVATE_USE_AREA (java.lang.Character$UnicodeBlock): final static field
-            CJK_COMPATIBILITY_IDEOGRAPHS (java.lang.Character$UnicodeBlock): final static field
-            ALPHABETIC_PRESENTATION_FORMS (java.lang.Character$UnicodeBlock): final static field
-            ARABIC_PRESENTATION_FORMS_A (java.lang.Character$UnicodeBlock): final static field
-            COMBINING_HALF_MARKS (java.lang.Character$UnicodeBlock): final static field
-            CJK_COMPATIBILITY_FORMS (java.lang.Character$UnicodeBlock): final static field
-            SMALL_FORM_VARIANTS (java.lang.Character$UnicodeBlock): final static field
-            ARABIC_PRESENTATION_FORMS_B (java.lang.Character$UnicodeBlock): final static field
-            HALFWIDTH_AND_FULLWIDTH_FORMS (java.lang.Character$UnicodeBlock): final static field
-            SPECIALS (java.lang.Character$UnicodeBlock): final static field
-            SURROGATES_AREA (java.lang.Character$UnicodeBlock): final static field
-            SYRIAC (java.lang.Character$UnicodeBlock): final static field
-            THAANA (java.lang.Character$UnicodeBlock): final static field
-            SINHALA (java.lang.Character$UnicodeBlock): final static field
-            MYANMAR (java.lang.Character$UnicodeBlock): final static field
-            ETHIOPIC (java.lang.Character$UnicodeBlock): final static field
-            CHEROKEE (java.lang.Character$UnicodeBlock): final static field
-            UNIFIED_CANADIAN_ABORIGINAL_SYLLABICS (java.lang.Character$UnicodeBlock): final static field
-            OGHAM (java.lang.Character$UnicodeBlock): final static field
-            RUNIC (java.lang.Character$UnicodeBlock): final static field
-            KHMER (java.lang.Character$UnicodeBlock): final static field
-            MONGOLIAN (java.lang.Character$UnicodeBlock): final static field
-            BRAILLE_PATTERNS (java.lang.Character$UnicodeBlock): final static field
-            CJK_RADICALS_SUPPLEMENT (java.lang.Character$UnicodeBlock): final static field
-            KANGXI_RADICALS (java.lang.Character$UnicodeBlock): final static field
-            IDEOGRAPHIC_DESCRIPTION_CHARACTERS (java.lang.Character$UnicodeBlock): final static field
-            BOPOMOFO_EXTENDED (java.lang.Character$UnicodeBlock): final static field
-            CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A (java.lang.Character$UnicodeBlock): final static field
-            YI_SYLLABLES (java.lang.Character$UnicodeBlock): final static field
-            YI_RADICALS (java.lang.Character$UnicodeBlock): final static field
-            CYRILLIC_SUPPLEMENTARY (java.lang.Character$UnicodeBlock): final static field
-            TAGALOG (java.lang.Character$UnicodeBlock): final static field
-            HANUNOO (java.lang.Character$UnicodeBlock): final static field
-            BUHID (java.lang.Character$UnicodeBlock): final static field
-            TAGBANWA (java.lang.Character$UnicodeBlock): final static field
-            LIMBU (java.lang.Character$UnicodeBlock): final static field
-            TAI_LE (java.lang.Character$UnicodeBlock): final static field
-            KHMER_SYMBOLS (java.lang.Character$UnicodeBlock): final static field
-            PHONETIC_EXTENSIONS (java.lang.Character$UnicodeBlock): final static field
-            MISCELLANEOUS_MATHEMATICAL_SYMBOLS_A (java.lang.Character$UnicodeBlock): final static field
-            SUPPLEMENTAL_ARROWS_A (java.lang.Character$UnicodeBlock): final static field
-            SUPPLEMENTAL_ARROWS_B (java.lang.Character$UnicodeBlock): final static field
-            MISCELLANEOUS_MATHEMATICAL_SYMBOLS_B (java.lang.Character$UnicodeBlock): final static field
-            SUPPLEMENTAL_MATHEMATICAL_OPERATORS (java.lang.Character$UnicodeBlock): final static field
-            MISCELLANEOUS_SYMBOLS_AND_ARROWS (java.lang.Character$UnicodeBlock): final static field
-            KATAKANA_PHONETIC_EXTENSIONS (java.lang.Character$UnicodeBlock): final static field
-            YIJING_HEXAGRAM_SYMBOLS (java.lang.Character$UnicodeBlock): final static field
-            VARIATION_SELECTORS (java.lang.Character$UnicodeBlock): final static field
-            LINEAR_B_SYLLABARY (java.lang.Character$UnicodeBlock): final static field
-            LINEAR_B_IDEOGRAMS (java.lang.Character$UnicodeBlock): final static field
-            AEGEAN_NUMBERS (java.lang.Character$UnicodeBlock): final static field
-            OLD_ITALIC (java.lang.Character$UnicodeBlock): final static field
-            GOTHIC (java.lang.Character$UnicodeBlock): final static field
-            UGARITIC (java.lang.Character$UnicodeBlock): final static field
-            DESERET (java.lang.Character$UnicodeBlock): final static field
-            SHAVIAN (java.lang.Character$UnicodeBlock): final static field
-            OSMANYA (java.lang.Character$UnicodeBlock): final static field
-            CYPRIOT_SYLLABARY (java.lang.Character$UnicodeBlock): final static field
-            BYZANTINE_MUSICAL_SYMBOLS (java.lang.Character$UnicodeBlock): final static field
-            MUSICAL_SYMBOLS (java.lang.Character$UnicodeBlock): final static field
-            TAI_XUAN_JING_SYMBOLS (java.lang.Character$UnicodeBlock): final static field
-            MATHEMATICAL_ALPHANUMERIC_SYMBOLS (java.lang.Character$UnicodeBlock): final static field
-            CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B (java.lang.Character$UnicodeBlock): final static field
-            CJK_COMPATIBILITY_IDEOGRAPHS_SUPPLEMENT (java.lang.Character$UnicodeBlock): final static field
-            TAGS (java.lang.Character$UnicodeBlock): final static field
-            VARIATION_SELECTORS_SUPPLEMENT (java.lang.Character$UnicodeBlock): final static field
-            SUPPLEMENTARY_PRIVATE_USE_AREA_A (java.lang.Character$UnicodeBlock): final static field
-            SUPPLEMENTARY_PRIVATE_USE_AREA_B (java.lang.Character$UnicodeBlock): final static field
-            HIGH_SURROGATES (java.lang.Character$UnicodeBlock): final static field
-            HIGH_PRIVATE_USE_SURROGATES (java.lang.Character$UnicodeBlock): final static field
-            LOW_SURROGATES (java.lang.Character$UnicodeBlock): final static field
-            ARABIC_SUPPLEMENT (java.lang.Character$UnicodeBlock): final static field
-            NKO (java.lang.Character$UnicodeBlock): final static field
-            SAMARITAN (java.lang.Character$UnicodeBlock): final static field
-            MANDAIC (java.lang.Character$UnicodeBlock): final static field
-            ETHIOPIC_SUPPLEMENT (java.lang.Character$UnicodeBlock): final static field
-            UNIFIED_CANADIAN_ABORIGINAL_SYLLABICS_EXTENDED (java.lang.Character$UnicodeBlock): final static field
-            NEW_TAI_LUE (java.lang.Character$UnicodeBlock): final static field
-            BUGINESE (java.lang.Character$UnicodeBlock): final static field
-            TAI_THAM (java.lang.Character$UnicodeBlock): final static field
-            BALINESE (java.lang.Character$UnicodeBlock): final static field
-            SUNDANESE (java.lang.Character$UnicodeBlock): final static field
-            BATAK (java.lang.Character$UnicodeBlock): final static field
-            LEPCHA (java.lang.Character$UnicodeBlock): final static field
-            OL_CHIKI (java.lang.Character$UnicodeBlock): final static field
-            VEDIC_EXTENSIONS (java.lang.Character$UnicodeBlock): final static field
-            PHONETIC_EXTENSIONS_SUPPLEMENT (java.lang.Character$UnicodeBlock): final static field
-            COMBINING_DIACRITICAL_MARKS_SUPPLEMENT (java.lang.Character$UnicodeBlock): final static field
-            GLAGOLITIC (java.lang.Character$UnicodeBlock): final static field
-            LATIN_EXTENDED_C (java.lang.Character$UnicodeBlock): final static field
-            COPTIC (java.lang.Character$UnicodeBlock): final static field
-            GEORGIAN_SUPPLEMENT (java.lang.Character$UnicodeBlock): final static field
-            TIFINAGH (java.lang.Character$UnicodeBlock): final static field
-            ETHIOPIC_EXTENDED (java.lang.Character$UnicodeBlock): final static field
-            CYRILLIC_EXTENDED_A (java.lang.Character$UnicodeBlock): final static field
-            SUPPLEMENTAL_PUNCTUATION (java.lang.Character$UnicodeBlock): final static field
-            CJK_STROKES (java.lang.Character$UnicodeBlock): final static field
-            LISU (java.lang.Character$UnicodeBlock): final static field
-            VAI (java.lang.Character$UnicodeBlock): final static field
-            CYRILLIC_EXTENDED_B (java.lang.Character$UnicodeBlock): final static field
-            BAMUM (java.lang.Character$UnicodeBlock): final static field
-            MODIFIER_TONE_LETTERS (java.lang.Character$UnicodeBlock): final static field
-            LATIN_EXTENDED_D (java.lang.Character$UnicodeBlock): final static field
-            SYLOTI_NAGRI (java.lang.Character$UnicodeBlock): final static field
-            COMMON_INDIC_NUMBER_FORMS (java.lang.Character$UnicodeBlock): final static field
-            PHAGS_PA (java.lang.Character$UnicodeBlock): final static field
-            SAURASHTRA (java.lang.Character$UnicodeBlock): final static field
-            DEVANAGARI_EXTENDED (java.lang.Character$UnicodeBlock): final static field
-            KAYAH_LI (java.lang.Character$UnicodeBlock): final static field
-            REJANG (java.lang.Character$UnicodeBlock): final static field
-            HANGUL_JAMO_EXTENDED_A (java.lang.Character$UnicodeBlock): final static field
-            JAVANESE (java.lang.Character$UnicodeBlock): final static field
-            CHAM (java.lang.Character$UnicodeBlock): final static field
-            MYANMAR_EXTENDED_A (java.lang.Character$UnicodeBlock): final static field
-            TAI_VIET (java.lang.Character$UnicodeBlock): final static field
-            ETHIOPIC_EXTENDED_A (java.lang.Character$UnicodeBlock): final static field
-            MEETEI_MAYEK (java.lang.Character$UnicodeBlock): final static field
-            HANGUL_JAMO_EXTENDED_B (java.lang.Character$UnicodeBlock): final static field
-            VERTICAL_FORMS (java.lang.Character$UnicodeBlock): final static field
-            ANCIENT_GREEK_NUMBERS (java.lang.Character$UnicodeBlock): final static field
-            ANCIENT_SYMBOLS (java.lang.Character$UnicodeBlock): final static field
-            PHAISTOS_DISC (java.lang.Character$UnicodeBlock): final static field
-            LYCIAN (java.lang.Character$UnicodeBlock): final static field
-            CARIAN (java.lang.Character$UnicodeBlock): final static field
-            OLD_PERSIAN (java.lang.Character$UnicodeBlock): final static field
-            IMPERIAL_ARAMAIC (java.lang.Character$UnicodeBlock): final static field
-            PHOENICIAN (java.lang.Character$UnicodeBlock): final static field
-            LYDIAN (java.lang.Character$UnicodeBlock): final static field
-            KHAROSHTHI (java.lang.Character$UnicodeBlock): final static field
-            OLD_SOUTH_ARABIAN (java.lang.Character$UnicodeBlock): final static field
-            AVESTAN (java.lang.Character$UnicodeBlock): final static field
-            INSCRIPTIONAL_PARTHIAN (java.lang.Character$UnicodeBlock): final static field
-            INSCRIPTIONAL_PAHLAVI (java.lang.Character$UnicodeBlock): final static field
-            OLD_TURKIC (java.lang.Character$UnicodeBlock): final static field
-            RUMI_NUMERAL_SYMBOLS (java.lang.Character$UnicodeBlock): final static field
-            BRAHMI (java.lang.Character$UnicodeBlock): final static field
-            KAITHI (java.lang.Character$UnicodeBlock): final static field
-            CUNEIFORM (java.lang.Character$UnicodeBlock): final static field
-            CUNEIFORM_NUMBERS_AND_PUNCTUATION (java.lang.Character$UnicodeBlock): final static field
-            EGYPTIAN_HIEROGLYPHS (java.lang.Character$UnicodeBlock): final static field
-            BAMUM_SUPPLEMENT (java.lang.Character$UnicodeBlock): final static field
-            KANA_SUPPLEMENT (java.lang.Character$UnicodeBlock): final static field
-            ANCIENT_GREEK_MUSICAL_NOTATION (java.lang.Character$UnicodeBlock): final static field
-            COUNTING_ROD_NUMERALS (java.lang.Character$UnicodeBlock): final static field
-            MAHJONG_TILES (java.lang.Character$UnicodeBlock): final static field
-            DOMINO_TILES (java.lang.Character$UnicodeBlock): final static field
-            PLAYING_CARDS (java.lang.Character$UnicodeBlock): final static field
-            ENCLOSED_ALPHANUMERIC_SUPPLEMENT (java.lang.Character$UnicodeBlock): final static field
-            ENCLOSED_IDEOGRAPHIC_SUPPLEMENT (java.lang.Character$UnicodeBlock): final static field
-            MISCELLANEOUS_SYMBOLS_AND_PICTOGRAPHS (java.lang.Character$UnicodeBlock): final static field
-            EMOTICONS (java.lang.Character$UnicodeBlock): final static field
-            TRANSPORT_AND_MAP_SYMBOLS (java.lang.Character$UnicodeBlock): final static field
-            ALCHEMICAL_SYMBOLS (java.lang.Character$UnicodeBlock): final static field
-            CJK_UNIFIED_IDEOGRAPHS_EXTENSION_C (java.lang.Character$UnicodeBlock): final static field
-            CJK_UNIFIED_IDEOGRAPHS_EXTENSION_D (java.lang.Character$UnicodeBlock): final static field
-            ARABIC_EXTENDED_A (java.lang.Character$UnicodeBlock): final static field
-            SUNDANESE_SUPPLEMENT (java.lang.Character$UnicodeBlock): final static field
-            MEETEI_MAYEK_EXTENSIONS (java.lang.Character$UnicodeBlock): final static field
-            MEROITIC_HIEROGLYPHS (java.lang.Character$UnicodeBlock): final static field
-            MEROITIC_CURSIVE (java.lang.Character$UnicodeBlock): final static field
-            SORA_SOMPENG (java.lang.Character$UnicodeBlock): final static field
-            CHAKMA (java.lang.Character$UnicodeBlock): final static field
-            SHARADA (java.lang.Character$UnicodeBlock): final static field
-            TAKRI (java.lang.Character$UnicodeBlock): final static field
-            MIAO (java.lang.Character$UnicodeBlock): final static field
-            ARABIC_MATHEMATICAL_ALPHABETIC_SYMBOLS (java.lang.Character$UnicodeBlock): final static field
-            COMBINING_DIACRITICAL_MARKS_EXTENDED (java.lang.Character$UnicodeBlock): final static field
-            MYANMAR_EXTENDED_B (java.lang.Character$UnicodeBlock): final static field
-            LATIN_EXTENDED_E (java.lang.Character$UnicodeBlock): final static field
-            COPTIC_EPACT_NUMBERS (java.lang.Character$UnicodeBlock): final static field
-            OLD_PERMIC (java.lang.Character$UnicodeBlock): final static field
-            ELBASAN (java.lang.Character$UnicodeBlock): final static field
-            CAUCASIAN_ALBANIAN (java.lang.Character$UnicodeBlock): final static field
-            LINEAR_A (java.lang.Character$UnicodeBlock): final static field
-            PALMYRENE (java.lang.Character$UnicodeBlock): final static field
-            NABATAEAN (java.lang.Character$UnicodeBlock): final static field
-            OLD_NORTH_ARABIAN (java.lang.Character$UnicodeBlock): final static field
-            MANICHAEAN (java.lang.Character$UnicodeBlock): final static field
-            PSALTER_PAHLAVI (java.lang.Character$UnicodeBlock): final static field
-            MAHAJANI (java.lang.Character$UnicodeBlock): final static field
-            SINHALA_ARCHAIC_NUMBERS (java.lang.Character$UnicodeBlock): final static field
-            KHOJKI (java.lang.Character$UnicodeBlock): final static field
-            KHUDAWADI (java.lang.Character$UnicodeBlock): final static field
-            GRANTHA (java.lang.Character$UnicodeBlock): final static field
-            TIRHUTA (java.lang.Character$UnicodeBlock): final static field
-            SIDDHAM (java.lang.Character$UnicodeBlock): final static field
-            MODI (java.lang.Character$UnicodeBlock): final static field
-            WARANG_CITI (java.lang.Character$UnicodeBlock): final static field
-            PAU_CIN_HAU (java.lang.Character$UnicodeBlock): final static field
-            MRO (java.lang.Character$UnicodeBlock): final static field
-            BASSA_VAH (java.lang.Character$UnicodeBlock): final static field
-            PAHAWH_HMONG (java.lang.Character$UnicodeBlock): final static field
-            DUPLOYAN (java.lang.Character$UnicodeBlock): final static field
-            SHORTHAND_FORMAT_CONTROLS (java.lang.Character$UnicodeBlock): final static field
-            MENDE_KIKAKUI (java.lang.Character$UnicodeBlock): final static field
-            ORNAMENTAL_DINGBATS (java.lang.Character$UnicodeBlock): final static field
-            GEOMETRIC_SHAPES_EXTENDED (java.lang.Character$UnicodeBlock): final static field
-            SUPPLEMENTAL_ARROWS_C (java.lang.Character$UnicodeBlock): final static field
-            CHEROKEE_SUPPLEMENT (java.lang.Character$UnicodeBlock): final static field
-            HATRAN (java.lang.Character$UnicodeBlock): final static field
-            OLD_HUNGARIAN (java.lang.Character$UnicodeBlock): final static field
-            MULTANI (java.lang.Character$UnicodeBlock): final static field
-            AHOM (java.lang.Character$UnicodeBlock): final static field
-            EARLY_DYNASTIC_CUNEIFORM (java.lang.Character$UnicodeBlock): final static field
-            ANATOLIAN_HIEROGLYPHS (java.lang.Character$UnicodeBlock): final static field
-            SUTTON_SIGNWRITING (java.lang.Character$UnicodeBlock): final static field
-            SUPPLEMENTAL_SYMBOLS_AND_PICTOGRAPHS (java.lang.Character$UnicodeBlock): final static field
-            CJK_UNIFIED_IDEOGRAPHS_EXTENSION_E (java.lang.Character$UnicodeBlock): final static field
-            SYRIAC_SUPPLEMENT (java.lang.Character$UnicodeBlock): final static field
-            CYRILLIC_EXTENDED_C (java.lang.Character$UnicodeBlock): final static field
-            OSAGE (java.lang.Character$UnicodeBlock): final static field
-            NEWA (java.lang.Character$UnicodeBlock): final static field
-            MONGOLIAN_SUPPLEMENT (java.lang.Character$UnicodeBlock): final static field
-            MARCHEN (java.lang.Character$UnicodeBlock): final static field
-            IDEOGRAPHIC_SYMBOLS_AND_PUNCTUATION (java.lang.Character$UnicodeBlock): final static field
-            TANGUT (java.lang.Character$UnicodeBlock): final static field
-            TANGUT_COMPONENTS (java.lang.Character$UnicodeBlock): final static field
-            KANA_EXTENDED_A (java.lang.Character$UnicodeBlock): final static field
-            GLAGOLITIC_SUPPLEMENT (java.lang.Character$UnicodeBlock): final static field
-            ADLAM (java.lang.Character$UnicodeBlock): final static field
-            MASARAM_GONDI (java.lang.Character$UnicodeBlock): final static field
-            ZANABAZAR_SQUARE (java.lang.Character$UnicodeBlock): final static field
-            NUSHU (java.lang.Character$UnicodeBlock): final static field
-            SOYOMBO (java.lang.Character$UnicodeBlock): final static field
-            BHAIKSUKI (java.lang.Character$UnicodeBlock): final static field
-            CJK_UNIFIED_IDEOGRAPHS_EXTENSION_F (java.lang.Character$UnicodeBlock): final static field
-        
-        """
         BASIC_LATIN: typing.ClassVar['Character.UnicodeBlock'] = ...
         LATIN_1_SUPPLEMENT: typing.ClassVar['Character.UnicodeBlock'] = ...
         LATIN_EXTENDED_A: typing.ClassVar['Character.UnicodeBlock'] = ...
@@ -4614,157 +2966,6 @@ class Character(java.io.Serializable, Comparable[str]):
         @staticmethod
         def of(int: int) -> 'Character.UnicodeBlock': ...
     class UnicodeScript(Enum['Character.UnicodeScript']):
-        """
-        Java class 'java.lang.Character$UnicodeScript'
-        
-            Extends:
-                java.lang.Enum
-        
-          Attributes:
-            COMMON (java.lang.Character$UnicodeScript): final static enum constant
-            LATIN (java.lang.Character$UnicodeScript): final static enum constant
-            GREEK (java.lang.Character$UnicodeScript): final static enum constant
-            CYRILLIC (java.lang.Character$UnicodeScript): final static enum constant
-            ARMENIAN (java.lang.Character$UnicodeScript): final static enum constant
-            HEBREW (java.lang.Character$UnicodeScript): final static enum constant
-            ARABIC (java.lang.Character$UnicodeScript): final static enum constant
-            SYRIAC (java.lang.Character$UnicodeScript): final static enum constant
-            THAANA (java.lang.Character$UnicodeScript): final static enum constant
-            DEVANAGARI (java.lang.Character$UnicodeScript): final static enum constant
-            BENGALI (java.lang.Character$UnicodeScript): final static enum constant
-            GURMUKHI (java.lang.Character$UnicodeScript): final static enum constant
-            GUJARATI (java.lang.Character$UnicodeScript): final static enum constant
-            ORIYA (java.lang.Character$UnicodeScript): final static enum constant
-            TAMIL (java.lang.Character$UnicodeScript): final static enum constant
-            TELUGU (java.lang.Character$UnicodeScript): final static enum constant
-            KANNADA (java.lang.Character$UnicodeScript): final static enum constant
-            MALAYALAM (java.lang.Character$UnicodeScript): final static enum constant
-            SINHALA (java.lang.Character$UnicodeScript): final static enum constant
-            THAI (java.lang.Character$UnicodeScript): final static enum constant
-            LAO (java.lang.Character$UnicodeScript): final static enum constant
-            TIBETAN (java.lang.Character$UnicodeScript): final static enum constant
-            MYANMAR (java.lang.Character$UnicodeScript): final static enum constant
-            GEORGIAN (java.lang.Character$UnicodeScript): final static enum constant
-            HANGUL (java.lang.Character$UnicodeScript): final static enum constant
-            ETHIOPIC (java.lang.Character$UnicodeScript): final static enum constant
-            CHEROKEE (java.lang.Character$UnicodeScript): final static enum constant
-            CANADIAN_ABORIGINAL (java.lang.Character$UnicodeScript): final static enum constant
-            OGHAM (java.lang.Character$UnicodeScript): final static enum constant
-            RUNIC (java.lang.Character$UnicodeScript): final static enum constant
-            KHMER (java.lang.Character$UnicodeScript): final static enum constant
-            MONGOLIAN (java.lang.Character$UnicodeScript): final static enum constant
-            HIRAGANA (java.lang.Character$UnicodeScript): final static enum constant
-            KATAKANA (java.lang.Character$UnicodeScript): final static enum constant
-            BOPOMOFO (java.lang.Character$UnicodeScript): final static enum constant
-            HAN (java.lang.Character$UnicodeScript): final static enum constant
-            YI (java.lang.Character$UnicodeScript): final static enum constant
-            OLD_ITALIC (java.lang.Character$UnicodeScript): final static enum constant
-            GOTHIC (java.lang.Character$UnicodeScript): final static enum constant
-            DESERET (java.lang.Character$UnicodeScript): final static enum constant
-            INHERITED (java.lang.Character$UnicodeScript): final static enum constant
-            TAGALOG (java.lang.Character$UnicodeScript): final static enum constant
-            HANUNOO (java.lang.Character$UnicodeScript): final static enum constant
-            BUHID (java.lang.Character$UnicodeScript): final static enum constant
-            TAGBANWA (java.lang.Character$UnicodeScript): final static enum constant
-            LIMBU (java.lang.Character$UnicodeScript): final static enum constant
-            TAI_LE (java.lang.Character$UnicodeScript): final static enum constant
-            LINEAR_B (java.lang.Character$UnicodeScript): final static enum constant
-            UGARITIC (java.lang.Character$UnicodeScript): final static enum constant
-            SHAVIAN (java.lang.Character$UnicodeScript): final static enum constant
-            OSMANYA (java.lang.Character$UnicodeScript): final static enum constant
-            CYPRIOT (java.lang.Character$UnicodeScript): final static enum constant
-            BRAILLE (java.lang.Character$UnicodeScript): final static enum constant
-            BUGINESE (java.lang.Character$UnicodeScript): final static enum constant
-            COPTIC (java.lang.Character$UnicodeScript): final static enum constant
-            NEW_TAI_LUE (java.lang.Character$UnicodeScript): final static enum constant
-            GLAGOLITIC (java.lang.Character$UnicodeScript): final static enum constant
-            TIFINAGH (java.lang.Character$UnicodeScript): final static enum constant
-            SYLOTI_NAGRI (java.lang.Character$UnicodeScript): final static enum constant
-            OLD_PERSIAN (java.lang.Character$UnicodeScript): final static enum constant
-            KHAROSHTHI (java.lang.Character$UnicodeScript): final static enum constant
-            BALINESE (java.lang.Character$UnicodeScript): final static enum constant
-            CUNEIFORM (java.lang.Character$UnicodeScript): final static enum constant
-            PHOENICIAN (java.lang.Character$UnicodeScript): final static enum constant
-            PHAGS_PA (java.lang.Character$UnicodeScript): final static enum constant
-            NKO (java.lang.Character$UnicodeScript): final static enum constant
-            SUNDANESE (java.lang.Character$UnicodeScript): final static enum constant
-            BATAK (java.lang.Character$UnicodeScript): final static enum constant
-            LEPCHA (java.lang.Character$UnicodeScript): final static enum constant
-            OL_CHIKI (java.lang.Character$UnicodeScript): final static enum constant
-            VAI (java.lang.Character$UnicodeScript): final static enum constant
-            SAURASHTRA (java.lang.Character$UnicodeScript): final static enum constant
-            KAYAH_LI (java.lang.Character$UnicodeScript): final static enum constant
-            REJANG (java.lang.Character$UnicodeScript): final static enum constant
-            LYCIAN (java.lang.Character$UnicodeScript): final static enum constant
-            CARIAN (java.lang.Character$UnicodeScript): final static enum constant
-            LYDIAN (java.lang.Character$UnicodeScript): final static enum constant
-            CHAM (java.lang.Character$UnicodeScript): final static enum constant
-            TAI_THAM (java.lang.Character$UnicodeScript): final static enum constant
-            TAI_VIET (java.lang.Character$UnicodeScript): final static enum constant
-            AVESTAN (java.lang.Character$UnicodeScript): final static enum constant
-            EGYPTIAN_HIEROGLYPHS (java.lang.Character$UnicodeScript): final static enum constant
-            SAMARITAN (java.lang.Character$UnicodeScript): final static enum constant
-            MANDAIC (java.lang.Character$UnicodeScript): final static enum constant
-            LISU (java.lang.Character$UnicodeScript): final static enum constant
-            BAMUM (java.lang.Character$UnicodeScript): final static enum constant
-            JAVANESE (java.lang.Character$UnicodeScript): final static enum constant
-            MEETEI_MAYEK (java.lang.Character$UnicodeScript): final static enum constant
-            IMPERIAL_ARAMAIC (java.lang.Character$UnicodeScript): final static enum constant
-            OLD_SOUTH_ARABIAN (java.lang.Character$UnicodeScript): final static enum constant
-            INSCRIPTIONAL_PARTHIAN (java.lang.Character$UnicodeScript): final static enum constant
-            INSCRIPTIONAL_PAHLAVI (java.lang.Character$UnicodeScript): final static enum constant
-            OLD_TURKIC (java.lang.Character$UnicodeScript): final static enum constant
-            BRAHMI (java.lang.Character$UnicodeScript): final static enum constant
-            KAITHI (java.lang.Character$UnicodeScript): final static enum constant
-            MEROITIC_HIEROGLYPHS (java.lang.Character$UnicodeScript): final static enum constant
-            MEROITIC_CURSIVE (java.lang.Character$UnicodeScript): final static enum constant
-            SORA_SOMPENG (java.lang.Character$UnicodeScript): final static enum constant
-            CHAKMA (java.lang.Character$UnicodeScript): final static enum constant
-            SHARADA (java.lang.Character$UnicodeScript): final static enum constant
-            TAKRI (java.lang.Character$UnicodeScript): final static enum constant
-            MIAO (java.lang.Character$UnicodeScript): final static enum constant
-            CAUCASIAN_ALBANIAN (java.lang.Character$UnicodeScript): final static enum constant
-            BASSA_VAH (java.lang.Character$UnicodeScript): final static enum constant
-            DUPLOYAN (java.lang.Character$UnicodeScript): final static enum constant
-            ELBASAN (java.lang.Character$UnicodeScript): final static enum constant
-            GRANTHA (java.lang.Character$UnicodeScript): final static enum constant
-            PAHAWH_HMONG (java.lang.Character$UnicodeScript): final static enum constant
-            KHOJKI (java.lang.Character$UnicodeScript): final static enum constant
-            LINEAR_A (java.lang.Character$UnicodeScript): final static enum constant
-            MAHAJANI (java.lang.Character$UnicodeScript): final static enum constant
-            MANICHAEAN (java.lang.Character$UnicodeScript): final static enum constant
-            MENDE_KIKAKUI (java.lang.Character$UnicodeScript): final static enum constant
-            MODI (java.lang.Character$UnicodeScript): final static enum constant
-            MRO (java.lang.Character$UnicodeScript): final static enum constant
-            OLD_NORTH_ARABIAN (java.lang.Character$UnicodeScript): final static enum constant
-            NABATAEAN (java.lang.Character$UnicodeScript): final static enum constant
-            PALMYRENE (java.lang.Character$UnicodeScript): final static enum constant
-            PAU_CIN_HAU (java.lang.Character$UnicodeScript): final static enum constant
-            OLD_PERMIC (java.lang.Character$UnicodeScript): final static enum constant
-            PSALTER_PAHLAVI (java.lang.Character$UnicodeScript): final static enum constant
-            SIDDHAM (java.lang.Character$UnicodeScript): final static enum constant
-            KHUDAWADI (java.lang.Character$UnicodeScript): final static enum constant
-            TIRHUTA (java.lang.Character$UnicodeScript): final static enum constant
-            WARANG_CITI (java.lang.Character$UnicodeScript): final static enum constant
-            AHOM (java.lang.Character$UnicodeScript): final static enum constant
-            ANATOLIAN_HIEROGLYPHS (java.lang.Character$UnicodeScript): final static enum constant
-            HATRAN (java.lang.Character$UnicodeScript): final static enum constant
-            MULTANI (java.lang.Character$UnicodeScript): final static enum constant
-            OLD_HUNGARIAN (java.lang.Character$UnicodeScript): final static enum constant
-            SIGNWRITING (java.lang.Character$UnicodeScript): final static enum constant
-            ADLAM (java.lang.Character$UnicodeScript): final static enum constant
-            BHAIKSUKI (java.lang.Character$UnicodeScript): final static enum constant
-            MARCHEN (java.lang.Character$UnicodeScript): final static enum constant
-            NEWA (java.lang.Character$UnicodeScript): final static enum constant
-            OSAGE (java.lang.Character$UnicodeScript): final static enum constant
-            TANGUT (java.lang.Character$UnicodeScript): final static enum constant
-            MASARAM_GONDI (java.lang.Character$UnicodeScript): final static enum constant
-            NUSHU (java.lang.Character$UnicodeScript): final static enum constant
-            SOYOMBO (java.lang.Character$UnicodeScript): final static enum constant
-            ZANABAZAR_SQUARE (java.lang.Character$UnicodeScript): final static enum constant
-            UNKNOWN (java.lang.Character$UnicodeScript): final static enum constant
-        
-        """
         COMMON: typing.ClassVar['Character.UnicodeScript'] = ...
         LATIN: typing.ClassVar['Character.UnicodeScript'] = ...
         GREEK: typing.ClassVar['Character.UnicodeScript'] = ...
@@ -4922,16 +3123,6 @@ class Character(java.io.Serializable, Comparable[str]):
         def values() -> typing.List['Character.UnicodeScript']: ...
 
 class Package(java.lang.NamedPackage, java.lang.reflect.AnnotatedElement):
-    """
-    Java class 'java.lang.Package'
-    
-        Extends:
-            java.lang.NamedPackage
-    
-        Interfaces:
-            java.lang.reflect.AnnotatedElement
-    
-    """
     _getAnnotation__A = typing.TypeVar('_getAnnotation__A', bound=java.lang.annotation.Annotation)  # <A>
     def getAnnotation(self, class_: typing.Type[_getAnnotation__A]) -> _getAnnotation__A: ...
     def getAnnotations(self) -> typing.List[java.lang.annotation.Annotation]: ...
@@ -4963,23 +3154,6 @@ class Package(java.lang.NamedPackage, java.lang.reflect.AnnotatedElement):
     def toString(self) -> str: ...
 
 class StringBuffer(java.lang.AbstractStringBuilder, java.io.Serializable, Comparable['StringBuffer'], CharSequence):
-    """
-    Java class 'java.lang.StringBuffer'
-    
-        Extends:
-            java.lang.AbstractStringBuilder
-    
-        Interfaces:
-            java.io.Serializable, java.lang.Comparable,
-            java.lang.CharSequence
-    
-      Constructors:
-        * StringBuffer(java.lang.CharSequence)
-        * StringBuffer(java.lang.String)
-        * StringBuffer(int)
-        * StringBuffer()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -5072,23 +3246,6 @@ class StringBuffer(java.lang.AbstractStringBuilder, java.io.Serializable, Compar
     def trimToSize(self) -> None: ...
 
 class StringBuilder(java.lang.AbstractStringBuilder, java.io.Serializable, Comparable['StringBuilder'], CharSequence):
-    """
-    Java class 'java.lang.StringBuilder'
-    
-        Extends:
-            java.lang.AbstractStringBuilder
-    
-        Interfaces:
-            java.io.Serializable, java.lang.Comparable,
-            java.lang.CharSequence
-    
-      Constructors:
-        * StringBuilder(java.lang.CharSequence)
-        * StringBuilder(java.lang.String)
-        * StringBuilder(int)
-        * StringBuilder()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload

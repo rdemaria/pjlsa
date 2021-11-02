@@ -5,61 +5,9 @@ import typing
 
 
 class CMMException(java.lang.RuntimeException):
-    """
-    Java class 'java.awt.color.CMMException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * CMMException(java.lang.String)
-    
-    """
     def __init__(self, string: str): ...
 
 class ColorSpace(java.io.Serializable):
-    """
-    Java class 'java.awt.color.ColorSpace'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable
-    
-      Attributes:
-        TYPE_XYZ (int): final static field
-        TYPE_Lab (int): final static field
-        TYPE_Luv (int): final static field
-        TYPE_YCbCr (int): final static field
-        TYPE_Yxy (int): final static field
-        TYPE_RGB (int): final static field
-        TYPE_GRAY (int): final static field
-        TYPE_HSV (int): final static field
-        TYPE_HLS (int): final static field
-        TYPE_CMYK (int): final static field
-        TYPE_CMY (int): final static field
-        TYPE_2CLR (int): final static field
-        TYPE_3CLR (int): final static field
-        TYPE_4CLR (int): final static field
-        TYPE_5CLR (int): final static field
-        TYPE_6CLR (int): final static field
-        TYPE_7CLR (int): final static field
-        TYPE_8CLR (int): final static field
-        TYPE_9CLR (int): final static field
-        TYPE_ACLR (int): final static field
-        TYPE_BCLR (int): final static field
-        TYPE_CCLR (int): final static field
-        TYPE_DCLR (int): final static field
-        TYPE_ECLR (int): final static field
-        TYPE_FCLR (int): final static field
-        CS_sRGB (int): final static field
-        CS_LINEAR_RGB (int): final static field
-        CS_CIEXYZ (int): final static field
-        CS_PYCC (int): final static field
-        CS_GRAY (int): final static field
-    
-    """
     TYPE_XYZ: typing.ClassVar[int] = ...
     TYPE_Lab: typing.ClassVar[int] = ...
     TYPE_Luv: typing.ClassVar[int] = ...
@@ -104,137 +52,6 @@ class ColorSpace(java.io.Serializable):
     def toRGB(self, floatArray: typing.List[float]) -> typing.List[float]: ...
 
 class ICC_Profile(java.io.Serializable):
-    """
-    Java class 'java.awt.color.ICC_Profile'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable
-    
-      Attributes:
-        CLASS_INPUT (int): final static field
-        CLASS_DISPLAY (int): final static field
-        CLASS_OUTPUT (int): final static field
-        CLASS_DEVICELINK (int): final static field
-        CLASS_COLORSPACECONVERSION (int): final static field
-        CLASS_ABSTRACT (int): final static field
-        CLASS_NAMEDCOLOR (int): final static field
-        icSigXYZData (int): final static field
-        icSigLabData (int): final static field
-        icSigLuvData (int): final static field
-        icSigYCbCrData (int): final static field
-        icSigYxyData (int): final static field
-        icSigRgbData (int): final static field
-        icSigGrayData (int): final static field
-        icSigHsvData (int): final static field
-        icSigHlsData (int): final static field
-        icSigCmykData (int): final static field
-        icSigCmyData (int): final static field
-        icSigSpace2CLR (int): final static field
-        icSigSpace3CLR (int): final static field
-        icSigSpace4CLR (int): final static field
-        icSigSpace5CLR (int): final static field
-        icSigSpace6CLR (int): final static field
-        icSigSpace7CLR (int): final static field
-        icSigSpace8CLR (int): final static field
-        icSigSpace9CLR (int): final static field
-        icSigSpaceACLR (int): final static field
-        icSigSpaceBCLR (int): final static field
-        icSigSpaceCCLR (int): final static field
-        icSigSpaceDCLR (int): final static field
-        icSigSpaceECLR (int): final static field
-        icSigSpaceFCLR (int): final static field
-        icSigInputClass (int): final static field
-        icSigDisplayClass (int): final static field
-        icSigOutputClass (int): final static field
-        icSigLinkClass (int): final static field
-        icSigAbstractClass (int): final static field
-        icSigColorSpaceClass (int): final static field
-        icSigNamedColorClass (int): final static field
-        icPerceptual (int): final static field
-        icRelativeColorimetric (int): final static field
-        icMediaRelativeColorimetric (int): final static field
-        icSaturation (int): final static field
-        icAbsoluteColorimetric (int): final static field
-        icICCAbsoluteColorimetric (int): final static field
-        icSigHead (int): final static field
-        icSigAToB0Tag (int): final static field
-        icSigAToB1Tag (int): final static field
-        icSigAToB2Tag (int): final static field
-        icSigBlueColorantTag (int): final static field
-        icSigBlueMatrixColumnTag (int): final static field
-        icSigBlueTRCTag (int): final static field
-        icSigBToA0Tag (int): final static field
-        icSigBToA1Tag (int): final static field
-        icSigBToA2Tag (int): final static field
-        icSigCalibrationDateTimeTag (int): final static field
-        icSigCharTargetTag (int): final static field
-        icSigCopyrightTag (int): final static field
-        icSigCrdInfoTag (int): final static field
-        icSigDeviceMfgDescTag (int): final static field
-        icSigDeviceModelDescTag (int): final static field
-        icSigDeviceSettingsTag (int): final static field
-        icSigGamutTag (int): final static field
-        icSigGrayTRCTag (int): final static field
-        icSigGreenColorantTag (int): final static field
-        icSigGreenMatrixColumnTag (int): final static field
-        icSigGreenTRCTag (int): final static field
-        icSigLuminanceTag (int): final static field
-        icSigMeasurementTag (int): final static field
-        icSigMediaBlackPointTag (int): final static field
-        icSigMediaWhitePointTag (int): final static field
-        icSigNamedColor2Tag (int): final static field
-        icSigOutputResponseTag (int): final static field
-        icSigPreview0Tag (int): final static field
-        icSigPreview1Tag (int): final static field
-        icSigPreview2Tag (int): final static field
-        icSigProfileDescriptionTag (int): final static field
-        icSigProfileSequenceDescTag (int): final static field
-        icSigPs2CRD0Tag (int): final static field
-        icSigPs2CRD1Tag (int): final static field
-        icSigPs2CRD2Tag (int): final static field
-        icSigPs2CRD3Tag (int): final static field
-        icSigPs2CSATag (int): final static field
-        icSigPs2RenderingIntentTag (int): final static field
-        icSigRedColorantTag (int): final static field
-        icSigRedMatrixColumnTag (int): final static field
-        icSigRedTRCTag (int): final static field
-        icSigScreeningDescTag (int): final static field
-        icSigScreeningTag (int): final static field
-        icSigTechnologyTag (int): final static field
-        icSigUcrBgTag (int): final static field
-        icSigViewingCondDescTag (int): final static field
-        icSigViewingConditionsTag (int): final static field
-        icSigChromaticityTag (int): final static field
-        icSigChromaticAdaptationTag (int): final static field
-        icSigColorantOrderTag (int): final static field
-        icSigColorantTableTag (int): final static field
-        icHdrSize (int): final static field
-        icHdrCmmId (int): final static field
-        icHdrVersion (int): final static field
-        icHdrDeviceClass (int): final static field
-        icHdrColorSpace (int): final static field
-        icHdrPcs (int): final static field
-        icHdrDate (int): final static field
-        icHdrMagic (int): final static field
-        icHdrPlatform (int): final static field
-        icHdrFlags (int): final static field
-        icHdrManufacturer (int): final static field
-        icHdrModel (int): final static field
-        icHdrAttributes (int): final static field
-        icHdrRenderingIntent (int): final static field
-        icHdrIlluminant (int): final static field
-        icHdrCreator (int): final static field
-        icHdrProfileID (int): final static field
-        icTagType (int): final static field
-        icTagReserved (int): final static field
-        icCurveCount (int): final static field
-        icCurveData (int): final static field
-        icXYZNumberX (int): final static field
-    
-    """
     CLASS_INPUT: typing.ClassVar[int] = ...
     CLASS_DISPLAY: typing.ClassVar[int] = ...
     CLASS_OUTPUT: typing.ClassVar[int] = ...
@@ -383,29 +200,9 @@ class ICC_Profile(java.io.Serializable):
     def write(self, string: str) -> None: ...
 
 class ProfileDataException(java.lang.RuntimeException):
-    """
-    Java class 'java.awt.color.ProfileDataException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * ProfileDataException(java.lang.String)
-    
-    """
     def __init__(self, string: str): ...
 
 class ICC_ColorSpace(ColorSpace):
-    """
-    Java class 'java.awt.color.ICC_ColorSpace'
-    
-        Extends:
-            java.awt.color.ColorSpace
-    
-      Constructors:
-        * ICC_ColorSpace(java.awt.color.ICC_Profile)
-    
-    """
     def __init__(self, iCC_Profile: ICC_Profile): ...
     def fromCIEXYZ(self, floatArray: typing.List[float]) -> typing.List[float]: ...
     def fromRGB(self, floatArray: typing.List[float]) -> typing.List[float]: ...
@@ -416,30 +213,11 @@ class ICC_ColorSpace(ColorSpace):
     def toRGB(self, floatArray: typing.List[float]) -> typing.List[float]: ...
 
 class ICC_ProfileGray(ICC_Profile):
-    """
-    Java class 'java.awt.color.ICC_ProfileGray'
-    
-        Extends:
-            java.awt.color.ICC_Profile
-    
-    """
     def getGamma(self) -> float: ...
     def getMediaWhitePoint(self) -> typing.List[float]: ...
     def getTRC(self) -> typing.List[int]: ...
 
 class ICC_ProfileRGB(ICC_Profile):
-    """
-    Java class 'java.awt.color.ICC_ProfileRGB'
-    
-        Extends:
-            java.awt.color.ICC_Profile
-    
-      Attributes:
-        REDCOMPONENT (int): final static field
-        GREENCOMPONENT (int): final static field
-        BLUECOMPONENT (int): final static field
-    
-    """
     REDCOMPONENT: typing.ClassVar[int] = ...
     GREENCOMPONENT: typing.ClassVar[int] = ...
     BLUECOMPONENT: typing.ClassVar[int] = ...

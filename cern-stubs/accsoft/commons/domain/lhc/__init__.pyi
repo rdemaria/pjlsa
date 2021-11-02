@@ -6,26 +6,55 @@ import typing
 
 class LhcExperiment(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['LhcExperiment']):
     """
-    Java class 'cern.accsoft.commons.domain.lhc.LhcExperiment'
+    public class LhcExperiment extends cern.accsoft.commons.util.AbstractImmutableNamedSerializable<:class:`~cern.accsoft.commons.domain.lhc.LhcExperiment`>
     
-        Extends:
-            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+        LHC experiments.
     
-      Attributes:
-        ATLAS (cern.accsoft.commons.domain.lhc.LhcExperiment): final static field
-        ALICE (cern.accsoft.commons.domain.lhc.LhcExperiment): final static field
-        CMS (cern.accsoft.commons.domain.lhc.LhcExperiment): final static field
-        LHCB (cern.accsoft.commons.domain.lhc.LhcExperiment): final static field
-        LHCF (cern.accsoft.commons.domain.lhc.LhcExperiment): final static field
-        TOTEM (cern.accsoft.commons.domain.lhc.LhcExperiment): final static field
-    
+        Also see:
+            :meth:`~serialized`
     """
     ATLAS: typing.ClassVar['LhcExperiment'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.lhc.LhcExperiment` ATLAS
+    
+        ATLAS
+    
+    """
     ALICE: typing.ClassVar['LhcExperiment'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.lhc.LhcExperiment` ALICE
+    
+        ALICE
+    
+    """
     CMS: typing.ClassVar['LhcExperiment'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.lhc.LhcExperiment` CMS
+    
+        CMS
+    
+    """
     LHCB: typing.ClassVar['LhcExperiment'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.lhc.LhcExperiment` LHCB
+    
+        LHCB
+    
+    """
     LHCF: typing.ClassVar['LhcExperiment'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.lhc.LhcExperiment` LHCF
+    
+        LHCF
+    
+    """
     TOTEM: typing.ClassVar['LhcExperiment'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.lhc.LhcExperiment` TOTEM
+    
+        TOTEM
+    
+    """
     @staticmethod
     def valueOf(string: str) -> 'LhcExperiment': ...
     @staticmethod
@@ -33,24 +62,9 @@ class LhcExperiment(cern.accsoft.commons.util.AbstractImmutableNamedSerializable
 
 class LhcInteractionPoint(java.lang.Enum['LhcInteractionPoint'], cern.accsoft.commons.util.Named):
     """
-    Java class 'cern.accsoft.commons.domain.lhc.LhcInteractionPoint'
+    public enum LhcInteractionPoint extends `Enum <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Enum.html?is-external=true>`<:class:`~cern.accsoft.commons.domain.lhc.LhcInteractionPoint`> implements cern.accsoft.commons.util.Named
     
-        Extends:
-            java.lang.Enum
-    
-        Interfaces:
-            cern.accsoft.commons.util.Named
-    
-      Attributes:
-        LHC_IP1 (cern.accsoft.commons.domain.lhc.LhcInteractionPoint): final static enum constant
-        LHC_IP2 (cern.accsoft.commons.domain.lhc.LhcInteractionPoint): final static enum constant
-        LHC_IP3 (cern.accsoft.commons.domain.lhc.LhcInteractionPoint): final static enum constant
-        LHC_IP4 (cern.accsoft.commons.domain.lhc.LhcInteractionPoint): final static enum constant
-        LHC_IP5 (cern.accsoft.commons.domain.lhc.LhcInteractionPoint): final static enum constant
-        LHC_IP6 (cern.accsoft.commons.domain.lhc.LhcInteractionPoint): final static enum constant
-        LHC_IP7 (cern.accsoft.commons.domain.lhc.LhcInteractionPoint): final static enum constant
-        LHC_IP8 (cern.accsoft.commons.domain.lhc.LhcInteractionPoint): final static enum constant
-    
+        LHC interaction points.
     """
     LHC_IP1: typing.ClassVar['LhcInteractionPoint'] = ...
     LHC_IP2: typing.ClassVar['LhcInteractionPoint'] = ...
@@ -60,37 +74,63 @@ class LhcInteractionPoint(java.lang.Enum['LhcInteractionPoint'], cern.accsoft.co
     LHC_IP6: typing.ClassVar['LhcInteractionPoint'] = ...
     LHC_IP7: typing.ClassVar['LhcInteractionPoint'] = ...
     LHC_IP8: typing.ClassVar['LhcInteractionPoint'] = ...
-    def getName(self) -> str: ...
+    def getName(self) -> str:
+        """
+        
+            Specified by:
+                :code:`getName` in interface :code:`cern.accsoft.commons.util.Named`
+        
+        
+        """
+        ...
     _valueOf_1__T = typing.TypeVar('_valueOf_1__T', bound=java.lang.Enum)  # <T>
     @typing.overload
     @staticmethod
-    def valueOf(string: str) -> 'LhcInteractionPoint': ...
+    def valueOf(string: str) -> 'LhcInteractionPoint':
+        """
+            Returns the enum constant of this type with the specified name. The string must match *exactly* an identifier used to
+            declare an enum constant in this type. (Extraneous whitespace characters are not permitted.)
+        
+            Parameters:
+                name (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): the name of the enum constant to be returned.
+        
+            Returns:
+                the enum constant with the specified name
+        
+            Raises:
+                : if this enum type has no constant with the specified name
+                : if the argument is null
+        
+        
+        """
+        ...
     @typing.overload
     @staticmethod
     def valueOf(class_: typing.Type[_valueOf_1__T], string: str) -> _valueOf_1__T: ...
     @staticmethod
-    def values() -> typing.List['LhcInteractionPoint']: ...
+    def values() -> typing.List['LhcInteractionPoint']:
+        """
+            Returns an array containing the constants of this enum type, in the order they are declared. This method may be used to
+            iterate over the constants as follows:
+        
+            .. code-block: java
+            
+            for (LhcInteractionPoint c : LhcInteractionPoint.values())
+                System.out.println(c);
+            
+        
+            Returns:
+                an array containing the constants of this enum type, in the order they are declared
+        
+        
+        """
+        ...
 
 class LhcSector(java.lang.Enum['LhcSector'], cern.accsoft.commons.util.Named):
     """
-    Java class 'cern.accsoft.commons.domain.lhc.LhcSector'
+    public enum LhcSector extends `Enum <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Enum.html?is-external=true>`<:class:`~cern.accsoft.commons.domain.lhc.LhcSector`> implements cern.accsoft.commons.util.Named
     
-        Extends:
-            java.lang.Enum
-    
-        Interfaces:
-            cern.accsoft.commons.util.Named
-    
-      Attributes:
-        SECTOR_12 (cern.accsoft.commons.domain.lhc.LhcSector): final static enum constant
-        SECTOR_23 (cern.accsoft.commons.domain.lhc.LhcSector): final static enum constant
-        SECTOR_34 (cern.accsoft.commons.domain.lhc.LhcSector): final static enum constant
-        SECTOR_45 (cern.accsoft.commons.domain.lhc.LhcSector): final static enum constant
-        SECTOR_56 (cern.accsoft.commons.domain.lhc.LhcSector): final static enum constant
-        SECTOR_67 (cern.accsoft.commons.domain.lhc.LhcSector): final static enum constant
-        SECTOR_78 (cern.accsoft.commons.domain.lhc.LhcSector): final static enum constant
-        SECTOR_81 (cern.accsoft.commons.domain.lhc.LhcSector): final static enum constant
-    
+        LHC sectors.
     """
     SECTOR_12: typing.ClassVar['LhcSector'] = ...
     SECTOR_23: typing.ClassVar['LhcSector'] = ...
@@ -100,16 +140,57 @@ class LhcSector(java.lang.Enum['LhcSector'], cern.accsoft.commons.util.Named):
     SECTOR_67: typing.ClassVar['LhcSector'] = ...
     SECTOR_78: typing.ClassVar['LhcSector'] = ...
     SECTOR_81: typing.ClassVar['LhcSector'] = ...
-    def getName(self) -> str: ...
+    def getName(self) -> str:
+        """
+        
+            Specified by:
+                :code:`getName` in interface :code:`cern.accsoft.commons.util.Named`
+        
+        
+        """
+        ...
     _valueOf_1__T = typing.TypeVar('_valueOf_1__T', bound=java.lang.Enum)  # <T>
     @typing.overload
     @staticmethod
-    def valueOf(string: str) -> 'LhcSector': ...
+    def valueOf(string: str) -> 'LhcSector':
+        """
+            Returns the enum constant of this type with the specified name. The string must match *exactly* an identifier used to
+            declare an enum constant in this type. (Extraneous whitespace characters are not permitted.)
+        
+            Parameters:
+                name (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): the name of the enum constant to be returned.
+        
+            Returns:
+                the enum constant with the specified name
+        
+            Raises:
+                : if this enum type has no constant with the specified name
+                : if the argument is null
+        
+        
+        """
+        ...
     @typing.overload
     @staticmethod
     def valueOf(class_: typing.Type[_valueOf_1__T], string: str) -> _valueOf_1__T: ...
     @staticmethod
-    def values() -> typing.List['LhcSector']: ...
+    def values() -> typing.List['LhcSector']:
+        """
+            Returns an array containing the constants of this enum type, in the order they are declared. This method may be used to
+            iterate over the constants as follows:
+        
+            .. code-block: java
+            
+            for (LhcSector c : LhcSector.values())
+                System.out.println(c);
+            
+        
+            Returns:
+                an array containing the constants of this enum type, in the order they are declared
+        
+        
+        """
+        ...
 
 
 class __module_protocol__(typing.Protocol):

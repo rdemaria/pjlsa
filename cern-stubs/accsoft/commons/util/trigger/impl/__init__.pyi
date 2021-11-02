@@ -10,17 +10,7 @@ import typing
 _AbstractTrigger__E = typing.TypeVar('_AbstractTrigger__E', bound=cern.accsoft.commons.util.trigger.TriggerEvent)  # <E>
 class AbstractTrigger(cern.accsoft.commons.util.trigger.Trigger[_AbstractTrigger__E], typing.Generic[_AbstractTrigger__E]):
     """
-    Java class 'cern.accsoft.commons.util.trigger.impl.AbstractTrigger'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            cern.accsoft.commons.util.trigger.Trigger
-    
-      Constructors:
-        * AbstractTrigger()
-    
+    public abstract class AbstractTrigger<E extends :class:`~cern.accsoft.commons.util.trigger.TriggerEvent`> extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.accsoft.commons.util.trigger.Trigger`<E>
     """
     def __init__(self): ...
     def addTriggerListener(self, triggerListener: typing.Union[cern.accsoft.commons.util.trigger.TriggerListener[_AbstractTrigger__E], typing.Callable[[_AbstractTrigger__E], None]]) -> None: ...
@@ -30,48 +20,63 @@ class AbstractTrigger(cern.accsoft.commons.util.trigger.Trigger[_AbstractTrigger
 
 class TriggerEventImpl(cern.accsoft.commons.util.trigger.TriggerEvent):
     """
-    Java class 'cern.accsoft.commons.util.trigger.impl.TriggerEventImpl'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            cern.accsoft.commons.util.trigger.TriggerEvent
-    
-      Constructors:
-        * TriggerEventImpl(java.time.Instant)
-    
+    public class TriggerEventImpl extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.accsoft.commons.util.trigger.TriggerEvent`
     """
     def __init__(self, instant: typing.Union[java.time.Instant, datetime.datetime]): ...
-    def getTimestamp(self) -> java.time.Instant: ...
-    def toString(self) -> str: ...
+    def getTimestamp(self) -> java.time.Instant:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.util.trigger.TriggerEvent.getTimestamp`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.util.trigger.TriggerEvent`
+        
+            Returns:
+                trigger timestamp
+        
+        
+        """
+        ...
+    def toString(self) -> str:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
 
 _AbstractTimerTrigger__E = typing.TypeVar('_AbstractTimerTrigger__E', bound=cern.accsoft.commons.util.trigger.TriggerEvent)  # <E>
 class AbstractTimerTrigger(AbstractTrigger[_AbstractTimerTrigger__E], typing.Generic[_AbstractTimerTrigger__E]):
     """
-    Java class 'cern.accsoft.commons.util.trigger.impl.AbstractTimerTrigger'
+    public abstract class AbstractTimerTrigger<E extends :class:`~cern.accsoft.commons.util.trigger.TriggerEvent`> extends :class:`~cern.accsoft.commons.util.trigger.impl.AbstractTrigger`<E>
     
-        Extends:
-            cern.accsoft.commons.util.trigger.impl.AbstractTrigger
-    
-      Constructors:
-        * AbstractTimerTrigger(java.time.Duration)
-    
+        Abstract :class:`~cern.accsoft.commons.util.trigger.Trigger` implementation based on timer.
     """
     def __init__(self, duration: java.time.Duration): ...
-    def init(self) -> None: ...
-    def setTimerExecutorService(self, scheduledExecutorService: java.util.concurrent.ScheduledExecutorService) -> None: ...
+    def init(self) -> None:
+        """
+            Trigger initialization method.
+        
+        """
+        ...
+    def setTimerExecutorService(self, scheduledExecutorService: java.util.concurrent.ScheduledExecutorService) -> None:
+        """
+        
+            Parameters:
+                timerExecutorService (`ScheduledExecutorService <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/util/concurrent/ScheduledExecutorService.html?is-external=true>`): `null
+                    <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/util/concurrent/ScheduledExecutorService.html?is-external=true>`
+                    to use
+        
+        
+        """
+        ...
 
 class DefaultTimerTrigger(AbstractTimerTrigger[TriggerEventImpl]):
     """
-    Java class 'cern.accsoft.commons.util.trigger.impl.DefaultTimerTrigger'
+    public class DefaultTimerTrigger extends :class:`~cern.accsoft.commons.util.trigger.impl.AbstractTimerTrigger`<:class:`~cern.accsoft.commons.util.trigger.impl.TriggerEventImpl`>
     
-        Extends:
-            cern.accsoft.commons.util.trigger.impl.AbstractTimerTrigger
-    
-      Constructors:
-        * DefaultTimerTrigger(java.time.Duration)
-    
+        Default :class:`~cern.accsoft.commons.util.trigger.Trigger` implementation based on timer.
     """
     def __init__(self, duration: java.time.Duration): ...
 

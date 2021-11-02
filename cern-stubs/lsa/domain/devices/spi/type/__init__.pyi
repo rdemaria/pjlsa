@@ -11,14 +11,7 @@ import typing
 
 class PropertyBuilder:
     """
-    Java class 'cern.lsa.domain.devices.spi.type.PropertyBuilder'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * PropertyBuilder()
-    
+    public final class PropertyBuilder extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     """
     def __init__(self): ...
     def addField(self, propertyFieldInfo: 'PropertyBuilder.PropertyFieldInfo') -> 'PropertyBuilder': ...
@@ -36,34 +29,15 @@ class PropertyBuilder:
     def setSupportingPartialSet(self, boolean: bool) -> 'PropertyBuilder': ...
     def setWritable(self, boolean: bool) -> 'PropertyBuilder': ...
     class PropertyFieldInfo(cern.accsoft.commons.util.Named):
-        """
-        Java class 'cern.lsa.domain.devices.spi.type.PropertyBuilder$PropertyFieldInfo'
-        
-            Extends:
-                java.lang.Object
-        
-            Interfaces:
-                cern.accsoft.commons.util.Named
-        
-          Constructors:
-            * PropertyFieldInfo(java.lang.String, cern.accsoft.commons.value.Type, java.lang.String, cern.accsoft.commons.value.ValueDescriptor, java.lang.String, cern.lsa.domain.devices.type.PropertyField)
-        
-        """
         def __init__(self, string: str, type: cern.accsoft.commons.value.Type, string2: str, valueDescriptor: cern.accsoft.commons.value.ValueDescriptor, string3: str, propertyField: cern.lsa.domain.devices.type.PropertyField): ...
         def getName(self) -> str: ...
 
 class PropertyFieldAccess(java.lang.Enum['PropertyFieldAccess']):
     """
-    Java class 'cern.lsa.domain.devices.spi.type.PropertyFieldAccess'
+    public enum PropertyFieldAccess extends `Enum <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Enum.html?is-external=true>`<:class:`~cern.lsa.domain.devices.spi.type.PropertyFieldAccess`>
     
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        READ_ONLY (cern.lsa.domain.devices.spi.type.PropertyFieldAccess): final static enum constant
-        WRITE_ONLY (cern.lsa.domain.devices.spi.type.PropertyFieldAccess): final static enum constant
-        READ_WRITE (cern.lsa.domain.devices.spi.type.PropertyFieldAccess): final static enum constant
-    
+        Characteristic of the field. It corresponds to FESA IN, OUT, INOUT values but our enum is easier to read and understand
+        its meaning.
     """
     READ_ONLY: typing.ClassVar['PropertyFieldAccess'] = ...
     WRITE_ONLY: typing.ClassVar['PropertyFieldAccess'] = ...
@@ -73,35 +47,88 @@ class PropertyFieldAccess(java.lang.Enum['PropertyFieldAccess']):
     _valueOf_1__T = typing.TypeVar('_valueOf_1__T', bound=java.lang.Enum)  # <T>
     @typing.overload
     @staticmethod
-    def valueOf(string: str) -> 'PropertyFieldAccess': ...
+    def valueOf(string: str) -> 'PropertyFieldAccess':
+        """
+            Returns the enum constant of this type with the specified name. The string must match *exactly* an identifier used to
+            declare an enum constant in this type. (Extraneous whitespace characters are not permitted.)
+        
+            Parameters:
+                name (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): the name of the enum constant to be returned.
+        
+            Returns:
+                the enum constant with the specified name
+        
+            Raises:
+                : if this enum type has no constant with the specified name
+                : if the argument is null
+        
+        
+        """
+        ...
     @typing.overload
     @staticmethod
     def valueOf(class_: typing.Type[_valueOf_1__T], string: str) -> _valueOf_1__T: ...
     @staticmethod
-    def values() -> typing.List['PropertyFieldAccess']: ...
+    def values() -> typing.List['PropertyFieldAccess']:
+        """
+            Returns an array containing the constants of this enum type, in the order they are declared. This method may be used to
+            iterate over the constants as follows:
+        
+            .. code-block: java
+            
+            for (PropertyFieldAccess c : PropertyFieldAccess.values())
+                System.out.println(c);
+            
+        
+            Returns:
+                an array containing the constants of this enum type, in the order they are declared
+        
+        
+        """
+        ...
 
 class PropertyVersionsRequestImpl(cern.lsa.domain.commons.spi.AbstractPropertiesHolder, cern.lsa.domain.devices.type.PropertyVersionsRequest):
     """
-    Java class 'cern.lsa.domain.devices.spi.type.PropertyVersionsRequestImpl'
+    public class PropertyVersionsRequestImpl extends :class:`~cern.lsa.domain.commons.spi.AbstractPropertiesHolder` implements :class:`~cern.lsa.domain.devices.type.PropertyVersionsRequest`
     
-        Extends:
-            cern.lsa.domain.commons.spi.AbstractPropertiesHolder
+        Default implementation of the :class:`~cern.lsa.domain.devices.type.PropertyVersionsRequest` interface.
     
-        Interfaces:
-            cern.lsa.domain.devices.type.PropertyVersionsRequest
-    
-      Constructors:
-        * PropertyVersionsRequestImpl(java.util.Map)
-    
-      Attributes:
-        PROPERTY_NAMES (java.lang.String): final static field
-        DEVICE_TYPE_NAMES (java.lang.String): final static field
-        DEVICE_TYPE_VERSIONS (java.lang.String): final static field
-    
+        Also see:
+            :meth:`~serialized`
     """
     PROPERTY_NAMES: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` PROPERTY_NAMES
+    
+        Attribute name for :meth:`~cern.lsa.domain.devices.spi.type.PropertyVersionsRequestImpl.getPropertyNames`.
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     DEVICE_TYPE_NAMES: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` DEVICE_TYPE_NAMES
+    
+        Attribute name for :meth:`~cern.lsa.domain.devices.spi.type.PropertyVersionsRequestImpl.getDeviceTypeNames`.
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     DEVICE_TYPE_VERSIONS: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` DEVICE_TYPE_VERSIONS
+    
+        Attribute name for :meth:`~cern.lsa.domain.devices.spi.type.PropertyVersionsRequestImpl.getDeviceTypeVersions`.
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     def __init__(self, map: typing.Union[java.util.Map[str, typing.Any], typing.Mapping[str, typing.Any]]): ...
     def getDeviceTypeNames(self) -> java.util.Set[str]: ...
     def getDeviceTypeVersions(self) -> java.util.Set[cern.lsa.domain.devices.DeviceTypeVersion]: ...

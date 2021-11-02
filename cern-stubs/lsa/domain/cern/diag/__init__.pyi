@@ -7,122 +7,88 @@ import typing
 
 class LsaDriveExceptionThrowableMatcher(cern.accsoft.commons.diag.matcher.ExceptionClassThrowableMatcher):
     """
-    Java class 'cern.lsa.domain.cern.diag.LsaDriveExceptionThrowableMatcher'
-    
-        Extends:
-            cern.accsoft.commons.diag.matcher.ExceptionClassThrowableMatcher
-    
-      Constructors:
-        * LsaDriveExceptionThrowableMatcher()
-    
+    public class LsaDriveExceptionThrowableMatcher extends cern.accsoft.commons.diag.matcher.ExceptionClassThrowableMatcher
     """
     def __init__(self): ...
 
 class LsaDriveProxyThrowableMatcher(cern.accsoft.commons.diag.matcher.ProxyThrowableMatcher):
     """
-    Java class 'cern.lsa.domain.cern.diag.LsaDriveProxyThrowableMatcher'
-    
-        Extends:
-            cern.accsoft.commons.diag.matcher.ProxyThrowableMatcher
-    
-      Constructors:
-        * LsaDriveProxyThrowableMatcher()
-    
+    public class LsaDriveProxyThrowableMatcher extends cern.accsoft.commons.diag.matcher.ProxyThrowableMatcher
     """
     def __init__(self): ...
 
 class LsaDriveStringThrowableMatcher(cern.accsoft.commons.diag.matcher.StringThrowableMatcher):
     """
-    Java class 'cern.lsa.domain.cern.diag.LsaDriveStringThrowableMatcher'
-    
-        Extends:
-            cern.accsoft.commons.diag.matcher.StringThrowableMatcher
-    
-      Constructors:
-        * LsaDriveStringThrowableMatcher()
-    
+    public class LsaDriveStringThrowableMatcher extends cern.accsoft.commons.diag.matcher.StringThrowableMatcher
     """
     def __init__(self): ...
 
 class LsaDriveThrowableMessageComposer(cern.accsoft.commons.diag.DefaultThrowableMessageComposer):
     """
-    Java class 'cern.lsa.domain.cern.diag.LsaDriveThrowableMessageComposer'
-    
-        Extends:
-            cern.accsoft.commons.diag.DefaultThrowableMessageComposer
-    
-      Constructors:
-        * LsaDriveThrowableMessageComposer()
-    
+    public class LsaDriveThrowableMessageComposer extends cern.accsoft.commons.diag.DefaultThrowableMessageComposer
     """
     def __init__(self): ...
-    def composeMessage(self, throwable: java.lang.Throwable) -> str: ...
+    def composeMessage(self, throwable: java.lang.Throwable) -> str:
+        """
+        
+            Specified by:
+                :code:`composeMessage` in interface :code:`cern.accsoft.commons.diag.ThrowableMessageComposer`
+        
+            Overrides:
+                :code:`composeMessage` in class :code:`cern.accsoft.commons.diag.DefaultThrowableMessageComposer`
+        
+        
+        """
+        ...
 
 class LsaStringThrowableMatcher(cern.accsoft.commons.diag.matcher.StringThrowableMatcher):
     """
-    Java class 'cern.lsa.domain.cern.diag.LsaStringThrowableMatcher'
-    
-        Extends:
-            cern.accsoft.commons.diag.matcher.StringThrowableMatcher
-    
-      Constructors:
-        * LsaStringThrowableMatcher()
-    
-      Attributes:
-        LSA_PROBLEM_DOMAIN (java.lang.String): final static field
-    
+    public class LsaStringThrowableMatcher extends cern.accsoft.commons.diag.matcher.StringThrowableMatcher
     """
     LSA_PROBLEM_DOMAIN: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` LSA_PROBLEM_DOMAIN
+    
+        LSA problem domain
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     def __init__(self): ...
-    def buildThrowableDescriptor(self, throwable: java.lang.Throwable, throwable2: java.lang.Throwable) -> cern.accsoft.commons.diag.ThrowableDescriptor: ...
+    def buildThrowableDescriptor(self, throwable: java.lang.Throwable, throwable2: java.lang.Throwable) -> cern.accsoft.commons.diag.ThrowableDescriptor:
+        """
+        
+            Overrides:
+                :code:`buildThrowableDescriptor` in class :code:`cern.accsoft.commons.diag.matcher.AbstractThrowableMatcher`
+        
+        
+        """
+        ...
 
 class LsaThrowableResolver(cern.accsoft.commons.diag.DefaultThrowableResolver):
     """
-    Java class 'cern.lsa.domain.cern.diag.LsaThrowableResolver'
-    
-        Extends:
-            cern.accsoft.commons.diag.DefaultThrowableResolver
-    
+    public class LsaThrowableResolver extends cern.accsoft.commons.diag.DefaultThrowableResolver
     """
     @staticmethod
     def getInstance() -> 'LsaThrowableResolver': ...
 
 class LsaTrimExceptionThrowableMatcher(cern.accsoft.commons.diag.matcher.ExceptionClassThrowableMatcher):
     """
-    Java class 'cern.lsa.domain.cern.diag.LsaTrimExceptionThrowableMatcher'
-    
-        Extends:
-            cern.accsoft.commons.diag.matcher.ExceptionClassThrowableMatcher
-    
-      Constructors:
-        * LsaTrimExceptionThrowableMatcher()
-    
+    public class LsaTrimExceptionThrowableMatcher extends cern.accsoft.commons.diag.matcher.ExceptionClassThrowableMatcher
     """
     def __init__(self): ...
 
 class LsaTrimProxyThrowableMatcher(cern.accsoft.commons.diag.matcher.ProxyThrowableMatcher):
     """
-    Java class 'cern.lsa.domain.cern.diag.LsaTrimProxyThrowableMatcher'
-    
-        Extends:
-            cern.accsoft.commons.diag.matcher.ProxyThrowableMatcher
-    
-      Constructors:
-        * LsaTrimProxyThrowableMatcher()
-    
+    public class LsaTrimProxyThrowableMatcher extends cern.accsoft.commons.diag.matcher.ProxyThrowableMatcher
     """
     def __init__(self): ...
 
 class LsaTrimStringThrowableMatcher(cern.accsoft.commons.diag.matcher.StringThrowableMatcher):
     """
-    Java class 'cern.lsa.domain.cern.diag.LsaTrimStringThrowableMatcher'
-    
-        Extends:
-            cern.accsoft.commons.diag.matcher.StringThrowableMatcher
-    
-      Constructors:
-        * LsaTrimStringThrowableMatcher()
-    
+    public class LsaTrimStringThrowableMatcher extends cern.accsoft.commons.diag.matcher.StringThrowableMatcher
     """
     def __init__(self): ...
 

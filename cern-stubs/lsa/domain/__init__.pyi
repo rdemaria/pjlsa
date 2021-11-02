@@ -13,16 +13,15 @@ import typing
 
 class LsaException(java.lang.Exception):
     """
-    Java class 'cern.lsa.domain.LsaException'
+    public class LsaException extends `Exception <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Exception.html?is-external=true>`
     
-        Extends:
-            java.lang.Exception
+        A generic LSA exception.
     
-      Constructors:
-        * LsaException(java.lang.String, java.lang.Exception)
-        * LsaException(java.lang.String)
-        * LsaException(java.lang.Exception)
     
+        Although the exception has public constructors, it is mainly meant for inheritance by more concrete exception classes.
+    
+        Also see:
+            :meth:`~serialized`
     """
     @typing.overload
     def __init__(self, exception: java.lang.Exception): ...

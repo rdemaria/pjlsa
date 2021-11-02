@@ -9,17 +9,6 @@ import typing
 
 
 class FontRenderContext:
-    """
-    Java class 'java.awt.font.FontRenderContext'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * FontRenderContext(java.awt.geom.AffineTransform, java.lang.Object, java.lang.Object)
-        * FontRenderContext(java.awt.geom.AffineTransform, boolean, boolean)
-    
-    """
     @typing.overload
     def __init__(self, affineTransform: java.awt.geom.AffineTransform, boolean: bool, boolean2: bool): ...
     @typing.overload
@@ -38,31 +27,6 @@ class FontRenderContext:
     def usesFractionalMetrics(self) -> bool: ...
 
 class GlyphJustificationInfo:
-    """
-    Java class 'java.awt.font.GlyphJustificationInfo'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * GlyphJustificationInfo(float, boolean, int, float, float, boolean, int, float, float)
-    
-      Attributes:
-        PRIORITY_KASHIDA (int): final static field
-        PRIORITY_WHITESPACE (int): final static field
-        PRIORITY_INTERCHAR (int): final static field
-        PRIORITY_NONE (int): final static field
-        weight (float): final field
-        growPriority (int): final field
-        growAbsorb (boolean): final field
-        growLeftLimit (float): final field
-        growRightLimit (float): final field
-        shrinkPriority (int): final field
-        shrinkAbsorb (boolean): final field
-        shrinkLeftLimit (float): final field
-        shrinkRightLimit (float): final field
-    
-    """
     PRIORITY_KASHIDA: typing.ClassVar[int] = ...
     PRIORITY_WHITESPACE: typing.ClassVar[int] = ...
     PRIORITY_INTERCHAR: typing.ClassVar[int] = ...
@@ -79,24 +43,6 @@ class GlyphJustificationInfo:
     def __init__(self, float: float, boolean: bool, int: int, float2: float, float3: float, boolean2: bool, int2: int, float4: float, float5: float): ...
 
 class GlyphMetrics:
-    """
-    Java class 'java.awt.font.GlyphMetrics'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * GlyphMetrics(float, java.awt.geom.Rectangle2D, byte)
-        * GlyphMetrics(boolean, float, float, java.awt.geom.Rectangle2D, byte)
-    
-      Attributes:
-        STANDARD (byte): final static field
-        LIGATURE (byte): final static field
-        COMBINING (byte): final static field
-        COMPONENT (byte): final static field
-        WHITESPACE (byte): final static field
-    
-    """
     STANDARD: typing.ClassVar[int] = ...
     LIGATURE: typing.ClassVar[int] = ...
     COMBINING: typing.ClassVar[int] = ...
@@ -120,26 +66,6 @@ class GlyphMetrics:
     def isWhitespace(self) -> bool: ...
 
 class GlyphVector(java.lang.Cloneable):
-    """
-    Java class 'java.awt.font.GlyphVector'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.lang.Cloneable
-    
-      Constructors:
-        * GlyphVector()
-    
-      Attributes:
-        FLAG_HAS_TRANSFORMS (int): final static field
-        FLAG_HAS_POSITION_ADJUSTMENTS (int): final static field
-        FLAG_RUN_RTL (int): final static field
-        FLAG_COMPLEX_GLYPHS (int): final static field
-        FLAG_MASK (int): final static field
-    
-    """
     FLAG_HAS_TRANSFORMS: typing.ClassVar[int] = ...
     FLAG_HAS_POSITION_ADJUSTMENTS: typing.ClassVar[int] = ...
     FLAG_RUN_RTL: typing.ClassVar[int] = ...
@@ -182,20 +108,6 @@ class GlyphVector(java.lang.Cloneable):
     def setGlyphTransform(self, int: int, affineTransform: java.awt.geom.AffineTransform) -> None: ...
 
 class GraphicAttribute:
-    """
-    Java class 'java.awt.font.GraphicAttribute'
-    
-        Extends:
-            java.lang.Object
-    
-      Attributes:
-        TOP_ALIGNMENT (int): final static field
-        BOTTOM_ALIGNMENT (int): final static field
-        ROMAN_BASELINE (int): final static field
-        CENTER_BASELINE (int): final static field
-        HANGING_BASELINE (int): final static field
-    
-    """
     TOP_ALIGNMENT: typing.ClassVar[int] = ...
     BOTTOM_ALIGNMENT: typing.ClassVar[int] = ...
     ROMAN_BASELINE: typing.ClassVar[int] = ...
@@ -211,32 +123,11 @@ class GraphicAttribute:
     def getOutline(self, affineTransform: java.awt.geom.AffineTransform) -> java.awt.Shape: ...
 
 class LayoutPath:
-    """
-    Java class 'java.awt.font.LayoutPath'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * LayoutPath()
-    
-    """
     def __init__(self): ...
     def pathToPoint(self, point2D: java.awt.geom.Point2D, boolean: bool, point2D2: java.awt.geom.Point2D) -> None: ...
     def pointToPath(self, point2D: java.awt.geom.Point2D, point2D2: java.awt.geom.Point2D) -> bool: ...
 
 class LineBreakMeasurer:
-    """
-    Java class 'java.awt.font.LineBreakMeasurer'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * LineBreakMeasurer(java.text.AttributedCharacterIterator, java.awt.font.FontRenderContext)
-        * LineBreakMeasurer(java.text.AttributedCharacterIterator, java.text.BreakIterator, java.awt.font.FontRenderContext)
-    
-    """
     @typing.overload
     def __init__(self, attributedCharacterIterator: java.text.AttributedCharacterIterator, fontRenderContext: FontRenderContext): ...
     @typing.overload
@@ -255,16 +146,6 @@ class LineBreakMeasurer:
     def setPosition(self, int: int) -> None: ...
 
 class LineMetrics:
-    """
-    Java class 'java.awt.font.LineMetrics'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * LineMetrics()
-    
-    """
     def __init__(self): ...
     def getAscent(self) -> float: ...
     def getBaselineIndex(self) -> int: ...
@@ -279,10 +160,6 @@ class LineMetrics:
     def getUnderlineThickness(self) -> float: ...
 
 class MultipleMaster:
-    """
-    Java class 'java.awt.font.MultipleMaster'
-    
-    """
     @typing.overload
     def deriveMMFont(self, floatArray: typing.List[float]) -> java.awt.Font: ...
     @typing.overload
@@ -293,38 +170,6 @@ class MultipleMaster:
     def getNumDesignAxes(self) -> int: ...
 
 class NumericShaper(java.io.Serializable):
-    """
-    Java class 'java.awt.font.NumericShaper'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable
-    
-      Attributes:
-        EUROPEAN (int): final static field
-        ARABIC (int): final static field
-        EASTERN_ARABIC (int): final static field
-        DEVANAGARI (int): final static field
-        BENGALI (int): final static field
-        GURMUKHI (int): final static field
-        GUJARATI (int): final static field
-        ORIYA (int): final static field
-        TAMIL (int): final static field
-        TELUGU (int): final static field
-        KANNADA (int): final static field
-        MALAYALAM (int): final static field
-        THAI (int): final static field
-        LAO (int): final static field
-        TIBETAN (int): final static field
-        MYANMAR (int): final static field
-        ETHIOPIC (int): final static field
-        KHMER (int): final static field
-        MONGOLIAN (int): final static field
-        ALL_RANGES (int): final static field
-    
-    """
     EUROPEAN: typing.ClassVar[int] = ...
     ARABIC: typing.ClassVar[int] = ...
     EASTERN_ARABIC: typing.ClassVar[int] = ...
@@ -376,52 +221,6 @@ class NumericShaper(java.io.Serializable):
     def shape(self, charArray: typing.List[str], int: int, int2: int, range: 'NumericShaper.Range') -> None: ...
     def toString(self) -> str: ...
     class Range(java.lang.Enum['NumericShaper.Range']):
-        """
-        Java class 'java.awt.font.NumericShaper$Range'
-        
-            Extends:
-                java.lang.Enum
-        
-          Attributes:
-            EUROPEAN (java.awt.font.NumericShaper$Range): final static enum constant
-            ARABIC (java.awt.font.NumericShaper$Range): final static enum constant
-            EASTERN_ARABIC (java.awt.font.NumericShaper$Range): final static enum constant
-            DEVANAGARI (java.awt.font.NumericShaper$Range): final static enum constant
-            BENGALI (java.awt.font.NumericShaper$Range): final static enum constant
-            GURMUKHI (java.awt.font.NumericShaper$Range): final static enum constant
-            GUJARATI (java.awt.font.NumericShaper$Range): final static enum constant
-            ORIYA (java.awt.font.NumericShaper$Range): final static enum constant
-            TAMIL (java.awt.font.NumericShaper$Range): final static enum constant
-            TELUGU (java.awt.font.NumericShaper$Range): final static enum constant
-            KANNADA (java.awt.font.NumericShaper$Range): final static enum constant
-            MALAYALAM (java.awt.font.NumericShaper$Range): final static enum constant
-            THAI (java.awt.font.NumericShaper$Range): final static enum constant
-            LAO (java.awt.font.NumericShaper$Range): final static enum constant
-            TIBETAN (java.awt.font.NumericShaper$Range): final static enum constant
-            MYANMAR (java.awt.font.NumericShaper$Range): final static enum constant
-            ETHIOPIC (java.awt.font.NumericShaper$Range): final static enum constant
-            KHMER (java.awt.font.NumericShaper$Range): final static enum constant
-            MONGOLIAN (java.awt.font.NumericShaper$Range): final static enum constant
-            NKO (java.awt.font.NumericShaper$Range): final static enum constant
-            MYANMAR_SHAN (java.awt.font.NumericShaper$Range): final static enum constant
-            LIMBU (java.awt.font.NumericShaper$Range): final static enum constant
-            NEW_TAI_LUE (java.awt.font.NumericShaper$Range): final static enum constant
-            BALINESE (java.awt.font.NumericShaper$Range): final static enum constant
-            SUNDANESE (java.awt.font.NumericShaper$Range): final static enum constant
-            LEPCHA (java.awt.font.NumericShaper$Range): final static enum constant
-            OL_CHIKI (java.awt.font.NumericShaper$Range): final static enum constant
-            VAI (java.awt.font.NumericShaper$Range): final static enum constant
-            SAURASHTRA (java.awt.font.NumericShaper$Range): final static enum constant
-            KAYAH_LI (java.awt.font.NumericShaper$Range): final static enum constant
-            CHAM (java.awt.font.NumericShaper$Range): final static enum constant
-            TAI_THAM_HORA (java.awt.font.NumericShaper$Range): final static enum constant
-            TAI_THAM_THAM (java.awt.font.NumericShaper$Range): final static enum constant
-            JAVANESE (java.awt.font.NumericShaper$Range): final static enum constant
-            MEETEI_MAYEK (java.awt.font.NumericShaper$Range): final static enum constant
-            SINHALA (java.awt.font.NumericShaper$Range): final static enum constant
-            MYANMAR_TAI_LAING (java.awt.font.NumericShaper$Range): final static enum constant
-        
-        """
         EUROPEAN: typing.ClassVar['NumericShaper.Range'] = ...
         ARABIC: typing.ClassVar['NumericShaper.Range'] = ...
         EASTERN_ARABIC: typing.ClassVar['NumericShaper.Range'] = ...
@@ -470,63 +269,6 @@ class NumericShaper(java.io.Serializable):
         def values() -> typing.List['NumericShaper.Range']: ...
 
 class OpenType:
-    """
-    Java class 'java.awt.font.OpenType'
-    
-      Attributes:
-        TAG_CMAP (int): final static field
-        TAG_HEAD (int): final static field
-        TAG_NAME (int): final static field
-        TAG_GLYF (int): final static field
-        TAG_MAXP (int): final static field
-        TAG_PREP (int): final static field
-        TAG_HMTX (int): final static field
-        TAG_KERN (int): final static field
-        TAG_HDMX (int): final static field
-        TAG_LOCA (int): final static field
-        TAG_POST (int): final static field
-        TAG_OS2 (int): final static field
-        TAG_CVT (int): final static field
-        TAG_GASP (int): final static field
-        TAG_VDMX (int): final static field
-        TAG_VMTX (int): final static field
-        TAG_VHEA (int): final static field
-        TAG_HHEA (int): final static field
-        TAG_TYP1 (int): final static field
-        TAG_BSLN (int): final static field
-        TAG_GSUB (int): final static field
-        TAG_DSIG (int): final static field
-        TAG_FPGM (int): final static field
-        TAG_FVAR (int): final static field
-        TAG_GVAR (int): final static field
-        TAG_CFF (int): final static field
-        TAG_MMSD (int): final static field
-        TAG_MMFX (int): final static field
-        TAG_BASE (int): final static field
-        TAG_GDEF (int): final static field
-        TAG_GPOS (int): final static field
-        TAG_JSTF (int): final static field
-        TAG_EBDT (int): final static field
-        TAG_EBLC (int): final static field
-        TAG_EBSC (int): final static field
-        TAG_LTSH (int): final static field
-        TAG_PCLT (int): final static field
-        TAG_ACNT (int): final static field
-        TAG_AVAR (int): final static field
-        TAG_BDAT (int): final static field
-        TAG_BLOC (int): final static field
-        TAG_CVAR (int): final static field
-        TAG_FEAT (int): final static field
-        TAG_FDSC (int): final static field
-        TAG_FMTX (int): final static field
-        TAG_JUST (int): final static field
-        TAG_LCAR (int): final static field
-        TAG_MORT (int): final static field
-        TAG_OPBD (int): final static field
-        TAG_PROP (int): final static field
-        TAG_TRAK (int): final static field
-    
-    """
     TAG_CMAP: typing.ClassVar[int] = ...
     TAG_HEAD: typing.ClassVar[int] = ...
     TAG_NAME: typing.ClassVar[int] = ...
@@ -593,74 +335,6 @@ class OpenType:
     def getVersion(self) -> int: ...
 
 class TextAttribute(java.text.AttributedCharacterIterator.Attribute):
-    """
-    Java class 'java.awt.font.TextAttribute'
-    
-        Extends:
-            java.text.AttributedCharacterIterator$Attribute
-    
-      Attributes:
-        FAMILY (java.awt.font.TextAttribute): final static field
-        WEIGHT (java.awt.font.TextAttribute): final static field
-        WEIGHT_EXTRA_LIGHT (java.lang.Float): final static field
-        WEIGHT_LIGHT (java.lang.Float): final static field
-        WEIGHT_DEMILIGHT (java.lang.Float): final static field
-        WEIGHT_REGULAR (java.lang.Float): final static field
-        WEIGHT_SEMIBOLD (java.lang.Float): final static field
-        WEIGHT_MEDIUM (java.lang.Float): final static field
-        WEIGHT_DEMIBOLD (java.lang.Float): final static field
-        WEIGHT_BOLD (java.lang.Float): final static field
-        WEIGHT_HEAVY (java.lang.Float): final static field
-        WEIGHT_EXTRABOLD (java.lang.Float): final static field
-        WEIGHT_ULTRABOLD (java.lang.Float): final static field
-        WIDTH (java.awt.font.TextAttribute): final static field
-        WIDTH_CONDENSED (java.lang.Float): final static field
-        WIDTH_SEMI_CONDENSED (java.lang.Float): final static field
-        WIDTH_REGULAR (java.lang.Float): final static field
-        WIDTH_SEMI_EXTENDED (java.lang.Float): final static field
-        WIDTH_EXTENDED (java.lang.Float): final static field
-        POSTURE (java.awt.font.TextAttribute): final static field
-        POSTURE_REGULAR (java.lang.Float): final static field
-        POSTURE_OBLIQUE (java.lang.Float): final static field
-        SIZE (java.awt.font.TextAttribute): final static field
-        TRANSFORM (java.awt.font.TextAttribute): final static field
-        SUPERSCRIPT (java.awt.font.TextAttribute): final static field
-        SUPERSCRIPT_SUPER (java.lang.Integer): final static field
-        SUPERSCRIPT_SUB (java.lang.Integer): final static field
-        FONT (java.awt.font.TextAttribute): final static field
-        CHAR_REPLACEMENT (java.awt.font.TextAttribute): final static field
-        FOREGROUND (java.awt.font.TextAttribute): final static field
-        BACKGROUND (java.awt.font.TextAttribute): final static field
-        UNDERLINE (java.awt.font.TextAttribute): final static field
-        UNDERLINE_ON (java.lang.Integer): final static field
-        STRIKETHROUGH (java.awt.font.TextAttribute): final static field
-        STRIKETHROUGH_ON (java.lang.Boolean): final static field
-        RUN_DIRECTION (java.awt.font.TextAttribute): final static field
-        RUN_DIRECTION_LTR (java.lang.Boolean): final static field
-        RUN_DIRECTION_RTL (java.lang.Boolean): final static field
-        BIDI_EMBEDDING (java.awt.font.TextAttribute): final static field
-        JUSTIFICATION (java.awt.font.TextAttribute): final static field
-        JUSTIFICATION_FULL (java.lang.Float): final static field
-        JUSTIFICATION_NONE (java.lang.Float): final static field
-        INPUT_METHOD_HIGHLIGHT (java.awt.font.TextAttribute): final static field
-        INPUT_METHOD_UNDERLINE (java.awt.font.TextAttribute): final static field
-        UNDERLINE_LOW_ONE_PIXEL (java.lang.Integer): final static field
-        UNDERLINE_LOW_TWO_PIXEL (java.lang.Integer): final static field
-        UNDERLINE_LOW_DOTTED (java.lang.Integer): final static field
-        UNDERLINE_LOW_GRAY (java.lang.Integer): final static field
-        UNDERLINE_LOW_DASHED (java.lang.Integer): final static field
-        SWAP_COLORS (java.awt.font.TextAttribute): final static field
-        SWAP_COLORS_ON (java.lang.Boolean): final static field
-        NUMERIC_SHAPING (java.awt.font.TextAttribute): final static field
-        KERNING (java.awt.font.TextAttribute): final static field
-        KERNING_ON (java.lang.Integer): final static field
-        LIGATURES (java.awt.font.TextAttribute): final static field
-        LIGATURES_ON (java.lang.Integer): final static field
-        TRACKING (java.awt.font.TextAttribute): final static field
-        TRACKING_TIGHT (java.lang.Float): final static field
-        TRACKING_LOOSE (java.lang.Float): final static field
-    
-    """
     FAMILY: typing.ClassVar['TextAttribute'] = ...
     WEIGHT: typing.ClassVar['TextAttribute'] = ...
     WEIGHT_EXTRA_LIGHT: typing.ClassVar[float] = ...
@@ -722,13 +396,6 @@ class TextAttribute(java.text.AttributedCharacterIterator.Attribute):
     TRACKING_LOOSE: typing.ClassVar[float] = ...
 
 class TextHitInfo:
-    """
-    Java class 'java.awt.font.TextHitInfo'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     @staticmethod
     def afterOffset(int: int) -> 'TextHitInfo': ...
     @staticmethod
@@ -750,24 +417,6 @@ class TextHitInfo:
     def trailing(int: int) -> 'TextHitInfo': ...
 
 class TextLayout(java.lang.Cloneable):
-    """
-    Java class 'java.awt.font.TextLayout'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.lang.Cloneable
-    
-      Constructors:
-        * TextLayout(java.text.AttributedCharacterIterator, java.awt.font.FontRenderContext)
-        * TextLayout(java.lang.String, java.util.Map, java.awt.font.FontRenderContext)
-        * TextLayout(java.lang.String, java.awt.Font, java.awt.font.FontRenderContext)
-    
-      Attributes:
-        DEFAULT_CARET_POLICY (java.awt.font.TextLayout$CaretPolicy): final static field
-    
-    """
     DEFAULT_CARET_POLICY: typing.ClassVar['TextLayout.CaretPolicy'] = ...
     @typing.overload
     def __init__(self, string: str, font: java.awt.Font, fontRenderContext: FontRenderContext): ...
@@ -840,33 +489,10 @@ class TextLayout(java.lang.Cloneable):
     def isVertical(self) -> bool: ...
     def toString(self) -> str: ...
     class CaretPolicy:
-        """
-        Java class 'java.awt.font.TextLayout$CaretPolicy'
-        
-            Extends:
-                java.lang.Object
-        
-          Constructors:
-            * CaretPolicy()
-        
-        """
         def __init__(self): ...
         def getStrongCaret(self, textHitInfo: TextHitInfo, textHitInfo2: TextHitInfo, textLayout: 'TextLayout') -> TextHitInfo: ...
 
 class TextMeasurer(java.lang.Cloneable):
-    """
-    Java class 'java.awt.font.TextMeasurer'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.lang.Cloneable
-    
-      Constructors:
-        * TextMeasurer(java.text.AttributedCharacterIterator, java.awt.font.FontRenderContext)
-    
-    """
     def __init__(self, attributedCharacterIterator: java.text.AttributedCharacterIterator, fontRenderContext: FontRenderContext): ...
     def deleteChar(self, attributedCharacterIterator: java.text.AttributedCharacterIterator, int: int) -> None: ...
     def getAdvanceBetween(self, int: int, int2: int) -> float: ...
@@ -875,22 +501,6 @@ class TextMeasurer(java.lang.Cloneable):
     def insertChar(self, attributedCharacterIterator: java.text.AttributedCharacterIterator, int: int) -> None: ...
 
 class TransformAttribute(java.io.Serializable):
-    """
-    Java class 'java.awt.font.TransformAttribute'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable
-    
-      Constructors:
-        * TransformAttribute(java.awt.geom.AffineTransform)
-    
-      Attributes:
-        IDENTITY (java.awt.font.TransformAttribute): final static field
-    
-    """
     IDENTITY: typing.ClassVar['TransformAttribute'] = ...
     def __init__(self, affineTransform: java.awt.geom.AffineTransform): ...
     def equals(self, object: typing.Any) -> bool: ...
@@ -899,17 +509,6 @@ class TransformAttribute(java.io.Serializable):
     def isIdentity(self) -> bool: ...
 
 class ImageGraphicAttribute(GraphicAttribute):
-    """
-    Java class 'java.awt.font.ImageGraphicAttribute'
-    
-        Extends:
-            java.awt.font.GraphicAttribute
-    
-      Constructors:
-        * ImageGraphicAttribute(java.awt.Image, int)
-        * ImageGraphicAttribute(java.awt.Image, int, float, float)
-    
-    """
     @typing.overload
     def __init__(self, image: java.awt.Image, int: int): ...
     @typing.overload
@@ -926,20 +525,6 @@ class ImageGraphicAttribute(GraphicAttribute):
     def hashCode(self) -> int: ...
 
 class ShapeGraphicAttribute(GraphicAttribute):
-    """
-    Java class 'java.awt.font.ShapeGraphicAttribute'
-    
-        Extends:
-            java.awt.font.GraphicAttribute
-    
-      Constructors:
-        * ShapeGraphicAttribute(java.awt.Shape, int, boolean)
-    
-      Attributes:
-        STROKE (boolean): final static field
-        FILL (boolean): final static field
-    
-    """
     STROKE: typing.ClassVar[bool] = ...
     FILL: typing.ClassVar[bool] = ...
     def __init__(self, shape: java.awt.Shape, int: int, boolean: bool): ...

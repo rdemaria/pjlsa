@@ -16,11 +16,9 @@ import typing
 
 class Accelerator(cern.accsoft.commons.util.Named):
     """
-    Java class 'cern.accsoft.commons.domain.Accelerator'
+    public interface Accelerator extends cern.accsoft.commons.util.Named
     
-        Interfaces:
-            cern.accsoft.commons.util.Named
-    
+        Accelerator.
     """
     def getAcceleratorModes(self) -> java.util.Set[cern.accsoft.commons.domain.modes.AcceleratorMode]: ...
     def getAcceleratorZones(self) -> java.util.Set[cern.accsoft.commons.domain.zones.AcceleratorZone]: ...
@@ -28,57 +26,182 @@ class Accelerator(cern.accsoft.commons.util.Named):
     def getBeams(self) -> java.util.Set[cern.accsoft.commons.domain.beams.Beam]: ...
     def getCode(self) -> str: ...
     def getParticleTransfers(self) -> java.util.Set[cern.accsoft.commons.domain.particletransfers.ParticleTransfer]: ...
-    def getTimingDomain(self) -> 'TimingDomain': ...
-    def isMultiplexed(self) -> bool: ...
+    def getTimingDomain(self) -> 'TimingDomain':
+        """
+        
+            Returns:
+                timing domain for this accelerator (never :code:`null`)
+        
+        
+        """
+        ...
+    def isMultiplexed(self) -> bool:
+        """
+            Returns :code:`true` if the accelerator/facility is controlled in a multiplexed way, meaning that devices can have
+            different settings for different timing users at the same time, ex. in PSB or SPS. On the other hand, ISOLDE, ADE and
+            CTF are controlled in a non-multiplexed way, meaning that devices have single setting at a time. LHC is non-multiplexed
+            machine at FE level.
+        
+            Returns:
+                :code:`true` if the accelerator is controlled in a multiplexed way and :code:`false` otherwise
+        
+        
+        """
+        ...
 
 class ParticleType(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['ParticleType']):
     """
-    Java class 'cern.accsoft.commons.domain.ParticleType'
+    public class ParticleType extends cern.accsoft.commons.util.AbstractImmutableNamedSerializable<:class:`~cern.accsoft.commons.domain.ParticleType`>
     
-        Extends:
-            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+        Particle types.
     
-      Attributes:
-        ELECTRON (cern.accsoft.commons.domain.ParticleType): final static field
-        PROTON (cern.accsoft.commons.domain.ParticleType): final static field
-        PBAR (cern.accsoft.commons.domain.ParticleType): final static field
-        MUON (cern.accsoft.commons.domain.ParticleType): final static field
-        PION_PLUS (cern.accsoft.commons.domain.ParticleType): final static field
-        PION_MINUS (cern.accsoft.commons.domain.ParticleType): final static field
-        KAON (cern.accsoft.commons.domain.ParticleType): final static field
-        PB54 (cern.accsoft.commons.domain.ParticleType): final static field
-        PB80 (cern.accsoft.commons.domain.ParticleType): final static field
-        PB81 (cern.accsoft.commons.domain.ParticleType): final static field
-        PB82 (cern.accsoft.commons.domain.ParticleType): final static field
-        XE39 (cern.accsoft.commons.domain.ParticleType): final static field
-        XE54 (cern.accsoft.commons.domain.ParticleType): final static field
-        AR11 (cern.accsoft.commons.domain.ParticleType): final static field
-        AR18 (cern.accsoft.commons.domain.ParticleType): final static field
-        HMINUS (cern.accsoft.commons.domain.ParticleType): final static field
-        O4 (cern.accsoft.commons.domain.ParticleType): final static field
-        O8 (cern.accsoft.commons.domain.ParticleType): final static field
-    
+        Also see:
+            :meth:`~serialized`
     """
     ELECTRON: typing.ClassVar['ParticleType'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.ParticleType` ELECTRON
+    
+        Electrons
+    
+    """
     PROTON: typing.ClassVar['ParticleType'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.ParticleType` PROTON
+    
+        Protons
+    
+    """
     PBAR: typing.ClassVar['ParticleType'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.ParticleType` PBAR
+    
+        Antiprotons
+    
+    """
     MUON: typing.ClassVar['ParticleType'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.ParticleType` MUON
+    
+        Muons
+    
+    """
     PION_PLUS: typing.ClassVar['ParticleType'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.ParticleType` PION_PLUS
+    
+        Pion+
+    
+    """
     PION_MINUS: typing.ClassVar['ParticleType'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.ParticleType` PION_MINUS
+    
+        Pion-
+    
+    """
     KAON: typing.ClassVar['ParticleType'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.ParticleType` KAON
+    
+        Kaon
+    
+    """
     PB54: typing.ClassVar['ParticleType'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.ParticleType` PB54
+    
+        Lead 54+ ions
+    
+    """
     PB80: typing.ClassVar['ParticleType'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.ParticleType` PB80
+    
+        Lead 80+ ions
+    
+    """
     PB81: typing.ClassVar['ParticleType'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.ParticleType` PB81
+    
+        Lead 81+ ions
+    
+    """
     PB82: typing.ClassVar['ParticleType'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.ParticleType` PB82
+    
+        Lead 82+ ions
+    
+    """
     XE39: typing.ClassVar['ParticleType'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.ParticleType` XE39
+    
+        Xenon 39+ ions
+    
+    """
     XE54: typing.ClassVar['ParticleType'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.ParticleType` XE54
+    
+        Xenon 54+ ions
+    
+    """
     AR11: typing.ClassVar['ParticleType'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.ParticleType` AR11
+    
+        Argon 11+ ions
+    
+    """
     AR18: typing.ClassVar['ParticleType'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.ParticleType` AR18
+    
+        Argon 18+ ions
+    
+    """
     HMINUS: typing.ClassVar['ParticleType'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.ParticleType` HMINUS
+    
+        H-
+    
+    """
     O4: typing.ClassVar['ParticleType'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.ParticleType` O4
+    
+        04
+    
+    """
     O8: typing.ClassVar['ParticleType'] = ...
-    def getNumberOfCharges(self) -> int: ...
-    def getRestMassEV(self) -> float: ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.ParticleType` O8
+    
+        08
+    
+    """
+    def getNumberOfCharges(self) -> int:
+        """
+        
+            Returns:
+                the number of charges of the particle
+        
+        
+        """
+        ...
+    def getRestMassEV(self) -> float:
+        """
+        
+            Returns:
+                the rest mass of the particle in eV/c^2
+        
+        
+        """
+        ...
     @staticmethod
     def valueOf(string: str) -> 'ParticleType': ...
     @staticmethod
@@ -86,58 +209,148 @@ class ParticleType(cern.accsoft.commons.util.AbstractImmutableNamedSerializable[
 
 class TimingDomain(cern.accsoft.commons.util.Named):
     """
-    Java class 'cern.accsoft.commons.domain.TimingDomain'
+    public interface TimingDomain extends cern.accsoft.commons.util.Named
     
-        Interfaces:
-            cern.accsoft.commons.util.Named
-    
+        Timing domain for accelerators.
     """
-    def isCycling(self) -> bool: ...
+    def isCycling(self) -> bool:
+        """
+        
+            Returns:
+                :code:`true` if this timing domain is for cycling accelerators and facilities
+        
+        
+        """
+        ...
     def isMultiplexed(self) -> bool: ...
 
 class CernAccelerator(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['CernAccelerator'], Accelerator):
     """
-    Java class 'cern.accsoft.commons.domain.CernAccelerator'
+    public class CernAccelerator extends cern.accsoft.commons.util.AbstractImmutableNamedSerializable<:class:`~cern.accsoft.commons.domain.CernAccelerator`> implements :class:`~cern.accsoft.commons.domain.Accelerator`
     
-        Extends:
-            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+        CERN accelerators.
     
-        Interfaces:
-            cern.accsoft.commons.domain.Accelerator
-    
-      Attributes:
-        AD (cern.accsoft.commons.domain.CernAccelerator): final static field
-        CTF (cern.accsoft.commons.domain.CernAccelerator): final static field
-        ISOLDE (cern.accsoft.commons.domain.CernAccelerator): final static field
-        LEIR (cern.accsoft.commons.domain.CernAccelerator): final static field
-        LHC (cern.accsoft.commons.domain.CernAccelerator): final static field
-        PS (cern.accsoft.commons.domain.CernAccelerator): final static field
-        PSB (cern.accsoft.commons.domain.CernAccelerator): final static field
-        SPS (cern.accsoft.commons.domain.CernAccelerator): final static field
-        NORTH (cern.accsoft.commons.domain.CernAccelerator): final static field
-        AWAKE (cern.accsoft.commons.domain.CernAccelerator): final static field
-        ELENA (cern.accsoft.commons.domain.CernAccelerator): final static field
-        LINAC3 (cern.accsoft.commons.domain.CernAccelerator): final static field
-        LINAC4 (cern.accsoft.commons.domain.CernAccelerator): final static field
-        REX (cern.accsoft.commons.domain.CernAccelerator): final static field
-    
+        Also see:
+            :meth:`~serialized`
     """
     AD: typing.ClassVar['CernAccelerator'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.CernAccelerator` AD
+    
+        AD
+    
+    """
     CTF: typing.ClassVar['CernAccelerator'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.CernAccelerator` CTF
+    
+        CTF
+    
+    """
     ISOLDE: typing.ClassVar['CernAccelerator'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.CernAccelerator` ISOLDE
+    
+        ISOLDE
+    
+    """
     LEIR: typing.ClassVar['CernAccelerator'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.CernAccelerator` LEIR
+    
+        LEIR
+    
+    """
     LHC: typing.ClassVar['CernAccelerator'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.CernAccelerator` LHC
+    
+        LHC
+    
+    """
     PS: typing.ClassVar['CernAccelerator'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.CernAccelerator` PS
+    
+        PS
+    
+    """
     PSB: typing.ClassVar['CernAccelerator'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.CernAccelerator` PSB
+    
+        PS Booster
+    
+    """
     SPS: typing.ClassVar['CernAccelerator'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.CernAccelerator` SPS
+    
+        SPS
+    
+    """
     NORTH: typing.ClassVar['CernAccelerator'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.CernAccelerator` NORTH
+    
+        North Experimental Area
+    
+    """
+    PS_EAST: typing.ClassVar['CernAccelerator'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.CernAccelerator` PS_EAST
+    
+        PS East Experimental Area
+    
+    """
     AWAKE: typing.ClassVar['CernAccelerator'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.CernAccelerator` AWAKE
+    
+        AWAKE
+    
+    """
     ELENA: typing.ClassVar['CernAccelerator'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.CernAccelerator` ELENA
+    
+        ELENA
+    
+    """
     LINAC3: typing.ClassVar['CernAccelerator'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.CernAccelerator` LINAC3
+    
+        LINAC3
+    
+    """
     LINAC4: typing.ClassVar['CernAccelerator'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.CernAccelerator` LINAC4
+    
+        LINAC4
+    
+    """
     REX: typing.ClassVar['CernAccelerator'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.CernAccelerator` REX
+    
+        REX
+    
+    """
     @staticmethod
-    def byCcsName(string: str) -> 'CernAccelerator': ...
+    def byCcsName(string: str) -> 'CernAccelerator':
+        """
+        
+            Parameters:
+                ccsName (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): the CCS name of the accelerator
+        
+            Returns:
+                accelerator by CCS name
+        
+        
+        """
+        ...
     @staticmethod
     def byCode(string: str) -> 'CernAccelerator': ...
     @staticmethod
@@ -146,11 +359,48 @@ class CernAccelerator(cern.accsoft.commons.util.AbstractImmutableNamedSerializab
     def getAcceleratorZones(self) -> java.util.Set[cern.accsoft.commons.domain.zones.AcceleratorZone]: ...
     def getBeamDestinations(self) -> java.util.Set[cern.accsoft.commons.domain.beamdestinations.BeamDestination]: ...
     def getBeams(self) -> java.util.Set[cern.accsoft.commons.domain.beams.Beam]: ...
-    def getCcsName(self) -> str: ...
+    def getCcsName(self) -> str:
+        """
+        
+            Returns:
+                CCS name of this accelerator
+        
+        
+        """
+        ...
     def getCode(self) -> str: ...
     def getParticleTransfers(self) -> java.util.Set[cern.accsoft.commons.domain.particletransfers.ParticleTransfer]: ...
-    def getTimingDomain(self) -> TimingDomain: ...
-    def isMultiplexed(self) -> bool: ...
+    def getTimingDomain(self) -> TimingDomain:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.Accelerator.getTimingDomain`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.Accelerator`
+        
+            Returns:
+                timing domain for this accelerator (never :code:`null`)
+        
+        
+        """
+        ...
+    def isMultiplexed(self) -> bool:
+        """
+            Description copied from interface: :meth:`~cern.accsoft.commons.domain.Accelerator.isMultiplexed`
+            Returns :code:`true` if the accelerator/facility is controlled in a multiplexed way, meaning that devices can have
+            different settings for different timing users at the same time, ex. in PSB or SPS. On the other hand, ISOLDE, ADE and
+            CTF are controlled in a non-multiplexed way, meaning that devices have single setting at a time. LHC is non-multiplexed
+            machine at FE level.
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.Accelerator.isMultiplexed`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.Accelerator`
+        
+            Returns:
+                :code:`true` if the accelerator is controlled in a multiplexed way and :code:`false` otherwise
+        
+        
+        """
+        ...
     @staticmethod
     def valueOf(string: str) -> 'CernAccelerator': ...
     @staticmethod
@@ -158,34 +408,82 @@ class CernAccelerator(cern.accsoft.commons.util.AbstractImmutableNamedSerializab
 
 class CernTimingDomain(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['CernTimingDomain'], TimingDomain):
     """
-    Java class 'cern.accsoft.commons.domain.CernTimingDomain'
+    public class CernTimingDomain extends cern.accsoft.commons.util.AbstractImmutableNamedSerializable<:class:`~cern.accsoft.commons.domain.CernTimingDomain`> implements :class:`~cern.accsoft.commons.domain.TimingDomain`
     
-        Extends:
-            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+        Timing domain for CERN accelerators.
     
-        Interfaces:
-            cern.accsoft.commons.domain.TimingDomain
-    
-      Attributes:
-        LHC (cern.accsoft.commons.domain.CernTimingDomain): final static field
-        SPS (cern.accsoft.commons.domain.CernTimingDomain): final static field
-        CPS (cern.accsoft.commons.domain.CernTimingDomain): final static field
-        PSB (cern.accsoft.commons.domain.CernTimingDomain): final static field
-        LEI (cern.accsoft.commons.domain.CernTimingDomain): final static field
-        ADE (cern.accsoft.commons.domain.CernTimingDomain): final static field
-        SCT (cern.accsoft.commons.domain.CernTimingDomain): final static field
-        LNA (cern.accsoft.commons.domain.CernTimingDomain): final static field
-    
+        Also see:
+            :meth:`~serialized`
     """
     LHC: typing.ClassVar['CernTimingDomain'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.CernTimingDomain` LHC
+    
+        LHC timing domain
+    
+    """
     SPS: typing.ClassVar['CernTimingDomain'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.CernTimingDomain` SPS
+    
+        SPS timing domain
+    
+    """
     CPS: typing.ClassVar['CernTimingDomain'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.CernTimingDomain` CPS
+    
+        PS timing domain
+    
+    """
     PSB: typing.ClassVar['CernTimingDomain'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.CernTimingDomain` PSB
+    
+        PS Booster timing domain
+    
+    """
     LEI: typing.ClassVar['CernTimingDomain'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.CernTimingDomain` LEI
+    
+        LEIR timing domain
+    
+    """
     ADE: typing.ClassVar['CernTimingDomain'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.CernTimingDomain` ADE
+    
+        AD timing domain
+    
+    """
     SCT: typing.ClassVar['CernTimingDomain'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.CernTimingDomain` SCT
+    
+        CTF Slow Central Timing timing domain
+    
+    """
     LNA: typing.ClassVar['CernTimingDomain'] = ...
-    def isCycling(self) -> bool: ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.CernTimingDomain` LNA
+    
+        ELENA timing domain
+    
+    """
+    def isCycling(self) -> bool:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.TimingDomain.isCycling`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.TimingDomain`
+        
+            Returns:
+                :code:`true` if this timing domain is for cycling accelerators and facilities
+        
+        
+        """
+        ...
     @staticmethod
     def valueOf(string: str) -> 'CernTimingDomain': ...
     @staticmethod

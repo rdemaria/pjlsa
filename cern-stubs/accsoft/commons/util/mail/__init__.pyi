@@ -5,27 +5,62 @@ import typing
 
 class MailSender:
     """
-    Java class 'cern.accsoft.commons.util.mail.MailSender'
+    `@Deprecated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Deprecated.html?is-external=true>` public interface MailSender
     
+        Deprecated.
+        This interface has been moved to accsoft-commons-io package. Please use it from there.
+        Mail sender.
+    
+        Also see:
+            :class:`~cern.accsoft.commons.util.mail.MailSenderFactory`
     """
     @typing.overload
-    def send(self, stringArray: typing.List[str], string2: str, string3: str) -> None: ...
+    def send(self, stringArray: typing.List[str], string2: str, string3: str) -> None:
+        """
+            Deprecated.
+            Sends an email.
+        
+            Parameters:
+                to (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`[]): 'To' email addresses. Can be :code:`null`
+                subject (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): email subject
+                body (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): email body (can be HTML text).
+        
+        """
+        ...
     @typing.overload
-    def send(self, stringArray: typing.List[str], stringArray2: typing.List[str], stringArray3: typing.List[str], string4: str, string5: str) -> None: ...
+    def send(self, stringArray: typing.List[str], stringArray2: typing.List[str], stringArray3: typing.List[str], string4: str, string5: str) -> None:
+        """
+            Deprecated.
+            Sends an email. Note that at least one of :code:`to`, :code:`cc` and :code:`bcc` arguments must be specified.
+        
+            Parameters:
+                to (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`[]): 'To' email addresses. Can be :code:`null`
+                cc (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`[]): 'Cc' email addresses. Can be :code:`null`
+                bcc (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`[]): 'Bcc' email addresses. Can be :code:`null`
+                subject (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): email subject
+                body (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): email body (can be HTML text).
+        
+        """
+        ...
     @typing.overload
-    def send(self, stringArray: typing.List[str], stringArray2: typing.List[str], stringArray3: typing.List[str], string4: str, string5: str, fileArray: typing.List[java.io.File]) -> None: ...
+    def send(self, stringArray: typing.List[str], stringArray2: typing.List[str], stringArray3: typing.List[str], string4: str, string5: str, fileArray: typing.List[java.io.File]) -> None:
+        """
+            Deprecated.
+            Sends an email. Note that at least one of :code:`to`, :code:`cc` and :code:`bcc` arguments must be specified.
+        
+            Parameters:
+                to (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`[]): 'To' email addresses. Can be :code:`null`
+                cc (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`[]): 'Cc' email addresses. Can be :code:`null`
+                bcc (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`[]): 'Bcc' email addresses. Can be :code:`null`
+                subject (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): email subject
+                body (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): email body (can be HTML text).
+                attachments (`File <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/io/File.html?is-external=true>`[]): optional array with files to be attached. Can be :code:`null`
+        
+        
+        """
+        ...
 
 class MailSenderFactory:
-    """
-    Java class 'cern.accsoft.commons.util.mail.MailSenderFactory'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * MailSenderFactory()
-    
-    """
     def __init__(self): ...
     def getFrom(self) -> str: ...
     def getSmtpHost(self) -> str: ...

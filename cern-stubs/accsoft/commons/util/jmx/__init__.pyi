@@ -9,11 +9,9 @@ import typing
 
 class MBeanRegistry:
     """
-    Java class 'cern.accsoft.commons.util.jmx.MBeanRegistry'
+    public class MBeanRegistry extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
-    
+        Helper class to facilitate the (un)registration of JMX MBeans.
     """
     @typing.overload
     def createObjectName(self, string: str) -> javax.management.ObjectName: ...
@@ -21,37 +19,84 @@ class MBeanRegistry:
     @staticmethod
     def createObjectName(string: str, string2: str) -> javax.management.ObjectName: ...
     @staticmethod
-    def get() -> 'MBeanRegistry': ...
-    def registerMBean(self, string: str, object: typing.Any, logger: org.slf4j.Logger) -> javax.management.ObjectInstance: ...
-    def setJmxAppName(self, string: str) -> None: ...
-    def unregisterAll(self, logger: org.slf4j.Logger) -> None: ...
-    def unregisterMBean(self, string: str, logger: org.slf4j.Logger) -> None: ...
+    def get() -> 'MBeanRegistry':
+        """
+            Getter for the singleton.
+        
+            Returns:
+                the singleton
+        
+        
+        """
+        ...
+    def registerMBean(self, string: str, object: typing.Any, logger: org.slf4j.Logger) -> javax.management.ObjectInstance:
+        """
+            Registers an MBean.
+        
+            This method never throws an exception in order to not prevent application from working. It logs the problem instead.
+        
+            Parameters:
+                mBeanName (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): valid MBean name, ex. "cern.japc:type=core,name=updateDelivery"
+                mBean (`Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`): MBean implementation to register
+                logger (org.slf4j.Logger): logger to use (can be :code:`null`)
+        
+            Returns:
+                `null <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/management/ObjectInstance.html?is-external=true>`
+                corresponding to the registered bean or :code:`null` if registration failed.
+        
+        
+        """
+        ...
+    def setJmxAppName(self, string: str) -> None:
+        """
+            Setter for the application name to be used by JMX in order to distinguish applications running in the same JVM (the case
+            of application servers) but loaded with different classloaders.
+        
+            Parameters:
+                jmxAppName (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): JMX application name
+        
+        
+        """
+        ...
+    def unregisterAll(self, logger: org.slf4j.Logger) -> None:
+        """
+            Unregisters all the registered MBeans.
+        
+            Parameters:
+                logger (org.slf4j.Logger): logger to use
+        
+        
+        """
+        ...
+    def unregisterMBean(self, string: str, logger: org.slf4j.Logger) -> None:
+        """
+            Unregisters an MBean.
+        
+            This method never throws an exception in order to not prevent application from working. It logs the problem instead.
+        
+            Parameters:
+                mBeanName (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): valid MBean name, ex. "cern.japc:type=core,name=updateDelivery", which was previously registered with
+                    :meth:`~cern.accsoft.commons.util.jmx.MBeanRegistry.registerMBean`
+                logger (org.slf4j.Logger): logger to use (can be :code:`null`)
+        
+        
+        """
+        ...
 
 class NameParser:
     """
-    Java class 'cern.accsoft.commons.util.jmx.NameParser'
+    public class NameParser extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * NameParser()
-    
+        Parses JMX bean name. Most of the code was taken from `null
+        <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/management/ObjectName.html?is-external=true>` class. It was
+        not possible to simply use `null
+        <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/management/ObjectName.html?is-external=true>` class itself as
+        it does not expose enough information about parsed name.
     """
     def __init__(self): ...
     @staticmethod
     def parseName(string: str) -> 'NameParser.Name': ...
     class Name:
-        """
-        Java class 'cern.accsoft.commons.util.jmx.NameParser$Name'
-        
-            Extends:
-                java.lang.Object
-        
-          Constructors:
-            * Name(java.lang.String, java.util.Map, boolean)
-        
-        """
         def __init__(self, string: str, map: typing.Union[java.util.Map[str, str], typing.Mapping[str, str]], boolean: bool): ...
         def getDomainName(self) -> str: ...
         def getProperties(self) -> java.util.Map[str, str]: ...

@@ -7,13 +7,6 @@ import typing
 
 
 class ContextAwareExecutors:
-    """
-    Java class 'cern.accsoft.commons.util.executor.ContextAwareExecutors'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     @typing.overload
     def newCachedThreadPool(self) -> java.util.concurrent.ExecutorService: ...
     @typing.overload
@@ -35,15 +28,10 @@ class ContextAwareExecutors:
 
 class ContextDefinition:
     """
-    Java class 'cern.accsoft.commons.util.executor.ContextDefinition'
+    public class ContextDefinition extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * ContextDefinition(java.util.function.Supplier)
-        * ContextDefinition(java.util.function.Supplier, java.util.function.Supplier)
-    
+        Definition of a context, which is the combination of a :class:`~cern.accsoft.commons.util.executor.ContextForwarder` and
+        an :class:`~cern.accsoft.commons.util.executor.ExecutionValidator`.
     """
     @typing.overload
     def __init__(self, supplier: typing.Union[java.util.function.Supplier['ContextForwarder'], typing.Callable[[], 'ContextForwarder']]): ...
@@ -52,16 +40,33 @@ class ContextDefinition:
 
 class ContextForwarder:
     """
-    Java class 'cern.accsoft.commons.util.executor.ContextForwarder'
+    public interface ContextForwarder
     
+        Context Forwarder for the :class:`~cern.accsoft.commons.util.executor.ContextAwareExecutors`.
     """
-    def clearContext(self) -> None: ...
-    def setContext(self) -> None: ...
+    def clearContext(self) -> None:
+        """
+            Clears the context after the end of execution.
+        
+        """
+        ...
+    def setContext(self) -> None:
+        """
+            Sets the context from the calling thread.
+        
+        """
+        ...
 
 class ExecutionValidator:
     """
-    Java class 'cern.accsoft.commons.util.executor.ExecutionValidator'
+    public interface ExecutionValidator
     
+        The execution validator is used to configure exclusions for some of the `null
+        <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/util/concurrent/ExecutorService.html?is-external=true>`
+        methods, for example by sending an `null
+        <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/UnsupportedOperationException.html?is-external=true>` in
+        one of the validation methods. By default, the :class:`~cern.accsoft.commons.util.executor.ExecutionValidator` allows
+        all method calls.
     """
     def validateExecute(self, runnable: typing.Union[java.lang.Runnable, typing.Callable]) -> None: ...
     _validateInvokeAll_0__T = typing.TypeVar('_validateInvokeAll_0__T')  # <T>
@@ -78,7 +83,13 @@ class ExecutionValidator:
     def validateInvokeAny(self, collection: typing.Union[java.util.Collection[java.util.concurrent.Callable[_validateInvokeAny_1__T]], typing.Sequence[java.util.concurrent.Callable[_validateInvokeAny_1__T]]], long: int, timeUnit: java.util.concurrent.TimeUnit) -> None: ...
     _validateSchedule_1__V = typing.TypeVar('_validateSchedule_1__V')  # <V>
     @typing.overload
-    def validateSchedule(self, runnable: typing.Union[java.lang.Runnable, typing.Callable], long: int, timeUnit: java.util.concurrent.TimeUnit) -> None: ...
+    def validateSchedule(self, runnable: typing.Union[java.lang.Runnable, typing.Callable], long: int, timeUnit: java.util.concurrent.TimeUnit) -> None:
+        """
+        default <V> void validateSchedule (`Callable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/util/concurrent/Callable.html?is-external=true>`<V> callable, long delay, `TimeUnit <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/util/concurrent/TimeUnit.html?is-external=true>` unit)
+        
+        
+        """
+        ...
     @typing.overload
     def validateSchedule(self, callable: typing.Union[java.util.concurrent.Callable[_validateSchedule_1__V], typing.Callable[[], _validateSchedule_1__V]], long: int, timeUnit: java.util.concurrent.TimeUnit) -> None: ...
     def validateScheduleAtFixedRate(self, runnable: typing.Union[java.lang.Runnable, typing.Callable], long: int, long2: int, timeUnit: java.util.concurrent.TimeUnit) -> None: ...
@@ -88,7 +99,13 @@ class ExecutionValidator:
     @typing.overload
     def validateSubmit(self, runnable: typing.Union[java.lang.Runnable, typing.Callable]) -> None: ...
     @typing.overload
-    def validateSubmit(self, runnable: typing.Union[java.lang.Runnable, typing.Callable], t: _validateSubmit_1__T) -> None: ...
+    def validateSubmit(self, runnable: typing.Union[java.lang.Runnable, typing.Callable], t: _validateSubmit_1__T) -> None:
+        """
+        default void validateSubmit (`Runnable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Runnable.html?is-external=true>` task)
+        
+        
+        """
+        ...
     @typing.overload
     def validateSubmit(self, callable: typing.Union[java.util.concurrent.Callable[_validateSubmit_2__T], typing.Callable[[], _validateSubmit_2__T]]) -> None: ...
 

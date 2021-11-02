@@ -14,24 +14,19 @@ import typing
 
 class Accelerators(java.lang.annotation.Annotation):
     """
-    Java class 'cern.lsa.domain.commons.Accelerators'
+    `@Retention <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/annotation/Retention.html?is-external=true>`(`RUNTIME <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/annotation/RetentionPolicy.html?is-external=true#RUNTIME>`) `@Target <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/annotation/Target.html?is-external=true>`(`TYPE <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/annotation/ElementType.html?is-external=true#TYPE>`) public @interface Accelerators
     
-        Interfaces:
-            java.lang.annotation.Annotation
-    
+        An annotation that lets you specify for which accelerator the given type is applicable. This is done by providing an
+        array of classes that implement the `null
+        <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/util/function/Supplier.html?is-external=true>` of
+        :code:`Accelerator` interface. These classes must have a default constructor in order to be able to instantiate them
+        freely.
     """
     def equals(self, object: typing.Any) -> bool: ...
     def hashCode(self) -> int: ...
     def toString(self) -> str: ...
     def value(self) -> typing.List[typing.Type[java.util.function.Supplier[cern.accsoft.commons.domain.Accelerator]]]: ...
     class Resolver:
-        """
-        Java class 'cern.lsa.domain.commons.Accelerators$Resolver'
-        
-            Extends:
-                java.lang.Object
-        
-        """
         @staticmethod
         def anyMatch(accelerator: cern.accsoft.commons.domain.Accelerator, accelerators: 'Accelerators') -> bool: ...
         @staticmethod
@@ -41,45 +36,87 @@ class Accelerators(java.lang.annotation.Annotation):
 
 class Attribute(cern.accsoft.commons.util.Named):
     """
-    Java class 'cern.lsa.domain.commons.Attribute'
+    public interface Attribute extends cern.accsoft.commons.util.Named
     
-        Interfaces:
-            cern.accsoft.commons.util.Named
+        An :code:`Attribute` represents an additional piece of information, which may be bound to an LSA entity without the need
+        to extend the Database schema for this entity. For instance, if there is a need to store additional information related
+        to a Cycle Type, e.g. beam offset, it may be stored as an attribute instead of extending the CYCLE_TYPES table in the
+        DB.
     
+        An :code:`Attribute` is an association between an :class:`~cern.lsa.domain.commons.AttributeDefinition` and a value
+    
+        Also see:
+            Attributes documentation
     """
-    def getAttributeDefinition(self) -> 'AttributeDefinition': ...
+    def getAttributeDefinition(self) -> 'AttributeDefinition':
+        """
+        
+            Returns:
+                definition of the associated attribute
+        
+        
+        """
+        ...
     def getBoolean(self) -> bool: ...
     def getDouble(self) -> float: ...
     def getInt(self) -> int: ...
     def getLong(self) -> int: ...
-    def getValue(self) -> str: ...
+    def getValue(self) -> str:
+        """
+            This method returns the value of this attribute as a String, which is the raw format stored in the DB
+        
+            Returns:
+                value of the attribute
+        
+        
+        """
+        ...
 
 class AttributeAware:
     """
-    Java class 'cern.lsa.domain.commons.AttributeAware'
+    public interface AttributeAware
     
+        Classes implementing this interface can be decorated with :class:`~cern.lsa.domain.commons.Attribute`s.
+    
+        See Attributes documentation
     """
-    def getAttribute(self, string: str) -> Attribute: ...
+    def getAttribute(self, string: str) -> Attribute:
+        """
+        
+            Parameters:
+                attributeName (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): name of the attribute
+        
+            Returns:
+                Retrieves the attribute with the given name, or null if such attribute name is not bound to this object.
+        
+        
+        """
+        ...
     def getAttributes(self) -> java.util.Set[Attribute]: ...
 
 class AttributeWritableAware:
     """
-    Java class 'cern.lsa.domain.commons.AttributeWritableAware'
+    public interface AttributeWritableAware
     
+        Classes implementing the :code:`AttributeWritableAware` interface allow to assign attributes to its instances.
     """
-    def addAttribute(self, attribute: Attribute) -> None: ...
+    def addAttribute(self, attribute: Attribute) -> None:
+        """
+            Adds the given attribute to the set of attributes already assigned to this object. If an attribute with the same
+            :class:`~cern.lsa.domain.commons.AttributeDefinition` has been already assigned to this entity, it is overridden with
+            the given attribute.
+        
+            Parameters:
+                attribute (:class:`~cern.lsa.domain.commons.Attribute`): attribute to be added.
+        
+        
+        """
+        ...
     def setAttributes(self, collection: typing.Union[java.util.Collection[Attribute], typing.Sequence[Attribute]]) -> None: ...
 
 class Entities:
     """
-    Java class 'cern.lsa.domain.commons.Entities'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * Entities()
-    
+    public abstract class Entities extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     """
     def __init__(self): ...
     @typing.overload
@@ -103,73 +140,35 @@ class Entities:
 
 class IdentifiedEntity:
     """
-    Java class 'cern.lsa.domain.commons.IdentifiedEntity'
+    public interface IdentifiedEntity
     
+        Represents an entity that has a numeric identifier.
     """
-    def getId(self) -> int: ...
+    def getId(self) -> int:
+        """
+        
+            Returns:
+                identifier of this entity, any long number - positive, negative or 0
+        
+        
+        """
+        ...
 
 class LSAConstants:
     """
-    Java class 'cern.lsa.domain.commons.LSAConstants'
+    public class LSAConstants extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
-    
+        Central place for LSA constants, specific inner classes for various topics like layout, parameters
     """
     class ContextsConstants:
-        """
-        Java class 'cern.lsa.domain.commons.LSAConstants$ContextsConstants'
-        
-            Extends:
-                java.lang.Object
-        
-          Constructors:
-            * ContextsConstants()
-        
-          Attributes:
-            DEFAULT_CONTEXT_CATEGORY_NAME (java.lang.String): final static field
-            OBSOLETE_CONTEXT_CATEGORY_NAME (java.lang.String): final static field
-        
-        """
         DEFAULT_CONTEXT_CATEGORY_NAME: typing.ClassVar[str] = ...
         OBSOLETE_CONTEXT_CATEGORY_NAME: typing.ClassVar[str] = ...
         def __init__(self): ...
     class CriticalPropertyConstants:
-        """
-        Java class 'cern.lsa.domain.commons.LSAConstants$CriticalPropertyConstants'
-        
-            Extends:
-                java.lang.Object
-        
-          Constructors:
-            * CriticalPropertyConstants()
-        
-          Attributes:
-            CRITICAL_PROPERTIES_ADMIN_ROLE (java.lang.String): final static field
-            SIGNATURE_FIELD_NAME (java.lang.String): final static field
-        
-        """
         CRITICAL_PROPERTIES_ADMIN_ROLE: typing.ClassVar[str] = ...
         SIGNATURE_FIELD_NAME: typing.ClassVar[str] = ...
         def __init__(self): ...
     class DriveConstants:
-        """
-        Java class 'cern.lsa.domain.commons.LSAConstants$DriveConstants'
-        
-            Extends:
-                java.lang.Object
-        
-          Constructors:
-            * DriveConstants()
-        
-          Attributes:
-            TRANSACTION_ID_FILTER_FIELD_NAME (java.lang.String): final static field
-            TRANSACTION_ID_PROPERTY (java.lang.String): final static field
-            TRANSACTION_TEST_PROPERTY (java.lang.String): final static field
-            TRANSACTION_COMMIT_PROPERTY (java.lang.String): final static field
-            TRANSACTION_ROLLBACK_PROPERTY (java.lang.String): final static field
-        
-        """
         TRANSACTION_ID_FILTER_FIELD_NAME: typing.ClassVar[str] = ...
         TRANSACTION_ID_PROPERTY: typing.ClassVar[str] = ...
         TRANSACTION_TEST_PROPERTY: typing.ClassVar[str] = ...
@@ -177,63 +176,12 @@ class LSAConstants:
         TRANSACTION_ROLLBACK_PROPERTY: typing.ClassVar[str] = ...
         def __init__(self): ...
     class JmxConstants:
-        """
-        Java class 'cern.lsa.domain.commons.LSAConstants$JmxConstants'
-        
-            Extends:
-                java.lang.Object
-        
-          Constructors:
-            * JmxConstants()
-        
-          Attributes:
-            LSA_JMX_DOMAIN (java.lang.String): final static field
-        
-        """
         LSA_JMX_DOMAIN: typing.ClassVar[str] = ...
         def __init__(self): ...
     class LayoutConstants:
-        """
-        Java class 'cern.lsa.domain.commons.LSAConstants$LayoutConstants'
-        
-            Extends:
-                java.lang.Object
-        
-          Attributes:
-            DEFAULT_PARTICLE_TRANSFER_NAME (java.lang.String): final static field
-            DEFAULT_BEAMPROCESS_TYPE_NAME (java.lang.String): final static field
-        
-        """
         DEFAULT_PARTICLE_TRANSFER_NAME: typing.ClassVar[str] = ...
         DEFAULT_BEAMPROCESS_TYPE_NAME: typing.ClassVar[str] = ...
     class MetaDeviceConstants:
-        """
-        Java class 'cern.lsa.domain.commons.LSAConstants$MetaDeviceConstants'
-        
-            Extends:
-                java.lang.Object
-        
-          Constructors:
-            * MetaDeviceConstants()
-        
-          Attributes:
-            LSA_META_DEVICE_SUFFIX (java.lang.String): final static field
-            CYCLES_PROPERTY_NAME (java.lang.String): final static field
-            LSA_CONTEXT_MAPPING_PROPERTY_NAME (java.lang.String): final static field
-            LSA_CONTEXT_PROPERTY_NAME (java.lang.String): final static field
-            REFERENCE_UPDATE_PROPERTY_NAME (java.lang.String): final static field
-            TRIM_PROPERTY_NAME (java.lang.String): final static field
-            DRIVE_PROPERTY_NAME (java.lang.String): final static field
-            DRIVABLE_CONTEXTS_FIELD_NAME (java.lang.String): final static field
-            DRIVABLE_CONTEXT_NAME_FIELD_NAME (java.lang.String): final static field
-            CONTEXT_SELECTORS_FIELD_NAME (java.lang.String): final static field
-            DRIVABLE_CONTEXT_TYPE_FIELD_NAME (java.lang.String): final static field
-            LIST_FIELD_NAME (java.lang.String): final static field
-            PARAMETER_NAMES_FIELD_NAME (java.lang.String): final static field
-            USERS_FIELD_NAME (java.lang.String): final static field
-            USER_FIELD_NAME (java.lang.String): final static field
-        
-        """
         LSA_META_DEVICE_SUFFIX: typing.ClassVar[str] = ...
         CYCLES_PROPERTY_NAME: typing.ClassVar[str] = ...
         LSA_CONTEXT_MAPPING_PROPERTY_NAME: typing.ClassVar[str] = ...
@@ -251,22 +199,6 @@ class LSAConstants:
         USER_FIELD_NAME: typing.ClassVar[str] = ...
         def __init__(self): ...
     class ParameterConstants:
-        """
-        Java class 'cern.lsa.domain.commons.LSAConstants$ParameterConstants'
-        
-            Extends:
-                java.lang.Object
-        
-          Attributes:
-            SIGNATURE_PARAMETER_TYPE (java.lang.String): final static field
-            KNOB_PARAMETER_TYPE (java.lang.String): final static field
-            MOMENTUM_PROPERTY (java.lang.String): final static field
-            MOMENTUM_PARAMETER_TYPE (java.lang.String): final static field
-            K_STEERING_PARAMETER_TYPE (java.lang.String): final static field
-            DEFAULT_PARAMETER_HIERARCHY (java.lang.String): final static field
-            LSA_INTERNAL_PARAMETER_TYPES (java.util.Set): final static field
-        
-        """
         SIGNATURE_PARAMETER_TYPE: typing.ClassVar[str] = ...
         KNOB_PARAMETER_TYPE: typing.ClassVar[str] = ...
         MOMENTUM_PROPERTY: typing.ClassVar[str] = ...
@@ -275,65 +207,16 @@ class LSAConstants:
         DEFAULT_PARAMETER_HIERARCHY: typing.ClassVar[str] = ...
         LSA_INTERNAL_PARAMETER_TYPES: typing.ClassVar[java.util.Set] = ...
     class ParameterGroupConstants:
-        """
-        Java class 'cern.lsa.domain.commons.LSAConstants$ParameterGroupConstants'
-        
-            Extends:
-                java.lang.Object
-        
-          Constructors:
-            * ParameterGroupConstants()
-        
-          Attributes:
-            NOT_USED_PARAMETER_GROUP (java.lang.String): final static field
-            FAKE_NO_PARAMETER_GROUP (java.lang.String): final static field
-            ALL_PARAMETER_GROUPS (java.lang.String): final static field
-        
-        """
         NOT_USED_PARAMETER_GROUP: typing.ClassVar[str] = ...
         FAKE_NO_PARAMETER_GROUP: typing.ClassVar[str] = ...
         ALL_PARAMETER_GROUPS: typing.ClassVar[str] = ...
         def __init__(self): ...
     class ParameterUrlConstants:
-        """
-        Java class 'cern.lsa.domain.commons.LSAConstants$ParameterUrlConstants'
-        
-            Extends:
-                java.lang.Object
-        
-          Constructors:
-            * ParameterUrlConstants()
-        
-          Attributes:
-            LSA_SERVER_NAMES_PREFIX (java.lang.String): final static field
-            INCA_SERVER_NAMES_PREFIX (java.lang.String): final static field
-            META_SERVICE_PREFIX (java.lang.String): final static field
-        
-        """
         LSA_SERVER_NAMES_PREFIX: typing.ClassVar[str] = ...
         INCA_SERVER_NAMES_PREFIX: typing.ClassVar[str] = ...
         META_SERVICE_PREFIX: typing.ClassVar[str] = ...
         def __init__(self): ...
     class SettingCopyConstants:
-        """
-        Java class 'cern.lsa.domain.commons.LSAConstants$SettingCopyConstants'
-        
-            Extends:
-                java.lang.Object
-        
-          Constructors:
-            * SettingCopyConstants()
-        
-          Attributes:
-            ATTR_IS_SETTINGS_COPY (java.lang.String): final static field
-            ATTR_SOURCE_CONTEXT (java.lang.String): final static field
-            ATTR_DESTINATION_TO_SOURCE_BEAMPROCESS (java.lang.String): final static field
-            ATTR_TRIM_DATE (java.lang.String): final static field
-            ATTR_ARCHIVE_VERSION (java.lang.String): final static field
-            ATTR_COPY_ALL_PARAMETERS (java.lang.String): final static field
-            ATTR_COPY_BEAM_OUT (java.lang.String): final static field
-        
-        """
         ATTR_IS_SETTINGS_COPY: typing.ClassVar[str] = ...
         ATTR_SOURCE_CONTEXT: typing.ClassVar[str] = ...
         ATTR_DESTINATION_TO_SOURCE_BEAMPROCESS: typing.ClassVar[str] = ...
@@ -343,22 +226,6 @@ class LSAConstants:
         ATTR_COPY_BEAM_OUT: typing.ClassVar[str] = ...
         def __init__(self): ...
     class TrimConstants:
-        """
-        Java class 'cern.lsa.domain.commons.LSAConstants$TrimConstants'
-        
-            Extends:
-                java.lang.Object
-        
-          Constructors:
-            * TrimConstants()
-        
-          Attributes:
-            ATTR_CONTEXT_SETTINGS (java.lang.String): final static field
-            ATTR_TRIMMED_CONTEXT_SETTINGS (java.lang.String): final static field
-            ATTR_ALLOW_NON_TRIMMABLE_PARAMETERS (java.lang.String): final static field
-            ATTR_PARAMETER_HIERARCHY (java.lang.String): final static field
-        
-        """
         ATTR_CONTEXT_SETTINGS: typing.ClassVar[str] = ...
         ATTR_TRIMMED_CONTEXT_SETTINGS: typing.ClassVar[str] = ...
         ATTR_ALLOW_NON_TRIMMABLE_PARAMETERS: typing.ClassVar[str] = ...
@@ -367,18 +234,52 @@ class LSAConstants:
 
 class AttributeDefinition(IdentifiedEntity, cern.accsoft.commons.util.Named):
     """
-    Java class 'cern.lsa.domain.commons.AttributeDefinition'
+    public interface AttributeDefinition extends :class:`~cern.lsa.domain.commons.IdentifiedEntity`, cern.accsoft.commons.util.Named
     
-        Interfaces:
-            cern.lsa.domain.commons.IdentifiedEntity,
-            cern.accsoft.commons.util.Named
+        Specifies meta-data of an :class:`~cern.lsa.domain.commons.Attribute`. The definition describes an attribute in terms of
+        its name, value type, default value, description etc.
     
+        Also see:
+            Attributes documentation, :class:`~cern.lsa.domain.commons.Attribute`
     """
-    def getDefaultValue(self) -> str: ...
-    def getDescription(self) -> str: ...
+    def getDefaultValue(self) -> str:
+        """
+            Retrieves the default value of this attribute.
+        
+            Returns:
+                default value of the attribute or :code:`null`, if this attribute value needs to be set explicitly by an operator
+        
+        
+        """
+        ...
+    def getDescription(self) -> str:
+        """
+        
+            Returns:
+                attribute's description, :code:`null` if not specified
+        
+        
+        """
+        ...
     def getEnumValues(self) -> java.util.Set[str]: ...
-    def getUnits(self) -> str: ...
-    def getValueType(self) -> cern.accsoft.commons.value.Type: ...
+    def getUnits(self) -> str:
+        """
+        
+            Returns:
+                units of the value, :code:`null` if not specified
+        
+        
+        """
+        ...
+    def getValueType(self) -> cern.accsoft.commons.value.Type:
+        """
+        
+            Returns:
+                attribute's value type
+        
+        
+        """
+        ...
 
 
 class __module_protocol__(typing.Protocol):

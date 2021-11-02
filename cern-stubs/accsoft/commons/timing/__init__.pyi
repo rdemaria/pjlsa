@@ -7,42 +7,45 @@ import typing
 
 class LhcAcceleratorModeConverter(cern.accsoft.commons.domain.util.CodeEntityConverter[cern.accsoft.commons.domain.modes.LhcAcceleratorMode]):
     """
-    Java class 'cern.accsoft.commons.timing.LhcAcceleratorModeConverter'
+    public class LhcAcceleratorModeConverter extends :class:`~cern.accsoft.commons.domain.util.CodeEntityConverter`<:class:`~cern.accsoft.commons.domain.modes.LhcAcceleratorMode`>
     
-        Extends:
-            cern.accsoft.commons.domain.util.CodeEntityConverter
-    
-      Attributes:
-        LHC_ACCELERATOR_MODE_CONVERTER (cern.accsoft.commons.timing.LhcAcceleratorModeConverter): final static field
-    
+        Converter between :class:`~cern.accsoft.commons.domain.modes.LhcAcceleratorMode` and corresponding timing codes.
     """
     LHC_ACCELERATOR_MODE_CONVERTER: typing.ClassVar['LhcAcceleratorModeConverter'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.timing.LhcAcceleratorModeConverter` LHC_ACCELERATOR_MODE_CONVERTER
+    
+        LHC Accelerator Mode converter singleton
+    
+    """
 
 class LhcBeamModeConverter(cern.accsoft.commons.domain.util.CodeEntityConverter[cern.accsoft.commons.domain.modes.LhcBeamMode]):
     """
-    Java class 'cern.accsoft.commons.timing.LhcBeamModeConverter'
+    public class LhcBeamModeConverter extends :class:`~cern.accsoft.commons.domain.util.CodeEntityConverter`<:class:`~cern.accsoft.commons.domain.modes.LhcBeamMode`>
     
-        Extends:
-            cern.accsoft.commons.domain.util.CodeEntityConverter
-    
-      Attributes:
-        LHC_BEAM_MODE_CONVERTER (cern.accsoft.commons.timing.LhcBeamModeConverter): final static field
-    
+        Converter between :class:`~cern.accsoft.commons.domain.modes.LhcBeamMode` and corresponding timing codes.
     """
     LHC_BEAM_MODE_CONVERTER: typing.ClassVar['LhcBeamModeConverter'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.timing.LhcBeamModeConverter` LHC_BEAM_MODE_CONVERTER
+    
+        LHC Beam Mode converter singleton
+    
+    """
 
 class LhcParticleTypeConverter(cern.accsoft.commons.domain.util.CodeEntityConverter[cern.accsoft.commons.domain.ParticleType]):
     """
-    Java class 'cern.accsoft.commons.timing.LhcParticleTypeConverter'
+    public class LhcParticleTypeConverter extends :class:`~cern.accsoft.commons.domain.util.CodeEntityConverter`<:class:`~cern.accsoft.commons.domain.ParticleType`>
     
-        Extends:
-            cern.accsoft.commons.domain.util.CodeEntityConverter
-    
-      Attributes:
-        LHC_PARTICLE_TYPE_CONVERTER (cern.accsoft.commons.timing.LhcParticleTypeConverter): final static field
-    
+        Converter between :class:`~cern.accsoft.commons.domain.ParticleType` and corresponding timing codes.
     """
     LHC_PARTICLE_TYPE_CONVERTER: typing.ClassVar['LhcParticleTypeConverter'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.timing.LhcParticleTypeConverter` LHC_PARTICLE_TYPE_CONVERTER
+    
+        LHC Particle Type converter singleton
+    
+    """
 
 
 class __module_protocol__(typing.Protocol):

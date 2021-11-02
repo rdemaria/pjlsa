@@ -8,8 +8,9 @@ import typing
 _Trigger__E = typing.TypeVar('_Trigger__E', bound='TriggerEvent')  # <E>
 class Trigger(typing.Generic[_Trigger__E]):
     """
-    Java class 'cern.accsoft.commons.util.trigger.Trigger'
+    public interface Trigger<E extends :class:`~cern.accsoft.commons.util.trigger.TriggerEvent`>
     
+        Interface for a component triggering actions.
     """
     def addTriggerListener(self, triggerListener: typing.Union['TriggerListener'[_Trigger__E], typing.Callable[[_Trigger__E], None]]) -> None: ...
     def removeTriggerListener(self, triggerListener: typing.Union['TriggerListener'[_Trigger__E], typing.Callable[[_Trigger__E], None]]) -> None: ...
@@ -17,18 +18,37 @@ class Trigger(typing.Generic[_Trigger__E]):
 
 class TriggerEvent:
     """
-    Java class 'cern.accsoft.commons.util.trigger.TriggerEvent'
+    public interface TriggerEvent
     
+        Information about triggered event.
     """
-    def getTimestamp(self) -> java.time.Instant: ...
+    def getTimestamp(self) -> java.time.Instant:
+        """
+        
+            Returns:
+                trigger timestamp
+        
+        
+        """
+        ...
 
 _TriggerListener__E = typing.TypeVar('_TriggerListener__E', bound=TriggerEvent)  # <E>
 class TriggerListener(typing.Generic[_TriggerListener__E]):
     """
-    Java class 'cern.accsoft.commons.util.trigger.TriggerListener'
+    `@FunctionalInterface <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/FunctionalInterface.html?is-external=true>` public interface TriggerListener<E extends :class:`~cern.accsoft.commons.util.trigger.TriggerEvent`>
     
+        Listener for trigger events.
     """
-    def onTriggerEvent(self, e: _TriggerListener__E) -> None: ...
+    def onTriggerEvent(self, e: _TriggerListener__E) -> None:
+        """
+            Callback on the trigger event.
+        
+            Parameters:
+                triggerEvent (:class:`~cern.accsoft.commons.util.trigger.TriggerListener`): the triggered event information
+        
+        
+        """
+        ...
 
 
 class __module_protocol__(typing.Protocol):

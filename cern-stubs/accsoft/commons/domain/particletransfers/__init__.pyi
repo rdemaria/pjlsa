@@ -8,37 +8,83 @@ import typing
 
 class ParticleTransfer(cern.accsoft.commons.util.Named):
     """
-    Java class 'cern.accsoft.commons.domain.particletransfers.ParticleTransfer'
+    public interface ParticleTransfer extends cern.accsoft.commons.util.Named
     
-        Interfaces:
-            cern.accsoft.commons.util.Named
-    
+        Particle transfers.
     """
-    def getAccelerator(self) -> cern.accsoft.commons.domain.Accelerator: ...
+    def getAccelerator(self) -> cern.accsoft.commons.domain.Accelerator:
+        """
+        
+            Returns:
+                the accelerator this beam mode is for (never :code:`null`)
+        
+        
+        """
+        ...
     def getAcceleratorZones(self) -> java.util.List[cern.accsoft.commons.domain.zones.AcceleratorZone]: ...
-    def getDescription(self) -> str: ...
-    def getParticleTransferType(self) -> 'ParticleTransferType': ...
+    def getDescription(self) -> str:
+        """
+        
+            Returns:
+                particle transfer description (can be :code:`null`)
+        
+        
+        """
+        ...
+    def getParticleTransferType(self) -> 'ParticleTransferType':
+        """
+        
+            Returns:
+                the type of particle transfer
+        
+        
+        """
+        ...
 
 class ParticleTransferType(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['ParticleTransferType']):
     """
-    Java class 'cern.accsoft.commons.domain.particletransfers.ParticleTransferType'
+    public class ParticleTransferType extends cern.accsoft.commons.util.AbstractImmutableNamedSerializable<:class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransferType`>
     
-        Extends:
-            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+        Type of particle transfer. Used to e.g. distinguish the handling of rings and tranfer lines.
     
-      Attributes:
-        RING (cern.accsoft.commons.domain.particletransfers.ParticleTransferType): final static field
-        TRANSFER (cern.accsoft.commons.domain.particletransfers.ParticleTransferType): final static field
-        SOURCE (cern.accsoft.commons.domain.particletransfers.ParticleTransferType): final static field
-        EXPERIMENT (cern.accsoft.commons.domain.particletransfers.ParticleTransferType): final static field
-        COOLER (cern.accsoft.commons.domain.particletransfers.ParticleTransferType): final static field
-    
+        Also see:
+            :meth:`~serialized`
     """
     RING: typing.ClassVar['ParticleTransferType'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransferType` RING
+    
+        Ring
+    
+    """
     TRANSFER: typing.ClassVar['ParticleTransferType'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransferType` TRANSFER
+    
+        Transfer line
+    
+    """
     SOURCE: typing.ClassVar['ParticleTransferType'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransferType` SOURCE
+    
+        Ion Source
+    
+    """
     EXPERIMENT: typing.ClassVar['ParticleTransferType'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransferType` EXPERIMENT
+    
+        Experiment
+    
+    """
     COOLER: typing.ClassVar['ParticleTransferType'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransferType` COOLER
+    
+        Cooler
+    
+    """
     @staticmethod
     def valueOf(string: str) -> 'ParticleTransferType': ...
     @staticmethod
@@ -46,23 +92,60 @@ class ParticleTransferType(cern.accsoft.commons.util.AbstractImmutableNamedSeria
 
 class AdParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['AdParticleTransfer'], ParticleTransfer):
     """
-    Java class 'cern.accsoft.commons.domain.particletransfers.AdParticleTransfer'
+    public class AdParticleTransfer extends cern.accsoft.commons.util.AbstractImmutableNamedSerializable<:class:`~cern.accsoft.commons.domain.particletransfers.AdParticleTransfer`> implements :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
     
-        Extends:
-            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+        AD particle transfers.
     
-        Interfaces:
-            cern.accsoft.commons.domain.particletransfers.ParticleTransfer
-    
-      Attributes:
-        ADRING (cern.accsoft.commons.domain.particletransfers.AdParticleTransfer): final static field
-    
+        Also see:
+            :meth:`~serialized`
     """
     ADRING: typing.ClassVar['AdParticleTransfer'] = ...
-    def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator: ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.AdParticleTransfer` ADRING
+    
+        AD ring
+    
+    """
+    def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getAccelerator`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the accelerator this beam mode is for (never :code:`null`)
+        
+        
+        """
+        ...
     def getAcceleratorZones(self) -> java.util.List[cern.accsoft.commons.domain.zones.AcceleratorZone]: ...
-    def getDescription(self) -> str: ...
-    def getParticleTransferType(self) -> ParticleTransferType: ...
+    def getDescription(self) -> str:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getDescription`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                particle transfer description (can be :code:`null`)
+        
+        
+        """
+        ...
+    def getParticleTransferType(self) -> ParticleTransferType:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getParticleTransferType`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the type of particle transfer
+        
+        
+        """
+        ...
     @staticmethod
     def valueOf(string: str) -> 'AdParticleTransfer': ...
     @staticmethod
@@ -70,25 +153,67 @@ class AdParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSeriali
 
 class AwakeParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['AwakeParticleTransfer'], ParticleTransfer):
     """
-    Java class 'cern.accsoft.commons.domain.particletransfers.AwakeParticleTransfer'
+    public class AwakeParticleTransfer extends cern.accsoft.commons.util.AbstractImmutableNamedSerializable<:class:`~cern.accsoft.commons.domain.particletransfers.AwakeParticleTransfer`> implements :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
     
-        Extends:
-            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+        AWAKE particle transfers.
     
-        Interfaces:
-            cern.accsoft.commons.domain.particletransfers.ParticleTransfer
-    
-      Attributes:
-        AWAKE (cern.accsoft.commons.domain.particletransfers.AwakeParticleTransfer): final static field
-        AWAKEElectronTransfer (cern.accsoft.commons.domain.particletransfers.AwakeParticleTransfer): final static field
-    
+        Also see:
+            :meth:`~serialized`
     """
     AWAKE: typing.ClassVar['AwakeParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.AwakeParticleTransfer` AWAKE
+    
+        AWAKE Experiment
+    
+    """
     AWAKEElectronTransfer: typing.ClassVar['AwakeParticleTransfer'] = ...
-    def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator: ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.AwakeParticleTransfer` AWAKEElectronTransfer
+    
+        AWAKETransfer
+    
+    """
+    def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getAccelerator`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the accelerator this beam mode is for (never :code:`null`)
+        
+        
+        """
+        ...
     def getAcceleratorZones(self) -> java.util.List[cern.accsoft.commons.domain.zones.AcceleratorZone]: ...
-    def getDescription(self) -> str: ...
-    def getParticleTransferType(self) -> ParticleTransferType: ...
+    def getDescription(self) -> str:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getDescription`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                particle transfer description (can be :code:`null`)
+        
+        
+        """
+        ...
+    def getParticleTransferType(self) -> ParticleTransferType:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getParticleTransferType`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the type of particle transfer
+        
+        
+        """
+        ...
     @staticmethod
     def valueOf(string: str) -> 'AwakeParticleTransfer': ...
     @staticmethod
@@ -96,23 +221,60 @@ class AwakeParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSeri
 
 class CtfParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['CtfParticleTransfer'], ParticleTransfer):
     """
-    Java class 'cern.accsoft.commons.domain.particletransfers.CtfParticleTransfer'
+    public class CtfParticleTransfer extends cern.accsoft.commons.util.AbstractImmutableNamedSerializable<:class:`~cern.accsoft.commons.domain.particletransfers.CtfParticleTransfer`> implements :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
     
-        Extends:
-            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+        CTF particle transfers.
     
-        Interfaces:
-            cern.accsoft.commons.domain.particletransfers.ParticleTransfer
-    
-      Attributes:
-        CTF (cern.accsoft.commons.domain.particletransfers.CtfParticleTransfer): final static field
-    
+        Also see:
+            :meth:`~serialized`
     """
     CTF: typing.ClassVar['CtfParticleTransfer'] = ...
-    def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator: ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.CtfParticleTransfer` CTF
+    
+        CTF
+    
+    """
+    def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getAccelerator`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the accelerator this beam mode is for (never :code:`null`)
+        
+        
+        """
+        ...
     def getAcceleratorZones(self) -> java.util.List[cern.accsoft.commons.domain.zones.AcceleratorZone]: ...
-    def getDescription(self) -> str: ...
-    def getParticleTransferType(self) -> ParticleTransferType: ...
+    def getDescription(self) -> str:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getDescription`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                particle transfer description (can be :code:`null`)
+        
+        
+        """
+        ...
+    def getParticleTransferType(self) -> ParticleTransferType:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getParticleTransferType`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the type of particle transfer
+        
+        
+        """
+        ...
     @staticmethod
     def valueOf(string: str) -> 'CtfParticleTransfer': ...
     @staticmethod
@@ -120,43 +282,130 @@ class CtfParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerial
 
 class ElenaParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['ElenaParticleTransfer'], ParticleTransfer):
     """
-    Java class 'cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer'
+    public class ElenaParticleTransfer extends cern.accsoft.commons.util.AbstractImmutableNamedSerializable<:class:`~cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer`> implements :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
     
-        Extends:
-            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+        ELENA particle transfers.
     
-        Interfaces:
-            cern.accsoft.commons.domain.particletransfers.ParticleTransfer
-    
-      Attributes:
-        ELENA (cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer): final static field
-        ElenaLNE00Extraction (cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer): final static field
-        LNE01Transfer (cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer): final static field
-        LNE02Transfer (cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer): final static field
-        LNE03Transfer (cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer): final static field
-        LNE04Transfer (cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer): final static field
-        LNE05Transfer (cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer): final static field
-        LNE06Transfer (cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer): final static field
-        LNE07Transfer (cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer): final static field
-        LNE50Transfer (cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer): final static field
-        LNE51Transfer (cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer): final static field
-    
+        Also see:
+            :meth:`~serialized`
     """
     ELENA: typing.ClassVar['ElenaParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer` ELENA
+    
+        ELENA
+    
+    """
     ElenaLNE00Extraction: typing.ClassVar['ElenaParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer` ElenaLNE00Extraction
+    
+        ElenaLNE00Extraction
+    
+    """
     LNE01Transfer: typing.ClassVar['ElenaParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer` LNE01Transfer
+    
+        LNE01Transfer
+    
+    """
     LNE02Transfer: typing.ClassVar['ElenaParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer` LNE02Transfer
+    
+        LNE02Transfer
+    
+    """
     LNE03Transfer: typing.ClassVar['ElenaParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer` LNE03Transfer
+    
+        LNE03Transfer
+    
+    """
     LNE04Transfer: typing.ClassVar['ElenaParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer` LNE04Transfer
+    
+        LNE04Transfer
+    
+    """
     LNE05Transfer: typing.ClassVar['ElenaParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer` LNE05Transfer
+    
+        LNE05Transfer
+    
+    """
     LNE06Transfer: typing.ClassVar['ElenaParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer` LNE06Transfer
+    
+        LNE06Transfer
+    
+    """
     LNE07Transfer: typing.ClassVar['ElenaParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer` LNE07Transfer
+    
+        LNE07Transfer
+    
+    """
     LNE50Transfer: typing.ClassVar['ElenaParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer` LNE50Transfer
+    
+        LNE50Transfer
+    
+    """
     LNE51Transfer: typing.ClassVar['ElenaParticleTransfer'] = ...
-    def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator: ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.ElenaParticleTransfer` LNE51Transfer
+    
+        LNE51Transfer
+    
+    """
+    def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getAccelerator`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the accelerator this beam mode is for (never :code:`null`)
+        
+        
+        """
+        ...
     def getAcceleratorZones(self) -> java.util.List[cern.accsoft.commons.domain.zones.AcceleratorZone]: ...
-    def getDescription(self) -> str: ...
-    def getParticleTransferType(self) -> ParticleTransferType: ...
+    def getDescription(self) -> str:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getDescription`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                particle transfer description (can be :code:`null`)
+        
+        
+        """
+        ...
+    def getParticleTransferType(self) -> ParticleTransferType:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getParticleTransferType`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the type of particle transfer
+        
+        
+        """
+        ...
     @staticmethod
     def valueOf(string: str) -> 'ElenaParticleTransfer': ...
     @staticmethod
@@ -164,25 +413,67 @@ class ElenaParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSeri
 
 class IsoldeParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['IsoldeParticleTransfer'], ParticleTransfer):
     """
-    Java class 'cern.accsoft.commons.domain.particletransfers.IsoldeParticleTransfer'
+    public class IsoldeParticleTransfer extends cern.accsoft.commons.util.AbstractImmutableNamedSerializable<:class:`~cern.accsoft.commons.domain.particletransfers.IsoldeParticleTransfer`> implements :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
     
-        Extends:
-            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+        ISOLDE particle transfers.
     
-        Interfaces:
-            cern.accsoft.commons.domain.particletransfers.ParticleTransfer
-    
-      Attributes:
-        ISOLDE (cern.accsoft.commons.domain.particletransfers.IsoldeParticleTransfer): final static field
-        HIE (cern.accsoft.commons.domain.particletransfers.IsoldeParticleTransfer): final static field
-    
+        Also see:
+            :meth:`~serialized`
     """
     ISOLDE: typing.ClassVar['IsoldeParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.IsoldeParticleTransfer` ISOLDE
+    
+        ISOLDE
+    
+    """
     HIE: typing.ClassVar['IsoldeParticleTransfer'] = ...
-    def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator: ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.IsoldeParticleTransfer` HIE
+    
+        HIE
+    
+    """
+    def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getAccelerator`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the accelerator this beam mode is for (never :code:`null`)
+        
+        
+        """
+        ...
     def getAcceleratorZones(self) -> java.util.List[cern.accsoft.commons.domain.zones.AcceleratorZone]: ...
-    def getDescription(self) -> str: ...
-    def getParticleTransferType(self) -> ParticleTransferType: ...
+    def getDescription(self) -> str:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getDescription`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                particle transfer description (can be :code:`null`)
+        
+        
+        """
+        ...
+    def getParticleTransferType(self) -> ParticleTransferType:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getParticleTransferType`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the type of particle transfer
+        
+        
+        """
+        ...
     @staticmethod
     def valueOf(string: str) -> 'IsoldeParticleTransfer': ...
     @staticmethod
@@ -190,29 +481,81 @@ class IsoldeParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSer
 
 class LeirParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['LeirParticleTransfer'], ParticleTransfer):
     """
-    Java class 'cern.accsoft.commons.domain.particletransfers.LeirParticleTransfer'
+    public class LeirParticleTransfer extends cern.accsoft.commons.util.AbstractImmutableNamedSerializable<:class:`~cern.accsoft.commons.domain.particletransfers.LeirParticleTransfer`> implements :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
     
-        Extends:
-            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+        LEIR particle transfers.
     
-        Interfaces:
-            cern.accsoft.commons.domain.particletransfers.ParticleTransfer
-    
-      Attributes:
-        LEIRRING (cern.accsoft.commons.domain.particletransfers.LeirParticleTransfer): final static field
-        LINAC3 (cern.accsoft.commons.domain.particletransfers.LeirParticleTransfer): final static field
-        LEIRInjection (cern.accsoft.commons.domain.particletransfers.LeirParticleTransfer): final static field
-        LEIREjection (cern.accsoft.commons.domain.particletransfers.LeirParticleTransfer): final static field
-    
+        Also see:
+            :meth:`~serialized`
     """
     LEIRRING: typing.ClassVar['LeirParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.LeirParticleTransfer` LEIRRING
+    
+        LEIRRING
+    
+    """
     LINAC3: typing.ClassVar['LeirParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.LeirParticleTransfer` LINAC3
+    
+        LINAC3
+    
+    """
     LEIRInjection: typing.ClassVar['LeirParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.LeirParticleTransfer` LEIRInjection
+    
+        LEIRInjection
+    
+    """
     LEIREjection: typing.ClassVar['LeirParticleTransfer'] = ...
-    def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator: ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.LeirParticleTransfer` LEIREjection
+    
+        LEIREjection
+    
+    """
+    def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getAccelerator`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the accelerator this beam mode is for (never :code:`null`)
+        
+        
+        """
+        ...
     def getAcceleratorZones(self) -> java.util.List[cern.accsoft.commons.domain.zones.AcceleratorZone]: ...
-    def getDescription(self) -> str: ...
-    def getParticleTransferType(self) -> ParticleTransferType: ...
+    def getDescription(self) -> str:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getDescription`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                particle transfer description (can be :code:`null`)
+        
+        
+        """
+        ...
+    def getParticleTransferType(self) -> ParticleTransferType:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getParticleTransferType`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the type of particle transfer
+        
+        
+        """
+        ...
     @staticmethod
     def valueOf(string: str) -> 'LeirParticleTransfer': ...
     @staticmethod
@@ -220,23 +563,60 @@ class LeirParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSeria
 
 class LhcParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['LhcParticleTransfer'], ParticleTransfer):
     """
-    Java class 'cern.accsoft.commons.domain.particletransfers.LhcParticleTransfer'
+    public class LhcParticleTransfer extends cern.accsoft.commons.util.AbstractImmutableNamedSerializable<:class:`~cern.accsoft.commons.domain.particletransfers.LhcParticleTransfer`> implements :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
     
-        Extends:
-            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+        LHC particle transfers.
     
-        Interfaces:
-            cern.accsoft.commons.domain.particletransfers.ParticleTransfer
-    
-      Attributes:
-        LHCRING (cern.accsoft.commons.domain.particletransfers.LhcParticleTransfer): final static field
-    
+        Also see:
+            :meth:`~serialized`
     """
     LHCRING: typing.ClassVar['LhcParticleTransfer'] = ...
-    def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator: ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.LhcParticleTransfer` LHCRING
+    
+        LHCRING
+    
+    """
+    def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getAccelerator`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the accelerator this beam mode is for (never :code:`null`)
+        
+        
+        """
+        ...
     def getAcceleratorZones(self) -> java.util.List[cern.accsoft.commons.domain.zones.AcceleratorZone]: ...
-    def getDescription(self) -> str: ...
-    def getParticleTransferType(self) -> ParticleTransferType: ...
+    def getDescription(self) -> str:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getDescription`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                particle transfer description (can be :code:`null`)
+        
+        
+        """
+        ...
+    def getParticleTransferType(self) -> ParticleTransferType:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getParticleTransferType`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the type of particle transfer
+        
+        
+        """
+        ...
     @staticmethod
     def valueOf(string: str) -> 'LhcParticleTransfer': ...
     @staticmethod
@@ -244,75 +624,274 @@ class LhcParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerial
 
 class NorthParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['NorthParticleTransfer'], ParticleTransfer):
     """
-    Java class 'cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer'
+    public class NorthParticleTransfer extends cern.accsoft.commons.util.AbstractImmutableNamedSerializable<:class:`~cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer`> implements :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
     
-        Extends:
-            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+        North Experimental Area particle transfers.
     
-        Interfaces:
-            cern.accsoft.commons.domain.particletransfers.ParticleTransfer
-    
-      Attributes:
-        H2 (cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer): final static field
-        H4 (cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer): final static field
-        H6 (cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer): final static field
-        H8 (cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer): final static field
-        K12 (cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer): final static field
-        M2 (cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer): final static field
-        T2 (cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer): final static field
-        T4 (cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer): final static field
-        T6 (cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer): final static field
-        T10 (cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer): final static field
-    
+        Also see:
+            :meth:`~serialized`
     """
     H2: typing.ClassVar['NorthParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer` H2
+    
+        H2
+    
+    """
     H4: typing.ClassVar['NorthParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer` H4
+    
+        H4
+    
+    """
     H6: typing.ClassVar['NorthParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer` H6
+    
+        H6
+    
+    """
     H8: typing.ClassVar['NorthParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer` H8
+    
+        H8
+    
+    """
     K12: typing.ClassVar['NorthParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer` K12
+    
+        K12
+    
+    """
     M2: typing.ClassVar['NorthParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer` M2
+    
+        M2
+    
+    """
     T2: typing.ClassVar['NorthParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer` T2
+    
+        T2
+    
+    """
     T4: typing.ClassVar['NorthParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer` T4
+    
+        T4
+    
+    """
     T6: typing.ClassVar['NorthParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer` T6
+    
+        T6
+    
+    """
     T10: typing.ClassVar['NorthParticleTransfer'] = ...
-    def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator: ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.NorthParticleTransfer` T10
+    
+        T10
+    
+    """
+    def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getAccelerator`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the accelerator this beam mode is for (never :code:`null`)
+        
+        
+        """
+        ...
     def getAcceleratorZones(self) -> java.util.List[cern.accsoft.commons.domain.zones.AcceleratorZone]: ...
-    def getDescription(self) -> str: ...
-    def getParticleTransferType(self) -> ParticleTransferType: ...
+    def getDescription(self) -> str:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getDescription`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                particle transfer description (can be :code:`null`)
+        
+        
+        """
+        ...
+    def getParticleTransferType(self) -> ParticleTransferType:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getParticleTransferType`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the type of particle transfer
+        
+        
+        """
+        ...
     @staticmethod
     def valueOf(string: str) -> 'NorthParticleTransfer': ...
     @staticmethod
     def values() -> typing.List['NorthParticleTransfer']: ...
 
+class PsEastParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['PsEastParticleTransfer'], ParticleTransfer):
+    """
+    public class PsEastParticleTransfer extends cern.accsoft.commons.util.AbstractImmutableNamedSerializable<:class:`~cern.accsoft.commons.domain.particletransfers.PsEastParticleTransfer`> implements :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+    
+        PS East Experimental Area particle transfers. (no tused for the moment - put here to be included into codebase of
+        re-released applications to smothen the future modelling)
+    
+        Also see:
+            :meth:`~serialized`
+    """
+    def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getAccelerator`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the accelerator this beam mode is for (never :code:`null`)
+        
+        
+        """
+        ...
+    def getAcceleratorZones(self) -> java.util.List[cern.accsoft.commons.domain.zones.AcceleratorZone]: ...
+    def getDescription(self) -> str:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getDescription`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                particle transfer description (can be :code:`null`)
+        
+        
+        """
+        ...
+    def getParticleTransferType(self) -> ParticleTransferType:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getParticleTransferType`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the type of particle transfer
+        
+        
+        """
+        ...
+    @staticmethod
+    def valueOf(string: str) -> 'PsEastParticleTransfer': ...
+    @staticmethod
+    def values() -> typing.List['PsEastParticleTransfer']: ...
+
 class PsParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['PsParticleTransfer'], ParticleTransfer):
     """
-    Java class 'cern.accsoft.commons.domain.particletransfers.PsParticleTransfer'
+    public class PsParticleTransfer extends cern.accsoft.commons.util.AbstractImmutableNamedSerializable<:class:`~cern.accsoft.commons.domain.particletransfers.PsParticleTransfer`> implements :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
     
-        Extends:
-            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+        PS particle transfers.
     
-        Interfaces:
-            cern.accsoft.commons.domain.particletransfers.ParticleTransfer
-    
-      Attributes:
-        PSRING (cern.accsoft.commons.domain.particletransfers.PsParticleTransfer): final static field
-        PSExtractionTT2 (cern.accsoft.commons.domain.particletransfers.PsParticleTransfer): final static field
-        T08Transfer (cern.accsoft.commons.domain.particletransfers.PsParticleTransfer): final static field
-        T09Transfer (cern.accsoft.commons.domain.particletransfers.PsParticleTransfer): final static field
-        T11Transfer (cern.accsoft.commons.domain.particletransfers.PsParticleTransfer): final static field
-        PSExtractionEast (cern.accsoft.commons.domain.particletransfers.PsParticleTransfer): final static field
-    
+        Also see:
+            :meth:`~serialized`
     """
     PSRING: typing.ClassVar['PsParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.PsParticleTransfer` PSRING
+    
+        PSRING
+    
+    """
     PSExtractionTT2: typing.ClassVar['PsParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.PsParticleTransfer` PSExtractionTT2
+    
+        PSExtractionTT2
+    
+    """
     T08Transfer: typing.ClassVar['PsParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.PsParticleTransfer` T08Transfer
+    
+        T08Transfer
+    
+    """
     T09Transfer: typing.ClassVar['PsParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.PsParticleTransfer` T09Transfer
+    
+        T09Transfer
+    
+    """
     T11Transfer: typing.ClassVar['PsParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.PsParticleTransfer` T11Transfer
+    
+        T11Transfer
+    
+    """
     PSExtractionEast: typing.ClassVar['PsParticleTransfer'] = ...
-    def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator: ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.PsParticleTransfer` PSExtractionEast
+    
+        PSExtractionEast
+    
+    """
+    def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getAccelerator`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the accelerator this beam mode is for (never :code:`null`)
+        
+        
+        """
+        ...
     def getAcceleratorZones(self) -> java.util.List[cern.accsoft.commons.domain.zones.AcceleratorZone]: ...
-    def getDescription(self) -> str: ...
-    def getParticleTransferType(self) -> ParticleTransferType: ...
+    def getDescription(self) -> str:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getDescription`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                particle transfer description (can be :code:`null`)
+        
+        
+        """
+        ...
+    def getParticleTransferType(self) -> ParticleTransferType:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getParticleTransferType`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the type of particle transfer
+        
+        
+        """
+        ...
     @staticmethod
     def valueOf(string: str) -> 'PsParticleTransfer': ...
     @staticmethod
@@ -320,37 +899,109 @@ class PsParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSeriali
 
 class PsbParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['PsbParticleTransfer'], ParticleTransfer):
     """
-    Java class 'cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer'
+    public class PsbParticleTransfer extends cern.accsoft.commons.util.AbstractImmutableNamedSerializable<:class:`~cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer`> implements :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
     
-        Extends:
-            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+        PSB particle transfers.
     
-        Interfaces:
-            cern.accsoft.commons.domain.particletransfers.ParticleTransfer
-    
-      Attributes:
-        LINAC4 (cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer): final static field
-        PSBInjection (cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer): final static field
-        PSBRING (cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer): final static field
-        PSBExtraction (cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer): final static field
-        PSTransfer (cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer): final static field
-        GPSTransfer (cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer): final static field
-        HRSTransfer (cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer): final static field
-        PSBDumpTransfer (cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer): final static field
-    
+        Also see:
+            :meth:`~serialized`
     """
     LINAC4: typing.ClassVar['PsbParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer` LINAC4
+    
+        LINAC4
+    
+    """
     PSBInjection: typing.ClassVar['PsbParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer` PSBInjection
+    
+        PSBInjection
+    
+    """
     PSBRING: typing.ClassVar['PsbParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer` PSBRING
+    
+        PSBRING
+    
+    """
     PSBExtraction: typing.ClassVar['PsbParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer` PSBExtraction
+    
+        PSBExtraction
+    
+    """
     PSTransfer: typing.ClassVar['PsbParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer` PSTransfer
+    
+        PSTransfer
+    
+    """
     GPSTransfer: typing.ClassVar['PsbParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer` GPSTransfer
+    
+        GPSTransfer
+    
+    """
     HRSTransfer: typing.ClassVar['PsbParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer` HRSTransfer
+    
+        HRSTransfer
+    
+    """
     PSBDumpTransfer: typing.ClassVar['PsbParticleTransfer'] = ...
-    def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator: ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.PsbParticleTransfer` PSBDumpTransfer
+    
+        PSBDumpTransfer
+    
+    """
+    def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getAccelerator`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the accelerator this beam mode is for (never :code:`null`)
+        
+        
+        """
+        ...
     def getAcceleratorZones(self) -> java.util.List[cern.accsoft.commons.domain.zones.AcceleratorZone]: ...
-    def getDescription(self) -> str: ...
-    def getParticleTransferType(self) -> ParticleTransferType: ...
+    def getDescription(self) -> str:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getDescription`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                particle transfer description (can be :code:`null`)
+        
+        
+        """
+        ...
+    def getParticleTransferType(self) -> ParticleTransferType:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getParticleTransferType`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the type of particle transfer
+        
+        
+        """
+        ...
     @staticmethod
     def valueOf(string: str) -> 'PsbParticleTransfer': ...
     @staticmethod
@@ -358,45 +1009,137 @@ class PsbParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerial
 
 class SpsParticleTransfer(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['SpsParticleTransfer'], ParticleTransfer):
     """
-    Java class 'cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer'
+    public class SpsParticleTransfer extends cern.accsoft.commons.util.AbstractImmutableNamedSerializable<:class:`~cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer`> implements :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
     
-        Extends:
-            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+        SPS particle transfers.
     
-        Interfaces:
-            cern.accsoft.commons.domain.particletransfers.ParticleTransfer
-    
-      Attributes:
-        AWAKETransfer (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
-        EastExtraction (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
-        HiRadMatTransfer (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
-        LHCB1Transfer (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
-        LHCB2Transfer (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
-        NorthExtraction (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
-        SPSInjection (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
-        SPSRING (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
-        T2Transfer (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
-        T4Transfer (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
-        T6Transfer (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
-        WestExtraction (cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer): final static field
-    
+        Also see:
+            :meth:`~serialized`
     """
     AWAKETransfer: typing.ClassVar['SpsParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer` AWAKETransfer
+    
+        AWAKETransfer
+    
+    """
     EastExtraction: typing.ClassVar['SpsParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer` EastExtraction
+    
+        EastExtraction
+    
+    """
     HiRadMatTransfer: typing.ClassVar['SpsParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer` HiRadMatTransfer
+    
+        HiRadMatTransfer
+    
+    """
     LHCB1Transfer: typing.ClassVar['SpsParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer` LHCB1Transfer
+    
+        LHCB1Transfer
+    
+    """
     LHCB2Transfer: typing.ClassVar['SpsParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer` LHCB2Transfer
+    
+        LHCB2Transfer
+    
+    """
     NorthExtraction: typing.ClassVar['SpsParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer` NorthExtraction
+    
+        NorthExtraction
+    
+    """
     SPSInjection: typing.ClassVar['SpsParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer` SPSInjection
+    
+        SPSInjection
+    
+    """
     SPSRING: typing.ClassVar['SpsParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer` SPSRING
+    
+        SPSRING
+    
+    """
     T2Transfer: typing.ClassVar['SpsParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer` T2Transfer
+    
+        T2Transfer
+    
+    """
     T4Transfer: typing.ClassVar['SpsParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer` T4Transfer
+    
+        T4Transfer
+    
+    """
     T6Transfer: typing.ClassVar['SpsParticleTransfer'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer` T6Transfer
+    
+        T6Transfer
+    
+    """
     WestExtraction: typing.ClassVar['SpsParticleTransfer'] = ...
-    def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator: ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.particletransfers.SpsParticleTransfer` WestExtraction
+    
+        WestExtraction
+    
+    """
+    def getAccelerator(self) -> cern.accsoft.commons.domain.CernAccelerator:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getAccelerator`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the accelerator this beam mode is for (never :code:`null`)
+        
+        
+        """
+        ...
     def getAcceleratorZones(self) -> java.util.List[cern.accsoft.commons.domain.zones.AcceleratorZone]: ...
-    def getDescription(self) -> str: ...
-    def getParticleTransferType(self) -> ParticleTransferType: ...
+    def getDescription(self) -> str:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getDescription`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                particle transfer description (can be :code:`null`)
+        
+        
+        """
+        ...
+    def getParticleTransferType(self) -> ParticleTransferType:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer.getParticleTransferType`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.particletransfers.ParticleTransfer`
+        
+            Returns:
+                the type of particle transfer
+        
+        
+        """
+        ...
     @staticmethod
     def valueOf(string: str) -> 'SpsParticleTransfer': ...
     @staticmethod
@@ -416,6 +1159,7 @@ class __module_protocol__(typing.Protocol):
     NorthParticleTransfer: typing.Type[NorthParticleTransfer]
     ParticleTransfer: typing.Type[ParticleTransfer]
     ParticleTransferType: typing.Type[ParticleTransferType]
+    PsEastParticleTransfer: typing.Type[PsEastParticleTransfer]
     PsParticleTransfer: typing.Type[PsParticleTransfer]
     PsbParticleTransfer: typing.Type[PsbParticleTransfer]
     SpsParticleTransfer: typing.Type[SpsParticleTransfer]

@@ -16,18 +16,6 @@ import typing
 
 
 class AccessMode(java.lang.Enum['AccessMode']):
-    """
-    Java class 'java.nio.file.AccessMode'
-    
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        READ (java.nio.file.AccessMode): final static enum constant
-        WRITE (java.nio.file.AccessMode): final static enum constant
-        EXECUTE (java.nio.file.AccessMode): final static enum constant
-    
-    """
     READ: typing.ClassVar['AccessMode'] = ...
     WRITE: typing.ClassVar['AccessMode'] = ...
     EXECUTE: typing.ClassVar['AccessMode'] = ...
@@ -42,86 +30,28 @@ class AccessMode(java.lang.Enum['AccessMode']):
     def values() -> typing.List['AccessMode']: ...
 
 class ClosedDirectoryStreamException(java.lang.IllegalStateException):
-    """
-    Java class 'java.nio.file.ClosedDirectoryStreamException'
-    
-        Extends:
-            java.lang.IllegalStateException
-    
-      Constructors:
-        * ClosedDirectoryStreamException()
-    
-    """
     def __init__(self): ...
 
 class ClosedFileSystemException(java.lang.IllegalStateException):
-    """
-    Java class 'java.nio.file.ClosedFileSystemException'
-    
-        Extends:
-            java.lang.IllegalStateException
-    
-      Constructors:
-        * ClosedFileSystemException()
-    
-    """
     def __init__(self): ...
 
 class ClosedWatchServiceException(java.lang.IllegalStateException):
-    """
-    Java class 'java.nio.file.ClosedWatchServiceException'
-    
-        Extends:
-            java.lang.IllegalStateException
-    
-      Constructors:
-        * ClosedWatchServiceException()
-    
-    """
     def __init__(self): ...
 
 class CopyOption: ...
 
 class DirectoryIteratorException(java.util.ConcurrentModificationException):
-    """
-    Java class 'java.nio.file.DirectoryIteratorException'
-    
-        Extends:
-            java.util.ConcurrentModificationException
-    
-      Constructors:
-        * DirectoryIteratorException(java.io.IOException)
-    
-    """
     def __init__(self, iOException: java.io.IOException): ...
     def getCause(self) -> java.io.IOException: ...
 
 _DirectoryStream__Filter__T = typing.TypeVar('_DirectoryStream__Filter__T')  # <T>
 _DirectoryStream__T = typing.TypeVar('_DirectoryStream__T')  # <T>
 class DirectoryStream(java.io.Closeable, java.lang.Iterable[_DirectoryStream__T], typing.Generic[_DirectoryStream__T]):
-    """
-    Java class 'java.nio.file.DirectoryStream'
-    
-        Interfaces:
-            java.io.Closeable, java.lang.Iterable
-    
-    """
     def iterator(self) -> java.util.Iterator[_DirectoryStream__T]: ...
     class Filter(typing.Generic[_DirectoryStream__Filter__T]):
-        """
-        Java class 'java.nio.file.DirectoryStream$Filter'
-        
-        """
         def accept(self, t: _DirectoryStream__Filter__T) -> bool: ...
 
 class FileStore:
-    """
-    Java class 'java.nio.file.FileStore'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def getAttribute(self, string: str) -> typing.Any: ...
     def getBlockSize(self) -> int: ...
     _getFileStoreAttributeView__V = typing.TypeVar('_getFileStoreAttributeView__V', bound=java.nio.file.attribute.FileStoreAttributeView)  # <V>
@@ -138,16 +68,6 @@ class FileStore:
     def type(self) -> str: ...
 
 class FileSystem(java.io.Closeable):
-    """
-    Java class 'java.nio.file.FileSystem'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Closeable
-    
-    """
     def close(self) -> None: ...
     def getFileStores(self) -> java.lang.Iterable[FileStore]: ...
     def getPath(self, string: str, stringArray: typing.List[str]) -> 'Path': ...
@@ -162,34 +82,12 @@ class FileSystem(java.io.Closeable):
     def supportedFileAttributeViews(self) -> java.util.Set[str]: ...
 
 class FileSystemAlreadyExistsException(java.lang.RuntimeException):
-    """
-    Java class 'java.nio.file.FileSystemAlreadyExistsException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * FileSystemAlreadyExistsException()
-        * FileSystemAlreadyExistsException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class FileSystemException(java.io.IOException):
-    """
-    Java class 'java.nio.file.FileSystemException'
-    
-        Extends:
-            java.io.IOException
-    
-      Constructors:
-        * FileSystemException(java.lang.String)
-        * FileSystemException(java.lang.String, java.lang.String, java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
@@ -200,30 +98,12 @@ class FileSystemException(java.io.IOException):
     def getReason(self) -> str: ...
 
 class FileSystemNotFoundException(java.lang.RuntimeException):
-    """
-    Java class 'java.nio.file.FileSystemNotFoundException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * FileSystemNotFoundException()
-        * FileSystemNotFoundException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class FileSystems:
-    """
-    Java class 'java.nio.file.FileSystems'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     @staticmethod
     def getDefault() -> FileSystem: ...
     @staticmethod
@@ -239,16 +119,6 @@ class FileSystems:
     def newFileSystem(path: typing.Union['Path', jpype.protocol.SupportsPath], classLoader: java.lang.ClassLoader) -> FileSystem: ...
 
 class FileVisitOption(java.lang.Enum['FileVisitOption']):
-    """
-    Java class 'java.nio.file.FileVisitOption'
-    
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        FOLLOW_LINKS (java.nio.file.FileVisitOption): final static enum constant
-    
-    """
     FOLLOW_LINKS: typing.ClassVar['FileVisitOption'] = ...
     _valueOf_0__T = typing.TypeVar('_valueOf_0__T', bound=java.lang.Enum)  # <T>
     @typing.overload
@@ -261,19 +131,6 @@ class FileVisitOption(java.lang.Enum['FileVisitOption']):
     def values() -> typing.List['FileVisitOption']: ...
 
 class FileVisitResult(java.lang.Enum['FileVisitResult']):
-    """
-    Java class 'java.nio.file.FileVisitResult'
-    
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        CONTINUE (java.nio.file.FileVisitResult): final static enum constant
-        TERMINATE (java.nio.file.FileVisitResult): final static enum constant
-        SKIP_SUBTREE (java.nio.file.FileVisitResult): final static enum constant
-        SKIP_SIBLINGS (java.nio.file.FileVisitResult): final static enum constant
-    
-    """
     CONTINUE: typing.ClassVar['FileVisitResult'] = ...
     TERMINATE: typing.ClassVar['FileVisitResult'] = ...
     SKIP_SUBTREE: typing.ClassVar['FileVisitResult'] = ...
@@ -290,23 +147,12 @@ class FileVisitResult(java.lang.Enum['FileVisitResult']):
 
 _FileVisitor__T = typing.TypeVar('_FileVisitor__T')  # <T>
 class FileVisitor(typing.Generic[_FileVisitor__T]):
-    """
-    Java class 'java.nio.file.FileVisitor'
-    
-    """
     def postVisitDirectory(self, t: _FileVisitor__T, iOException: java.io.IOException) -> FileVisitResult: ...
     def preVisitDirectory(self, t: _FileVisitor__T, basicFileAttributes: java.nio.file.attribute.BasicFileAttributes) -> FileVisitResult: ...
     def visitFile(self, t: _FileVisitor__T, basicFileAttributes: java.nio.file.attribute.BasicFileAttributes) -> FileVisitResult: ...
     def visitFileFailed(self, t: _FileVisitor__T, iOException: java.io.IOException) -> FileVisitResult: ...
 
 class Files:
-    """
-    Java class 'java.nio.file.Files'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     @typing.overload
     @staticmethod
     def copy(path: typing.Union['Path', jpype.protocol.SupportsPath], path2: typing.Union['Path', jpype.protocol.SupportsPath], copyOptionArray: typing.List[CopyOption]) -> 'Path': ...
@@ -482,17 +328,6 @@ class Files:
     def writeString(path: typing.Union['Path', jpype.protocol.SupportsPath], charSequence: typing.Union[java.lang.CharSequence, str], openOptionArray: typing.List['OpenOption']) -> 'Path': ...
 
 class InvalidPathException(java.lang.IllegalArgumentException):
-    """
-    Java class 'java.nio.file.InvalidPathException'
-    
-        Extends:
-            java.lang.IllegalArgumentException
-    
-      Constructors:
-        * InvalidPathException(java.lang.String, java.lang.String, int)
-        * InvalidPathException(java.lang.String, java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self, string: str, string2: str): ...
     @typing.overload
@@ -503,17 +338,6 @@ class InvalidPathException(java.lang.IllegalArgumentException):
     def getReason(self) -> str: ...
 
 class LinkPermission(java.security.BasicPermission):
-    """
-    Java class 'java.nio.file.LinkPermission'
-    
-        Extends:
-            java.security.BasicPermission
-    
-      Constructors:
-        * LinkPermission(java.lang.String)
-        * LinkPermission(java.lang.String, java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
@@ -522,20 +346,9 @@ class LinkPermission(java.security.BasicPermission):
 class OpenOption: ...
 
 class PathMatcher:
-    """
-    Java class 'java.nio.file.PathMatcher'
-    
-    """
     def matches(self, path: typing.Union['Path', jpype.protocol.SupportsPath]) -> bool: ...
 
 class Paths:
-    """
-    Java class 'java.nio.file.Paths'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     @typing.overload
     @staticmethod
     def get(string: str, stringArray: typing.List[str]) -> 'Path': ...
@@ -544,66 +357,21 @@ class Paths:
     def get(uRI: java.net.URI) -> 'Path': ...
 
 class ProviderMismatchException(java.lang.IllegalArgumentException):
-    """
-    Java class 'java.nio.file.ProviderMismatchException'
-    
-        Extends:
-            java.lang.IllegalArgumentException
-    
-      Constructors:
-        * ProviderMismatchException()
-        * ProviderMismatchException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class ProviderNotFoundException(java.lang.RuntimeException):
-    """
-    Java class 'java.nio.file.ProviderNotFoundException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * ProviderNotFoundException()
-        * ProviderNotFoundException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class ReadOnlyFileSystemException(java.lang.UnsupportedOperationException):
-    """
-    Java class 'java.nio.file.ReadOnlyFileSystemException'
-    
-        Extends:
-            java.lang.UnsupportedOperationException
-    
-      Constructors:
-        * ReadOnlyFileSystemException()
-    
-    """
     def __init__(self): ...
 
 class StandardWatchEventKinds:
-    """
-    Java class 'java.nio.file.StandardWatchEventKinds'
-    
-        Extends:
-            java.lang.Object
-    
-      Attributes:
-        OVERFLOW (java.nio.file.WatchEvent$Kind): final static field
-        ENTRY_CREATE (java.nio.file.WatchEvent$Kind): final static field
-        ENTRY_DELETE (java.nio.file.WatchEvent$Kind): final static field
-        ENTRY_MODIFY (java.nio.file.WatchEvent$Kind): final static field
-    
-    """
     OVERFLOW: typing.ClassVar['WatchEvent.Kind'] = ...
     ENTRY_CREATE: typing.ClassVar['WatchEvent.Kind'] = ...
     ENTRY_DELETE: typing.ClassVar['WatchEvent.Kind'] = ...
@@ -612,32 +380,16 @@ class StandardWatchEventKinds:
 _WatchEvent__Kind__T = typing.TypeVar('_WatchEvent__Kind__T')  # <T>
 _WatchEvent__T = typing.TypeVar('_WatchEvent__T')  # <T>
 class WatchEvent(typing.Generic[_WatchEvent__T]):
-    """
-    Java class 'java.nio.file.WatchEvent'
-    
-    """
     def context(self) -> _WatchEvent__T: ...
     def count(self) -> int: ...
     def kind(self) -> 'WatchEvent.Kind'[_WatchEvent__T]: ...
     class Kind(typing.Generic[_WatchEvent__Kind__T]):
-        """
-        Java class 'java.nio.file.WatchEvent$Kind'
-        
-        """
         def name(self) -> str: ...
         def type(self) -> typing.Type[_WatchEvent__Kind__T]: ...
     class Modifier:
-        """
-        Java class 'java.nio.file.WatchEvent$Modifier'
-        
-        """
         def name(self) -> str: ...
 
 class WatchKey:
-    """
-    Java class 'java.nio.file.WatchKey'
-    
-    """
     def cancel(self) -> None: ...
     def isValid(self) -> bool: ...
     def pollEvents(self) -> java.util.List[WatchEvent[typing.Any]]: ...
@@ -645,13 +397,6 @@ class WatchKey:
     def watchable(self) -> 'Watchable': ...
 
 class WatchService(java.io.Closeable):
-    """
-    Java class 'java.nio.file.WatchService'
-    
-        Interfaces:
-            java.io.Closeable
-    
-    """
     def close(self) -> None: ...
     @typing.overload
     def poll(self) -> WatchKey: ...
@@ -660,102 +405,33 @@ class WatchService(java.io.Closeable):
     def take(self) -> WatchKey: ...
 
 class Watchable:
-    """
-    Java class 'java.nio.file.Watchable'
-    
-    """
     @typing.overload
     def register(self, watchService: WatchService, kindArray: typing.List[WatchEvent.Kind[typing.Any]]) -> WatchKey: ...
     @typing.overload
     def register(self, watchService: WatchService, kindArray: typing.List[WatchEvent.Kind[typing.Any]], modifierArray: typing.List[WatchEvent.Modifier]) -> WatchKey: ...
 
 class AccessDeniedException(FileSystemException):
-    """
-    Java class 'java.nio.file.AccessDeniedException'
-    
-        Extends:
-            java.nio.file.FileSystemException
-    
-      Constructors:
-        * AccessDeniedException(java.lang.String)
-        * AccessDeniedException(java.lang.String, java.lang.String, java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
     def __init__(self, string: str, string2: str, string3: str): ...
 
 class AtomicMoveNotSupportedException(FileSystemException):
-    """
-    Java class 'java.nio.file.AtomicMoveNotSupportedException'
-    
-        Extends:
-            java.nio.file.FileSystemException
-    
-      Constructors:
-        * AtomicMoveNotSupportedException(java.lang.String, java.lang.String, java.lang.String)
-    
-    """
     def __init__(self, string: str, string2: str, string3: str): ...
 
 class DirectoryNotEmptyException(FileSystemException):
-    """
-    Java class 'java.nio.file.DirectoryNotEmptyException'
-    
-        Extends:
-            java.nio.file.FileSystemException
-    
-      Constructors:
-        * DirectoryNotEmptyException(java.lang.String)
-    
-    """
     def __init__(self, string: str): ...
 
 class FileAlreadyExistsException(FileSystemException):
-    """
-    Java class 'java.nio.file.FileAlreadyExistsException'
-    
-        Extends:
-            java.nio.file.FileSystemException
-    
-      Constructors:
-        * FileAlreadyExistsException(java.lang.String)
-        * FileAlreadyExistsException(java.lang.String, java.lang.String, java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
     def __init__(self, string: str, string2: str, string3: str): ...
 
 class FileSystemLoopException(FileSystemException):
-    """
-    Java class 'java.nio.file.FileSystemLoopException'
-    
-        Extends:
-            java.nio.file.FileSystemException
-    
-      Constructors:
-        * FileSystemLoopException(java.lang.String)
-    
-    """
     def __init__(self, string: str): ...
 
 class LinkOption(java.lang.Enum['LinkOption'], OpenOption, CopyOption):
-    """
-    Java class 'java.nio.file.LinkOption'
-    
-        Extends:
-            java.lang.Enum
-    
-        Interfaces:
-            java.nio.file.OpenOption, java.nio.file.CopyOption
-    
-      Attributes:
-        NOFOLLOW_LINKS (java.nio.file.LinkOption): final static enum constant
-    
-    """
     NOFOLLOW_LINKS: typing.ClassVar['LinkOption'] = ...
     _valueOf_0__T = typing.TypeVar('_valueOf_0__T', bound=java.lang.Enum)  # <T>
     @typing.overload
@@ -768,61 +444,21 @@ class LinkOption(java.lang.Enum['LinkOption'], OpenOption, CopyOption):
     def values() -> typing.List['LinkOption']: ...
 
 class NoSuchFileException(FileSystemException):
-    """
-    Java class 'java.nio.file.NoSuchFileException'
-    
-        Extends:
-            java.nio.file.FileSystemException
-    
-      Constructors:
-        * NoSuchFileException(java.lang.String)
-        * NoSuchFileException(java.lang.String, java.lang.String, java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
     def __init__(self, string: str, string2: str, string3: str): ...
 
 class NotDirectoryException(FileSystemException):
-    """
-    Java class 'java.nio.file.NotDirectoryException'
-    
-        Extends:
-            java.nio.file.FileSystemException
-    
-      Constructors:
-        * NotDirectoryException(java.lang.String)
-    
-    """
     def __init__(self, string: str): ...
 
 class NotLinkException(FileSystemException):
-    """
-    Java class 'java.nio.file.NotLinkException'
-    
-        Extends:
-            java.nio.file.FileSystemException
-    
-      Constructors:
-        * NotLinkException(java.lang.String)
-        * NotLinkException(java.lang.String, java.lang.String, java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
     def __init__(self, string: str, string2: str, string3: str): ...
 
 class Path(java.lang.Comparable['Path'], java.lang.Iterable['Path'], Watchable):
-    """
-    Java class 'java.nio.file.Path'
-    
-        Interfaces:
-            java.lang.Comparable, java.lang.Iterable,
-            java.nio.file.Watchable
-    
-    """
     def compareTo(self, path: typing.Union['Path', jpype.protocol.SupportsPath]) -> int: ...
     @typing.overload
     def endsWith(self, path: typing.Union['Path', jpype.protocol.SupportsPath]) -> bool: ...
@@ -871,13 +507,6 @@ class Path(java.lang.Comparable['Path'], java.lang.Iterable['Path'], Watchable):
 
 _SecureDirectoryStream__T = typing.TypeVar('_SecureDirectoryStream__T')  # <T>
 class SecureDirectoryStream(DirectoryStream[_SecureDirectoryStream__T], typing.Generic[_SecureDirectoryStream__T]):
-    """
-    Java class 'java.nio.file.SecureDirectoryStream'
-    
-        Interfaces:
-            java.nio.file.DirectoryStream
-    
-    """
     def deleteDirectory(self, t: _SecureDirectoryStream__T) -> None: ...
     def deleteFile(self, t: _SecureDirectoryStream__T) -> None: ...
     _getFileAttributeView_0__V = typing.TypeVar('_getFileAttributeView_0__V', bound=java.nio.file.attribute.FileAttributeView)  # <V>
@@ -892,37 +521,12 @@ class SecureDirectoryStream(DirectoryStream[_SecureDirectoryStream__T], typing.G
 
 _SimpleFileVisitor__T = typing.TypeVar('_SimpleFileVisitor__T')  # <T>
 class SimpleFileVisitor(FileVisitor[_SimpleFileVisitor__T], typing.Generic[_SimpleFileVisitor__T]):
-    """
-    Java class 'java.nio.file.SimpleFileVisitor'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.nio.file.FileVisitor
-    
-    """
     def postVisitDirectory(self, t: _SimpleFileVisitor__T, iOException: java.io.IOException) -> FileVisitResult: ...
     def preVisitDirectory(self, t: _SimpleFileVisitor__T, basicFileAttributes: java.nio.file.attribute.BasicFileAttributes) -> FileVisitResult: ...
     def visitFile(self, t: _SimpleFileVisitor__T, basicFileAttributes: java.nio.file.attribute.BasicFileAttributes) -> FileVisitResult: ...
     def visitFileFailed(self, t: _SimpleFileVisitor__T, iOException: java.io.IOException) -> FileVisitResult: ...
 
 class StandardCopyOption(java.lang.Enum['StandardCopyOption'], CopyOption):
-    """
-    Java class 'java.nio.file.StandardCopyOption'
-    
-        Extends:
-            java.lang.Enum
-    
-        Interfaces:
-            java.nio.file.CopyOption
-    
-      Attributes:
-        REPLACE_EXISTING (java.nio.file.StandardCopyOption): final static enum constant
-        COPY_ATTRIBUTES (java.nio.file.StandardCopyOption): final static enum constant
-        ATOMIC_MOVE (java.nio.file.StandardCopyOption): final static enum constant
-    
-    """
     REPLACE_EXISTING: typing.ClassVar['StandardCopyOption'] = ...
     COPY_ATTRIBUTES: typing.ClassVar['StandardCopyOption'] = ...
     ATOMIC_MOVE: typing.ClassVar['StandardCopyOption'] = ...
@@ -937,28 +541,6 @@ class StandardCopyOption(java.lang.Enum['StandardCopyOption'], CopyOption):
     def values() -> typing.List['StandardCopyOption']: ...
 
 class StandardOpenOption(java.lang.Enum['StandardOpenOption'], OpenOption):
-    """
-    Java class 'java.nio.file.StandardOpenOption'
-    
-        Extends:
-            java.lang.Enum
-    
-        Interfaces:
-            java.nio.file.OpenOption
-    
-      Attributes:
-        READ (java.nio.file.StandardOpenOption): final static enum constant
-        WRITE (java.nio.file.StandardOpenOption): final static enum constant
-        APPEND (java.nio.file.StandardOpenOption): final static enum constant
-        TRUNCATE_EXISTING (java.nio.file.StandardOpenOption): final static enum constant
-        CREATE (java.nio.file.StandardOpenOption): final static enum constant
-        CREATE_NEW (java.nio.file.StandardOpenOption): final static enum constant
-        DELETE_ON_CLOSE (java.nio.file.StandardOpenOption): final static enum constant
-        SPARSE (java.nio.file.StandardOpenOption): final static enum constant
-        SYNC (java.nio.file.StandardOpenOption): final static enum constant
-        DSYNC (java.nio.file.StandardOpenOption): final static enum constant
-    
-    """
     READ: typing.ClassVar['StandardOpenOption'] = ...
     WRITE: typing.ClassVar['StandardOpenOption'] = ...
     APPEND: typing.ClassVar['StandardOpenOption'] = ...

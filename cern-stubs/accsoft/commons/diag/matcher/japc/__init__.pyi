@@ -7,225 +7,244 @@ import typing
 
 class AbstractJapcThrowableMatcher(cern.accsoft.commons.diag.matcher.StringThrowableMatcher):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.japc.AbstractJapcThrowableMatcher'
+    public abstract class AbstractJapcThrowableMatcher extends :class:`~cern.accsoft.commons.diag.matcher.StringThrowableMatcher`
     
-        Extends:
-            cern.accsoft.commons.diag.matcher.StringThrowableMatcher
-    
-      Attributes:
-        JAPC_PROBLEM_DOMAIN (java.lang.String): final static field
-    
+        Basic JAPC exception string-based matcher.
     """
     JAPC_PROBLEM_DOMAIN: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` JAPC_PROBLEM_DOMAIN
+    
+        JAPC problem domain
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
 
 class JapcParamExExceptionThrowableMatcher(cern.accsoft.commons.diag.matcher.ExceptionClassThrowableMatcher):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.japc.JapcParamExExceptionThrowableMatcher'
-    
-        Extends:
-            cern.accsoft.commons.diag.matcher.ExceptionClassThrowableMatcher
-    
-      Constructors:
-        * JapcParamExExceptionThrowableMatcher()
-    
-      Attributes:
-        JAPC_PE_EX_MATCHER_NAME (java.lang.String): final static field
-    
+    public class JapcParamExExceptionThrowableMatcher extends :class:`~cern.accsoft.commons.diag.matcher.ExceptionClassThrowableMatcher`
     """
     JAPC_PE_EX_MATCHER_NAME: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` JAPC_PE_EX_MATCHER_NAME
+    
+        JAPC parameter exception matcher name (working with exception class)
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     def __init__(self): ...
 
 class JapcParamExProxyThrowableMatcher(cern.accsoft.commons.diag.matcher.ProxyThrowableMatcher):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.japc.JapcParamExProxyThrowableMatcher'
-    
-        Extends:
-            cern.accsoft.commons.diag.matcher.ProxyThrowableMatcher
-    
-      Constructors:
-        * JapcParamExProxyThrowableMatcher()
-    
+    public class JapcParamExProxyThrowableMatcher extends :class:`~cern.accsoft.commons.diag.matcher.ProxyThrowableMatcher`
     """
     def __init__(self): ...
 
 class JapcThrowableMessageComposer(cern.accsoft.commons.diag.DefaultThrowableMessageComposer):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.japc.JapcThrowableMessageComposer'
+    public class JapcThrowableMessageComposer extends :class:`~cern.accsoft.commons.diag.DefaultThrowableMessageComposer`
     
-        Extends:
-            cern.accsoft.commons.diag.DefaultThrowableMessageComposer
-    
-      Constructors:
-        * JapcThrowableMessageComposer()
-    
+        :class:`~cern.accsoft.commons.diag.ThrowableMessageComposer` for JAPC :code:`ParameterException`'s.
     """
     def __init__(self): ...
-    def composeMessage(self, throwable: java.lang.Throwable) -> str: ...
+    def composeMessage(self, throwable: java.lang.Throwable) -> str:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.diag.ThrowableMessageComposer.composeMessage`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.diag.ThrowableMessageComposer`
+        
+            Overrides:
+                :meth:`~cern.accsoft.commons.diag.DefaultThrowableMessageComposer.composeMessage`Â in
+                classÂ :class:`~cern.accsoft.commons.diag.DefaultThrowableMessageComposer`
+        
+            Returns:
+                message describing a `null
+                <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`
+        
+        
+        """
+        ...
 
 class JapcCmwDisconnectedStringThrowableMatcher(AbstractJapcThrowableMatcher):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.japc.JapcCmwDisconnectedStringThrowableMatcher'
-    
-        Extends:
-            cern.accsoft.commons.diag.matcher.japc.AbstractJapcThrowableMatcher
-    
-      Constructors:
-        * JapcCmwDisconnectedStringThrowableMatcher()
-    
-      Attributes:
-        CMW_DISCONNECTED_MATCHER_NAME (java.lang.String): final static field
-    
+    public class JapcCmwDisconnectedStringThrowableMatcher extends :class:`~cern.accsoft.commons.diag.matcher.japc.AbstractJapcThrowableMatcher`
     """
     CMW_DISCONNECTED_MATCHER_NAME: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` CMW_DISCONNECTED_MATCHER_NAME
+    
+        CMW no connection matcher name
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     def __init__(self): ...
 
 class JapcCmwRdaParameterCreatorExceptionThrowableMatcher(JapcParamExExceptionThrowableMatcher):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.japc.JapcCmwRdaParameterCreatorExceptionThrowableMatcher'
+    public class JapcCmwRdaParameterCreatorExceptionThrowableMatcher extends :class:`~cern.accsoft.commons.diag.matcher.japc.JapcParamExExceptionThrowableMatcher`
     
-        Extends:
-            cern.accsoft.commons.diag.matcher.japc.JapcParamExExceptionThrowableMatcher
+        **DO NOT DELETE PLEASE**
     
-      Constructors:
-        * JapcCmwRdaParameterCreatorExceptionThrowableMatcher()
     
+        Duplicate implementation of the
+        :class:`~cern.accsoft.commons.diag.matcher.japc.JapcCmwRdaParameterCreatorStringThrowableMatcher` to be kept for
+        documentation purpose since it is used in :class:`~cern.accsoft.commons.diag.matcher.japc`.
     """
     def __init__(self): ...
 
 class JapcCmwRdaParameterCreatorStringThrowableMatcher(AbstractJapcThrowableMatcher):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.japc.JapcCmwRdaParameterCreatorStringThrowableMatcher'
+    public class JapcCmwRdaParameterCreatorStringThrowableMatcher extends :class:`~cern.accsoft.commons.diag.matcher.japc.AbstractJapcThrowableMatcher`
     
-        Extends:
-            cern.accsoft.commons.diag.matcher.japc.AbstractJapcThrowableMatcher
+        **DO NOT DELETE PLEASE**
     
-      Constructors:
-        * JapcCmwRdaParameterCreatorStringThrowableMatcher()
     
-      Attributes:
-        CMW_RDA_PARAMETER_CREATOR_MATCHER_NAME (java.lang.String): final static field
-    
+        Duplicate implementation of the
+        :class:`~cern.accsoft.commons.diag.matcher.japc.JapcCmwRdaParameterCreatorExceptionThrowableMatcher` to be kept for
+        documentation purpose since it is used in :class:`~cern.accsoft.commons.diag.matcher.japc`.
     """
     CMW_RDA_PARAMETER_CREATOR_MATCHER_NAME: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` CMW_RDA_PARAMETER_CREATOR_MATCHER_NAME
+    
+        CMW no connection matcher name
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     def __init__(self): ...
 
 class JapcNoValueStringThrowableMatcher(AbstractJapcThrowableMatcher):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.japc.JapcNoValueStringThrowableMatcher'
-    
-        Extends:
-            cern.accsoft.commons.diag.matcher.japc.AbstractJapcThrowableMatcher
-    
-      Constructors:
-        * JapcNoValueStringThrowableMatcher()
-    
-      Attributes:
-        JAPC_NO_VALUE_MATCHER_NAME (java.lang.String): final static field
-    
+    public class JapcNoValueStringThrowableMatcher extends :class:`~cern.accsoft.commons.diag.matcher.japc.AbstractJapcThrowableMatcher`
     """
     JAPC_NO_VALUE_MATCHER_NAME: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` JAPC_NO_VALUE_MATCHER_NAME
+    
+        JAPC "no value" exception matcher name
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     def __init__(self): ...
 
 class JapcParamExFgcErrorStringThrowableMatcher(AbstractJapcThrowableMatcher):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.japc.JapcParamExFgcErrorStringThrowableMatcher'
-    
-        Extends:
-            cern.accsoft.commons.diag.matcher.japc.AbstractJapcThrowableMatcher
-    
-      Constructors:
-        * JapcParamExFgcErrorStringThrowableMatcher()
-    
-      Attributes:
-        JAPC_FGC_ERROR_MATCHER_NAME (java.lang.String): final static field
-    
+    public class JapcParamExFgcErrorStringThrowableMatcher extends :class:`~cern.accsoft.commons.diag.matcher.japc.AbstractJapcThrowableMatcher`
     """
     JAPC_FGC_ERROR_MATCHER_NAME: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` JAPC_FGC_ERROR_MATCHER_NAME
+    
+        JAPC subscription failure matcher name
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     def __init__(self): ...
 
 class JapcParamExMonitoringNotSupportedStringThrowableMatcher(AbstractJapcThrowableMatcher):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.japc.JapcParamExMonitoringNotSupportedStringThrowableMatcher'
-    
-        Extends:
-            cern.accsoft.commons.diag.matcher.japc.AbstractJapcThrowableMatcher
-    
-      Constructors:
-        * JapcParamExMonitoringNotSupportedStringThrowableMatcher()
-    
-      Attributes:
-        JAPC_MONITORING_NOT_SUPORTED_MATCHER_NAME (java.lang.String): final static field
-    
+    public class JapcParamExMonitoringNotSupportedStringThrowableMatcher extends :class:`~cern.accsoft.commons.diag.matcher.japc.AbstractJapcThrowableMatcher`
     """
     JAPC_MONITORING_NOT_SUPORTED_MATCHER_NAME: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` JAPC_MONITORING_NOT_SUPORTED_MATCHER_NAME
+    
+        JAPC subscription failure matcher name
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     def __init__(self): ...
 
 class JapcParamExNoSubscriptionStringThrowableMatcher(AbstractJapcThrowableMatcher):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.japc.JapcParamExNoSubscriptionStringThrowableMatcher'
-    
-        Extends:
-            cern.accsoft.commons.diag.matcher.japc.AbstractJapcThrowableMatcher
-    
-      Constructors:
-        * JapcParamExNoSubscriptionStringThrowableMatcher()
-    
-      Attributes:
-        JAPC_PE_SUB_FAIL_MATCHER_NAME (java.lang.String): final static field
-    
+    public class JapcParamExNoSubscriptionStringThrowableMatcher extends :class:`~cern.accsoft.commons.diag.matcher.japc.AbstractJapcThrowableMatcher`
     """
     JAPC_PE_SUB_FAIL_MATCHER_NAME: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` JAPC_PE_SUB_FAIL_MATCHER_NAME
+    
+        JAPC subscription failure matcher name
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     def __init__(self): ...
 
 class JapcParamExStringThrowableMatcher(AbstractJapcThrowableMatcher):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.japc.JapcParamExStringThrowableMatcher'
-    
-        Extends:
-            cern.accsoft.commons.diag.matcher.japc.AbstractJapcThrowableMatcher
-    
-      Constructors:
-        * JapcParamExStringThrowableMatcher()
-    
-      Attributes:
-        JAPC_PE_MATCHER_NAME (java.lang.String): final static field
-    
+    public class JapcParamExStringThrowableMatcher extends :class:`~cern.accsoft.commons.diag.matcher.japc.AbstractJapcThrowableMatcher`
     """
     JAPC_PE_MATCHER_NAME: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` JAPC_PE_MATCHER_NAME
+    
+        JAPC parameter exception matcher name
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     def __init__(self): ...
 
 class JapcParamRuntimeExStringThrowableMatcher(AbstractJapcThrowableMatcher):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.japc.JapcParamRuntimeExStringThrowableMatcher'
-    
-        Extends:
-            cern.accsoft.commons.diag.matcher.japc.AbstractJapcThrowableMatcher
-    
-      Constructors:
-        * JapcParamRuntimeExStringThrowableMatcher()
-    
-      Attributes:
-        JAPC_RUNTIME_MATCHER_NAME (java.lang.String): final static field
-    
+    public class JapcParamRuntimeExStringThrowableMatcher extends :class:`~cern.accsoft.commons.diag.matcher.japc.AbstractJapcThrowableMatcher`
     """
     JAPC_RUNTIME_MATCHER_NAME: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` JAPC_RUNTIME_MATCHER_NAME
+    
+        JAPC runtime exception matcher name
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     def __init__(self): ...
 
 class JapcThrowableMatcher(AbstractJapcThrowableMatcher):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.japc.JapcThrowableMatcher'
+    public class JapcThrowableMatcher extends :class:`~cern.accsoft.commons.diag.matcher.japc.AbstractJapcThrowableMatcher`
     
-        Extends:
-            cern.accsoft.commons.diag.matcher.japc.AbstractJapcThrowableMatcher
-    
-      Constructors:
-        * JapcThrowableMatcher()
-    
-      Attributes:
-        JAPC_MATCHER_NAME (java.lang.String): final static field
-    
+        JAPC exception general string-based matcher.
     """
     JAPC_MATCHER_NAME: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` JAPC_MATCHER_NAME
+    
+        JAPC exception matcher name
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     def __init__(self): ...
 
 

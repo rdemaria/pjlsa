@@ -7,10 +7,6 @@ import typing
 
 
 class MatchResult:
-    """
-    Java class 'java.util.regex.MatchResult'
-    
-    """
     @typing.overload
     def end(self) -> int: ...
     @typing.overload
@@ -26,27 +22,6 @@ class MatchResult:
     def start(self, int: int) -> int: ...
 
 class Pattern(java.io.Serializable):
-    """
-    Java class 'java.util.regex.Pattern'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable
-    
-      Attributes:
-        UNIX_LINES (int): final static field
-        CASE_INSENSITIVE (int): final static field
-        COMMENTS (int): final static field
-        MULTILINE (int): final static field
-        LITERAL (int): final static field
-        DOTALL (int): final static field
-        UNICODE_CASE (int): final static field
-        CANON_EQ (int): final static field
-        UNICODE_CHARACTER_CLASS (int): final static field
-    
-    """
     UNIX_LINES: typing.ClassVar[int] = ...
     CASE_INSENSITIVE: typing.ClassVar[int] = ...
     COMMENTS: typing.ClassVar[int] = ...
@@ -79,16 +54,6 @@ class Pattern(java.io.Serializable):
     def toString(self) -> str: ...
 
 class PatternSyntaxException(java.lang.IllegalArgumentException):
-    """
-    Java class 'java.util.regex.PatternSyntaxException'
-    
-        Extends:
-            java.lang.IllegalArgumentException
-    
-      Constructors:
-        * PatternSyntaxException(java.lang.String, java.lang.String, int)
-    
-    """
     def __init__(self, string: str, string2: str, int: int): ...
     def getDescription(self) -> str: ...
     def getIndex(self) -> int: ...
@@ -96,16 +61,6 @@ class PatternSyntaxException(java.lang.IllegalArgumentException):
     def getPattern(self) -> str: ...
 
 class Matcher(MatchResult):
-    """
-    Java class 'java.util.regex.Matcher'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.util.regex.MatchResult
-    
-    """
     @typing.overload
     def appendReplacement(self, stringBuffer: java.lang.StringBuffer, string2: str) -> 'Matcher': ...
     @typing.overload

@@ -13,24 +13,10 @@ import typing
 
 
 class AppletInitializer:
-    """
-    Java class 'java.beans.AppletInitializer'
-    
-    """
     def activate(self, applet: java.applet.Applet) -> None: ...
     def initialize(self, applet: java.applet.Applet, beanContext: java.beans.beancontext.BeanContext) -> None: ...
 
 class BeanInfo:
-    """
-    Java class 'java.beans.BeanInfo'
-    
-      Attributes:
-        ICON_COLOR_16x16 (int): final static field
-        ICON_COLOR_32x32 (int): final static field
-        ICON_MONO_16x16 (int): final static field
-        ICON_MONO_32x32 (int): final static field
-    
-    """
     ICON_COLOR_16x16: typing.ClassVar[int] = ...
     ICON_COLOR_32x32: typing.ClassVar[int] = ...
     ICON_MONO_16x16: typing.ClassVar[int] = ...
@@ -45,13 +31,6 @@ class BeanInfo:
     def getPropertyDescriptors(self) -> typing.List['PropertyDescriptor']: ...
 
 class BeanProperty(java.lang.annotation.Annotation):
-    """
-    Java class 'java.beans.BeanProperty'
-    
-        Interfaces:
-            java.lang.annotation.Annotation
-    
-    """
     def bound(self) -> bool: ...
     def description(self) -> str: ...
     def enumerationValues(self) -> typing.List[str]: ...
@@ -65,16 +44,6 @@ class BeanProperty(java.lang.annotation.Annotation):
     def visualUpdate(self) -> bool: ...
 
 class Beans:
-    """
-    Java class 'java.beans.Beans'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * Beans()
-    
-    """
     def __init__(self): ...
     @staticmethod
     def getInstanceOf(object: typing.Any, class_: typing.Type[typing.Any]) -> typing.Any: ...
@@ -99,50 +68,22 @@ class Beans:
     def setGuiAvailable(boolean: bool) -> None: ...
 
 class ConstructorProperties(java.lang.annotation.Annotation):
-    """
-    Java class 'java.beans.ConstructorProperties'
-    
-        Interfaces:
-            java.lang.annotation.Annotation
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def hashCode(self) -> int: ...
     def toString(self) -> str: ...
     def value(self) -> typing.List[str]: ...
 
 class Customizer:
-    """
-    Java class 'java.beans.Customizer'
-    
-    """
     def addPropertyChangeListener(self, propertyChangeListener: 'PropertyChangeListener') -> None: ...
     def removePropertyChangeListener(self, propertyChangeListener: 'PropertyChangeListener') -> None: ...
     def setObject(self, object: typing.Any) -> None: ...
 
 class DesignMode:
-    """
-    Java class 'java.beans.DesignMode'
-    
-      Attributes:
-        PROPERTYNAME (java.lang.String): final static field
-    
-    """
     PROPERTYNAME: typing.ClassVar[str] = ...
     def isDesignTime(self) -> bool: ...
     def setDesignTime(self, boolean: bool) -> None: ...
 
 class Encoder:
-    """
-    Java class 'java.beans.Encoder'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * Encoder()
-    
-    """
     def __init__(self): ...
     def get(self, object: typing.Any) -> typing.Any: ...
     def getExceptionListener(self) -> 'ExceptionListener': ...
@@ -154,19 +95,6 @@ class Encoder:
     def writeStatement(self, statement: 'Statement') -> None: ...
 
 class EventHandler(java.lang.reflect.InvocationHandler):
-    """
-    Java class 'java.beans.EventHandler'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.lang.reflect.InvocationHandler
-    
-      Constructors:
-        * EventHandler(java.lang.Object, java.lang.String, java.lang.String, java.lang.String)
-    
-    """
     def __init__(self, object: typing.Any, string: str, string2: str, string3: str): ...
     _create_0__T = typing.TypeVar('_create_0__T')  # <T>
     _create_1__T = typing.TypeVar('_create_1__T')  # <T>
@@ -187,23 +115,9 @@ class EventHandler(java.lang.reflect.InvocationHandler):
     def invoke(self, object: typing.Any, method: java.lang.reflect.Method, objectArray: typing.List[typing.Any]) -> typing.Any: ...
 
 class ExceptionListener:
-    """
-    Java class 'java.beans.ExceptionListener'
-    
-    """
     def exceptionThrown(self, exception: java.lang.Exception) -> None: ...
 
 class FeatureDescriptor:
-    """
-    Java class 'java.beans.FeatureDescriptor'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * FeatureDescriptor()
-    
-    """
     def __init__(self): ...
     def attributeNames(self) -> java.util.Enumeration[str]: ...
     def getDisplayName(self) -> str: ...
@@ -223,31 +137,9 @@ class FeatureDescriptor:
     def toString(self) -> str: ...
 
 class IntrospectionException(java.lang.Exception):
-    """
-    Java class 'java.beans.IntrospectionException'
-    
-        Extends:
-            java.lang.Exception
-    
-      Constructors:
-        * IntrospectionException(java.lang.String)
-    
-    """
     def __init__(self, string: str): ...
 
 class Introspector:
-    """
-    Java class 'java.beans.Introspector'
-    
-        Extends:
-            java.lang.Object
-    
-      Attributes:
-        USE_ALL_BEANINFO (int): final static field
-        IGNORE_IMMEDIATE_BEANINFO (int): final static field
-        IGNORE_ALL_BEANINFO (int): final static field
-    
-    """
     USE_ALL_BEANINFO: typing.ClassVar[int] = ...
     IGNORE_IMMEDIATE_BEANINFO: typing.ClassVar[int] = ...
     IGNORE_ALL_BEANINFO: typing.ClassVar[int] = ...
@@ -275,13 +167,6 @@ class Introspector:
     def setBeanInfoSearchPath(stringArray: typing.List[str]) -> None: ...
 
 class JavaBean(java.lang.annotation.Annotation):
-    """
-    Java class 'java.beans.JavaBean'
-    
-        Interfaces:
-            java.lang.annotation.Annotation
-    
-    """
     def defaultEventSet(self) -> str: ...
     def defaultProperty(self) -> str: ...
     def description(self) -> str: ...
@@ -290,30 +175,10 @@ class JavaBean(java.lang.annotation.Annotation):
     def toString(self) -> str: ...
 
 class PersistenceDelegate:
-    """
-    Java class 'java.beans.PersistenceDelegate'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * PersistenceDelegate()
-    
-    """
     def __init__(self): ...
     def writeObject(self, object: typing.Any, encoder: Encoder) -> None: ...
 
 class PropertyChangeEvent(java.util.EventObject):
-    """
-    Java class 'java.beans.PropertyChangeEvent'
-    
-        Extends:
-            java.util.EventObject
-    
-      Constructors:
-        * PropertyChangeEvent(java.lang.Object, java.lang.String, java.lang.Object, java.lang.Object)
-    
-    """
     def __init__(self, object: typing.Any, string: str, object2: typing.Any, object3: typing.Any): ...
     def getNewValue(self) -> typing.Any: ...
     def getOldValue(self) -> typing.Any: ...
@@ -323,29 +188,9 @@ class PropertyChangeEvent(java.util.EventObject):
     def toString(self) -> str: ...
 
 class PropertyChangeListener(java.util.EventListener):
-    """
-    Java class 'java.beans.PropertyChangeListener'
-    
-        Interfaces:
-            java.util.EventListener
-    
-    """
     def propertyChange(self, propertyChangeEvent: PropertyChangeEvent) -> None: ...
 
 class PropertyChangeSupport(java.io.Serializable):
-    """
-    Java class 'java.beans.PropertyChangeSupport'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable
-    
-      Constructors:
-        * PropertyChangeSupport(java.lang.Object)
-    
-    """
     def __init__(self, object: typing.Any): ...
     @typing.overload
     def addPropertyChangeListener(self, propertyChangeListener: PropertyChangeListener) -> None: ...
@@ -376,10 +221,6 @@ class PropertyChangeSupport(java.io.Serializable):
     def removePropertyChangeListener(self, string: str, propertyChangeListener: PropertyChangeListener) -> None: ...
 
 class PropertyEditor:
-    """
-    Java class 'java.beans.PropertyEditor'
-    
-    """
     def addPropertyChangeListener(self, propertyChangeListener: PropertyChangeListener) -> None: ...
     def getAsText(self) -> str: ...
     def getCustomEditor(self) -> java.awt.Component: ...
@@ -394,16 +235,6 @@ class PropertyEditor:
     def supportsCustomEditor(self) -> bool: ...
 
 class PropertyEditorManager:
-    """
-    Java class 'java.beans.PropertyEditorManager'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * PropertyEditorManager()
-    
-    """
     def __init__(self): ...
     @staticmethod
     def findEditor(class_: typing.Type[typing.Any]) -> PropertyEditor: ...
@@ -415,30 +246,10 @@ class PropertyEditorManager:
     def setEditorSearchPath(stringArray: typing.List[str]) -> None: ...
 
 class PropertyVetoException(java.lang.Exception):
-    """
-    Java class 'java.beans.PropertyVetoException'
-    
-        Extends:
-            java.lang.Exception
-    
-      Constructors:
-        * PropertyVetoException(java.lang.String, java.beans.PropertyChangeEvent)
-    
-    """
     def __init__(self, string: str, propertyChangeEvent: PropertyChangeEvent): ...
     def getPropertyChangeEvent(self) -> PropertyChangeEvent: ...
 
 class Statement:
-    """
-    Java class 'java.beans.Statement'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * Statement(java.lang.Object, java.lang.String, java.lang.Object[])
-    
-    """
     def __init__(self, object: typing.Any, string: str, objectArray: typing.List[typing.Any]): ...
     def execute(self) -> None: ...
     def getArguments(self) -> typing.List[typing.Any]: ...
@@ -447,42 +258,15 @@ class Statement:
     def toString(self) -> str: ...
 
 class Transient(java.lang.annotation.Annotation):
-    """
-    Java class 'java.beans.Transient'
-    
-        Interfaces:
-            java.lang.annotation.Annotation
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def hashCode(self) -> int: ...
     def toString(self) -> str: ...
     def value(self) -> bool: ...
 
 class VetoableChangeListener(java.util.EventListener):
-    """
-    Java class 'java.beans.VetoableChangeListener'
-    
-        Interfaces:
-            java.util.EventListener
-    
-    """
     def vetoableChange(self, propertyChangeEvent: PropertyChangeEvent) -> None: ...
 
 class VetoableChangeSupport(java.io.Serializable):
-    """
-    Java class 'java.beans.VetoableChangeSupport'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable
-    
-      Constructors:
-        * VetoableChangeSupport(java.lang.Object)
-    
-    """
     def __init__(self, object: typing.Any): ...
     @typing.overload
     def addVetoableChangeListener(self, vetoableChangeListener: VetoableChangeListener) -> None: ...
@@ -507,33 +291,12 @@ class VetoableChangeSupport(java.io.Serializable):
     def removeVetoableChangeListener(self, string: str, vetoableChangeListener: VetoableChangeListener) -> None: ...
 
 class Visibility:
-    """
-    Java class 'java.beans.Visibility'
-    
-    """
     def avoidingGui(self) -> bool: ...
     def dontUseGui(self) -> None: ...
     def needsGui(self) -> bool: ...
     def okToUseGui(self) -> None: ...
 
 class XMLDecoder(java.lang.AutoCloseable):
-    """
-    Java class 'java.beans.XMLDecoder'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.lang.AutoCloseable
-    
-      Constructors:
-        * XMLDecoder(org.xml.sax.InputSource)
-        * XMLDecoder(java.io.InputStream, java.lang.Object, java.beans.ExceptionListener, java.lang.ClassLoader)
-        * XMLDecoder(java.io.InputStream)
-        * XMLDecoder(java.io.InputStream, java.lang.Object)
-        * XMLDecoder(java.io.InputStream, java.lang.Object, java.beans.ExceptionListener)
-    
-    """
     @typing.overload
     def __init__(self, inputStream: java.io.InputStream): ...
     @typing.overload
@@ -554,17 +317,6 @@ class XMLDecoder(java.lang.AutoCloseable):
     def setOwner(self, object: typing.Any) -> None: ...
 
 class BeanDescriptor(FeatureDescriptor):
-    """
-    Java class 'java.beans.BeanDescriptor'
-    
-        Extends:
-            java.beans.FeatureDescriptor
-    
-      Constructors:
-        * BeanDescriptor(java.lang.Class, java.lang.Class)
-        * BeanDescriptor(java.lang.Class)
-    
-    """
     @typing.overload
     def __init__(self, class_: typing.Type[typing.Any]): ...
     @typing.overload
@@ -573,41 +325,12 @@ class BeanDescriptor(FeatureDescriptor):
     def getCustomizerClass(self) -> typing.Type[typing.Any]: ...
 
 class DefaultPersistenceDelegate(PersistenceDelegate):
-    """
-    Java class 'java.beans.DefaultPersistenceDelegate'
-    
-        Extends:
-            java.beans.PersistenceDelegate
-    
-      Constructors:
-        * DefaultPersistenceDelegate()
-        * DefaultPersistenceDelegate(java.lang.String[])
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, stringArray: typing.List[str]): ...
 
 class EventSetDescriptor(FeatureDescriptor):
-    """
-    Java class 'java.beans.EventSetDescriptor'
-    
-        Extends:
-            java.beans.FeatureDescriptor
-    
-      Constructors:
-        * EventSetDescriptor(java.lang.String, java.lang.Class, java.lang.reflect.Method[], java.lang.reflect.Method, java.lang.reflect.Method)
-        * EventSetDescriptor(java.lang.String, java.lang.Class, java.lang.reflect.Method[], java.lang.reflect.Method, java.lang.reflect.Method, java.lang.reflect.Method)
-        * EventSetDescriptor(java.lang.String, java.lang.Class, java.beans.MethodDescriptor[], java.lang.reflect.Method, java.lang.reflect.Method)
-        * EventSetDescriptor(java.lang.Class, java.lang.String, java.lang.Class, java.lang.String)
-        * EventSetDescriptor(java.lang.Class, java.lang.String, java.lang.Class, java.lang.String[], java.lang.String, java.lang.String)
-        * EventSetDescriptor(java.lang.Class, java.lang.String, java.lang.Class, java.lang.String[], java.lang.String, java.lang.String, java.lang.String)
-    
-      Raises:
-        java.beans.IntrospectionException: from java
-    
-    """
     @typing.overload
     def __init__(self, class_: typing.Type[typing.Any], string: str, class2: typing.Type[typing.Any], string2: str): ...
     @typing.overload
@@ -632,17 +355,6 @@ class EventSetDescriptor(FeatureDescriptor):
     def setUnicast(self, boolean: bool) -> None: ...
 
 class Expression(Statement):
-    """
-    Java class 'java.beans.Expression'
-    
-        Extends:
-            java.beans.Statement
-    
-      Constructors:
-        * Expression(java.lang.Object, java.lang.String, java.lang.Object[])
-        * Expression(java.lang.Object, java.lang.Object, java.lang.String, java.lang.Object[])
-    
-    """
     @typing.overload
     def __init__(self, object: typing.Any, object2: typing.Any, string: str, objectArray: typing.List[typing.Any]): ...
     @typing.overload
@@ -653,31 +365,10 @@ class Expression(Statement):
     def toString(self) -> str: ...
 
 class IndexedPropertyChangeEvent(PropertyChangeEvent):
-    """
-    Java class 'java.beans.IndexedPropertyChangeEvent'
-    
-        Extends:
-            java.beans.PropertyChangeEvent
-    
-      Constructors:
-        * IndexedPropertyChangeEvent(java.lang.Object, java.lang.String, java.lang.Object, java.lang.Object, int)
-    
-    """
     def __init__(self, object: typing.Any, string: str, object2: typing.Any, object3: typing.Any, int: int): ...
     def getIndex(self) -> int: ...
 
 class MethodDescriptor(FeatureDescriptor):
-    """
-    Java class 'java.beans.MethodDescriptor'
-    
-        Extends:
-            java.beans.FeatureDescriptor
-    
-      Constructors:
-        * MethodDescriptor(java.lang.reflect.Method)
-        * MethodDescriptor(java.lang.reflect.Method, java.beans.ParameterDescriptor[])
-    
-    """
     @typing.overload
     def __init__(self, method: java.lang.reflect.Method): ...
     @typing.overload
@@ -686,52 +377,14 @@ class MethodDescriptor(FeatureDescriptor):
     def getParameterDescriptors(self) -> typing.List['ParameterDescriptor']: ...
 
 class ParameterDescriptor(FeatureDescriptor):
-    """
-    Java class 'java.beans.ParameterDescriptor'
-    
-        Extends:
-            java.beans.FeatureDescriptor
-    
-      Constructors:
-        * ParameterDescriptor()
-    
-    """
     def __init__(self): ...
 
 class PropertyChangeListenerProxy(java.util.EventListenerProxy[PropertyChangeListener], PropertyChangeListener):
-    """
-    Java class 'java.beans.PropertyChangeListenerProxy'
-    
-        Extends:
-            java.util.EventListenerProxy
-    
-        Interfaces:
-            java.beans.PropertyChangeListener
-    
-      Constructors:
-        * PropertyChangeListenerProxy(java.lang.String, java.beans.PropertyChangeListener)
-    
-    """
     def __init__(self, string: str, propertyChangeListener: PropertyChangeListener): ...
     def getPropertyName(self) -> str: ...
     def propertyChange(self, propertyChangeEvent: PropertyChangeEvent) -> None: ...
 
 class PropertyDescriptor(FeatureDescriptor):
-    """
-    Java class 'java.beans.PropertyDescriptor'
-    
-        Extends:
-            java.beans.FeatureDescriptor
-    
-      Constructors:
-        * PropertyDescriptor(java.lang.String, java.lang.Class)
-        * PropertyDescriptor(java.lang.String, java.lang.Class, java.lang.String, java.lang.String)
-        * PropertyDescriptor(java.lang.String, java.lang.reflect.Method, java.lang.reflect.Method)
-    
-      Raises:
-        java.beans.IntrospectionException: from java
-    
-    """
     @typing.overload
     def __init__(self, string: str, class_: typing.Type[typing.Any]): ...
     @typing.overload
@@ -754,20 +407,6 @@ class PropertyDescriptor(FeatureDescriptor):
     def setWriteMethod(self, method: java.lang.reflect.Method) -> None: ...
 
 class PropertyEditorSupport(PropertyEditor):
-    """
-    Java class 'java.beans.PropertyEditorSupport'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.beans.PropertyEditor
-    
-      Constructors:
-        * PropertyEditorSupport()
-        * PropertyEditorSupport(java.lang.Object)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -789,19 +428,6 @@ class PropertyEditorSupport(PropertyEditor):
     def supportsCustomEditor(self) -> bool: ...
 
 class SimpleBeanInfo(BeanInfo):
-    """
-    Java class 'java.beans.SimpleBeanInfo'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.beans.BeanInfo
-    
-      Constructors:
-        * SimpleBeanInfo()
-    
-    """
     def __init__(self): ...
     def getAdditionalBeanInfo(self) -> typing.List[BeanInfo]: ...
     def getBeanDescriptor(self) -> BeanDescriptor: ...
@@ -814,38 +440,11 @@ class SimpleBeanInfo(BeanInfo):
     def loadImage(self, string: str) -> java.awt.Image: ...
 
 class VetoableChangeListenerProxy(java.util.EventListenerProxy[VetoableChangeListener], VetoableChangeListener):
-    """
-    Java class 'java.beans.VetoableChangeListenerProxy'
-    
-        Extends:
-            java.util.EventListenerProxy
-    
-        Interfaces:
-            java.beans.VetoableChangeListener
-    
-      Constructors:
-        * VetoableChangeListenerProxy(java.lang.String, java.beans.VetoableChangeListener)
-    
-    """
     def __init__(self, string: str, vetoableChangeListener: VetoableChangeListener): ...
     def getPropertyName(self) -> str: ...
     def vetoableChange(self, propertyChangeEvent: PropertyChangeEvent) -> None: ...
 
 class XMLEncoder(Encoder, java.lang.AutoCloseable):
-    """
-    Java class 'java.beans.XMLEncoder'
-    
-        Extends:
-            java.beans.Encoder
-    
-        Interfaces:
-            java.lang.AutoCloseable
-    
-      Constructors:
-        * XMLEncoder(java.io.OutputStream)
-        * XMLEncoder(java.io.OutputStream, java.lang.String, boolean, int)
-    
-    """
     @typing.overload
     def __init__(self, outputStream: java.io.OutputStream): ...
     @typing.overload
@@ -859,21 +458,6 @@ class XMLEncoder(Encoder, java.lang.AutoCloseable):
     def writeStatement(self, statement: Statement) -> None: ...
 
 class IndexedPropertyDescriptor(PropertyDescriptor):
-    """
-    Java class 'java.beans.IndexedPropertyDescriptor'
-    
-        Extends:
-            java.beans.PropertyDescriptor
-    
-      Constructors:
-        * IndexedPropertyDescriptor(java.lang.String, java.lang.Class)
-        * IndexedPropertyDescriptor(java.lang.String, java.lang.Class, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
-        * IndexedPropertyDescriptor(java.lang.String, java.lang.reflect.Method, java.lang.reflect.Method, java.lang.reflect.Method, java.lang.reflect.Method)
-    
-      Raises:
-        java.beans.IntrospectionException: from java
-    
-    """
     @typing.overload
     def __init__(self, string: str, class_: typing.Type[typing.Any]): ...
     @typing.overload

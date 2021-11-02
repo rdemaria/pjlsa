@@ -9,10 +9,6 @@ import typing
 
 
 class BeanContextChild:
-    """
-    Java class 'java.beans.beancontext.BeanContextChild'
-    
-    """
     def addPropertyChangeListener(self, string: str, propertyChangeListener: java.beans.PropertyChangeListener) -> None: ...
     def addVetoableChangeListener(self, string: str, vetoableChangeListener: java.beans.VetoableChangeListener) -> None: ...
     def getBeanContext(self) -> 'BeanContext': ...
@@ -21,91 +17,36 @@ class BeanContextChild:
     def setBeanContext(self, beanContext: 'BeanContext') -> None: ...
 
 class BeanContextChildComponentProxy:
-    """
-    Java class 'java.beans.beancontext.BeanContextChildComponentProxy'
-    
-    """
     def getComponent(self) -> java.awt.Component: ...
 
 class BeanContextContainerProxy:
-    """
-    Java class 'java.beans.beancontext.BeanContextContainerProxy'
-    
-    """
     def getContainer(self) -> java.awt.Container: ...
 
 class BeanContextEvent(java.util.EventObject):
-    """
-    Java class 'java.beans.beancontext.BeanContextEvent'
-    
-        Extends:
-            java.util.EventObject
-    
-    """
     def getBeanContext(self) -> 'BeanContext': ...
     def getPropagatedFrom(self) -> 'BeanContext': ...
     def isPropagated(self) -> bool: ...
     def setPropagatedFrom(self, beanContext: 'BeanContext') -> None: ...
 
 class BeanContextMembershipListener(java.util.EventListener):
-    """
-    Java class 'java.beans.beancontext.BeanContextMembershipListener'
-    
-        Interfaces:
-            java.util.EventListener
-    
-    """
     def childrenAdded(self, beanContextMembershipEvent: 'BeanContextMembershipEvent') -> None: ...
     def childrenRemoved(self, beanContextMembershipEvent: 'BeanContextMembershipEvent') -> None: ...
 
 class BeanContextProxy:
-    """
-    Java class 'java.beans.beancontext.BeanContextProxy'
-    
-    """
     def getBeanContextProxy(self) -> BeanContextChild: ...
 
 class BeanContextServiceProvider:
-    """
-    Java class 'java.beans.beancontext.BeanContextServiceProvider'
-    
-    """
     def getCurrentServiceSelectors(self, beanContextServices: 'BeanContextServices', class_: typing.Type[typing.Any]) -> java.util.Iterator[typing.Any]: ...
     def getService(self, beanContextServices: 'BeanContextServices', object: typing.Any, class_: typing.Type[typing.Any], object2: typing.Any) -> typing.Any: ...
     def releaseService(self, beanContextServices: 'BeanContextServices', object: typing.Any, object2: typing.Any) -> None: ...
 
 class BeanContextServiceProviderBeanInfo(java.beans.BeanInfo):
-    """
-    Java class 'java.beans.beancontext.BeanContextServiceProviderBeanInfo'
-    
-        Interfaces:
-            java.beans.BeanInfo
-    
-    """
     def getServicesBeanInfo(self) -> typing.List[java.beans.BeanInfo]: ...
 
 class BeanContextServiceRevokedListener(java.util.EventListener):
-    """
-    Java class 'java.beans.beancontext.BeanContextServiceRevokedListener'
-    
-        Interfaces:
-            java.util.EventListener
-    
-    """
     def serviceRevoked(self, beanContextServiceRevokedEvent: 'BeanContextServiceRevokedEvent') -> None: ...
 
 class BeanContext(BeanContextChild, java.util.Collection, java.beans.DesignMode, java.beans.Visibility):
-    """
-    Java class 'java.beans.beancontext.BeanContext'
-    
-        Interfaces:
-            java.beans.beancontext.BeanContextChild, java.util.Collection,
-            java.beans.DesignMode, java.beans.Visibility
-    
-      Attributes:
-        globalHierarchyLock (java.lang.Object): final static field
-    
-    """
     globalHierarchyLock: typing.ClassVar[typing.Any] = ...
     def addBeanContextMembershipListener(self, beanContextMembershipListener: BeanContextMembershipListener) -> None: ...
     def equals(self, object: typing.Any) -> bool: ...
@@ -116,17 +57,6 @@ class BeanContext(BeanContextChild, java.util.Collection, java.beans.DesignMode,
     def removeBeanContextMembershipListener(self, beanContextMembershipListener: BeanContextMembershipListener) -> None: ...
 
 class BeanContextMembershipEvent(BeanContextEvent):
-    """
-    Java class 'java.beans.beancontext.BeanContextMembershipEvent'
-    
-        Extends:
-            java.beans.beancontext.BeanContextEvent
-    
-      Constructors:
-        * BeanContextMembershipEvent(java.beans.beancontext.BeanContext, java.util.Collection)
-        * BeanContextMembershipEvent(java.beans.beancontext.BeanContext, java.lang.Object[])
-    
-    """
     @typing.overload
     def __init__(self, beanContext: BeanContext, objectArray: typing.List[typing.Any]): ...
     @typing.overload
@@ -137,32 +67,12 @@ class BeanContextMembershipEvent(BeanContextEvent):
     def toArray(self) -> typing.List[typing.Any]: ...
 
 class BeanContextServiceAvailableEvent(BeanContextEvent):
-    """
-    Java class 'java.beans.beancontext.BeanContextServiceAvailableEvent'
-    
-        Extends:
-            java.beans.beancontext.BeanContextEvent
-    
-      Constructors:
-        * BeanContextServiceAvailableEvent(java.beans.beancontext.BeanContextServices, java.lang.Class)
-    
-    """
     def __init__(self, beanContextServices: 'BeanContextServices', class_: typing.Type[typing.Any]): ...
     def getCurrentServiceSelectors(self) -> java.util.Iterator[typing.Any]: ...
     def getServiceClass(self) -> typing.Type[typing.Any]: ...
     def getSourceAsBeanContextServices(self) -> 'BeanContextServices': ...
 
 class BeanContextServiceRevokedEvent(BeanContextEvent):
-    """
-    Java class 'java.beans.beancontext.BeanContextServiceRevokedEvent'
-    
-        Extends:
-            java.beans.beancontext.BeanContextEvent
-    
-      Constructors:
-        * BeanContextServiceRevokedEvent(java.beans.beancontext.BeanContextServices, java.lang.Class, boolean)
-    
-    """
     def __init__(self, beanContextServices: 'BeanContextServices', class_: typing.Type[typing.Any], boolean: bool): ...
     def getServiceClass(self) -> typing.Type[typing.Any]: ...
     def getSourceAsBeanContextServices(self) -> 'BeanContextServices': ...
@@ -170,35 +80,9 @@ class BeanContextServiceRevokedEvent(BeanContextEvent):
     def isServiceClass(self, class_: typing.Type[typing.Any]) -> bool: ...
 
 class BeanContextServicesListener(BeanContextServiceRevokedListener):
-    """
-    Java class 'java.beans.beancontext.BeanContextServicesListener'
-    
-        Interfaces:
-            java.beans.beancontext.BeanContextServiceRevokedListener
-    
-    """
     def serviceAvailable(self, beanContextServiceAvailableEvent: BeanContextServiceAvailableEvent) -> None: ...
 
 class BeanContextChildSupport(BeanContextChild, BeanContextServicesListener, java.io.Serializable):
-    """
-    Java class 'java.beans.beancontext.BeanContextChildSupport'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.beans.beancontext.BeanContextChild,
-            java.beans.beancontext.BeanContextServicesListener,
-            java.io.Serializable
-    
-      Constructors:
-        * BeanContextChildSupport()
-        * BeanContextChildSupport(java.beans.beancontext.BeanContextChild)
-    
-      Attributes:
-        beanContextChildPeer (java.beans.beancontext.BeanContextChild): field
-    
-    """
     beanContextChildPeer: BeanContextChild = ...
     @typing.overload
     def __init__(self): ...
@@ -219,14 +103,6 @@ class BeanContextChildSupport(BeanContextChild, BeanContextServicesListener, jav
     def validatePendingSetBeanContext(self, beanContext: BeanContext) -> bool: ...
 
 class BeanContextServices(BeanContext, BeanContextServicesListener):
-    """
-    Java class 'java.beans.beancontext.BeanContextServices'
-    
-        Interfaces:
-            java.beans.beancontext.BeanContext,
-            java.beans.beancontext.BeanContextServicesListener
-    
-    """
     def addBeanContextServicesListener(self, beanContextServicesListener: BeanContextServicesListener) -> None: ...
     def addService(self, class_: typing.Type[typing.Any], beanContextServiceProvider: BeanContextServiceProvider) -> bool: ...
     def equals(self, object: typing.Any) -> bool: ...
@@ -240,25 +116,6 @@ class BeanContextServices(BeanContext, BeanContextServicesListener):
     def revokeService(self, class_: typing.Type[typing.Any], beanContextServiceProvider: BeanContextServiceProvider, boolean: bool) -> None: ...
 
 class BeanContextSupport(BeanContextChildSupport, BeanContext, java.io.Serializable, java.beans.PropertyChangeListener, java.beans.VetoableChangeListener):
-    """
-    Java class 'java.beans.beancontext.BeanContextSupport'
-    
-        Extends:
-            java.beans.beancontext.BeanContextChildSupport
-    
-        Interfaces:
-            java.beans.beancontext.BeanContext, java.io.Serializable,
-            java.beans.PropertyChangeListener,
-            java.beans.VetoableChangeListener
-    
-      Constructors:
-        * BeanContextSupport()
-        * BeanContextSupport(java.beans.beancontext.BeanContext)
-        * BeanContextSupport(java.beans.beancontext.BeanContext, java.util.Locale)
-        * BeanContextSupport(java.beans.beancontext.BeanContext, java.util.Locale, boolean)
-        * BeanContextSupport(java.beans.beancontext.BeanContext, java.util.Locale, boolean, boolean)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -309,23 +166,6 @@ class BeanContextSupport(BeanContextChildSupport, BeanContext, java.io.Serializa
     def writeChildren(self, objectOutputStream: java.io.ObjectOutputStream) -> None: ...
 
 class BeanContextServicesSupport(BeanContextSupport, BeanContextServices):
-    """
-    Java class 'java.beans.beancontext.BeanContextServicesSupport'
-    
-        Extends:
-            java.beans.beancontext.BeanContextSupport
-    
-        Interfaces:
-            java.beans.beancontext.BeanContextServices
-    
-      Constructors:
-        * BeanContextServicesSupport()
-        * BeanContextServicesSupport(java.beans.beancontext.BeanContextServices)
-        * BeanContextServicesSupport(java.beans.beancontext.BeanContextServices, java.util.Locale)
-        * BeanContextServicesSupport(java.beans.beancontext.BeanContextServices, java.util.Locale, boolean)
-        * BeanContextServicesSupport(java.beans.beancontext.BeanContextServices, java.util.Locale, boolean, boolean)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload

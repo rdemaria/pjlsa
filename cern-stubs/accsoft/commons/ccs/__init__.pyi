@@ -16,17 +16,19 @@ import typing
 
 class AcceleratorInfo(cern.accsoft.commons.util.Named):
     """
-    Java class 'cern.accsoft.commons.ccs.AcceleratorInfo'
+    public final class :meth:`~src` extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements cern.accsoft.commons.util.Named
     
-        Extends:
-            java.lang.Object
+        This class provides utility methods to handle AcceleratorInfo device information such as:
     
-        Interfaces:
-            cern.accsoft.commons.util.Named
+          - The accelerator.INFO device name.
+          - The accelerator.INFO associated :code:`CernAccelerator`.
+          - The accelerator.INFO associated lsaAccelerator name.
+          - The accelerator.INFO associated ccdbAccelerator name.
+          - The accelerator.INFO associated tgmMachine name.
+          - The accelerator.INFO associated non Multiplexed Context name.
+          - The accelerator.INFO associated lsaAccelerator name.
     
-      Constructors:
-        * AcceleratorInfo(cern.accsoft.ccs.ccda.client.model.device.Device)
-    
+        More details can be found here: https://wikis.cern.ch/display/InCA/LsaContextMappingMonitor+marked+as+deprecated
     """
     def __init__(self, device: cern.accsoft.ccs.ccda.client.model.device.Device): ...
     @staticmethod
@@ -82,16 +84,22 @@ class AcceleratorInfo(cern.accsoft.commons.util.Named):
 
 class CcdaAccess:
     """
-    Java class 'cern.accsoft.commons.ccs.CcdaAccess'
+    public final class :meth:`~src` extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
-    
-      Attributes:
-        SYSPROP_CCDA_ENVIRONMENT (java.lang.String): final static field
-    
+        Provide access to the default :code:`CcdaClient` Object used in this product for the :code:`Environment` specified by
+        the "cern.cdda.environment" system property or :code:`Environment.PRO` if no system property is defined.
     """
     SYSPROP_CCDA_ENVIRONMENT: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` :meth:`~src`
+    
+        The :code:`"cern.cdda.environment"` system property used to select the :code:`CcdaClient` :code:`Environment`.
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     @staticmethod
     def getCcdaClient() -> cern.accsoft.ccs.ccda.client.core.CcdaClient: ...
     @staticmethod
@@ -100,18 +108,6 @@ class CcdaAccess:
     def getEnvironmentFromSystemProperty() -> cern.accsoft.ccs.ccda.client.core.Environment: ...
 
 class CcdaUtils:
-    """
-    Java class 'cern.accsoft.commons.ccs.CcdaUtils'
-    
-        Extends:
-            java.lang.Object
-    
-      Attributes:
-        DEFAULT_VALUE_FIELD (java.lang.String): final static field
-        UNDEFINED (java.lang.String): final static field
-        DEFAULT_DIMENSION (int): final static field
-    
-    """
     DEFAULT_VALUE_FIELD: typing.ClassVar[str] = ...
     UNDEFINED: typing.ClassVar[str] = ...
     DEFAULT_DIMENSION: typing.ClassVar[int] = ...
@@ -176,16 +172,23 @@ class CcdaUtils:
 
 class CcmCcsAccess:
     """
-    Java class 'cern.accsoft.commons.ccs.CcmCcsAccess'
+    public final class :meth:`~src` extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
-    
-      Attributes:
-        SYSPROP_CCM_CCS_ENVIRONMENT (java.lang.String): final static field
-    
+        Provide access to the default :code:`CcmConfigurationService` Object used in this product for the
+        :code:`CCMServiceLocator.Environment` specified by the "cern.ccm.useccdb" system property or
+        :code:`CCMServiceLocator.Environment.PRO` if no system property is defined.
     """
     SYSPROP_CCM_CCS_ENVIRONMENT: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` :meth:`~src`
+    
+        The :code:`"cern.ccm.useccdb"` system property used to select the CCDB server :code:`CCMServiceLocator.Environment`.
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     @staticmethod
     def getCcmConfigurationService() -> cern.accsoft.ccs.ccm.client.service.CcmConfigurationService: ...
     @staticmethod
@@ -199,11 +202,7 @@ class CcmCcsAccess:
 
 class CcmCcsUtils:
     """
-    Java class 'cern.accsoft.commons.ccs.CcmCcsUtils'
-    
-        Extends:
-            java.lang.Object
-    
+    public class :meth:`~src` extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     """
     @staticmethod
     def dumpApplicWindow(applicWindow: cern.accsoft.ccs.ccm.client.model.ApplicWindow) -> str: ...
@@ -282,65 +281,180 @@ class CcmCcsUtils:
 
 class ConvertCcsToJapcMeaning:
     """
-    Java class 'cern.accsoft.commons.ccs.ConvertCcsToJapcMeaning'
+    public final class :meth:`~src` extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
-    
+        Convert CCS :code:`FieldValueMeaning` to a JAPC :code:`SimpleValueStandardMeaning`.
     """
     @staticmethod
     def ccsToJapcMeaning(fieldValueMeaning: cern.accsoft.ccs.ccda.client.model.device.FieldValueMeaning) -> cern.japc.value.SimpleValueStandardMeaning: ...
 
 class ConvertCcsToJapcValueType:
     """
-    Java class 'cern.accsoft.commons.ccs.ConvertCcsToJapcValueType'
+    public final class :meth:`~src` extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
+        Convert CCS type and primitive data type pair Strings to proper JAPC :code:`ValueType`.
     
-      Attributes:
-        SCALAR (java.lang.String): final static field
-        ARRAY (java.lang.String): final static field
-        ARRAY2D (java.lang.String): final static field
-        ENUM (java.lang.String): final static field
-        ENUM_ARRAY (java.lang.String): final static field
-        ENUM_ARRAY2D (java.lang.String): final static field
-        BIT_ENUM (java.lang.String): final static field
-        BIT_ENUM_ARRAY (java.lang.String): final static field
-        BIT_ENUM_ARRAY2D (java.lang.String): final static field
-        DIAG_FWK_TOPIC (java.lang.String): final static field
-        DIAG_CUSTOM_TOPIC (java.lang.String): final static field
-        NOTIFICATION_UPDATE_ENUM (java.lang.String): final static field
-        CUSTOM_TYPE_SCALAR (java.lang.String): final static field
-        FAULT_SEVERITY (java.lang.String): final static field
-        CONST_UINT (java.lang.String): final static field
     
+        Please see https://issues.cern.ch/browse/CCS-9354 for more details.
     """
     SCALAR: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` :meth:`~src`
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     ARRAY: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` :meth:`~src`
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     ARRAY2D: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` :meth:`~src`
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     ENUM: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` :meth:`~src`
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     ENUM_ARRAY: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` :meth:`~src`
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     ENUM_ARRAY2D: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` :meth:`~src`
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     BIT_ENUM: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` :meth:`~src`
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     BIT_ENUM_ARRAY: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` :meth:`~src`
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     BIT_ENUM_ARRAY2D: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` :meth:`~src`
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     DIAG_FWK_TOPIC: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` :meth:`~src`
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     DIAG_CUSTOM_TOPIC: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` :meth:`~src`
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     NOTIFICATION_UPDATE_ENUM: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` :meth:`~src`
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     CUSTOM_TYPE_SCALAR: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` :meth:`~src`
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     FAULT_SEVERITY: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` :meth:`~src`
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     CONST_UINT: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` :meth:`~src`
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     @staticmethod
     def ccsToJapcType(string: str, primitiveDataType: cern.accsoft.ccs.ccda.client.model.device.PrimitiveDataType) -> cern.japc.value.ValueType: ...
 
 class ConvertPrimitiveDataTypeTypeToEnumTypeBitSize:
     """
-    Java class 'cern.accsoft.commons.ccs.ConvertPrimitiveDataTypeTypeToEnumTypeBitSize'
+    public final class :meth:`~src` extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
-    
+        Convert the given :code:`ValueType` to a :code:`EnumTypeBitSize`
     """
     @staticmethod
     def primitiveDataTypeToEnumTypeBitSize(primitiveDataType: cern.accsoft.ccs.ccda.client.model.device.PrimitiveDataType) -> cern.japc.value.EnumTypeBitSize: ...

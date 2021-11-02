@@ -13,20 +13,9 @@ import typing
 
 
 class Closeable(java.lang.AutoCloseable):
-    """
-    Java class 'java.io.Closeable'
-    
-        Interfaces:
-            java.lang.AutoCloseable
-    
-    """
     def close(self) -> None: ...
 
 class DataInput:
-    """
-    Java class 'java.io.DataInput'
-    
-    """
     def readBoolean(self) -> bool: ...
     def readByte(self) -> int: ...
     def readChar(self) -> str: ...
@@ -46,10 +35,6 @@ class DataInput:
     def skipBytes(self, int: int) -> int: ...
 
 class DataOutput:
-    """
-    Java class 'java.io.DataOutput'
-    
-    """
     @typing.overload
     def write(self, byteArray: typing.List[int]) -> None: ...
     @typing.overload
@@ -69,21 +54,6 @@ class DataOutput:
     def writeUTF(self, string: str) -> None: ...
 
 class FileDescriptor:
-    """
-    Java class 'java.io.FileDescriptor'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * FileDescriptor()
-    
-      Attributes:
-        in (java.io.FileDescriptor): final static field
-        out (java.io.FileDescriptor): final static field
-        err (java.io.FileDescriptor): final static field
-    
-    """
     in_: typing.ClassVar['FileDescriptor'] = ...
     out: typing.ClassVar['FileDescriptor'] = ...
     err: typing.ClassVar['FileDescriptor'] = ...
@@ -92,53 +62,18 @@ class FileDescriptor:
     def valid(self) -> bool: ...
 
 class FileFilter:
-    """
-    Java class 'java.io.FileFilter'
-    
-    """
     def accept(self, file: typing.Union['File', jpype.protocol.SupportsPath]) -> bool: ...
 
 class FilenameFilter:
-    """
-    Java class 'java.io.FilenameFilter'
-    
-    """
     def accept(self, file: typing.Union['File', jpype.protocol.SupportsPath], string: str) -> bool: ...
 
 class Flushable:
-    """
-    Java class 'java.io.Flushable'
-    
-    """
     def flush(self) -> None: ...
 
 class IOError(java.lang.Error):
-    """
-    Java class 'java.io.IOError'
-    
-        Extends:
-            java.lang.Error
-    
-      Constructors:
-        * IOError(java.lang.Throwable)
-    
-    """
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class IOException(java.lang.Exception):
-    """
-    Java class 'java.io.IOException'
-    
-        Extends:
-            java.lang.Exception
-    
-      Constructors:
-        * IOException(java.lang.Throwable)
-        * IOException(java.lang.String, java.lang.Throwable)
-        * IOException(java.lang.String)
-        * IOException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -149,19 +84,8 @@ class IOException(java.lang.Exception):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class ObjectInputFilter:
-    """
-    Java class 'java.io.ObjectInputFilter'
-    
-    """
     def checkInput(self, filterInfo: 'ObjectInputFilter.FilterInfo') -> 'ObjectInputFilter.Status': ...
     class Config:
-        """
-        Java class 'java.io.ObjectInputFilter$Config'
-        
-            Extends:
-                java.lang.Object
-        
-        """
         @staticmethod
         def createFilter(string: str) -> 'ObjectInputFilter': ...
         @staticmethod
@@ -169,28 +93,12 @@ class ObjectInputFilter:
         @staticmethod
         def setSerialFilter(objectInputFilter: typing.Union['ObjectInputFilter', typing.Callable]) -> None: ...
     class FilterInfo:
-        """
-        Java class 'java.io.ObjectInputFilter$FilterInfo'
-        
-        """
         def arrayLength(self) -> int: ...
         def depth(self) -> int: ...
         def references(self) -> int: ...
         def serialClass(self) -> typing.Type[typing.Any]: ...
         def streamBytes(self) -> int: ...
     class Status(java.lang.Enum['ObjectInputFilter.Status']):
-        """
-        Java class 'java.io.ObjectInputFilter$Status'
-        
-            Extends:
-                java.lang.Enum
-        
-          Attributes:
-            UNDECIDED (java.io.ObjectInputFilter$Status): final static enum constant
-            ALLOWED (java.io.ObjectInputFilter$Status): final static enum constant
-            REJECTED (java.io.ObjectInputFilter$Status): final static enum constant
-        
-        """
         UNDECIDED: typing.ClassVar['ObjectInputFilter.Status'] = ...
         ALLOWED: typing.ClassVar['ObjectInputFilter.Status'] = ...
         REJECTED: typing.ClassVar['ObjectInputFilter.Status'] = ...
@@ -205,49 +113,9 @@ class ObjectInputFilter:
         def values() -> typing.List['ObjectInputFilter.Status']: ...
 
 class ObjectInputValidation:
-    """
-    Java class 'java.io.ObjectInputValidation'
-    
-    """
     def validateObject(self) -> None: ...
 
 class ObjectStreamConstants:
-    """
-    Java class 'java.io.ObjectStreamConstants'
-    
-      Attributes:
-        STREAM_MAGIC (short): final static field
-        STREAM_VERSION (short): final static field
-        TC_BASE (byte): final static field
-        TC_NULL (byte): final static field
-        TC_REFERENCE (byte): final static field
-        TC_CLASSDESC (byte): final static field
-        TC_OBJECT (byte): final static field
-        TC_STRING (byte): final static field
-        TC_ARRAY (byte): final static field
-        TC_CLASS (byte): final static field
-        TC_BLOCKDATA (byte): final static field
-        TC_ENDBLOCKDATA (byte): final static field
-        TC_RESET (byte): final static field
-        TC_BLOCKDATALONG (byte): final static field
-        TC_EXCEPTION (byte): final static field
-        TC_LONGSTRING (byte): final static field
-        TC_PROXYCLASSDESC (byte): final static field
-        TC_ENUM (byte): final static field
-        TC_MAX (byte): final static field
-        baseWireHandle (int): final static field
-        SC_WRITE_METHOD (byte): final static field
-        SC_BLOCK_DATA (byte): final static field
-        SC_SERIALIZABLE (byte): final static field
-        SC_EXTERNALIZABLE (byte): final static field
-        SC_ENUM (byte): final static field
-        SUBSTITUTION_PERMISSION (java.io.SerializablePermission): final static field
-        SUBCLASS_IMPLEMENTATION_PERMISSION (java.io.SerializablePermission): final static field
-        SERIAL_FILTER_PERMISSION (java.io.SerializablePermission): final static field
-        PROTOCOL_VERSION_1 (int): final static field
-        PROTOCOL_VERSION_2 (int): final static field
-    
-    """
     STREAM_MAGIC: typing.ClassVar[int] = ...
     STREAM_VERSION: typing.ClassVar[int] = ...
     TC_BASE: typing.ClassVar[int] = ...
@@ -280,20 +148,6 @@ class ObjectStreamConstants:
     PROTOCOL_VERSION_2: typing.ClassVar[int] = ...
 
 class ObjectStreamField(java.lang.Comparable[typing.Any]):
-    """
-    Java class 'java.io.ObjectStreamField'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.lang.Comparable
-    
-      Constructors:
-        * ObjectStreamField(java.lang.String, java.lang.Class)
-        * ObjectStreamField(java.lang.String, java.lang.Class, boolean)
-    
-    """
     @typing.overload
     def __init__(self, string: str, class_: typing.Type[typing.Any]): ...
     @typing.overload
@@ -311,43 +165,12 @@ class ObjectStreamField(java.lang.Comparable[typing.Any]):
 class Serializable: ...
 
 class SerializablePermission(java.security.BasicPermission):
-    """
-    Java class 'java.io.SerializablePermission'
-    
-        Extends:
-            java.security.BasicPermission
-    
-      Constructors:
-        * SerializablePermission(java.lang.String)
-        * SerializablePermission(java.lang.String, java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self, string: str): ...
     @typing.overload
     def __init__(self, string: str, string2: str): ...
 
 class StreamTokenizer:
-    """
-    Java class 'java.io.StreamTokenizer'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * StreamTokenizer(java.io.Reader)
-        * StreamTokenizer(java.io.InputStream)
-    
-      Attributes:
-        ttype (int): field
-        TT_EOF (int): final static field
-        TT_EOL (int): final static field
-        TT_NUMBER (int): final static field
-        TT_WORD (int): final static field
-        sval (java.lang.String): field
-        nval (double): field
-    
-    """
     ttype: int = ...
     TT_EOF: typing.ClassVar[int] = ...
     TT_EOL: typing.ClassVar[int] = ...
@@ -377,17 +200,6 @@ class StreamTokenizer:
     def wordChars(self, int: int, int2: int) -> None: ...
 
 class UncheckedIOException(java.lang.RuntimeException):
-    """
-    Java class 'java.io.UncheckedIOException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * UncheckedIOException(java.lang.String, java.io.IOException)
-        * UncheckedIOException(java.io.IOException)
-    
-    """
     @typing.overload
     def __init__(self, iOException: IOException): ...
     @typing.overload
@@ -395,33 +207,12 @@ class UncheckedIOException(java.lang.RuntimeException):
     def getCause(self) -> IOException: ...
 
 class CharConversionException(IOException):
-    """
-    Java class 'java.io.CharConversionException'
-    
-        Extends:
-            java.io.IOException
-    
-      Constructors:
-        * CharConversionException()
-        * CharConversionException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class Console(Flushable):
-    """
-    Java class 'java.io.Console'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Flushable
-    
-    """
     def flush(self) -> None: ...
     def format(self, string: str, objectArray: typing.List[typing.Any]) -> 'Console': ...
     def printf(self, string: str, objectArray: typing.List[typing.Any]) -> 'Console': ...
@@ -437,56 +228,16 @@ class Console(Flushable):
     def writer(self) -> 'PrintWriter': ...
 
 class EOFException(IOException):
-    """
-    Java class 'java.io.EOFException'
-    
-        Extends:
-            java.io.IOException
-    
-      Constructors:
-        * EOFException()
-        * EOFException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class Externalizable(Serializable):
-    """
-    Java class 'java.io.Externalizable'
-    
-        Interfaces:
-            java.io.Serializable
-    
-    """
     def readExternal(self, objectInput: 'ObjectInput') -> None: ...
     def writeExternal(self, objectOutput: 'ObjectOutput') -> None: ...
 
 class File(Serializable, java.lang.Comparable['File']):
-    """
-    Java class 'java.io.File'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable, java.lang.Comparable
-    
-      Constructors:
-        * File(java.lang.String)
-        * File(java.lang.String, java.lang.String)
-        * File(java.io.File, java.lang.String)
-        * File(java.net.URI)
-    
-      Attributes:
-        separatorChar (char): final static field
-        separator (java.lang.String): final static field
-        pathSeparatorChar (char): final static field
-        pathSeparator (java.lang.String): final static field
-    
-    """
     separatorChar: typing.ClassVar[str] = ...
     separator: typing.ClassVar[str] = ...
     pathSeparatorChar: typing.ClassVar[str] = ...
@@ -567,36 +318,12 @@ class File(Serializable, java.lang.Comparable['File']):
     def toURL(self) -> java.net.URL: ...
 
 class FileNotFoundException(IOException):
-    """
-    Java class 'java.io.FileNotFoundException'
-    
-        Extends:
-            java.io.IOException
-    
-      Constructors:
-        * FileNotFoundException()
-        * FileNotFoundException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class FilePermission(java.security.Permission, Serializable):
-    """
-    Java class 'java.io.FilePermission'
-    
-        Extends:
-            java.security.Permission
-    
-        Interfaces:
-            java.io.Serializable
-    
-      Constructors:
-        * FilePermission(java.lang.String, java.lang.String)
-    
-    """
     def __init__(self, string: str, string2: str): ...
     def equals(self, object: typing.Any) -> bool: ...
     def getActions(self) -> str: ...
@@ -605,19 +332,6 @@ class FilePermission(java.security.Permission, Serializable):
     def newPermissionCollection(self) -> java.security.PermissionCollection: ...
 
 class InputStream(Closeable):
-    """
-    Java class 'java.io.InputStream'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Closeable
-    
-      Constructors:
-        * InputStream()
-    
-    """
     def __init__(self): ...
     def available(self) -> int: ...
     def close(self) -> None: ...
@@ -641,20 +355,6 @@ class InputStream(Closeable):
     def transferTo(self, outputStream: 'OutputStream') -> int: ...
 
 class InterruptedIOException(IOException):
-    """
-    Java class 'java.io.InterruptedIOException'
-    
-        Extends:
-            java.io.IOException
-    
-      Constructors:
-        * InterruptedIOException()
-        * InterruptedIOException(java.lang.String)
-    
-      Attributes:
-        bytesTransferred (int): field
-    
-    """
     bytesTransferred: int = ...
     @typing.overload
     def __init__(self): ...
@@ -662,13 +362,6 @@ class InterruptedIOException(IOException):
     def __init__(self, string: str): ...
 
 class ObjectInput(DataInput, java.lang.AutoCloseable):
-    """
-    Java class 'java.io.ObjectInput'
-    
-        Interfaces:
-            java.io.DataInput, java.lang.AutoCloseable
-    
-    """
     def available(self) -> int: ...
     def close(self) -> None: ...
     @typing.overload
@@ -681,13 +374,6 @@ class ObjectInput(DataInput, java.lang.AutoCloseable):
     def skip(self, long: int) -> int: ...
 
 class ObjectOutput(DataOutput, java.lang.AutoCloseable):
-    """
-    Java class 'java.io.ObjectOutput'
-    
-        Interfaces:
-            java.io.DataOutput, java.lang.AutoCloseable
-    
-    """
     def close(self) -> None: ...
     def flush(self) -> None: ...
     @typing.overload
@@ -699,19 +385,6 @@ class ObjectOutput(DataOutput, java.lang.AutoCloseable):
     def writeObject(self, object: typing.Any) -> None: ...
 
 class ObjectStreamClass(Serializable):
-    """
-    Java class 'java.io.ObjectStreamClass'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable
-    
-      Attributes:
-        NO_FIELDS ([Ljava.io.ObjectStreamField;): final static field
-    
-    """
     NO_FIELDS: typing.ClassVar[typing.List[ObjectStreamField]] = ...
     def forClass(self) -> typing.Type[typing.Any]: ...
     def getField(self, string: str) -> ObjectStreamField: ...
@@ -727,19 +400,6 @@ class ObjectStreamClass(Serializable):
 class ObjectStreamException(IOException): ...
 
 class OutputStream(Closeable, Flushable):
-    """
-    Java class 'java.io.OutputStream'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Closeable, java.io.Flushable
-    
-      Constructors:
-        * OutputStream()
-    
-    """
     def __init__(self): ...
     def close(self) -> None: ...
     def flush(self) -> None: ...
@@ -753,23 +413,6 @@ class OutputStream(Closeable, Flushable):
     def write(self, byteArray: typing.List[int], int: int, int2: int) -> None: ...
 
 class RandomAccessFile(DataOutput, DataInput, Closeable):
-    """
-    Java class 'java.io.RandomAccessFile'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.DataOutput, java.io.DataInput, java.io.Closeable
-    
-      Constructors:
-        * RandomAccessFile(java.io.File, java.lang.String)
-        * RandomAccessFile(java.lang.String, java.lang.String)
-    
-      Raises:
-        java.io.FileNotFoundException: from java
-    
-    """
     @typing.overload
     def __init__(self, file: typing.Union[File, jpype.protocol.SupportsPath], string: str): ...
     @typing.overload
@@ -823,16 +466,6 @@ class RandomAccessFile(DataOutput, DataInput, Closeable):
     def writeUTF(self, string: str) -> None: ...
 
 class Reader(java.lang.Readable, Closeable):
-    """
-    Java class 'java.io.Reader'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.lang.Readable, java.io.Closeable
-    
-    """
     def close(self) -> None: ...
     def mark(self, int: int) -> None: ...
     def markSupported(self) -> bool: ...
@@ -852,63 +485,21 @@ class Reader(java.lang.Readable, Closeable):
     def transferTo(self, writer: 'Writer') -> int: ...
 
 class SyncFailedException(IOException):
-    """
-    Java class 'java.io.SyncFailedException'
-    
-        Extends:
-            java.io.IOException
-    
-      Constructors:
-        * SyncFailedException(java.lang.String)
-    
-    """
     def __init__(self, string: str): ...
 
 class UTFDataFormatException(IOException):
-    """
-    Java class 'java.io.UTFDataFormatException'
-    
-        Extends:
-            java.io.IOException
-    
-      Constructors:
-        * UTFDataFormatException()
-        * UTFDataFormatException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class UnsupportedEncodingException(IOException):
-    """
-    Java class 'java.io.UnsupportedEncodingException'
-    
-        Extends:
-            java.io.IOException
-    
-      Constructors:
-        * UnsupportedEncodingException()
-        * UnsupportedEncodingException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class Writer(java.lang.Appendable, Closeable, Flushable):
-    """
-    Java class 'java.io.Writer'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.lang.Appendable, java.io.Closeable, java.io.Flushable
-    
-    """
     @typing.overload
     def append(self, char: str) -> 'Writer': ...
     @typing.overload
@@ -931,17 +522,6 @@ class Writer(java.lang.Appendable, Closeable, Flushable):
     def write(self, string: str, int: int, int2: int) -> None: ...
 
 class BufferedReader(Reader):
-    """
-    Java class 'java.io.BufferedReader'
-    
-        Extends:
-            java.io.Reader
-    
-      Constructors:
-        * BufferedReader(java.io.Reader, int)
-        * BufferedReader(java.io.Reader)
-    
-    """
     @typing.overload
     def __init__(self, reader: Reader): ...
     @typing.overload
@@ -964,17 +544,6 @@ class BufferedReader(Reader):
     def skip(self, long: int) -> int: ...
 
 class BufferedWriter(Writer):
-    """
-    Java class 'java.io.BufferedWriter'
-    
-        Extends:
-            java.io.Writer
-    
-      Constructors:
-        * BufferedWriter(java.io.Writer)
-        * BufferedWriter(java.io.Writer, int)
-    
-    """
     @typing.overload
     def __init__(self, writer: Writer): ...
     @typing.overload
@@ -994,17 +563,6 @@ class BufferedWriter(Writer):
     def write(self, string: str) -> None: ...
 
 class ByteArrayInputStream(InputStream):
-    """
-    Java class 'java.io.ByteArrayInputStream'
-    
-        Extends:
-            java.io.InputStream
-    
-      Constructors:
-        * ByteArrayInputStream(byte[])
-        * ByteArrayInputStream(byte[], int, int)
-    
-    """
     @typing.overload
     def __init__(self, byteArray: typing.List[int]): ...
     @typing.overload
@@ -1029,17 +587,6 @@ class ByteArrayInputStream(InputStream):
     def transferTo(self, outputStream: OutputStream) -> int: ...
 
 class ByteArrayOutputStream(OutputStream):
-    """
-    Java class 'java.io.ByteArrayOutputStream'
-    
-        Extends:
-            java.io.OutputStream
-    
-      Constructors:
-        * ByteArrayOutputStream()
-        * ByteArrayOutputStream(int)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1066,17 +613,6 @@ class ByteArrayOutputStream(OutputStream):
     def writeTo(self, outputStream: OutputStream) -> None: ...
 
 class CharArrayReader(Reader):
-    """
-    Java class 'java.io.CharArrayReader'
-    
-        Extends:
-            java.io.Reader
-    
-      Constructors:
-        * CharArrayReader(char[])
-        * CharArrayReader(char[], int, int)
-    
-    """
     @typing.overload
     def __init__(self, charArray: typing.List[str]): ...
     @typing.overload
@@ -1097,17 +633,6 @@ class CharArrayReader(Reader):
     def skip(self, long: int) -> int: ...
 
 class CharArrayWriter(Writer):
-    """
-    Java class 'java.io.CharArrayWriter'
-    
-        Extends:
-            java.io.Writer
-    
-      Constructors:
-        * CharArrayWriter()
-        * CharArrayWriter(int)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1137,21 +662,6 @@ class CharArrayWriter(Writer):
     def writeTo(self, writer: Writer) -> None: ...
 
 class FileInputStream(InputStream):
-    """
-    Java class 'java.io.FileInputStream'
-    
-        Extends:
-            java.io.InputStream
-    
-      Constructors:
-        * FileInputStream(java.io.FileDescriptor)
-        * FileInputStream(java.io.File)
-        * FileInputStream(java.lang.String)
-    
-      Raises:
-        java.io.FileNotFoundException: from java
-    
-    """
     @typing.overload
     def __init__(self, file: typing.Union[File, jpype.protocol.SupportsPath]): ...
     @typing.overload
@@ -1171,23 +681,6 @@ class FileInputStream(InputStream):
     def skip(self, long: int) -> int: ...
 
 class FileOutputStream(OutputStream):
-    """
-    Java class 'java.io.FileOutputStream'
-    
-        Extends:
-            java.io.OutputStream
-    
-      Constructors:
-        * FileOutputStream(java.io.FileDescriptor)
-        * FileOutputStream(java.io.File, boolean)
-        * FileOutputStream(java.io.File)
-        * FileOutputStream(java.lang.String, boolean)
-        * FileOutputStream(java.lang.String)
-    
-      Raises:
-        java.io.FileNotFoundException: from java
-    
-    """
     @typing.overload
     def __init__(self, file: typing.Union[File, jpype.protocol.SupportsPath]): ...
     @typing.overload
@@ -1209,13 +702,6 @@ class FileOutputStream(OutputStream):
     def write(self, int: int) -> None: ...
 
 class FilterInputStream(InputStream):
-    """
-    Java class 'java.io.FilterInputStream'
-    
-        Extends:
-            java.io.InputStream
-    
-    """
     def available(self) -> int: ...
     def close(self) -> None: ...
     def mark(self, int: int) -> None: ...
@@ -1230,16 +716,6 @@ class FilterInputStream(InputStream):
     def skip(self, long: int) -> int: ...
 
 class FilterOutputStream(OutputStream):
-    """
-    Java class 'java.io.FilterOutputStream'
-    
-        Extends:
-            java.io.OutputStream
-    
-      Constructors:
-        * FilterOutputStream(java.io.OutputStream)
-    
-    """
     def __init__(self, outputStream: OutputStream): ...
     def close(self) -> None: ...
     def flush(self) -> None: ...
@@ -1251,13 +727,6 @@ class FilterOutputStream(OutputStream):
     def write(self, int: int) -> None: ...
 
 class FilterReader(Reader):
-    """
-    Java class 'java.io.FilterReader'
-    
-        Extends:
-            java.io.Reader
-    
-    """
     def close(self) -> None: ...
     def mark(self, int: int) -> None: ...
     def markSupported(self) -> bool: ...
@@ -1274,13 +743,6 @@ class FilterReader(Reader):
     def skip(self, long: int) -> int: ...
 
 class FilterWriter(Writer):
-    """
-    Java class 'java.io.FilterWriter'
-    
-        Extends:
-            java.io.Writer
-    
-    """
     def close(self) -> None: ...
     def flush(self) -> None: ...
     @typing.overload
@@ -1295,22 +757,6 @@ class FilterWriter(Writer):
     def write(self, string: str) -> None: ...
 
 class InputStreamReader(Reader):
-    """
-    Java class 'java.io.InputStreamReader'
-    
-        Extends:
-            java.io.Reader
-    
-      Constructors:
-        * InputStreamReader(java.io.InputStream, java.nio.charset.CharsetDecoder)
-        * InputStreamReader(java.io.InputStream, java.nio.charset.Charset)
-        * InputStreamReader(java.io.InputStream, java.lang.String)
-        * InputStreamReader(java.io.InputStream)
-    
-      Raises:
-        java.io.UnsupportedEncodingException: from java
-    
-    """
     @typing.overload
     def __init__(self, inputStream: InputStream): ...
     @typing.overload
@@ -1332,20 +778,6 @@ class InputStreamReader(Reader):
     def ready(self) -> bool: ...
 
 class InvalidClassException(ObjectStreamException):
-    """
-    Java class 'java.io.InvalidClassException'
-    
-        Extends:
-            java.io.ObjectStreamException
-    
-      Constructors:
-        * InvalidClassException(java.lang.String)
-        * InvalidClassException(java.lang.String, java.lang.String)
-    
-      Attributes:
-        classname (java.lang.String): field
-    
-    """
     classname: str = ...
     @typing.overload
     def __init__(self, string: str): ...
@@ -1354,69 +786,21 @@ class InvalidClassException(ObjectStreamException):
     def getMessage(self) -> str: ...
 
 class InvalidObjectException(ObjectStreamException):
-    """
-    Java class 'java.io.InvalidObjectException'
-    
-        Extends:
-            java.io.ObjectStreamException
-    
-      Constructors:
-        * InvalidObjectException(java.lang.String)
-    
-    """
     def __init__(self, string: str): ...
 
 class NotActiveException(ObjectStreamException):
-    """
-    Java class 'java.io.NotActiveException'
-    
-        Extends:
-            java.io.ObjectStreamException
-    
-      Constructors:
-        * NotActiveException(java.lang.String)
-        * NotActiveException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class NotSerializableException(ObjectStreamException):
-    """
-    Java class 'java.io.NotSerializableException'
-    
-        Extends:
-            java.io.ObjectStreamException
-    
-      Constructors:
-        * NotSerializableException(java.lang.String)
-        * NotSerializableException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class ObjectInputStream(InputStream, ObjectInput, ObjectStreamConstants):
-    """
-    Java class 'java.io.ObjectInputStream'
-    
-        Extends:
-            java.io.InputStream
-    
-        Interfaces:
-            java.io.ObjectInput, java.io.ObjectStreamConstants
-    
-      Constructors:
-        * ObjectInputStream(java.io.InputStream)
-    
-      Raises:
-        java.io.IOException: from java
-    
-    """
     def __init__(self, inputStream: InputStream): ...
     def available(self) -> int: ...
     def close(self) -> None: ...
@@ -1451,16 +835,6 @@ class ObjectInputStream(InputStream, ObjectInput, ObjectStreamConstants):
     def setObjectInputFilter(self, objectInputFilter: typing.Union[ObjectInputFilter, typing.Callable]) -> None: ...
     def skipBytes(self, int: int) -> int: ...
     class GetField:
-        """
-        Java class 'java.io.ObjectInputStream$GetField'
-        
-            Extends:
-                java.lang.Object
-        
-          Constructors:
-            * GetField()
-        
-        """
         def __init__(self): ...
         def defaulted(self, string: str) -> bool: ...
         @typing.overload
@@ -1484,22 +858,6 @@ class ObjectInputStream(InputStream, ObjectInput, ObjectStreamConstants):
         def getObjectStreamClass(self) -> ObjectStreamClass: ...
 
 class ObjectOutputStream(OutputStream, ObjectOutput, ObjectStreamConstants):
-    """
-    Java class 'java.io.ObjectOutputStream'
-    
-        Extends:
-            java.io.OutputStream
-    
-        Interfaces:
-            java.io.ObjectOutput, java.io.ObjectStreamConstants
-    
-      Constructors:
-        * ObjectOutputStream(java.io.OutputStream)
-    
-      Raises:
-        java.io.IOException: from java
-    
-    """
     def __init__(self, outputStream: OutputStream): ...
     def close(self) -> None: ...
     def defaultWriteObject(self) -> None: ...
@@ -1528,16 +886,6 @@ class ObjectOutputStream(OutputStream, ObjectOutput, ObjectStreamConstants):
     def writeUTF(self, string: str) -> None: ...
     def writeUnshared(self, object: typing.Any) -> None: ...
     class PutField:
-        """
-        Java class 'java.io.ObjectOutputStream$PutField'
-        
-            Extends:
-                java.lang.Object
-        
-          Constructors:
-            * PutField()
-        
-        """
         def __init__(self): ...
         @typing.overload
         def put(self, string: str, boolean: bool) -> None: ...
@@ -1560,37 +908,10 @@ class ObjectOutputStream(OutputStream, ObjectOutput, ObjectStreamConstants):
         def write(self, objectOutput: ObjectOutput) -> None: ...
 
 class OptionalDataException(ObjectStreamException):
-    """
-    Java class 'java.io.OptionalDataException'
-    
-        Extends:
-            java.io.ObjectStreamException
-    
-      Attributes:
-        length (int): field
-        eof (boolean): field
-    
-    """
     length: int = ...
     eof: bool = ...
 
 class OutputStreamWriter(Writer):
-    """
-    Java class 'java.io.OutputStreamWriter'
-    
-        Extends:
-            java.io.Writer
-    
-      Constructors:
-        * OutputStreamWriter(java.io.OutputStream, java.nio.charset.CharsetEncoder)
-        * OutputStreamWriter(java.io.OutputStream, java.nio.charset.Charset)
-        * OutputStreamWriter(java.io.OutputStream)
-        * OutputStreamWriter(java.io.OutputStream, java.lang.String)
-    
-      Raises:
-        java.io.UnsupportedEncodingException: from java
-    
-    """
     @typing.overload
     def __init__(self, outputStream: OutputStream): ...
     @typing.overload
@@ -1620,22 +941,6 @@ class OutputStreamWriter(Writer):
     def write(self, string: str) -> None: ...
 
 class PipedInputStream(InputStream):
-    """
-    Java class 'java.io.PipedInputStream'
-    
-        Extends:
-            java.io.InputStream
-    
-      Constructors:
-        * PipedInputStream(int)
-        * PipedInputStream()
-        * PipedInputStream(java.io.PipedOutputStream, int)
-        * PipedInputStream(java.io.PipedOutputStream)
-    
-      Raises:
-        java.io.IOException: from java
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1655,20 +960,6 @@ class PipedInputStream(InputStream):
     def read(self, byteArray: typing.List[int], int: int, int2: int) -> int: ...
 
 class PipedOutputStream(OutputStream):
-    """
-    Java class 'java.io.PipedOutputStream'
-    
-        Extends:
-            java.io.OutputStream
-    
-      Constructors:
-        * PipedOutputStream(java.io.PipedInputStream)
-        * PipedOutputStream()
-    
-      Raises:
-        java.io.IOException: from java
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1684,22 +975,6 @@ class PipedOutputStream(OutputStream):
     def write(self, int: int) -> None: ...
 
 class PipedReader(Reader):
-    """
-    Java class 'java.io.PipedReader'
-    
-        Extends:
-            java.io.Reader
-    
-      Constructors:
-        * PipedReader(int)
-        * PipedReader()
-        * PipedReader(java.io.PipedWriter, int)
-        * PipedReader(java.io.PipedWriter)
-    
-      Raises:
-        java.io.IOException: from java
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1721,20 +996,6 @@ class PipedReader(Reader):
     def ready(self) -> bool: ...
 
 class PipedWriter(Writer):
-    """
-    Java class 'java.io.PipedWriter'
-    
-        Extends:
-            java.io.Writer
-    
-      Constructors:
-        * PipedWriter(java.io.PipedReader)
-        * PipedWriter()
-    
-      Raises:
-        java.io.IOException: from java
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1754,31 +1015,6 @@ class PipedWriter(Writer):
     def write(self, string: str, int: int, int2: int) -> None: ...
 
 class PrintWriter(Writer):
-    """
-    Java class 'java.io.PrintWriter'
-    
-        Extends:
-            java.io.Writer
-    
-      Constructors:
-        * PrintWriter(java.lang.String)
-        * PrintWriter(java.lang.String, java.lang.String)
-        * PrintWriter(java.lang.String, java.nio.charset.Charset)
-        * PrintWriter(java.io.File)
-        * PrintWriter(java.io.File, java.lang.String)
-        * PrintWriter(java.io.File, java.nio.charset.Charset)
-        * PrintWriter(java.io.Writer)
-        * PrintWriter(java.io.Writer, boolean)
-        * PrintWriter(java.io.OutputStream, boolean, java.nio.charset.Charset)
-        * PrintWriter(java.io.OutputStream, boolean)
-        * PrintWriter(java.io.OutputStream)
-    
-      Raises:
-        java.io.IOException: from java
-        java.io.FileNotFoundException: from java
-        java.io.UnsupportedEncodingException: from java
-    
-    """
     @typing.overload
     def __init__(self, file: typing.Union[File, jpype.protocol.SupportsPath]): ...
     @typing.overload
@@ -1850,17 +1086,6 @@ class PrintWriter(Writer):
     def write(self, string: str, int: int, int2: int) -> None: ...
 
 class SequenceInputStream(InputStream):
-    """
-    Java class 'java.io.SequenceInputStream'
-    
-        Extends:
-            java.io.InputStream
-    
-      Constructors:
-        * SequenceInputStream(java.util.Enumeration)
-        * SequenceInputStream(java.io.InputStream, java.io.InputStream)
-    
-    """
     @typing.overload
     def __init__(self, inputStream: InputStream, inputStream2: InputStream): ...
     @typing.overload
@@ -1875,33 +1100,12 @@ class SequenceInputStream(InputStream):
     def read(self, byteArray: typing.List[int], int: int, int2: int) -> int: ...
 
 class StreamCorruptedException(ObjectStreamException):
-    """
-    Java class 'java.io.StreamCorruptedException'
-    
-        Extends:
-            java.io.ObjectStreamException
-    
-      Constructors:
-        * StreamCorruptedException(java.lang.String)
-        * StreamCorruptedException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class StringBufferInputStream(InputStream):
-    """
-    Java class 'java.io.StringBufferInputStream'
-    
-        Extends:
-            java.io.InputStream
-    
-      Constructors:
-        * StringBufferInputStream(java.lang.String)
-    
-    """
     def __init__(self, string: str): ...
     def available(self) -> int: ...
     @typing.overload
@@ -1914,16 +1118,6 @@ class StringBufferInputStream(InputStream):
     def skip(self, long: int) -> int: ...
 
 class StringReader(Reader):
-    """
-    Java class 'java.io.StringReader'
-    
-        Extends:
-            java.io.Reader
-    
-      Constructors:
-        * StringReader(java.lang.String)
-    
-    """
     def __init__(self, string: str): ...
     def close(self) -> None: ...
     def mark(self, int: int) -> None: ...
@@ -1941,17 +1135,6 @@ class StringReader(Reader):
     def skip(self, long: int) -> int: ...
 
 class StringWriter(Writer):
-    """
-    Java class 'java.io.StringWriter'
-    
-        Extends:
-            java.io.Writer
-    
-      Constructors:
-        * StringWriter()
-        * StringWriter(int)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1978,36 +1161,12 @@ class StringWriter(Writer):
     def write(self, charArray: typing.List[str]) -> None: ...
 
 class WriteAbortedException(ObjectStreamException):
-    """
-    Java class 'java.io.WriteAbortedException'
-    
-        Extends:
-            java.io.ObjectStreamException
-    
-      Constructors:
-        * WriteAbortedException(java.lang.String, java.lang.Exception)
-    
-      Attributes:
-        detail (java.lang.Exception): field
-    
-    """
     detail: java.lang.Exception = ...
     def __init__(self, string: str, exception: java.lang.Exception): ...
     def getCause(self) -> java.lang.Throwable: ...
     def getMessage(self) -> str: ...
 
 class BufferedInputStream(FilterInputStream):
-    """
-    Java class 'java.io.BufferedInputStream'
-    
-        Extends:
-            java.io.FilterInputStream
-    
-      Constructors:
-        * BufferedInputStream(java.io.InputStream, int)
-        * BufferedInputStream(java.io.InputStream)
-    
-    """
     @typing.overload
     def __init__(self, inputStream: InputStream): ...
     @typing.overload
@@ -2026,17 +1185,6 @@ class BufferedInputStream(FilterInputStream):
     def skip(self, long: int) -> int: ...
 
 class BufferedOutputStream(FilterOutputStream):
-    """
-    Java class 'java.io.BufferedOutputStream'
-    
-        Extends:
-            java.io.FilterOutputStream
-    
-      Constructors:
-        * BufferedOutputStream(java.io.OutputStream)
-        * BufferedOutputStream(java.io.OutputStream, int)
-    
-    """
     @typing.overload
     def __init__(self, outputStream: OutputStream): ...
     @typing.overload
@@ -2050,19 +1198,6 @@ class BufferedOutputStream(FilterOutputStream):
     def write(self, byteArray: typing.List[int]) -> None: ...
 
 class DataInputStream(FilterInputStream, DataInput):
-    """
-    Java class 'java.io.DataInputStream'
-    
-        Extends:
-            java.io.FilterInputStream
-    
-        Interfaces:
-            java.io.DataInput
-    
-      Constructors:
-        * DataInputStream(java.io.InputStream)
-    
-    """
     def __init__(self, inputStream: InputStream): ...
     @typing.overload
     def read(self, byteArray: typing.List[int]) -> int: ...
@@ -2093,19 +1228,6 @@ class DataInputStream(FilterInputStream, DataInput):
     def skipBytes(self, int: int) -> int: ...
 
 class DataOutputStream(FilterOutputStream, DataOutput):
-    """
-    Java class 'java.io.DataOutputStream'
-    
-        Extends:
-            java.io.FilterOutputStream
-    
-        Interfaces:
-            java.io.DataOutput
-    
-      Constructors:
-        * DataOutputStream(java.io.OutputStream)
-    
-    """
     def __init__(self, outputStream: OutputStream): ...
     def flush(self) -> None: ...
     def size(self) -> int: ...
@@ -2128,24 +1250,6 @@ class DataOutputStream(FilterOutputStream, DataOutput):
     def writeUTF(self, string: str) -> None: ...
 
 class FileReader(InputStreamReader):
-    """
-    Java class 'java.io.FileReader'
-    
-        Extends:
-            java.io.InputStreamReader
-    
-      Constructors:
-        * FileReader(java.io.File, java.nio.charset.Charset)
-        * FileReader(java.lang.String, java.nio.charset.Charset)
-        * FileReader(java.io.FileDescriptor)
-        * FileReader(java.io.File)
-        * FileReader(java.lang.String)
-    
-      Raises:
-        java.io.IOException: from java
-        java.io.FileNotFoundException: from java
-    
-    """
     @typing.overload
     def __init__(self, file: typing.Union[File, jpype.protocol.SupportsPath]): ...
     @typing.overload
@@ -2158,27 +1262,6 @@ class FileReader(InputStreamReader):
     def __init__(self, string: str, charset: java.nio.charset.Charset): ...
 
 class FileWriter(OutputStreamWriter):
-    """
-    Java class 'java.io.FileWriter'
-    
-        Extends:
-            java.io.OutputStreamWriter
-    
-      Constructors:
-        * FileWriter(java.io.FileDescriptor)
-        * FileWriter(java.lang.String, java.nio.charset.Charset)
-        * FileWriter(java.lang.String, java.nio.charset.Charset, boolean)
-        * FileWriter(java.io.File, java.nio.charset.Charset)
-        * FileWriter(java.io.File, java.nio.charset.Charset, boolean)
-        * FileWriter(java.lang.String)
-        * FileWriter(java.lang.String, boolean)
-        * FileWriter(java.io.File)
-        * FileWriter(java.io.File, boolean)
-    
-      Raises:
-        java.io.IOException: from java
-    
-    """
     @typing.overload
     def __init__(self, file: typing.Union[File, jpype.protocol.SupportsPath]): ...
     @typing.overload
@@ -2199,16 +1282,6 @@ class FileWriter(OutputStreamWriter):
     def __init__(self, string: str, charset: java.nio.charset.Charset, boolean: bool): ...
 
 class LineNumberInputStream(FilterInputStream):
-    """
-    Java class 'java.io.LineNumberInputStream'
-    
-        Extends:
-            java.io.FilterInputStream
-    
-      Constructors:
-        * LineNumberInputStream(java.io.InputStream)
-    
-    """
     def __init__(self, inputStream: InputStream): ...
     def available(self) -> int: ...
     def getLineNumber(self) -> int: ...
@@ -2224,17 +1297,6 @@ class LineNumberInputStream(FilterInputStream):
     def skip(self, long: int) -> int: ...
 
 class LineNumberReader(BufferedReader):
-    """
-    Java class 'java.io.LineNumberReader'
-    
-        Extends:
-            java.io.BufferedReader
-    
-      Constructors:
-        * LineNumberReader(java.io.Reader)
-        * LineNumberReader(java.io.Reader, int)
-    
-    """
     @typing.overload
     def __init__(self, reader: Reader): ...
     @typing.overload
@@ -2255,33 +1317,6 @@ class LineNumberReader(BufferedReader):
     def skip(self, long: int) -> int: ...
 
 class PrintStream(FilterOutputStream, java.lang.Appendable, Closeable):
-    """
-    Java class 'java.io.PrintStream'
-    
-        Extends:
-            java.io.FilterOutputStream
-    
-        Interfaces:
-            java.lang.Appendable, java.io.Closeable
-    
-      Constructors:
-        * PrintStream(java.lang.String, java.lang.String)
-        * PrintStream(java.lang.String)
-        * PrintStream(java.io.OutputStream, boolean, java.nio.charset.Charset)
-        * PrintStream(java.io.OutputStream, boolean, java.lang.String)
-        * PrintStream(java.lang.String, java.nio.charset.Charset)
-        * PrintStream(java.io.File, java.lang.String)
-        * PrintStream(java.io.File, java.nio.charset.Charset)
-        * PrintStream(java.io.File)
-        * PrintStream(java.io.OutputStream)
-        * PrintStream(java.io.OutputStream, boolean)
-    
-      Raises:
-        java.io.IOException: from java
-        java.io.FileNotFoundException: from java
-        java.io.UnsupportedEncodingException: from java
-    
-    """
     @typing.overload
     def __init__(self, file: typing.Union[File, jpype.protocol.SupportsPath]): ...
     @typing.overload
@@ -2347,17 +1382,6 @@ class PrintStream(FilterOutputStream, java.lang.Appendable, Closeable):
     def write(self, int: int) -> None: ...
 
 class PushbackInputStream(FilterInputStream):
-    """
-    Java class 'java.io.PushbackInputStream'
-    
-        Extends:
-            java.io.FilterInputStream
-    
-      Constructors:
-        * PushbackInputStream(java.io.InputStream)
-        * PushbackInputStream(java.io.InputStream, int)
-    
-    """
     @typing.overload
     def __init__(self, inputStream: InputStream): ...
     @typing.overload
@@ -2382,17 +1406,6 @@ class PushbackInputStream(FilterInputStream):
     def unread(self, int: int) -> None: ...
 
 class PushbackReader(FilterReader):
-    """
-    Java class 'java.io.PushbackReader'
-    
-        Extends:
-            java.io.FilterReader
-    
-      Constructors:
-        * PushbackReader(java.io.Reader, int)
-        * PushbackReader(java.io.Reader)
-    
-    """
     @typing.overload
     def __init__(self, reader: Reader): ...
     @typing.overload

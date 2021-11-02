@@ -7,46 +7,80 @@ import typing
 
 class BeamDestination(cern.accsoft.commons.util.Named):
     """
-    Java class 'cern.accsoft.commons.domain.beamdestinations.BeamDestination'
+    public interface BeamDestination extends cern.accsoft.commons.util.Named
     
-        Interfaces:
-            cern.accsoft.commons.util.Named
-    
+        Accelerator beam destination.
     """
-    def getAccelerator(self) -> cern.accsoft.commons.domain.Accelerator: ...
+    def getAccelerator(self) -> cern.accsoft.commons.domain.Accelerator:
+        """
+        
+            Returns:
+                the accelerator this beam destination belongs to (never :code:`null`)
+        
+        
+        """
+        ...
     def getEndPoints(self) -> java.util.Set['BeamDestinationEndPoint']: ...
 
 class BeamDestinationEndPoint(cern.accsoft.commons.util.Named):
     """
-    Java class 'cern.accsoft.commons.domain.beamdestinations.BeamDestinationEndPoint'
+    public interface BeamDestinationEndPoint extends cern.accsoft.commons.util.Named
     
-        Interfaces:
-            cern.accsoft.commons.util.Named
-    
+        Accelerator beam destination end point.
     """
-    def getBeamDestination(self) -> BeamDestination: ...
+    def getBeamDestination(self) -> BeamDestination:
+        """
+        
+            Returns:
+                the beam destination this end point belongs to (never :code:`null`)
+        
+        
+        """
+        ...
 
 class SpsAwakeEndPoint(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['SpsAwakeEndPoint'], BeamDestinationEndPoint):
     """
-    Java class 'cern.accsoft.commons.domain.beamdestinations.SpsAwakeEndPoint'
+    public class SpsAwakeEndPoint extends cern.accsoft.commons.util.AbstractImmutableNamedSerializable<:class:`~cern.accsoft.commons.domain.beamdestinations.SpsAwakeEndPoint`> implements :class:`~cern.accsoft.commons.domain.beamdestinations.BeamDestinationEndPoint`
     
-        Extends:
-            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+        SPS AWAKE end points.
     
-        Interfaces:
-            cern.accsoft.commons.domain.beamdestinations.BeamDestinationEn
-            dPoint
-    
-      Attributes:
-        NO_EXTRACTION (cern.accsoft.commons.domain.beamdestinations.SpsAwakeEndPoint): final static field
-        T40 (cern.accsoft.commons.domain.beamdestinations.SpsAwakeEndPoint): final static field
-        TT40_TED (cern.accsoft.commons.domain.beamdestinations.SpsAwakeEndPoint): final static field
-    
+        Also see:
+            :meth:`~serialized`
     """
     NO_EXTRACTION: typing.ClassVar['SpsAwakeEndPoint'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.beamdestinations.SpsAwakeEndPoint` NO_EXTRACTION
+    
+        NO EXTRACTION
+    
+    """
     T40: typing.ClassVar['SpsAwakeEndPoint'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.beamdestinations.SpsAwakeEndPoint` T40
+    
+        T40
+    
+    """
     TT40_TED: typing.ClassVar['SpsAwakeEndPoint'] = ...
-    def getBeamDestination(self) -> 'SpsBeamDestination': ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.beamdestinations.SpsAwakeEndPoint` TT40_TED
+    
+        TT40 TED
+    
+    """
+    def getBeamDestination(self) -> 'SpsBeamDestination':
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.beamdestinations.BeamDestinationEndPoint.getBeamDestination`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.beamdestinations.BeamDestinationEndPoint`
+        
+            Returns:
+                the beam destination this end point belongs to (never :code:`null`)
+        
+        
+        """
+        ...
     @staticmethod
     def valueOf(string: str) -> 'SpsAwakeEndPoint': ...
     @staticmethod
@@ -54,28 +88,61 @@ class SpsAwakeEndPoint(cern.accsoft.commons.util.AbstractImmutableNamedSerializa
 
 class SpsBeamDestination(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['SpsBeamDestination'], BeamDestination):
     """
-    Java class 'cern.accsoft.commons.domain.beamdestinations.SpsBeamDestination'
+    public class SpsBeamDestination extends cern.accsoft.commons.util.AbstractImmutableNamedSerializable<:class:`~cern.accsoft.commons.domain.beamdestinations.SpsBeamDestination`> implements :class:`~cern.accsoft.commons.domain.beamdestinations.BeamDestination`
     
-        Extends:
-            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+        SPS beam destinations.
     
-        Interfaces:
-            cern.accsoft.commons.domain.beamdestinations.BeamDestination
-    
-      Attributes:
-        AWAKE (cern.accsoft.commons.domain.beamdestinations.SpsBeamDestination): final static field
-        FTARGET (cern.accsoft.commons.domain.beamdestinations.SpsBeamDestination): final static field
-        HIRADMAT (cern.accsoft.commons.domain.beamdestinations.SpsBeamDestination): final static field
-        LHC_B1 (cern.accsoft.commons.domain.beamdestinations.SpsBeamDestination): final static field
-        LHC_B2 (cern.accsoft.commons.domain.beamdestinations.SpsBeamDestination): final static field
-    
+        Also see:
+            :meth:`~serialized`
     """
     AWAKE: typing.ClassVar['SpsBeamDestination'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.beamdestinations.SpsBeamDestination` AWAKE
+    
+        AWAKE
+    
+    """
     FTARGET: typing.ClassVar['SpsBeamDestination'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.beamdestinations.SpsBeamDestination` FTARGET
+    
+        Fixed Target
+    
+    """
     HIRADMAT: typing.ClassVar['SpsBeamDestination'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.beamdestinations.SpsBeamDestination` HIRADMAT
+    
+        HIRADMAT
+    
+    """
     LHC_B1: typing.ClassVar['SpsBeamDestination'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.beamdestinations.SpsBeamDestination` LHC_B1
+    
+        LHC B1
+    
+    """
     LHC_B2: typing.ClassVar['SpsBeamDestination'] = ...
-    def getAccelerator(self) -> cern.accsoft.commons.domain.Accelerator: ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.beamdestinations.SpsBeamDestination` LHC_B2
+    
+        LHC B2
+    
+    """
+    def getAccelerator(self) -> cern.accsoft.commons.domain.Accelerator:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.beamdestinations.BeamDestination.getAccelerator`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.beamdestinations.BeamDestination`
+        
+            Returns:
+                the accelerator this beam destination belongs to (never :code:`null`)
+        
+        
+        """
+        ...
     def getEndPoints(self) -> java.util.Set[BeamDestinationEndPoint]: ...
     @staticmethod
     def valueOf(string: str) -> 'SpsBeamDestination': ...
@@ -84,27 +151,54 @@ class SpsBeamDestination(cern.accsoft.commons.util.AbstractImmutableNamedSeriali
 
 class SpsFTargetEndPoint(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['SpsFTargetEndPoint'], BeamDestinationEndPoint):
     """
-    Java class 'cern.accsoft.commons.domain.beamdestinations.SpsFTargetEndPoint'
+    public class SpsFTargetEndPoint extends cern.accsoft.commons.util.AbstractImmutableNamedSerializable<:class:`~cern.accsoft.commons.domain.beamdestinations.SpsFTargetEndPoint`> implements :class:`~cern.accsoft.commons.domain.beamdestinations.BeamDestinationEndPoint`
     
-        Extends:
-            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+        SPS FTARGET end points.
     
-        Interfaces:
-            cern.accsoft.commons.domain.beamdestinations.BeamDestinationEn
-            dPoint
-    
-      Attributes:
-        NO_EXTRACTION (cern.accsoft.commons.domain.beamdestinations.SpsFTargetEndPoint): final static field
-        T2_T4_T6 (cern.accsoft.commons.domain.beamdestinations.SpsFTargetEndPoint): final static field
-        T2_T4_T6_T10 (cern.accsoft.commons.domain.beamdestinations.SpsFTargetEndPoint): final static field
-        TT20_TED (cern.accsoft.commons.domain.beamdestinations.SpsFTargetEndPoint): final static field
-    
+        Also see:
+            :meth:`~serialized`
     """
     NO_EXTRACTION: typing.ClassVar['SpsFTargetEndPoint'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.beamdestinations.SpsFTargetEndPoint` NO_EXTRACTION
+    
+        NO EXTRACTION
+    
+    """
     T2_T4_T6: typing.ClassVar['SpsFTargetEndPoint'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.beamdestinations.SpsFTargetEndPoint` T2_T4_T6
+    
+        T2 T4 T6
+    
+    """
     T2_T4_T6_T10: typing.ClassVar['SpsFTargetEndPoint'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.beamdestinations.SpsFTargetEndPoint` T2_T4_T6_T10
+    
+        T2 T4 T6 T10
+    
+    """
     TT20_TED: typing.ClassVar['SpsFTargetEndPoint'] = ...
-    def getBeamDestination(self) -> SpsBeamDestination: ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.beamdestinations.SpsFTargetEndPoint` TT20_TED
+    
+        TT20 TED
+    
+    """
+    def getBeamDestination(self) -> SpsBeamDestination:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.beamdestinations.BeamDestinationEndPoint.getBeamDestination`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.beamdestinations.BeamDestinationEndPoint`
+        
+            Returns:
+                the beam destination this end point belongs to (never :code:`null`)
+        
+        
+        """
+        ...
     @staticmethod
     def valueOf(string: str) -> 'SpsFTargetEndPoint': ...
     @staticmethod
@@ -112,25 +206,47 @@ class SpsFTargetEndPoint(cern.accsoft.commons.util.AbstractImmutableNamedSeriali
 
 class SpsHiradmatEndPoint(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['SpsHiradmatEndPoint'], BeamDestinationEndPoint):
     """
-    Java class 'cern.accsoft.commons.domain.beamdestinations.SpsHiradmatEndPoint'
+    public class SpsHiradmatEndPoint extends cern.accsoft.commons.util.AbstractImmutableNamedSerializable<:class:`~cern.accsoft.commons.domain.beamdestinations.SpsHiradmatEndPoint`> implements :class:`~cern.accsoft.commons.domain.beamdestinations.BeamDestinationEndPoint`
     
-        Extends:
-            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+        SPS HIRADMAT end points.
     
-        Interfaces:
-            cern.accsoft.commons.domain.beamdestinations.BeamDestinationEn
-            dPoint
-    
-      Attributes:
-        NO_EXTRACTION (cern.accsoft.commons.domain.beamdestinations.SpsHiradmatEndPoint): final static field
-        TT60_TED (cern.accsoft.commons.domain.beamdestinations.SpsHiradmatEndPoint): final static field
-        TEST_BENCH (cern.accsoft.commons.domain.beamdestinations.SpsHiradmatEndPoint): final static field
-    
+        Also see:
+            :meth:`~serialized`
     """
     NO_EXTRACTION: typing.ClassVar['SpsHiradmatEndPoint'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.beamdestinations.SpsHiradmatEndPoint` NO_EXTRACTION
+    
+        NO EXTRACTION
+    
+    """
     TT60_TED: typing.ClassVar['SpsHiradmatEndPoint'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.beamdestinations.SpsHiradmatEndPoint` TT60_TED
+    
+        TT60 TED
+    
+    """
     TEST_BENCH: typing.ClassVar['SpsHiradmatEndPoint'] = ...
-    def getBeamDestination(self) -> SpsBeamDestination: ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.beamdestinations.SpsHiradmatEndPoint` TEST_BENCH
+    
+        TEST BEANCH
+    
+    """
+    def getBeamDestination(self) -> SpsBeamDestination:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.beamdestinations.BeamDestinationEndPoint.getBeamDestination`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.beamdestinations.BeamDestinationEndPoint`
+        
+            Returns:
+                the beam destination this end point belongs to (never :code:`null`)
+        
+        
+        """
+        ...
     @staticmethod
     def valueOf(string: str) -> 'SpsHiradmatEndPoint': ...
     @staticmethod
@@ -138,27 +254,54 @@ class SpsHiradmatEndPoint(cern.accsoft.commons.util.AbstractImmutableNamedSerial
 
 class SpsLhcB1EndPoint(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['SpsLhcB1EndPoint'], BeamDestinationEndPoint):
     """
-    Java class 'cern.accsoft.commons.domain.beamdestinations.SpsLhcB1EndPoint'
+    public class SpsLhcB1EndPoint extends cern.accsoft.commons.util.AbstractImmutableNamedSerializable<:class:`~cern.accsoft.commons.domain.beamdestinations.SpsLhcB1EndPoint`> implements :class:`~cern.accsoft.commons.domain.beamdestinations.BeamDestinationEndPoint`
     
-        Extends:
-            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+        SPS LHC B1 end points.
     
-        Interfaces:
-            cern.accsoft.commons.domain.beamdestinations.BeamDestinationEn
-            dPoint
-    
-      Attributes:
-        NO_EXTRACTION (cern.accsoft.commons.domain.beamdestinations.SpsLhcB1EndPoint): final static field
-        LHC_RING1 (cern.accsoft.commons.domain.beamdestinations.SpsLhcB1EndPoint): final static field
-        TI2_TED (cern.accsoft.commons.domain.beamdestinations.SpsLhcB1EndPoint): final static field
-        TT60_TED (cern.accsoft.commons.domain.beamdestinations.SpsLhcB1EndPoint): final static field
-    
+        Also see:
+            :meth:`~serialized`
     """
     NO_EXTRACTION: typing.ClassVar['SpsLhcB1EndPoint'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.beamdestinations.SpsLhcB1EndPoint` NO_EXTRACTION
+    
+        NO EXTRACTION
+    
+    """
     LHC_RING1: typing.ClassVar['SpsLhcB1EndPoint'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.beamdestinations.SpsLhcB1EndPoint` LHC_RING1
+    
+        LHC RING1
+    
+    """
     TI2_TED: typing.ClassVar['SpsLhcB1EndPoint'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.beamdestinations.SpsLhcB1EndPoint` TI2_TED
+    
+        TI2 TED
+    
+    """
     TT60_TED: typing.ClassVar['SpsLhcB1EndPoint'] = ...
-    def getBeamDestination(self) -> SpsBeamDestination: ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.beamdestinations.SpsLhcB1EndPoint` TT60_TED
+    
+        TT60 TED
+    
+    """
+    def getBeamDestination(self) -> SpsBeamDestination:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.beamdestinations.BeamDestinationEndPoint.getBeamDestination`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.beamdestinations.BeamDestinationEndPoint`
+        
+            Returns:
+                the beam destination this end point belongs to (never :code:`null`)
+        
+        
+        """
+        ...
     @staticmethod
     def valueOf(string: str) -> 'SpsLhcB1EndPoint': ...
     @staticmethod
@@ -166,27 +309,54 @@ class SpsLhcB1EndPoint(cern.accsoft.commons.util.AbstractImmutableNamedSerializa
 
 class SpsLhcB2EndPoint(cern.accsoft.commons.util.AbstractImmutableNamedSerializable['SpsLhcB2EndPoint'], BeamDestinationEndPoint):
     """
-    Java class 'cern.accsoft.commons.domain.beamdestinations.SpsLhcB2EndPoint'
+    public class SpsLhcB2EndPoint extends cern.accsoft.commons.util.AbstractImmutableNamedSerializable<:class:`~cern.accsoft.commons.domain.beamdestinations.SpsLhcB2EndPoint`> implements :class:`~cern.accsoft.commons.domain.beamdestinations.BeamDestinationEndPoint`
     
-        Extends:
-            cern.accsoft.commons.util.AbstractImmutableNamedSerializable
+        SPS LHC B2 end points.
     
-        Interfaces:
-            cern.accsoft.commons.domain.beamdestinations.BeamDestinationEn
-            dPoint
-    
-      Attributes:
-        NO_EXTRACTION (cern.accsoft.commons.domain.beamdestinations.SpsLhcB2EndPoint): final static field
-        LHC_RING2 (cern.accsoft.commons.domain.beamdestinations.SpsLhcB2EndPoint): final static field
-        TI8_TED (cern.accsoft.commons.domain.beamdestinations.SpsLhcB2EndPoint): final static field
-        TT40_TED (cern.accsoft.commons.domain.beamdestinations.SpsLhcB2EndPoint): final static field
-    
+        Also see:
+            :meth:`~serialized`
     """
     NO_EXTRACTION: typing.ClassVar['SpsLhcB2EndPoint'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.beamdestinations.SpsLhcB2EndPoint` NO_EXTRACTION
+    
+        NO EXTRACTION
+    
+    """
     LHC_RING2: typing.ClassVar['SpsLhcB2EndPoint'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.beamdestinations.SpsLhcB2EndPoint` LHC_RING2
+    
+        LHC RING2
+    
+    """
     TI8_TED: typing.ClassVar['SpsLhcB2EndPoint'] = ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.beamdestinations.SpsLhcB2EndPoint` TI8_TED
+    
+        TI8 TED
+    
+    """
     TT40_TED: typing.ClassVar['SpsLhcB2EndPoint'] = ...
-    def getBeamDestination(self) -> SpsBeamDestination: ...
+    """
+    public static final :class:`~cern.accsoft.commons.domain.beamdestinations.SpsLhcB2EndPoint` TT40_TED
+    
+        TT40 TED
+    
+    """
+    def getBeamDestination(self) -> SpsBeamDestination:
+        """
+        
+            Specified by:
+                :meth:`~cern.accsoft.commons.domain.beamdestinations.BeamDestinationEndPoint.getBeamDestination`Â in
+                interfaceÂ :class:`~cern.accsoft.commons.domain.beamdestinations.BeamDestinationEndPoint`
+        
+            Returns:
+                the beam destination this end point belongs to (never :code:`null`)
+        
+        
+        """
+        ...
     @staticmethod
     def valueOf(string: str) -> 'SpsLhcB2EndPoint': ...
     @staticmethod

@@ -10,29 +10,10 @@ import typing
 
 
 class Autoscroll:
-    """
-    Java class 'java.awt.dnd.Autoscroll'
-    
-    """
     def autoscroll(self, point: java.awt.Point) -> None: ...
     def getAutoscrollInsets(self) -> java.awt.Insets: ...
 
 class DnDConstants:
-    """
-    Java class 'java.awt.dnd.DnDConstants'
-    
-        Extends:
-            java.lang.Object
-    
-      Attributes:
-        ACTION_NONE (int): final static field
-        ACTION_COPY (int): final static field
-        ACTION_MOVE (int): final static field
-        ACTION_COPY_OR_MOVE (int): final static field
-        ACTION_LINK (int): final static field
-        ACTION_REFERENCE (int): final static field
-    
-    """
     ACTION_NONE: typing.ClassVar[int] = ...
     ACTION_COPY: typing.ClassVar[int] = ...
     ACTION_MOVE: typing.ClassVar[int] = ...
@@ -41,16 +22,6 @@ class DnDConstants:
     ACTION_REFERENCE: typing.ClassVar[int] = ...
 
 class DragGestureEvent(java.util.EventObject):
-    """
-    Java class 'java.awt.dnd.DragGestureEvent'
-    
-        Extends:
-            java.util.EventObject
-    
-      Constructors:
-        * DragGestureEvent(java.awt.dnd.DragGestureRecognizer, int, java.awt.Point, java.util.List)
-    
-    """
     def __init__(self, dragGestureRecognizer: 'DragGestureRecognizer', int: int, point: java.awt.Point, list: java.util.List[java.awt.event.InputEvent]): ...
     def getComponent(self) -> java.awt.Component: ...
     def getDragAction(self) -> int: ...
@@ -71,26 +42,9 @@ class DragGestureEvent(java.util.EventObject):
     def toArray(self, objectArray: typing.List[typing.Any]) -> typing.List[typing.Any]: ...
 
 class DragGestureListener(java.util.EventListener):
-    """
-    Java class 'java.awt.dnd.DragGestureListener'
-    
-        Interfaces:
-            java.util.EventListener
-    
-    """
     def dragGestureRecognized(self, dragGestureEvent: DragGestureEvent) -> None: ...
 
 class DragGestureRecognizer(java.io.Serializable):
-    """
-    Java class 'java.awt.dnd.DragGestureRecognizer'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable
-    
-    """
     def addDragGestureListener(self, dragGestureListener: DragGestureListener) -> None: ...
     def getComponent(self) -> java.awt.Component: ...
     def getDragSource(self) -> 'DragSource': ...
@@ -102,30 +56,6 @@ class DragGestureRecognizer(java.io.Serializable):
     def setSourceActions(self, int: int) -> None: ...
 
 class DragSource(java.io.Serializable):
-    """
-    Java class 'java.awt.dnd.DragSource'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable
-    
-      Constructors:
-        * DragSource()
-    
-      Raises:
-        java.awt.HeadlessException: from java
-    
-      Attributes:
-        DefaultCopyDrop (java.awt.Cursor): final static field
-        DefaultMoveDrop (java.awt.Cursor): final static field
-        DefaultLinkDrop (java.awt.Cursor): final static field
-        DefaultCopyNoDrop (java.awt.Cursor): final static field
-        DefaultMoveNoDrop (java.awt.Cursor): final static field
-        DefaultLinkNoDrop (java.awt.Cursor): final static field
-    
-    """
     DefaultCopyDrop: typing.ClassVar[java.awt.Cursor] = ...
     DefaultMoveDrop: typing.ClassVar[java.awt.Cursor] = ...
     DefaultLinkDrop: typing.ClassVar[java.awt.Cursor] = ...
@@ -161,17 +91,6 @@ class DragSource(java.io.Serializable):
     def startDrag(self, dragGestureEvent: DragGestureEvent, cursor: java.awt.Cursor, transferable: java.awt.datatransfer.Transferable, dragSourceListener: 'DragSourceListener', flavorMap: java.awt.datatransfer.FlavorMap) -> None: ...
 
 class DragSourceEvent(java.util.EventObject):
-    """
-    Java class 'java.awt.dnd.DragSourceEvent'
-    
-        Extends:
-            java.util.EventObject
-    
-      Constructors:
-        * DragSourceEvent(java.awt.dnd.DragSourceContext)
-        * DragSourceEvent(java.awt.dnd.DragSourceContext, int, int)
-    
-    """
     @typing.overload
     def __init__(self, dragSourceContext: 'DragSourceContext'): ...
     @typing.overload
@@ -182,13 +101,6 @@ class DragSourceEvent(java.util.EventObject):
     def getY(self) -> int: ...
 
 class DragSourceListener(java.util.EventListener):
-    """
-    Java class 'java.awt.dnd.DragSourceListener'
-    
-        Interfaces:
-            java.util.EventListener
-    
-    """
     def dragDropEnd(self, dragSourceDropEvent: 'DragSourceDropEvent') -> None: ...
     def dragEnter(self, dragSourceDragEvent: 'DragSourceDragEvent') -> None: ...
     def dragExit(self, dragSourceEvent: DragSourceEvent) -> None: ...
@@ -196,52 +108,18 @@ class DragSourceListener(java.util.EventListener):
     def dropActionChanged(self, dragSourceDragEvent: 'DragSourceDragEvent') -> None: ...
 
 class DragSourceMotionListener(java.util.EventListener):
-    """
-    Java class 'java.awt.dnd.DragSourceMotionListener'
-    
-        Interfaces:
-            java.util.EventListener
-    
-    """
     def dragMouseMoved(self, dragSourceDragEvent: 'DragSourceDragEvent') -> None: ...
 
 class DropTargetContext(java.io.Serializable):
-    """
-    Java class 'java.awt.dnd.DropTargetContext'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable
-    
-    """
     def dropComplete(self, boolean: bool) -> None: ...
     def getComponent(self) -> java.awt.Component: ...
     def getDropTarget(self) -> 'DropTarget': ...
 
 class DropTargetEvent(java.util.EventObject):
-    """
-    Java class 'java.awt.dnd.DropTargetEvent'
-    
-        Extends:
-            java.util.EventObject
-    
-      Constructors:
-        * DropTargetEvent(java.awt.dnd.DropTargetContext)
-    
-    """
     def __init__(self, dropTargetContext: DropTargetContext): ...
     def getDropTargetContext(self) -> DropTargetContext: ...
 
 class DropTargetListener(java.util.EventListener):
-    """
-    Java class 'java.awt.dnd.DropTargetListener'
-    
-        Interfaces:
-            java.util.EventListener
-    
-    """
     def dragEnter(self, dropTargetDragEvent: 'DropTargetDragEvent') -> None: ...
     def dragExit(self, dropTargetEvent: DropTargetEvent) -> None: ...
     def dragOver(self, dropTargetDragEvent: 'DropTargetDragEvent') -> None: ...
@@ -249,37 +127,12 @@ class DropTargetListener(java.util.EventListener):
     def dropActionChanged(self, dropTargetDragEvent: 'DropTargetDragEvent') -> None: ...
 
 class InvalidDnDOperationException(java.lang.IllegalStateException):
-    """
-    Java class 'java.awt.dnd.InvalidDnDOperationException'
-    
-        Extends:
-            java.lang.IllegalStateException
-    
-      Constructors:
-        * InvalidDnDOperationException()
-        * InvalidDnDOperationException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class DragSourceAdapter(DragSourceListener, DragSourceMotionListener):
-    """
-    Java class 'java.awt.dnd.DragSourceAdapter'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.awt.dnd.DragSourceListener,
-            java.awt.dnd.DragSourceMotionListener
-    
-      Constructors:
-        * DragSourceAdapter()
-    
-    """
     def __init__(self): ...
     def dragDropEnd(self, dragSourceDropEvent: 'DragSourceDropEvent') -> None: ...
     def dragEnter(self, dragSourceDragEvent: 'DragSourceDragEvent') -> None: ...
@@ -289,20 +142,6 @@ class DragSourceAdapter(DragSourceListener, DragSourceMotionListener):
     def dropActionChanged(self, dragSourceDragEvent: 'DragSourceDragEvent') -> None: ...
 
 class DragSourceContext(DragSourceListener, DragSourceMotionListener, java.io.Serializable):
-    """
-    Java class 'java.awt.dnd.DragSourceContext'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.awt.dnd.DragSourceListener,
-            java.awt.dnd.DragSourceMotionListener, java.io.Serializable
-    
-      Constructors:
-        * DragSourceContext(java.awt.dnd.DragGestureEvent, java.awt.Cursor, java.awt.Image, java.awt.Point, java.awt.datatransfer.Transferable, java.awt.dnd.DragSourceListener)
-    
-    """
     def __init__(self, dragGestureEvent: DragGestureEvent, cursor: java.awt.Cursor, image: java.awt.Image, point: java.awt.Point, transferable: java.awt.datatransfer.Transferable, dragSourceListener: DragSourceListener): ...
     def addDragSourceListener(self, dragSourceListener: DragSourceListener) -> None: ...
     def dragDropEnd(self, dragSourceDropEvent: 'DragSourceDropEvent') -> None: ...
@@ -322,17 +161,6 @@ class DragSourceContext(DragSourceListener, DragSourceMotionListener, java.io.Se
     def transferablesFlavorsChanged(self) -> None: ...
 
 class DragSourceDragEvent(DragSourceEvent):
-    """
-    Java class 'java.awt.dnd.DragSourceDragEvent'
-    
-        Extends:
-            java.awt.dnd.DragSourceEvent
-    
-      Constructors:
-        * DragSourceDragEvent(java.awt.dnd.DragSourceContext, int, int, int)
-        * DragSourceDragEvent(java.awt.dnd.DragSourceContext, int, int, int, int, int)
-    
-    """
     @typing.overload
     def __init__(self, dragSourceContext: DragSourceContext, int: int, int2: int, int3: int): ...
     @typing.overload
@@ -344,18 +172,6 @@ class DragSourceDragEvent(DragSourceEvent):
     def getUserAction(self) -> int: ...
 
 class DragSourceDropEvent(DragSourceEvent):
-    """
-    Java class 'java.awt.dnd.DragSourceDropEvent'
-    
-        Extends:
-            java.awt.dnd.DragSourceEvent
-    
-      Constructors:
-        * DragSourceDropEvent(java.awt.dnd.DragSourceContext)
-        * DragSourceDropEvent(java.awt.dnd.DragSourceContext, int, boolean, int, int)
-        * DragSourceDropEvent(java.awt.dnd.DragSourceContext, int, boolean)
-    
-    """
     @typing.overload
     def __init__(self, dragSourceContext: DragSourceContext): ...
     @typing.overload
@@ -366,26 +182,6 @@ class DragSourceDropEvent(DragSourceEvent):
     def getDropSuccess(self) -> bool: ...
 
 class DropTarget(DropTargetListener, java.io.Serializable):
-    """
-    Java class 'java.awt.dnd.DropTarget'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.awt.dnd.DropTargetListener, java.io.Serializable
-    
-      Constructors:
-        * DropTarget(java.awt.Component, int, java.awt.dnd.DropTargetListener)
-        * DropTarget(java.awt.Component, java.awt.dnd.DropTargetListener)
-        * DropTarget()
-        * DropTarget(java.awt.Component, int, java.awt.dnd.DropTargetListener, boolean)
-        * DropTarget(java.awt.Component, int, java.awt.dnd.DropTargetListener, boolean, java.awt.datatransfer.FlavorMap)
-    
-      Raises:
-        java.awt.HeadlessException: from java
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -416,19 +212,6 @@ class DropTarget(DropTargetListener, java.io.Serializable):
     def setFlavorMap(self, flavorMap: java.awt.datatransfer.FlavorMap) -> None: ...
 
 class DropTargetAdapter(DropTargetListener):
-    """
-    Java class 'java.awt.dnd.DropTargetAdapter'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.awt.dnd.DropTargetListener
-    
-      Constructors:
-        * DropTargetAdapter()
-    
-    """
     def __init__(self): ...
     def dragEnter(self, dropTargetDragEvent: 'DropTargetDragEvent') -> None: ...
     def dragExit(self, dropTargetEvent: DropTargetEvent) -> None: ...
@@ -436,16 +219,6 @@ class DropTargetAdapter(DropTargetListener):
     def dropActionChanged(self, dropTargetDragEvent: 'DropTargetDragEvent') -> None: ...
 
 class DropTargetDragEvent(DropTargetEvent):
-    """
-    Java class 'java.awt.dnd.DropTargetDragEvent'
-    
-        Extends:
-            java.awt.dnd.DropTargetEvent
-    
-      Constructors:
-        * DropTargetDragEvent(java.awt.dnd.DropTargetContext, java.awt.Point, int, int)
-    
-    """
     def __init__(self, dropTargetContext: DropTargetContext, point: java.awt.Point, int: int, int2: int): ...
     def acceptDrag(self, int: int) -> None: ...
     def getCurrentDataFlavors(self) -> typing.List[java.awt.datatransfer.DataFlavor]: ...
@@ -458,17 +231,6 @@ class DropTargetDragEvent(DropTargetEvent):
     def rejectDrag(self) -> None: ...
 
 class DropTargetDropEvent(DropTargetEvent):
-    """
-    Java class 'java.awt.dnd.DropTargetDropEvent'
-    
-        Extends:
-            java.awt.dnd.DropTargetEvent
-    
-      Constructors:
-        * DropTargetDropEvent(java.awt.dnd.DropTargetContext, java.awt.Point, int, int)
-        * DropTargetDropEvent(java.awt.dnd.DropTargetContext, java.awt.Point, int, int, boolean)
-    
-    """
     @typing.overload
     def __init__(self, dropTargetContext: DropTargetContext, point: java.awt.Point, int: int, int2: int): ...
     @typing.overload
@@ -486,17 +248,6 @@ class DropTargetDropEvent(DropTargetEvent):
     def rejectDrop(self) -> None: ...
 
 class MouseDragGestureRecognizer(DragGestureRecognizer, java.awt.event.MouseListener, java.awt.event.MouseMotionListener):
-    """
-    Java class 'java.awt.dnd.MouseDragGestureRecognizer'
-    
-        Extends:
-            java.awt.dnd.DragGestureRecognizer
-    
-        Interfaces:
-            java.awt.event.MouseListener,
-            java.awt.event.MouseMotionListener
-    
-    """
     def mouseClicked(self, mouseEvent: java.awt.event.MouseEvent) -> None: ...
     def mouseDragged(self, mouseEvent: java.awt.event.MouseEvent) -> None: ...
     def mouseEntered(self, mouseEvent: java.awt.event.MouseEvent) -> None: ...

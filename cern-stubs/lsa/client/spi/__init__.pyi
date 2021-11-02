@@ -7,16 +7,6 @@ import typing
 
 
 class ClientRmiConfig:
-    """
-    Java class 'cern.lsa.client.spi.ClientRmiConfig'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * ClientRmiConfig()
-    
-    """
     def __init__(self): ...
     def acceleratorServiceProxy(self) -> cern.lsa.client.common.spi.remoting.LSAServiceAwareRmiProxyFactoryBean: ...
     def adServiceProxy(self) -> cern.lsa.client.common.spi.remoting.LSAServiceAwareRmiProxyFactoryBean: ...

@@ -5,19 +5,21 @@ import typing
 
 class CcdbThrowableMatcher(cern.accsoft.commons.diag.matcher.StringThrowableMatcher):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.ccdb.CcdbThrowableMatcher'
+    public class CcdbThrowableMatcher extends :class:`~cern.accsoft.commons.diag.matcher.StringThrowableMatcher`
     
-        Extends:
-            cern.accsoft.commons.diag.matcher.StringThrowableMatcher
-    
-      Constructors:
-        * CcdbThrowableMatcher()
-    
-      Attributes:
-        CCDB_PROBLEM_DOMAIN (java.lang.String): final static field
-    
+        CCDB exception string-based matcher.
     """
     CCDB_PROBLEM_DOMAIN: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` CCDB_PROBLEM_DOMAIN
+    
+        CCDB problem domain
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     def __init__(self): ...
 
 

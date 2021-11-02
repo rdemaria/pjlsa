@@ -5,49 +5,56 @@ import typing
 
 class AbstractRbacStringThrowableMatcher(cern.accsoft.commons.diag.matcher.StringThrowableMatcher):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.rbac.AbstractRbacStringThrowableMatcher'
+    public abstract class AbstractRbacStringThrowableMatcher extends :class:`~cern.accsoft.commons.diag.matcher.StringThrowableMatcher`
     
-        Extends:
-            cern.accsoft.commons.diag.matcher.StringThrowableMatcher
-    
-      Attributes:
-        RBAC_PROBLEM_DOMAIN (java.lang.String): final static field
-    
+        Base RBAC exception string-based matcher.
     """
     RBAC_PROBLEM_DOMAIN: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` RBAC_PROBLEM_DOMAIN
+    
+        RBAC problem domain
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
 
 class RbacCmw3SecurityExceptionStringThrowableMatcher(AbstractRbacStringThrowableMatcher):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.rbac.RbacCmw3SecurityExceptionStringThrowableMatcher'
-    
-        Extends:
-            cern.accsoft.commons.diag.matcher.rbac.AbstractRbacStringThrowableMatcher
-    
-      Constructors:
-        * RbacCmw3SecurityExceptionStringThrowableMatcher()
-    
-      Attributes:
-        RBAC_CMW_SECURITY_MATCHER_NAME (java.lang.String): final static field
-    
+    public class RbacCmw3SecurityExceptionStringThrowableMatcher extends :class:`~cern.accsoft.commons.diag.matcher.rbac.AbstractRbacStringThrowableMatcher`
     """
     RBAC_CMW_SECURITY_MATCHER_NAME: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` RBAC_CMW_SECURITY_MATCHER_NAME
+    
+        RBAC "exception coming from CMW" matcher name
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     def __init__(self): ...
 
 class RbacStringThrowableMatcher(AbstractRbacStringThrowableMatcher):
     """
-    Java class 'cern.accsoft.commons.diag.matcher.rbac.RbacStringThrowableMatcher'
+    public class RbacStringThrowableMatcher extends :class:`~cern.accsoft.commons.diag.matcher.rbac.AbstractRbacStringThrowableMatcher`
     
-        Extends:
-            cern.accsoft.commons.diag.matcher.rbac.AbstractRbacStringThrowableMatcher
-    
-      Constructors:
-        * RbacStringThrowableMatcher()
-    
-      Attributes:
-        RBAC_MATCHER_NAME (java.lang.String): final static field
-    
+        RBAC exception string-based matcher.
     """
     RBAC_MATCHER_NAME: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` RBAC_MATCHER_NAME
+    
+        RBAC exception matcher name
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     def __init__(self): ...
 
 

@@ -10,13 +10,6 @@ import typing
 
 
 class AclEntry:
-    """
-    Java class 'java.nio.file.attribute.AclEntry'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def flags(self) -> java.util.Set['AclEntryFlag']: ...
     def hashCode(self) -> int: ...
@@ -31,13 +24,6 @@ class AclEntry:
     def toString(self) -> str: ...
     def type(self) -> 'AclEntryType': ...
     class Builder:
-        """
-        Java class 'java.nio.file.attribute.AclEntry$Builder'
-        
-            Extends:
-                java.lang.Object
-        
-        """
         def build(self) -> 'AclEntry': ...
         @typing.overload
         def setFlags(self, aclEntryFlagArray: typing.List['AclEntryFlag']) -> 'AclEntry.Builder': ...
@@ -51,19 +37,6 @@ class AclEntry:
         def setType(self, aclEntryType: 'AclEntryType') -> 'AclEntry.Builder': ...
 
 class AclEntryFlag(java.lang.Enum['AclEntryFlag']):
-    """
-    Java class 'java.nio.file.attribute.AclEntryFlag'
-    
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        FILE_INHERIT (java.nio.file.attribute.AclEntryFlag): final static enum constant
-        DIRECTORY_INHERIT (java.nio.file.attribute.AclEntryFlag): final static enum constant
-        NO_PROPAGATE_INHERIT (java.nio.file.attribute.AclEntryFlag): final static enum constant
-        INHERIT_ONLY (java.nio.file.attribute.AclEntryFlag): final static enum constant
-    
-    """
     FILE_INHERIT: typing.ClassVar['AclEntryFlag'] = ...
     DIRECTORY_INHERIT: typing.ClassVar['AclEntryFlag'] = ...
     NO_PROPAGATE_INHERIT: typing.ClassVar['AclEntryFlag'] = ...
@@ -79,32 +52,6 @@ class AclEntryFlag(java.lang.Enum['AclEntryFlag']):
     def values() -> typing.List['AclEntryFlag']: ...
 
 class AclEntryPermission(java.lang.Enum['AclEntryPermission']):
-    """
-    Java class 'java.nio.file.attribute.AclEntryPermission'
-    
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        READ_DATA (java.nio.file.attribute.AclEntryPermission): final static enum constant
-        WRITE_DATA (java.nio.file.attribute.AclEntryPermission): final static enum constant
-        APPEND_DATA (java.nio.file.attribute.AclEntryPermission): final static enum constant
-        READ_NAMED_ATTRS (java.nio.file.attribute.AclEntryPermission): final static enum constant
-        WRITE_NAMED_ATTRS (java.nio.file.attribute.AclEntryPermission): final static enum constant
-        EXECUTE (java.nio.file.attribute.AclEntryPermission): final static enum constant
-        DELETE_CHILD (java.nio.file.attribute.AclEntryPermission): final static enum constant
-        READ_ATTRIBUTES (java.nio.file.attribute.AclEntryPermission): final static enum constant
-        WRITE_ATTRIBUTES (java.nio.file.attribute.AclEntryPermission): final static enum constant
-        DELETE (java.nio.file.attribute.AclEntryPermission): final static enum constant
-        READ_ACL (java.nio.file.attribute.AclEntryPermission): final static enum constant
-        WRITE_ACL (java.nio.file.attribute.AclEntryPermission): final static enum constant
-        WRITE_OWNER (java.nio.file.attribute.AclEntryPermission): final static enum constant
-        SYNCHRONIZE (java.nio.file.attribute.AclEntryPermission): final static enum constant
-        LIST_DIRECTORY (java.nio.file.attribute.AclEntryPermission): final static field
-        ADD_FILE (java.nio.file.attribute.AclEntryPermission): final static field
-        ADD_SUBDIRECTORY (java.nio.file.attribute.AclEntryPermission): final static field
-    
-    """
     READ_DATA: typing.ClassVar['AclEntryPermission'] = ...
     WRITE_DATA: typing.ClassVar['AclEntryPermission'] = ...
     APPEND_DATA: typing.ClassVar['AclEntryPermission'] = ...
@@ -133,19 +80,6 @@ class AclEntryPermission(java.lang.Enum['AclEntryPermission']):
     def values() -> typing.List['AclEntryPermission']: ...
 
 class AclEntryType(java.lang.Enum['AclEntryType']):
-    """
-    Java class 'java.nio.file.attribute.AclEntryType'
-    
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        ALLOW (java.nio.file.attribute.AclEntryType): final static enum constant
-        DENY (java.nio.file.attribute.AclEntryType): final static enum constant
-        AUDIT (java.nio.file.attribute.AclEntryType): final static enum constant
-        ALARM (java.nio.file.attribute.AclEntryType): final static enum constant
-    
-    """
     ALLOW: typing.ClassVar['AclEntryType'] = ...
     DENY: typing.ClassVar['AclEntryType'] = ...
     AUDIT: typing.ClassVar['AclEntryType'] = ...
@@ -161,17 +95,9 @@ class AclEntryType(java.lang.Enum['AclEntryType']):
     def values() -> typing.List['AclEntryType']: ...
 
 class AttributeView:
-    """
-    Java class 'java.nio.file.attribute.AttributeView'
-    
-    """
     def name(self) -> str: ...
 
 class BasicFileAttributes:
-    """
-    Java class 'java.nio.file.attribute.BasicFileAttributes'
-    
-    """
     def creationTime(self) -> 'FileTime': ...
     def fileKey(self) -> typing.Any: ...
     def isDirectory(self) -> bool: ...
@@ -184,24 +110,10 @@ class BasicFileAttributes:
 
 _FileAttribute__T = typing.TypeVar('_FileAttribute__T')  # <T>
 class FileAttribute(typing.Generic[_FileAttribute__T]):
-    """
-    Java class 'java.nio.file.attribute.FileAttribute'
-    
-    """
     def name(self) -> str: ...
     def value(self) -> _FileAttribute__T: ...
 
 class FileTime(java.lang.Comparable['FileTime']):
-    """
-    Java class 'java.nio.file.attribute.FileTime'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.lang.Comparable
-    
-    """
     def compareTo(self, fileTime: 'FileTime') -> int: ...
     def equals(self, object: typing.Any) -> bool: ...
     @staticmethod
@@ -213,24 +125,6 @@ class FileTime(java.lang.Comparable['FileTime']):
     def toString(self) -> str: ...
 
 class PosixFilePermission(java.lang.Enum['PosixFilePermission']):
-    """
-    Java class 'java.nio.file.attribute.PosixFilePermission'
-    
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        OWNER_READ (java.nio.file.attribute.PosixFilePermission): final static enum constant
-        OWNER_WRITE (java.nio.file.attribute.PosixFilePermission): final static enum constant
-        OWNER_EXECUTE (java.nio.file.attribute.PosixFilePermission): final static enum constant
-        GROUP_READ (java.nio.file.attribute.PosixFilePermission): final static enum constant
-        GROUP_WRITE (java.nio.file.attribute.PosixFilePermission): final static enum constant
-        GROUP_EXECUTE (java.nio.file.attribute.PosixFilePermission): final static enum constant
-        OTHERS_READ (java.nio.file.attribute.PosixFilePermission): final static enum constant
-        OTHERS_WRITE (java.nio.file.attribute.PosixFilePermission): final static enum constant
-        OTHERS_EXECUTE (java.nio.file.attribute.PosixFilePermission): final static enum constant
-    
-    """
     OWNER_READ: typing.ClassVar['PosixFilePermission'] = ...
     OWNER_WRITE: typing.ClassVar['PosixFilePermission'] = ...
     OWNER_EXECUTE: typing.ClassVar['PosixFilePermission'] = ...
@@ -251,13 +145,6 @@ class PosixFilePermission(java.lang.Enum['PosixFilePermission']):
     def values() -> typing.List['PosixFilePermission']: ...
 
 class PosixFilePermissions:
-    """
-    Java class 'java.nio.file.attribute.PosixFilePermissions'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     @staticmethod
     def asFileAttribute(set: java.util.Set[PosixFilePermission]) -> FileAttribute[java.util.Set[PosixFilePermission]]: ...
     @staticmethod
@@ -269,50 +156,19 @@ class PosixFilePermissions:
     def toString(set: java.util.Set[PosixFilePermission]) -> str: ...
 
 class UserPrincipal(java.security.Principal):
-    """
-    Java class 'java.nio.file.attribute.UserPrincipal'
-    
-        Interfaces:
-            java.security.Principal
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def hashCode(self) -> int: ...
     def toString(self) -> str: ...
 
 class UserPrincipalLookupService:
-    """
-    Java class 'java.nio.file.attribute.UserPrincipalLookupService'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def lookupPrincipalByGroupName(self, string: str) -> 'GroupPrincipal': ...
     def lookupPrincipalByName(self, string: str) -> UserPrincipal: ...
 
 class UserPrincipalNotFoundException(java.io.IOException):
-    """
-    Java class 'java.nio.file.attribute.UserPrincipalNotFoundException'
-    
-        Extends:
-            java.io.IOException
-    
-      Constructors:
-        * UserPrincipalNotFoundException(java.lang.String)
-    
-    """
     def __init__(self, string: str): ...
     def getName(self) -> str: ...
 
 class DosFileAttributes(BasicFileAttributes):
-    """
-    Java class 'java.nio.file.attribute.DosFileAttributes'
-    
-        Interfaces:
-            java.nio.file.attribute.BasicFileAttributes
-    
-    """
     def isArchive(self) -> bool: ...
     def isHidden(self) -> bool: ...
     def isReadOnly(self) -> bool: ...
@@ -323,61 +179,26 @@ class FileAttributeView(AttributeView): ...
 class FileStoreAttributeView(AttributeView): ...
 
 class GroupPrincipal(UserPrincipal):
-    """
-    Java class 'java.nio.file.attribute.GroupPrincipal'
-    
-        Interfaces:
-            java.nio.file.attribute.UserPrincipal
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def hashCode(self) -> int: ...
     def toString(self) -> str: ...
 
 class PosixFileAttributes(BasicFileAttributes):
-    """
-    Java class 'java.nio.file.attribute.PosixFileAttributes'
-    
-        Interfaces:
-            java.nio.file.attribute.BasicFileAttributes
-    
-    """
     def group(self) -> GroupPrincipal: ...
     def owner(self) -> UserPrincipal: ...
     def permissions(self) -> java.util.Set[PosixFilePermission]: ...
 
 class BasicFileAttributeView(FileAttributeView):
-    """
-    Java class 'java.nio.file.attribute.BasicFileAttributeView'
-    
-        Interfaces:
-            java.nio.file.attribute.FileAttributeView
-    
-    """
     def name(self) -> str: ...
     def readAttributes(self) -> BasicFileAttributes: ...
     def setTimes(self, fileTime: FileTime, fileTime2: FileTime, fileTime3: FileTime) -> None: ...
 
 class FileOwnerAttributeView(FileAttributeView):
-    """
-    Java class 'java.nio.file.attribute.FileOwnerAttributeView'
-    
-        Interfaces:
-            java.nio.file.attribute.FileAttributeView
-    
-    """
     def getOwner(self) -> UserPrincipal: ...
     def name(self) -> str: ...
     def setOwner(self, userPrincipal: UserPrincipal) -> None: ...
 
 class UserDefinedFileAttributeView(FileAttributeView):
-    """
-    Java class 'java.nio.file.attribute.UserDefinedFileAttributeView'
-    
-        Interfaces:
-            java.nio.file.attribute.FileAttributeView
-    
-    """
     def delete(self, string: str) -> None: ...
     def list(self) -> java.util.List[str]: ...
     def name(self) -> str: ...
@@ -386,25 +207,11 @@ class UserDefinedFileAttributeView(FileAttributeView):
     def write(self, string: str, byteBuffer: java.nio.ByteBuffer) -> int: ...
 
 class AclFileAttributeView(FileOwnerAttributeView):
-    """
-    Java class 'java.nio.file.attribute.AclFileAttributeView'
-    
-        Interfaces:
-            java.nio.file.attribute.FileOwnerAttributeView
-    
-    """
     def getAcl(self) -> java.util.List[AclEntry]: ...
     def name(self) -> str: ...
     def setAcl(self, list: java.util.List[AclEntry]) -> None: ...
 
 class DosFileAttributeView(BasicFileAttributeView):
-    """
-    Java class 'java.nio.file.attribute.DosFileAttributeView'
-    
-        Interfaces:
-            java.nio.file.attribute.BasicFileAttributeView
-    
-    """
     def name(self) -> str: ...
     def readAttributes(self) -> DosFileAttributes: ...
     def setArchive(self, boolean: bool) -> None: ...
@@ -413,14 +220,6 @@ class DosFileAttributeView(BasicFileAttributeView):
     def setSystem(self, boolean: bool) -> None: ...
 
 class PosixFileAttributeView(BasicFileAttributeView, FileOwnerAttributeView):
-    """
-    Java class 'java.nio.file.attribute.PosixFileAttributeView'
-    
-        Interfaces:
-            java.nio.file.attribute.BasicFileAttributeView,
-            java.nio.file.attribute.FileOwnerAttributeView
-    
-    """
     def name(self) -> str: ...
     def readAttributes(self) -> PosixFileAttributes: ...
     def setGroup(self, groupPrincipal: GroupPrincipal) -> None: ...

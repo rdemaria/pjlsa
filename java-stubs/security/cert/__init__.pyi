@@ -11,31 +11,11 @@ import typing
 
 
 class CRL:
-    """
-    Java class 'java.security.cert.CRL'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def getType(self) -> str: ...
     def isRevoked(self, certificate: 'Certificate') -> bool: ...
     def toString(self) -> str: ...
 
 class CRLException(java.security.GeneralSecurityException):
-    """
-    Java class 'java.security.cert.CRLException'
-    
-        Extends:
-            java.security.GeneralSecurityException
-    
-      Constructors:
-        * CRLException(java.lang.Throwable)
-        * CRLException(java.lang.String, java.lang.Throwable)
-        * CRLException(java.lang.String)
-        * CRLException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -46,26 +26,6 @@ class CRLException(java.security.GeneralSecurityException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class CRLReason(java.lang.Enum['CRLReason']):
-    """
-    Java class 'java.security.cert.CRLReason'
-    
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        UNSPECIFIED (java.security.cert.CRLReason): final static enum constant
-        KEY_COMPROMISE (java.security.cert.CRLReason): final static enum constant
-        CA_COMPROMISE (java.security.cert.CRLReason): final static enum constant
-        AFFILIATION_CHANGED (java.security.cert.CRLReason): final static enum constant
-        SUPERSEDED (java.security.cert.CRLReason): final static enum constant
-        CESSATION_OF_OPERATION (java.security.cert.CRLReason): final static enum constant
-        CERTIFICATE_HOLD (java.security.cert.CRLReason): final static enum constant
-        UNUSED (java.security.cert.CRLReason): final static enum constant
-        REMOVE_FROM_CRL (java.security.cert.CRLReason): final static enum constant
-        PRIVILEGE_WITHDRAWN (java.security.cert.CRLReason): final static enum constant
-        AA_COMPROMISE (java.security.cert.CRLReason): final static enum constant
-    
-    """
     UNSPECIFIED: typing.ClassVar['CRLReason'] = ...
     KEY_COMPROMISE: typing.ClassVar['CRLReason'] = ...
     CA_COMPROMISE: typing.ClassVar['CRLReason'] = ...
@@ -88,27 +48,10 @@ class CRLReason(java.lang.Enum['CRLReason']):
     def values() -> typing.List['CRLReason']: ...
 
 class CRLSelector(java.lang.Cloneable):
-    """
-    Java class 'java.security.cert.CRLSelector'
-    
-        Interfaces:
-            java.lang.Cloneable
-    
-    """
     def clone(self) -> typing.Any: ...
     def match(self, cRL: CRL) -> bool: ...
 
 class CertPath(java.io.Serializable):
-    """
-    Java class 'java.security.cert.CertPath'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def getCertificates(self) -> java.util.List['Certificate']: ...
     @typing.overload
@@ -121,13 +64,6 @@ class CertPath(java.io.Serializable):
     def toString(self) -> str: ...
 
 class CertPathBuilder:
-    """
-    Java class 'java.security.cert.CertPathBuilder'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def build(self, certPathParameters: 'CertPathParameters') -> 'CertPathBuilderResult': ...
     def getAlgorithm(self) -> str: ...
     @staticmethod
@@ -145,19 +81,6 @@ class CertPathBuilder:
     def getRevocationChecker(self) -> 'CertPathChecker': ...
 
 class CertPathBuilderException(java.security.GeneralSecurityException):
-    """
-    Java class 'java.security.cert.CertPathBuilderException'
-    
-        Extends:
-            java.security.GeneralSecurityException
-    
-      Constructors:
-        * CertPathBuilderException(java.lang.String, java.lang.Throwable)
-        * CertPathBuilderException(java.lang.Throwable)
-        * CertPathBuilderException(java.lang.String)
-        * CertPathBuilderException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -168,58 +91,23 @@ class CertPathBuilderException(java.security.GeneralSecurityException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class CertPathBuilderResult(java.lang.Cloneable):
-    """
-    Java class 'java.security.cert.CertPathBuilderResult'
-    
-        Interfaces:
-            java.lang.Cloneable
-    
-    """
     def clone(self) -> typing.Any: ...
     def getCertPath(self) -> CertPath: ...
 
 class CertPathBuilderSpi:
-    """
-    Java class 'java.security.cert.CertPathBuilderSpi'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * CertPathBuilderSpi()
-    
-    """
     def __init__(self): ...
     def engineBuild(self, certPathParameters: 'CertPathParameters') -> CertPathBuilderResult: ...
     def engineGetRevocationChecker(self) -> 'CertPathChecker': ...
 
 class CertPathChecker:
-    """
-    Java class 'java.security.cert.CertPathChecker'
-    
-    """
     def check(self, certificate: 'Certificate') -> None: ...
     def init(self, boolean: bool) -> None: ...
     def isForwardCheckingSupported(self) -> bool: ...
 
 class CertPathParameters(java.lang.Cloneable):
-    """
-    Java class 'java.security.cert.CertPathParameters'
-    
-        Interfaces:
-            java.lang.Cloneable
-    
-    """
     def clone(self) -> typing.Any: ...
 
 class CertPathValidator:
-    """
-    Java class 'java.security.cert.CertPathValidator'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def getAlgorithm(self) -> str: ...
     @staticmethod
     def getDefaultType() -> str: ...
@@ -237,49 +125,18 @@ class CertPathValidator:
     def validate(self, certPath: CertPath, certPathParameters: CertPathParameters) -> 'CertPathValidatorResult': ...
 
 class CertPathValidatorResult(java.lang.Cloneable):
-    """
-    Java class 'java.security.cert.CertPathValidatorResult'
-    
-        Interfaces:
-            java.lang.Cloneable
-    
-    """
     def clone(self) -> typing.Any: ...
 
 class CertPathValidatorSpi:
-    """
-    Java class 'java.security.cert.CertPathValidatorSpi'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * CertPathValidatorSpi()
-    
-    """
     def __init__(self): ...
     def engineGetRevocationChecker(self) -> CertPathChecker: ...
     def engineValidate(self, certPath: CertPath, certPathParameters: CertPathParameters) -> CertPathValidatorResult: ...
 
 class CertSelector(java.lang.Cloneable):
-    """
-    Java class 'java.security.cert.CertSelector'
-    
-        Interfaces:
-            java.lang.Cloneable
-    
-    """
     def clone(self) -> typing.Any: ...
     def match(self, certificate: 'Certificate') -> bool: ...
 
 class CertStore:
-    """
-    Java class 'java.security.cert.CertStore'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def getCRLs(self, cRLSelector: CRLSelector) -> java.util.Collection[CRL]: ...
     def getCertStoreParameters(self) -> 'CertStoreParameters': ...
     def getCertificates(self, certSelector: CertSelector) -> java.util.Collection['Certificate']: ...
@@ -298,19 +155,6 @@ class CertStore:
     def getType(self) -> str: ...
 
 class CertStoreException(java.security.GeneralSecurityException):
-    """
-    Java class 'java.security.cert.CertStoreException'
-    
-        Extends:
-            java.security.GeneralSecurityException
-    
-      Constructors:
-        * CertStoreException(java.lang.String, java.lang.Throwable)
-        * CertStoreException(java.lang.Throwable)
-        * CertStoreException(java.lang.String)
-        * CertStoreException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -321,44 +165,14 @@ class CertStoreException(java.security.GeneralSecurityException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class CertStoreParameters(java.lang.Cloneable):
-    """
-    Java class 'java.security.cert.CertStoreParameters'
-    
-        Interfaces:
-            java.lang.Cloneable
-    
-    """
     def clone(self) -> typing.Any: ...
 
 class CertStoreSpi:
-    """
-    Java class 'java.security.cert.CertStoreSpi'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * CertStoreSpi(java.security.cert.CertStoreParameters)
-    
-      Raises:
-        java.security.InvalidAlgorithmParameterException: from java
-    
-    """
     def __init__(self, certStoreParameters: CertStoreParameters): ...
     def engineGetCRLs(self, cRLSelector: CRLSelector) -> java.util.Collection[CRL]: ...
     def engineGetCertificates(self, certSelector: CertSelector) -> java.util.Collection['Certificate']: ...
 
 class Certificate(java.io.Serializable):
-    """
-    Java class 'java.security.cert.Certificate'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.io.Serializable
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def getEncoded(self) -> typing.List[int]: ...
     def getPublicKey(self) -> java.security.PublicKey: ...
@@ -373,19 +187,6 @@ class Certificate(java.io.Serializable):
     def verify(self, publicKey: java.security.PublicKey, provider: java.security.Provider) -> None: ...
 
 class CertificateException(java.security.GeneralSecurityException):
-    """
-    Java class 'java.security.cert.CertificateException'
-    
-        Extends:
-            java.security.GeneralSecurityException
-    
-      Constructors:
-        * CertificateException(java.lang.Throwable)
-        * CertificateException(java.lang.String, java.lang.Throwable)
-        * CertificateException(java.lang.String)
-        * CertificateException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -396,13 +197,6 @@ class CertificateException(java.security.GeneralSecurityException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class CertificateFactory:
-    """
-    Java class 'java.security.cert.CertificateFactory'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def generateCRL(self, inputStream: java.io.InputStream) -> CRL: ...
     def generateCRLs(self, inputStream: java.io.InputStream) -> java.util.Collection[CRL]: ...
     @typing.overload
@@ -427,16 +221,6 @@ class CertificateFactory:
     def getType(self) -> str: ...
 
 class CertificateFactorySpi:
-    """
-    Java class 'java.security.cert.CertificateFactorySpi'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * CertificateFactorySpi()
-    
-    """
     def __init__(self): ...
     def engineGenerateCRL(self, inputStream: java.io.InputStream) -> CRL: ...
     def engineGenerateCRLs(self, inputStream: java.io.InputStream) -> java.util.Collection[CRL]: ...
@@ -451,20 +235,12 @@ class CertificateFactorySpi:
     def engineGetCertPathEncodings(self) -> java.util.Iterator[str]: ...
 
 class Extension:
-    """
-    Java class 'java.security.cert.Extension'
-    
-    """
     def encode(self, outputStream: java.io.OutputStream) -> None: ...
     def getId(self) -> str: ...
     def getValue(self) -> typing.List[int]: ...
     def isCritical(self) -> bool: ...
 
 class PolicyNode:
-    """
-    Java class 'java.security.cert.PolicyNode'
-    
-    """
     def getChildren(self) -> java.util.Iterator['PolicyNode']: ...
     def getDepth(self) -> int: ...
     def getExpectedPolicies(self) -> java.util.Set[str]: ...
@@ -474,19 +250,6 @@ class PolicyNode:
     def isCritical(self) -> bool: ...
 
 class PolicyQualifierInfo:
-    """
-    Java class 'java.security.cert.PolicyQualifierInfo'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * PolicyQualifierInfo(byte[])
-    
-      Raises:
-        java.io.IOException: from java
-    
-    """
     def __init__(self, byteArray: typing.List[int]): ...
     def getEncoded(self) -> typing.List[int]: ...
     def getPolicyQualifier(self) -> typing.List[int]: ...
@@ -494,18 +257,6 @@ class PolicyQualifierInfo:
     def toString(self) -> str: ...
 
 class TrustAnchor:
-    """
-    Java class 'java.security.cert.TrustAnchor'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * TrustAnchor(java.lang.String, java.security.PublicKey, byte[])
-        * TrustAnchor(javax.security.auth.x500.X500Principal, java.security.PublicKey, byte[])
-        * TrustAnchor(java.security.cert.X509Certificate, byte[])
-    
-    """
     @typing.overload
     def __init__(self, string: str, publicKey: java.security.PublicKey, byteArray: typing.List[int]): ...
     @typing.overload
@@ -520,29 +271,12 @@ class TrustAnchor:
     def toString(self) -> str: ...
 
 class X509Extension:
-    """
-    Java class 'java.security.cert.X509Extension'
-    
-    """
     def getCriticalExtensionOIDs(self) -> java.util.Set[str]: ...
     def getExtensionValue(self, string: str) -> typing.List[int]: ...
     def getNonCriticalExtensionOIDs(self) -> java.util.Set[str]: ...
     def hasUnsupportedCriticalExtension(self) -> bool: ...
 
 class CertificateEncodingException(CertificateException):
-    """
-    Java class 'java.security.cert.CertificateEncodingException'
-    
-        Extends:
-            java.security.cert.CertificateException
-    
-      Constructors:
-        * CertificateEncodingException(java.lang.Throwable)
-        * CertificateEncodingException(java.lang.String, java.lang.Throwable)
-        * CertificateEncodingException(java.lang.String)
-        * CertificateEncodingException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -553,53 +287,18 @@ class CertificateEncodingException(CertificateException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class CertificateExpiredException(CertificateException):
-    """
-    Java class 'java.security.cert.CertificateExpiredException'
-    
-        Extends:
-            java.security.cert.CertificateException
-    
-      Constructors:
-        * CertificateExpiredException()
-        * CertificateExpiredException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class CertificateNotYetValidException(CertificateException):
-    """
-    Java class 'java.security.cert.CertificateNotYetValidException'
-    
-        Extends:
-            java.security.cert.CertificateException
-    
-      Constructors:
-        * CertificateNotYetValidException()
-        * CertificateNotYetValidException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class CertificateParsingException(CertificateException):
-    """
-    Java class 'java.security.cert.CertificateParsingException'
-    
-        Extends:
-            java.security.cert.CertificateException
-    
-      Constructors:
-        * CertificateParsingException(java.lang.Throwable)
-        * CertificateParsingException(java.lang.String, java.lang.Throwable)
-        * CertificateParsingException(java.lang.String)
-        * CertificateParsingException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -610,16 +309,6 @@ class CertificateParsingException(CertificateException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class CertificateRevokedException(CertificateException):
-    """
-    Java class 'java.security.cert.CertificateRevokedException'
-    
-        Extends:
-            java.security.cert.CertificateException
-    
-      Constructors:
-        * CertificateRevokedException(java.util.Date, java.security.cert.CRLReason, javax.security.auth.x500.X500Principal, java.util.Map)
-    
-    """
     def __init__(self, date: java.util.Date, cRLReason: CRLReason, x500Principal: javax.security.auth.x500.X500Principal, map: typing.Union[java.util.Map[str, Extension], typing.Mapping[str, Extension]]): ...
     def getAuthorityName(self) -> javax.security.auth.x500.X500Principal: ...
     def getExtensions(self) -> java.util.Map[str, Extension]: ...
@@ -629,20 +318,6 @@ class CertificateRevokedException(CertificateException):
     def getRevocationReason(self) -> CRLReason: ...
 
 class CollectionCertStoreParameters(CertStoreParameters):
-    """
-    Java class 'java.security.cert.CollectionCertStoreParameters'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.security.cert.CertStoreParameters
-    
-      Constructors:
-        * CollectionCertStoreParameters(java.util.Collection)
-        * CollectionCertStoreParameters()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -652,21 +327,6 @@ class CollectionCertStoreParameters(CertStoreParameters):
     def toString(self) -> str: ...
 
 class LDAPCertStoreParameters(CertStoreParameters):
-    """
-    Java class 'java.security.cert.LDAPCertStoreParameters'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.security.cert.CertStoreParameters
-    
-      Constructors:
-        * LDAPCertStoreParameters()
-        * LDAPCertStoreParameters(java.lang.String)
-        * LDAPCertStoreParameters(java.lang.String, int)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -679,16 +339,6 @@ class LDAPCertStoreParameters(CertStoreParameters):
     def toString(self) -> str: ...
 
 class PKIXCertPathChecker(CertPathChecker, java.lang.Cloneable):
-    """
-    Java class 'java.security.cert.PKIXCertPathChecker'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.security.cert.CertPathChecker, java.lang.Cloneable
-    
-    """
     @typing.overload
     def check(self, certificate: Certificate, collection: typing.Union[java.util.Collection[str], typing.Sequence[str]]) -> None: ...
     @typing.overload
@@ -699,19 +349,6 @@ class PKIXCertPathChecker(CertPathChecker, java.lang.Cloneable):
     def isForwardCheckingSupported(self) -> bool: ...
 
 class PKIXCertPathValidatorResult(CertPathValidatorResult):
-    """
-    Java class 'java.security.cert.PKIXCertPathValidatorResult'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.security.cert.CertPathValidatorResult
-    
-      Constructors:
-        * PKIXCertPathValidatorResult(java.security.cert.TrustAnchor, java.security.cert.PolicyNode, java.security.PublicKey)
-    
-    """
     def __init__(self, trustAnchor: TrustAnchor, policyNode: PolicyNode, publicKey: java.security.PublicKey): ...
     def clone(self) -> typing.Any: ...
     def getPolicyTree(self) -> PolicyNode: ...
@@ -720,24 +357,6 @@ class PKIXCertPathValidatorResult(CertPathValidatorResult):
     def toString(self) -> str: ...
 
 class PKIXParameters(CertPathParameters):
-    """
-    Java class 'java.security.cert.PKIXParameters'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.security.cert.CertPathParameters
-    
-      Constructors:
-        * PKIXParameters(java.util.Set)
-        * PKIXParameters(java.security.KeyStore)
-    
-      Raises:
-        java.security.InvalidAlgorithmParameterException: from java
-        java.security.KeyStoreException: from java
-    
-    """
     @typing.overload
     def __init__(self, keyStore: java.security.KeyStore): ...
     @typing.overload
@@ -772,19 +391,6 @@ class PKIXParameters(CertPathParameters):
     def toString(self) -> str: ...
 
 class URICertStoreParameters(CertStoreParameters):
-    """
-    Java class 'java.security.cert.URICertStoreParameters'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.security.cert.CertStoreParameters
-    
-      Constructors:
-        * URICertStoreParameters(java.net.URI)
-    
-    """
     def __init__(self, uRI: java.net.URI): ...
     def clone(self) -> 'URICertStoreParameters': ...
     def equals(self, object: typing.Any) -> bool: ...
@@ -793,16 +399,6 @@ class URICertStoreParameters(CertStoreParameters):
     def toString(self) -> str: ...
 
 class X509CRL(CRL, X509Extension):
-    """
-    Java class 'java.security.cert.X509CRL'
-    
-        Extends:
-            java.security.cert.CRL
-    
-        Interfaces:
-            java.security.cert.X509Extension
-    
-    """
     def equals(self, object: typing.Any) -> bool: ...
     def getEncoded(self) -> typing.List[int]: ...
     def getIssuerDN(self) -> java.security.Principal: ...
@@ -829,19 +425,6 @@ class X509CRL(CRL, X509Extension):
     def verify(self, publicKey: java.security.PublicKey, provider: java.security.Provider) -> None: ...
 
 class X509CRLEntry(X509Extension):
-    """
-    Java class 'java.security.cert.X509CRLEntry'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.security.cert.X509Extension
-    
-      Constructors:
-        * X509CRLEntry()
-    
-    """
     def __init__(self): ...
     def equals(self, object: typing.Any) -> bool: ...
     def getCertificateIssuer(self) -> javax.security.auth.x500.X500Principal: ...
@@ -854,19 +437,6 @@ class X509CRLEntry(X509Extension):
     def toString(self) -> str: ...
 
 class X509CRLSelector(CRLSelector):
-    """
-    Java class 'java.security.cert.X509CRLSelector'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.security.cert.CRLSelector
-    
-      Constructors:
-        * X509CRLSelector()
-    
-    """
     def __init__(self): ...
     def addIssuer(self, x500Principal: javax.security.auth.x500.X500Principal) -> None: ...
     @typing.overload
@@ -890,19 +460,6 @@ class X509CRLSelector(CRLSelector):
     def toString(self) -> str: ...
 
 class X509CertSelector(CertSelector):
-    """
-    Java class 'java.security.cert.X509CertSelector'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.security.cert.CertSelector
-    
-      Constructors:
-        * X509CertSelector()
-    
-    """
     def __init__(self): ...
     @typing.overload
     def addPathToName(self, int: int, byteArray: typing.List[int]) -> None: ...
@@ -970,16 +527,6 @@ class X509CertSelector(CertSelector):
     def toString(self) -> str: ...
 
 class X509Certificate(Certificate, X509Extension):
-    """
-    Java class 'java.security.cert.X509Certificate'
-    
-        Extends:
-            java.security.cert.Certificate
-    
-        Interfaces:
-            java.security.cert.X509Extension
-    
-    """
     @typing.overload
     def checkValidity(self) -> None: ...
     @typing.overload
@@ -1012,21 +559,6 @@ class X509Certificate(Certificate, X509Extension):
     def verify(self, publicKey: java.security.PublicKey, provider: java.security.Provider) -> None: ...
 
 class PKIXBuilderParameters(PKIXParameters):
-    """
-    Java class 'java.security.cert.PKIXBuilderParameters'
-    
-        Extends:
-            java.security.cert.PKIXParameters
-    
-      Constructors:
-        * PKIXBuilderParameters(java.util.Set, java.security.cert.CertSelector)
-        * PKIXBuilderParameters(java.security.KeyStore, java.security.cert.CertSelector)
-    
-      Raises:
-        java.security.InvalidAlgorithmParameterException: from java
-        java.security.KeyStoreException: from java
-    
-    """
     @typing.overload
     def __init__(self, keyStore: java.security.KeyStore, certSelector: CertSelector): ...
     @typing.overload
@@ -1036,31 +568,11 @@ class PKIXBuilderParameters(PKIXParameters):
     def toString(self) -> str: ...
 
 class PKIXCertPathBuilderResult(PKIXCertPathValidatorResult, CertPathBuilderResult):
-    """
-    Java class 'java.security.cert.PKIXCertPathBuilderResult'
-    
-        Extends:
-            java.security.cert.PKIXCertPathValidatorResult
-    
-        Interfaces:
-            java.security.cert.CertPathBuilderResult
-    
-      Constructors:
-        * PKIXCertPathBuilderResult(java.security.cert.CertPath, java.security.cert.TrustAnchor, java.security.cert.PolicyNode, java.security.PublicKey)
-    
-    """
     def __init__(self, certPath: CertPath, trustAnchor: TrustAnchor, policyNode: PolicyNode, publicKey: java.security.PublicKey): ...
     def getCertPath(self) -> CertPath: ...
     def toString(self) -> str: ...
 
 class PKIXRevocationChecker(PKIXCertPathChecker):
-    """
-    Java class 'java.security.cert.PKIXRevocationChecker'
-    
-        Extends:
-            java.security.cert.PKIXCertPathChecker
-    
-    """
     def clone(self) -> 'PKIXRevocationChecker': ...
     def getOcspExtensions(self) -> java.util.List[Extension]: ...
     def getOcspResponder(self) -> java.net.URI: ...
@@ -1074,19 +586,6 @@ class PKIXRevocationChecker(PKIXCertPathChecker):
     def setOcspResponses(self, map: typing.Union[java.util.Map[X509Certificate, typing.List[int]], typing.Mapping[X509Certificate, typing.List[int]]]) -> None: ...
     def setOptions(self, set: java.util.Set['PKIXRevocationChecker.Option']) -> None: ...
     class Option(java.lang.Enum['PKIXRevocationChecker.Option']):
-        """
-        Java class 'java.security.cert.PKIXRevocationChecker$Option'
-        
-            Extends:
-                java.lang.Enum
-        
-          Attributes:
-            ONLY_END_ENTITY (java.security.cert.PKIXRevocationChecker$Option): final static enum constant
-            PREFER_CRLS (java.security.cert.PKIXRevocationChecker$Option): final static enum constant
-            NO_FALLBACK (java.security.cert.PKIXRevocationChecker$Option): final static enum constant
-            SOFT_FAIL (java.security.cert.PKIXRevocationChecker$Option): final static enum constant
-        
-        """
         ONLY_END_ENTITY: typing.ClassVar['PKIXRevocationChecker.Option'] = ...
         PREFER_CRLS: typing.ClassVar['PKIXRevocationChecker.Option'] = ...
         NO_FALLBACK: typing.ClassVar['PKIXRevocationChecker.Option'] = ...
@@ -1102,21 +601,6 @@ class PKIXRevocationChecker(PKIXCertPathChecker):
         def values() -> typing.List['PKIXRevocationChecker.Option']: ...
 
 class CertPathValidatorException(java.security.GeneralSecurityException):
-    """
-    Java class 'java.security.cert.CertPathValidatorException'
-    
-        Extends:
-            java.security.GeneralSecurityException
-    
-      Constructors:
-        * CertPathValidatorException(java.lang.String, java.lang.Throwable, java.security.cert.CertPath, int, java.security.cert.CertPathValidatorException.Reason)
-        * CertPathValidatorException(java.lang.String, java.lang.Throwable, java.security.cert.CertPath, int)
-        * CertPathValidatorException(java.lang.String, java.lang.Throwable)
-        * CertPathValidatorException()
-        * CertPathValidatorException(java.lang.String)
-        * CertPathValidatorException(java.lang.Throwable)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -1133,25 +617,6 @@ class CertPathValidatorException(java.security.GeneralSecurityException):
     def getIndex(self) -> int: ...
     def getReason(self) -> 'CertPathValidatorException.Reason': ...
     class BasicReason(java.lang.Enum['CertPathValidatorException.BasicReason'], java.security.cert.CertPathValidatorException.Reason):
-        """
-        Java class 'java.security.cert.CertPathValidatorException$BasicReason'
-        
-            Extends:
-                java.lang.Enum
-        
-            Interfaces:
-                java.security.cert.CertPathValidatorException.Reason
-        
-          Attributes:
-            UNSPECIFIED (java.security.cert.CertPathValidatorException$BasicReason): final static enum constant
-            EXPIRED (java.security.cert.CertPathValidatorException$BasicReason): final static enum constant
-            NOT_YET_VALID (java.security.cert.CertPathValidatorException$BasicReason): final static enum constant
-            REVOKED (java.security.cert.CertPathValidatorException$BasicReason): final static enum constant
-            UNDETERMINED_REVOCATION_STATUS (java.security.cert.CertPathValidatorException$BasicReason): final static enum constant
-            INVALID_SIGNATURE (java.security.cert.CertPathValidatorException$BasicReason): final static enum constant
-            ALGORITHM_CONSTRAINED (java.security.cert.CertPathValidatorException$BasicReason): final static enum constant
-        
-        """
         UNSPECIFIED: typing.ClassVar['CertPathValidatorException.BasicReason'] = ...
         EXPIRED: typing.ClassVar['CertPathValidatorException.BasicReason'] = ...
         NOT_YET_VALID: typing.ClassVar['CertPathValidatorException.BasicReason'] = ...
@@ -1171,26 +636,6 @@ class CertPathValidatorException(java.security.GeneralSecurityException):
     class Reason(java.io.Serializable): ...
 
 class PKIXReason(java.lang.Enum['PKIXReason'], CertPathValidatorException.Reason):
-    """
-    Java class 'java.security.cert.PKIXReason'
-    
-        Extends:
-            java.lang.Enum
-    
-        Interfaces:
-            java.security.cert.CertPathValidatorException.Reason
-    
-      Attributes:
-        NAME_CHAINING (java.security.cert.PKIXReason): final static enum constant
-        INVALID_KEY_USAGE (java.security.cert.PKIXReason): final static enum constant
-        INVALID_POLICY (java.security.cert.PKIXReason): final static enum constant
-        NO_TRUST_ANCHOR (java.security.cert.PKIXReason): final static enum constant
-        UNRECOGNIZED_CRIT_EXT (java.security.cert.PKIXReason): final static enum constant
-        NOT_CA_CERT (java.security.cert.PKIXReason): final static enum constant
-        PATH_TOO_LONG (java.security.cert.PKIXReason): final static enum constant
-        INVALID_NAME (java.security.cert.PKIXReason): final static enum constant
-    
-    """
     NAME_CHAINING: typing.ClassVar['PKIXReason'] = ...
     INVALID_KEY_USAGE: typing.ClassVar['PKIXReason'] = ...
     INVALID_POLICY: typing.ClassVar['PKIXReason'] = ...

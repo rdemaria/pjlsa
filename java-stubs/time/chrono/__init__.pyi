@@ -11,14 +11,6 @@ import typing
 
 
 class ChronoLocalDate(java.time.temporal.Temporal, java.time.temporal.TemporalAdjuster, java.lang.Comparable['ChronoLocalDate']):
-    """
-    Java class 'java.time.chrono.ChronoLocalDate'
-    
-        Interfaces:
-            java.time.temporal.Temporal,
-            java.time.temporal.TemporalAdjuster, java.lang.Comparable
-    
-    """
     def adjustInto(self, temporal: java.time.temporal.Temporal) -> java.time.temporal.Temporal: ...
     def atTime(self, localTime: java.time.LocalTime) -> 'ChronoLocalDateTime'[typing.Any]: ...
     def compareTo(self, chronoLocalDate: 'ChronoLocalDate') -> int: ...
@@ -58,14 +50,6 @@ class ChronoLocalDate(java.time.temporal.Temporal, java.time.temporal.TemporalAd
 
 _ChronoLocalDateTime__D = typing.TypeVar('_ChronoLocalDateTime__D', bound=ChronoLocalDate)  # <D>
 class ChronoLocalDateTime(java.time.temporal.Temporal, java.time.temporal.TemporalAdjuster, java.lang.Comparable['ChronoLocalDateTime'[typing.Any]], typing.Generic[_ChronoLocalDateTime__D]):
-    """
-    Java class 'java.time.chrono.ChronoLocalDateTime'
-    
-        Interfaces:
-            java.time.temporal.Temporal,
-            java.time.temporal.TemporalAdjuster, java.lang.Comparable
-    
-    """
     def adjustInto(self, temporal: java.time.temporal.Temporal) -> java.time.temporal.Temporal: ...
     def atZone(self, zoneId: java.time.ZoneId) -> 'ChronoZonedDateTime'[_ChronoLocalDateTime__D]: ...
     def compareTo(self, chronoLocalDateTime: 'ChronoLocalDateTime'[typing.Any]) -> int: ...
@@ -99,13 +83,6 @@ class ChronoLocalDateTime(java.time.temporal.Temporal, java.time.temporal.Tempor
     def toString(self) -> str: ...
 
 class ChronoPeriod(java.time.temporal.TemporalAmount):
-    """
-    Java class 'java.time.chrono.ChronoPeriod'
-    
-        Interfaces:
-            java.time.temporal.TemporalAmount
-    
-    """
     def addTo(self, temporal: java.time.temporal.Temporal) -> java.time.temporal.Temporal: ...
     @staticmethod
     def between(chronoLocalDate: ChronoLocalDate, chronoLocalDate2: ChronoLocalDate) -> 'ChronoPeriod': ...
@@ -126,13 +103,6 @@ class ChronoPeriod(java.time.temporal.TemporalAmount):
 
 _ChronoZonedDateTime__D = typing.TypeVar('_ChronoZonedDateTime__D', bound=ChronoLocalDate)  # <D>
 class ChronoZonedDateTime(java.time.temporal.Temporal, java.lang.Comparable['ChronoZonedDateTime'[typing.Any]], typing.Generic[_ChronoZonedDateTime__D]):
-    """
-    Java class 'java.time.chrono.ChronoZonedDateTime'
-    
-        Interfaces:
-            java.time.temporal.Temporal, java.lang.Comparable
-    
-    """
     def compareTo(self, chronoZonedDateTime: 'ChronoZonedDateTime'[typing.Any]) -> int: ...
     def equals(self, object: typing.Any) -> bool: ...
     def format(self, dateTimeFormatter: java.time.format.DateTimeFormatter) -> str: ...
@@ -174,13 +144,6 @@ class ChronoZonedDateTime(java.time.temporal.Temporal, java.lang.Comparable['Chr
     def withZoneSameLocal(self, zoneId: java.time.ZoneId) -> 'ChronoZonedDateTime'[_ChronoZonedDateTime__D]: ...
 
 class Chronology(java.lang.Comparable['Chronology']):
-    """
-    Java class 'java.time.chrono.Chronology'
-    
-        Interfaces:
-            java.lang.Comparable
-    
-    """
     def compareTo(self, chronology: 'Chronology') -> int: ...
     @typing.overload
     def date(self, int: int, int2: int, int3: int) -> ChronoLocalDate: ...
@@ -229,14 +192,6 @@ class Chronology(java.lang.Comparable['Chronology']):
     def zonedDateTime(self, temporalAccessor: java.time.temporal.TemporalAccessor) -> ChronoZonedDateTime[ChronoLocalDate]: ...
 
 class Era(java.time.temporal.TemporalAccessor, java.time.temporal.TemporalAdjuster):
-    """
-    Java class 'java.time.chrono.Era'
-    
-        Interfaces:
-            java.time.temporal.TemporalAccessor,
-            java.time.temporal.TemporalAdjuster
-    
-    """
     def adjustInto(self, temporal: java.time.temporal.Temporal) -> java.time.temporal.Temporal: ...
     def get(self, temporalField: java.time.temporal.TemporalField) -> int: ...
     def getDisplayName(self, textStyle: java.time.format.TextStyle, locale: java.util.Locale) -> str: ...
@@ -248,16 +203,6 @@ class Era(java.time.temporal.TemporalAccessor, java.time.temporal.TemporalAdjust
     def range(self, temporalField: java.time.temporal.TemporalField) -> java.time.temporal.ValueRange: ...
 
 class AbstractChronology(Chronology):
-    """
-    Java class 'java.time.chrono.AbstractChronology'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.time.chrono.Chronology
-    
-    """
     def compareTo(self, chronology: Chronology) -> int: ...
     def equals(self, object: typing.Any) -> bool: ...
     def hashCode(self) -> int: ...
@@ -265,19 +210,6 @@ class AbstractChronology(Chronology):
     def toString(self) -> str: ...
 
 class HijrahEra(java.lang.Enum['HijrahEra'], Era):
-    """
-    Java class 'java.time.chrono.HijrahEra'
-    
-        Extends:
-            java.lang.Enum
-    
-        Interfaces:
-            java.time.chrono.Era
-    
-      Attributes:
-        AH (java.time.chrono.HijrahEra): final static enum constant
-    
-    """
     AH: typing.ClassVar['HijrahEra'] = ...
     def getDisplayName(self, textStyle: java.time.format.TextStyle, locale: java.util.Locale) -> str: ...
     def getValue(self) -> int: ...
@@ -295,20 +227,6 @@ class HijrahEra(java.lang.Enum['HijrahEra'], Era):
     def values() -> typing.List['HijrahEra']: ...
 
 class IsoEra(java.lang.Enum['IsoEra'], Era):
-    """
-    Java class 'java.time.chrono.IsoEra'
-    
-        Extends:
-            java.lang.Enum
-    
-        Interfaces:
-            java.time.chrono.Era
-    
-      Attributes:
-        BCE (java.time.chrono.IsoEra): final static enum constant
-        CE (java.time.chrono.IsoEra): final static enum constant
-    
-    """
     BCE: typing.ClassVar['IsoEra'] = ...
     CE: typing.ClassVar['IsoEra'] = ...
     def getValue(self) -> int: ...
@@ -325,22 +243,6 @@ class IsoEra(java.lang.Enum['IsoEra'], Era):
     def values() -> typing.List['IsoEra']: ...
 
 class JapaneseEra(Era, java.io.Serializable):
-    """
-    Java class 'java.time.chrono.JapaneseEra'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.time.chrono.Era, java.io.Serializable
-    
-      Attributes:
-        MEIJI (java.time.chrono.JapaneseEra): final static field
-        TAISHO (java.time.chrono.JapaneseEra): final static field
-        SHOWA (java.time.chrono.JapaneseEra): final static field
-        HEISEI (java.time.chrono.JapaneseEra): final static field
-    
-    """
     MEIJI: typing.ClassVar['JapaneseEra'] = ...
     TAISHO: typing.ClassVar['JapaneseEra'] = ...
     SHOWA: typing.ClassVar['JapaneseEra'] = ...
@@ -357,20 +259,6 @@ class JapaneseEra(Era, java.io.Serializable):
     def values() -> typing.List['JapaneseEra']: ...
 
 class MinguoEra(java.lang.Enum['MinguoEra'], Era):
-    """
-    Java class 'java.time.chrono.MinguoEra'
-    
-        Extends:
-            java.lang.Enum
-    
-        Interfaces:
-            java.time.chrono.Era
-    
-      Attributes:
-        BEFORE_ROC (java.time.chrono.MinguoEra): final static enum constant
-        ROC (java.time.chrono.MinguoEra): final static enum constant
-    
-    """
     BEFORE_ROC: typing.ClassVar['MinguoEra'] = ...
     ROC: typing.ClassVar['MinguoEra'] = ...
     def getDisplayName(self, textStyle: java.time.format.TextStyle, locale: java.util.Locale) -> str: ...
@@ -388,20 +276,6 @@ class MinguoEra(java.lang.Enum['MinguoEra'], Era):
     def values() -> typing.List['MinguoEra']: ...
 
 class ThaiBuddhistEra(java.lang.Enum['ThaiBuddhistEra'], Era):
-    """
-    Java class 'java.time.chrono.ThaiBuddhistEra'
-    
-        Extends:
-            java.lang.Enum
-    
-        Interfaces:
-            java.time.chrono.Era
-    
-      Attributes:
-        BEFORE_BE (java.time.chrono.ThaiBuddhistEra): final static enum constant
-        BE (java.time.chrono.ThaiBuddhistEra): final static enum constant
-    
-    """
     BEFORE_BE: typing.ClassVar['ThaiBuddhistEra'] = ...
     BE: typing.ClassVar['ThaiBuddhistEra'] = ...
     def getDisplayName(self, textStyle: java.time.format.TextStyle, locale: java.util.Locale) -> str: ...
@@ -419,19 +293,6 @@ class ThaiBuddhistEra(java.lang.Enum['ThaiBuddhistEra'], Era):
     def values() -> typing.List['ThaiBuddhistEra']: ...
 
 class HijrahChronology(AbstractChronology, java.io.Serializable):
-    """
-    Java class 'java.time.chrono.HijrahChronology'
-    
-        Extends:
-            java.time.chrono.AbstractChronology
-    
-        Interfaces:
-            java.io.Serializable
-    
-      Attributes:
-        INSTANCE (java.time.chrono.HijrahChronology): final static field
-    
-    """
     INSTANCE: typing.ClassVar['HijrahChronology'] = ...
     @typing.overload
     def date(self, int: int, int2: int, int3: int) -> 'HijrahDate': ...
@@ -465,19 +326,6 @@ class HijrahChronology(AbstractChronology, java.io.Serializable):
     def zonedDateTime(self, temporalAccessor: java.time.temporal.TemporalAccessor) -> ChronoZonedDateTime['HijrahDate']: ...
 
 class IsoChronology(AbstractChronology, java.io.Serializable):
-    """
-    Java class 'java.time.chrono.IsoChronology'
-    
-        Extends:
-            java.time.chrono.AbstractChronology
-    
-        Interfaces:
-            java.io.Serializable
-    
-      Attributes:
-        INSTANCE (java.time.chrono.IsoChronology): final static field
-    
-    """
     INSTANCE: typing.ClassVar['IsoChronology'] = ...
     @typing.overload
     def date(self, int: int, int2: int, int3: int) -> java.time.LocalDate: ...
@@ -516,19 +364,6 @@ class IsoChronology(AbstractChronology, java.io.Serializable):
     def zonedDateTime(self, temporalAccessor: java.time.temporal.TemporalAccessor) -> java.time.ZonedDateTime: ...
 
 class JapaneseChronology(AbstractChronology, java.io.Serializable):
-    """
-    Java class 'java.time.chrono.JapaneseChronology'
-    
-        Extends:
-            java.time.chrono.AbstractChronology
-    
-        Interfaces:
-            java.io.Serializable
-    
-      Attributes:
-        INSTANCE (java.time.chrono.JapaneseChronology): final static field
-    
-    """
     INSTANCE: typing.ClassVar['JapaneseChronology'] = ...
     @typing.overload
     def date(self, int: int, int2: int, int3: int) -> 'JapaneseDate': ...
@@ -562,19 +397,6 @@ class JapaneseChronology(AbstractChronology, java.io.Serializable):
     def zonedDateTime(self, temporalAccessor: java.time.temporal.TemporalAccessor) -> ChronoZonedDateTime['JapaneseDate']: ...
 
 class MinguoChronology(AbstractChronology, java.io.Serializable):
-    """
-    Java class 'java.time.chrono.MinguoChronology'
-    
-        Extends:
-            java.time.chrono.AbstractChronology
-    
-        Interfaces:
-            java.io.Serializable
-    
-      Attributes:
-        INSTANCE (java.time.chrono.MinguoChronology): final static field
-    
-    """
     INSTANCE: typing.ClassVar['MinguoChronology'] = ...
     @typing.overload
     def date(self, int: int, int2: int, int3: int) -> 'MinguoDate': ...
@@ -608,19 +430,6 @@ class MinguoChronology(AbstractChronology, java.io.Serializable):
     def zonedDateTime(self, temporalAccessor: java.time.temporal.TemporalAccessor) -> ChronoZonedDateTime['MinguoDate']: ...
 
 class ThaiBuddhistChronology(AbstractChronology, java.io.Serializable):
-    """
-    Java class 'java.time.chrono.ThaiBuddhistChronology'
-    
-        Extends:
-            java.time.chrono.AbstractChronology
-    
-        Interfaces:
-            java.io.Serializable
-    
-      Attributes:
-        INSTANCE (java.time.chrono.ThaiBuddhistChronology): final static field
-    
-    """
     INSTANCE: typing.ClassVar['ThaiBuddhistChronology'] = ...
     @typing.overload
     def date(self, int: int, int2: int, int3: int) -> 'ThaiBuddhistDate': ...
@@ -654,16 +463,6 @@ class ThaiBuddhistChronology(AbstractChronology, java.io.Serializable):
     def zonedDateTime(self, temporalAccessor: java.time.temporal.TemporalAccessor) -> ChronoZonedDateTime['ThaiBuddhistDate']: ...
 
 class HijrahDate(java.time.chrono.ChronoLocalDateImpl['HijrahDate'], ChronoLocalDate, java.io.Serializable):
-    """
-    Java class 'java.time.chrono.HijrahDate'
-    
-        Extends:
-            java.time.chrono.ChronoLocalDateImpl
-    
-        Interfaces:
-            java.time.chrono.ChronoLocalDate, java.io.Serializable
-    
-    """
     def atTime(self, localTime: java.time.LocalTime) -> ChronoLocalDateTime['HijrahDate']: ...
     def equals(self, object: typing.Any) -> bool: ...
     def getChronology(self) -> HijrahChronology: ...
@@ -698,16 +497,6 @@ class HijrahDate(java.time.chrono.ChronoLocalDateImpl['HijrahDate'], ChronoLocal
     def withVariant(self, hijrahChronology: HijrahChronology) -> 'HijrahDate': ...
 
 class JapaneseDate(java.time.chrono.ChronoLocalDateImpl['JapaneseDate'], ChronoLocalDate, java.io.Serializable):
-    """
-    Java class 'java.time.chrono.JapaneseDate'
-    
-        Extends:
-            java.time.chrono.ChronoLocalDateImpl
-    
-        Interfaces:
-            java.time.chrono.ChronoLocalDate, java.io.Serializable
-    
-    """
     def atTime(self, localTime: java.time.LocalTime) -> ChronoLocalDateTime['JapaneseDate']: ...
     def equals(self, object: typing.Any) -> bool: ...
     def getChronology(self) -> JapaneseChronology: ...
@@ -748,16 +537,6 @@ class JapaneseDate(java.time.chrono.ChronoLocalDateImpl['JapaneseDate'], ChronoL
     def until(self, chronoLocalDate: ChronoLocalDate) -> ChronoPeriod: ...
 
 class MinguoDate(java.time.chrono.ChronoLocalDateImpl['MinguoDate'], ChronoLocalDate, java.io.Serializable):
-    """
-    Java class 'java.time.chrono.MinguoDate'
-    
-        Extends:
-            java.time.chrono.ChronoLocalDateImpl
-    
-        Interfaces:
-            java.time.chrono.ChronoLocalDate, java.io.Serializable
-    
-    """
     def atTime(self, localTime: java.time.LocalTime) -> ChronoLocalDateTime['MinguoDate']: ...
     def equals(self, object: typing.Any) -> bool: ...
     def getChronology(self) -> MinguoChronology: ...
@@ -789,16 +568,6 @@ class MinguoDate(java.time.chrono.ChronoLocalDateImpl['MinguoDate'], ChronoLocal
     def until(self, chronoLocalDate: ChronoLocalDate) -> ChronoPeriod: ...
 
 class ThaiBuddhistDate(java.time.chrono.ChronoLocalDateImpl['ThaiBuddhistDate'], ChronoLocalDate, java.io.Serializable):
-    """
-    Java class 'java.time.chrono.ThaiBuddhistDate'
-    
-        Extends:
-            java.time.chrono.ChronoLocalDateImpl
-    
-        Interfaces:
-            java.time.chrono.ChronoLocalDate, java.io.Serializable
-    
-    """
     def atTime(self, localTime: java.time.LocalTime) -> ChronoLocalDateTime['ThaiBuddhistDate']: ...
     def equals(self, object: typing.Any) -> bool: ...
     def getChronology(self) -> ThaiBuddhistChronology: ...

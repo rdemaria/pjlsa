@@ -14,14 +14,7 @@ import typing
 
 class FromRest:
     """
-    Java class 'cern.lsa.client.rest.api.v1.mapper.FromRest'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * FromRest()
-    
+    public class FromRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     """
     def __init__(self): ...
     @staticmethod
@@ -32,7 +25,13 @@ class FromRest:
     def toDeviceTypeImplementation(deviceTypeImplementationRest: cern.lsa.client.rest.api.v1.dto.DeviceTypeImplementationRest) -> cern.lsa.domain.devices.DeviceTypeImplementation: ...
     @typing.overload
     @staticmethod
-    def toDeviceTypeVersion(deviceTypeVersionContainerRest: cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest) -> cern.lsa.domain.devices.DeviceTypeVersion: ...
+    def toDeviceTypeVersion(deviceTypeVersionContainerRest: cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest) -> cern.lsa.domain.devices.DeviceTypeVersion:
+        """
+        public static cern.lsa.domain.devices.DeviceTypeVersion toDeviceTypeVersion (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest` rest, cern.lsa.domain.devices.DeviceType deviceType)
+        
+        
+        """
+        ...
     @typing.overload
     @staticmethod
     def toDeviceTypeVersion(deviceTypeVersionRest: cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest, deviceType2: cern.lsa.domain.devices.DeviceType) -> cern.lsa.domain.devices.DeviceTypeVersion: ...
@@ -52,11 +51,7 @@ class FromRest:
 
 class MapperUtils:
     """
-    Java class 'cern.lsa.client.rest.api.v1.mapper.MapperUtils'
-    
-        Extends:
-            java.lang.Object
-    
+    public class MapperUtils extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     """
     _collectionToList__U = typing.TypeVar('_collectionToList__U')  # <U>
     @staticmethod
@@ -110,14 +105,7 @@ class MapperUtils:
 
 class ToRest:
     """
-    Java class 'cern.lsa.client.rest.api.v1.mapper.ToRest'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * ToRest()
-    
+    public class ToRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     """
     def __init__(self): ...
     def fromAcceleratorZone(self, acceleratorZone: cern.accsoft.commons.domain.zones.AcceleratorZone) -> cern.lsa.client.rest.api.v1.dto.AcceleratorZoneRest: ...

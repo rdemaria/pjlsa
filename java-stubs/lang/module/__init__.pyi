@@ -11,13 +11,6 @@ import typing
 
 
 class Configuration:
-    """
-    Java class 'java.lang.module.Configuration'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     @staticmethod
     def empty() -> 'Configuration': ...
     def findModule(self, string: str) -> java.util.Optional['ResolvedModule']: ...
@@ -36,19 +29,6 @@ class Configuration:
     def toString(self) -> str: ...
 
 class FindException(java.lang.RuntimeException):
-    """
-    Java class 'java.lang.module.FindException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * FindException(java.lang.String, java.lang.Throwable)
-        * FindException(java.lang.Throwable)
-        * FindException(java.lang.String)
-        * FindException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -59,33 +39,12 @@ class FindException(java.lang.RuntimeException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class InvalidModuleDescriptorException(java.lang.RuntimeException):
-    """
-    Java class 'java.lang.module.InvalidModuleDescriptorException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * InvalidModuleDescriptorException()
-        * InvalidModuleDescriptorException(java.lang.String)
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
     def __init__(self, string: str): ...
 
 class ModuleDescriptor(java.lang.Comparable['ModuleDescriptor']):
-    """
-    Java class 'java.lang.module.ModuleDescriptor'
-    
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            java.lang.Comparable
-    
-    """
     def compareTo(self, moduleDescriptor: 'ModuleDescriptor') -> int: ...
     def equals(self, object: typing.Any) -> bool: ...
     def exports(self) -> java.util.Set['ModuleDescriptor.Exports']: ...
@@ -127,13 +86,6 @@ class ModuleDescriptor(java.lang.Comparable['ModuleDescriptor']):
     def uses(self) -> java.util.Set[str]: ...
     def version(self) -> java.util.Optional['ModuleDescriptor.Version']: ...
     class Builder:
-        """
-        Java class 'java.lang.module.ModuleDescriptor$Builder'
-        
-            Extends:
-                java.lang.Object
-        
-        """
         def build(self) -> 'ModuleDescriptor': ...
         @typing.overload
         def exports(self, string: str) -> 'ModuleDescriptor.Builder': ...
@@ -175,16 +127,6 @@ class ModuleDescriptor(java.lang.Comparable['ModuleDescriptor']):
         @typing.overload
         def version(self, version: 'ModuleDescriptor.Version') -> 'ModuleDescriptor.Builder': ...
     class Exports(java.lang.Comparable['ModuleDescriptor.Exports']):
-        """
-        Java class 'java.lang.module.ModuleDescriptor$Exports'
-        
-            Extends:
-                java.lang.Object
-        
-            Interfaces:
-                java.lang.Comparable
-        
-        """
         def compareTo(self, exports: 'ModuleDescriptor.Exports') -> int: ...
         def equals(self, object: typing.Any) -> bool: ...
         def hashCode(self) -> int: ...
@@ -194,17 +136,6 @@ class ModuleDescriptor(java.lang.Comparable['ModuleDescriptor']):
         def targets(self) -> java.util.Set[str]: ...
         def toString(self) -> str: ...
         class Modifier(java.lang.Enum['ModuleDescriptor.Exports.Modifier']):
-            """
-            Java class 'java.lang.module.ModuleDescriptor$Exports$Modifier'
-            
-                Extends:
-                    java.lang.Enum
-            
-              Attributes:
-                SYNTHETIC (java.lang.module.ModuleDescriptor$Exports$Modifier): final static enum constant
-                MANDATED (java.lang.module.ModuleDescriptor$Exports$Modifier): final static enum constant
-            
-            """
             SYNTHETIC: typing.ClassVar['ModuleDescriptor.Exports.Modifier'] = ...
             MANDATED: typing.ClassVar['ModuleDescriptor.Exports.Modifier'] = ...
             _valueOf_0__T = typing.TypeVar('_valueOf_0__T', bound=java.lang.Enum)  # <T>
@@ -217,19 +148,6 @@ class ModuleDescriptor(java.lang.Comparable['ModuleDescriptor']):
             @staticmethod
             def values() -> typing.List['ModuleDescriptor.Exports.Modifier']: ...
     class Modifier(java.lang.Enum['ModuleDescriptor.Modifier']):
-        """
-        Java class 'java.lang.module.ModuleDescriptor$Modifier'
-        
-            Extends:
-                java.lang.Enum
-        
-          Attributes:
-            OPEN (java.lang.module.ModuleDescriptor$Modifier): final static enum constant
-            AUTOMATIC (java.lang.module.ModuleDescriptor$Modifier): final static enum constant
-            SYNTHETIC (java.lang.module.ModuleDescriptor$Modifier): final static enum constant
-            MANDATED (java.lang.module.ModuleDescriptor$Modifier): final static enum constant
-        
-        """
         OPEN: typing.ClassVar['ModuleDescriptor.Modifier'] = ...
         AUTOMATIC: typing.ClassVar['ModuleDescriptor.Modifier'] = ...
         SYNTHETIC: typing.ClassVar['ModuleDescriptor.Modifier'] = ...
@@ -244,16 +162,6 @@ class ModuleDescriptor(java.lang.Comparable['ModuleDescriptor']):
         @staticmethod
         def values() -> typing.List['ModuleDescriptor.Modifier']: ...
     class Opens(java.lang.Comparable['ModuleDescriptor.Opens']):
-        """
-        Java class 'java.lang.module.ModuleDescriptor$Opens'
-        
-            Extends:
-                java.lang.Object
-        
-            Interfaces:
-                java.lang.Comparable
-        
-        """
         def compareTo(self, opens: 'ModuleDescriptor.Opens') -> int: ...
         def equals(self, object: typing.Any) -> bool: ...
         def hashCode(self) -> int: ...
@@ -263,17 +171,6 @@ class ModuleDescriptor(java.lang.Comparable['ModuleDescriptor']):
         def targets(self) -> java.util.Set[str]: ...
         def toString(self) -> str: ...
         class Modifier(java.lang.Enum['ModuleDescriptor.Opens.Modifier']):
-            """
-            Java class 'java.lang.module.ModuleDescriptor$Opens$Modifier'
-            
-                Extends:
-                    java.lang.Enum
-            
-              Attributes:
-                SYNTHETIC (java.lang.module.ModuleDescriptor$Opens$Modifier): final static enum constant
-                MANDATED (java.lang.module.ModuleDescriptor$Opens$Modifier): final static enum constant
-            
-            """
             SYNTHETIC: typing.ClassVar['ModuleDescriptor.Opens.Modifier'] = ...
             MANDATED: typing.ClassVar['ModuleDescriptor.Opens.Modifier'] = ...
             _valueOf_0__T = typing.TypeVar('_valueOf_0__T', bound=java.lang.Enum)  # <T>
@@ -286,16 +183,6 @@ class ModuleDescriptor(java.lang.Comparable['ModuleDescriptor']):
             @staticmethod
             def values() -> typing.List['ModuleDescriptor.Opens.Modifier']: ...
     class Provides(java.lang.Comparable['ModuleDescriptor.Provides']):
-        """
-        Java class 'java.lang.module.ModuleDescriptor$Provides'
-        
-            Extends:
-                java.lang.Object
-        
-            Interfaces:
-                java.lang.Comparable
-        
-        """
         def compareTo(self, provides: 'ModuleDescriptor.Provides') -> int: ...
         def equals(self, object: typing.Any) -> bool: ...
         def hashCode(self) -> int: ...
@@ -303,16 +190,6 @@ class ModuleDescriptor(java.lang.Comparable['ModuleDescriptor']):
         def service(self) -> str: ...
         def toString(self) -> str: ...
     class Requires(java.lang.Comparable['ModuleDescriptor.Requires']):
-        """
-        Java class 'java.lang.module.ModuleDescriptor$Requires'
-        
-            Extends:
-                java.lang.Object
-        
-            Interfaces:
-                java.lang.Comparable
-        
-        """
         def compareTo(self, requires: 'ModuleDescriptor.Requires') -> int: ...
         def compiledVersion(self) -> java.util.Optional['ModuleDescriptor.Version']: ...
         def equals(self, object: typing.Any) -> bool: ...
@@ -322,19 +199,6 @@ class ModuleDescriptor(java.lang.Comparable['ModuleDescriptor']):
         def rawCompiledVersion(self) -> java.util.Optional[str]: ...
         def toString(self) -> str: ...
         class Modifier(java.lang.Enum['ModuleDescriptor.Requires.Modifier']):
-            """
-            Java class 'java.lang.module.ModuleDescriptor$Requires$Modifier'
-            
-                Extends:
-                    java.lang.Enum
-            
-              Attributes:
-                TRANSITIVE (java.lang.module.ModuleDescriptor$Requires$Modifier): final static enum constant
-                STATIC (java.lang.module.ModuleDescriptor$Requires$Modifier): final static enum constant
-                SYNTHETIC (java.lang.module.ModuleDescriptor$Requires$Modifier): final static enum constant
-                MANDATED (java.lang.module.ModuleDescriptor$Requires$Modifier): final static enum constant
-            
-            """
             TRANSITIVE: typing.ClassVar['ModuleDescriptor.Requires.Modifier'] = ...
             STATIC: typing.ClassVar['ModuleDescriptor.Requires.Modifier'] = ...
             SYNTHETIC: typing.ClassVar['ModuleDescriptor.Requires.Modifier'] = ...
@@ -349,16 +213,6 @@ class ModuleDescriptor(java.lang.Comparable['ModuleDescriptor']):
             @staticmethod
             def values() -> typing.List['ModuleDescriptor.Requires.Modifier']: ...
     class Version(java.lang.Comparable['ModuleDescriptor.Version']):
-        """
-        Java class 'java.lang.module.ModuleDescriptor$Version'
-        
-            Extends:
-                java.lang.Object
-        
-            Interfaces:
-                java.lang.Comparable
-        
-        """
         def compareTo(self, version: 'ModuleDescriptor.Version') -> int: ...
         def equals(self, object: typing.Any) -> bool: ...
         def hashCode(self) -> int: ...
@@ -367,10 +221,6 @@ class ModuleDescriptor(java.lang.Comparable['ModuleDescriptor']):
         def toString(self) -> str: ...
 
 class ModuleFinder:
-    """
-    Java class 'java.lang.module.ModuleFinder'
-    
-    """
     @staticmethod
     def compose(moduleFinderArray: typing.List['ModuleFinder']) -> 'ModuleFinder': ...
     def find(self, string: str) -> java.util.Optional['ModuleReference']: ...
@@ -381,13 +231,6 @@ class ModuleFinder:
     def ofSystem() -> 'ModuleFinder': ...
 
 class ModuleReader(java.io.Closeable):
-    """
-    Java class 'java.lang.module.ModuleReader'
-    
-        Interfaces:
-            java.io.Closeable
-    
-    """
     def close(self) -> None: ...
     def find(self, string: str) -> java.util.Optional[java.net.URI]: ...
     def list(self) -> java.util.stream.Stream[str]: ...
@@ -396,31 +239,11 @@ class ModuleReader(java.io.Closeable):
     def release(self, byteBuffer: java.nio.ByteBuffer) -> None: ...
 
 class ModuleReference:
-    """
-    Java class 'java.lang.module.ModuleReference'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def descriptor(self) -> ModuleDescriptor: ...
     def location(self) -> java.util.Optional[java.net.URI]: ...
     def open(self) -> ModuleReader: ...
 
 class ResolutionException(java.lang.RuntimeException):
-    """
-    Java class 'java.lang.module.ResolutionException'
-    
-        Extends:
-            java.lang.RuntimeException
-    
-      Constructors:
-        * ResolutionException(java.lang.String, java.lang.Throwable)
-        * ResolutionException(java.lang.Throwable)
-        * ResolutionException(java.lang.String)
-        * ResolutionException()
-    
-    """
     @typing.overload
     def __init__(self): ...
     @typing.overload
@@ -431,13 +254,6 @@ class ResolutionException(java.lang.RuntimeException):
     def __init__(self, throwable: java.lang.Throwable): ...
 
 class ResolvedModule:
-    """
-    Java class 'java.lang.module.ResolvedModule'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def configuration(self) -> Configuration: ...
     def equals(self, object: typing.Any) -> bool: ...
     def hashCode(self) -> int: ...

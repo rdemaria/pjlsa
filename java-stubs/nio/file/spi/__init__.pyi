@@ -11,13 +11,6 @@ import typing
 
 
 class FileSystemProvider:
-    """
-    Java class 'java.nio.file.spi.FileSystemProvider'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def checkAccess(self, path: typing.Union[java.nio.file.Path, jpype.protocol.SupportsPath], accessModeArray: typing.List[java.nio.file.AccessMode]) -> None: ...
     def copy(self, path: typing.Union[java.nio.file.Path, jpype.protocol.SupportsPath], path2: typing.Union[java.nio.file.Path, jpype.protocol.SupportsPath], copyOptionArray: typing.List[java.nio.file.CopyOption]) -> None: ...
     def createDirectory(self, path: typing.Union[java.nio.file.Path, jpype.protocol.SupportsPath], fileAttributeArray: typing.List[java.nio.file.attribute.FileAttribute[typing.Any]]) -> None: ...
@@ -55,13 +48,6 @@ class FileSystemProvider:
     def setAttribute(self, path: typing.Union[java.nio.file.Path, jpype.protocol.SupportsPath], string: str, object: typing.Any, linkOptionArray: typing.List[java.nio.file.LinkOption]) -> None: ...
 
 class FileTypeDetector:
-    """
-    Java class 'java.nio.file.spi.FileTypeDetector'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     def probeContentType(self, path: typing.Union[java.nio.file.Path, jpype.protocol.SupportsPath]) -> str: ...
 
 

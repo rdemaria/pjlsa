@@ -5,23 +5,21 @@ import typing
 
 class JapcCache:
     """
-    Java class 'cern.japc.core.spi.cache.JapcCache'
+    public interface JapcCache
     
+        Interface to be implemented by all the JAPC components which implement any kind of caching which should be managed via
+        central JAPC Cache API.
     """
     def clearAll(self) -> None: ...
 
 class JapcCacheException(java.lang.Exception):
     """
-    Java class 'cern.japc.core.spi.cache.JapcCacheException'
+    public class JapcCacheException extends `Exception <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Exception.html?is-external=true>`
     
-        Extends:
-            java.lang.Exception
+        This exception is thrown in case of problems with JAPC cache management
     
-      Constructors:
-        * JapcCacheException(java.lang.String)
-        * JapcCacheException(java.lang.Throwable)
-        * JapcCacheException(java.lang.String, java.lang.Throwable)
-    
+        Also see:
+            :meth:`~serialized`
     """
     @typing.overload
     def __init__(self, string: str): ...
@@ -32,21 +30,12 @@ class JapcCacheException(java.lang.Exception):
 
 class JapcCacheType(java.lang.Enum['JapcCacheType']):
     """
-    Java class 'cern.japc.core.spi.cache.JapcCacheType'
+    public enum JapcCacheType extends `Enum <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Enum.html?is-external=true>`<:class:`~cern.japc.core.spi.cache.JapcCacheType`>
     
-        Extends:
-            java.lang.Enum
+        All the possible types of JAPC cached information.
     
-      Attributes:
-        DEVICE_TYPE (cern.japc.core.spi.cache.JapcCacheType): final static enum constant
-        DEVICE (cern.japc.core.spi.cache.JapcCacheType): final static enum constant
-        PARAMETER (cern.japc.core.spi.cache.JapcCacheType): final static enum constant
-        DEVICE_DESCRIPTOR (cern.japc.core.spi.cache.JapcCacheType): final static enum constant
-        PARAMETER_DESCRIPTOR (cern.japc.core.spi.cache.JapcCacheType): final static enum constant
-        VALUE_DESCRIPTOR (cern.japc.core.spi.cache.JapcCacheType): final static enum constant
-        SERVICE_CONFIG (cern.japc.core.spi.cache.JapcCacheType): final static enum constant
-        ENUM (cern.japc.core.spi.cache.JapcCacheType): final static enum constant
-    
+        Different components of JAPC can cache the JAPC parameters, JAPC descriptors, JAPC services configurations, enumeration
+        definitions, etc.
     """
     DEVICE_TYPE: typing.ClassVar['JapcCacheType'] = ...
     DEVICE: typing.ClassVar['JapcCacheType'] = ...
@@ -59,38 +48,86 @@ class JapcCacheType(java.lang.Enum['JapcCacheType']):
     _valueOf_1__T = typing.TypeVar('_valueOf_1__T', bound=java.lang.Enum)  # <T>
     @typing.overload
     @staticmethod
-    def valueOf(string: str) -> 'JapcCacheType': ...
+    def valueOf(string: str) -> 'JapcCacheType':
+        """
+            Returns the enum constant of this type with the specified name. The string must match *exactly* an identifier used to
+            declare an enum constant in this type. (Extraneous whitespace characters are not permitted.)
+        
+            Parameters:
+                name (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): the name of the enum constant to be returned.
+        
+            Returns:
+                the enum constant with the specified name
+        
+            Raises:
+                : if this enum type has no constant with the specified name
+                : if the argument is null
+        
+        
+        """
+        ...
     @typing.overload
     @staticmethod
     def valueOf(class_: typing.Type[_valueOf_1__T], string: str) -> _valueOf_1__T: ...
     @staticmethod
-    def values() -> typing.List['JapcCacheType']: ...
+    def values() -> typing.List['JapcCacheType']:
+        """
+            Returns an array containing the constants of this enum type, in the order they are declared. This method may be used to
+            iterate over the constants as follows:
+        
+            .. code-block: java
+            
+            for (JapcCacheType c : JapcCacheType.values())
+                System.out.println(c);
+            
+        
+            Returns:
+                an array containing the constants of this enum type, in the order they are declared
+        
+        
+        """
+        ...
 
 class JapcCacheController(JapcCache):
     """
-    Java class 'cern.japc.core.spi.cache.JapcCacheController'
+    public class JapcCacheController extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.japc.core.spi.cache.JapcCache`
     
-        Extends:
-            java.lang.Object
-    
-        Interfaces:
-            cern.japc.core.spi.cache.JapcCache
-    
-      Constructors:
-        * JapcCacheController()
-    
+        The JAPC controller to handle the cached information.
     """
     def __init__(self): ...
     def clearAll(self) -> None: ...
     @staticmethod
-    def getInstance() -> 'JapcCacheController': ...
-    def registerCache(self, japcCache: JapcCache) -> None: ...
-    def unregisterCache(self, japcCache: JapcCache) -> None: ...
-    class JmxMBean:
+    def getInstance() -> 'JapcCacheController':
         """
-        Java class 'cern.japc.core.spi.cache.JapcCacheController$JmxMBean'
+            Getter for the singleton of :class:`~cern.japc.core.spi.cache.JapcCacheController`.
+        
+            Returns:
+                the singleton of :class:`~cern.japc.core.spi.cache.JapcCacheController`
+        
         
         """
+        ...
+    def registerCache(self, japcCache: JapcCache) -> None:
+        """
+            Registers a new JAPC cache
+        
+            Parameters:
+                cache (:class:`~cern.japc.core.spi.cache.JapcCache`): JAPC cache
+        
+        
+        """
+        ...
+    def unregisterCache(self, japcCache: JapcCache) -> None:
+        """
+            Unregisters a JAPC cache
+        
+            Parameters:
+                cache (:class:`~cern.japc.core.spi.cache.JapcCache`): JAPC cache
+        
+        
+        """
+        ...
+    class JmxMBean:
         def clearAll(self) -> None: ...
         def getRegisteredCaches(self) -> str: ...
 

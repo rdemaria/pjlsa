@@ -8,29 +8,56 @@ import typing
 
 class JapcExceptions:
     """
-    Java class 'cern.japc.core.util.JapcExceptions'
+    public class JapcExceptions extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
-    
+        Utilities methods related to Exception validation.
     """
     @staticmethod
-    def isNoDataAvailableException(throwable: java.lang.Throwable) -> bool: ...
+    def isNoDataAvailableException(throwable: java.lang.Throwable) -> bool:
+        """
+        
+            Parameters:
+                throwable (`Throwable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`): a Throwable to check
+        
+            Returns:
+                :code:`true` if the given Throwable is an instance of :class:`~cern.japc.core.NoDataAvailableException` and
+                :code:`false` otherwise
+        
+        
+        """
+        ...
     @staticmethod
-    def isNoValueException(throwable: java.lang.Throwable) -> bool: ...
+    def isNoValueException(throwable: java.lang.Throwable) -> bool:
+        """
+        
+            Parameters:
+                throwable (`Throwable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`): a Throwable to check
+        
+            Returns:
+                :code:`true` if the given Throwable is an instance of :class:`~cern.japc.core.NoValueException` and :code:`false`
+                otherwise
+        
+        
+        """
+        ...
     @staticmethod
-    def isWaitingForDataException(throwable: java.lang.Throwable) -> bool: ...
+    def isWaitingForDataException(throwable: java.lang.Throwable) -> bool:
+        """
+        
+            Parameters:
+                throwable (`Throwable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Throwable.html?is-external=true>`): a Throwable to check
+        
+            Returns:
+                :code:`true` if the given Throwable is an instance of :class:`~cern.japc.core.WaitingForDataException` and :code:`false`
+                otherwise
+        
+        
+        """
+        ...
 
 class JapcUtils:
     """
-    Java class 'cern.japc.core.util.JapcUtils'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * JapcUtils()
-    
+    public class JapcUtils extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     """
     def __init__(self): ...
     @typing.overload

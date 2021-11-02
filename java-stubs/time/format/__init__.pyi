@@ -9,30 +9,6 @@ import typing
 
 
 class DateTimeFormatter:
-    """
-    Java class 'java.time.format.DateTimeFormatter'
-    
-        Extends:
-            java.lang.Object
-    
-      Attributes:
-        ISO_LOCAL_DATE (java.time.format.DateTimeFormatter): final static field
-        ISO_OFFSET_DATE (java.time.format.DateTimeFormatter): final static field
-        ISO_DATE (java.time.format.DateTimeFormatter): final static field
-        ISO_LOCAL_TIME (java.time.format.DateTimeFormatter): final static field
-        ISO_OFFSET_TIME (java.time.format.DateTimeFormatter): final static field
-        ISO_TIME (java.time.format.DateTimeFormatter): final static field
-        ISO_LOCAL_DATE_TIME (java.time.format.DateTimeFormatter): final static field
-        ISO_OFFSET_DATE_TIME (java.time.format.DateTimeFormatter): final static field
-        ISO_ZONED_DATE_TIME (java.time.format.DateTimeFormatter): final static field
-        ISO_DATE_TIME (java.time.format.DateTimeFormatter): final static field
-        ISO_ORDINAL_DATE (java.time.format.DateTimeFormatter): final static field
-        ISO_WEEK_DATE (java.time.format.DateTimeFormatter): final static field
-        ISO_INSTANT (java.time.format.DateTimeFormatter): final static field
-        BASIC_ISO_DATE (java.time.format.DateTimeFormatter): final static field
-        RFC_1123_DATE_TIME (java.time.format.DateTimeFormatter): final static field
-    
-    """
     ISO_LOCAL_DATE: typing.ClassVar['DateTimeFormatter'] = ...
     ISO_OFFSET_DATE: typing.ClassVar['DateTimeFormatter'] = ...
     ISO_DATE: typing.ClassVar['DateTimeFormatter'] = ...
@@ -102,16 +78,6 @@ class DateTimeFormatter:
     def withZone(self, zoneId: java.time.ZoneId) -> 'DateTimeFormatter': ...
 
 class DateTimeFormatterBuilder:
-    """
-    Java class 'java.time.format.DateTimeFormatterBuilder'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * DateTimeFormatterBuilder()
-    
-    """
     def __init__(self): ...
     def append(self, dateTimeFormatter: DateTimeFormatter) -> 'DateTimeFormatterBuilder': ...
     def appendChronologyId(self) -> 'DateTimeFormatterBuilder': ...
@@ -177,17 +143,6 @@ class DateTimeFormatterBuilder:
     def toFormatter(self, locale: java.util.Locale) -> DateTimeFormatter: ...
 
 class DateTimeParseException(java.time.DateTimeException):
-    """
-    Java class 'java.time.format.DateTimeParseException'
-    
-        Extends:
-            java.time.DateTimeException
-    
-      Constructors:
-        * DateTimeParseException(java.lang.String, java.lang.CharSequence, int)
-        * DateTimeParseException(java.lang.String, java.lang.CharSequence, int, java.lang.Throwable)
-    
-    """
     @typing.overload
     def __init__(self, string: str, charSequence: typing.Union[java.lang.CharSequence, str], int: int): ...
     @typing.overload
@@ -196,16 +151,6 @@ class DateTimeParseException(java.time.DateTimeException):
     def getParsedString(self) -> str: ...
 
 class DecimalStyle:
-    """
-    Java class 'java.time.format.DecimalStyle'
-    
-        Extends:
-            java.lang.Object
-    
-      Attributes:
-        STANDARD (java.time.format.DecimalStyle): final static field
-    
-    """
     STANDARD: typing.ClassVar['DecimalStyle'] = ...
     def equals(self, object: typing.Any) -> bool: ...
     @staticmethod
@@ -226,19 +171,6 @@ class DecimalStyle:
     def withZeroDigit(self, char: str) -> 'DecimalStyle': ...
 
 class FormatStyle(java.lang.Enum['FormatStyle']):
-    """
-    Java class 'java.time.format.FormatStyle'
-    
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        FULL (java.time.format.FormatStyle): final static enum constant
-        LONG (java.time.format.FormatStyle): final static enum constant
-        MEDIUM (java.time.format.FormatStyle): final static enum constant
-        SHORT (java.time.format.FormatStyle): final static enum constant
-    
-    """
     FULL: typing.ClassVar['FormatStyle'] = ...
     LONG: typing.ClassVar['FormatStyle'] = ...
     MEDIUM: typing.ClassVar['FormatStyle'] = ...
@@ -254,18 +186,6 @@ class FormatStyle(java.lang.Enum['FormatStyle']):
     def values() -> typing.List['FormatStyle']: ...
 
 class ResolverStyle(java.lang.Enum['ResolverStyle']):
-    """
-    Java class 'java.time.format.ResolverStyle'
-    
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        STRICT (java.time.format.ResolverStyle): final static enum constant
-        SMART (java.time.format.ResolverStyle): final static enum constant
-        LENIENT (java.time.format.ResolverStyle): final static enum constant
-    
-    """
     STRICT: typing.ClassVar['ResolverStyle'] = ...
     SMART: typing.ClassVar['ResolverStyle'] = ...
     LENIENT: typing.ClassVar['ResolverStyle'] = ...
@@ -280,20 +200,6 @@ class ResolverStyle(java.lang.Enum['ResolverStyle']):
     def values() -> typing.List['ResolverStyle']: ...
 
 class SignStyle(java.lang.Enum['SignStyle']):
-    """
-    Java class 'java.time.format.SignStyle'
-    
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        NORMAL (java.time.format.SignStyle): final static enum constant
-        ALWAYS (java.time.format.SignStyle): final static enum constant
-        NEVER (java.time.format.SignStyle): final static enum constant
-        NOT_NEGATIVE (java.time.format.SignStyle): final static enum constant
-        EXCEEDS_PAD (java.time.format.SignStyle): final static enum constant
-    
-    """
     NORMAL: typing.ClassVar['SignStyle'] = ...
     ALWAYS: typing.ClassVar['SignStyle'] = ...
     NEVER: typing.ClassVar['SignStyle'] = ...
@@ -310,21 +216,6 @@ class SignStyle(java.lang.Enum['SignStyle']):
     def values() -> typing.List['SignStyle']: ...
 
 class TextStyle(java.lang.Enum['TextStyle']):
-    """
-    Java class 'java.time.format.TextStyle'
-    
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        FULL (java.time.format.TextStyle): final static enum constant
-        FULL_STANDALONE (java.time.format.TextStyle): final static enum constant
-        SHORT (java.time.format.TextStyle): final static enum constant
-        SHORT_STANDALONE (java.time.format.TextStyle): final static enum constant
-        NARROW (java.time.format.TextStyle): final static enum constant
-        NARROW_STANDALONE (java.time.format.TextStyle): final static enum constant
-    
-    """
     FULL: typing.ClassVar['TextStyle'] = ...
     FULL_STANDALONE: typing.ClassVar['TextStyle'] = ...
     SHORT: typing.ClassVar['TextStyle'] = ...

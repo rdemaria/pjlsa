@@ -3,16 +3,6 @@ import typing
 
 
 class RegexpUtils:
-    """
-    Java class 'cern.accsoft.commons.util.regexp.RegexpUtils'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * RegexpUtils()
-    
-    """
     def __init__(self): ...
     @staticmethod
     def escapeSpecialCharacters(string: str) -> str: ...

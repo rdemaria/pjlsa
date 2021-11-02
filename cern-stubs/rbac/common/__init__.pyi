@@ -17,32 +17,39 @@ import typing
 
 class AppPrincipal(java.security.Principal):
     """
-    Java class 'cern.rbac.common.AppPrincipal'
+    public interface AppPrincipal extends `Principal <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/security/Principal.html?is-external=true>`
     
-        Interfaces:
-            java.security.Principal
-    
+        Descriptor of an Application which is providing client-side execution environment.
     """
     def equals(self, object: typing.Any) -> bool: ...
-    def getTimeout(self) -> int: ...
+    def getTimeout(self) -> int:
+        """
+            Gets the application timeout in minutes.
+        
+            Returns:
+                application timeout in minutes or null value if it is not defined.
+        
+        
+        """
+        ...
     def hashCode(self) -> int: ...
-    def isCritical(self) -> bool: ...
+    def isCritical(self) -> bool:
+        """
+            Checks whether this is a critical application.
+        
+            Returns:
+                :code:`true` if this is a critical application, otherwise :code:`false`
+        
+        
+        """
+        ...
     def toString(self) -> str: ...
 
 class AuthenticationType(java.lang.Enum['AuthenticationType']):
     """
-    Java class 'cern.rbac.common.AuthenticationType'
+    public enum AuthenticationType extends `Enum <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Enum.html?is-external=true>`<:class:`~cern.rbac.common.AuthenticationType`>
     
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        NICE (cern.rbac.common.AuthenticationType): final static enum constant
-        LOCATION (cern.rbac.common.AuthenticationType): final static enum constant
-        CERTIFICATE (cern.rbac.common.AuthenticationType): final static enum constant
-        SSO_PICKER (cern.rbac.common.AuthenticationType): final static enum constant
-        RENEWAL (cern.rbac.common.AuthenticationType): final static enum constant
-    
+        Enum type which specifies different methods of authentication.
     """
     NICE: typing.ClassVar['AuthenticationType'] = ...
     LOCATION: typing.ClassVar['AuthenticationType'] = ...
@@ -52,115 +59,442 @@ class AuthenticationType(java.lang.Enum['AuthenticationType']):
     _valueOf_1__T = typing.TypeVar('_valueOf_1__T', bound=java.lang.Enum)  # <T>
     @typing.overload
     @staticmethod
-    def valueOf(string: str) -> 'AuthenticationType': ...
+    def valueOf(string: str) -> 'AuthenticationType':
+        """
+            Returns the enum constant of this type with the specified name. The string must match *exactly* an identifier used to
+            declare an enum constant in this type. (Extraneous whitespace characters are not permitted.)
+        
+            Parameters:
+                name (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): the name of the enum constant to be returned.
+        
+            Returns:
+                the enum constant with the specified name
+        
+            Raises:
+                : if this enum type has no constant with the specified name
+                : if the argument is null
+        
+        
+        """
+        ...
     @typing.overload
     @staticmethod
     def valueOf(class_: typing.Type[_valueOf_1__T], string: str) -> _valueOf_1__T: ...
     @staticmethod
-    def values() -> typing.List['AuthenticationType']: ...
+    def values() -> typing.List['AuthenticationType']:
+        """
+            Returns an array containing the constants of this enum type, in the order they are declared. This method may be used to
+            iterate over the constants as follows:
+        
+            .. code-block: java
+            
+            for (AuthenticationType c : AuthenticationType.values())
+                System.out.println(c);
+            
+        
+            Returns:
+                an array containing the constants of this enum type, in the order they are declared
+        
+        
+        """
+        ...
 
 class ExtraFields:
     """
-    Java class 'cern.rbac.common.ExtraFields'
+    public class ExtraFields extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * ExtraFields(cern.rbac.common.TokenType, cern.rbac.common.Role[])
-    
+        Extra fields in the Rba token. This data is used internally by the Rba client and should be disregarded elsewhere.
     """
     def __init__(self, tokenType: 'TokenType', roleArray: typing.List['Role']): ...
-    def getRolesHint(self) -> typing.List['Role']: ...
-    def getTokenType(self) -> 'TokenType': ...
-    def toString(self) -> str: ...
+    def getRolesHint(self) -> typing.List['Role']:
+        """
+            Returns roles hints
+        
+            Returns:
+                roles hints
+        
+        
+        """
+        ...
+    def getTokenType(self) -> 'TokenType':
+        """
+            Returns token type
+        
+            Returns:
+                token type
+        
+        
+        """
+        ...
+    def toString(self) -> str:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
 
 class LocationPrincipal(java.security.Principal):
     """
-    Java class 'cern.rbac.common.LocationPrincipal'
+    public interface LocationPrincipal extends `Principal <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/security/Principal.html?is-external=true>`
     
-        Interfaces:
-            java.security.Principal
-    
+        Descriptor of a Location from where the authentication process was performed.
     """
     def equals(self, object: typing.Any) -> bool: ...
-    def getAddress(self) -> java.net.InetAddress: ...
-    def getDefaultUser(self) -> str: ...
+    def getAddress(self) -> java.net.InetAddress:
+        """
+            Gets the network address of the location.
+        
+            Returns:
+                network address of the location
+        
+        
+        """
+        ...
+    def getDefaultUser(self) -> str:
+        """
+            TODO: review if this is still used !! Gets default user for this location.
+        
+            Returns:
+                default user for this location
+        
+        
+        """
+        ...
     def hashCode(self) -> int: ...
-    def isAuthRequired(self) -> bool: ...
+    def isAuthRequired(self) -> bool:
+        """
+            Checks whether the user authentication is required for this location.
+        
+            Returns:
+                :code:`true` if the user authentication is required for this location
+        
+        
+        """
+        ...
     def toString(self) -> str: ...
 
 class MasterToken:
     """
-    Java class 'cern.rbac.common.MasterToken'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * MasterToken(cern.rbac.common.RbaToken)
-    
+    public class MasterToken extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     """
     def __init__(self, rbaToken: 'RbaToken'): ...
-    def equals(self, object: typing.Any) -> bool: ...
-    def getAuthTime(self) -> java.time.Instant: ...
-    def getEncoded(self) -> typing.List[int]: ...
-    def getEndTime(self) -> java.time.Instant: ...
-    def getExtra(self) -> ExtraFields: ...
-    def getLocation(self) -> LocationPrincipal: ...
-    def getUser(self) -> 'UserPrincipal': ...
-    def hashCode(self) -> int: ...
+    def equals(self, object: typing.Any) -> bool:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
+    def getAuthTime(self) -> java.time.Instant:
+        """
+            Gets the time when this token was created.
+        
+            Returns:
+                token creation time.
+        
+        
+        """
+        ...
+    def getEncoded(self) -> typing.List[int]:
+        """
+            Gets a binary representation of the underlying RbaToken. This includes all the fields and the original signature.
+        
+            Returns:
+                a copy of the internal byte array.
+        
+        
+        """
+        ...
+    def getEndTime(self) -> java.time.Instant:
+        """
+            Gets the time when this token expires. If the token never expires, this method returns a very large date, not null.
+        
+            Returns:
+                token expiration time.
+        
+        
+        """
+        ...
+    def getExtra(self) -> ExtraFields:
+        """
+            Gets the ExtraFields of the underlying RbaToken. ExtraFields contain the token type and the roles hint.
+        
+            Returns:
+                the :class:`~cern.rbac.common.ExtraFields` of the token.
+        
+        
+        """
+        ...
+    def getLocation(self) -> LocationPrincipal:
+        """
+            Gets the location descriptor.
+        
+            Returns:
+                location descriptor.
+        
+        
+        """
+        ...
+    def getUser(self) -> 'UserPrincipal':
+        """
+            Gets the user principal.
+        
+            Returns:
+                user principal.
+        
+        
+        """
+        ...
+    def hashCode(self) -> int:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
     @typing.overload
-    def isValid(self) -> bool: ...
+    def isValid(self) -> bool:
+        """
+            Checks whether the token is still valid (hasn't expired). As it's impossible to create tokens in the future, we don't
+            check the authentication time here.
+        
+            Returns:
+                true if the token has not expired yet
+        
+        """
+        ...
     @typing.overload
-    def isValid(self, duration: java.time.Duration) -> bool: ...
-    def toString(self) -> str: ...
+    def isValid(self, duration: java.time.Duration) -> bool:
+        """
+            Checks whether the token is still valid (hasn't expired) for the requested duration.. As it's impossible to create
+            tokens in the future, we don't check the authentication time here.
+        
+            Parameters:
+                timeFrame (`Duration <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/time/Duration.html?is-external=true>`): requested duration when token should be still valid
+        
+            Returns:
+                true if the token will be still valid for the requested amount of seconds
+        
+        
+        """
+        ...
+    def toString(self) -> str:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
 
 class RbaToken(java.io.Serializable):
     """
-    Java class 'cern.rbac.common.RbaToken'
+    public final class RbaToken extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements `Serializable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/io/Serializable.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
+        The RBA Token represents a security credential for the client application, based on the application's name, location,
+        and the user name. The token is issued by the RBA server and is digitally signed with a private key. The application can
+        use the token as a proof of its identity during critical operations (e.g., settings).
     
-        Interfaces:
-            java.io.Serializable
+        Three main attributes of the token are **application**, **location**, and **user**. When the RBA server issues a token,
+        it's supposed to have reasonable evidences that these three values are correct. For example, the location attribute
+        matches a network address where the request comes from, and the user is authenticated in a way adequate to the
+        situation.
     
-      Constructors:
-        * RbaToken(byte[], int, int)
-        * RbaToken(byte[], cern.rbac.common.impl.serialization.decode.TokenDecoder)
-        * RbaToken(byte[])
+        Two time attributes, **authTime** and **endTime**, describe when the token was initially created and when it expires. As
+        it's not possible to issue postponed tokens, the authentication time is merely informative. The expiration time is set
+        by the RBA server according to an information from the database and must be used to check whether the ticket is still
+        valid - the :meth:`~cern.rbac.common.RbaToken.isValid` method should be used to check the validity of a token.
     
-      Raises:
-        cern.rbac.common.TokenFormatException: from java
+        The RBA server signs tokens with its private key. It's assumed that nobody else in the world knows it. So, if the
+        application can verify the signature using the :meth:`~cern.rbac.common.RbaToken.verify` method providing the server's
+        public key, it may reasonable believe that the token is genuine. For the case when the server is changing its private
+        keys, the :meth:`~cern.rbac.common.RbaToken.verify` method can accept more than one public key. The method succeeds if
+        at least one public key can verify the signature. It's a responsibility of other part of the infrastructure to
+        distribute the server public keys in a secure manner.
     
-      Attributes:
-        EMPTY_TOKEN (cern.rbac.common.RbaToken): final static field
+        The supplementary **serialId** attribute contains a random unique identifier. It is automatically assigned to every
+        instance and retains its value through all serializations. This field can be used by a high-level protocol for caching
+        the tokens, replay detection, etc.
     
+        The primary RBA token data is stored as a byte array, in a format defined in the specification on RBAC wiki page. To
+        obtain a copy of this array, use the :meth:`~cern.rbac.common.RbaToken.getEncoded` method. In order to restore the
+        token, use the :meth:`~cern.rbac.common.RbaToken.parseAndValidate` constructor which de-serializes the state of a token
+        from the byte array. The same mechanism is used during normal Java serialization. The byte array is the only
+        *non-transient* attribute of the class. All other fields are automatically filled out from it after the default
+        de-serialization procedure is complete. This guarantees the integrity of the token and speeds up its serialization and
+        signature verification.
+    
+        Also see:
+            :meth:`~serialized`
     """
     EMPTY_TOKEN: typing.ClassVar['RbaToken'] = ...
+    """
+    public static final :class:`~cern.rbac.common.RbaToken` EMPTY_TOKEN
+    
+        Singleton empty token
+    
+    """
     @typing.overload
     def __init__(self, byteArray: typing.List[int]): ...
     @typing.overload
     def __init__(self, byteArray: typing.List[int], tokenDecoder: cern.rbac.common.impl.serialization.decode.TokenDecoder): ...
     @typing.overload
     def __init__(self, byteArray: typing.List[int], int: int, int2: int): ...
-    def equals(self, object: typing.Any) -> bool: ...
-    def getApplication(self) -> AppPrincipal: ...
-    def getAuthTime(self) -> java.util.Date: ...
-    def getEncoded(self) -> typing.List[int]: ...
-    def getEndTime(self) -> java.util.Date: ...
-    def getExtra(self) -> ExtraFields: ...
-    def getLocation(self) -> LocationPrincipal: ...
-    def getSerialId(self) -> int: ...
-    def getType(self) -> 'TokenType': ...
-    def getUser(self) -> 'UserPrincipal': ...
-    def hashCode(self) -> int: ...
-    def isEmpty(self) -> bool: ...
+    def equals(self, object: typing.Any) -> bool:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
+    def getApplication(self) -> AppPrincipal:
+        """
+            Gets the application descriptor.
+        
+            Returns:
+                application descriptor.
+        
+        
+        """
+        ...
+    def getAuthTime(self) -> java.util.Date:
+        """
+            Gets the time when this token was created.
+        
+            Returns:
+                token creation time.
+        
+        
+        """
+        ...
+    def getEncoded(self) -> typing.List[int]:
+        """
+            Gets a binary representation of this token. This includes all the fields and the original signature.
+        
+            Returns:
+                a copy of the internal byte array.
+        
+        
+        """
+        ...
+    def getEndTime(self) -> java.util.Date:
+        """
+            Gets the time when this token expires. If the token never expires, this method returns a very large date, not null.
+        
+            Returns:
+                token expiration time.
+        
+        
+        """
+        ...
+    def getExtra(self) -> ExtraFields:
+        """
+            Gets the ExtraFields of the underlying RbaToken.
+        
+            Returns:
+                the :class:`~cern.rbac.common.ExtraFields` of the token.
+        
+            Also see:
+                :class:`~cern.rbac.common.ExtraFields`
+        
+        
+        """
+        ...
+    def getLocation(self) -> LocationPrincipal:
+        """
+            Gets the location descriptor.
+        
+            Returns:
+                location descriptor.
+        
+        
+        """
+        ...
+    def getSerialId(self) -> int:
+        """
+            Gets the unique serial ID number of this token.
+        
+            Returns:
+                serial ID.
+        
+        
+        """
+        ...
+    def getType(self) -> 'TokenType':
+        """
+            Gets the type of this token which can be either Application, Master or Local Master.
+        
+            Returns:
+                type of this token
+        
+        
+        """
+        ...
+    def getUser(self) -> 'UserPrincipal':
+        """
+            Gets the user principal.
+        
+            Returns:
+                user principal.
+        
+        
+        """
+        ...
+    def hashCode(self) -> int:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
+    def isEmpty(self) -> bool:
+        """
+            This method returns boolean flag indicating whether the token is empty. Empty token means no authentication was done.
+        
+            Returns:
+                true if token is empty
+        
+        
+        """
+        ...
     @typing.overload
-    def isValid(self) -> bool: ...
+    def isValid(self) -> bool:
+        """
+            Checks whether the token is still valid (hasn't expired). As it's impossible to create tokens in the future, we don't
+            check the authentication time here.
+        
+            Returns:
+                true if the token has not expired yet
+        
+        """
+        ...
     @typing.overload
-    def isValid(self, int: int) -> bool: ...
+    def isValid(self, int: int) -> bool:
+        """
+            Checks whether the token is still valid (hasn't expired) for the requested amount of seconds. As it's impossible to
+            create tokens in the future, we don't check the authentication time here.
+        
+            Parameters:
+                timeFrame (int): requested amount of seconds when token should be still valid
+        
+            Returns:
+                true if the token will be still valid for the requested amount of seconds
+        
+        
+        """
+        ...
     @typing.overload
     @staticmethod
     def parseAndValidate(byteBuffer: java.nio.ByteBuffer) -> 'RbaToken': ...
@@ -170,59 +504,120 @@ class RbaToken(java.io.Serializable):
     @staticmethod
     def parseNoValidate(byteBuffer: java.nio.ByteBuffer) -> 'RbaToken': ...
     def toHttpHeader(self) -> java.util.Map.Entry[str, str]: ...
-    def toString(self) -> str: ...
+    def toString(self) -> str:
+        """
+        
+            Overrides:
+                 in class 
+        
+        
+        """
+        ...
     def verify(self, collection: typing.Union[java.util.Collection[java.security.PublicKey], typing.Sequence[java.security.PublicKey]]) -> bool: ...
 
 class RbaTokenExpirationListener:
     """
-    Java class 'cern.rbac.common.RbaTokenExpirationListener'
-    
-        Extends:
-            java.lang.Object
-    
-      Constructors:
-        * RbaTokenExpirationListener(cern.rbac.common.RbaToken)
-    
+    public class RbaTokenExpirationListener extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     """
     def __init__(self, rbaToken: RbaToken): ...
-    def addExpirationListener(self, tokenExpirationListener: 'TokenExpirationListener') -> None: ...
-    def removeExpirationListener(self, tokenExpirationListener: 'TokenExpirationListener') -> None: ...
-    def removeExpirationListeners(self) -> None: ...
+    def addExpirationListener(self, tokenExpirationListener: 'TokenExpirationListener') -> None:
+        """
+            This method enables client applications to register listeners for the token expiration.
+        
+            Parameters:
+                listener (:class:`~cern.rbac.common.TokenExpirationListener`): the object that implements the :class:`~cern.rbac.common.TokenExpirationListener` interface
+        
+        
+        """
+        ...
+    def removeExpirationListener(self, tokenExpirationListener: 'TokenExpirationListener') -> None:
+        """
+            This method allows client applications to remove token expiration listeners.
+        
+            Parameters:
+                listener (:class:`~cern.rbac.common.TokenExpirationListener`): the object that implements the :class:`~cern.rbac.common.TokenExpirationListener` interface
+        
+        
+        """
+        ...
+    def removeExpirationListeners(self) -> None:
+        """
+            This method removes all the registered token expiration listeners.
+        
+        """
+        ...
 
 class RbacConfiguration:
     """
-    Java class 'cern.rbac.common.RbacConfiguration'
+    public final class RbacConfiguration extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
+        The runtime configuration for RBAC client. You can either create a new one using
+        :meth:`~cern.rbac.common.RbacConfiguration.create` or use the default one via
+        :meth:`~cern.rbac.common.RbacConfiguration.getCurrent` which is initialized from the system properties.
     
-      Attributes:
-        SYSTEM_PROPERTY_RBAC_ENV (java.lang.String): final static field
-        RBAC_ENVIRONMENT_DEFAULT (cern.rbac.common.RbacConfiguration$Environment): final static field
-    
+        Also see:
+            :meth:`~cern.rbac.common.RbacConfiguration.getCurrent`, :meth:`~cern.rbac.common.RbacConfiguration.create`
     """
     SYSTEM_PROPERTY_RBAC_ENV: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` SYSTEM_PROPERTY_RBAC_ENV
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     RBAC_ENVIRONMENT_DEFAULT: typing.ClassVar['RbacConfiguration.Environment'] = ...
+    """
+    public static final :class:`~cern.rbac.common.RbacConfiguration.Environment` RBAC_ENVIRONMENT_DEFAULT
+    
+    
+    """
     @staticmethod
-    def create(configuration: cern.cmw.util.config.Configuration) -> 'RbacConfiguration': ...
+    def create(configuration: cern.cmw.util.config.Configuration) -> 'RbacConfiguration':
+        """
+            Creates a new rbac configuration from the supplied configuration properties. This newly-created configuration becomes
+            the current configuration.
+        
+        """
+        ...
     @staticmethod
-    def getCurrent() -> 'RbacConfiguration': ...
-    def getEnvironment(self) -> 'RbacConfiguration.Environment': ...
-    def getOAuth2Service(self) -> 'RbacConfiguration.OAuth2Service': ...
+    def getCurrent() -> 'RbacConfiguration':
+        """
+            The current configuration is the default one, until you :meth:`~cern.rbac.common.RbacConfiguration.create` one.
+        
+        """
+        ...
+    def getEnvironment(self) -> 'RbacConfiguration.Environment':
+        """
+            Returns the RBAC environment assigned to this configuration instance.
+        
+            System property name: rbac.env
+        
+        
+            Environment variable: RBAC_ENV
+        
+        
+            Default value: PRO
+        
+            Returns:
+                the RBAC environment assigned to this configuration instance
+        
+        
+        """
+        ...
+    def getOAuth2Service(self) -> 'RbacConfiguration.OAuth2Service':
+        """
+            Returns the RBAC service used for the OAuth 2.0 token exchange protocol.
+        
+            Returns:
+                the RBAC service used for the OAuth 2.0 token exchange protocol
+        
+        
+        """
+        ...
     class Environment(java.lang.Enum['RbacConfiguration.Environment']):
-        """
-        Java class 'cern.rbac.common.RbacConfiguration$Environment'
-        
-            Extends:
-                java.lang.Enum
-        
-          Attributes:
-            PRO (cern.rbac.common.RbacConfiguration$Environment): final static enum constant
-            TEST (cern.rbac.common.RbacConfiguration$Environment): final static enum constant
-            INT (cern.rbac.common.RbacConfiguration$Environment): final static enum constant
-            LOCAL (cern.rbac.common.RbacConfiguration$Environment): final static enum constant
-        
-        """
         PRO: typing.ClassVar['RbacConfiguration.Environment'] = ...
         TEST: typing.ClassVar['RbacConfiguration.Environment'] = ...
         INT: typing.ClassVar['RbacConfiguration.Environment'] = ...
@@ -239,18 +634,6 @@ class RbacConfiguration:
         @staticmethod
         def values() -> typing.List['RbacConfiguration.Environment']: ...
     class OAuth2Service(java.lang.Enum['RbacConfiguration.OAuth2Service']):
-        """
-        Java class 'cern.rbac.common.RbacConfiguration$OAuth2Service'
-        
-            Extends:
-                java.lang.Enum
-        
-          Attributes:
-            PRO (cern.rbac.common.RbacConfiguration$OAuth2Service): final static enum constant
-            TESTBED (cern.rbac.common.RbacConfiguration$OAuth2Service): final static enum constant
-            INT (cern.rbac.common.RbacConfiguration$OAuth2Service): final static enum constant
-        
-        """
         PRO: typing.ClassVar['RbacConfiguration.OAuth2Service'] = ...
         TESTBED: typing.ClassVar['RbacConfiguration.OAuth2Service'] = ...
         INT: typing.ClassVar['RbacConfiguration.OAuth2Service'] = ...
@@ -267,22 +650,54 @@ class RbacConfiguration:
 
 class Role:
     """
-    Java class 'cern.rbac.common.Role'
+    public interface Role
     
+        This interface represents the RBAC role. Roles are used to group certain access rights to the resources e.g. device and
+        their properties. Any user can have one or more roles assigned to his account which allow him/her to perform certain
+        actions on the resources which are protected by these roles.
     """
-    def getLifetime(self) -> int: ...
-    def getName(self) -> str: ...
-    def isCritical(self) -> bool: ...
-    def isLifetimeDefined(self) -> bool: ...
+    def getLifetime(self) -> int:
+        """
+            Returns lifetime (in minutes) of the role i.e. period of time for this role when it is valid and available.
+        
+            Returns:
+                lifetime (in minutes) of the role
+        
+        
+        """
+        ...
+    def getName(self) -> str:
+        """
+            Returns name of the role.
+        
+            Returns:
+                name of the role
+        
+        
+        """
+        ...
+    def isCritical(self) -> bool:
+        """
+            Returns :code:`true` when this role is critical, otherwise :code:`false` is returned.
+        
+            Returns:
+                :code:`true` when this role is critical, otherwise :code:`false` is returned
+        
+        
+        """
+        ...
+    def isLifetimeDefined(self) -> bool:
+        """
+            Returns :code:`true` when this role has a defined lifetime period, otherwise :code:`false` is returned.
+        
+            Returns:
+                :code:`true` when this role has a defined lifetime period, otherwise :code:`false` is returned
+        
+        
+        """
+        ...
 
 class RoleUtils:
-    """
-    Java class 'cern.rbac.common.RoleUtils'
-    
-        Extends:
-            java.lang.Object
-    
-    """
     @staticmethod
     def createRole(string: str) -> Role: ...
     @typing.overload
@@ -357,24 +772,20 @@ class RoleUtils:
 
 class TokenExpirationListener:
     """
-    Java class 'cern.rbac.common.TokenExpirationListener'
+    public interface TokenExpirationListener
     
+        The listener is used by RbaToken to notify an application when the token has expired.
     """
     def tokenExpired(self) -> None: ...
 
 class TokenFormatException(java.io.IOException):
     """
-    Java class 'cern.rbac.common.TokenFormatException'
+    public class TokenFormatException extends `IOException <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/io/IOException.html?is-external=true>`
     
-        Extends:
-            java.io.IOException
+        This exception occurs during de-serialization of RbaToken, when an incorrect binary format is used.
     
-      Constructors:
-        * TokenFormatException(java.lang.String, java.lang.Throwable)
-        * TokenFormatException(java.lang.Throwable)
-        * TokenFormatException(java.lang.String)
-        * TokenFormatException()
-    
+        Also see:
+            :meth:`~serialized`
     """
     @typing.overload
     def __init__(self): ...
@@ -387,16 +798,9 @@ class TokenFormatException(java.io.IOException):
 
 class TokenType(java.lang.Enum['TokenType']):
     """
-    Java class 'cern.rbac.common.TokenType'
+    public enum TokenType extends `Enum <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Enum.html?is-external=true>`<:class:`~cern.rbac.common.TokenType`>
     
-        Extends:
-            java.lang.Enum
-    
-      Attributes:
-        APPLICATION (cern.rbac.common.TokenType): final static enum constant
-        MASTER (cern.rbac.common.TokenType): final static enum constant
-        LOCAL_MASTER (cern.rbac.common.TokenType): final static enum constant
-    
+        Enum which defines all possible types of tokens.
     """
     APPLICATION: typing.ClassVar['TokenType'] = ...
     MASTER: typing.ClassVar['TokenType'] = ...
@@ -404,48 +808,117 @@ class TokenType(java.lang.Enum['TokenType']):
     @staticmethod
     def fromIndex(int: int) -> 'TokenType': ...
     @staticmethod
-    def fromString(string: str) -> 'TokenType': ...
+    def fromString(string: str) -> 'TokenType':
+        """
+            Converts String value into enumeration entry.
+        
+            Parameters:
+                name (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): Name of the entry
+        
+            Returns:
+                Enumeration entry
+        
+            Raises:
+                : if unable to find an entry with given name
+        
+        
+        """
+        ...
     def isApplication(self) -> bool: ...
     def isMaster(self) -> bool: ...
     _valueOf_1__T = typing.TypeVar('_valueOf_1__T', bound=java.lang.Enum)  # <T>
     @typing.overload
     @staticmethod
-    def valueOf(string: str) -> 'TokenType': ...
+    def valueOf(string: str) -> 'TokenType':
+        """
+            Returns the enum constant of this type with the specified name. The string must match *exactly* an identifier used to
+            declare an enum constant in this type. (Extraneous whitespace characters are not permitted.)
+        
+            Parameters:
+                name (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): the name of the enum constant to be returned.
+        
+            Returns:
+                the enum constant with the specified name
+        
+            Raises:
+                : if this enum type has no constant with the specified name
+                : if the argument is null
+        
+        
+        """
+        ...
     @typing.overload
     @staticmethod
     def valueOf(class_: typing.Type[_valueOf_1__T], string: str) -> _valueOf_1__T: ...
     @staticmethod
-    def values() -> typing.List['TokenType']: ...
+    def values() -> typing.List['TokenType']:
+        """
+            Returns an array containing the constants of this enum type, in the order they are declared. This method may be used to
+            iterate over the constants as follows:
+        
+            .. code-block: java
+            
+            for (TokenType c : TokenType.values())
+                System.out.println(c);
+            
+        
+            Returns:
+                an array containing the constants of this enum type, in the order they are declared
+        
+        
+        """
+        ...
 
 class UserPrincipal(java.security.Principal):
     """
-    Java class 'cern.rbac.common.UserPrincipal'
+    public interface UserPrincipal extends `Principal <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/security/Principal.html?is-external=true>`
     
-        Interfaces:
-            java.security.Principal
-    
+        Descriptor of an authenticated User with it's roles.
     """
     def equals(self, object: typing.Any) -> bool: ...
-    def getAccountType(self) -> 'UserPrincipal.AccountType': ...
-    def getEmail(self) -> str: ...
-    def getFullName(self) -> str: ...
-    def getRoles(self) -> typing.List[Role]: ...
+    def getAccountType(self) -> 'UserPrincipal.AccountType':
+        """
+            The user type of account.
+        
+            Returns:
+                The user type of account.
+        
+        
+        """
+        ...
+    def getEmail(self) -> str:
+        """
+            The user e-mail address.
+        
+            Returns:
+                The user e-mail address.
+        
+        
+        """
+        ...
+    def getFullName(self) -> str:
+        """
+            The user full name.
+        
+            Returns:
+                The user full name.
+        
+        
+        """
+        ...
+    def getRoles(self) -> typing.List[Role]:
+        """
+            Gets the list of roles assigned to the user.
+        
+            Returns:
+                non-null array of user roles, can be empty if no roles are assigned
+        
+        
+        """
+        ...
     def hashCode(self) -> int: ...
     def toString(self) -> str: ...
     class AccountType(java.lang.Enum['UserPrincipal.AccountType']):
-        """
-        Java class 'cern.rbac.common.UserPrincipal$AccountType'
-        
-            Extends:
-                java.lang.Enum
-        
-          Attributes:
-            PRIMARY (cern.rbac.common.UserPrincipal$AccountType): final static enum constant
-            SECONDARY (cern.rbac.common.UserPrincipal$AccountType): final static enum constant
-            SERVICE (cern.rbac.common.UserPrincipal$AccountType): final static enum constant
-            UNKNOWN (cern.rbac.common.UserPrincipal$AccountType): final static enum constant
-        
-        """
         PRIMARY: typing.ClassVar['UserPrincipal.AccountType'] = ...
         SECONDARY: typing.ClassVar['UserPrincipal.AccountType'] = ...
         SERVICE: typing.ClassVar['UserPrincipal.AccountType'] = ...

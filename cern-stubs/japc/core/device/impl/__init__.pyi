@@ -9,25 +9,68 @@ import typing
 
 class JapcDeviceImpl(cern.accsoft.commons.util.AbstractNamed[cern.japc.core.device.JapcDevice], cern.japc.core.device.JapcDevice):
     """
-    Java class 'cern.japc.core.device.impl.JapcDeviceImpl'
+    public class JapcDeviceImpl extends cern.accsoft.commons.util.AbstractNamed<:class:`~cern.japc.core.device.JapcDevice`> implements :class:`~cern.japc.core.device.JapcDevice`
     
-        Extends:
-            cern.accsoft.commons.util.AbstractNamed
-    
-        Interfaces:
-            cern.japc.core.device.JapcDevice
-    
-      Constructors:
-        * JapcDeviceImpl(java.lang.String)
-    
+        Default implementation of :class:`~cern.japc.core.device.JapcDevice`.
     """
     def __init__(self, string: str): ...
-    def addParameter(self, immutableParameter: cern.japc.core.ImmutableParameter) -> None: ...
-    def getImmutableParameter(self, string: str) -> cern.japc.core.ImmutableParameter: ...
-    def getName(self) -> str: ...
-    def getParameter(self, string: str) -> cern.japc.core.Parameter: ...
+    def addParameter(self, immutableParameter: cern.japc.core.ImmutableParameter) -> None:
+        """
+            Adds a parameter to this device.
+        
+            The device name of the parameter must correspond to the name of this device.
+        
+            For thread safety reasons, this method shall be called only in the beginning, when the
+            :class:`~cern.japc.core.device.impl.JapcDeviceImpl` is being instantiated, and before other methods of this class are
+            used
+        
+            Parameters:
+                parameter (:class:`~cern.japc.core.ImmutableParameter`): parameter to be added (non-null)
+        
+            Raises:
+                : if the parameter is :code:`null` or if the parameter's device name is not the same as the device name
+        
+        
+        """
+        ...
+    def getImmutableParameter(self, string: str) -> cern.japc.core.ImmutableParameter:
+        """
+        
+            Specified by:
+                :meth:`~cern.japc.core.device.JapcDevice.getImmutableParameter` in interface :class:`~cern.japc.core.device.JapcDevice`
+        
+            Returns:
+                the parameter
+        
+        
+        """
+        ...
+    def getParameter(self, string: str) -> cern.japc.core.Parameter:
+        """
+        
+            Specified by:
+                :meth:`~cern.japc.core.device.JapcDevice.getParameter` in interface :class:`~cern.japc.core.device.JapcDevice`
+        
+            Returns:
+                the parameter
+        
+        
+        """
+        ...
     def getPropertyNames(self) -> java.util.Set[str]: ...
-    def getTransactionalParameter(self, string: str) -> cern.japc.core.transaction.TransactionalParameter: ...
+    def getTransactionalParameter(self, string: str) -> cern.japc.core.transaction.TransactionalParameter:
+        """
+        
+            Specified by:
+                :meth:`~cern.japc.core.device.JapcDevice.getTransactionalParameter`Â in
+                interfaceÂ :class:`~cern.japc.core.device.JapcDevice`
+        
+            Returns:
+                the parameter
+        
+        
+        """
+        ...
     def getWritablePropertyNames(self) -> java.util.Set[str]: ...
 
 

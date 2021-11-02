@@ -6,17 +6,6 @@ import typing
 
 
 class ArrayCallGroupParameterValueListenerAdapter(cern.japc.core.spi.group.AbstractGroupParameterValueListenerAdapter):
-    """
-    Java class 'cern.japc.core.spi.arraycall.group.ArrayCallGroupParameterValueListenerAdapter'
-    
-        Extends:
-            cern.japc.core.spi.group.AbstractGroupParameterValueListenerAdapter
-    
-      Constructors:
-        * ArrayCallGroupParameterValueListenerAdapter(cern.japc.core.group.FailSafeParameterValueListener, cern.japc.core.Parameter[], cern.japc.core.Selector, cern.japc.core.spi.group.GroupSubscriptionStrategyFactory)
-        * ArrayCallGroupParameterValueListenerAdapter(cern.japc.core.group.FailSafeParameterValueListener, cern.japc.core.Parameter[], cern.japc.core.spi.group.GroupSubscriptionStrategyFactory)
-    
-    """
     @typing.overload
     def __init__(self, failSafeParameterValueListener: cern.japc.core.group.FailSafeParameterValueListener, parameterArray: typing.List[cern.japc.core.Parameter], selector: cern.japc.core.Selector, groupSubscriptionStrategyFactory: cern.japc.core.spi.group.GroupSubscriptionStrategyFactory): ...
     @typing.overload
@@ -28,17 +17,21 @@ class ArrayCallGroupParameterValueListenerAdapter(cern.japc.core.spi.group.Abstr
 
 class ArrayCallGroupSubscriptionHandle(cern.japc.core.spi.group.AbstractGroupSubscriptionHandle):
     """
-    Java class 'cern.japc.core.spi.arraycall.group.ArrayCallGroupSubscriptionHandle'
+    public class ArrayCallGroupSubscriptionHandle extends :class:`~cern.japc.core.spi.group.AbstractGroupSubscriptionHandle`
     
-        Extends:
-            cern.japc.core.spi.group.AbstractGroupSubscriptionHandle
-    
-      Constructors:
-        * ArrayCallGroupSubscriptionHandle(cern.japc.core.group.ImmutableParameterGroup, cern.japc.core.Selector, cern.japc.core.group.FailSafeParameterValueListener, cern.japc.core.spi.group.GroupSubscriptionStrategyFactory)
-    
+        Array-Call GroupSubscriptionHandle implementation.
     """
     def __init__(self, immutableParameterGroup: cern.japc.core.group.ImmutableParameterGroup, selector: cern.japc.core.Selector, failSafeParameterValueListener: cern.japc.core.group.FailSafeParameterValueListener, groupSubscriptionStrategyFactory: cern.japc.core.spi.group.GroupSubscriptionStrategyFactory): ...
-    def toString(self) -> str: ...
+    def toString(self) -> str:
+        """
+        
+            Overrides:
+                :meth:`~cern.japc.core.spi.group.AbstractGroupSubscriptionHandle.toString`Â in
+                classÂ :class:`~cern.japc.core.spi.group.AbstractGroupSubscriptionHandle`
+        
+        
+        """
+        ...
 
 
 class __module_protocol__(typing.Protocol):

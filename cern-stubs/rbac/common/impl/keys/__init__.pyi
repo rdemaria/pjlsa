@@ -7,11 +7,7 @@ import typing
 
 class KeyStoreLoader:
     """
-    Java class 'cern.rbac.common.impl.keys.KeyStoreLoader'
-    
-        Extends:
-            java.lang.Object
-    
+    public final class KeyStoreLoader extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     """
     @staticmethod
     def loadKeyStore(string: str, string2: str) -> java.security.KeyStore: ...
@@ -20,16 +16,20 @@ class KeyStoreLoader:
 
 class RbaKeyStore:
     """
-    Java class 'cern.rbac.common.impl.keys.RbaKeyStore'
+    public final class RbaKeyStore extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
     
-        Extends:
-            java.lang.Object
-    
-      Attributes:
-        KEYSTORE_TYPE (java.lang.String): final static field
-    
+        This class provides access to various keystores and passwords stored in local files.
     """
     KEYSTORE_TYPE: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` KEYSTORE_TYPE
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     @staticmethod
     def getPublicKeys(environment: cern.rbac.common.RbacConfiguration.Environment) -> java.util.Collection[java.security.PublicKey]: ...
 
