@@ -1,5 +1,4 @@
 import com
-import com.google.common.base.class-use
 import com.google.common.base.internal
 import java.io
 import java.lang
@@ -2527,5 +2526,4 @@ class __module_protocol__(typing.Protocol):
     Utf8: typing.Type[Utf8]
     Verify: typing.Type[Verify]
     VerifyException: typing.Type[VerifyException]
-    class-use: com.google.common.base.class-use.__module_protocol__
     internal: com.google.common.base.internal.__module_protocol__

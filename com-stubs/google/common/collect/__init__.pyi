@@ -1,6 +1,5 @@
 import com
 import com.google.common.base
-import com.google.common.collect.class-use
 import java.io
 import java.lang
 import java.math
@@ -7260,4 +7259,3 @@ class __module_protocol__(typing.Protocol):
     TreeTraverser: typing.Type[TreeTraverser]
     UnmodifiableIterator: typing.Type[UnmodifiableIterator]
     UnmodifiableListIterator: typing.Type[UnmodifiableListIterator]
-    class-use: com.google.common.collect.class-use.__module_protocol__
