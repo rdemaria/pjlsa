@@ -583,6 +583,8 @@ class SettingsDomainUtils:
     @typing.overload
     @staticmethod
     def parameterTypeBuilder(string: str, boolean: bool) -> cern.lsa.domain.settings.spi.ParameterTypeBuilder.ParameterTypeStepBuilder: ...
+    @staticmethod
+    def randomId() -> int: ...
     @typing.overload
     @staticmethod
     def setting(beamProcess: cern.lsa.domain.settings.BeamProcess, parameter: cern.lsa.domain.settings.Parameter, object: typing.Any) -> cern.lsa.domain.settings.Setting:

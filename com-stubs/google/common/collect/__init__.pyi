@@ -17,7 +17,7 @@ _BiMap__K = typing.TypeVar('_BiMap__K')  # <K>
 _BiMap__V = typing.TypeVar('_BiMap__V')  # <V>
 class BiMap(java.util.Map[_BiMap__K, _BiMap__V], typing.Generic[_BiMap__K, _BiMap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible` public interface :meth:`~src`<K,V> extends Map<K,V>
+    :class:`~com.google.common.annotations.GwtCompatible` public interface :meth:`~src`<K, V> extends Map<K, V>
     
         A bimap (or "bidirectional map") is a map that preserves the uniqueness of its values as well as that of its keys. This
         constraint enables bimaps to support an "inverse view", which is another bimap containing the same entries as this bimap
@@ -61,7 +61,7 @@ class BoundType(java.lang.Enum['BoundType']):
 _ClassToInstanceMap__B = typing.TypeVar('_ClassToInstanceMap__B')  # <B>
 class ClassToInstanceMap(java.util.Map[typing.Type[_ClassToInstanceMap__B], _ClassToInstanceMap__B], typing.Generic[_ClassToInstanceMap__B]):
     """
-    @DoNotMock(value="Use ImmutableClassToInstanceMap or MutableClassToInstanceMap") :class:`~com.google.common.annotations.GwtCompatible` public interface :meth:`~src`<B> extends Map<Class<? extends B>,B>
+    @DoNotMock("Use ImmutableClassToInstanceMap or MutableClassToInstanceMap") :class:`~com.google.common.annotations.GwtCompatible` public interface :meth:`~src`<B> extends Map<Class<? extends B>, B>
     
         A map, each entry of which maps a Java `raw type <http://tinyurl.com/2cmwkz>` to an instance of that type. In addition
         to implementing :code:`Map`, the additional type-safe operations
@@ -157,6 +157,22 @@ class Comparators:
     _lexicographical__S = typing.TypeVar('_lexicographical__S')  # <S>
     @staticmethod
     def lexicographical(comparator: typing.Union[java.util.Comparator[_lexicographical__T], typing.Callable[[_lexicographical__T, _lexicographical__T], int]]) -> java.util.Comparator[java.lang.Iterable[_lexicographical__S]]: ...
+    _max_0__T = typing.TypeVar('_max_0__T', bound=java.lang.Comparable)  # <T>
+    _max_1__T = typing.TypeVar('_max_1__T')  # <T>
+    @typing.overload
+    @staticmethod
+    def max(t: _max_0__T, t2: _max_0__T) -> _max_0__T: ...
+    @typing.overload
+    @staticmethod
+    def max(t: _max_1__T, t2: _max_1__T, comparator: typing.Union[java.util.Comparator[_max_1__T], typing.Callable[[_max_1__T, _max_1__T], int]]) -> _max_1__T: ...
+    _min_0__T = typing.TypeVar('_min_0__T', bound=java.lang.Comparable)  # <T>
+    _min_1__T = typing.TypeVar('_min_1__T')  # <T>
+    @typing.overload
+    @staticmethod
+    def min(t: _min_0__T, t2: _min_0__T) -> _min_0__T: ...
+    @typing.overload
+    @staticmethod
+    def min(t: _min_1__T, t2: _min_1__T, comparator: typing.Union[java.util.Comparator[_min_1__T], typing.Callable[[_min_1__T, _min_1__T], int]]) -> _min_1__T: ...
 
 class ComparisonChain:
     """
@@ -214,15 +230,15 @@ class ComparisonChain:
 
 class ComputationException(java.lang.RuntimeException):
     """
-    Deprecated. 
-    This exception is no longer thrown by :code:`com.google.common`. Previously, it was thrown by
-    :class:`~com.google.common.collect.MapMaker` computing maps. When support for computing maps was removed from
-    :code:`MapMaker`, it was added to :code:`CacheBuilder`, which throws :code:`ExecutionException`,
-    :code:`UncheckedExecutionException`, and :code:`ExecutionError`. Any code that is still catching
-    :code:`ComputationException` may need to be updated to catch some of those types instead. (Note that this type, though
-    deprecated, is not planned to be removed from Guava.)
     @Deprecated :class:`~com.google.common.annotations.GwtCompatible` public class :meth:`~src` extends RuntimeException
     
+        Deprecated.
+        This exception is no longer thrown by :code:`com.google.common`. Previously, it was thrown by
+        :class:`~com.google.common.collect.MapMaker` computing maps. When support for computing maps was removed from
+        :code:`MapMaker`, it was added to :code:`CacheBuilder`, which throws :code:`ExecutionException`,
+        :code:`UncheckedExecutionException`, and :code:`ExecutionError`. Any code that is still catching
+        :code:`ComputationException` may need to be updated to catch some of those types instead. (Note that this type, though
+        deprecated, is not planned to be removed from Guava.)
         Wraps an exception that occurred during a computation.
     
         Since:
@@ -440,7 +456,7 @@ _ImmutableCollection__Builder__E = typing.TypeVar('_ImmutableCollection__Builder
 _ImmutableCollection__E = typing.TypeVar('_ImmutableCollection__E')  # <E>
 class ImmutableCollection(java.util.AbstractCollection[_ImmutableCollection__E], java.io.Serializable, typing.Generic[_ImmutableCollection__E]):
     """
-    @DoNotMock(value="Use ImmutableList.of or another implementation") :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public abstract class :meth:`~src`<E> extends AbstractCollection<E> implements Serializable
+    @DoNotMock("Use ImmutableList.of or another implementation") :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public abstract class :meth:`~src`<E> extends AbstractCollection<E> implements Serializable
     
         A null whose contents will never change, and which offers a few additional guarantees detailed below.
     
@@ -604,7 +620,7 @@ _ImmutableMap__K = typing.TypeVar('_ImmutableMap__K')  # <K>
 _ImmutableMap__V = typing.TypeVar('_ImmutableMap__V')  # <V>
 class ImmutableMap(java.util.Map[_ImmutableMap__K, _ImmutableMap__V], java.io.Serializable, typing.Generic[_ImmutableMap__K, _ImmutableMap__V]):
     """
-    @DoNotMock(value="Use ImmutableMap.of or another implementation") :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true, :meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public abstract class :meth:`~src`<K,V> extends Object implements Map<K,V>, Serializable
+    @DoNotMock("Use ImmutableMap.of or another implementation") :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true, :meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public abstract class :meth:`~src`<K, V> extends Object implements Map<K, V>, Serializable
     
         A null whose contents will never change, with many other important properties detailed at
         :class:`~com.google.common.collect.ImmutableCollection`.
@@ -722,10 +738,14 @@ class ImmutableMap(java.util.Map[_ImmutableMap__K, _ImmutableMap__V], java.io.Se
 _Interner__E = typing.TypeVar('_Interner__E')  # <E>
 class Interner(typing.Generic[_Interner__E]):
     """
-    :class:`~com.google.common.annotations.Beta` @DoNotMock(value="Use Interners.new*Interner") :class:`~com.google.common.annotations.GwtIncompatible` public interface :meth:`~src`<E>
+    :class:`~com.google.common.annotations.Beta` @DoNotMock("Use Interners.new*Interner") :class:`~com.google.common.annotations.GwtIncompatible` public interface :meth:`~src`<E>
     
-        Provides equivalent behavior to null for other immutable types. Common implementations are available from the
+        Provides similar behavior to null for any immutable type. Common implementations are available from the
         :class:`~com.google.common.collect.Interners` class.
+    
+        Note that :code:`String.intern()` has some well-known performance limitations, and should generally be avoided. Prefer
+        :meth:`~com.google.common.collect.Interners.newWeakInterner` or another :code:`Interner` implementation even for
+        :code:`String` interning.
     
         Since:
             3.0
@@ -1183,7 +1203,7 @@ _MapDifference__K = typing.TypeVar('_MapDifference__K')  # <K>
 _MapDifference__V = typing.TypeVar('_MapDifference__V')  # <V>
 class MapDifference(typing.Generic[_MapDifference__K, _MapDifference__V]):
     """
-    @DoNotMock(value="Use Maps.difference") :class:`~com.google.common.annotations.GwtCompatible` public interface :meth:`~src`<K,V>
+    @DoNotMock("Use Maps.difference") :class:`~com.google.common.annotations.GwtCompatible` public interface :meth:`~src`<K, V>
     
         An object representing the differences between two maps.
     
@@ -1238,9 +1258,8 @@ class MapMaker:
         requested, it is possible for a key or value present in the map to be reclaimed by the garbage collector. Entries with
         reclaimed keys or values may be removed from the map on each map modification or on occasional map accesses; such
         entries may be counted by null, but will never be visible to read or write operations. A partially-reclaimed entry is
-        never exposed to the user. Any :code:`Map.Entry` instance retrieved from the map's entry set is a snapshot of that
-        entry's state at the time of retrieval; such entries do, however, support :code:`Map.Entry#setValue`, which simply calls
-        null on the entry's key.
+        never exposed to the user. Any null instance retrieved from the map's entry set is a snapshot of that entry's state at
+        the time of retrieval; such entries do, however, support null, which simply calls null on the entry's key.
     
         The maps produced by :code:`MapMaker` are serializable, and the deserialized maps retain all the configuration
         properties of the original map. During deserialization, if the original map had used weak references, the entries are
@@ -1664,7 +1683,7 @@ _Multimap__K = typing.TypeVar('_Multimap__K')  # <K>
 _Multimap__V = typing.TypeVar('_Multimap__V')  # <V>
 class Multimap(typing.Generic[_Multimap__K, _Multimap__V]):
     """
-    @DoNotMock(value="Use ImmutableMultimap, HashMultimap, or another implementation") :class:`~com.google.common.annotations.GwtCompatible` public interface :meth:`~src`<K,V>
+    @DoNotMock("Use ImmutableMultimap, HashMultimap, or another implementation") :class:`~com.google.common.annotations.GwtCompatible` public interface :meth:`~src`<K, V>
     
         A collection that maps keys to values, similar to null, but in which each key may be associated with *multiple* values.
         You can visualize the contents of a multimap either as a map from keys to *nonempty* collections of values:
@@ -2369,7 +2388,7 @@ class Ordering(java.util.Comparator[_Ordering__T], typing.Generic[_Ordering__T])
 _PeekingIterator__E = typing.TypeVar('_PeekingIterator__E')  # <E>
 class PeekingIterator(java.util.Iterator[_PeekingIterator__E], typing.Generic[_PeekingIterator__E]):
     """
-    @DoNotMock(value="Use Iterators.peekingIterator") :class:`~com.google.common.annotations.GwtCompatible` public interface :meth:`~src`<E> extends Iterator<E>
+    @DoNotMock("Use Iterators.peekingIterator") :class:`~com.google.common.annotations.GwtCompatible` public interface :meth:`~src`<E> extends Iterator<E>
     
         An iterator that supports a one-element lookahead while iterating.
     
@@ -2482,7 +2501,7 @@ _RangeMap__K = typing.TypeVar('_RangeMap__K', bound=java.lang.Comparable)  # <K>
 _RangeMap__V = typing.TypeVar('_RangeMap__V')  # <V>
 class RangeMap(typing.Generic[_RangeMap__K, _RangeMap__V]):
     """
-    :class:`~com.google.common.annotations.Beta` @DoNotMock(value="Use ImmutableRangeMap or TreeRangeMap") :class:`~com.google.common.annotations.GwtIncompatible` public interface :meth:`~src`<K extends Comparable,V>
+    :class:`~com.google.common.annotations.Beta` @DoNotMock("Use ImmutableRangeMap or TreeRangeMap") :class:`~com.google.common.annotations.GwtIncompatible` public interface :meth:`~src`<K extends Comparable, V>
     
         A mapping from disjoint nonempty ranges to non-null values. Queries look up the value associated with the range (if any)
         that contains a specified key.
@@ -2512,7 +2531,7 @@ class RangeMap(typing.Generic[_RangeMap__K, _RangeMap__V]):
 _RangeSet__C = typing.TypeVar('_RangeSet__C', bound=java.lang.Comparable)  # <C>
 class RangeSet(typing.Generic[_RangeSet__C]):
     """
-    :class:`~com.google.common.annotations.Beta` @DoNotMock(value="Use ImmutableRangeSet or TreeRangeSet") :class:`~com.google.common.annotations.GwtIncompatible` public interface :meth:`~src`<C extends Comparable>
+    :class:`~com.google.common.annotations.Beta` @DoNotMock("Use ImmutableRangeSet or TreeRangeSet") :class:`~com.google.common.annotations.GwtIncompatible` public interface :meth:`~src`<C extends Comparable>
     
         A set comprising zero or more :meth:`~com.google.common.collect.Range.isEmpty`,
         :meth:`~com.google.common.collect.Range.isConnected` ranges of type :code:`C`.
@@ -2937,13 +2956,15 @@ class Tables:
 _TreeTraverser__T = typing.TypeVar('_TreeTraverser__T')  # <T>
 class TreeTraverser(typing.Generic[_TreeTraverser__T]):
     """
-    Deprecated. 
-    Use :class:`~com.google.common.graph.Traverser` instead. All instance methods have their equivalent on the result of
-    :code:`Traverser.forTree(tree)` where :code:`tree` implements :code:`SuccessorsFunction`, which has a similar API as
-    :meth:`~com.google.common.collect.TreeTraverser.children` or can be the same lambda function as passed into
-    :meth:`~com.google.common.collect.TreeTraverser.using`. This class is scheduled to be removed in October 2019.
     @Deprecated :class:`~com.google.common.annotations.Beta` :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<T> extends Object
     
+        Deprecated.
+        Use :class:`~com.google.common.graph.Traverser` instead. All instance methods have their equivalent on the result of
+        :code:`Traverser.forTree(tree)` where :code:`tree` implements :code:`SuccessorsFunction`, which has a similar API as
+        :meth:`~com.google.common.collect.TreeTraverser.children` or can be the same lambda function as passed into
+        :meth:`~com.google.common.collect.TreeTraverser.using`.
+    
+        This class is scheduled to be removed in October 2019.
         Views elements of a type :code:`T` as nodes in a tree, and provides methods to traverse the trees induced by this
         traverser.
     
@@ -3148,7 +3169,7 @@ _ForwardingMap__K = typing.TypeVar('_ForwardingMap__K')  # <K>
 _ForwardingMap__V = typing.TypeVar('_ForwardingMap__V')  # <V>
 class ForwardingMap(ForwardingObject, java.util.Map[_ForwardingMap__K, _ForwardingMap__V], typing.Generic[_ForwardingMap__K, _ForwardingMap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<K,V> extends :class:`~com.google.common.collect.ForwardingObject` implements Map<K,V>
+    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<K, V> extends :class:`~com.google.common.collect.ForwardingObject` implements Map<K, V>
     
         A map which forwards all its method calls to another map. Subclasses should override one or more methods to modify the
         behavior of the backing map as desired per the `decorator pattern <http://en.wikipedia.org/wiki/Decorator_pattern>`.
@@ -3195,7 +3216,7 @@ _ForwardingMapEntry__K = typing.TypeVar('_ForwardingMapEntry__K')  # <K>
 _ForwardingMapEntry__V = typing.TypeVar('_ForwardingMapEntry__V')  # <V>
 class ForwardingMapEntry(ForwardingObject, java.util.Map.Entry[_ForwardingMapEntry__K, _ForwardingMapEntry__V], typing.Generic[_ForwardingMapEntry__K, _ForwardingMapEntry__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<K,V> extends :class:`~com.google.common.collect.ForwardingObject` implements Map.Entry<K,V>
+    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<K, V> extends :class:`~com.google.common.collect.ForwardingObject` implements Map.Entry<K, V>
     
         A map entry which forwards all its method calls to another map entry. Subclasses should override one or more methods to
         modify the behavior of the backing map entry as desired per the `decorator pattern
@@ -3228,7 +3249,7 @@ _ForwardingMultimap__K = typing.TypeVar('_ForwardingMultimap__K')  # <K>
 _ForwardingMultimap__V = typing.TypeVar('_ForwardingMultimap__V')  # <V>
 class ForwardingMultimap(ForwardingObject, Multimap[_ForwardingMultimap__K, _ForwardingMultimap__V], typing.Generic[_ForwardingMultimap__K, _ForwardingMultimap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<K,V> extends :class:`~com.google.common.collect.ForwardingObject` implements :class:`~com.google.common.collect.Multimap`<K,V>
+    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<K, V> extends :class:`~com.google.common.collect.ForwardingObject` implements :class:`~com.google.common.collect.Multimap`<K, V>
     
         A multimap which forwards all its method calls to another multimap. Subclasses should override one or more methods to
         modify the behavior of the backing multimap as desired per the `decorator pattern
@@ -3269,7 +3290,7 @@ _ForwardingTable__C = typing.TypeVar('_ForwardingTable__C')  # <C>
 _ForwardingTable__V = typing.TypeVar('_ForwardingTable__V')  # <V>
 class ForwardingTable(ForwardingObject, Table[_ForwardingTable__R, _ForwardingTable__C, _ForwardingTable__V], typing.Generic[_ForwardingTable__R, _ForwardingTable__C, _ForwardingTable__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<R,C,V> extends :class:`~com.google.common.collect.ForwardingObject` implements :class:`~com.google.common.collect.Table`<R,C,V>
+    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<R, C, V> extends :class:`~com.google.common.collect.ForwardingObject` implements :class:`~com.google.common.collect.Table`<R, C, V>
     
         A table which forwards all its method calls to another table. Subclasses should override one or more methods to modify
         the behavior of the backing map as desired per the `decorator pattern <http://en.wikipedia.org/wiki/Decorator_pattern>`.
@@ -3445,7 +3466,7 @@ _ImmutableRangeMap__K = typing.TypeVar('_ImmutableRangeMap__K', bound=java.lang.
 _ImmutableRangeMap__V = typing.TypeVar('_ImmutableRangeMap__V')  # <V>
 class ImmutableRangeMap(RangeMap[_ImmutableRangeMap__K, _ImmutableRangeMap__V], java.io.Serializable, typing.Generic[_ImmutableRangeMap__K, _ImmutableRangeMap__V]):
     """
-    :class:`~com.google.common.annotations.Beta` :class:`~com.google.common.annotations.GwtIncompatible` public class :meth:`~src`<K extends Comparable<?>,V> extends Object implements :class:`~com.google.common.collect.RangeMap`<K,V>, Serializable
+    :class:`~com.google.common.annotations.Beta` :class:`~com.google.common.annotations.GwtIncompatible` public class :meth:`~src`<K extends Comparable<?>, V> extends Object implements :class:`~com.google.common.collect.RangeMap`<K, V>, Serializable
     
         A :class:`~com.google.common.collect.RangeMap` whose contents will never change, with many other important properties
         detailed at :class:`~com.google.common.collect.ImmutableCollection`.
@@ -3588,7 +3609,7 @@ _ListMultimap__K = typing.TypeVar('_ListMultimap__K')  # <K>
 _ListMultimap__V = typing.TypeVar('_ListMultimap__V')  # <V>
 class ListMultimap(Multimap[_ListMultimap__K, _ListMultimap__V], typing.Generic[_ListMultimap__K, _ListMultimap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible` public interface :meth:`~src`<K,V> extends :class:`~com.google.common.collect.Multimap`<K,V>
+    :class:`~com.google.common.annotations.GwtCompatible` public interface :meth:`~src`<K, V> extends :class:`~com.google.common.collect.Multimap`<K, V>
     
         A :code:`Multimap` that can hold duplicate key-value pairs and that maintains the insertion ordering of values for a
         given key. See the :class:`~com.google.common.collect.Multimap` documentation for information common to all multimaps.
@@ -3615,7 +3636,7 @@ _RowSortedTable__C = typing.TypeVar('_RowSortedTable__C')  # <C>
 _RowSortedTable__V = typing.TypeVar('_RowSortedTable__V')  # <V>
 class RowSortedTable(Table[_RowSortedTable__R, _RowSortedTable__C, _RowSortedTable__V], typing.Generic[_RowSortedTable__R, _RowSortedTable__C, _RowSortedTable__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible` public interface :meth:`~src`<R,C,V> extends :class:`~com.google.common.collect.Table`<R,C,V>
+    :class:`~com.google.common.annotations.GwtCompatible` public interface :meth:`~src`<R, C, V> extends :class:`~com.google.common.collect.Table`<R, C, V>
     
         Interface that extends :code:`Table` and whose rows are sorted.
     
@@ -3635,7 +3656,7 @@ _SetMultimap__K = typing.TypeVar('_SetMultimap__K')  # <K>
 _SetMultimap__V = typing.TypeVar('_SetMultimap__V')  # <V>
 class SetMultimap(Multimap[_SetMultimap__K, _SetMultimap__V], typing.Generic[_SetMultimap__K, _SetMultimap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible` public interface :meth:`~src`<K,V> extends :class:`~com.google.common.collect.Multimap`<K,V>
+    :class:`~com.google.common.annotations.GwtCompatible` public interface :meth:`~src`<K, V> extends :class:`~com.google.common.collect.Multimap`<K, V>
     
         A :code:`Multimap` that cannot hold duplicate key-value pairs. Adding a key-value pair that's already in the multimap
         has no effect. See the :class:`~com.google.common.collect.Multimap` documentation for information common to all
@@ -3671,7 +3692,7 @@ _SortedMapDifference__K = typing.TypeVar('_SortedMapDifference__K')  # <K>
 _SortedMapDifference__V = typing.TypeVar('_SortedMapDifference__V')  # <V>
 class SortedMapDifference(MapDifference[_SortedMapDifference__K, _SortedMapDifference__V], typing.Generic[_SortedMapDifference__K, _SortedMapDifference__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible` public interface :meth:`~src`<K,V> extends :class:`~com.google.common.collect.MapDifference`<K,V>
+    :class:`~com.google.common.annotations.GwtCompatible` public interface :meth:`~src`<K, V> extends :class:`~com.google.common.collect.MapDifference`<K, V>
     
         An object representing the differences between two sorted maps.
     
@@ -3689,7 +3710,7 @@ _TreeRangeMap__K = typing.TypeVar('_TreeRangeMap__K', bound=java.lang.Comparable
 _TreeRangeMap__V = typing.TypeVar('_TreeRangeMap__V')  # <V>
 class TreeRangeMap(RangeMap[_TreeRangeMap__K, _TreeRangeMap__V], typing.Generic[_TreeRangeMap__K, _TreeRangeMap__V]):
     """
-    :class:`~com.google.common.annotations.Beta` :class:`~com.google.common.annotations.GwtIncompatible` public final class :meth:`~src`<K extends Comparable,V> extends Object implements :class:`~com.google.common.collect.RangeMap`<K,V>
+    :class:`~com.google.common.annotations.Beta` :class:`~com.google.common.annotations.GwtIncompatible` public final class :meth:`~src`<K extends Comparable, V> extends Object implements :class:`~com.google.common.collect.RangeMap`<K, V>
     
         An implementation of :code:`RangeMap` based on a :code:`TreeMap`, supporting all optional operations.
     
@@ -3737,7 +3758,7 @@ _ForwardingConcurrentMap__K = typing.TypeVar('_ForwardingConcurrentMap__K')  # <
 _ForwardingConcurrentMap__V = typing.TypeVar('_ForwardingConcurrentMap__V')  # <V>
 class ForwardingConcurrentMap(ForwardingMap[_ForwardingConcurrentMap__K, _ForwardingConcurrentMap__V], java.util.concurrent.ConcurrentMap[_ForwardingConcurrentMap__K, _ForwardingConcurrentMap__V], typing.Generic[_ForwardingConcurrentMap__K, _ForwardingConcurrentMap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<K,V> extends :class:`~com.google.common.collect.ForwardingMap`<K,V> implements ConcurrentMap<K,V>
+    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<K, V> extends :class:`~com.google.common.collect.ForwardingMap`<K, V> implements ConcurrentMap<K, V>
     
         A concurrent map which forwards all its method calls to another concurrent map. Subclasses should override one or more
         methods to modify the behavior of the backing map as desired per the `decorator pattern
@@ -3835,7 +3856,7 @@ _ForwardingListMultimap__K = typing.TypeVar('_ForwardingListMultimap__K')  # <K>
 _ForwardingListMultimap__V = typing.TypeVar('_ForwardingListMultimap__V')  # <V>
 class ForwardingListMultimap(ForwardingMultimap[_ForwardingListMultimap__K, _ForwardingListMultimap__V], ListMultimap[_ForwardingListMultimap__K, _ForwardingListMultimap__V], typing.Generic[_ForwardingListMultimap__K, _ForwardingListMultimap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<K,V> extends :class:`~com.google.common.collect.ForwardingMultimap`<K,V> implements :class:`~com.google.common.collect.ListMultimap`<K,V>
+    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<K, V> extends :class:`~com.google.common.collect.ForwardingMultimap`<K, V> implements :class:`~com.google.common.collect.ListMultimap`<K, V>
     
         A list multimap which forwards all its method calls to another list multimap. Subclasses should override one or more
         methods to modify the behavior of the backing multimap as desired per the `decorator pattern
@@ -3960,7 +3981,7 @@ _ForwardingSetMultimap__K = typing.TypeVar('_ForwardingSetMultimap__K')  # <K>
 _ForwardingSetMultimap__V = typing.TypeVar('_ForwardingSetMultimap__V')  # <V>
 class ForwardingSetMultimap(ForwardingMultimap[_ForwardingSetMultimap__K, _ForwardingSetMultimap__V], SetMultimap[_ForwardingSetMultimap__K, _ForwardingSetMultimap__V], typing.Generic[_ForwardingSetMultimap__K, _ForwardingSetMultimap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<K,V> extends :class:`~com.google.common.collect.ForwardingMultimap`<K,V> implements :class:`~com.google.common.collect.SetMultimap`<K,V>
+    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<K, V> extends :class:`~com.google.common.collect.ForwardingMultimap`<K, V> implements :class:`~com.google.common.collect.SetMultimap`<K, V>
     
         A set multimap which forwards all its method calls to another set multimap. Subclasses should override one or more
         methods to modify the behavior of the backing multimap as desired per the `decorator pattern
@@ -3983,7 +4004,7 @@ _ForwardingSortedMap__K = typing.TypeVar('_ForwardingSortedMap__K')  # <K>
 _ForwardingSortedMap__V = typing.TypeVar('_ForwardingSortedMap__V')  # <V>
 class ForwardingSortedMap(ForwardingMap[_ForwardingSortedMap__K, _ForwardingSortedMap__V], java.util.SortedMap[_ForwardingSortedMap__K, _ForwardingSortedMap__V], typing.Generic[_ForwardingSortedMap__K, _ForwardingSortedMap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<K,V> extends :class:`~com.google.common.collect.ForwardingMap`<K,V> implements SortedMap<K,V>
+    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<K, V> extends :class:`~com.google.common.collect.ForwardingMap`<K, V> implements SortedMap<K, V>
     
         A sorted map which forwards all its method calls to another sorted map. Subclasses should override one or more methods
         to modify the behavior of the backing sorted map as desired per the `decorator pattern
@@ -4019,7 +4040,7 @@ _ImmutableClassToInstanceMap__Builder__B = typing.TypeVar('_ImmutableClassToInst
 _ImmutableClassToInstanceMap__B = typing.TypeVar('_ImmutableClassToInstanceMap__B')  # <B>
 class ImmutableClassToInstanceMap(ForwardingMap[typing.Type[_ImmutableClassToInstanceMap__B], _ImmutableClassToInstanceMap__B], ClassToInstanceMap[_ImmutableClassToInstanceMap__B], java.io.Serializable, typing.Generic[_ImmutableClassToInstanceMap__B]):
     """
-    @Immutable(containerOf="B") :class:`~com.google.common.annotations.GwtIncompatible` public final class :meth:`~src`<B> extends :class:`~com.google.common.collect.ForwardingMap`<Class<? extends B>,B> implements :class:`~com.google.common.collect.ClassToInstanceMap`<B>, Serializable
+    @Immutable(containerOf="B") :class:`~com.google.common.annotations.GwtIncompatible` public final class :meth:`~src`<B> extends :class:`~com.google.common.collect.ForwardingMap`<Class<? extends B>, B> implements :class:`~com.google.common.collect.ClassToInstanceMap`<B>, Serializable
     
         A :class:`~com.google.common.collect.ClassToInstanceMap` whose contents will never change, with many other important
         properties detailed at :class:`~com.google.common.collect.ImmutableCollection`.
@@ -4061,7 +4082,7 @@ class ImmutableClassToInstanceMap(ForwardingMap[typing.Type[_ImmutableClassToIns
 _MutableClassToInstanceMap__B = typing.TypeVar('_MutableClassToInstanceMap__B')  # <B>
 class MutableClassToInstanceMap(ForwardingMap[typing.Type[_MutableClassToInstanceMap__B], _MutableClassToInstanceMap__B], ClassToInstanceMap[_MutableClassToInstanceMap__B], java.io.Serializable, typing.Generic[_MutableClassToInstanceMap__B]):
     """
-    :class:`~com.google.common.annotations.GwtIncompatible` public final class :meth:`~src`<B> extends :class:`~com.google.common.collect.ForwardingMap`<Class<? extends B>,B> implements :class:`~com.google.common.collect.ClassToInstanceMap`<B>, Serializable
+    :class:`~com.google.common.annotations.GwtIncompatible` public final class :meth:`~src`<B> extends :class:`~com.google.common.collect.ForwardingMap`<Class<? extends B>, B> implements :class:`~com.google.common.collect.ClassToInstanceMap`<B>, Serializable
     
         A mutable class-to-instance map backed by an arbitrary user-provided map. See also
         :class:`~com.google.common.collect.ImmutableClassToInstanceMap`.
@@ -4094,7 +4115,7 @@ _SortedSetMultimap__K = typing.TypeVar('_SortedSetMultimap__K')  # <K>
 _SortedSetMultimap__V = typing.TypeVar('_SortedSetMultimap__V')  # <V>
 class SortedSetMultimap(SetMultimap[_SortedSetMultimap__K, _SortedSetMultimap__V], typing.Generic[_SortedSetMultimap__K, _SortedSetMultimap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible` public interface :meth:`~src`<K,V> extends :class:`~com.google.common.collect.SetMultimap`<K,V>
+    :class:`~com.google.common.annotations.GwtCompatible` public interface :meth:`~src`<K, V> extends :class:`~com.google.common.collect.SetMultimap`<K, V>
     
         A :code:`SetMultimap` whose set of values for a given key are kept sorted; that is, they comprise a null. It cannot hold
         duplicate key-value pairs; adding a key-value pair that's already in the multimap has no effect. This interface does not
@@ -4198,7 +4219,7 @@ _ForwardingNavigableMap__K = typing.TypeVar('_ForwardingNavigableMap__K')  # <K>
 _ForwardingNavigableMap__V = typing.TypeVar('_ForwardingNavigableMap__V')  # <V>
 class ForwardingNavigableMap(ForwardingSortedMap[_ForwardingNavigableMap__K, _ForwardingNavigableMap__V], java.util.NavigableMap[_ForwardingNavigableMap__K, _ForwardingNavigableMap__V], typing.Generic[_ForwardingNavigableMap__K, _ForwardingNavigableMap__V]):
     """
-    :class:`~com.google.common.annotations.GwtIncompatible` public abstract class :meth:`~src`<K,V> extends :class:`~com.google.common.collect.ForwardingSortedMap`<K,V> implements NavigableMap<K,V>
+    :class:`~com.google.common.annotations.GwtIncompatible` public abstract class :meth:`~src`<K, V> extends :class:`~com.google.common.collect.ForwardingSortedMap`<K, V> implements NavigableMap<K, V>
     
         A navigable map which forwards all its method calls to another navigable map. Subclasses should override one or more
         methods to modify the behavior of the backing map as desired per the `decorator pattern
@@ -4292,7 +4313,7 @@ _ForwardingSortedSetMultimap__K = typing.TypeVar('_ForwardingSortedSetMultimap__
 _ForwardingSortedSetMultimap__V = typing.TypeVar('_ForwardingSortedSetMultimap__V')  # <V>
 class ForwardingSortedSetMultimap(ForwardingSetMultimap[_ForwardingSortedSetMultimap__K, _ForwardingSortedSetMultimap__V], SortedSetMultimap[_ForwardingSortedSetMultimap__K, _ForwardingSortedSetMultimap__V], typing.Generic[_ForwardingSortedSetMultimap__K, _ForwardingSortedSetMultimap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<K,V> extends :class:`~com.google.common.collect.ForwardingSetMultimap`<K,V> implements :class:`~com.google.common.collect.SortedSetMultimap`<K,V>
+    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<K, V> extends :class:`~com.google.common.collect.ForwardingSetMultimap`<K, V> implements :class:`~com.google.common.collect.SortedSetMultimap`<K, V>
     
         A sorted set multimap which forwards all its method calls to another sorted set multimap. Subclasses should override one
         or more methods to modify the behavior of the backing multimap as desired per the `decorator pattern
@@ -4313,11 +4334,11 @@ class ForwardingSortedSetMultimap(ForwardingSetMultimap[_ForwardingSortedSetMult
 _ForwardingBlockingDeque__E = typing.TypeVar('_ForwardingBlockingDeque__E')  # <E>
 class ForwardingBlockingDeque(ForwardingDeque[_ForwardingBlockingDeque__E], java.util.concurrent.BlockingDeque[_ForwardingBlockingDeque__E], typing.Generic[_ForwardingBlockingDeque__E]):
     """
-    Deprecated. 
-    This class has moved to :code:`com.google.common.util.concurrent`. Please use
-    :class:`~com.google.common.util.concurrent.ForwardingBlockingDeque` instead.
     @Deprecated :class:`~com.google.common.annotations.GwtIncompatible` public abstract class :meth:`~src`<E> extends :class:`~com.google.common.collect.ForwardingDeque`<E> implements BlockingDeque<E>
     
+        Deprecated.
+        This class has moved to :code:`com.google.common.util.concurrent`. Please use
+        :class:`~com.google.common.util.concurrent.ForwardingBlockingDeque` instead.
         A null which forwards all its method calls to another :code:`BlockingDeque`. Subclasses should override one or more
         methods to modify the behavior of the backing deque as desired per the `decorator pattern
         <http://en.wikipedia.org/wiki/Decorator_pattern>`.
@@ -4428,7 +4449,7 @@ _ArrayListMultimap__K = typing.TypeVar('_ArrayListMultimap__K')  # <K>
 _ArrayListMultimap__V = typing.TypeVar('_ArrayListMultimap__V')  # <V>
 class ArrayListMultimap(com.google.common.collect.ArrayListMultimapGwtSerializationDependencies[_ArrayListMultimap__K, _ArrayListMultimap__V], typing.Generic[_ArrayListMultimap__K, _ArrayListMultimap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true, :meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public final class :meth:`~src`<K,V> extends Object
+    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true, :meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public final class :meth:`~src`<K, V> extends Object
     
         Implementation of :code:`Multimap` that uses an :code:`ArrayList` to store the values for a given key. A null associates
         each key with an null of values.
@@ -4441,9 +4462,9 @@ class ArrayListMultimap(com.google.common.collect.ArrayListMultimapGwtSerializat
     
         Keys and values may be null. All optional multimap methods are supported, and all returned views are modifiable.
     
-        The lists returned by :meth:`~com.google.common.collect.ArrayListMultimap.get`,
-        :meth:`~com.google.common.collect.ArrayListMultimap.removeAll`, and
-        :meth:`~com.google.common.collect.ArrayListMultimap.replaceValues` all implement null.
+        The lists returned by :meth:`~com.google.common.collect.ListMultimap.get`,
+        :meth:`~com.google.common.collect.ListMultimap.removeAll`, and
+        :meth:`~com.google.common.collect.ListMultimap.replaceValues` all implement null.
     
         This class is not threadsafe when any concurrent operations update the multimap. Concurrent read operations will work
         correctly. To allow concurrent update operations, wrap your multimap with a call to
@@ -4479,7 +4500,7 @@ _ArrayTable__C = typing.TypeVar('_ArrayTable__C')  # <C>
 _ArrayTable__V = typing.TypeVar('_ArrayTable__V')  # <V>
 class ArrayTable(com.google.common.collect.AbstractTable[_ArrayTable__R, _ArrayTable__C, _ArrayTable__V], java.io.Serializable, typing.Generic[_ArrayTable__R, _ArrayTable__C, _ArrayTable__V]):
     """
-    :class:`~com.google.common.annotations.Beta` :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public final class :meth:`~src`<R,C,V> extends Object implements Serializable
+    :class:`~com.google.common.annotations.Beta` :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public final class :meth:`~src`<R, C, V> extends Object implements Serializable
     
         Fixed-size :class:`~com.google.common.collect.Table` implementation backed by a two-dimensional array.
     
@@ -4691,7 +4712,7 @@ _EnumBiMap__K = typing.TypeVar('_EnumBiMap__K', bound=java.lang.Enum)  # <K>
 _EnumBiMap__V = typing.TypeVar('_EnumBiMap__V', bound=java.lang.Enum)  # <V>
 class EnumBiMap(com.google.common.collect.AbstractBiMap[_EnumBiMap__K, _EnumBiMap__V], typing.Generic[_EnumBiMap__K, _EnumBiMap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public final class :meth:`~src`<K extends Enum<K>,V extends Enum<V>> extends :class:`~com.google.common.collect.ForwardingMap`<K,V>
+    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public final class :meth:`~src`<K extends Enum<K>, V extends Enum<V>> extends :class:`~com.google.common.collect.ForwardingMap`<K, V>
     
         A :code:`BiMap` backed by two :code:`EnumMap` instances. Null keys and values are not permitted. An :code:`EnumBiMap`
         and its inverse are both serializable.
@@ -4715,13 +4736,14 @@ class EnumBiMap(com.google.common.collect.AbstractBiMap[_EnumBiMap__K, _EnumBiMa
     @staticmethod
     def create(map: typing.Union[java.util.Map[_create_1__K, _create_1__V], typing.Mapping[_create_1__K, _create_1__V]]) -> 'EnumBiMap'[_create_1__K, _create_1__V]: ...
     def keyType(self) -> typing.Type[_EnumBiMap__K]: ...
+    def remove(self, object: typing.Any, object2: typing.Any) -> bool: ...
     def valueType(self) -> typing.Type[_EnumBiMap__V]: ...
 
 _EnumHashBiMap__K = typing.TypeVar('_EnumHashBiMap__K', bound=java.lang.Enum)  # <K>
 _EnumHashBiMap__V = typing.TypeVar('_EnumHashBiMap__V')  # <V>
 class EnumHashBiMap(com.google.common.collect.AbstractBiMap[_EnumHashBiMap__K, _EnumHashBiMap__V], typing.Generic[_EnumHashBiMap__K, _EnumHashBiMap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public final class :meth:`~src`<K extends Enum<K>,V> extends :class:`~com.google.common.collect.ForwardingMap`<K,V>
+    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public final class :meth:`~src`<K extends Enum<K>, V> extends :class:`~com.google.common.collect.ForwardingMap`<K, V>
     
         A :code:`BiMap` backed by an :code:`EnumMap` instance for keys-to-values, and a :code:`HashMap` instance for
         values-to-keys. Null keys are not permitted, but null values are. An :code:`EnumHashBiMap` and its inverse are both
@@ -4789,9 +4811,6 @@ class EnumMultiset(com.google.common.collect.AbstractMultiset[_EnumMultiset__E],
     def remove(self, object: typing.Any) -> bool: ...
     @typing.overload
     def remove(self, object: typing.Any, int: int) -> int: ...
-    @typing.overload
-    def setCount(self, e: _EnumMultiset__E, int: int, int2: int) -> bool: ...
-    @typing.overload
     def setCount(self, e: _EnumMultiset__E, int: int) -> int: ...
     def size(self) -> int: ...
 
@@ -4836,15 +4855,15 @@ _HashBasedTable__C = typing.TypeVar('_HashBasedTable__C')  # <C>
 _HashBasedTable__V = typing.TypeVar('_HashBasedTable__V')  # <V>
 class HashBasedTable(com.google.common.collect.StandardTable[_HashBasedTable__R, _HashBasedTable__C, _HashBasedTable__V], typing.Generic[_HashBasedTable__R, _HashBasedTable__C, _HashBasedTable__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true) public class :meth:`~src`<R,C,V> extends Object
+    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true) public class :meth:`~src`<R, C, V> extends Object
     
         Implementation of :class:`~com.google.common.collect.Table` using linked hash tables. This guarantees predictable
         iteration order of the various views.
     
-        The views returned by :meth:`~com.google.common.collect.HashBasedTable.column`,
-        :meth:`~com.google.common.collect.HashBasedTable.columnKeySet`, and
-        :meth:`~com.google.common.collect.HashBasedTable.columnMap` have iterators that don't support :code:`remove()`.
-        Otherwise, all optional operations are supported. Null row keys, columns keys, and values are not supported.
+        The views returned by :meth:`~com.google.common.collect.Table.column`,
+        :meth:`~com.google.common.collect.HashBasedTable.columnKeySet`, and :meth:`~com.google.common.collect.Table.columnMap`
+        have iterators that don't support :code:`remove()`. Otherwise, all optional operations are supported. Null row keys,
+        columns keys, and values are not supported.
     
         Lookups by row key are often faster than lookups by column key, because the data is stored in a :code:`Map<R, Map<C,
         V>>`. A method call like :code:`column(columnKey).get(rowKey)` still runs quickly, since the row key is provided.
@@ -4891,7 +4910,7 @@ _HashBiMap__K = typing.TypeVar('_HashBiMap__K')  # <K>
 _HashBiMap__V = typing.TypeVar('_HashBiMap__V')  # <V>
 class HashBiMap(com.google.common.collect.Maps.IteratorBasedAbstractMap[_HashBiMap__K, _HashBiMap__V], BiMap[_HashBiMap__K, _HashBiMap__V], java.io.Serializable, typing.Generic[_HashBiMap__K, _HashBiMap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public final class :meth:`~src`<K,V> extends AbstractMap<K,V> implements :class:`~com.google.common.collect.BiMap`<K,V>, Serializable
+    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public final class :meth:`~src`<K, V> extends AbstractMap<K, V> implements :class:`~com.google.common.collect.BiMap`<K, V>, Serializable
     
         A :class:`~com.google.common.collect.BiMap` backed by two hash tables. This implementation allows null keys and values.
         A :code:`HashBiMap` and its inverse are both serializable.
@@ -4942,7 +4961,7 @@ _HashMultimap__K = typing.TypeVar('_HashMultimap__K')  # <K>
 _HashMultimap__V = typing.TypeVar('_HashMultimap__V')  # <V>
 class HashMultimap(com.google.common.collect.HashMultimapGwtSerializationDependencies[_HashMultimap__K, _HashMultimap__V], typing.Generic[_HashMultimap__K, _HashMultimap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true, :meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public final class :meth:`~src`<K,V> extends Object
+    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true, :meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public final class :meth:`~src`<K, V> extends Object
     
         Implementation of :class:`~com.google.common.collect.Multimap` using hash tables.
     
@@ -4952,8 +4971,8 @@ class HashMultimap(com.google.common.collect.HashMultimapGwtSerializationDepende
         Keys and values may be null. All optional multimap methods are supported, and all returned views are modifiable.
     
         This class is not threadsafe when any concurrent operations update the multimap. Concurrent read operations will work
-        correctly. To allow concurrent update operations, wrap your multimap with a call to
-        :meth:`~com.google.common.collect.Multimaps.synchronizedSetMultimap`.
+        correctly if the last write *happens-before* any reads. To allow concurrent update operations, wrap your multimap with a
+        call to :meth:`~com.google.common.collect.Multimaps.synchronizedSetMultimap`.
     
         Since:
             2.0
@@ -5011,7 +5030,7 @@ _ImmutableBiMap__K = typing.TypeVar('_ImmutableBiMap__K')  # <K>
 _ImmutableBiMap__V = typing.TypeVar('_ImmutableBiMap__V')  # <V>
 class ImmutableBiMap(com.google.common.collect.ImmutableBiMapFauxverideShim[_ImmutableBiMap__K, _ImmutableBiMap__V], BiMap[_ImmutableBiMap__K, _ImmutableBiMap__V], typing.Generic[_ImmutableBiMap__K, _ImmutableBiMap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true, :meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public abstract class :meth:`~src`<K,V> extends :class:`~com.google.common.collect.ImmutableMap`<K,V> implements :class:`~com.google.common.collect.BiMap`<K,V>
+    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true, :meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public abstract class :meth:`~src`<K, V> extends :class:`~com.google.common.collect.ImmutableMap`<K, V> implements :class:`~com.google.common.collect.BiMap`<K, V>
     
         A :class:`~com.google.common.collect.BiMap` whose contents will never change, with many other important properties
         detailed at :class:`~com.google.common.collect.ImmutableCollection`.
@@ -5149,7 +5168,7 @@ _ImmutableListMultimap__K = typing.TypeVar('_ImmutableListMultimap__K')  # <K>
 _ImmutableListMultimap__V = typing.TypeVar('_ImmutableListMultimap__V')  # <V>
 class ImmutableListMultimap(com.google.common.collect.ImmutableMultimap[_ImmutableListMultimap__K, _ImmutableListMultimap__V], ListMultimap[_ImmutableListMultimap__K, _ImmutableListMultimap__V], typing.Generic[_ImmutableListMultimap__K, _ImmutableListMultimap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true, :meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public class :meth:`~src`<K,V> extends :class:`~com.google.common.collect.ImmutableMultimap`<K,V> implements :class:`~com.google.common.collect.ListMultimap`<K,V>
+    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true, :meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public class :meth:`~src`<K, V> extends :class:`~com.google.common.collect.ImmutableMultimap`<K, V> implements :class:`~com.google.common.collect.ListMultimap`<K, V>
     
         A :class:`~com.google.common.collect.ListMultimap` whose contents will never change, with many other important
         properties detailed at :class:`~com.google.common.collect.ImmutableCollection`.
@@ -5290,7 +5309,7 @@ _ImmutableMultimap__K = typing.TypeVar('_ImmutableMultimap__K')  # <K>
 _ImmutableMultimap__V = typing.TypeVar('_ImmutableMultimap__V')  # <V>
 class ImmutableMultimap(com.google.common.collect.BaseImmutableMultimap[_ImmutableMultimap__K, _ImmutableMultimap__V], java.io.Serializable, typing.Generic[_ImmutableMultimap__K, _ImmutableMultimap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public abstract class :meth:`~src`<K,V> extends Object implements Serializable
+    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public abstract class :meth:`~src`<K, V> extends Object implements Serializable
     
         A :class:`~com.google.common.collect.Multimap` whose contents will never change, with many other important properties
         detailed at :class:`~com.google.common.collect.ImmutableCollection`.
@@ -5298,8 +5317,8 @@ class ImmutableMultimap(com.google.common.collect.BaseImmutableMultimap[_Immutab
         **Warning:** avoid *direct* usage of :class:`~com.google.common.collect.ImmutableMultimap` as a type (as with
         :class:`~com.google.common.collect.Multimap` itself). Prefer subtypes such as
         :class:`~com.google.common.collect.ImmutableSetMultimap` or :class:`~com.google.common.collect.ImmutableListMultimap`,
-        which have well-defined :meth:`~com.google.common.collect.ImmutableMultimap.equals` semantics, thus avoiding a common
-        source of bugs and confusion.
+        which have well-defined :meth:`~com.google.common.collect.Multimap.equals` semantics, thus avoiding a common source of
+        bugs and confusion.
     
         **Note:** every :class:`~com.google.common.collect.ImmutableMultimap` offers an
         :meth:`~com.google.common.collect.ImmutableMultimap.inverse` view, so there is no need for a distinct
@@ -5545,7 +5564,22 @@ class ImmutableRangeSet(com.google.common.collect.AbstractRangeSet[_ImmutableRan
     def copyOf(iterable: java.lang.Iterable['Range'[_copyOf_1__C]]) -> 'ImmutableRangeSet'[_copyOf_1__C]: ...
     def difference(self, rangeSet: RangeSet[_ImmutableRangeSet__C]) -> 'ImmutableRangeSet'[_ImmutableRangeSet__C]: ...
     def encloses(self, range: 'Range'[_ImmutableRangeSet__C]) -> bool: ...
-    def enclosesAll(self, iterable: java.lang.Iterable['Range'[_ImmutableRangeSet__C]]) -> bool: ...
+    def enclosesAll(self, iterable: java.lang.Iterable['Range'[_ImmutableRangeSet__C]]) -> bool:
+        """
+            Description copied from interface: :meth:`~com.google.common.collect.RangeSet.enclosesAll`
+            Returns :code:`true` if for each member range in :code:`other` there exists a member range in this range set which
+            :meth:`~com.google.common.collect.Range.encloses` it. It follows that :code:`this.contains(value)` whenever
+            :code:`other.contains(value)`. Returns :code:`true` if :code:`other` is empty.
+        
+            This is equivalent to checking if this range set :meth:`~com.google.common.collect.RangeSet.encloses` each of the ranges
+            in :code:`other`.
+        
+            Specified by:
+                :meth:`~com.google.common.collect.RangeSet.enclosesAll` in interface :class:`~com.google.common.collect.RangeSet`
+        
+        
+        """
+        ...
     def intersection(self, rangeSet: RangeSet[_ImmutableRangeSet__C]) -> 'ImmutableRangeSet'[_ImmutableRangeSet__C]: ...
     def intersects(self, range: 'Range'[_ImmutableRangeSet__C]) -> bool: ...
     def isEmpty(self) -> bool: ...
@@ -5587,7 +5621,7 @@ _ImmutableSetMultimap__K = typing.TypeVar('_ImmutableSetMultimap__K')  # <K>
 _ImmutableSetMultimap__V = typing.TypeVar('_ImmutableSetMultimap__V')  # <V>
 class ImmutableSetMultimap(ImmutableMultimap[_ImmutableSetMultimap__K, _ImmutableSetMultimap__V], SetMultimap[_ImmutableSetMultimap__K, _ImmutableSetMultimap__V], typing.Generic[_ImmutableSetMultimap__K, _ImmutableSetMultimap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true, :meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public class :meth:`~src`<K,V> extends :class:`~com.google.common.collect.ImmutableMultimap`<K,V> implements :class:`~com.google.common.collect.SetMultimap`<K,V>
+    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true, :meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public class :meth:`~src`<K, V> extends :class:`~com.google.common.collect.ImmutableMultimap`<K, V> implements :class:`~com.google.common.collect.SetMultimap`<K, V>
     
         A :class:`~com.google.common.collect.SetMultimap` whose contents will never change, with many other important properties
         detailed at :class:`~com.google.common.collect.ImmutableCollection`.
@@ -5729,7 +5763,7 @@ _ImmutableSortedMap__K = typing.TypeVar('_ImmutableSortedMap__K')  # <K>
 _ImmutableSortedMap__V = typing.TypeVar('_ImmutableSortedMap__V')  # <V>
 class ImmutableSortedMap(com.google.common.collect.ImmutableSortedMapFauxverideShim[_ImmutableSortedMap__K, _ImmutableSortedMap__V], java.util.NavigableMap[_ImmutableSortedMap__K, _ImmutableSortedMap__V], typing.Generic[_ImmutableSortedMap__K, _ImmutableSortedMap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true, :meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public final class :meth:`~src`<K,V> extends :class:`~com.google.common.collect.ImmutableMap`<K,V> implements NavigableMap<K,V>
+    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true, :meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public final class :meth:`~src`<K, V> extends :class:`~com.google.common.collect.ImmutableMap`<K, V> implements NavigableMap<K, V>
     
         A null whose contents will never change, with many other important properties detailed at
         :class:`~com.google.common.collect.ImmutableCollection`.
@@ -6330,7 +6364,7 @@ _ImmutableTable__C = typing.TypeVar('_ImmutableTable__C')  # <C>
 _ImmutableTable__V = typing.TypeVar('_ImmutableTable__V')  # <V>
 class ImmutableTable(com.google.common.collect.AbstractTable[_ImmutableTable__R, _ImmutableTable__C, _ImmutableTable__V], java.io.Serializable, typing.Generic[_ImmutableTable__R, _ImmutableTable__C, _ImmutableTable__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<R,C,V> extends Object implements Serializable
+    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<R, C, V> extends Object implements Serializable
     
         A :class:`~com.google.common.collect.Table` whose contents will never change, with many other important properties
         detailed at :class:`~com.google.common.collect.ImmutableCollection`.
@@ -6408,7 +6442,7 @@ _LinkedHashMultimap__K = typing.TypeVar('_LinkedHashMultimap__K')  # <K>
 _LinkedHashMultimap__V = typing.TypeVar('_LinkedHashMultimap__V')  # <V>
 class LinkedHashMultimap(com.google.common.collect.LinkedHashMultimapGwtSerializationDependencies[_LinkedHashMultimap__K, _LinkedHashMultimap__V], typing.Generic[_LinkedHashMultimap__K, _LinkedHashMultimap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true, :meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public final class :meth:`~src`<K,V> extends Object
+    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true, :meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public final class :meth:`~src`<K, V> extends Object
     
         Implementation of :code:`Multimap` that does not allow duplicate key-value entries and that returns collections whose
         iterators follow the ordering in which the data was added to the multimap.
@@ -6498,7 +6532,7 @@ _LinkedListMultimap__K = typing.TypeVar('_LinkedListMultimap__K')  # <K>
 _LinkedListMultimap__V = typing.TypeVar('_LinkedListMultimap__V')  # <V>
 class LinkedListMultimap(com.google.common.collect.AbstractMultimap[_LinkedListMultimap__K, _LinkedListMultimap__V], ListMultimap[_LinkedListMultimap__K, _LinkedListMultimap__V], java.io.Serializable, typing.Generic[_LinkedListMultimap__K, _LinkedListMultimap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true, :meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public class :meth:`~src`<K,V> extends Object implements :class:`~com.google.common.collect.ListMultimap`<K,V>, Serializable
+    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true, :meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public class :meth:`~src`<K, V> extends Object implements :class:`~com.google.common.collect.ListMultimap`<K, V>, Serializable
     
         An implementation of :code:`ListMultimap` that supports deterministic iteration order for both keys and values. The
         iteration order is preserved across non-distinct key values. For example, for the following multimap definition:
@@ -6510,8 +6544,8 @@ class LinkedListMultimap(com.google.common.collect.AbstractMultimap[_LinkedListM
          multimap.put(key2, bar);
          multimap.put(key1, baz);
          
-        ... the iteration order for :meth:`~com.google.common.collect.LinkedListMultimap.keys` is :code:`[key1, key2, key1]`,
-        and similarly for :meth:`~com.google.common.collect.LinkedListMultimap.entries`. Unlike
+        ... the iteration order for :meth:`~com.google.common.collect.Multimap.keys` is :code:`[key1, key2, key1]`, and
+        similarly for :meth:`~com.google.common.collect.LinkedListMultimap.entries`. Unlike
         :class:`~com.google.common.collect.LinkedHashMultimap`, the iteration order is kept consistent between keys, entries and
         values. For example, calling:
     
@@ -6525,14 +6559,13 @@ class LinkedListMultimap(com.google.common.collect.AbstractMultimap[_LinkedListM
         :meth:`~com.google.common.collect.LinkedListMultimap.replaceValues` attempts to preserve iteration order as much as
         possible.
     
-        The collections returned by :meth:`~com.google.common.collect.LinkedListMultimap.keySet` and
+        The collections returned by :meth:`~com.google.common.collect.Multimap.keySet` and
         :meth:`~com.google.common.collect.LinkedListMultimap.asMap` iterate through the keys in the order they were first added
         to the multimap. Similarly, :meth:`~com.google.common.collect.LinkedListMultimap.get`,
         :meth:`~com.google.common.collect.LinkedListMultimap.removeAll`, and
         :meth:`~com.google.common.collect.LinkedListMultimap.replaceValues` return collections that iterate through the values
         in the order they were added. The collections generated by
-        :meth:`~com.google.common.collect.LinkedListMultimap.entries`,
-        :meth:`~com.google.common.collect.LinkedListMultimap.keys`, and
+        :meth:`~com.google.common.collect.LinkedListMultimap.entries`, :meth:`~com.google.common.collect.Multimap.keys`, and
         :meth:`~com.google.common.collect.LinkedListMultimap.values` iterate across the key-value mappings in the order they
         were added to the multimap.
     
@@ -6541,8 +6574,7 @@ class LinkedListMultimap(com.google.common.collect.AbstractMultimap[_LinkedListM
         :code:`Collection` specified by the :class:`~com.google.common.collect.ListMultimap` interface.
     
         The methods :meth:`~com.google.common.collect.LinkedListMultimap.get`,
-        :meth:`~com.google.common.collect.LinkedListMultimap.keySet`,
-        :meth:`~com.google.common.collect.LinkedListMultimap.keys`,
+        :meth:`~com.google.common.collect.Multimap.keySet`, :meth:`~com.google.common.collect.Multimap.keys`,
         :meth:`~com.google.common.collect.LinkedListMultimap.values`,
         :meth:`~com.google.common.collect.LinkedListMultimap.entries`, and
         :meth:`~com.google.common.collect.LinkedListMultimap.asMap` return collections that are views of the multimap. If the
@@ -6601,7 +6633,7 @@ _MultimapBuilder__K0 = typing.TypeVar('_MultimapBuilder__K0')  # <K0>
 _MultimapBuilder__V0 = typing.TypeVar('_MultimapBuilder__V0')  # <V0>
 class MultimapBuilder(typing.Generic[_MultimapBuilder__K0, _MultimapBuilder__V0]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<K0,V0> extends Object
+    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<K0, V0> extends Object
     
         A builder for a multimap implementation that allows customization of the backing map and value collection
         implementations used in a particular multimap.
@@ -6751,6 +6783,7 @@ class Range(com.google.common.collect.RangeGwtSerializationDependencies, com.goo
     -----------
     
     
+          - All ranges are shallow-immutable.
           - Instances of this type are obtained using the static factory methods in this class.
           - Ranges are *convex*: whenever two values are contained, all values in between them must also be contained. More
             formally, for any :code:`c1 <= c2 <= c3` of type :code:`C`, :code:`r.contains(c1) &&amp; r.contains(c3)` implies
@@ -6877,7 +6910,7 @@ _TreeBasedTable__C = typing.TypeVar('_TreeBasedTable__C')  # <C>
 _TreeBasedTable__V = typing.TypeVar('_TreeBasedTable__V')  # <V>
 class TreeBasedTable(com.google.common.collect.StandardRowSortedTable[_TreeBasedTable__R, _TreeBasedTable__C, _TreeBasedTable__V], typing.Generic[_TreeBasedTable__R, _TreeBasedTable__C, _TreeBasedTable__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true) public class :meth:`~src`<R,C,V> extends Object
+    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true) public class :meth:`~src`<R, C, V> extends Object
     
         Implementation of :code:`Table` whose row keys and column keys are ordered by their natural ordering or by supplied
         comparators. When constructing a :code:`TreeBasedTable`, you may provide comparators for the row keys and the column
@@ -6887,10 +6920,10 @@ class TreeBasedTable(com.google.common.collect.StandardRowSortedTable[_TreeBased
         :meth:`~com.google.common.collect.TreeBasedTable.rowMap` method returns a null, instead of the null and null specified
         by the :class:`~com.google.common.collect.Table` interface.
     
-        The views returned by :meth:`~com.google.common.collect.TreeBasedTable.column`,
-        :meth:`~com.google.common.collect.TreeBasedTable.columnKeySet`, and
-        :meth:`~com.google.common.collect.TreeBasedTable.columnMap` have iterators that don't support :code:`remove()`.
-        Otherwise, all optional operations are supported. Null row keys, columns keys, and values are not supported.
+        The views returned by :meth:`~com.google.common.collect.Table.column`,
+        :meth:`~com.google.common.collect.TreeBasedTable.columnKeySet`, and :meth:`~com.google.common.collect.Table.columnMap`
+        have iterators that don't support :code:`remove()`. Otherwise, all optional operations are supported. Null row keys,
+        columns keys, and values are not supported.
     
         Lookups by row key are often faster than lookups by column key, because the data is stored in a :code:`Map<R, Map<C,
         V>>`. A method call like :code:`column(columnKey).get(rowKey)` still runs quickly, since the row key is provided.
@@ -6939,7 +6972,7 @@ _TreeMultimap__K = typing.TypeVar('_TreeMultimap__K')  # <K>
 _TreeMultimap__V = typing.TypeVar('_TreeMultimap__V')  # <V>
 class TreeMultimap(com.google.common.collect.AbstractSortedKeySortedSetMultimap[_TreeMultimap__K, _TreeMultimap__V], typing.Generic[_TreeMultimap__K, _TreeMultimap__V]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true, :meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public class :meth:`~src`<K,V> extends Object
+    :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true, :meth:`~com.google.common.annotations.GwtCompatible.emulated`=true) public class :meth:`~src`<K, V> extends Object
     
         Implementation of :code:`Multimap` whose keys and values are ordered by their natural ordering or by supplied
         comparators. In all cases, this implementation uses null or null instead of null to determine equivalence of instances.
@@ -7058,7 +7091,22 @@ class TreeRangeSet(com.google.common.collect.AbstractRangeSet[_TreeRangeSet__C],
             :meth:`~serialized`
     """
     def add(self, range: Range[_TreeRangeSet__C]) -> None: ...
-    def addAll(self, iterable: java.lang.Iterable[Range[_TreeRangeSet__C]]) -> None: ...
+    def addAll(self, iterable: java.lang.Iterable[Range[_TreeRangeSet__C]]) -> None:
+        """
+            Description copied from interface: :meth:`~com.google.common.collect.RangeSet.addAll`
+            Adds all of the ranges from the specified range set to this range set (optional operation). After this operation, this
+            range set is the minimal range set that :meth:`~com.google.common.collect.RangeSet.enclosesAll` both the original range
+            set and :code:`other`.
+        
+            This is equivalent to calling :meth:`~com.google.common.collect.RangeSet.add` on each of the ranges in :code:`other` in
+            turn.
+        
+            Specified by:
+                :meth:`~com.google.common.collect.RangeSet.addAll` in interface :class:`~com.google.common.collect.RangeSet`
+        
+        
+        """
+        ...
     def asDescendingSetOfRanges(self) -> java.util.Set[Range[_TreeRangeSet__C]]: ...
     def asRanges(self) -> java.util.Set[Range[_TreeRangeSet__C]]: ...
     def complement(self) -> RangeSet[_TreeRangeSet__C]: ...
@@ -7075,11 +7123,40 @@ class TreeRangeSet(com.google.common.collect.AbstractRangeSet[_TreeRangeSet__C],
     @staticmethod
     def create(iterable: java.lang.Iterable[Range[_create_2__C]]) -> 'TreeRangeSet'[_create_2__C]: ...
     def encloses(self, range: Range[_TreeRangeSet__C]) -> bool: ...
-    def enclosesAll(self, iterable: java.lang.Iterable[Range[_TreeRangeSet__C]]) -> bool: ...
+    def enclosesAll(self, iterable: java.lang.Iterable[Range[_TreeRangeSet__C]]) -> bool:
+        """
+            Description copied from interface: :meth:`~com.google.common.collect.RangeSet.enclosesAll`
+            Returns :code:`true` if for each member range in :code:`other` there exists a member range in this range set which
+            :meth:`~com.google.common.collect.Range.encloses` it. It follows that :code:`this.contains(value)` whenever
+            :code:`other.contains(value)`. Returns :code:`true` if :code:`other` is empty.
+        
+            This is equivalent to checking if this range set :meth:`~com.google.common.collect.RangeSet.encloses` each of the ranges
+            in :code:`other`.
+        
+            Specified by:
+                :meth:`~com.google.common.collect.RangeSet.enclosesAll` in interface :class:`~com.google.common.collect.RangeSet`
+        
+        
+        """
+        ...
     def intersects(self, range: Range[_TreeRangeSet__C]) -> bool: ...
     def rangeContaining(self, c: _TreeRangeSet__C) -> Range[_TreeRangeSet__C]: ...
     def remove(self, range: Range[_TreeRangeSet__C]) -> None: ...
-    def removeAll(self, iterable: java.lang.Iterable[Range[_TreeRangeSet__C]]) -> None: ...
+    def removeAll(self, iterable: java.lang.Iterable[Range[_TreeRangeSet__C]]) -> None:
+        """
+            Description copied from interface: :meth:`~com.google.common.collect.RangeSet.removeAll`
+            Removes all of the ranges from the specified range set from this range set (optional operation). After this operation,
+            if :code:`other.contains(c)`, :code:`this.contains(c)` will return :code:`false`.
+        
+            This is equivalent to calling :meth:`~com.google.common.collect.RangeSet.remove` on each of the ranges in :code:`other`
+            in turn.
+        
+            Specified by:
+                :meth:`~com.google.common.collect.RangeSet.removeAll` in interface :class:`~com.google.common.collect.RangeSet`
+        
+        
+        """
+        ...
     def span(self) -> Range[_TreeRangeSet__C]: ...
     def subRangeSet(self, range: Range[_TreeRangeSet__C]) -> RangeSet[_TreeRangeSet__C]: ...
 

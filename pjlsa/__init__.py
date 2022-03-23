@@ -1,4 +1,4 @@
-__version__ = "0.2.10"
+__version__ = "0.2.11"
 
 __cmmnbuild_deps__ = [
     {"product": "log4j", "groupId": "log4j"},

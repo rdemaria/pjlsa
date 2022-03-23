@@ -15,6 +15,7 @@ import cern.lsa.domain.settings.factory
 import cern.lsa.domain.settings.parameter
 import cern.lsa.domain.settings.spi
 import cern.lsa.domain.settings.type
+import cern.lsa.domain.trim.tag
 import com.google.common.collect
 import datetime
 import java.io
@@ -845,6 +846,18 @@ class ContextSettings:
         
         """
         ...
+    @typing.overload
+    @staticmethod
+    def builder() -> cern.lsa.domain.settings.factory.ContextSettingsBuilder:
+        """
+        static :class:`~cern.lsa.domain.settings.factory.ContextSettingsBuilder` builder (:class:`~cern.lsa.domain.settings.ContextSettings` original)
+        
+        
+        """
+        ...
+    @typing.overload
+    @staticmethod
+    def builder(contextSettings: 'ContextSettings') -> cern.lsa.domain.settings.factory.ContextSettingsBuilder: ...
     def getContext(self) -> 'StandAloneContext':
         """
             Returns the context these settings are for.
@@ -1744,16 +1757,6 @@ class DevicePropertyParameters:
         An utility structure used to keep set of parameters for the same device and property. Several utility methods are
         provided for easy retrieval of parameters including specialized methods for the signature parameter.
     """
-    def getDeviceClassName(self) -> str:
-        """
-            Return the device class name for which all related parameters are collected.
-        
-            Returns:
-                the device class name for which all related parameters are collected
-        
-        
-        """
-        ...
     def getDeviceName(self) -> str:
         """
             Return the device name for which all related parameters are collected.
@@ -5238,135 +5241,30 @@ class SettingsSource(java.io.Serializable):
         Defines source of settings for a predefined context i.e. how settings of certain parameters should be retrieved from a
         given context e.g. current settings, historical settings or an archive.
     
-    
-    
         Also see:
             :meth:`~serialized`
     """
     @staticmethod
-    def forArchiveVersionSettings(archiveVersion: ArchiveVersion) -> 'SettingsSource':
-        """
-            Creates a new instance of :code:`SettingsSource` class that represents
-            :meth:`~cern.lsa.domain.settings.SettingsSource.SettingsSourceType.ARCHIVE_VERSION`.
-        
-            Parameters:
-                archiveVersion (:class:`~cern.lsa.domain.settings.ArchiveVersion`): the archive version for which settings should be retrieved
-        
-        
-        """
-        ...
+    def forArchiveVersionSettings(archiveVersion: ArchiveVersion) -> 'SettingsSource': ...
     @staticmethod
-    def forCurrentSettings() -> 'SettingsSource':
-        """
-            Creates a new instance of :code:`SettingsSource` class that represents
-            :meth:`~cern.lsa.domain.settings.SettingsSource.SettingsSourceType.CURRENT_SETTINGS`.
-        
-        """
-        ...
+    def forCurrentSettings() -> 'SettingsSource': ...
     @staticmethod
-    def forHardwareSettings() -> 'SettingsSource':
-        """
-            Creates a new instance of :code:`SettingsSource` class that represents
-            :meth:`~cern.lsa.domain.settings.SettingsSource.SettingsSourceType.HARDWARE`.
-        
-        """
-        ...
+    def forHardwareSettings() -> 'SettingsSource': ...
     @staticmethod
-    def forHistoricalSettings(date: java.util.Date) -> 'SettingsSource':
-        """
-            Creates a new instance of :code:`SettingsSource` class that represents
-            :meth:`~cern.lsa.domain.settings.SettingsSource.SettingsSourceType.HISTORICAL_SETTINGS`.
-        
-            Parameters:
-                date (`Date <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/util/Date.html?is-external=true>`): time for which settings should be retrieved
-        
-        
-        """
-        ...
+    def forHistoricalSettings(date: java.util.Date) -> 'SettingsSource': ...
     @staticmethod
-    def forReferenceSettings() -> 'SettingsSource':
-        """
-            Creates a new instance of :code:`SettingsSource` class that represents
-            :meth:`~cern.lsa.domain.settings.SettingsSource.SettingsSourceType.REFERENCE`.
-        
-        """
-        ...
+    def forReferenceSettings() -> 'SettingsSource': ...
     @staticmethod
-    def forTrimSettings(trimHeader: 'TrimHeader') -> 'SettingsSource':
-        """
-            Creates a new instance of :code:`SettingsSource` class that represents
-            :meth:`~cern.lsa.domain.settings.SettingsSource.SettingsSourceType.TRIM`.
-        
-            Parameters:
-                trimHeader (:class:`~cern.lsa.domain.settings.TrimHeader`): the trim header for which settings should be retrieved
-        
-        
-        """
-        ...
+    def forTrimSettings(trimHeader: 'TrimHeader') -> 'SettingsSource': ...
     @staticmethod
-    def formatSettingsSource(settingsSource: 'SettingsSource') -> str:
-        """
-            Formats given :class:`~cern.lsa.domain.settings.SettingsSource` into a string representation that can be displayed in
-            labels or text fields.
-        
-            We don't use here :meth:`~cern.lsa.domain.settings.SettingsSource.toString` since if it's :code:`null` or empty - we
-            want to prompt user to select it and we return :code:`"Current (active) settings"` string.
-        
-            Parameters:
-                settingSource (:class:`~cern.lsa.domain.settings.SettingsSource`): the setting source to be formatted. If :code:`null` is passed - the method treats it as current settings
-        
-            Returns:
-                formatted string describing setting source
-        
-        
-        """
-        ...
-    def getArchiveVersion(self) -> ArchiveVersion:
-        """
-            If the :meth:`~cern.lsa.domain.settings.SettingsSource.getType` is equal to
-            :meth:`~cern.lsa.domain.settings.SettingsSource.SettingsSourceType.ARCHIVE_VERSION` then the method returns the
-            corresponding archive version object; otherwise it returns :code:`null`.
-        
-            Returns:
-                the archive version or :code:`null`
-        
-        
-        """
-        ...
-    def getDate(self) -> java.util.Date:
-        """
-            If the :meth:`~cern.lsa.domain.settings.SettingsSource.getType` is equal to
-            :meth:`~cern.lsa.domain.settings.SettingsSource.SettingsSourceType.HISTORICAL_SETTINGS` then the method returns the
-            corresponding date; If the :meth:`~cern.lsa.domain.settings.SettingsSource.getType` is equal to
-            :meth:`~cern.lsa.domain.settings.SettingsSource.SettingsSourceType.TRIM` then the method returns the
-            :meth:`~cern.lsa.domain.settings.TrimHeader.getCreatedDate`; otherwise it returns :code:`null`.
-        
-            Returns:
-                the date or :code:`null`
-        
-        
-        """
-        ...
-    def getTrimHeader(self) -> 'TrimHeader':
-        """
-        
-            Returns:
-                the corresponding trim header if the :meth:`~cern.lsa.domain.settings.SettingsSource.getType` is equal to
-                :meth:`~cern.lsa.domain.settings.SettingsSource.SettingsSourceType.TRIM`, otherwise it returns :code:`null`.
-        
-        
-        """
-        ...
-    def getType(self) -> 'SettingsSource.SettingsSourceType':
-        """
-            Returns type of this settings source.
-        
-            Returns:
-                the type
-        
-        
-        """
-        ...
+    def forTrimTagSettingsOfAllParameters(trimTag: cern.lsa.domain.trim.tag.TrimTag) -> 'SettingsSource': ...
+    @staticmethod
+    def forTrimTagSettingsOfTaggedParameters(trimTag: cern.lsa.domain.trim.tag.TrimTag) -> 'SettingsSource': ...
+    def getArchiveVersion(self) -> ArchiveVersion: ...
+    def getDate(self) -> java.util.Date: ...
+    def getTrimHeader(self) -> 'TrimHeader': ...
+    def getType(self) -> 'SettingsSource.SettingsSourceType': ...
+    def isTrimmedParametersOnly(self) -> bool: ...
     def isValid(self) -> bool:
         """
             Indicates if the source is valid i.e. if contains the source object e.g. if the
@@ -5396,6 +5294,7 @@ class SettingsSource(java.io.Serializable):
         CURRENT_SETTINGS: typing.ClassVar['SettingsSource.SettingsSourceType'] = ...
         HISTORICAL_SETTINGS: typing.ClassVar['SettingsSource.SettingsSourceType'] = ...
         TRIM: typing.ClassVar['SettingsSource.SettingsSourceType'] = ...
+        TRIM_TAG: typing.ClassVar['SettingsSource.SettingsSourceType'] = ...
         ARCHIVE_VERSION: typing.ClassVar['SettingsSource.SettingsSourceType'] = ...
         REFERENCE: typing.ClassVar['SettingsSource.SettingsSourceType'] = ...
         HARDWARE: typing.ClassVar['SettingsSource.SettingsSourceType'] = ...
@@ -5628,6 +5527,16 @@ class TrimHeader(cern.lsa.domain.commons.IdentifiedEntity):
         
             Returns:
                 the description associated with this trim.
+        
+        
+        """
+        ...
+    def isTag(self) -> bool:
+        """
+            Returns true if the trim is a tag, false otherwise
+        
+            Returns:
+                true if the trim is a tag, false otherwise
         
         
         """

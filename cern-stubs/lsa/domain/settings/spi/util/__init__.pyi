@@ -21,6 +21,16 @@ class TrimHelper:
     
         Helper class with methods used by the trim core.
     """
+    ONLY_SETTING_PARAMETERS_CAN_BE_TRIMMED: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` ONLY_SETTING_PARAMETERS_CAN_BE_TRIMMED
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     def __init__(self): ...
     @staticmethod
     def assertRequestContainsOnlySettingParameters(trimRequest: cern.lsa.domain.settings.TrimRequest) -> None: ...

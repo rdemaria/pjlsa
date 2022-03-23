@@ -393,10 +393,13 @@ class RequestType(java.lang.Enum['RequestType']):
         AUTHENTICATE_OAUTH_URI: typing.ClassVar[str] = ...
         AUTHENTICATE_RENEWAL_URI: typing.ClassVar[str] = ...
         CHECK_ACCESS_URI: typing.ClassVar[str] = ...
+        CHECK_ACCESS_URI_V2: typing.ClassVar[str] = ...
         GENERATE_MAP_URI: typing.ClassVar[str] = ...
         MCS_ROLE_URI: typing.ClassVar[str] = ...
         MCS_PUBLIC_KEY_URI: typing.ClassVar[str] = ...
+        MCS_PUBLIC_KEY_URI_V2: typing.ClassVar[str] = ...
         MCS_SIGN_URI: typing.ClassVar[str] = ...
+        MCS_SIGN_URI_V2: typing.ClassVar[str] = ...
 
 class ServerErrorCode(java.lang.Enum['ServerErrorCode']):
     """
@@ -500,16 +503,7 @@ class AccessCheckerRequest(AbstractRequest):
         
         """
         ...
-    def getDeviceClass(self) -> str:
-        """
-            Returns the device class
-        
-            Returns:
-                the device class
-        
-        
-        """
-        ...
+    def getDeviceClass(self) -> str: ...
     def getOperation(self) -> cern.rbac.common.authorization.Operation:
         """
             Returns the operation
@@ -599,19 +593,7 @@ class AccessCheckerRequestBuilder(RequestBuilder[AccessCheckerRequest]):
         
         """
         ...
-    def setDeviceClass(self, string: str) -> 'AccessCheckerRequestBuilder':
-        """
-            Sets the device class
-        
-            Parameters:
-                deviceClass (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): Device class to set
-        
-            Returns:
-                Reference to itself
-        
-        
-        """
-        ...
+    def setDeviceClass(self, string: str) -> 'AccessCheckerRequestBuilder': ...
     def setOperation(self, operation: cern.rbac.common.authorization.Operation) -> 'AccessCheckerRequestBuilder':
         """
             Sets the operation
@@ -928,26 +910,8 @@ class McsKeyRequest(AbstractRequest):
         Represents parameters for MSC request for getting public key
     """
     def __init__(self): ...
-    def getDevice(self) -> str:
-        """
-            Returns device name
-        
-            Returns:
-                device name
-        
-        
-        """
-        ...
-    def getDeviceClass(self) -> str:
-        """
-            Returns device class name
-        
-            Returns:
-                device class name
-        
-        
-        """
-        ...
+    def getDevice(self) -> str: ...
+    def getDeviceClass(self) -> str: ...
     def getMCSRole(self) -> str:
         """
             Returns MCS role
@@ -958,16 +922,7 @@ class McsKeyRequest(AbstractRequest):
         
         """
         ...
-    def getProperty(self) -> str:
-        """
-            Returns property name
-        
-            Returns:
-                property name
-        
-        
-        """
-        ...
+    def getProperty(self) -> str: ...
 
 class McsKeyRequestBuilder(RequestBuilder[McsKeyRequest]):
     """
@@ -1014,19 +969,7 @@ class McsKeyRequestBuilder(RequestBuilder[McsKeyRequest]):
         
         """
         ...
-    def setDeviceClass(self, string: str) -> 'McsKeyRequestBuilder':
-        """
-            Sets the device class
-        
-            Parameters:
-                deviceClass (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): Device class to set
-        
-            Returns:
-                Reference to itself
-        
-        
-        """
-        ...
+    def setDeviceClass(self, string: str) -> 'McsKeyRequestBuilder': ...
     def setMCSRole(self, string: str) -> 'McsKeyRequestBuilder':
         """
             Sets the MCS role
@@ -1057,14 +1000,36 @@ class McsKeyRequestBuilder(RequestBuilder[McsKeyRequest]):
 class McsRoleRequest(AbstractRequest):
     """
     public class McsRoleRequest extends :class:`~cern.rbac.common.impl.request.AbstractRequest`
+    
+        Represents parameters for MSC Role request
     """
+    @typing.overload
+    def __init__(self, string: str, string2: str): ...
     @typing.overload
     def __init__(self, string: str, string2: str, string3: str): ...
     @typing.overload
     def __init__(self, map: typing.Union[java.util.Map[RequestParameterType, typing.Any], typing.Mapping[RequestParameterType, typing.Any]]): ...
-    def getDevice(self) -> str: ...
+    def getDevice(self) -> str:
+        """
+            Returns device name
+        
+            Returns:
+                device name
+        
+        
+        """
+        ...
     def getDeviceClass(self) -> str: ...
-    def getProperty(self) -> str: ...
+    def getProperty(self) -> str:
+        """
+            Returns property name
+        
+            Returns:
+                property name
+        
+        
+        """
+        ...
 
 class McsSignRequest(AbstractRequest):
     """
@@ -1073,6 +1038,26 @@ class McsSignRequest(AbstractRequest):
         Represents parameters for MSC request for signing buffer of bytes
     """
     def __init__(self): ...
+    def getDevice(self) -> str:
+        """
+            Returns device name
+        
+            Returns:
+                device name
+        
+        
+        """
+        ...
+    def getProperty(self) -> str:
+        """
+            Returns property name
+        
+            Returns:
+                property name
+        
+        
+        """
+        ...
     def getSignBuffer(self) -> typing.List[int]:
         """
             Returns sign buffer
@@ -1122,6 +1107,33 @@ class McsSignRequestBuilder(RequestBuilder[McsSignRequest]):
         
             Returns:
                 new instance of the builder
+        
+        
+        """
+        ...
+    def setDevice(self, string: str) -> 'McsSignRequestBuilder':
+        """
+            Sets the device
+        
+            Parameters:
+                device (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): Device to set
+        
+            Returns:
+                Reference to itself
+        
+        
+        """
+        ...
+    def setDeviceClass(self, string: str) -> 'McsSignRequestBuilder': ...
+    def setProperty(self, string: str) -> 'McsSignRequestBuilder':
+        """
+            Sets the property
+        
+            Parameters:
+                property (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): Property to set
+        
+            Returns:
+                Reference to itself
         
         
         """

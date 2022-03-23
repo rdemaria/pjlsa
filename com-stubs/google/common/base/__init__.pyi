@@ -799,7 +799,7 @@ _Equivalence__Wrapper__T = typing.TypeVar('_Equivalence__Wrapper__T')  # <T>
 _Equivalence__T = typing.TypeVar('_Equivalence__T')  # <T>
 class Equivalence(java.util.function.BiPredicate[_Equivalence__T, _Equivalence__T], typing.Generic[_Equivalence__T]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<T> extends Object implements BiPredicate<T,T>
+    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<T> extends Object implements BiPredicate<T, T>
     
         A strategy for determining whether two instances are considered equivalent, and for computing hash codes in a manner
         consistent with that equivalence. Two examples of equivalences are the
@@ -833,7 +833,7 @@ class Equivalence(java.util.function.BiPredicate[_Equivalence__T, _Equivalence__
 
 class FinalizableReference:
     """
-    @DoNotMock(value="Use an instance of one of the Finalizable*Reference classes") :class:`~com.google.common.annotations.GwtIncompatible` public interface :meth:`~src`
+    @DoNotMock("Use an instance of one of the Finalizable*Reference classes") :class:`~com.google.common.annotations.GwtIncompatible` public interface :meth:`~src`
     
         Implemented by references that have code to run after garbage collection of their referents.
     
@@ -913,7 +913,7 @@ _Function__F = typing.TypeVar('_Function__F')  # <F>
 _Function__T = typing.TypeVar('_Function__T')  # <T>
 class Function(java.util.function.Function[_Function__F, _Function__T], typing.Generic[_Function__F, _Function__T]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible` @FunctionalInterface public interface :meth:`~src`<F,T> extends Function<F,T>
+    :class:`~com.google.common.annotations.GwtCompatible` @FunctionalInterface public interface :meth:`~src`<F, T> extends Function<F, T>
     
         Legacy version of null.
     
@@ -1139,7 +1139,7 @@ class MoreObjects:
 _Optional__T = typing.TypeVar('_Optional__T')  # <T>
 class Optional(java.io.Serializable, typing.Generic[_Optional__T]):
     """
-    @DoNotMock(value="Use Optional.of(value) or Optional.absent()") :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true) public abstract class :meth:`~src`<T> extends Object implements Serializable
+    @DoNotMock("Use Optional.of(value) or Optional.absent()") :class:`~com.google.common.annotations.GwtCompatible`(:meth:`~com.google.common.annotations.GwtCompatible.serializable`=true) public abstract class :meth:`~src`<T> extends Object implements Serializable
     
         An immutable object that may contain a non-null reference to another object. Each instance of this type either contains
         a non-null reference, or contains nothing (in which case we say that the reference is "absent"); it is never said to
@@ -2322,7 +2322,7 @@ _Converter__A = typing.TypeVar('_Converter__A')  # <A>
 _Converter__B = typing.TypeVar('_Converter__B')  # <B>
 class Converter(Function[_Converter__A, _Converter__B], typing.Generic[_Converter__A, _Converter__B]):
     """
-    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<A,B> extends Object implements :class:`~com.google.common.base.Function`<A,B>
+    :class:`~com.google.common.annotations.GwtCompatible` public abstract class :meth:`~src`<A, B> extends Object implements :class:`~com.google.common.base.Function`<A, B>
     
         A function from :code:`A` to :code:`B` with an associated *reverse* function from :code:`B` to :code:`A`; used for
         converting back and forth between *different representations of the same information*.

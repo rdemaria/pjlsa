@@ -191,7 +191,7 @@ class ReferenceControllerImpl(cern.lsa.client.reference.ReferenceController, Int
         """
         
             Parameters:
-                archiveReferenceService (:class:`~cern.lsa.client.ArchiveReferenceService`): 
+                archiveReferenceService (cern.lsa.client.ArchiveReferenceService): 
         
         """
         ...
@@ -199,7 +199,7 @@ class ReferenceControllerImpl(cern.lsa.client.reference.ReferenceController, Int
         """
         
             Parameters:
-                contextService (:class:`~cern.lsa.client.ContextService`): 
+                contextService (cern.lsa.client.ContextService): 
         
         """
         ...
@@ -223,7 +223,7 @@ class ReferenceControllerImpl(cern.lsa.client.reference.ReferenceController, Int
         """
         
             Parameters:
-                parameterService (:class:`~cern.lsa.client.ParameterService`): 
+                parameterService (cern.lsa.client.ParameterService): 
         
         """
         ...

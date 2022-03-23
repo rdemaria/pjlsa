@@ -20,11 +20,13 @@ import cern.lsa.domain.cern.settings.elena
 import cern.lsa.domain.cern.settings.lktim
 import cern.lsa.domain.cern.timing
 import cern.lsa.domain.cern.timing.enums
+import cern.lsa.domain.commons
 import cern.lsa.domain.devices
 import cern.lsa.domain.devices.inca
 import cern.lsa.domain.optics
 import cern.lsa.domain.settings
 import cern.lsa.domain.settings.type
+import cern.lsa.domain.trim.tag
 import java.lang
 import java.time
 import java.util
@@ -716,6 +718,10 @@ class LsaServiceLocator:
     """
     @staticmethod
     def builder() -> 'LsaServiceLocator.LsaServiceLocatorBuilder': ...
+    @staticmethod
+    def forAccelerator(accelerator: cern.accsoft.commons.domain.Accelerator) -> 'LsaServiceLocator': ...
+    @staticmethod
+    def forLsaServer(lsaServer: 'LsaServiceLocator.LsaServer') -> 'LsaServiceLocator': ...
     _get__T = typing.TypeVar('_get__T')  # <T>
     def get(self, class_: typing.Type[_get__T]) -> _get__T: ...
     def getDatabaseName(self) -> str: ...
@@ -736,9 +742,9 @@ class LsaServiceLocator:
         PS: typing.ClassVar['LsaServiceLocator.LsaServer'] = ...
         PSB: typing.ClassVar['LsaServiceLocator.LsaServer'] = ...
         LEIR: typing.ClassVar['LsaServiceLocator.LsaServer'] = ...
-        GPN: typing.ClassVar['LsaServiceLocator.LsaServer'] = ...
         ELENA: typing.ClassVar['LsaServiceLocator.LsaServer'] = ...
         AWAKE: typing.ClassVar['LsaServiceLocator.LsaServer'] = ...
+        GPN: typing.ClassVar['LsaServiceLocator.LsaServer'] = ...
         TESTBED: typing.ClassVar['LsaServiceLocator.LsaServer'] = ...
         NEXT: typing.ClassVar['LsaServiceLocator.LsaServer'] = ...
         NEXT_INCA: typing.ClassVar['LsaServiceLocator.LsaServer'] = ...
@@ -798,7 +804,9 @@ class OpticService(cern.lsa.client.common.CommonOpticService):
     def updateOptic(self, optic: cern.lsa.domain.optics.Optic) -> None:
         """
             Updates an optic in the persistent storage. The optic (by ID) must already exist, or an IllegalArgumentException is
-            thrown. The twisses have to be updated with the updateOpticTwisses method
+            thrown.
+        
+            The twisses have to be updated with the updateOpticTwisses method
         
             Parameters:
                 newOptic (cern.lsa.domain.optics.Optic): the new optic to persist
@@ -1065,36 +1073,6 @@ class SettingService(cern.lsa.client.common.CommonSettingService):
         """
         ...
 
-class SettingsComparator:
-    """
-    public interface SettingsComparator
-    
-        Performs the settings comparison.
-    """
-    def compare(self, settingComparisonRequest: cern.lsa.domain.settings.SettingComparisonRequest, errorsAwareContextSettings: cern.lsa.domain.settings.ErrorsAwareContextSettings, errorsAwareContextSettings2: cern.lsa.domain.settings.ErrorsAwareContextSettings, parameterArray: typing.List[cern.lsa.domain.settings.Parameter]) -> java.util.Map[cern.lsa.domain.settings.Parameter, cern.lsa.domain.settings.SettingComparisonParameterResult]: ...
-
-class SettingsLoader:
-    """
-    public interface SettingsLoader
-    
-        Responsible for loading settings from the database for given contexts, settings sources and parameters. The interface
-        exists there (instead of class) to be able to mock it.
-    """
-    def loadSettings(self, standAloneContext: cern.lsa.domain.settings.StandAloneContext, settingsSource: cern.lsa.domain.settings.SettingsSource, standAloneContext2: cern.lsa.domain.settings.StandAloneContext, settingsSource2: cern.lsa.domain.settings.SettingsSource, parameterArray: typing.List[cern.lsa.domain.settings.Parameter]) -> cern.accsoft.commons.util.value.Pair[cern.lsa.domain.settings.ErrorsAwareContextSettings, cern.lsa.domain.settings.ErrorsAwareContextSettings]:
-        """
-            Loads settings for the given contexts and parameters.
-        
-            Parameters:
-                params (cern.lsa.domain.settings.StandAloneContext): if :code:`null` is passed - the method will load all settings for given contexts
-        
-            Returns:
-                a pair of settings where the first element contains settings of the source context and the second element contains
-                settings of the destination context
-        
-        
-        """
-        ...
-
 class SpsService:
     """
     public interface SpsService
@@ -1182,6 +1160,15 @@ class TrimService(cern.lsa.client.common.CommonTrimService):
     """
     ...
 
+class TrimTagService:
+    """
+    public interface TrimTagService
+    """
+    def findTrimTagAttributeDefinitions(self, accelerator: cern.accsoft.commons.domain.Accelerator) -> java.util.Set[cern.lsa.domain.commons.AttributeDefinition]: ...
+    def findTrimTags(self, trimTagsRequest: cern.lsa.domain.trim.tag.TrimTagsRequest) -> java.util.List[cern.lsa.domain.trim.tag.TrimTag]: ...
+    def tagSettings(self, trimTagCreationRequest: cern.lsa.domain.trim.tag.TrimTagCreationRequest) -> cern.lsa.domain.trim.tag.TrimTag: ...
+    def updateTrimTag(self, trimTag: cern.lsa.domain.trim.tag.TrimTag) -> None: ...
+
 
 class __module_protocol__(typing.Protocol):
     # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.client")``.
@@ -1208,11 +1195,10 @@ class __module_protocol__(typing.Protocol):
     ParameterService: typing.Type[ParameterService]
     ServiceLocator: typing.Type[ServiceLocator]
     SettingService: typing.Type[SettingService]
-    SettingsComparator: typing.Type[SettingsComparator]
-    SettingsLoader: typing.Type[SettingsLoader]
     SpsService: typing.Type[SpsService]
     TimingService: typing.Type[TimingService]
     TrimService: typing.Type[TrimService]
+    TrimTagService: typing.Type[TrimTagService]
     common: cern.lsa.client.common.__module_protocol__
     reference: cern.lsa.client.reference.__module_protocol__
     rest: cern.lsa.client.rest.__module_protocol__

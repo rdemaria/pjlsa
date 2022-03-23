@@ -5,9 +5,9 @@ import typing
 
 
 
-class AuthorizationException(java.lang.Exception):
+class AuthorizationException(java.lang.RuntimeException):
     """
-    public class AuthorizationException extends `Exception <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Exception.html?is-external=true>`
+    public class AuthorizationException extends `RuntimeException <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/RuntimeException.html?is-external=true>`
     
         Authorization exception is thrown when a Authorization related request from a client fails.
     
@@ -117,6 +117,14 @@ class McsRole(cern.rbac.common.Role):
         """
         ...
 
+class McsSignature:
+    """
+    public class McsSignature extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
+    """
+    def __init__(self, byteArray: typing.List[int], mcsRole: McsRole): ...
+    def getRole(self) -> McsRole: ...
+    def getSignature(self) -> typing.List[int]: ...
+
 class Operation(java.lang.Enum['Operation']):
     """
     public enum Operation extends `Enum <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Enum.html?is-external=true>`<:class:`~cern.rbac.common.authorization.Operation`>
@@ -203,4 +211,5 @@ class __module_protocol__(typing.Protocol):
     AuthorizationException: typing.Type[AuthorizationException]
     CheckingPolicy: typing.Type[CheckingPolicy]
     McsRole: typing.Type[McsRole]
+    McsSignature: typing.Type[McsSignature]
     Operation: typing.Type[Operation]

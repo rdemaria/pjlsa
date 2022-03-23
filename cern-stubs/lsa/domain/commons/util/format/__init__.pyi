@@ -1,3 +1,4 @@
+import cern.lsa.domain.settings
 import java.util
 import typing
 
@@ -66,8 +67,26 @@ class DefaultDateFormatter:
         """
         ...
 
+class HumanReadableStrings:
+    """
+    public final class HumanReadableStrings extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
+    """
+    @typing.overload
+    @staticmethod
+    def toHumanReadable(settingsSource: cern.lsa.domain.settings.SettingsSource) -> str:
+        """
+        public static `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` toHumanReadable (:class:`~cern.lsa.domain.settings.TrimHeader` trimHeader)
+        
+        
+        """
+        ...
+    @typing.overload
+    @staticmethod
+    def toHumanReadable(trimHeader: cern.lsa.domain.settings.TrimHeader) -> str: ...
+
 
 class __module_protocol__(typing.Protocol):
     # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.domain.commons.util.format")``.
 
     DefaultDateFormatter: typing.Type[DefaultDateFormatter]
+    HumanReadableStrings: typing.Type[HumanReadableStrings]

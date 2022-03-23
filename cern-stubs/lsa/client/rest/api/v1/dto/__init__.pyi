@@ -1,4 +1,7 @@
 import cern.accsoft.commons.util
+import cern.lsa.client.rest.api.v1.dto.commons
+import cern.lsa.client.rest.api.v1.dto.settings
+import cern.lsa.client.rest.api.v1.dto.trim
 import java.lang
 import java.time
 import java.util
@@ -6,137 +9,137 @@ import typing
 
 
 
-class AcceleratorZoneRest(cern.accsoft.commons.util.Named):
+class AcceleratorZoneDto(cern.accsoft.commons.util.Named):
     """
-    @Immutable public interface AcceleratorZoneRest extends cern.accsoft.commons.util.Named
+    @Immutable public interface AcceleratorZoneDto extends cern.accsoft.commons.util.Named
     
         AcceleratorZoneRest
     """
     @staticmethod
-    def builder() -> 'DefaultAcceleratorZoneRest.Builder': ...
+    def builder() -> 'DefaultAcceleratorZoneDto.Builder': ...
     def getAcceleratorName(self) -> str: ...
 
-class BooleanItemRest:
+class BooleanItemDto:
     """
-    @Immutable public interface BooleanItemRest
+    @Immutable public interface BooleanItemDto
     """
     @staticmethod
-    def builder() -> 'DefaultBooleanItemRest.Builder': ...
+    def builder() -> 'DefaultBooleanItemDto.Builder': ...
     def getStandardMeaning(self) -> str: ...
     def getValue(self) -> bool: ...
 
-class BooleanTypeRest(cern.accsoft.commons.util.Named):
+class BooleanTypeDto(cern.accsoft.commons.util.Named):
     """
-    @Immutable public interface BooleanTypeRest extends cern.accsoft.commons.util.Named
-    """
-    @staticmethod
-    def builder() -> 'DefaultBooleanTypeRest.Builder': ...
-    def getBooleanItems(self) -> java.util.List[BooleanItemRest]: ...
-
-class DeviceMetaTypeRest(cern.accsoft.commons.util.Named):
-    """
-    @Immutable public interface DeviceMetaTypeRest extends cern.accsoft.commons.util.Named
-    
-        DeviceMetaTypeEnumRest
+    @Immutable public interface BooleanTypeDto extends cern.accsoft.commons.util.Named
     """
     @staticmethod
-    def builder() -> 'DefaultDeviceMetaTypeRest.Builder': ...
+    def builder() -> 'DefaultBooleanTypeDto.Builder': ...
+    def getBooleanItems(self) -> java.util.List[BooleanItemDto]: ...
 
-class DeviceRest(cern.accsoft.commons.util.Named):
+class DeviceDto(cern.accsoft.commons.util.Named):
     """
-    @Immutable public interface DeviceRest extends cern.accsoft.commons.util.Named
+    @Immutable public interface DeviceDto extends cern.accsoft.commons.util.Named
     
         DeviceRest
     """
     @staticmethod
-    def builder() -> 'DefaultDeviceRest.Builder': ...
-    def getAcceleratorZone(self) -> AcceleratorZoneRest: ...
+    def builder() -> 'DefaultDeviceDto.Builder': ...
+    def getAcceleratorZone(self) -> AcceleratorZoneDto: ...
     def getDescription(self) -> str: ...
     def getDeviceAlias(self) -> str: ...
     def getDeviceGroups(self) -> java.util.Set[str]: ...
-    def getDeviceTypeVersion(self) -> 'DeviceTypeVersionContainerRest': ...
+    def getDeviceTypeVersion(self) -> 'DeviceTypeVersionContainerDto': ...
     def getFecName(self) -> str: ...
     def getId(self) -> int: ...
     def getPosition(self) -> float: ...
     def getServerName(self) -> str: ...
     def getSortOrder(self) -> int: ...
-    def getState(self) -> 'DeviceStateRest': ...
+    def getState(self) -> 'DeviceStateDto': ...
     def isCycleBound(self) -> bool: ...
     def isMultiplexed(self) -> bool: ...
 
-class DeviceStateRest(cern.accsoft.commons.util.Named):
+class DeviceMetaTypeDto(cern.accsoft.commons.util.Named):
     """
-    @Immutable public interface DeviceStateRest extends cern.accsoft.commons.util.Named
+    @Immutable public interface DeviceMetaTypeDto extends cern.accsoft.commons.util.Named
+    
+        DeviceMetaTypeEnumRest
+    """
+    @staticmethod
+    def builder() -> 'DefaultDeviceMetaTypeDto.Builder': ...
+
+class DeviceStateDto(cern.accsoft.commons.util.Named):
+    """
+    @Immutable public interface DeviceStateDto extends cern.accsoft.commons.util.Named
     
         DeviceStateRest
     """
     @staticmethod
-    def builder() -> 'DefaultDeviceStateRest.Builder': ...
+    def builder() -> 'DefaultDeviceStateDto.Builder': ...
 
-class DeviceTypeImplementationRest(cern.accsoft.commons.util.Named):
+class DeviceTypeImplementationDto(cern.accsoft.commons.util.Named):
     """
-    @Immutable public interface DeviceTypeImplementationRest extends cern.accsoft.commons.util.Named
+    @Immutable public interface DeviceTypeImplementationDto extends cern.accsoft.commons.util.Named
     
         DeviceTypeImplementationRest
     """
     @staticmethod
-    def builder() -> 'DefaultDeviceTypeImplementationRest.Builder': ...
+    def builder() -> 'DefaultDeviceTypeImplementationDto.Builder': ...
 
-class DeviceTypeVersionContainerRest(cern.accsoft.commons.util.Named):
+class DeviceTypeVersionContainerDto(cern.accsoft.commons.util.Named):
     """
-    @Immutable public interface DeviceTypeVersionContainerRest extends cern.accsoft.commons.util.Named
+    @Immutable public interface DeviceTypeVersionContainerDto extends cern.accsoft.commons.util.Named
     
         DeviceTypeVersionContainerRest
     """
     @staticmethod
-    def builder() -> 'DefaultDeviceTypeVersionContainerRest.Builder': ...
+    def builder() -> 'DefaultDeviceTypeVersionContainerDto.Builder': ...
     def getDescription(self) -> str: ...
     def getId(self) -> int: ...
-    def getMetaType(self) -> DeviceMetaTypeRest: ...
-    def getOtherVersions(self) -> java.util.List['DeviceTypeVersionRest']: ...
-    def getPrimaryVersion(self) -> 'DeviceTypeVersionRest': ...
+    def getMetaType(self) -> DeviceMetaTypeDto: ...
+    def getOtherVersions(self) -> java.util.List['DeviceTypeVersionDto']: ...
+    def getPrimaryVersion(self) -> 'DeviceTypeVersionDto': ...
 
-class DeviceTypeVersionNumberRest:
+class DeviceTypeVersionDto:
     """
-    @Immutable public interface DeviceTypeVersionNumberRest
-    
-        DeviceTypeVersionNumberRest
-    """
-    @staticmethod
-    def builder() -> 'DefaultDeviceTypeVersionNumberRest.Builder': ...
-    def getMajor(self) -> int: ...
-    def getMinor(self) -> int: ...
-
-class DeviceTypeVersionRest:
-    """
-    @Immutable public interface DeviceTypeVersionRest
+    @Immutable public interface DeviceTypeVersionDto
     
         DeviceTypeVersionRest
     """
     @staticmethod
-    def builder() -> 'DefaultDeviceTypeVersionRest.Builder': ...
+    def builder() -> 'DefaultDeviceTypeVersionDto.Builder': ...
     def getId(self) -> int: ...
-    def getImplementation(self) -> DeviceTypeImplementationRest: ...
-    def getVersionNumber(self) -> DeviceTypeVersionNumberRest: ...
+    def getImplementation(self) -> DeviceTypeImplementationDto: ...
+    def getVersionNumber(self) -> 'DeviceTypeVersionNumberDto': ...
 
-class EnumItemRest:
+class DeviceTypeVersionNumberDto:
     """
-    @Immutable public interface EnumItemRest
+    @Immutable public interface DeviceTypeVersionNumberDto
+    
+        DeviceTypeVersionNumberRest
     """
     @staticmethod
-    def builder() -> 'DefaultEnumItemRest.Builder': ...
+    def builder() -> 'DefaultDeviceTypeVersionNumberDto.Builder': ...
+    def getMajor(self) -> int: ...
+    def getMinor(self) -> int: ...
+
+class EnumItemDto:
+    """
+    @Immutable public interface EnumItemDto
+    """
+    @staticmethod
+    def builder() -> 'DefaultEnumItemDto.Builder': ...
     def getCode(self) -> int: ...
     def getStandardMeaning(self) -> str: ...
     def getSymbol(self) -> str: ...
     def isSettable(self) -> bool: ...
 
-class EnumTypeRest(cern.accsoft.commons.util.Named):
+class EnumTypeDto(cern.accsoft.commons.util.Named):
     """
-    @Immutable public interface EnumTypeRest extends cern.accsoft.commons.util.Named
+    @Immutable public interface EnumTypeDto extends cern.accsoft.commons.util.Named
     """
     @staticmethod
-    def builder() -> 'DefaultEnumTypeRest.Builder': ...
-    def getEnumItems(self) -> java.util.List[EnumItemRest]: ...
+    def builder() -> 'DefaultEnumTypeDto.Builder': ...
+    def getEnumItems(self) -> java.util.List[EnumItemDto]: ...
     def getEnumTypeBitSize(self) -> str: ...
 
 class ErrorDto:
@@ -152,13 +155,13 @@ class ErrorDto:
     def getPath(self) -> str: ...
     def getTimestamp(self) -> java.time.OffsetDateTime: ...
 
-class IncaPropertyFieldInfoRest:
+class IncaPropertyFieldInfoDto:
     """
-    @Immutable public interface IncaPropertyFieldInfoRest
+    @Immutable public interface IncaPropertyFieldInfoDto
     """
     @staticmethod
-    def builder() -> 'DefaultIncaPropertyFieldInfoRest.Builder': ...
-    def getAssociatedPropertyFieldRest(self) -> 'PropertyFieldRest': ...
+    def builder() -> 'DefaultIncaPropertyFieldInfoDto.Builder': ...
+    def getAssociatedPropertyFieldRest(self) -> 'PropertyFieldDto': ...
     def getControlWarningMessage(self) -> str: ...
     def getDisplayFormat(self) -> str: ...
     def getDisplayName(self) -> str: ...
@@ -172,7 +175,7 @@ class IncaPropertyFieldInfoRest:
         
         """
         ...
-    def getPropertyFieldRest(self) -> 'PropertyFieldRest':
+    def getPropertyFieldRest(self) -> 'PropertyFieldDto':
         """
         
             Returns:
@@ -194,79 +197,79 @@ class IncaPropertyFieldInfoRest:
         """
         ...
 
-class IncaPropertyFieldInfosRequestRest:
+class IncaPropertyFieldInfosRequestDto:
     """
-    @Immutable public interface IncaPropertyFieldInfosRequestRest
+    @Immutable public interface IncaPropertyFieldInfosRequestDto
     """
     @staticmethod
-    def builder() -> 'DefaultIncaPropertyFieldInfosRequestRest.Builder': ...
+    def builder() -> 'DefaultIncaPropertyFieldInfosRequestDto.Builder': ...
     @staticmethod
-    def byPropertyFieldId(long: int) -> 'IncaPropertyFieldInfosRequestRest': ...
+    def byPropertyFieldId(long: int) -> 'IncaPropertyFieldInfosRequestDto': ...
     @staticmethod
-    def byPropertyFieldIds(set: java.util.Set[int]) -> 'IncaPropertyFieldInfosRequestRest': ...
+    def byPropertyFieldIds(set: java.util.Set[int]) -> 'IncaPropertyFieldInfosRequestDto': ...
     def getPropertyFieldIds(self) -> java.util.Set[int]: ...
 
-class MakeRuleClassInfoRest:
+class MakeRuleClassInfoDto:
     """
-    @Immutable public interface MakeRuleClassInfoRest
+    @Immutable public interface MakeRuleClassInfoDto
     
         MakeRuleClassInfoRest
     """
     @staticmethod
-    def builder() -> 'DefaultMakeRuleClassInfoRest.Builder': ...
+    def builder() -> 'DefaultMakeRuleClassInfoDto.Builder': ...
     def getClassName(self) -> str: ...
     def getProductName(self) -> str: ...
     def getVersion(self) -> str: ...
 
-class MakeRuleConfigInfoRest:
+class MakeRuleConfigInfoDto:
     """
-    @Immutable public interface MakeRuleConfigInfoRest
+    @Immutable public interface MakeRuleConfigInfoDto
     
         MakeRuleConfigInfoRest
     """
     @staticmethod
-    def builder() -> 'DefaultMakeRuleConfigInfoRest.Builder': ...
-    def getMakeRuleConfigStatus(self) -> 'MakeRuleConfigStatusRest': ...
-    def getMakeRuleInfo(self) -> 'MakeRuleInfoRest': ...
+    def builder() -> 'DefaultMakeRuleConfigInfoDto.Builder': ...
+    def getMakeRuleConfigStatus(self) -> 'MakeRuleConfigStatusDto': ...
+    def getMakeRuleInfo(self) -> 'MakeRuleInfoDto': ...
 
-class MakeRuleConfigStatusRest:
+class MakeRuleConfigStatusDto:
     """
-    @Immutable public interface MakeRuleConfigStatusRest
+    @Immutable public interface MakeRuleConfigStatusDto
     
         MakeRuleConfigStatusRest
     """
     @staticmethod
-    def builder() -> 'DefaultMakeRuleConfigStatusRest.Builder': ...
+    def builder() -> 'DefaultMakeRuleConfigStatusDto.Builder': ...
     def getName(self) -> str: ...
 
-class MakeRuleInfoRest:
+class MakeRuleInfoDto:
     """
-    @Immutable public interface MakeRuleInfoRest
+    @Immutable public interface MakeRuleInfoDto
     
         MakeRuleInfoRest
     """
     @staticmethod
-    def builder() -> 'DefaultMakeRuleInfoRest.Builder': ...
-    def getMakeRuleClassInfo(self) -> MakeRuleClassInfoRest: ...
+    def builder() -> 'DefaultMakeRuleInfoDto.Builder': ...
+    def getMakeRuleClassInfo(self) -> MakeRuleClassInfoDto: ...
     def getMakeRuleName(self) -> str: ...
 
-class ParameterAttributesRest:
+class ParameterAttributesDto:
     """
-    @Immutable public interface ParameterAttributesRest
+    @Immutable public interface ParameterAttributesDto
     
         ParameterAttributesRest
     """
     @staticmethod
-    def builder() -> 'DefaultParameterAttributesRest.Builder': ...
+    def builder() -> 'DefaultParameterAttributesDto.Builder': ...
     def getAbsoluteTolerance(self) -> float: ...
     def getDefaultHierarchy(self) -> str: ...
-    def getDevice(self) -> DeviceRest: ...
+    def getDevice(self) -> DeviceDto: ...
     def getMaxValue(self) -> float: ...
     def getMinValue(self) -> float: ...
     def getParameterId(self) -> int: ...
     def getParameterName(self) -> str: ...
-    def getParameterType(self) -> 'ParameterTypeRest': ...
-    def getPropertyField(self) -> 'PropertyFieldRest': ...
+    def getParameterType(self) -> 'ParameterTypeDto': ...
+    def getPropertyField(self) -> 'PropertyFieldDto': ...
     def getRelativeTolerance(self) -> float: ...
     def getXPrecision(self) -> int: ...
     def getYPrecision(self) -> int: ...
@@ -274,35 +277,21 @@ class ParameterAttributesRest:
     def isReservedForOpExperts(self) -> bool: ...
     def isTrimable(self) -> bool: ...
 
-class ParameterGroupRest(cern.accsoft.commons.util.Named):
+class ParameterDto(cern.accsoft.commons.util.Named):
     """
-    @Immutable public interface ParameterGroupRest extends cern.accsoft.commons.util.Named
-    
-        ParameterGroupRest
-    """
-    @staticmethod
-    def builder() -> 'DefaultParameterGroupRest.Builder': ...
-    def getAcceleratorName(self) -> str: ...
-    def getCreateDate(self) -> java.time.OffsetDateTime: ...
-    def getCreator(self) -> str: ...
-    def getDescription(self) -> str: ...
-    def getId(self) -> int: ...
-
-class ParameterRest(cern.accsoft.commons.util.Named):
-    """
-    @Immutable public interface ParameterRest extends cern.accsoft.commons.util.Named
+    @Immutable public interface ParameterDto extends cern.accsoft.commons.util.Named
     """
     def belongsToFunctionBeamProcess(self) -> bool: ...
     @staticmethod
-    def builder() -> 'DefaultParameterRest.Builder': ...
+    def builder() -> 'DefaultParameterDto.Builder': ...
     def getDefaultHierarchy(self) -> str: ...
-    def getDevice(self) -> DeviceRest: ...
+    def getDevice(self) -> DeviceDto: ...
     def getId(self) -> int: ...
     def getParameterGroups(self) -> java.util.List[str]: ...
-    def getParameterType(self) -> 'ParameterTypeRest': ...
-    def getPropertyField(self) -> 'PropertyFieldRest': ...
-    def getValueDescriptor(self) -> 'ValueDescriptorRest': ...
-    def getValueType(self) -> 'TypeRest': ...
+    def getParameterType(self) -> 'ParameterTypeDto': ...
+    def getPropertyField(self) -> 'PropertyFieldDto': ...
+    def getValueDescriptor(self) -> 'ValueDescriptorDto': ...
+    def getValueType(self) -> 'TypeDto': ...
     def isCritical(self) -> bool: ...
     def isCycleBound(self) -> bool: ...
     def isLsaImplementation(self) -> bool: ...
@@ -314,73 +303,87 @@ class ParameterRest(cern.accsoft.commons.util.Named):
     def isTrimable(self) -> bool: ...
     def isWritable(self) -> bool: ...
 
-class ParameterTreeDataRest:
+class ParameterGroupDto(cern.accsoft.commons.util.Named):
     """
-    @Immutable public interface ParameterTreeDataRest
+    @Immutable public interface ParameterGroupDto extends cern.accsoft.commons.util.Named
+    
+        ParameterGroupRest
     """
     @staticmethod
-    def builder() -> 'DefaultParameterTreeDataRest.Builder': ...
-    def getNodes(self) -> java.util.Set['ParameterTreeNodeRest']: ...
-    def getRelations(self) -> java.util.Set['ParameterTreeRelationRest']: ...
+    def builder() -> 'DefaultParameterGroupDto.Builder': ...
+    def getAcceleratorName(self) -> str: ...
+    def getCreateDate(self) -> java.time.OffsetDateTime: ...
+    def getCreator(self) -> str: ...
+    def getDescription(self) -> str: ...
+    def getId(self) -> int: ...
+
+class ParameterTreeDataDto:
+    """
+    @Immutable public interface ParameterTreeDataDto
+    """
+    @staticmethod
+    def builder() -> 'DefaultParameterTreeDataDto.Builder': ...
+    def getNodes(self) -> java.util.Set['ParameterTreeNodeDto']: ...
+    def getRelations(self) -> java.util.Set['ParameterTreeRelationDto']: ...
     def getStartNodeIds(self) -> java.util.Set[int]: ...
 
-class ParameterTreeNodeRest:
+class ParameterTreeNodeDto:
     """
-    @Immutable public interface ParameterTreeNodeRest
+    @Immutable public interface ParameterTreeNodeDto
     """
     @staticmethod
-    def builder() -> 'DefaultParameterTreeNodeRest.Builder': ...
-    def getParameter(self) -> ParameterRest: ...
+    def builder() -> 'DefaultParameterTreeNodeDto.Builder': ...
+    def getParameter(self) -> ParameterDto: ...
     def isSource(self) -> bool: ...
 
-class ParameterTreeRelationRest:
+class ParameterTreeRelationDto:
     """
-    @Immutable public interface ParameterTreeRelationRest
+    @Immutable public interface ParameterTreeRelationDto
     """
     @staticmethod
-    def builder() -> 'DefaultParameterTreeRelationRest.Builder': ...
+    def builder() -> 'DefaultParameterTreeRelationDto.Builder': ...
     def getChildParameterId(self) -> int: ...
     def getParentParameterId(self) -> int: ...
 
-class ParameterTreesRequestRest:
+class ParameterTreesRequestDto:
     """
-    @Immutable public interface ParameterTreesRequestRest
+    @Immutable public interface ParameterTreesRequestDto
     """
     @staticmethod
-    def builder() -> 'DefaultParameterTreesRequestRest.Builder': ...
+    def builder() -> 'DefaultParameterTreesRequestDto.Builder': ...
     def getHierarchy(self) -> str: ...
     def getParameterNames(self) -> java.util.Set[str]: ...
     def getTreeDirection(self) -> str: ...
 
-class ParameterTypeCategoryRest(cern.accsoft.commons.util.Named):
+class ParameterTypeCategoryDto(cern.accsoft.commons.util.Named):
     """
-    @Immutable public interface ParameterTypeCategoryRest extends cern.accsoft.commons.util.Named
+    @Immutable public interface ParameterTypeCategoryDto extends cern.accsoft.commons.util.Named
     
         ParameterTypeCategoryRest
     """
     @staticmethod
-    def builder() -> 'DefaultParameterTypeCategoryRest.Builder': ...
+    def builder() -> 'DefaultParameterTypeCategoryDto.Builder': ...
 
-class ParameterTypeRest(cern.accsoft.commons.util.Named):
+class ParameterTypeDto(cern.accsoft.commons.util.Named):
     """
-    @Immutable public interface ParameterTypeRest extends cern.accsoft.commons.util.Named
+    @Immutable public interface ParameterTypeDto extends cern.accsoft.commons.util.Named
     """
     @staticmethod
-    def builder() -> 'DefaultParameterTypeRest.Builder': ...
-    def getCategory(self) -> ParameterTypeCategoryRest: ...
+    def builder() -> 'DefaultParameterTypeDto.Builder': ...
+    def getCategory(self) -> ParameterTypeCategoryDto: ...
     def getId(self) -> int: ...
     def isLinkRuleApplicable(self) -> bool: ...
 
-class ParameterTypesRequestRest:
+class ParameterTypesRequestDto:
     """
-    @Immutable public interface ParameterTypesRequestRest
+    @Immutable public interface ParameterTypesRequestDto
     """
     def getParameterTypeNames(self) -> java.util.Set[str]: ...
     def isAllParameterTypesRequested(self) -> bool: ...
 
-class ParametersRequestRest:
+class ParametersRequestDto:
     """
-    @Immutable public interface ParametersRequestRest
+    @Immutable public interface ParametersRequestDto
     
         Describes criteria when searching for LSA parameters. This object should be created using
         :code:`ParametersRequestBuilder` and passed to appropriate finder method.
@@ -390,7 +393,7 @@ class ParametersRequestRest:
         taken into account (usually resulting in empty result of the invocation).
     """
     @staticmethod
-    def builder() -> 'DefaultParametersRequestRest.Builder': ...
+    def builder() -> 'DefaultParametersRequestDto.Builder': ...
     def getAcceleratorName(self) -> str: ...
     def getAcceleratorZoneNames(self) -> java.util.Set[str]: ...
     def getDeviceIds(self) -> java.util.Set[int]: ...
@@ -409,76 +412,76 @@ class ParametersRequestRest:
     def isReadable(self) -> bool: ...
     def isWritable(self) -> bool: ...
 
-class ParentToChildrenRelationRest:
+class ParentToChildrenRelationDto:
     """
-    @Immutable public interface ParentToChildrenRelationRest
+    @Immutable public interface ParentToChildrenRelationDto
     
         ParentToChildrenRelationRest
     """
     @staticmethod
-    def builder() -> 'DefaultParentToChildrenRelationRest.Builder': ...
+    def builder() -> 'DefaultParentToChildrenRelationDto.Builder': ...
     def getChildrenIds(self) -> java.util.List[int]: ...
     def getParentId(self) -> int: ...
 
-class PropertyAndDeviceRest:
+class PropertyAndDeviceDto:
     """
-    @Immutable public interface PropertyAndDeviceRest
+    @Immutable public interface PropertyAndDeviceDto
     
         PropertyAndDeviceRest
     """
     @staticmethod
-    def builder() -> 'DefaultPropertyAndDeviceRest.Builder': ...
+    def builder() -> 'DefaultPropertyAndDeviceDto.Builder': ...
     def getDeviceId(self) -> int: ...
     def getPropertyName(self) -> str: ...
 
-class PropertyFieldRest:
+class PropertyFieldDto:
     """
-    @Immutable public interface PropertyFieldRest
+    @Immutable public interface PropertyFieldDto
     """
     @staticmethod
-    def builder() -> 'DefaultPropertyFieldRest.Builder': ...
+    def builder() -> 'DefaultPropertyFieldDto.Builder': ...
     def getDeviceTypeName(self) -> str: ...
     def getFieldName(self) -> str: ...
     def getId(self) -> int: ...
     def getPropertyName(self) -> str: ...
 
-class SaveParameterRelationRest:
+class SaveParameterRelationDto:
     """
-    @Immutable public interface SaveParameterRelationRest
+    @Immutable public interface SaveParameterRelationDto
     
         SaveParameterRelationRest
     """
     @staticmethod
-    def builder() -> 'DefaultSaveParameterRelationRest.Builder': ...
+    def builder() -> 'DefaultSaveParameterRelationDto.Builder': ...
     def getHierarchy(self) -> str: ...
-    def getParent2ChildrenRelations(self) -> java.util.List[ParentToChildrenRelationRest]: ...
+    def getParent2ChildrenRelations(self) -> java.util.List[ParentToChildrenRelationDto]: ...
 
-class TypeRest(cern.accsoft.commons.util.Named):
+class TypeDto(cern.accsoft.commons.util.Named):
     """
-    @Immutable public interface TypeRest extends cern.accsoft.commons.util.Named
+    @Immutable public interface TypeDto extends cern.accsoft.commons.util.Named
     
         TypeRest
     """
     @staticmethod
-    def builder() -> 'DefaultTypeRest.Builder': ...
+    def builder() -> 'DefaultTypeDto.Builder': ...
 
-class ValueCompareTypeRest(cern.accsoft.commons.util.Named):
+class ValueCompareTypeDto(cern.accsoft.commons.util.Named):
     """
-    @Immutable public interface ValueCompareTypeRest extends cern.accsoft.commons.util.Named
+    @Immutable public interface ValueCompareTypeDto extends cern.accsoft.commons.util.Named
     """
     @staticmethod
-    def builder() -> 'DefaultValueCompareTypeRest.Builder': ...
+    def builder() -> 'DefaultValueCompareTypeDto.Builder': ...
 
-class ValueDescriptorRest:
+class ValueDescriptorDto:
     """
-    @Immutable public interface ValueDescriptorRest
+    @Immutable public interface ValueDescriptorDto
     """
     @staticmethod
-    def builder() -> 'DefaultValueDescriptorRest.Builder': ...
+    def builder() -> 'DefaultValueDescriptorDto.Builder': ...
     def getAbsoluteTolerance(self) -> float: ...
-    def getBooleanType(self) -> BooleanTypeRest: ...
+    def getBooleanType(self) -> BooleanTypeDto: ...
     def getColumnCount(self) -> int: ...
-    def getEnumType(self) -> EnumTypeRest: ...
+    def getEnumType(self) -> EnumTypeDto: ...
     def getMax(self) -> float: ...
     def getMin(self) -> float: ...
     def getRelativeTolerance(self) -> float: ...
@@ -488,44 +491,44 @@ class ValueDescriptorRest:
     def getYPrecision(self) -> int: ...
     def getYUnit(self) -> str: ...
 
-class DefaultAcceleratorZoneRest(AcceleratorZoneRest):
+class DefaultAcceleratorZoneDto(AcceleratorZoneDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultAcceleratorZoneRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.AcceleratorZoneRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultAcceleratorZoneDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.AcceleratorZoneDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.AcceleratorZoneRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.AcceleratorZoneDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultAcceleratorZoneRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultAcceleratorZoneDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultAcceleratorZoneRest.Builder':
+    def builder() -> 'DefaultAcceleratorZoneDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultAcceleratorZoneRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultAcceleratorZoneDto`.
         
             .. code-block: java
             
-             DefaultAcceleratorZoneRest.builder()
+             DefaultAcceleratorZoneDto.builder()
                 .name(String) // required name
-                .acceleratorName(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.AcceleratorZoneRest.getAcceleratorName`
+                .acceleratorName(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.AcceleratorZoneDto.getAcceleratorName`
                 .build();
              
         
             Returns:
-                A new DefaultAcceleratorZoneRest builder
+                A new DefaultAcceleratorZoneDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(acceleratorZoneRest: AcceleratorZoneRest) -> 'DefaultAcceleratorZoneRest':
+    def copyOf(acceleratorZoneDto: AcceleratorZoneDto) -> 'DefaultAcceleratorZoneDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.AcceleratorZoneRest` value. Uses accessors to
-            get values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.AcceleratorZoneDto` value. Uses accessors to get
+            values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.AcceleratorZoneRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.AcceleratorZoneDto`): The instance to copy
         
             Returns:
-                A copied immutable AcceleratorZoneRest instance
+                A copied immutable AcceleratorZoneDto instance
         
         
         """
@@ -535,8 +538,8 @@ class DefaultAcceleratorZoneRest(AcceleratorZoneRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.AcceleratorZoneRest.getAcceleratorName`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.AcceleratorZoneRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.AcceleratorZoneDto.getAcceleratorName`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.AcceleratorZoneDto`
         
             Returns:
                 The value of the :code:`acceleratorName` attribute
@@ -571,7 +574,7 @@ class DefaultAcceleratorZoneRest(AcceleratorZoneRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`AcceleratorZoneRest` with attribute values.
+            Prints the immutable value :code:`AcceleratorZoneDto` with attribute values.
         
             Overrides:
                  in class 
@@ -582,10 +585,10 @@ class DefaultAcceleratorZoneRest(AcceleratorZoneRest):
         
         """
         ...
-    def withAcceleratorName(self, string: str) -> 'DefaultAcceleratorZoneRest':
+    def withAcceleratorName(self, string: str) -> 'DefaultAcceleratorZoneDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.AcceleratorZoneRest.getAcceleratorName` attribute. An equals check used to
+            :meth:`~cern.lsa.client.rest.api.v1.dto.AcceleratorZoneDto.getAcceleratorName` attribute. An equals check used to
             prevent copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -597,7 +600,7 @@ class DefaultAcceleratorZoneRest(AcceleratorZoneRest):
         
         """
         ...
-    def withName(self, string: str) -> 'DefaultAcceleratorZoneRest':
+    def withName(self, string: str) -> 'DefaultAcceleratorZoneDto':
         """
             Copy the current immutable object by setting a value for the :code:`name` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
@@ -612,48 +615,48 @@ class DefaultAcceleratorZoneRest(AcceleratorZoneRest):
         """
         ...
     class Builder:
-        def acceleratorName(self, string: str) -> 'DefaultAcceleratorZoneRest.Builder': ...
-        def build(self) -> 'DefaultAcceleratorZoneRest': ...
-        def name(self, string: str) -> 'DefaultAcceleratorZoneRest.Builder': ...
+        def acceleratorName(self, string: str) -> 'DefaultAcceleratorZoneDto.Builder': ...
+        def build(self) -> 'DefaultAcceleratorZoneDto': ...
+        def name(self, string: str) -> 'DefaultAcceleratorZoneDto.Builder': ...
 
-class DefaultBooleanItemRest(BooleanItemRest):
+class DefaultBooleanItemDto(BooleanItemDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultBooleanItemRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.BooleanItemRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultBooleanItemDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.BooleanItemDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.BooleanItemRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.BooleanItemDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultBooleanItemRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultBooleanItemDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultBooleanItemRest.Builder':
+    def builder() -> 'DefaultBooleanItemDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultBooleanItemRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultBooleanItemDto`.
         
             .. code-block: java
             
-             DefaultBooleanItemRest.builder()
-                .value(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.BooleanItemRest.getValue`
-                .standardMeaning(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.BooleanItemRest.getStandardMeaning`
+             DefaultBooleanItemDto.builder()
+                .value(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.BooleanItemDto.getValue`
+                .standardMeaning(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.BooleanItemDto.getStandardMeaning`
                 .build();
              
         
             Returns:
-                A new DefaultBooleanItemRest builder
+                A new DefaultBooleanItemDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(booleanItemRest: BooleanItemRest) -> 'DefaultBooleanItemRest':
+    def copyOf(booleanItemDto: BooleanItemDto) -> 'DefaultBooleanItemDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.BooleanItemRest` value. Uses accessors to get
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.BooleanItemDto` value. Uses accessors to get
             values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.BooleanItemRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.BooleanItemDto`): The instance to copy
         
             Returns:
-                A copied immutable BooleanItemRest instance
+                A copied immutable BooleanItemDto instance
         
         
         """
@@ -663,8 +666,8 @@ class DefaultBooleanItemRest(BooleanItemRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.BooleanItemRest.getStandardMeaning`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.BooleanItemRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.BooleanItemDto.getStandardMeaning`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.BooleanItemDto`
         
             Returns:
                 The value of the :code:`standardMeaning` attribute
@@ -676,8 +679,8 @@ class DefaultBooleanItemRest(BooleanItemRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.BooleanItemRest.getValue`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.BooleanItemRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.BooleanItemDto.getValue`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.BooleanItemDto`
         
             Returns:
                 The value of the :code:`value` attribute
@@ -700,7 +703,7 @@ class DefaultBooleanItemRest(BooleanItemRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`BooleanItemRest` with attribute values.
+            Prints the immutable value :code:`BooleanItemDto` with attribute values.
         
             Overrides:
                  in class 
@@ -711,10 +714,10 @@ class DefaultBooleanItemRest(BooleanItemRest):
         
         """
         ...
-    def withStandardMeaning(self, string: str) -> 'DefaultBooleanItemRest':
+    def withStandardMeaning(self, string: str) -> 'DefaultBooleanItemDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.BooleanItemRest.getStandardMeaning` attribute. An equals check used to prevent
+            :meth:`~cern.lsa.client.rest.api.v1.dto.BooleanItemDto.getStandardMeaning` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -726,10 +729,10 @@ class DefaultBooleanItemRest(BooleanItemRest):
         
         """
         ...
-    def withValue(self, boolean: bool) -> 'DefaultBooleanItemRest':
+    def withValue(self, boolean: bool) -> 'DefaultBooleanItemDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.BooleanItemRest.getValue` attribute. A value equality check is used to prevent
+            :meth:`~cern.lsa.client.rest.api.v1.dto.BooleanItemDto.getValue` attribute. A value equality check is used to prevent
             copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -742,54 +745,54 @@ class DefaultBooleanItemRest(BooleanItemRest):
         """
         ...
     class Builder:
-        def build(self) -> 'DefaultBooleanItemRest': ...
-        def standardMeaning(self, string: str) -> 'DefaultBooleanItemRest.Builder': ...
-        def value(self, boolean: bool) -> 'DefaultBooleanItemRest.Builder': ...
+        def build(self) -> 'DefaultBooleanItemDto': ...
+        def standardMeaning(self, string: str) -> 'DefaultBooleanItemDto.Builder': ...
+        def value(self, boolean: bool) -> 'DefaultBooleanItemDto.Builder': ...
 
-class DefaultBooleanTypeRest(BooleanTypeRest):
+class DefaultBooleanTypeDto(BooleanTypeDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultBooleanTypeRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.BooleanTypeRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultBooleanTypeDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.BooleanTypeDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.BooleanTypeRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.BooleanTypeDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultBooleanTypeRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultBooleanTypeDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultBooleanTypeRest.Builder':
+    def builder() -> 'DefaultBooleanTypeDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultBooleanTypeRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultBooleanTypeDto`.
         
             .. code-block: java
             
-             DefaultBooleanTypeRest.builder()
+             DefaultBooleanTypeDto.builder()
                 .name(String) // required name
-                .addBooleanItem|addAllBooleanItems(cern.lsa.client.rest.api.v1.dto.BooleanItemRest) // :meth:`~cern.lsa.client.rest.api.v1.dto.BooleanTypeRest.getBooleanItems` elements
+                .addBooleanItem|addAllBooleanItems(cern.lsa.client.rest.api.v1.dto.BooleanItemDto) // :meth:`~cern.lsa.client.rest.api.v1.dto.BooleanTypeDto.getBooleanItems` elements
                 .build();
              
         
             Returns:
-                A new DefaultBooleanTypeRest builder
+                A new DefaultBooleanTypeDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(booleanTypeRest: BooleanTypeRest) -> 'DefaultBooleanTypeRest':
+    def copyOf(booleanTypeDto: BooleanTypeDto) -> 'DefaultBooleanTypeDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.BooleanTypeRest` value. Uses accessors to get
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.BooleanTypeDto` value. Uses accessors to get
             values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.BooleanTypeRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.BooleanTypeDto`): The instance to copy
         
             Returns:
-                A copied immutable BooleanTypeRest instance
+                A copied immutable BooleanTypeDto instance
         
         
         """
         ...
     def equals(self, object: typing.Any) -> bool: ...
-    def getBooleanItems(self) -> java.util.List[BooleanItemRest]: ...
+    def getBooleanItems(self) -> java.util.List[BooleanItemDto]: ...
     def getName(self) -> str:
         """
         
@@ -817,7 +820,7 @@ class DefaultBooleanTypeRest(BooleanTypeRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`BooleanTypeRest` with attribute values.
+            Prints the immutable value :code:`BooleanTypeDto` with attribute values.
         
             Overrides:
                  in class 
@@ -829,25 +832,25 @@ class DefaultBooleanTypeRest(BooleanTypeRest):
         """
         ...
     @typing.overload
-    def withBooleanItems(self, booleanItemRestArray: typing.List[BooleanItemRest]) -> 'DefaultBooleanTypeRest':
+    def withBooleanItems(self, booleanItemDtoArray: typing.List[BooleanItemDto]) -> 'DefaultBooleanTypeDto':
         """
             Copy the current immutable object with elements that replace the content of
-            :meth:`~cern.lsa.client.rest.api.v1.dto.BooleanTypeRest.getBooleanItems`.
+            :meth:`~cern.lsa.client.rest.api.v1.dto.BooleanTypeDto.getBooleanItems`.
         
             Parameters:
-                elements (:class:`~cern.lsa.client.rest.api.v1.dto.BooleanItemRest`...): The elements to set
+                elements (:class:`~cern.lsa.client.rest.api.v1.dto.BooleanItemDto`...): The elements to set
         
             Returns:
                 A modified copy of :code:`this` object
         
-        public final :class:`~cern.lsa.client.rest.api.v1.dto.DefaultBooleanTypeRest` withBooleanItems (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.BooleanItemRest`> elements)
+        public final :class:`~cern.lsa.client.rest.api.v1.dto.DefaultBooleanTypeDto` withBooleanItems (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.BooleanItemDto`> elements)
         
             Copy the current immutable object with elements that replace the content of
-            :meth:`~cern.lsa.client.rest.api.v1.dto.BooleanTypeRest.getBooleanItems`. A shallow reference equality check is used to
+            :meth:`~cern.lsa.client.rest.api.v1.dto.BooleanTypeDto.getBooleanItems`. A shallow reference equality check is used to
             prevent copying of the same value by returning :code:`this`.
         
             Parameters:
-                elements (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.BooleanItemRest`> elements): An iterable of booleanItems elements to set
+                elements (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.BooleanItemDto`> elements): An iterable of booleanItems elements to set
         
             Returns:
                 A modified copy of :code:`this` object
@@ -856,8 +859,8 @@ class DefaultBooleanTypeRest(BooleanTypeRest):
         """
         ...
     @typing.overload
-    def withBooleanItems(self, iterable: java.lang.Iterable[BooleanItemRest]) -> 'DefaultBooleanTypeRest': ...
-    def withName(self, string: str) -> 'DefaultBooleanTypeRest':
+    def withBooleanItems(self, iterable: java.lang.Iterable[BooleanItemDto]) -> 'DefaultBooleanTypeDto': ...
+    def withName(self, string: str) -> 'DefaultBooleanTypeDto':
         """
             Copy the current immutable object by setting a value for the :code:`name` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
@@ -872,172 +875,74 @@ class DefaultBooleanTypeRest(BooleanTypeRest):
         """
         ...
     class Builder:
-        def addAllBooleanItems(self, iterable: java.lang.Iterable[BooleanItemRest]) -> 'DefaultBooleanTypeRest.Builder': ...
-        def addBooleanItem(self, booleanItemRest: BooleanItemRest) -> 'DefaultBooleanTypeRest.Builder': ...
-        def addBooleanItems(self, booleanItemRestArray: typing.List[BooleanItemRest]) -> 'DefaultBooleanTypeRest.Builder': ...
-        def booleanItems(self, iterable: java.lang.Iterable[BooleanItemRest]) -> 'DefaultBooleanTypeRest.Builder': ...
-        def build(self) -> 'DefaultBooleanTypeRest': ...
-        def name(self, string: str) -> 'DefaultBooleanTypeRest.Builder': ...
+        def addAllBooleanItems(self, iterable: java.lang.Iterable[BooleanItemDto]) -> 'DefaultBooleanTypeDto.Builder': ...
+        def addBooleanItem(self, booleanItemDto: BooleanItemDto) -> 'DefaultBooleanTypeDto.Builder': ...
+        def addBooleanItems(self, booleanItemDtoArray: typing.List[BooleanItemDto]) -> 'DefaultBooleanTypeDto.Builder': ...
+        def booleanItems(self, iterable: java.lang.Iterable[BooleanItemDto]) -> 'DefaultBooleanTypeDto.Builder': ...
+        def build(self) -> 'DefaultBooleanTypeDto': ...
+        def name(self, string: str) -> 'DefaultBooleanTypeDto.Builder': ...
 
-class DefaultDeviceMetaTypeRest(DeviceMetaTypeRest):
+class DefaultDeviceDto(DeviceDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultDeviceMetaTypeRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.DeviceMetaTypeRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultDeviceDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.DeviceDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.DeviceMetaTypeRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.DeviceDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultDeviceMetaTypeRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultDeviceDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultDeviceMetaTypeRest.Builder':
+    def builder() -> 'DefaultDeviceDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultDeviceMetaTypeRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultDeviceDto`.
         
             .. code-block: java
             
-             DefaultDeviceMetaTypeRest.builder()
+             DefaultDeviceDto.builder()
                 .name(String) // required name
+                .acceleratorZone(cern.lsa.client.rest.api.v1.dto.AcceleratorZoneDto) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.getAcceleratorZone`
+                .description(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.getDescription`
+                .deviceAlias(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.getDeviceAlias`
+                .addDeviceGroup|addAllDeviceGroups(String) // :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.getDeviceGroups` elements
+                .deviceTypeVersion(cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerDto) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.getDeviceTypeVersion`
+                .fecName(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.getFecName`
+                .id(long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.getId`
+                .multiplexed(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.isMultiplexed`
+                .cycleBound(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.isCycleBound`
+                .position(double) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.getPosition`
+                .sortOrder(int) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.getSortOrder`
+                .serverName(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.getServerName`
+                .state(cern.lsa.client.rest.api.v1.dto.DeviceStateDto | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.getState`
                 .build();
              
         
             Returns:
-                A new DefaultDeviceMetaTypeRest builder
+                A new DefaultDeviceDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(deviceMetaTypeRest: DeviceMetaTypeRest) -> 'DefaultDeviceMetaTypeRest':
+    def copyOf(deviceDto: DeviceDto) -> 'DefaultDeviceDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.DeviceMetaTypeRest` value. Uses accessors to get
-            values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
-        
-            Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceMetaTypeRest`): The instance to copy
-        
-            Returns:
-                A copied immutable DeviceMetaTypeRest instance
-        
-        
-        """
-        ...
-    def equals(self, object: typing.Any) -> bool: ...
-    def getName(self) -> str:
-        """
-        
-            Specified by:
-                :code:`getName` in interface :code:`cern.accsoft.commons.util.Named`
-        
-            Returns:
-                The value of the :code:`name` attribute
-        
-        
-        """
-        ...
-    def hashCode(self) -> int:
-        """
-            Computes a hash code from attributes: :code:`name`.
-        
-            Overrides:
-                 in class 
-        
-            Returns:
-                hashCode value
-        
-        
-        """
-        ...
-    def toString(self) -> str:
-        """
-            Prints the immutable value :code:`DeviceMetaTypeRest` with attribute values.
-        
-            Overrides:
-                 in class 
-        
-            Returns:
-                A string representation of the value
-        
-        
-        """
-        ...
-    def withName(self, string: str) -> 'DefaultDeviceMetaTypeRest':
-        """
-            Copy the current immutable object by setting a value for the :code:`name` attribute. An equals check used to prevent
-            copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): A new value for name
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    class Builder:
-        def build(self) -> 'DefaultDeviceMetaTypeRest': ...
-        def name(self, string: str) -> 'DefaultDeviceMetaTypeRest.Builder': ...
-
-class DefaultDeviceRest(DeviceRest):
-    """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultDeviceRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.DeviceRest`
-    
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.DeviceRest`.
-    
-        Use the builder to create immutable instances: :code:`DefaultDeviceRest.builder()`.
-    """
-    @staticmethod
-    def builder() -> 'DefaultDeviceRest.Builder':
-        """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultDeviceRest`.
-        
-            .. code-block: java
-            
-             DefaultDeviceRest.builder()
-                .name(String) // required name
-                .acceleratorZone(cern.lsa.client.rest.api.v1.dto.AcceleratorZoneRest) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.getAcceleratorZone`
-                .description(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.getDescription`
-                .deviceAlias(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.getDeviceAlias`
-                .addDeviceGroup|addAllDeviceGroups(String) // :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.getDeviceGroups` elements
-                .deviceTypeVersion(cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.getDeviceTypeVersion`
-                .fecName(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.getFecName`
-                .id(long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.getId`
-                .multiplexed(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.isMultiplexed`
-                .cycleBound(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.isCycleBound`
-                .position(double) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.getPosition`
-                .sortOrder(int) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.getSortOrder`
-                .serverName(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.getServerName`
-                .state(cern.lsa.client.rest.api.v1.dto.DeviceStateRest | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.getState`
-                .build();
-             
-        
-            Returns:
-                A new DefaultDeviceRest builder
-        
-        
-        """
-        ...
-    @staticmethod
-    def copyOf(deviceRest: DeviceRest) -> 'DefaultDeviceRest':
-        """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.DeviceRest` value. Uses accessors to get values
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.DeviceDto` value. Uses accessors to get values
             to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceDto`): The instance to copy
         
             Returns:
-                A copied immutable DeviceRest instance
+                A copied immutable DeviceDto instance
         
         
         """
         ...
     def equals(self, object: typing.Any) -> bool: ...
-    def getAcceleratorZone(self) -> AcceleratorZoneRest:
+    def getAcceleratorZone(self) -> AcceleratorZoneDto:
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.getAcceleratorZone`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.getAcceleratorZone`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceDto`
         
             Returns:
                 The value of the :code:`acceleratorZone` attribute
@@ -1048,12 +953,12 @@ class DefaultDeviceRest(DeviceRest):
     def getDescription(self) -> str: ...
     def getDeviceAlias(self) -> str: ...
     def getDeviceGroups(self) -> java.util.Set[str]: ...
-    def getDeviceTypeVersion(self) -> DeviceTypeVersionContainerRest:
+    def getDeviceTypeVersion(self) -> DeviceTypeVersionContainerDto:
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.getDeviceTypeVersion`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.getDeviceTypeVersion`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceDto`
         
             Returns:
                 The value of the :code:`deviceTypeVersion` attribute
@@ -1066,8 +971,8 @@ class DefaultDeviceRest(DeviceRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.getId`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.getId`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceDto`
         
             Returns:
                 The value of the :code:`id` attribute
@@ -1091,8 +996,8 @@ class DefaultDeviceRest(DeviceRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.getPosition`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.getPosition`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceDto`
         
             Returns:
                 The value of the :code:`position` attribute
@@ -1105,8 +1010,8 @@ class DefaultDeviceRest(DeviceRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.getSortOrder`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.getSortOrder`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceDto`
         
             Returns:
                 The value of the :code:`sortOrder` attribute
@@ -1114,7 +1019,7 @@ class DefaultDeviceRest(DeviceRest):
         
         """
         ...
-    def getState(self) -> DeviceStateRest: ...
+    def getState(self) -> DeviceStateDto: ...
     def hashCode(self) -> int:
         """
             Computes a hash code from attributes: :code:`name`, :code:`acceleratorZone`, :code:`description`, :code:`deviceAlias`,
@@ -1134,8 +1039,8 @@ class DefaultDeviceRest(DeviceRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.isCycleBound`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.isCycleBound`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceDto`
         
             Returns:
                 The value of the :code:`cycleBound` attribute
@@ -1147,8 +1052,8 @@ class DefaultDeviceRest(DeviceRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.isMultiplexed`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.isMultiplexed`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceDto`
         
             Returns:
                 The value of the :code:`multiplexed` attribute
@@ -1158,7 +1063,7 @@ class DefaultDeviceRest(DeviceRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`DeviceRest` with attribute values.
+            Prints the immutable value :code:`DeviceDto` with attribute values.
         
             Overrides:
                  in class 
@@ -1169,14 +1074,14 @@ class DefaultDeviceRest(DeviceRest):
         
         """
         ...
-    def withAcceleratorZone(self, acceleratorZoneRest: AcceleratorZoneRest) -> 'DefaultDeviceRest':
+    def withAcceleratorZone(self, acceleratorZoneDto: AcceleratorZoneDto) -> 'DefaultDeviceDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.getAcceleratorZone` attribute. A shallow reference equality check is
+            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.getAcceleratorZone` attribute. A shallow reference equality check is
             used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
-                value (:class:`~cern.lsa.client.rest.api.v1.dto.AcceleratorZoneRest`): A new value for acceleratorZone
+                value (:class:`~cern.lsa.client.rest.api.v1.dto.AcceleratorZoneDto`): A new value for acceleratorZone
         
             Returns:
                 A modified copy of the :code:`this` object
@@ -1184,10 +1089,10 @@ class DefaultDeviceRest(DeviceRest):
         
         """
         ...
-    def withCycleBound(self, boolean: bool) -> 'DefaultDeviceRest':
+    def withCycleBound(self, boolean: bool) -> 'DefaultDeviceDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.isCycleBound` attribute. A value equality check is used to prevent
+            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.isCycleBound` attribute. A value equality check is used to prevent
             copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -1199,20 +1104,20 @@ class DefaultDeviceRest(DeviceRest):
         
         """
         ...
-    def withDescription(self, string: str) -> 'DefaultDeviceRest': ...
-    def withDeviceAlias(self, string: str) -> 'DefaultDeviceRest': ...
+    def withDescription(self, string: str) -> 'DefaultDeviceDto': ...
+    def withDeviceAlias(self, string: str) -> 'DefaultDeviceDto': ...
     @typing.overload
-    def withDeviceGroups(self, iterable: java.lang.Iterable[str]) -> 'DefaultDeviceRest': ...
+    def withDeviceGroups(self, iterable: java.lang.Iterable[str]) -> 'DefaultDeviceDto': ...
     @typing.overload
-    def withDeviceGroups(self, stringArray: typing.List[str]) -> 'DefaultDeviceRest': ...
-    def withDeviceTypeVersion(self, deviceTypeVersionContainerRest: DeviceTypeVersionContainerRest) -> 'DefaultDeviceRest':
+    def withDeviceGroups(self, stringArray: typing.List[str]) -> 'DefaultDeviceDto': ...
+    def withDeviceTypeVersion(self, deviceTypeVersionContainerDto: DeviceTypeVersionContainerDto) -> 'DefaultDeviceDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.getDeviceTypeVersion` attribute. A shallow reference equality check
-            is used to prevent copying of the same value by returning :code:`this`.
+            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.getDeviceTypeVersion` attribute. A shallow reference equality check is
+            used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
-                value (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest`): A new value for deviceTypeVersion
+                value (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerDto`): A new value for deviceTypeVersion
         
             Returns:
                 A modified copy of the :code:`this` object
@@ -1220,10 +1125,10 @@ class DefaultDeviceRest(DeviceRest):
         
         """
         ...
-    def withFecName(self, string: str) -> 'DefaultDeviceRest': ...
-    def withId(self, long: int) -> 'DefaultDeviceRest':
+    def withFecName(self, string: str) -> 'DefaultDeviceDto': ...
+    def withId(self, long: int) -> 'DefaultDeviceDto':
         """
-            Copy the current immutable object by setting a value for the :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.getId`
+            Copy the current immutable object by setting a value for the :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.getId`
             attribute. A value equality check is used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -1235,10 +1140,10 @@ class DefaultDeviceRest(DeviceRest):
         
         """
         ...
-    def withMultiplexed(self, boolean: bool) -> 'DefaultDeviceRest':
+    def withMultiplexed(self, boolean: bool) -> 'DefaultDeviceDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.isMultiplexed` attribute. A value equality check is used to prevent
+            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.isMultiplexed` attribute. A value equality check is used to prevent
             copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -1250,7 +1155,7 @@ class DefaultDeviceRest(DeviceRest):
         
         """
         ...
-    def withName(self, string: str) -> 'DefaultDeviceRest':
+    def withName(self, string: str) -> 'DefaultDeviceDto':
         """
             Copy the current immutable object by setting a value for the :code:`name` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
@@ -1264,10 +1169,10 @@ class DefaultDeviceRest(DeviceRest):
         
         """
         ...
-    def withPosition(self, double: float) -> 'DefaultDeviceRest':
+    def withPosition(self, double: float) -> 'DefaultDeviceDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.getPosition` attribute. A value strict bits equality used to prevent
+            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.getPosition` attribute. A value strict bits equality used to prevent
             copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -1279,11 +1184,11 @@ class DefaultDeviceRest(DeviceRest):
         
         """
         ...
-    def withServerName(self, string: str) -> 'DefaultDeviceRest': ...
-    def withSortOrder(self, int: int) -> 'DefaultDeviceRest':
+    def withServerName(self, string: str) -> 'DefaultDeviceDto': ...
+    def withSortOrder(self, int: int) -> 'DefaultDeviceDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceRest.getSortOrder` attribute. A value equality check is used to prevent
+            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceDto.getSortOrder` attribute. A value equality check is used to prevent
             copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -1295,64 +1200,64 @@ class DefaultDeviceRest(DeviceRest):
         
         """
         ...
-    def withState(self, deviceStateRest: DeviceStateRest) -> 'DefaultDeviceRest': ...
+    def withState(self, deviceStateDto: DeviceStateDto) -> 'DefaultDeviceDto': ...
     class Builder:
-        def acceleratorZone(self, acceleratorZoneRest: AcceleratorZoneRest) -> 'DefaultDeviceRest.Builder': ...
-        def addAllDeviceGroups(self, iterable: java.lang.Iterable[str]) -> 'DefaultDeviceRest.Builder': ...
-        def addDeviceGroup(self, string: str) -> 'DefaultDeviceRest.Builder': ...
-        def addDeviceGroups(self, stringArray: typing.List[str]) -> 'DefaultDeviceRest.Builder': ...
-        def build(self) -> 'DefaultDeviceRest': ...
-        def cycleBound(self, boolean: bool) -> 'DefaultDeviceRest.Builder': ...
-        def description(self, string: str) -> 'DefaultDeviceRest.Builder': ...
-        def deviceAlias(self, string: str) -> 'DefaultDeviceRest.Builder': ...
-        def deviceGroups(self, iterable: java.lang.Iterable[str]) -> 'DefaultDeviceRest.Builder': ...
-        def deviceTypeVersion(self, deviceTypeVersionContainerRest: DeviceTypeVersionContainerRest) -> 'DefaultDeviceRest.Builder': ...
-        def fecName(self, string: str) -> 'DefaultDeviceRest.Builder': ...
-        def id(self, long: int) -> 'DefaultDeviceRest.Builder': ...
-        def multiplexed(self, boolean: bool) -> 'DefaultDeviceRest.Builder': ...
-        def name(self, string: str) -> 'DefaultDeviceRest.Builder': ...
-        def position(self, double: float) -> 'DefaultDeviceRest.Builder': ...
-        def serverName(self, string: str) -> 'DefaultDeviceRest.Builder': ...
-        def sortOrder(self, int: int) -> 'DefaultDeviceRest.Builder': ...
-        def state(self, deviceStateRest: DeviceStateRest) -> 'DefaultDeviceRest.Builder': ...
+        def acceleratorZone(self, acceleratorZoneDto: AcceleratorZoneDto) -> 'DefaultDeviceDto.Builder': ...
+        def addAllDeviceGroups(self, iterable: java.lang.Iterable[str]) -> 'DefaultDeviceDto.Builder': ...
+        def addDeviceGroup(self, string: str) -> 'DefaultDeviceDto.Builder': ...
+        def addDeviceGroups(self, stringArray: typing.List[str]) -> 'DefaultDeviceDto.Builder': ...
+        def build(self) -> 'DefaultDeviceDto': ...
+        def cycleBound(self, boolean: bool) -> 'DefaultDeviceDto.Builder': ...
+        def description(self, string: str) -> 'DefaultDeviceDto.Builder': ...
+        def deviceAlias(self, string: str) -> 'DefaultDeviceDto.Builder': ...
+        def deviceGroups(self, iterable: java.lang.Iterable[str]) -> 'DefaultDeviceDto.Builder': ...
+        def deviceTypeVersion(self, deviceTypeVersionContainerDto: DeviceTypeVersionContainerDto) -> 'DefaultDeviceDto.Builder': ...
+        def fecName(self, string: str) -> 'DefaultDeviceDto.Builder': ...
+        def id(self, long: int) -> 'DefaultDeviceDto.Builder': ...
+        def multiplexed(self, boolean: bool) -> 'DefaultDeviceDto.Builder': ...
+        def name(self, string: str) -> 'DefaultDeviceDto.Builder': ...
+        def position(self, double: float) -> 'DefaultDeviceDto.Builder': ...
+        def serverName(self, string: str) -> 'DefaultDeviceDto.Builder': ...
+        def sortOrder(self, int: int) -> 'DefaultDeviceDto.Builder': ...
+        def state(self, deviceStateDto: DeviceStateDto) -> 'DefaultDeviceDto.Builder': ...
 
-class DefaultDeviceStateRest(DeviceStateRest):
+class DefaultDeviceMetaTypeDto(DeviceMetaTypeDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultDeviceStateRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.DeviceStateRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultDeviceMetaTypeDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.DeviceMetaTypeDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.DeviceStateRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.DeviceMetaTypeDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultDeviceStateRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultDeviceMetaTypeDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultDeviceStateRest.Builder':
+    def builder() -> 'DefaultDeviceMetaTypeDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultDeviceStateRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultDeviceMetaTypeDto`.
         
             .. code-block: java
             
-             DefaultDeviceStateRest.builder()
+             DefaultDeviceMetaTypeDto.builder()
                 .name(String) // required name
                 .build();
              
         
             Returns:
-                A new DefaultDeviceStateRest builder
+                A new DefaultDeviceMetaTypeDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(deviceStateRest: DeviceStateRest) -> 'DefaultDeviceStateRest':
+    def copyOf(deviceMetaTypeDto: DeviceMetaTypeDto) -> 'DefaultDeviceMetaTypeDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.DeviceStateRest` value. Uses accessors to get
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.DeviceMetaTypeDto` value. Uses accessors to get
             values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceStateRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceMetaTypeDto`): The instance to copy
         
             Returns:
-                A copied immutable DeviceStateRest instance
+                A copied immutable DeviceMetaTypeDto instance
         
         
         """
@@ -1385,7 +1290,7 @@ class DefaultDeviceStateRest(DeviceStateRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`DeviceStateRest` with attribute values.
+            Prints the immutable value :code:`DeviceMetaTypeDto` with attribute values.
         
             Overrides:
                  in class 
@@ -1396,7 +1301,7 @@ class DefaultDeviceStateRest(DeviceStateRest):
         
         """
         ...
-    def withName(self, string: str) -> 'DefaultDeviceStateRest':
+    def withName(self, string: str) -> 'DefaultDeviceMetaTypeDto':
         """
             Copy the current immutable object by setting a value for the :code:`name` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
@@ -1411,47 +1316,46 @@ class DefaultDeviceStateRest(DeviceStateRest):
         """
         ...
     class Builder:
-        def build(self) -> 'DefaultDeviceStateRest': ...
-        def name(self, string: str) -> 'DefaultDeviceStateRest.Builder': ...
+        def build(self) -> 'DefaultDeviceMetaTypeDto': ...
+        def name(self, string: str) -> 'DefaultDeviceMetaTypeDto.Builder': ...
 
-class DefaultDeviceTypeImplementationRest(DeviceTypeImplementationRest):
+class DefaultDeviceStateDto(DeviceStateDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultDeviceTypeImplementationRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeImplementationRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultDeviceStateDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.DeviceStateDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeImplementationRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.DeviceStateDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultDeviceTypeImplementationRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultDeviceStateDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultDeviceTypeImplementationRest.Builder':
+    def builder() -> 'DefaultDeviceStateDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultDeviceTypeImplementationRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultDeviceStateDto`.
         
             .. code-block: java
             
-             DefaultDeviceTypeImplementationRest.builder()
+             DefaultDeviceStateDto.builder()
                 .name(String) // required name
                 .build();
              
         
             Returns:
-                A new DefaultDeviceTypeImplementationRest builder
+                A new DefaultDeviceStateDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(deviceTypeImplementationRest: DeviceTypeImplementationRest) -> 'DefaultDeviceTypeImplementationRest':
+    def copyOf(deviceStateDto: DeviceStateDto) -> 'DefaultDeviceStateDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeImplementationRest` value. Uses
-            accessors to get values to initialize the new immutable instance. If an instance is already immutable, it is returned as
-            is.
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.DeviceStateDto` value. Uses accessors to get
+            values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeImplementationRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceStateDto`): The instance to copy
         
             Returns:
-                A copied immutable DeviceTypeImplementationRest instance
+                A copied immutable DeviceStateDto instance
         
         
         """
@@ -1484,7 +1388,7 @@ class DefaultDeviceTypeImplementationRest(DeviceTypeImplementationRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`DeviceTypeImplementationRest` with attribute values.
+            Prints the immutable value :code:`DeviceStateDto` with attribute values.
         
             Overrides:
                  in class 
@@ -1495,7 +1399,7 @@ class DefaultDeviceTypeImplementationRest(DeviceTypeImplementationRest):
         
         """
         ...
-    def withName(self, string: str) -> 'DefaultDeviceTypeImplementationRest':
+    def withName(self, string: str) -> 'DefaultDeviceStateDto':
         """
             Copy the current immutable object by setting a value for the :code:`name` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
@@ -1510,52 +1414,151 @@ class DefaultDeviceTypeImplementationRest(DeviceTypeImplementationRest):
         """
         ...
     class Builder:
-        def build(self) -> 'DefaultDeviceTypeImplementationRest': ...
-        def name(self, string: str) -> 'DefaultDeviceTypeImplementationRest.Builder': ...
+        def build(self) -> 'DefaultDeviceStateDto': ...
+        def name(self, string: str) -> 'DefaultDeviceStateDto.Builder': ...
 
-class DefaultDeviceTypeVersionContainerRest(DeviceTypeVersionContainerRest):
+class DefaultDeviceTypeImplementationDto(DeviceTypeImplementationDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultDeviceTypeVersionContainerRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultDeviceTypeImplementationDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeImplementationDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeImplementationDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultDeviceTypeVersionContainerRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultDeviceTypeImplementationDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultDeviceTypeVersionContainerRest.Builder':
+    def builder() -> 'DefaultDeviceTypeImplementationDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultDeviceTypeVersionContainerRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultDeviceTypeImplementationDto`.
         
             .. code-block: java
             
-             DefaultDeviceTypeVersionContainerRest.builder()
+             DefaultDeviceTypeImplementationDto.builder()
                 .name(String) // required name
-                .description(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest.getDescription`
-                .id(Long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest.getId`
-                .metaType(cern.lsa.client.rest.api.v1.dto.DeviceMetaTypeRest) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest.getMetaType`
-                .addOtherVersion|addAllOtherVersions(cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest) // :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest.getOtherVersions` elements
-                .primaryVersion(cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest.getPrimaryVersion`
                 .build();
              
         
             Returns:
-                A new DefaultDeviceTypeVersionContainerRest builder
+                A new DefaultDeviceTypeImplementationDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(deviceTypeVersionContainerRest: DeviceTypeVersionContainerRest) -> 'DefaultDeviceTypeVersionContainerRest':
+    def copyOf(deviceTypeImplementationDto: DeviceTypeImplementationDto) -> 'DefaultDeviceTypeImplementationDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest` value. Uses
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeImplementationDto` value. Uses
             accessors to get values to initialize the new immutable instance. If an instance is already immutable, it is returned as
             is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeImplementationDto`): The instance to copy
         
             Returns:
-                A copied immutable DeviceTypeVersionContainerRest instance
+                A copied immutable DeviceTypeImplementationDto instance
+        
+        
+        """
+        ...
+    def equals(self, object: typing.Any) -> bool: ...
+    def getName(self) -> str:
+        """
+        
+            Specified by:
+                :code:`getName` in interface :code:`cern.accsoft.commons.util.Named`
+        
+            Returns:
+                The value of the :code:`name` attribute
+        
+        
+        """
+        ...
+    def hashCode(self) -> int:
+        """
+            Computes a hash code from attributes: :code:`name`.
+        
+            Overrides:
+                 in class 
+        
+            Returns:
+                hashCode value
+        
+        
+        """
+        ...
+    def toString(self) -> str:
+        """
+            Prints the immutable value :code:`DeviceTypeImplementationDto` with attribute values.
+        
+            Overrides:
+                 in class 
+        
+            Returns:
+                A string representation of the value
+        
+        
+        """
+        ...
+    def withName(self, string: str) -> 'DefaultDeviceTypeImplementationDto':
+        """
+            Copy the current immutable object by setting a value for the :code:`name` attribute. An equals check used to prevent
+            copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): A new value for name
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    class Builder:
+        def build(self) -> 'DefaultDeviceTypeImplementationDto': ...
+        def name(self, string: str) -> 'DefaultDeviceTypeImplementationDto.Builder': ...
+
+class DefaultDeviceTypeVersionContainerDto(DeviceTypeVersionContainerDto):
+    """
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultDeviceTypeVersionContainerDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerDto`
+    
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerDto`.
+    
+        Use the builder to create immutable instances: :code:`DefaultDeviceTypeVersionContainerDto.builder()`.
+    """
+    @staticmethod
+    def builder() -> 'DefaultDeviceTypeVersionContainerDto.Builder':
+        """
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultDeviceTypeVersionContainerDto`.
+        
+            .. code-block: java
+            
+             DefaultDeviceTypeVersionContainerDto.builder()
+                .name(String) // required name
+                .description(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerDto.getDescription`
+                .id(Long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerDto.getId`
+                .metaType(cern.lsa.client.rest.api.v1.dto.DeviceMetaTypeDto) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerDto.getMetaType`
+                .addOtherVersion|addAllOtherVersions(cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionDto) // :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerDto.getOtherVersions` elements
+                .primaryVersion(cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionDto) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerDto.getPrimaryVersion`
+                .build();
+             
+        
+            Returns:
+                A new DefaultDeviceTypeVersionContainerDto builder
+        
+        
+        """
+        ...
+    @staticmethod
+    def copyOf(deviceTypeVersionContainerDto: DeviceTypeVersionContainerDto) -> 'DefaultDeviceTypeVersionContainerDto':
+        """
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerDto` value. Uses
+            accessors to get values to initialize the new immutable instance. If an instance is already immutable, it is returned as
+            is.
+        
+            Parameters:
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerDto`): The instance to copy
+        
+            Returns:
+                A copied immutable DeviceTypeVersionContainerDto instance
         
         
         """
@@ -1566,8 +1569,8 @@ class DefaultDeviceTypeVersionContainerRest(DeviceTypeVersionContainerRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest.getId`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerDto.getId`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerDto`
         
             Returns:
                 The value of the :code:`id` attribute
@@ -1575,12 +1578,12 @@ class DefaultDeviceTypeVersionContainerRest(DeviceTypeVersionContainerRest):
         
         """
         ...
-    def getMetaType(self) -> DeviceMetaTypeRest:
+    def getMetaType(self) -> DeviceMetaTypeDto:
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest.getMetaType`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerDto.getMetaType`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerDto`
         
             Returns:
                 The value of the :code:`metaType` attribute
@@ -1600,13 +1603,13 @@ class DefaultDeviceTypeVersionContainerRest(DeviceTypeVersionContainerRest):
         
         """
         ...
-    def getOtherVersions(self) -> java.util.List[DeviceTypeVersionRest]: ...
-    def getPrimaryVersion(self) -> DeviceTypeVersionRest:
+    def getOtherVersions(self) -> java.util.List[DeviceTypeVersionDto]: ...
+    def getPrimaryVersion(self) -> DeviceTypeVersionDto:
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest.getPrimaryVersion`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerDto.getPrimaryVersion`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerDto`
         
             Returns:
                 The value of the :code:`primaryVersion` attribute
@@ -1630,7 +1633,7 @@ class DefaultDeviceTypeVersionContainerRest(DeviceTypeVersionContainerRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`DeviceTypeVersionContainerRest` with attribute values.
+            Prints the immutable value :code:`DeviceTypeVersionContainerDto` with attribute values.
         
             Overrides:
                  in class 
@@ -1641,11 +1644,11 @@ class DefaultDeviceTypeVersionContainerRest(DeviceTypeVersionContainerRest):
         
         """
         ...
-    def withDescription(self, string: str) -> 'DefaultDeviceTypeVersionContainerRest': ...
-    def withId(self, long: int) -> 'DefaultDeviceTypeVersionContainerRest':
+    def withDescription(self, string: str) -> 'DefaultDeviceTypeVersionContainerDto': ...
+    def withId(self, long: int) -> 'DefaultDeviceTypeVersionContainerDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest.getId` attribute. An equals check used to prevent
+            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerDto.getId` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -1657,14 +1660,14 @@ class DefaultDeviceTypeVersionContainerRest(DeviceTypeVersionContainerRest):
         
         """
         ...
-    def withMetaType(self, deviceMetaTypeRest: DeviceMetaTypeRest) -> 'DefaultDeviceTypeVersionContainerRest':
+    def withMetaType(self, deviceMetaTypeDto: DeviceMetaTypeDto) -> 'DefaultDeviceTypeVersionContainerDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest.getMetaType` attribute. A shallow reference
+            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerDto.getMetaType` attribute. A shallow reference
             equality check is used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
-                value (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceMetaTypeRest`): A new value for metaType
+                value (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceMetaTypeDto`): A new value for metaType
         
             Returns:
                 A modified copy of the :code:`this` object
@@ -1672,7 +1675,7 @@ class DefaultDeviceTypeVersionContainerRest(DeviceTypeVersionContainerRest):
         
         """
         ...
-    def withName(self, string: str) -> 'DefaultDeviceTypeVersionContainerRest':
+    def withName(self, string: str) -> 'DefaultDeviceTypeVersionContainerDto':
         """
             Copy the current immutable object by setting a value for the :code:`name` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
@@ -1687,25 +1690,25 @@ class DefaultDeviceTypeVersionContainerRest(DeviceTypeVersionContainerRest):
         """
         ...
     @typing.overload
-    def withOtherVersions(self, deviceTypeVersionRestArray: typing.List[DeviceTypeVersionRest]) -> 'DefaultDeviceTypeVersionContainerRest':
+    def withOtherVersions(self, deviceTypeVersionDtoArray: typing.List[DeviceTypeVersionDto]) -> 'DefaultDeviceTypeVersionContainerDto':
         """
             Copy the current immutable object with elements that replace the content of
-            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest.getOtherVersions`.
+            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerDto.getOtherVersions`.
         
             Parameters:
-                elements (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest`...): The elements to set
+                elements (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionDto`...): The elements to set
         
             Returns:
                 A modified copy of :code:`this` object
         
-        public final :class:`~cern.lsa.client.rest.api.v1.dto.DefaultDeviceTypeVersionContainerRest` withOtherVersions (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest`> elements)
+        public final :class:`~cern.lsa.client.rest.api.v1.dto.DefaultDeviceTypeVersionContainerDto` withOtherVersions (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionDto`> elements)
         
             Copy the current immutable object with elements that replace the content of
-            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest.getOtherVersions`. A shallow reference equality
+            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerDto.getOtherVersions`. A shallow reference equality
             check is used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
-                elements (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest`> elements): An iterable of otherVersions elements to set
+                elements (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionDto`> elements): An iterable of otherVersions elements to set
         
             Returns:
                 A modified copy of :code:`this` object
@@ -1714,15 +1717,15 @@ class DefaultDeviceTypeVersionContainerRest(DeviceTypeVersionContainerRest):
         """
         ...
     @typing.overload
-    def withOtherVersions(self, iterable: java.lang.Iterable[DeviceTypeVersionRest]) -> 'DefaultDeviceTypeVersionContainerRest': ...
-    def withPrimaryVersion(self, deviceTypeVersionRest: DeviceTypeVersionRest) -> 'DefaultDeviceTypeVersionContainerRest':
+    def withOtherVersions(self, iterable: java.lang.Iterable[DeviceTypeVersionDto]) -> 'DefaultDeviceTypeVersionContainerDto': ...
+    def withPrimaryVersion(self, deviceTypeVersionDto: DeviceTypeVersionDto) -> 'DefaultDeviceTypeVersionContainerDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerRest.getPrimaryVersion` attribute. A shallow reference
+            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionContainerDto.getPrimaryVersion` attribute. A shallow reference
             equality check is used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
-                value (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest`): A new value for primaryVersion
+                value (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionDto`): A new value for primaryVersion
         
             Returns:
                 A modified copy of the :code:`this` object
@@ -1731,187 +1734,56 @@ class DefaultDeviceTypeVersionContainerRest(DeviceTypeVersionContainerRest):
         """
         ...
     class Builder:
-        def addAllOtherVersions(self, iterable: java.lang.Iterable[DeviceTypeVersionRest]) -> 'DefaultDeviceTypeVersionContainerRest.Builder': ...
-        def addOtherVersion(self, deviceTypeVersionRest: DeviceTypeVersionRest) -> 'DefaultDeviceTypeVersionContainerRest.Builder': ...
-        def addOtherVersions(self, deviceTypeVersionRestArray: typing.List[DeviceTypeVersionRest]) -> 'DefaultDeviceTypeVersionContainerRest.Builder': ...
-        def build(self) -> 'DefaultDeviceTypeVersionContainerRest': ...
-        def description(self, string: str) -> 'DefaultDeviceTypeVersionContainerRest.Builder': ...
-        def id(self, long: int) -> 'DefaultDeviceTypeVersionContainerRest.Builder': ...
-        def metaType(self, deviceMetaTypeRest: DeviceMetaTypeRest) -> 'DefaultDeviceTypeVersionContainerRest.Builder': ...
-        def name(self, string: str) -> 'DefaultDeviceTypeVersionContainerRest.Builder': ...
-        def otherVersions(self, iterable: java.lang.Iterable[DeviceTypeVersionRest]) -> 'DefaultDeviceTypeVersionContainerRest.Builder': ...
-        def primaryVersion(self, deviceTypeVersionRest: DeviceTypeVersionRest) -> 'DefaultDeviceTypeVersionContainerRest.Builder': ...
+        def addAllOtherVersions(self, iterable: java.lang.Iterable[DeviceTypeVersionDto]) -> 'DefaultDeviceTypeVersionContainerDto.Builder': ...
+        def addOtherVersion(self, deviceTypeVersionDto: DeviceTypeVersionDto) -> 'DefaultDeviceTypeVersionContainerDto.Builder': ...
+        def addOtherVersions(self, deviceTypeVersionDtoArray: typing.List[DeviceTypeVersionDto]) -> 'DefaultDeviceTypeVersionContainerDto.Builder': ...
+        def build(self) -> 'DefaultDeviceTypeVersionContainerDto': ...
+        def description(self, string: str) -> 'DefaultDeviceTypeVersionContainerDto.Builder': ...
+        def id(self, long: int) -> 'DefaultDeviceTypeVersionContainerDto.Builder': ...
+        def metaType(self, deviceMetaTypeDto: DeviceMetaTypeDto) -> 'DefaultDeviceTypeVersionContainerDto.Builder': ...
+        def name(self, string: str) -> 'DefaultDeviceTypeVersionContainerDto.Builder': ...
+        def otherVersions(self, iterable: java.lang.Iterable[DeviceTypeVersionDto]) -> 'DefaultDeviceTypeVersionContainerDto.Builder': ...
+        def primaryVersion(self, deviceTypeVersionDto: DeviceTypeVersionDto) -> 'DefaultDeviceTypeVersionContainerDto.Builder': ...
 
-class DefaultDeviceTypeVersionNumberRest(DeviceTypeVersionNumberRest):
+class DefaultDeviceTypeVersionDto(DeviceTypeVersionDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultDeviceTypeVersionNumberRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultDeviceTypeVersionDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultDeviceTypeVersionNumberRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultDeviceTypeVersionDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultDeviceTypeVersionNumberRest.Builder':
+    def builder() -> 'DefaultDeviceTypeVersionDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultDeviceTypeVersionNumberRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultDeviceTypeVersionDto`.
         
             .. code-block: java
             
-             DefaultDeviceTypeVersionNumberRest.builder()
-                .major(Integer) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberRest.getMajor`
-                .minor(Integer) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberRest.getMinor`
+             DefaultDeviceTypeVersionDto.builder()
+                .id(long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionDto.getId`
+                .implementation(cern.lsa.client.rest.api.v1.dto.DeviceTypeImplementationDto) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionDto.getImplementation`
+                .versionNumber(cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberDto) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionDto.getVersionNumber`
                 .build();
              
         
             Returns:
-                A new DefaultDeviceTypeVersionNumberRest builder
+                A new DefaultDeviceTypeVersionDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(deviceTypeVersionNumberRest: DeviceTypeVersionNumberRest) -> 'DefaultDeviceTypeVersionNumberRest':
+    def copyOf(deviceTypeVersionDto: DeviceTypeVersionDto) -> 'DefaultDeviceTypeVersionDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberRest` value. Uses
-            accessors to get values to initialize the new immutable instance. If an instance is already immutable, it is returned as
-            is.
-        
-            Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberRest`): The instance to copy
-        
-            Returns:
-                A copied immutable DeviceTypeVersionNumberRest instance
-        
-        
-        """
-        ...
-    def equals(self, object: typing.Any) -> bool: ...
-    def getMajor(self) -> int:
-        """
-        
-            Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberRest.getMajor`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberRest`
-        
-            Returns:
-                The value of the :code:`major` attribute
-        
-        
-        """
-        ...
-    def getMinor(self) -> int:
-        """
-        
-            Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberRest.getMinor`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberRest`
-        
-            Returns:
-                The value of the :code:`minor` attribute
-        
-        
-        """
-        ...
-    def hashCode(self) -> int:
-        """
-            Computes a hash code from attributes: :code:`major`, :code:`minor`.
-        
-            Overrides:
-                 in class 
-        
-            Returns:
-                hashCode value
-        
-        
-        """
-        ...
-    def toString(self) -> str:
-        """
-            Prints the immutable value :code:`DeviceTypeVersionNumberRest` with attribute values.
-        
-            Overrides:
-                 in class 
-        
-            Returns:
-                A string representation of the value
-        
-        
-        """
-        ...
-    def withMajor(self, integer: int) -> 'DefaultDeviceTypeVersionNumberRest':
-        """
-            Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberRest.getMajor` attribute. An equals check used to prevent
-            copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (`Integer <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Integer.html?is-external=true>`): A new value for major
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    def withMinor(self, integer: int) -> 'DefaultDeviceTypeVersionNumberRest':
-        """
-            Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberRest.getMinor` attribute. An equals check used to prevent
-            copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (`Integer <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Integer.html?is-external=true>`): A new value for minor
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    class Builder:
-        def build(self) -> 'DefaultDeviceTypeVersionNumberRest': ...
-        def major(self, integer: int) -> 'DefaultDeviceTypeVersionNumberRest.Builder': ...
-        def minor(self, integer: int) -> 'DefaultDeviceTypeVersionNumberRest.Builder': ...
-
-class DefaultDeviceTypeVersionRest(DeviceTypeVersionRest):
-    """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultDeviceTypeVersionRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest`
-    
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest`.
-    
-        Use the builder to create immutable instances: :code:`DefaultDeviceTypeVersionRest.builder()`.
-    """
-    @staticmethod
-    def builder() -> 'DefaultDeviceTypeVersionRest.Builder':
-        """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultDeviceTypeVersionRest`.
-        
-            .. code-block: java
-            
-             DefaultDeviceTypeVersionRest.builder()
-                .id(long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest.getId`
-                .implementation(cern.lsa.client.rest.api.v1.dto.DeviceTypeImplementationRest) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest.getImplementation`
-                .versionNumber(cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberRest) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest.getVersionNumber`
-                .build();
-             
-        
-            Returns:
-                A new DefaultDeviceTypeVersionRest builder
-        
-        
-        """
-        ...
-    @staticmethod
-    def copyOf(deviceTypeVersionRest: DeviceTypeVersionRest) -> 'DefaultDeviceTypeVersionRest':
-        """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest` value. Uses accessors to
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionDto` value. Uses accessors to
             get values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionDto`): The instance to copy
         
             Returns:
-                A copied immutable DeviceTypeVersionRest instance
+                A copied immutable DeviceTypeVersionDto instance
         
         
         """
@@ -1921,8 +1793,8 @@ class DefaultDeviceTypeVersionRest(DeviceTypeVersionRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest.getId`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionDto.getId`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionDto`
         
             Returns:
                 The value of the :code:`id` attribute
@@ -1930,12 +1802,12 @@ class DefaultDeviceTypeVersionRest(DeviceTypeVersionRest):
         
         """
         ...
-    def getImplementation(self) -> DeviceTypeImplementationRest:
+    def getImplementation(self) -> DeviceTypeImplementationDto:
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest.getImplementation`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionDto.getImplementation`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionDto`
         
             Returns:
                 The value of the :code:`implementation` attribute
@@ -1943,12 +1815,12 @@ class DefaultDeviceTypeVersionRest(DeviceTypeVersionRest):
         
         """
         ...
-    def getVersionNumber(self) -> DeviceTypeVersionNumberRest:
+    def getVersionNumber(self) -> DeviceTypeVersionNumberDto:
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest.getVersionNumber`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionDto.getVersionNumber`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionDto`
         
             Returns:
                 The value of the :code:`versionNumber` attribute
@@ -1971,7 +1843,7 @@ class DefaultDeviceTypeVersionRest(DeviceTypeVersionRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`DeviceTypeVersionRest` with attribute values.
+            Prints the immutable value :code:`DeviceTypeVersionDto` with attribute values.
         
             Overrides:
                  in class 
@@ -1982,11 +1854,11 @@ class DefaultDeviceTypeVersionRest(DeviceTypeVersionRest):
         
         """
         ...
-    def withId(self, long: int) -> 'DefaultDeviceTypeVersionRest':
+    def withId(self, long: int) -> 'DefaultDeviceTypeVersionDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest.getId` attribute. A value equality check is used to
-            prevent copying of the same value by returning :code:`this`.
+            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionDto.getId` attribute. A value equality check is used to prevent
+            copying of the same value by returning :code:`this`.
         
             Parameters:
                 value (long): A new value for id
@@ -1997,14 +1869,14 @@ class DefaultDeviceTypeVersionRest(DeviceTypeVersionRest):
         
         """
         ...
-    def withImplementation(self, deviceTypeImplementationRest: DeviceTypeImplementationRest) -> 'DefaultDeviceTypeVersionRest':
+    def withImplementation(self, deviceTypeImplementationDto: DeviceTypeImplementationDto) -> 'DefaultDeviceTypeVersionDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest.getImplementation` attribute. A shallow reference equality
+            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionDto.getImplementation` attribute. A shallow reference equality
             check is used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
-                value (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeImplementationRest`): A new value for implementation
+                value (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeImplementationDto`): A new value for implementation
         
             Returns:
                 A modified copy of the :code:`this` object
@@ -2012,14 +1884,14 @@ class DefaultDeviceTypeVersionRest(DeviceTypeVersionRest):
         
         """
         ...
-    def withVersionNumber(self, deviceTypeVersionNumberRest: DeviceTypeVersionNumberRest) -> 'DefaultDeviceTypeVersionRest':
+    def withVersionNumber(self, deviceTypeVersionNumberDto: DeviceTypeVersionNumberDto) -> 'DefaultDeviceTypeVersionDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionRest.getVersionNumber` attribute. A shallow reference equality
+            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionDto.getVersionNumber` attribute. A shallow reference equality
             check is used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
-                value (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberRest`): A new value for versionNumber
+                value (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberDto`): A new value for versionNumber
         
             Returns:
                 A modified copy of the :code:`this` object
@@ -2028,51 +1900,182 @@ class DefaultDeviceTypeVersionRest(DeviceTypeVersionRest):
         """
         ...
     class Builder:
-        def build(self) -> 'DefaultDeviceTypeVersionRest': ...
-        def id(self, long: int) -> 'DefaultDeviceTypeVersionRest.Builder': ...
-        def implementation(self, deviceTypeImplementationRest: DeviceTypeImplementationRest) -> 'DefaultDeviceTypeVersionRest.Builder': ...
-        def versionNumber(self, deviceTypeVersionNumberRest: DeviceTypeVersionNumberRest) -> 'DefaultDeviceTypeVersionRest.Builder': ...
+        def build(self) -> 'DefaultDeviceTypeVersionDto': ...
+        def id(self, long: int) -> 'DefaultDeviceTypeVersionDto.Builder': ...
+        def implementation(self, deviceTypeImplementationDto: DeviceTypeImplementationDto) -> 'DefaultDeviceTypeVersionDto.Builder': ...
+        def versionNumber(self, deviceTypeVersionNumberDto: DeviceTypeVersionNumberDto) -> 'DefaultDeviceTypeVersionDto.Builder': ...
 
-class DefaultEnumItemRest(EnumItemRest):
+class DefaultDeviceTypeVersionNumberDto(DeviceTypeVersionNumberDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultEnumItemRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.EnumItemRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultDeviceTypeVersionNumberDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.EnumItemRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultEnumItemRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultDeviceTypeVersionNumberDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultEnumItemRest.Builder':
+    def builder() -> 'DefaultDeviceTypeVersionNumberDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultEnumItemRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultDeviceTypeVersionNumberDto`.
         
             .. code-block: java
             
-             DefaultEnumItemRest.builder()
-                .code(long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemRest.getCode`
-                .symbol(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemRest.getSymbol`
-                .standardMeaning(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemRest.getStandardMeaning`
-                .settable(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemRest.isSettable`
+             DefaultDeviceTypeVersionNumberDto.builder()
+                .major(Integer) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberDto.getMajor`
+                .minor(Integer) // required :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberDto.getMinor`
                 .build();
              
         
             Returns:
-                A new DefaultEnumItemRest builder
+                A new DefaultDeviceTypeVersionNumberDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(enumItemRest: EnumItemRest) -> 'DefaultEnumItemRest':
+    def copyOf(deviceTypeVersionNumberDto: DeviceTypeVersionNumberDto) -> 'DefaultDeviceTypeVersionNumberDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.EnumItemRest` value. Uses accessors to get
-            values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberDto` value. Uses
+            accessors to get values to initialize the new immutable instance. If an instance is already immutable, it is returned as
+            is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.EnumItemRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberDto`): The instance to copy
         
             Returns:
-                A copied immutable EnumItemRest instance
+                A copied immutable DeviceTypeVersionNumberDto instance
+        
+        
+        """
+        ...
+    def equals(self, object: typing.Any) -> bool: ...
+    def getMajor(self) -> int:
+        """
+        
+            Specified by:
+                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberDto.getMajor`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberDto`
+        
+            Returns:
+                The value of the :code:`major` attribute
+        
+        
+        """
+        ...
+    def getMinor(self) -> int:
+        """
+        
+            Specified by:
+                :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberDto.getMinor`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberDto`
+        
+            Returns:
+                The value of the :code:`minor` attribute
+        
+        
+        """
+        ...
+    def hashCode(self) -> int:
+        """
+            Computes a hash code from attributes: :code:`major`, :code:`minor`.
+        
+            Overrides:
+                 in class 
+        
+            Returns:
+                hashCode value
+        
+        
+        """
+        ...
+    def toString(self) -> str:
+        """
+            Prints the immutable value :code:`DeviceTypeVersionNumberDto` with attribute values.
+        
+            Overrides:
+                 in class 
+        
+            Returns:
+                A string representation of the value
+        
+        
+        """
+        ...
+    def withMajor(self, integer: int) -> 'DefaultDeviceTypeVersionNumberDto':
+        """
+            Copy the current immutable object by setting a value for the
+            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberDto.getMajor` attribute. An equals check used to prevent
+            copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (`Integer <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Integer.html?is-external=true>`): A new value for major
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    def withMinor(self, integer: int) -> 'DefaultDeviceTypeVersionNumberDto':
+        """
+            Copy the current immutable object by setting a value for the
+            :meth:`~cern.lsa.client.rest.api.v1.dto.DeviceTypeVersionNumberDto.getMinor` attribute. An equals check used to prevent
+            copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (`Integer <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Integer.html?is-external=true>`): A new value for minor
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    class Builder:
+        def build(self) -> 'DefaultDeviceTypeVersionNumberDto': ...
+        def major(self, integer: int) -> 'DefaultDeviceTypeVersionNumberDto.Builder': ...
+        def minor(self, integer: int) -> 'DefaultDeviceTypeVersionNumberDto.Builder': ...
+
+class DefaultEnumItemDto(EnumItemDto):
+    """
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultEnumItemDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.EnumItemDto`
+    
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.EnumItemDto`.
+    
+        Use the builder to create immutable instances: :code:`DefaultEnumItemDto.builder()`.
+    """
+    @staticmethod
+    def builder() -> 'DefaultEnumItemDto.Builder':
+        """
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultEnumItemDto`.
+        
+            .. code-block: java
+            
+             DefaultEnumItemDto.builder()
+                .code(long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemDto.getCode`
+                .symbol(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemDto.getSymbol`
+                .standardMeaning(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemDto.getStandardMeaning`
+                .settable(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemDto.isSettable`
+                .build();
+             
+        
+            Returns:
+                A new DefaultEnumItemDto builder
+        
+        
+        """
+        ...
+    @staticmethod
+    def copyOf(enumItemDto: EnumItemDto) -> 'DefaultEnumItemDto':
+        """
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.EnumItemDto` value. Uses accessors to get values
+            to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
+        
+            Parameters:
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.EnumItemDto`): The instance to copy
+        
+            Returns:
+                A copied immutable EnumItemDto instance
         
         
         """
@@ -2082,8 +2085,8 @@ class DefaultEnumItemRest(EnumItemRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemRest.getCode`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.EnumItemRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemDto.getCode`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.EnumItemDto`
         
             Returns:
                 The value of the :code:`code` attribute
@@ -2095,8 +2098,8 @@ class DefaultEnumItemRest(EnumItemRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemRest.getStandardMeaning`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.EnumItemRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemDto.getStandardMeaning`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.EnumItemDto`
         
             Returns:
                 The value of the :code:`standardMeaning` attribute
@@ -2108,8 +2111,8 @@ class DefaultEnumItemRest(EnumItemRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemRest.getSymbol`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.EnumItemRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemDto.getSymbol`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.EnumItemDto`
         
             Returns:
                 The value of the :code:`symbol` attribute
@@ -2134,8 +2137,8 @@ class DefaultEnumItemRest(EnumItemRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemRest.isSettable`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.EnumItemRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemDto.isSettable`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.EnumItemDto`
         
             Returns:
                 The value of the :code:`settable` attribute
@@ -2145,7 +2148,7 @@ class DefaultEnumItemRest(EnumItemRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`EnumItemRest` with attribute values.
+            Prints the immutable value :code:`EnumItemDto` with attribute values.
         
             Overrides:
                  in class 
@@ -2156,10 +2159,10 @@ class DefaultEnumItemRest(EnumItemRest):
         
         """
         ...
-    def withCode(self, long: int) -> 'DefaultEnumItemRest':
+    def withCode(self, long: int) -> 'DefaultEnumItemDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemRest.getCode` attribute. A value equality check is used to prevent
+            :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemDto.getCode` attribute. A value equality check is used to prevent
             copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -2171,10 +2174,10 @@ class DefaultEnumItemRest(EnumItemRest):
         
         """
         ...
-    def withSettable(self, boolean: bool) -> 'DefaultEnumItemRest':
+    def withSettable(self, boolean: bool) -> 'DefaultEnumItemDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemRest.isSettable` attribute. A value equality check is used to prevent
+            :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemDto.isSettable` attribute. A value equality check is used to prevent
             copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -2186,10 +2189,10 @@ class DefaultEnumItemRest(EnumItemRest):
         
         """
         ...
-    def withStandardMeaning(self, string: str) -> 'DefaultEnumItemRest':
+    def withStandardMeaning(self, string: str) -> 'DefaultEnumItemDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemRest.getStandardMeaning` attribute. An equals check used to prevent
+            :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemDto.getStandardMeaning` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -2201,11 +2204,11 @@ class DefaultEnumItemRest(EnumItemRest):
         
         """
         ...
-    def withSymbol(self, string: str) -> 'DefaultEnumItemRest':
+    def withSymbol(self, string: str) -> 'DefaultEnumItemDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemRest.getSymbol` attribute. An equals check used to prevent copying of
-            the same value by returning :code:`this`.
+            :meth:`~cern.lsa.client.rest.api.v1.dto.EnumItemDto.getSymbol` attribute. An equals check used to prevent copying of the
+            same value by returning :code:`this`.
         
             Parameters:
                 value (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): A new value for symbol
@@ -2217,63 +2220,63 @@ class DefaultEnumItemRest(EnumItemRest):
         """
         ...
     class Builder:
-        def build(self) -> 'DefaultEnumItemRest': ...
-        def code(self, long: int) -> 'DefaultEnumItemRest.Builder': ...
-        def settable(self, boolean: bool) -> 'DefaultEnumItemRest.Builder': ...
-        def standardMeaning(self, string: str) -> 'DefaultEnumItemRest.Builder': ...
-        def symbol(self, string: str) -> 'DefaultEnumItemRest.Builder': ...
+        def build(self) -> 'DefaultEnumItemDto': ...
+        def code(self, long: int) -> 'DefaultEnumItemDto.Builder': ...
+        def settable(self, boolean: bool) -> 'DefaultEnumItemDto.Builder': ...
+        def standardMeaning(self, string: str) -> 'DefaultEnumItemDto.Builder': ...
+        def symbol(self, string: str) -> 'DefaultEnumItemDto.Builder': ...
 
-class DefaultEnumTypeRest(EnumTypeRest):
+class DefaultEnumTypeDto(EnumTypeDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultEnumTypeRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.EnumTypeRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultEnumTypeDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.EnumTypeDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.EnumTypeRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.EnumTypeDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultEnumTypeRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultEnumTypeDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultEnumTypeRest.Builder':
+    def builder() -> 'DefaultEnumTypeDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultEnumTypeRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultEnumTypeDto`.
         
             .. code-block: java
             
-             DefaultEnumTypeRest.builder()
+             DefaultEnumTypeDto.builder()
                 .name(String) // required name
-                .enumTypeBitSize(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.EnumTypeRest.getEnumTypeBitSize`
-                .addEnumItem|addAllEnumItems(cern.lsa.client.rest.api.v1.dto.EnumItemRest) // :meth:`~cern.lsa.client.rest.api.v1.dto.EnumTypeRest.getEnumItems` elements
+                .enumTypeBitSize(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.EnumTypeDto.getEnumTypeBitSize`
+                .addEnumItem|addAllEnumItems(cern.lsa.client.rest.api.v1.dto.EnumItemDto) // :meth:`~cern.lsa.client.rest.api.v1.dto.EnumTypeDto.getEnumItems` elements
                 .build();
              
         
             Returns:
-                A new DefaultEnumTypeRest builder
+                A new DefaultEnumTypeDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(enumTypeRest: EnumTypeRest) -> 'DefaultEnumTypeRest':
+    def copyOf(enumTypeDto: EnumTypeDto) -> 'DefaultEnumTypeDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.EnumTypeRest` value. Uses accessors to get
-            values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.EnumTypeDto` value. Uses accessors to get values
+            to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.EnumTypeRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.EnumTypeDto`): The instance to copy
         
             Returns:
-                A copied immutable EnumTypeRest instance
+                A copied immutable EnumTypeDto instance
         
         
         """
         ...
     def equals(self, object: typing.Any) -> bool: ...
-    def getEnumItems(self) -> java.util.List[EnumItemRest]: ...
+    def getEnumItems(self) -> java.util.List[EnumItemDto]: ...
     def getEnumTypeBitSize(self) -> str:
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.EnumTypeRest.getEnumTypeBitSize`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.EnumTypeRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.EnumTypeDto.getEnumTypeBitSize`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.EnumTypeDto`
         
             Returns:
                 The value of the :code:`enumTypeBitSize` attribute
@@ -2308,7 +2311,7 @@ class DefaultEnumTypeRest(EnumTypeRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`EnumTypeRest` with attribute values.
+            Prints the immutable value :code:`EnumTypeDto` with attribute values.
         
             Overrides:
                  in class 
@@ -2320,25 +2323,25 @@ class DefaultEnumTypeRest(EnumTypeRest):
         """
         ...
     @typing.overload
-    def withEnumItems(self, enumItemRestArray: typing.List[EnumItemRest]) -> 'DefaultEnumTypeRest':
+    def withEnumItems(self, enumItemDtoArray: typing.List[EnumItemDto]) -> 'DefaultEnumTypeDto':
         """
             Copy the current immutable object with elements that replace the content of
-            :meth:`~cern.lsa.client.rest.api.v1.dto.EnumTypeRest.getEnumItems`.
+            :meth:`~cern.lsa.client.rest.api.v1.dto.EnumTypeDto.getEnumItems`.
         
             Parameters:
-                elements (:class:`~cern.lsa.client.rest.api.v1.dto.EnumItemRest`...): The elements to set
+                elements (:class:`~cern.lsa.client.rest.api.v1.dto.EnumItemDto`...): The elements to set
         
             Returns:
                 A modified copy of :code:`this` object
         
-        public final :class:`~cern.lsa.client.rest.api.v1.dto.DefaultEnumTypeRest` withEnumItems (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.EnumItemRest`> elements)
+        public final :class:`~cern.lsa.client.rest.api.v1.dto.DefaultEnumTypeDto` withEnumItems (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.EnumItemDto`> elements)
         
             Copy the current immutable object with elements that replace the content of
-            :meth:`~cern.lsa.client.rest.api.v1.dto.EnumTypeRest.getEnumItems`. A shallow reference equality check is used to
-            prevent copying of the same value by returning :code:`this`.
+            :meth:`~cern.lsa.client.rest.api.v1.dto.EnumTypeDto.getEnumItems`. A shallow reference equality check is used to prevent
+            copying of the same value by returning :code:`this`.
         
             Parameters:
-                elements (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.EnumItemRest`> elements): An iterable of enumItems elements to set
+                elements (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.EnumItemDto`> elements): An iterable of enumItems elements to set
         
             Returns:
                 A modified copy of :code:`this` object
@@ -2347,11 +2350,11 @@ class DefaultEnumTypeRest(EnumTypeRest):
         """
         ...
     @typing.overload
-    def withEnumItems(self, iterable: java.lang.Iterable[EnumItemRest]) -> 'DefaultEnumTypeRest': ...
-    def withEnumTypeBitSize(self, string: str) -> 'DefaultEnumTypeRest':
+    def withEnumItems(self, iterable: java.lang.Iterable[EnumItemDto]) -> 'DefaultEnumTypeDto': ...
+    def withEnumTypeBitSize(self, string: str) -> 'DefaultEnumTypeDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.EnumTypeRest.getEnumTypeBitSize` attribute. An equals check used to prevent
+            :meth:`~cern.lsa.client.rest.api.v1.dto.EnumTypeDto.getEnumTypeBitSize` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -2363,7 +2366,7 @@ class DefaultEnumTypeRest(EnumTypeRest):
         
         """
         ...
-    def withName(self, string: str) -> 'DefaultEnumTypeRest':
+    def withName(self, string: str) -> 'DefaultEnumTypeDto':
         """
             Copy the current immutable object by setting a value for the :code:`name` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
@@ -2378,13 +2381,13 @@ class DefaultEnumTypeRest(EnumTypeRest):
         """
         ...
     class Builder:
-        def addAllEnumItems(self, iterable: java.lang.Iterable[EnumItemRest]) -> 'DefaultEnumTypeRest.Builder': ...
-        def addEnumItem(self, enumItemRest: EnumItemRest) -> 'DefaultEnumTypeRest.Builder': ...
-        def addEnumItems(self, enumItemRestArray: typing.List[EnumItemRest]) -> 'DefaultEnumTypeRest.Builder': ...
-        def build(self) -> 'DefaultEnumTypeRest': ...
-        def enumItems(self, iterable: java.lang.Iterable[EnumItemRest]) -> 'DefaultEnumTypeRest.Builder': ...
-        def enumTypeBitSize(self, string: str) -> 'DefaultEnumTypeRest.Builder': ...
-        def name(self, string: str) -> 'DefaultEnumTypeRest.Builder': ...
+        def addAllEnumItems(self, iterable: java.lang.Iterable[EnumItemDto]) -> 'DefaultEnumTypeDto.Builder': ...
+        def addEnumItem(self, enumItemDto: EnumItemDto) -> 'DefaultEnumTypeDto.Builder': ...
+        def addEnumItems(self, enumItemDtoArray: typing.List[EnumItemDto]) -> 'DefaultEnumTypeDto.Builder': ...
+        def build(self) -> 'DefaultEnumTypeDto': ...
+        def enumItems(self, iterable: java.lang.Iterable[EnumItemDto]) -> 'DefaultEnumTypeDto.Builder': ...
+        def enumTypeBitSize(self, string: str) -> 'DefaultEnumTypeDto.Builder': ...
+        def name(self, string: str) -> 'DefaultEnumTypeDto.Builder': ...
 
 class DefaultErrorDto(ErrorDto):
     """
@@ -2575,55 +2578,55 @@ class DefaultErrorDto(ErrorDto):
         def path(self, string: str) -> 'DefaultErrorDto.Builder': ...
         def timestamp(self, offsetDateTime: java.time.OffsetDateTime) -> 'DefaultErrorDto.Builder': ...
 
-class DefaultIncaPropertyFieldInfoRest(IncaPropertyFieldInfoRest):
+class DefaultIncaPropertyFieldInfoDto(IncaPropertyFieldInfoDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultIncaPropertyFieldInfoRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultIncaPropertyFieldInfoDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultIncaPropertyFieldInfoRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultIncaPropertyFieldInfoDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultIncaPropertyFieldInfoRest.Builder':
+    def builder() -> 'DefaultIncaPropertyFieldInfoDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultIncaPropertyFieldInfoRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultIncaPropertyFieldInfoDto`.
         
             .. code-block: java
             
-             DefaultIncaPropertyFieldInfoRest.builder()
-                .propertyFieldRest(cern.lsa.client.rest.api.v1.dto.PropertyFieldRest) // required :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest.getPropertyFieldRest`
-                .displayName(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest.getDisplayName`
-                .mainStatus(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest.isMainStatus`
-                .associatedPropertyFieldRest(cern.lsa.client.rest.api.v1.dto.PropertyFieldRest | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest.getAssociatedPropertyFieldRest`
-                .controlWarningMessage(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest.getControlWarningMessage`
-                .parameterValueCompareType(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest.getParameterValueCompareType`
-                .displayFormat(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest.getDisplayFormat`
+             DefaultIncaPropertyFieldInfoDto.builder()
+                .propertyFieldRest(cern.lsa.client.rest.api.v1.dto.PropertyFieldDto) // required :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoDto.getPropertyFieldRest`
+                .displayName(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoDto.getDisplayName`
+                .mainStatus(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoDto.isMainStatus`
+                .associatedPropertyFieldRest(cern.lsa.client.rest.api.v1.dto.PropertyFieldDto | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoDto.getAssociatedPropertyFieldRest`
+                .controlWarningMessage(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoDto.getControlWarningMessage`
+                .parameterValueCompareType(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoDto.getParameterValueCompareType`
+                .displayFormat(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoDto.getDisplayFormat`
                 .build();
              
         
             Returns:
-                A new DefaultIncaPropertyFieldInfoRest builder
+                A new DefaultIncaPropertyFieldInfoDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(incaPropertyFieldInfoRest: IncaPropertyFieldInfoRest) -> 'DefaultIncaPropertyFieldInfoRest':
+    def copyOf(incaPropertyFieldInfoDto: IncaPropertyFieldInfoDto) -> 'DefaultIncaPropertyFieldInfoDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest` value. Uses accessors
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoDto` value. Uses accessors
             to get values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoDto`): The instance to copy
         
             Returns:
-                A copied immutable IncaPropertyFieldInfoRest instance
+                A copied immutable IncaPropertyFieldInfoDto instance
         
         
         """
         ...
     def equals(self, object: typing.Any) -> bool: ...
-    def getAssociatedPropertyFieldRest(self) -> PropertyFieldRest: ...
+    def getAssociatedPropertyFieldRest(self) -> PropertyFieldDto: ...
     def getControlWarningMessage(self) -> str: ...
     def getDisplayFormat(self) -> str: ...
     def getDisplayName(self) -> str: ...
@@ -2632,8 +2635,8 @@ class DefaultIncaPropertyFieldInfoRest(IncaPropertyFieldInfoRest):
             Returns the comparison type that should be applied for this parameter type when calculating value status.
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest.getParameterValueCompareType`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoDto.getParameterValueCompareType`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoDto`
         
             Returns:
                 type of parameter value comparison
@@ -2641,12 +2644,12 @@ class DefaultIncaPropertyFieldInfoRest(IncaPropertyFieldInfoRest):
         
         """
         ...
-    def getPropertyFieldRest(self) -> PropertyFieldRest:
+    def getPropertyFieldRest(self) -> PropertyFieldDto:
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest.getPropertyFieldRest`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoDto.getPropertyFieldRest`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoDto`
         
             Returns:
                 property-field this info is attached to
@@ -2676,8 +2679,8 @@ class DefaultIncaPropertyFieldInfoRest(IncaPropertyFieldInfoRest):
             boolean. Note that for a given device type, only a single parameter type can represent the main status.
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest.isMainStatus`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoDto.isMainStatus`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoDto`
         
             Returns:
                 :code:`true` if this parameter type represents the main status property field
@@ -2687,7 +2690,7 @@ class DefaultIncaPropertyFieldInfoRest(IncaPropertyFieldInfoRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`IncaPropertyFieldInfoRest` with attribute values.
+            Prints the immutable value :code:`IncaPropertyFieldInfoDto` with attribute values.
         
             Overrides:
                  in class 
@@ -2698,15 +2701,15 @@ class DefaultIncaPropertyFieldInfoRest(IncaPropertyFieldInfoRest):
         
         """
         ...
-    def withAssociatedPropertyFieldRest(self, propertyFieldRest: PropertyFieldRest) -> 'DefaultIncaPropertyFieldInfoRest': ...
-    def withControlWarningMessage(self, string: str) -> 'DefaultIncaPropertyFieldInfoRest': ...
-    def withDisplayFormat(self, string: str) -> 'DefaultIncaPropertyFieldInfoRest': ...
-    def withDisplayName(self, string: str) -> 'DefaultIncaPropertyFieldInfoRest': ...
-    def withMainStatus(self, boolean: bool) -> 'DefaultIncaPropertyFieldInfoRest':
+    def withAssociatedPropertyFieldRest(self, propertyFieldDto: PropertyFieldDto) -> 'DefaultIncaPropertyFieldInfoDto': ...
+    def withControlWarningMessage(self, string: str) -> 'DefaultIncaPropertyFieldInfoDto': ...
+    def withDisplayFormat(self, string: str) -> 'DefaultIncaPropertyFieldInfoDto': ...
+    def withDisplayName(self, string: str) -> 'DefaultIncaPropertyFieldInfoDto': ...
+    def withMainStatus(self, boolean: bool) -> 'DefaultIncaPropertyFieldInfoDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest.isMainStatus` attribute. A value equality check is
-            used to prevent copying of the same value by returning :code:`this`.
+            :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoDto.isMainStatus` attribute. A value equality check is used
+            to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
                 value (boolean): A new value for mainStatus
@@ -2717,10 +2720,10 @@ class DefaultIncaPropertyFieldInfoRest(IncaPropertyFieldInfoRest):
         
         """
         ...
-    def withParameterValueCompareType(self, string: str) -> 'DefaultIncaPropertyFieldInfoRest':
+    def withParameterValueCompareType(self, string: str) -> 'DefaultIncaPropertyFieldInfoDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest.getParameterValueCompareType` attribute. An equals
+            :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoDto.getParameterValueCompareType` attribute. An equals
             check used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -2732,14 +2735,14 @@ class DefaultIncaPropertyFieldInfoRest(IncaPropertyFieldInfoRest):
         
         """
         ...
-    def withPropertyFieldRest(self, propertyFieldRest: PropertyFieldRest) -> 'DefaultIncaPropertyFieldInfoRest':
+    def withPropertyFieldRest(self, propertyFieldDto: PropertyFieldDto) -> 'DefaultIncaPropertyFieldInfoDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoRest.getPropertyFieldRest` attribute. A shallow reference
+            :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfoDto.getPropertyFieldRest` attribute. A shallow reference
             equality check is used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
-                value (:class:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldRest`): A new value for propertyFieldRest
+                value (:class:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldDto`): A new value for propertyFieldRest
         
             Returns:
                 A modified copy of the :code:`this` object
@@ -2748,53 +2751,53 @@ class DefaultIncaPropertyFieldInfoRest(IncaPropertyFieldInfoRest):
         """
         ...
     class Builder:
-        def associatedPropertyFieldRest(self, propertyFieldRest: PropertyFieldRest) -> 'DefaultIncaPropertyFieldInfoRest.Builder': ...
-        def build(self) -> 'DefaultIncaPropertyFieldInfoRest': ...
-        def controlWarningMessage(self, string: str) -> 'DefaultIncaPropertyFieldInfoRest.Builder': ...
-        def displayFormat(self, string: str) -> 'DefaultIncaPropertyFieldInfoRest.Builder': ...
-        def displayName(self, string: str) -> 'DefaultIncaPropertyFieldInfoRest.Builder': ...
-        def mainStatus(self, boolean: bool) -> 'DefaultIncaPropertyFieldInfoRest.Builder': ...
-        def parameterValueCompareType(self, string: str) -> 'DefaultIncaPropertyFieldInfoRest.Builder': ...
-        def propertyFieldRest(self, propertyFieldRest: PropertyFieldRest) -> 'DefaultIncaPropertyFieldInfoRest.Builder': ...
+        def associatedPropertyFieldRest(self, propertyFieldDto: PropertyFieldDto) -> 'DefaultIncaPropertyFieldInfoDto.Builder': ...
+        def build(self) -> 'DefaultIncaPropertyFieldInfoDto': ...
+        def controlWarningMessage(self, string: str) -> 'DefaultIncaPropertyFieldInfoDto.Builder': ...
+        def displayFormat(self, string: str) -> 'DefaultIncaPropertyFieldInfoDto.Builder': ...
+        def displayName(self, string: str) -> 'DefaultIncaPropertyFieldInfoDto.Builder': ...
+        def mainStatus(self, boolean: bool) -> 'DefaultIncaPropertyFieldInfoDto.Builder': ...
+        def parameterValueCompareType(self, string: str) -> 'DefaultIncaPropertyFieldInfoDto.Builder': ...
+        def propertyFieldRest(self, propertyFieldDto: PropertyFieldDto) -> 'DefaultIncaPropertyFieldInfoDto.Builder': ...
 
-class DefaultIncaPropertyFieldInfosRequestRest(IncaPropertyFieldInfosRequestRest):
+class DefaultIncaPropertyFieldInfosRequestDto(IncaPropertyFieldInfosRequestDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultIncaPropertyFieldInfosRequestRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfosRequestRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultIncaPropertyFieldInfosRequestDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfosRequestDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfosRequestRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfosRequestDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultIncaPropertyFieldInfosRequestRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultIncaPropertyFieldInfosRequestDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultIncaPropertyFieldInfosRequestRest.Builder':
+    def builder() -> 'DefaultIncaPropertyFieldInfosRequestDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultIncaPropertyFieldInfosRequestRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultIncaPropertyFieldInfosRequestDto`.
         
             .. code-block: java
             
-             DefaultIncaPropertyFieldInfosRequestRest.builder()
-                .addPropertyFieldId|addAllPropertyFieldIds(long) // :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfosRequestRest.getPropertyFieldIds` elements
+             DefaultIncaPropertyFieldInfosRequestDto.builder()
+                .addPropertyFieldId|addAllPropertyFieldIds(long) // :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfosRequestDto.getPropertyFieldIds` elements
                 .build();
              
         
             Returns:
-                A new DefaultIncaPropertyFieldInfosRequestRest builder
+                A new DefaultIncaPropertyFieldInfosRequestDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(incaPropertyFieldInfosRequestRest: IncaPropertyFieldInfosRequestRest) -> 'DefaultIncaPropertyFieldInfosRequestRest':
+    def copyOf(incaPropertyFieldInfosRequestDto: IncaPropertyFieldInfosRequestDto) -> 'DefaultIncaPropertyFieldInfosRequestDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfosRequestRest` value. Uses
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfosRequestDto` value. Uses
             accessors to get values to initialize the new immutable instance. If an instance is already immutable, it is returned as
             is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfosRequestRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfosRequestDto`): The instance to copy
         
             Returns:
-                A copied immutable IncaPropertyFieldInfosRequestRest instance
+                A copied immutable IncaPropertyFieldInfosRequestDto instance
         
         
         """
@@ -2816,7 +2819,7 @@ class DefaultIncaPropertyFieldInfosRequestRest(IncaPropertyFieldInfosRequestRest
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`IncaPropertyFieldInfosRequestRest` with attribute values.
+            Prints the immutable value :code:`IncaPropertyFieldInfosRequestDto` with attribute values.
         
             Overrides:
                  in class 
@@ -2828,10 +2831,10 @@ class DefaultIncaPropertyFieldInfosRequestRest(IncaPropertyFieldInfosRequestRest
         """
         ...
     @typing.overload
-    def withPropertyFieldIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultIncaPropertyFieldInfosRequestRest':
+    def withPropertyFieldIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultIncaPropertyFieldInfosRequestDto':
         """
             Copy the current immutable object with elements that replace the content of
-            :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfosRequestRest.getPropertyFieldIds`.
+            :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfosRequestDto.getPropertyFieldIds`.
         
             Parameters:
                 elements (long...): The elements to set
@@ -2839,10 +2842,10 @@ class DefaultIncaPropertyFieldInfosRequestRest(IncaPropertyFieldInfosRequestRest
             Returns:
                 A modified copy of :code:`this` object
         
-        public final :class:`~cern.lsa.client.rest.api.v1.dto.DefaultIncaPropertyFieldInfosRequestRest` withPropertyFieldIds (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<`Long <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Long.html?is-external=true>`> elements)
+        public final :class:`~cern.lsa.client.rest.api.v1.dto.DefaultIncaPropertyFieldInfosRequestDto` withPropertyFieldIds (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<`Long <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Long.html?is-external=true>`> elements)
         
             Copy the current immutable object with elements that replace the content of
-            :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfosRequestRest.getPropertyFieldIds`. A shallow reference
+            :meth:`~cern.lsa.client.rest.api.v1.dto.IncaPropertyFieldInfosRequestDto.getPropertyFieldIds`. A shallow reference
             equality check is used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -2855,53 +2858,53 @@ class DefaultIncaPropertyFieldInfosRequestRest(IncaPropertyFieldInfosRequestRest
         """
         ...
     @typing.overload
-    def withPropertyFieldIds(self, longArray: typing.List[int]) -> 'DefaultIncaPropertyFieldInfosRequestRest': ...
+    def withPropertyFieldIds(self, longArray: typing.List[int]) -> 'DefaultIncaPropertyFieldInfosRequestDto': ...
     class Builder:
-        def addAllPropertyFieldIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultIncaPropertyFieldInfosRequestRest.Builder': ...
-        def addPropertyFieldId(self, long: int) -> 'DefaultIncaPropertyFieldInfosRequestRest.Builder': ...
-        def addPropertyFieldIds(self, longArray: typing.List[int]) -> 'DefaultIncaPropertyFieldInfosRequestRest.Builder': ...
-        def build(self) -> 'DefaultIncaPropertyFieldInfosRequestRest': ...
-        def propertyFieldIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultIncaPropertyFieldInfosRequestRest.Builder': ...
+        def addAllPropertyFieldIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultIncaPropertyFieldInfosRequestDto.Builder': ...
+        def addPropertyFieldId(self, long: int) -> 'DefaultIncaPropertyFieldInfosRequestDto.Builder': ...
+        def addPropertyFieldIds(self, longArray: typing.List[int]) -> 'DefaultIncaPropertyFieldInfosRequestDto.Builder': ...
+        def build(self) -> 'DefaultIncaPropertyFieldInfosRequestDto': ...
+        def propertyFieldIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultIncaPropertyFieldInfosRequestDto.Builder': ...
 
-class DefaultMakeRuleClassInfoRest(MakeRuleClassInfoRest):
+class DefaultMakeRuleClassInfoDto(MakeRuleClassInfoDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultMakeRuleClassInfoRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultMakeRuleClassInfoDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultMakeRuleClassInfoRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultMakeRuleClassInfoDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultMakeRuleClassInfoRest.Builder':
+    def builder() -> 'DefaultMakeRuleClassInfoDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultMakeRuleClassInfoRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultMakeRuleClassInfoDto`.
         
             .. code-block: java
             
-             DefaultMakeRuleClassInfoRest.builder()
-                .className(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoRest.getClassName`
-                .productName(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoRest.getProductName`
-                .version(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoRest.getVersion`
+             DefaultMakeRuleClassInfoDto.builder()
+                .className(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoDto.getClassName`
+                .productName(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoDto.getProductName`
+                .version(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoDto.getVersion`
                 .build();
              
         
             Returns:
-                A new DefaultMakeRuleClassInfoRest builder
+                A new DefaultMakeRuleClassInfoDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(makeRuleClassInfoRest: MakeRuleClassInfoRest) -> 'DefaultMakeRuleClassInfoRest':
+    def copyOf(makeRuleClassInfoDto: MakeRuleClassInfoDto) -> 'DefaultMakeRuleClassInfoDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoRest` value. Uses accessors to
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoDto` value. Uses accessors to
             get values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoDto`): The instance to copy
         
             Returns:
-                A copied immutable MakeRuleClassInfoRest instance
+                A copied immutable MakeRuleClassInfoDto instance
         
         
         """
@@ -2911,8 +2914,8 @@ class DefaultMakeRuleClassInfoRest(MakeRuleClassInfoRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoRest.getClassName`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoDto.getClassName`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoDto`
         
             Returns:
                 The value of the :code:`className` attribute
@@ -2924,8 +2927,8 @@ class DefaultMakeRuleClassInfoRest(MakeRuleClassInfoRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoRest.getProductName`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoDto.getProductName`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoDto`
         
             Returns:
                 The value of the :code:`productName` attribute
@@ -2937,8 +2940,8 @@ class DefaultMakeRuleClassInfoRest(MakeRuleClassInfoRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoRest.getVersion`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoDto.getVersion`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoDto`
         
             Returns:
                 The value of the :code:`version` attribute
@@ -2961,7 +2964,7 @@ class DefaultMakeRuleClassInfoRest(MakeRuleClassInfoRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`MakeRuleClassInfoRest` with attribute values.
+            Prints the immutable value :code:`MakeRuleClassInfoDto` with attribute values.
         
             Overrides:
                  in class 
@@ -2972,10 +2975,10 @@ class DefaultMakeRuleClassInfoRest(MakeRuleClassInfoRest):
         
         """
         ...
-    def withClassName(self, string: str) -> 'DefaultMakeRuleClassInfoRest':
+    def withClassName(self, string: str) -> 'DefaultMakeRuleClassInfoDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoRest.getClassName` attribute. An equals check used to prevent
+            :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoDto.getClassName` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -2987,10 +2990,10 @@ class DefaultMakeRuleClassInfoRest(MakeRuleClassInfoRest):
         
         """
         ...
-    def withProductName(self, string: str) -> 'DefaultMakeRuleClassInfoRest':
+    def withProductName(self, string: str) -> 'DefaultMakeRuleClassInfoDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoRest.getProductName` attribute. An equals check used to prevent
+            :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoDto.getProductName` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -3002,10 +3005,10 @@ class DefaultMakeRuleClassInfoRest(MakeRuleClassInfoRest):
         
         """
         ...
-    def withVersion(self, string: str) -> 'DefaultMakeRuleClassInfoRest':
+    def withVersion(self, string: str) -> 'DefaultMakeRuleClassInfoDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoRest.getVersion` attribute. An equals check used to prevent
+            :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoDto.getVersion` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -3018,60 +3021,60 @@ class DefaultMakeRuleClassInfoRest(MakeRuleClassInfoRest):
         """
         ...
     class Builder:
-        def build(self) -> 'DefaultMakeRuleClassInfoRest': ...
-        def className(self, string: str) -> 'DefaultMakeRuleClassInfoRest.Builder': ...
-        def productName(self, string: str) -> 'DefaultMakeRuleClassInfoRest.Builder': ...
-        def version(self, string: str) -> 'DefaultMakeRuleClassInfoRest.Builder': ...
+        def build(self) -> 'DefaultMakeRuleClassInfoDto': ...
+        def className(self, string: str) -> 'DefaultMakeRuleClassInfoDto.Builder': ...
+        def productName(self, string: str) -> 'DefaultMakeRuleClassInfoDto.Builder': ...
+        def version(self, string: str) -> 'DefaultMakeRuleClassInfoDto.Builder': ...
 
-class DefaultMakeRuleConfigInfoRest(MakeRuleConfigInfoRest):
+class DefaultMakeRuleConfigInfoDto(MakeRuleConfigInfoDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultMakeRuleConfigInfoRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigInfoRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultMakeRuleConfigInfoDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigInfoDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigInfoRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigInfoDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultMakeRuleConfigInfoRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultMakeRuleConfigInfoDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultMakeRuleConfigInfoRest.Builder':
+    def builder() -> 'DefaultMakeRuleConfigInfoDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultMakeRuleConfigInfoRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultMakeRuleConfigInfoDto`.
         
             .. code-block: java
             
-             DefaultMakeRuleConfigInfoRest.builder()
-                .makeRuleConfigStatus(cern.lsa.client.rest.api.v1.dto.MakeRuleConfigStatusRest) // required :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigInfoRest.getMakeRuleConfigStatus`
-                .makeRuleInfo(cern.lsa.client.rest.api.v1.dto.MakeRuleInfoRest | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigInfoRest.getMakeRuleInfo`
+             DefaultMakeRuleConfigInfoDto.builder()
+                .makeRuleConfigStatus(cern.lsa.client.rest.api.v1.dto.MakeRuleConfigStatusDto) // required :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigInfoDto.getMakeRuleConfigStatus`
+                .makeRuleInfo(cern.lsa.client.rest.api.v1.dto.MakeRuleInfoDto | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigInfoDto.getMakeRuleInfo`
                 .build();
              
         
             Returns:
-                A new DefaultMakeRuleConfigInfoRest builder
+                A new DefaultMakeRuleConfigInfoDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(makeRuleConfigInfoRest: MakeRuleConfigInfoRest) -> 'DefaultMakeRuleConfigInfoRest':
+    def copyOf(makeRuleConfigInfoDto: MakeRuleConfigInfoDto) -> 'DefaultMakeRuleConfigInfoDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigInfoRest` value. Uses accessors to
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigInfoDto` value. Uses accessors to
             get values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigInfoRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigInfoDto`): The instance to copy
         
             Returns:
-                A copied immutable MakeRuleConfigInfoRest instance
+                A copied immutable MakeRuleConfigInfoDto instance
         
         
         """
         ...
     def equals(self, object: typing.Any) -> bool: ...
-    def getMakeRuleConfigStatus(self) -> MakeRuleConfigStatusRest:
+    def getMakeRuleConfigStatus(self) -> MakeRuleConfigStatusDto:
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigInfoRest.getMakeRuleConfigStatus`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigInfoRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigInfoDto.getMakeRuleConfigStatus`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigInfoDto`
         
             Returns:
                 The value of the :code:`makeRuleConfigStatus` attribute
@@ -3079,7 +3082,7 @@ class DefaultMakeRuleConfigInfoRest(MakeRuleConfigInfoRest):
         
         """
         ...
-    def getMakeRuleInfo(self) -> MakeRuleInfoRest: ...
+    def getMakeRuleInfo(self) -> MakeRuleInfoDto: ...
     def hashCode(self) -> int:
         """
             Computes a hash code from attributes: :code:`makeRuleConfigStatus`, :code:`makeRuleInfo`.
@@ -3095,7 +3098,7 @@ class DefaultMakeRuleConfigInfoRest(MakeRuleConfigInfoRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`MakeRuleConfigInfoRest` with attribute values.
+            Prints the immutable value :code:`MakeRuleConfigInfoDto` with attribute values.
         
             Overrides:
                  in class 
@@ -3106,14 +3109,14 @@ class DefaultMakeRuleConfigInfoRest(MakeRuleConfigInfoRest):
         
         """
         ...
-    def withMakeRuleConfigStatus(self, makeRuleConfigStatusRest: MakeRuleConfigStatusRest) -> 'DefaultMakeRuleConfigInfoRest':
+    def withMakeRuleConfigStatus(self, makeRuleConfigStatusDto: MakeRuleConfigStatusDto) -> 'DefaultMakeRuleConfigInfoDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigInfoRest.getMakeRuleConfigStatus` attribute. A shallow reference
+            :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigInfoDto.getMakeRuleConfigStatus` attribute. A shallow reference
             equality check is used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
-                value (:class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigStatusRest`): A new value for makeRuleConfigStatus
+                value (:class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigStatusDto`): A new value for makeRuleConfigStatus
         
             Returns:
                 A modified copy of the :code:`this` object
@@ -3121,49 +3124,49 @@ class DefaultMakeRuleConfigInfoRest(MakeRuleConfigInfoRest):
         
         """
         ...
-    def withMakeRuleInfo(self, makeRuleInfoRest: MakeRuleInfoRest) -> 'DefaultMakeRuleConfigInfoRest': ...
+    def withMakeRuleInfo(self, makeRuleInfoDto: MakeRuleInfoDto) -> 'DefaultMakeRuleConfigInfoDto': ...
     class Builder:
-        def build(self) -> 'DefaultMakeRuleConfigInfoRest': ...
-        def makeRuleConfigStatus(self, makeRuleConfigStatusRest: MakeRuleConfigStatusRest) -> 'DefaultMakeRuleConfigInfoRest.Builder': ...
-        def makeRuleInfo(self, makeRuleInfoRest: MakeRuleInfoRest) -> 'DefaultMakeRuleConfigInfoRest.Builder': ...
+        def build(self) -> 'DefaultMakeRuleConfigInfoDto': ...
+        def makeRuleConfigStatus(self, makeRuleConfigStatusDto: MakeRuleConfigStatusDto) -> 'DefaultMakeRuleConfigInfoDto.Builder': ...
+        def makeRuleInfo(self, makeRuleInfoDto: MakeRuleInfoDto) -> 'DefaultMakeRuleConfigInfoDto.Builder': ...
 
-class DefaultMakeRuleConfigStatusRest(MakeRuleConfigStatusRest):
+class DefaultMakeRuleConfigStatusDto(MakeRuleConfigStatusDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultMakeRuleConfigStatusRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigStatusRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultMakeRuleConfigStatusDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigStatusDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigStatusRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigStatusDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultMakeRuleConfigStatusRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultMakeRuleConfigStatusDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultMakeRuleConfigStatusRest.Builder':
+    def builder() -> 'DefaultMakeRuleConfigStatusDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultMakeRuleConfigStatusRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultMakeRuleConfigStatusDto`.
         
             .. code-block: java
             
-             DefaultMakeRuleConfigStatusRest.builder()
-                .name(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigStatusRest.getName`
+             DefaultMakeRuleConfigStatusDto.builder()
+                .name(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigStatusDto.getName`
                 .build();
              
         
             Returns:
-                A new DefaultMakeRuleConfigStatusRest builder
+                A new DefaultMakeRuleConfigStatusDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(makeRuleConfigStatusRest: MakeRuleConfigStatusRest) -> 'DefaultMakeRuleConfigStatusRest':
+    def copyOf(makeRuleConfigStatusDto: MakeRuleConfigStatusDto) -> 'DefaultMakeRuleConfigStatusDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigStatusRest` value. Uses accessors
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigStatusDto` value. Uses accessors
             to get values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigStatusRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigStatusDto`): The instance to copy
         
             Returns:
-                A copied immutable MakeRuleConfigStatusRest instance
+                A copied immutable MakeRuleConfigStatusDto instance
         
         
         """
@@ -3173,8 +3176,8 @@ class DefaultMakeRuleConfigStatusRest(MakeRuleConfigStatusRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigStatusRest.getName`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigStatusRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigStatusDto.getName`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigStatusDto`
         
             Returns:
                 The value of the :code:`name` attribute
@@ -3197,7 +3200,7 @@ class DefaultMakeRuleConfigStatusRest(MakeRuleConfigStatusRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`MakeRuleConfigStatusRest` with attribute values.
+            Prints the immutable value :code:`MakeRuleConfigStatusDto` with attribute values.
         
             Overrides:
                  in class 
@@ -3208,10 +3211,10 @@ class DefaultMakeRuleConfigStatusRest(MakeRuleConfigStatusRest):
         
         """
         ...
-    def withName(self, string: str) -> 'DefaultMakeRuleConfigStatusRest':
+    def withName(self, string: str) -> 'DefaultMakeRuleConfigStatusDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigStatusRest.getName` attribute. An equals check used to prevent
+            :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleConfigStatusDto.getName` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -3224,59 +3227,59 @@ class DefaultMakeRuleConfigStatusRest(MakeRuleConfigStatusRest):
         """
         ...
     class Builder:
-        def build(self) -> 'DefaultMakeRuleConfigStatusRest': ...
-        def name(self, string: str) -> 'DefaultMakeRuleConfigStatusRest.Builder': ...
+        def build(self) -> 'DefaultMakeRuleConfigStatusDto': ...
+        def name(self, string: str) -> 'DefaultMakeRuleConfigStatusDto.Builder': ...
 
-class DefaultMakeRuleInfoRest(MakeRuleInfoRest):
+class DefaultMakeRuleInfoDto(MakeRuleInfoDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultMakeRuleInfoRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleInfoRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultMakeRuleInfoDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleInfoDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleInfoRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleInfoDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultMakeRuleInfoRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultMakeRuleInfoDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultMakeRuleInfoRest.Builder':
+    def builder() -> 'DefaultMakeRuleInfoDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultMakeRuleInfoRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultMakeRuleInfoDto`.
         
             .. code-block: java
             
-             DefaultMakeRuleInfoRest.builder()
-                .makeRuleClassInfo(cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoRest | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleInfoRest.getMakeRuleClassInfo`
-                .makeRuleName(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleInfoRest.getMakeRuleName`
+             DefaultMakeRuleInfoDto.builder()
+                .makeRuleClassInfo(cern.lsa.client.rest.api.v1.dto.MakeRuleClassInfoDto | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleInfoDto.getMakeRuleClassInfo`
+                .makeRuleName(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleInfoDto.getMakeRuleName`
                 .build();
              
         
             Returns:
-                A new DefaultMakeRuleInfoRest builder
+                A new DefaultMakeRuleInfoDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(makeRuleInfoRest: MakeRuleInfoRest) -> 'DefaultMakeRuleInfoRest':
+    def copyOf(makeRuleInfoDto: MakeRuleInfoDto) -> 'DefaultMakeRuleInfoDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleInfoRest` value. Uses accessors to get
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleInfoDto` value. Uses accessors to get
             values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleInfoRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleInfoDto`): The instance to copy
         
             Returns:
-                A copied immutable MakeRuleInfoRest instance
+                A copied immutable MakeRuleInfoDto instance
         
         
         """
         ...
     def equals(self, object: typing.Any) -> bool: ...
-    def getMakeRuleClassInfo(self) -> MakeRuleClassInfoRest: ...
+    def getMakeRuleClassInfo(self) -> MakeRuleClassInfoDto: ...
     def getMakeRuleName(self) -> str:
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleInfoRest.getMakeRuleName`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleInfoRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleInfoDto.getMakeRuleName`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.MakeRuleInfoDto`
         
             Returns:
                 The value of the :code:`makeRuleName` attribute
@@ -3299,7 +3302,7 @@ class DefaultMakeRuleInfoRest(MakeRuleInfoRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`MakeRuleInfoRest` with attribute values.
+            Prints the immutable value :code:`MakeRuleInfoDto` with attribute values.
         
             Overrides:
                  in class 
@@ -3310,11 +3313,11 @@ class DefaultMakeRuleInfoRest(MakeRuleInfoRest):
         
         """
         ...
-    def withMakeRuleClassInfo(self, makeRuleClassInfoRest: MakeRuleClassInfoRest) -> 'DefaultMakeRuleInfoRest': ...
-    def withMakeRuleName(self, string: str) -> 'DefaultMakeRuleInfoRest':
+    def withMakeRuleClassInfo(self, makeRuleClassInfoDto: MakeRuleClassInfoDto) -> 'DefaultMakeRuleInfoDto': ...
+    def withMakeRuleName(self, string: str) -> 'DefaultMakeRuleInfoDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleInfoRest.getMakeRuleName` attribute. An equals check used to prevent
+            :meth:`~cern.lsa.client.rest.api.v1.dto.MakeRuleInfoDto.getMakeRuleName` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -3327,61 +3330,61 @@ class DefaultMakeRuleInfoRest(MakeRuleInfoRest):
         """
         ...
     class Builder:
-        def build(self) -> 'DefaultMakeRuleInfoRest': ...
-        def makeRuleClassInfo(self, makeRuleClassInfoRest: MakeRuleClassInfoRest) -> 'DefaultMakeRuleInfoRest.Builder': ...
-        def makeRuleName(self, string: str) -> 'DefaultMakeRuleInfoRest.Builder': ...
+        def build(self) -> 'DefaultMakeRuleInfoDto': ...
+        def makeRuleClassInfo(self, makeRuleClassInfoDto: MakeRuleClassInfoDto) -> 'DefaultMakeRuleInfoDto.Builder': ...
+        def makeRuleName(self, string: str) -> 'DefaultMakeRuleInfoDto.Builder': ...
 
-class DefaultParameterAttributesRest(ParameterAttributesRest):
+class DefaultParameterAttributesDto(ParameterAttributesDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParameterAttributesRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParameterAttributesDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultParameterAttributesRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultParameterAttributesDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultParameterAttributesRest.Builder':
+    def builder() -> 'DefaultParameterAttributesDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterAttributesRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterAttributesDto`.
         
             .. code-block: java
             
-             DefaultParameterAttributesRest.builder()
-                .absoluteTolerance(Double | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getAbsoluteTolerance`
-                .belongsToFunctionBProc(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.isBelongsToFunctionBProc`
-                .defaultHierarchy(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getDefaultHierarchy`
-                .device(cern.lsa.client.rest.api.v1.dto.DeviceRest) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getDevice`
-                .propertyField(cern.lsa.client.rest.api.v1.dto.PropertyFieldRest) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getPropertyField`
-                .maxValue(Double | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getMaxValue`
-                .minValue(Double | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getMinValue`
-                .parameterId(Long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getParameterId`
-                .parameterName(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getParameterName`
-                .parameterType(cern.lsa.client.rest.api.v1.dto.ParameterTypeRest) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getParameterType`
-                .relativeTolerance(Double | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getRelativeTolerance`
-                .reservedForOpExperts(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.isReservedForOpExperts`
-                .trimable(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.isTrimable`
-                .xPrecision(Integer | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getXPrecision`
-                .yPrecision(Integer | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getYPrecision`
+             DefaultParameterAttributesDto.builder()
+                .absoluteTolerance(Double | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getAbsoluteTolerance`
+                .belongsToFunctionBProc(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.isBelongsToFunctionBProc`
+                .defaultHierarchy(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getDefaultHierarchy`
+                .device(cern.lsa.client.rest.api.v1.dto.DeviceDto) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getDevice`
+                .propertyField(cern.lsa.client.rest.api.v1.dto.PropertyFieldDto) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getPropertyField`
+                .maxValue(Double | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getMaxValue`
+                .minValue(Double | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getMinValue`
+                .parameterId(Long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getParameterId`
+                .parameterName(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getParameterName`
+                .parameterType(cern.lsa.client.rest.api.v1.dto.ParameterTypeDto) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getParameterType`
+                .relativeTolerance(Double | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getRelativeTolerance`
+                .reservedForOpExperts(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.isReservedForOpExperts`
+                .trimable(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.isTrimable`
+                .xPrecision(Integer | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getXPrecision`
+                .yPrecision(Integer | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getYPrecision`
                 .build();
              
         
             Returns:
-                A new DefaultParameterAttributesRest builder
+                A new DefaultParameterAttributesDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(parameterAttributesRest: ParameterAttributesRest) -> 'DefaultParameterAttributesRest':
+    def copyOf(parameterAttributesDto: ParameterAttributesDto) -> 'DefaultParameterAttributesDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest` value. Uses accessors
-            to get values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto` value. Uses accessors to
+            get values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto`): The instance to copy
         
             Returns:
-                A copied immutable ParameterAttributesRest instance
+                A copied immutable ParameterAttributesDto instance
         
         
         """
@@ -3392,8 +3395,8 @@ class DefaultParameterAttributesRest(ParameterAttributesRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getDefaultHierarchy`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getDefaultHierarchy`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto`
         
             Returns:
                 The value of the :code:`defaultHierarchy` attribute
@@ -3401,12 +3404,12 @@ class DefaultParameterAttributesRest(ParameterAttributesRest):
         
         """
         ...
-    def getDevice(self) -> DeviceRest:
+    def getDevice(self) -> DeviceDto:
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getDevice`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getDevice`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto`
         
             Returns:
                 The value of the :code:`device` attribute
@@ -3420,8 +3423,8 @@ class DefaultParameterAttributesRest(ParameterAttributesRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getParameterId`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getParameterId`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto`
         
             Returns:
                 The value of the :code:`parameterId` attribute
@@ -3433,8 +3436,8 @@ class DefaultParameterAttributesRest(ParameterAttributesRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getParameterName`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getParameterName`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto`
         
             Returns:
                 The value of the :code:`parameterName` attribute
@@ -3442,12 +3445,12 @@ class DefaultParameterAttributesRest(ParameterAttributesRest):
         
         """
         ...
-    def getParameterType(self) -> ParameterTypeRest:
+    def getParameterType(self) -> ParameterTypeDto:
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getParameterType`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getParameterType`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto`
         
             Returns:
                 The value of the :code:`parameterType` attribute
@@ -3455,12 +3458,12 @@ class DefaultParameterAttributesRest(ParameterAttributesRest):
         
         """
         ...
-    def getPropertyField(self) -> PropertyFieldRest:
+    def getPropertyField(self) -> PropertyFieldDto:
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getPropertyField`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getPropertyField`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto`
         
             Returns:
                 The value of the :code:`propertyField` attribute
@@ -3491,8 +3494,8 @@ class DefaultParameterAttributesRest(ParameterAttributesRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.isBelongsToFunctionBProc`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.isBelongsToFunctionBProc`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto`
         
             Returns:
                 The value of the :code:`belongsToFunctionBProc` attribute
@@ -3504,8 +3507,8 @@ class DefaultParameterAttributesRest(ParameterAttributesRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.isReservedForOpExperts`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.isReservedForOpExperts`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto`
         
             Returns:
                 The value of the :code:`reservedForOpExperts` attribute
@@ -3517,8 +3520,8 @@ class DefaultParameterAttributesRest(ParameterAttributesRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.isTrimable`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.isTrimable`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto`
         
             Returns:
                 The value of the :code:`trimable` attribute
@@ -3528,7 +3531,7 @@ class DefaultParameterAttributesRest(ParameterAttributesRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`ParameterAttributesRest` with attribute values.
+            Prints the immutable value :code:`ParameterAttributesDto` with attribute values.
         
             Overrides:
                  in class 
@@ -3539,11 +3542,11 @@ class DefaultParameterAttributesRest(ParameterAttributesRest):
         
         """
         ...
-    def withAbsoluteTolerance(self, double: float) -> 'DefaultParameterAttributesRest': ...
-    def withBelongsToFunctionBProc(self, boolean: bool) -> 'DefaultParameterAttributesRest':
+    def withAbsoluteTolerance(self, double: float) -> 'DefaultParameterAttributesDto': ...
+    def withBelongsToFunctionBProc(self, boolean: bool) -> 'DefaultParameterAttributesDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.isBelongsToFunctionBProc` attribute. A value equality
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.isBelongsToFunctionBProc` attribute. A value equality
             check is used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -3555,10 +3558,10 @@ class DefaultParameterAttributesRest(ParameterAttributesRest):
         
         """
         ...
-    def withDefaultHierarchy(self, string: str) -> 'DefaultParameterAttributesRest':
+    def withDefaultHierarchy(self, string: str) -> 'DefaultParameterAttributesDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getDefaultHierarchy` attribute. An equals check used to
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getDefaultHierarchy` attribute. An equals check used to
             prevent copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -3570,14 +3573,14 @@ class DefaultParameterAttributesRest(ParameterAttributesRest):
         
         """
         ...
-    def withDevice(self, deviceRest: DeviceRest) -> 'DefaultParameterAttributesRest':
+    def withDevice(self, deviceDto: DeviceDto) -> 'DefaultParameterAttributesDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getDevice` attribute. A shallow reference equality check
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getDevice` attribute. A shallow reference equality check
             is used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
-                value (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceRest`): A new value for device
+                value (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceDto`): A new value for device
         
             Returns:
                 A modified copy of the :code:`this` object
@@ -3585,12 +3588,12 @@ class DefaultParameterAttributesRest(ParameterAttributesRest):
         
         """
         ...
-    def withMaxValue(self, double: float) -> 'DefaultParameterAttributesRest': ...
-    def withMinValue(self, double: float) -> 'DefaultParameterAttributesRest': ...
-    def withParameterId(self, long: int) -> 'DefaultParameterAttributesRest':
+    def withMaxValue(self, double: float) -> 'DefaultParameterAttributesDto': ...
+    def withMinValue(self, double: float) -> 'DefaultParameterAttributesDto': ...
+    def withParameterId(self, long: int) -> 'DefaultParameterAttributesDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getParameterId` attribute. An equals check used to
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getParameterId` attribute. An equals check used to
             prevent copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -3602,10 +3605,10 @@ class DefaultParameterAttributesRest(ParameterAttributesRest):
         
         """
         ...
-    def withParameterName(self, string: str) -> 'DefaultParameterAttributesRest':
+    def withParameterName(self, string: str) -> 'DefaultParameterAttributesDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getParameterName` attribute. An equals check used to
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getParameterName` attribute. An equals check used to
             prevent copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -3617,42 +3620,42 @@ class DefaultParameterAttributesRest(ParameterAttributesRest):
         
         """
         ...
-    def withParameterType(self, parameterTypeRest: ParameterTypeRest) -> 'DefaultParameterAttributesRest':
+    def withParameterType(self, parameterTypeDto: ParameterTypeDto) -> 'DefaultParameterAttributesDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getParameterType` attribute. A shallow reference
-            equality check is used to prevent copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeRest`): A new value for parameterType
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    def withPropertyField(self, propertyFieldRest: PropertyFieldRest) -> 'DefaultParameterAttributesRest':
-        """
-            Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.getPropertyField` attribute. A shallow reference
-            equality check is used to prevent copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (:class:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldRest`): A new value for propertyField
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    def withRelativeTolerance(self, double: float) -> 'DefaultParameterAttributesRest': ...
-    def withReservedForOpExperts(self, boolean: bool) -> 'DefaultParameterAttributesRest':
-        """
-            Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.isReservedForOpExperts` attribute. A value equality
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getParameterType` attribute. A shallow reference equality
             check is used to prevent copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeDto`): A new value for parameterType
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    def withPropertyField(self, propertyFieldDto: PropertyFieldDto) -> 'DefaultParameterAttributesDto':
+        """
+            Copy the current immutable object by setting a value for the
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.getPropertyField` attribute. A shallow reference equality
+            check is used to prevent copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (:class:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldDto`): A new value for propertyField
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    def withRelativeTolerance(self, double: float) -> 'DefaultParameterAttributesDto': ...
+    def withReservedForOpExperts(self, boolean: bool) -> 'DefaultParameterAttributesDto':
+        """
+            Copy the current immutable object by setting a value for the
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.isReservedForOpExperts` attribute. A value equality check
+            is used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
                 value (boolean): A new value for reservedForOpExperts
@@ -3663,10 +3666,10 @@ class DefaultParameterAttributesRest(ParameterAttributesRest):
         
         """
         ...
-    def withTrimable(self, boolean: bool) -> 'DefaultParameterAttributesRest':
+    def withTrimable(self, boolean: bool) -> 'DefaultParameterAttributesDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesRest.isTrimable` attribute. A value equality check is used to
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterAttributesDto.isTrimable` attribute. A value equality check is used to
             prevent copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -3678,68 +3681,719 @@ class DefaultParameterAttributesRest(ParameterAttributesRest):
         
         """
         ...
-    def withXPrecision(self, integer: int) -> 'DefaultParameterAttributesRest': ...
-    def withYPrecision(self, integer: int) -> 'DefaultParameterAttributesRest': ...
+    def withXPrecision(self, integer: int) -> 'DefaultParameterAttributesDto': ...
+    def withYPrecision(self, integer: int) -> 'DefaultParameterAttributesDto': ...
     class Builder:
-        def absoluteTolerance(self, double: float) -> 'DefaultParameterAttributesRest.Builder': ...
-        def belongsToFunctionBProc(self, boolean: bool) -> 'DefaultParameterAttributesRest.Builder': ...
-        def build(self) -> 'DefaultParameterAttributesRest': ...
-        def defaultHierarchy(self, string: str) -> 'DefaultParameterAttributesRest.Builder': ...
-        def device(self, deviceRest: DeviceRest) -> 'DefaultParameterAttributesRest.Builder': ...
-        def maxValue(self, double: float) -> 'DefaultParameterAttributesRest.Builder': ...
-        def minValue(self, double: float) -> 'DefaultParameterAttributesRest.Builder': ...
-        def parameterId(self, long: int) -> 'DefaultParameterAttributesRest.Builder': ...
-        def parameterName(self, string: str) -> 'DefaultParameterAttributesRest.Builder': ...
-        def parameterType(self, parameterTypeRest: ParameterTypeRest) -> 'DefaultParameterAttributesRest.Builder': ...
-        def propertyField(self, propertyFieldRest: PropertyFieldRest) -> 'DefaultParameterAttributesRest.Builder': ...
-        def relativeTolerance(self, double: float) -> 'DefaultParameterAttributesRest.Builder': ...
-        def reservedForOpExperts(self, boolean: bool) -> 'DefaultParameterAttributesRest.Builder': ...
-        def trimable(self, boolean: bool) -> 'DefaultParameterAttributesRest.Builder': ...
-        def xPrecision(self, integer: int) -> 'DefaultParameterAttributesRest.Builder': ...
-        def yPrecision(self, integer: int) -> 'DefaultParameterAttributesRest.Builder': ...
+        def absoluteTolerance(self, double: float) -> 'DefaultParameterAttributesDto.Builder': ...
+        def belongsToFunctionBProc(self, boolean: bool) -> 'DefaultParameterAttributesDto.Builder': ...
+        def build(self) -> 'DefaultParameterAttributesDto': ...
+        def defaultHierarchy(self, string: str) -> 'DefaultParameterAttributesDto.Builder': ...
+        def device(self, deviceDto: DeviceDto) -> 'DefaultParameterAttributesDto.Builder': ...
+        def maxValue(self, double: float) -> 'DefaultParameterAttributesDto.Builder': ...
+        def minValue(self, double: float) -> 'DefaultParameterAttributesDto.Builder': ...
+        def parameterId(self, long: int) -> 'DefaultParameterAttributesDto.Builder': ...
+        def parameterName(self, string: str) -> 'DefaultParameterAttributesDto.Builder': ...
+        def parameterType(self, parameterTypeDto: ParameterTypeDto) -> 'DefaultParameterAttributesDto.Builder': ...
+        def propertyField(self, propertyFieldDto: PropertyFieldDto) -> 'DefaultParameterAttributesDto.Builder': ...
+        def relativeTolerance(self, double: float) -> 'DefaultParameterAttributesDto.Builder': ...
+        def reservedForOpExperts(self, boolean: bool) -> 'DefaultParameterAttributesDto.Builder': ...
+        def trimable(self, boolean: bool) -> 'DefaultParameterAttributesDto.Builder': ...
+        def xPrecision(self, integer: int) -> 'DefaultParameterAttributesDto.Builder': ...
+        def yPrecision(self, integer: int) -> 'DefaultParameterAttributesDto.Builder': ...
 
-class DefaultParameterGroupRest(ParameterGroupRest):
+class DefaultParameterDto(ParameterDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParameterGroupRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParameterDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParameterDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParameterDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultParameterGroupRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultParameterDto.builder()`.
     """
-    @staticmethod
-    def builder() -> 'DefaultParameterGroupRest.Builder':
+    def belongsToFunctionBeamProcess(self) -> bool:
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterGroupRest`.
         
-            .. code-block: java
-            
-             DefaultParameterGroupRest.builder()
-                .name(String) // required name
-                .acceleratorName(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupRest.getAcceleratorName`
-                .createDate(java.time.OffsetDateTime) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupRest.getCreateDate`
-                .creator(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupRest.getCreator`
-                .description(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupRest.getDescription`
-                .id(long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupRest.getId`
-                .build();
-             
+            Specified by:
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.belongsToFunctionBeamProcess`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterDto`
         
             Returns:
-                A new DefaultParameterGroupRest builder
+                The value of the :code:`belongsToFunctionBeamProcess` attribute
         
         
         """
         ...
     @staticmethod
-    def copyOf(parameterGroupRest: ParameterGroupRest) -> 'DefaultParameterGroupRest':
+    def builder() -> 'DefaultParameterDto.Builder':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupRest` value. Uses accessors to get
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterDto`.
+        
+            .. code-block: java
+            
+             DefaultParameterDto.builder()
+                .name(String) // required name
+                .belongsToFunctionBeamProcess(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.belongsToFunctionBeamProcess`
+                .critical(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isCritical`
+                .defaultHierarchy(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.getDefaultHierarchy`
+                .device(cern.lsa.client.rest.api.v1.dto.DeviceDto) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.getDevice`
+                .id(long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.getId`
+                .monitorable(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isMonitorable`
+                .multiplexed(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isMultiplexed`
+                .cycleBound(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isCycleBound`
+                .addParameterGroup|addAllParameterGroups(String) // :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.getParameterGroups` elements
+                .parameterType(cern.lsa.client.rest.api.v1.dto.ParameterTypeDto) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.getParameterType`
+                .propertySupportingPartialSet(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isPropertySupportingPartialSet`
+                .readable(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isReadable`
+                .reservedForOpExperts(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isReservedForOpExperts`
+                .trimable(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isTrimable`
+                .valueDescriptor(cern.lsa.client.rest.api.v1.dto.ValueDescriptorDto) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.getValueDescriptor`
+                .valueType(cern.lsa.client.rest.api.v1.dto.TypeDto) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.getValueType`
+                .lsaImplementation(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isLsaImplementation`
+                .writable(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isWritable`
+                .propertyField(cern.lsa.client.rest.api.v1.dto.PropertyFieldDto) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.getPropertyField`
+                .build();
+             
+        
+            Returns:
+                A new DefaultParameterDto builder
+        
+        
+        """
+        ...
+    @staticmethod
+    def copyOf(parameterDto: ParameterDto) -> 'DefaultParameterDto':
+        """
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParameterDto` value. Uses accessors to get
             values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterDto`): The instance to copy
         
             Returns:
-                A copied immutable ParameterGroupRest instance
+                A copied immutable ParameterDto instance
+        
+        
+        """
+        ...
+    def equals(self, object: typing.Any) -> bool: ...
+    def getDefaultHierarchy(self) -> str:
+        """
+        
+            Specified by:
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.getDefaultHierarchy`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterDto`
+        
+            Returns:
+                The value of the :code:`defaultHierarchy` attribute
+        
+        
+        """
+        ...
+    def getDevice(self) -> DeviceDto:
+        """
+        
+            Specified by:
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.getDevice`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterDto`
+        
+            Returns:
+                The value of the :code:`device` attribute
+        
+        
+        """
+        ...
+    def getId(self) -> int:
+        """
+        
+            Specified by:
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.getId`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterDto`
+        
+            Returns:
+                The value of the :code:`id` attribute
+        
+        
+        """
+        ...
+    def getName(self) -> str:
+        """
+        
+            Specified by:
+                :code:`getName` in interface :code:`cern.accsoft.commons.util.Named`
+        
+            Returns:
+                The value of the :code:`name` attribute
+        
+        
+        """
+        ...
+    def getParameterGroups(self) -> java.util.List[str]: ...
+    def getParameterType(self) -> ParameterTypeDto:
+        """
+        
+            Specified by:
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.getParameterType`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterDto`
+        
+            Returns:
+                The value of the :code:`parameterType` attribute
+        
+        
+        """
+        ...
+    def getPropertyField(self) -> PropertyFieldDto:
+        """
+        
+            Specified by:
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.getPropertyField`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterDto`
+        
+            Returns:
+                The value of the :code:`propertyField` attribute
+        
+        
+        """
+        ...
+    def getValueDescriptor(self) -> ValueDescriptorDto:
+        """
+        
+            Specified by:
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.getValueDescriptor`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterDto`
+        
+            Returns:
+                The value of the :code:`valueDescriptor` attribute
+        
+        
+        """
+        ...
+    def getValueType(self) -> TypeDto:
+        """
+        
+            Specified by:
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.getValueType`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterDto`
+        
+            Returns:
+                The value of the :code:`valueType` attribute
+        
+        
+        """
+        ...
+    def hashCode(self) -> int:
+        """
+            Computes a hash code from attributes: :code:`name`, :code:`belongsToFunctionBeamProcess`, :code:`critical`,
+            :code:`defaultHierarchy`, :code:`device`, :code:`id`, :code:`monitorable`, :code:`multiplexed`, :code:`cycleBound`,
+            :code:`parameterGroups`, :code:`parameterType`, :code:`propertySupportingPartialSet`, :code:`readable`,
+            :code:`reservedForOpExperts`, :code:`trimable`, :code:`valueDescriptor`, :code:`valueType`, :code:`lsaImplementation`,
+            :code:`writable`, :code:`propertyField`.
+        
+            Overrides:
+                 in class 
+        
+            Returns:
+                hashCode value
+        
+        
+        """
+        ...
+    def isCritical(self) -> bool:
+        """
+        
+            Specified by:
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isCritical`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterDto`
+        
+            Returns:
+                The value of the :code:`critical` attribute
+        
+        
+        """
+        ...
+    def isCycleBound(self) -> bool:
+        """
+        
+            Specified by:
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isCycleBound`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterDto`
+        
+            Returns:
+                The value of the :code:`cycleBound` attribute
+        
+        
+        """
+        ...
+    def isLsaImplementation(self) -> bool:
+        """
+        
+            Specified by:
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isLsaImplementation`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterDto`
+        
+            Returns:
+                The value of the :code:`lsaImplementation` attribute
+        
+        
+        """
+        ...
+    def isMonitorable(self) -> bool:
+        """
+        
+            Specified by:
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isMonitorable`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterDto`
+        
+            Returns:
+                The value of the :code:`monitorable` attribute
+        
+        
+        """
+        ...
+    def isMultiplexed(self) -> bool:
+        """
+        
+            Specified by:
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isMultiplexed`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterDto`
+        
+            Returns:
+                The value of the :code:`multiplexed` attribute
+        
+        
+        """
+        ...
+    def isPropertySupportingPartialSet(self) -> bool:
+        """
+        
+            Specified by:
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isPropertySupportingPartialSet`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterDto`
+        
+            Returns:
+                The value of the :code:`propertySupportingPartialSet` attribute
+        
+        
+        """
+        ...
+    def isReadable(self) -> bool:
+        """
+        
+            Specified by:
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isReadable`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterDto`
+        
+            Returns:
+                The value of the :code:`readable` attribute
+        
+        
+        """
+        ...
+    def isReservedForOpExperts(self) -> bool:
+        """
+        
+            Specified by:
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isReservedForOpExperts`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterDto`
+        
+            Returns:
+                The value of the :code:`reservedForOpExperts` attribute
+        
+        
+        """
+        ...
+    def isTrimable(self) -> bool:
+        """
+        
+            Specified by:
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isTrimable`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterDto`
+        
+            Returns:
+                The value of the :code:`trimable` attribute
+        
+        
+        """
+        ...
+    def isWritable(self) -> bool:
+        """
+        
+            Specified by:
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isWritable`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterDto`
+        
+            Returns:
+                The value of the :code:`writable` attribute
+        
+        
+        """
+        ...
+    def toString(self) -> str:
+        """
+            Prints the immutable value :code:`ParameterDto` with attribute values.
+        
+            Overrides:
+                 in class 
+        
+            Returns:
+                A string representation of the value
+        
+        
+        """
+        ...
+    def withBelongsToFunctionBeamProcess(self, boolean: bool) -> 'DefaultParameterDto':
+        """
+            Copy the current immutable object by setting a value for the
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.belongsToFunctionBeamProcess` attribute. A value equality check is
+            used to prevent copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (boolean): A new value for belongsToFunctionBeamProcess
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    def withCritical(self, boolean: bool) -> 'DefaultParameterDto':
+        """
+            Copy the current immutable object by setting a value for the
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isCritical` attribute. A value equality check is used to prevent
+            copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (boolean): A new value for critical
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    def withCycleBound(self, boolean: bool) -> 'DefaultParameterDto':
+        """
+            Copy the current immutable object by setting a value for the
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isCycleBound` attribute. A value equality check is used to prevent
+            copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (boolean): A new value for cycleBound
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    def withDefaultHierarchy(self, string: str) -> 'DefaultParameterDto':
+        """
+            Copy the current immutable object by setting a value for the
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.getDefaultHierarchy` attribute. An equals check used to prevent
+            copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): A new value for defaultHierarchy
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    def withDevice(self, deviceDto: DeviceDto) -> 'DefaultParameterDto':
+        """
+            Copy the current immutable object by setting a value for the
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.getDevice` attribute. A shallow reference equality check is used to
+            prevent copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceDto`): A new value for device
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    def withId(self, long: int) -> 'DefaultParameterDto':
+        """
+            Copy the current immutable object by setting a value for the :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.getId`
+            attribute. A value equality check is used to prevent copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (long): A new value for id
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    def withLsaImplementation(self, boolean: bool) -> 'DefaultParameterDto':
+        """
+            Copy the current immutable object by setting a value for the
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isLsaImplementation` attribute. A value equality check is used to
+            prevent copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (boolean): A new value for lsaImplementation
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    def withMonitorable(self, boolean: bool) -> 'DefaultParameterDto':
+        """
+            Copy the current immutable object by setting a value for the
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isMonitorable` attribute. A value equality check is used to prevent
+            copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (boolean): A new value for monitorable
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    def withMultiplexed(self, boolean: bool) -> 'DefaultParameterDto':
+        """
+            Copy the current immutable object by setting a value for the
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isMultiplexed` attribute. A value equality check is used to prevent
+            copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (boolean): A new value for multiplexed
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    def withName(self, string: str) -> 'DefaultParameterDto':
+        """
+            Copy the current immutable object by setting a value for the :code:`name` attribute. An equals check used to prevent
+            copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): A new value for name
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    @typing.overload
+    def withParameterGroups(self, iterable: java.lang.Iterable[str]) -> 'DefaultParameterDto': ...
+    @typing.overload
+    def withParameterGroups(self, stringArray: typing.List[str]) -> 'DefaultParameterDto': ...
+    def withParameterType(self, parameterTypeDto: ParameterTypeDto) -> 'DefaultParameterDto':
+        """
+            Copy the current immutable object by setting a value for the
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.getParameterType` attribute. A shallow reference equality check is
+            used to prevent copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeDto`): A new value for parameterType
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    def withPropertyField(self, propertyFieldDto: PropertyFieldDto) -> 'DefaultParameterDto':
+        """
+            Copy the current immutable object by setting a value for the
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.getPropertyField` attribute. A shallow reference equality check is
+            used to prevent copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (:class:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldDto`): A new value for propertyField
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    def withPropertySupportingPartialSet(self, boolean: bool) -> 'DefaultParameterDto':
+        """
+            Copy the current immutable object by setting a value for the
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isPropertySupportingPartialSet` attribute. A value equality check
+            is used to prevent copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (boolean): A new value for propertySupportingPartialSet
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    def withReadable(self, boolean: bool) -> 'DefaultParameterDto':
+        """
+            Copy the current immutable object by setting a value for the
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isReadable` attribute. A value equality check is used to prevent
+            copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (boolean): A new value for readable
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    def withReservedForOpExperts(self, boolean: bool) -> 'DefaultParameterDto':
+        """
+            Copy the current immutable object by setting a value for the
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isReservedForOpExperts` attribute. A value equality check is used
+            to prevent copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (boolean): A new value for reservedForOpExperts
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    def withTrimable(self, boolean: bool) -> 'DefaultParameterDto':
+        """
+            Copy the current immutable object by setting a value for the
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isTrimable` attribute. A value equality check is used to prevent
+            copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (boolean): A new value for trimable
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    def withValueDescriptor(self, valueDescriptorDto: ValueDescriptorDto) -> 'DefaultParameterDto':
+        """
+            Copy the current immutable object by setting a value for the
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.getValueDescriptor` attribute. A shallow reference equality check
+            is used to prevent copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (:class:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorDto`): A new value for valueDescriptor
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    def withValueType(self, typeDto: TypeDto) -> 'DefaultParameterDto':
+        """
+            Copy the current immutable object by setting a value for the
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.getValueType` attribute. A shallow reference equality check is used
+            to prevent copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (:class:`~cern.lsa.client.rest.api.v1.dto.TypeDto`): A new value for valueType
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    def withWritable(self, boolean: bool) -> 'DefaultParameterDto':
+        """
+            Copy the current immutable object by setting a value for the
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterDto.isWritable` attribute. A value equality check is used to prevent
+            copying of the same value by returning :code:`this`.
+        
+            Parameters:
+                value (boolean): A new value for writable
+        
+            Returns:
+                A modified copy of the :code:`this` object
+        
+        
+        """
+        ...
+    class Builder:
+        def addAllParameterGroups(self, iterable: java.lang.Iterable[str]) -> 'DefaultParameterDto.Builder': ...
+        def addParameterGroup(self, string: str) -> 'DefaultParameterDto.Builder': ...
+        def addParameterGroups(self, stringArray: typing.List[str]) -> 'DefaultParameterDto.Builder': ...
+        def belongsToFunctionBeamProcess(self, boolean: bool) -> 'DefaultParameterDto.Builder': ...
+        def build(self) -> 'DefaultParameterDto': ...
+        def critical(self, boolean: bool) -> 'DefaultParameterDto.Builder': ...
+        def cycleBound(self, boolean: bool) -> 'DefaultParameterDto.Builder': ...
+        def defaultHierarchy(self, string: str) -> 'DefaultParameterDto.Builder': ...
+        def device(self, deviceDto: DeviceDto) -> 'DefaultParameterDto.Builder': ...
+        def id(self, long: int) -> 'DefaultParameterDto.Builder': ...
+        def lsaImplementation(self, boolean: bool) -> 'DefaultParameterDto.Builder': ...
+        def monitorable(self, boolean: bool) -> 'DefaultParameterDto.Builder': ...
+        def multiplexed(self, boolean: bool) -> 'DefaultParameterDto.Builder': ...
+        def name(self, string: str) -> 'DefaultParameterDto.Builder': ...
+        def parameterGroups(self, iterable: java.lang.Iterable[str]) -> 'DefaultParameterDto.Builder': ...
+        def parameterType(self, parameterTypeDto: ParameterTypeDto) -> 'DefaultParameterDto.Builder': ...
+        def propertyField(self, propertyFieldDto: PropertyFieldDto) -> 'DefaultParameterDto.Builder': ...
+        def propertySupportingPartialSet(self, boolean: bool) -> 'DefaultParameterDto.Builder': ...
+        def readable(self, boolean: bool) -> 'DefaultParameterDto.Builder': ...
+        def reservedForOpExperts(self, boolean: bool) -> 'DefaultParameterDto.Builder': ...
+        def trimable(self, boolean: bool) -> 'DefaultParameterDto.Builder': ...
+        def valueDescriptor(self, valueDescriptorDto: ValueDescriptorDto) -> 'DefaultParameterDto.Builder': ...
+        def valueType(self, typeDto: TypeDto) -> 'DefaultParameterDto.Builder': ...
+        def writable(self, boolean: bool) -> 'DefaultParameterDto.Builder': ...
+
+class DefaultParameterGroupDto(ParameterGroupDto):
+    """
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParameterGroupDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupDto`
+    
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupDto`.
+    
+        Use the builder to create immutable instances: :code:`DefaultParameterGroupDto.builder()`.
+    """
+    @staticmethod
+    def builder() -> 'DefaultParameterGroupDto.Builder':
+        """
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterGroupDto`.
+        
+            .. code-block: java
+            
+             DefaultParameterGroupDto.builder()
+                .name(String) // required name
+                .acceleratorName(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupDto.getAcceleratorName`
+                .createDate(java.time.OffsetDateTime) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupDto.getCreateDate`
+                .creator(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupDto.getCreator`
+                .description(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupDto.getDescription`
+                .id(long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupDto.getId`
+                .build();
+             
+        
+            Returns:
+                A new DefaultParameterGroupDto builder
+        
+        
+        """
+        ...
+    @staticmethod
+    def copyOf(parameterGroupDto: ParameterGroupDto) -> 'DefaultParameterGroupDto':
+        """
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupDto` value. Uses accessors to get
+            values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
+        
+            Parameters:
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupDto`): The instance to copy
+        
+            Returns:
+                A copied immutable ParameterGroupDto instance
         
         
         """
@@ -3750,8 +4404,8 @@ class DefaultParameterGroupRest(ParameterGroupRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupRest.getCreateDate`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupDto.getCreateDate`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupDto`
         
             Returns:
                 The value of the :code:`createDate` attribute
@@ -3765,8 +4419,8 @@ class DefaultParameterGroupRest(ParameterGroupRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupRest.getId`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupDto.getId`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupDto`
         
             Returns:
                 The value of the :code:`id` attribute
@@ -3802,7 +4456,7 @@ class DefaultParameterGroupRest(ParameterGroupRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`ParameterGroupRest` with attribute values.
+            Prints the immutable value :code:`ParameterGroupDto` with attribute values.
         
             Overrides:
                  in class 
@@ -3813,11 +4467,11 @@ class DefaultParameterGroupRest(ParameterGroupRest):
         
         """
         ...
-    def withAcceleratorName(self, string: str) -> 'DefaultParameterGroupRest': ...
-    def withCreateDate(self, offsetDateTime: java.time.OffsetDateTime) -> 'DefaultParameterGroupRest':
+    def withAcceleratorName(self, string: str) -> 'DefaultParameterGroupDto': ...
+    def withCreateDate(self, offsetDateTime: java.time.OffsetDateTime) -> 'DefaultParameterGroupDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupRest.getCreateDate` attribute. A shallow reference equality check
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupDto.getCreateDate` attribute. A shallow reference equality check
             is used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -3829,12 +4483,12 @@ class DefaultParameterGroupRest(ParameterGroupRest):
         
         """
         ...
-    def withCreator(self, string: str) -> 'DefaultParameterGroupRest': ...
-    def withDescription(self, string: str) -> 'DefaultParameterGroupRest': ...
-    def withId(self, long: int) -> 'DefaultParameterGroupRest':
+    def withCreator(self, string: str) -> 'DefaultParameterGroupDto': ...
+    def withDescription(self, string: str) -> 'DefaultParameterGroupDto': ...
+    def withId(self, long: int) -> 'DefaultParameterGroupDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupRest.getId` attribute. A value equality check is used to prevent
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterGroupDto.getId` attribute. A value equality check is used to prevent
             copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -3846,7 +4500,7 @@ class DefaultParameterGroupRest(ParameterGroupRest):
         
         """
         ...
-    def withName(self, string: str) -> 'DefaultParameterGroupRest':
+    def withName(self, string: str) -> 'DefaultParameterGroupDto':
         """
             Copy the current immutable object by setting a value for the :code:`name` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
@@ -3861,712 +4515,60 @@ class DefaultParameterGroupRest(ParameterGroupRest):
         """
         ...
     class Builder:
-        def acceleratorName(self, string: str) -> 'DefaultParameterGroupRest.Builder': ...
-        def build(self) -> 'DefaultParameterGroupRest': ...
-        def createDate(self, offsetDateTime: java.time.OffsetDateTime) -> 'DefaultParameterGroupRest.Builder': ...
-        def creator(self, string: str) -> 'DefaultParameterGroupRest.Builder': ...
-        def description(self, string: str) -> 'DefaultParameterGroupRest.Builder': ...
-        def id(self, long: int) -> 'DefaultParameterGroupRest.Builder': ...
-        def name(self, string: str) -> 'DefaultParameterGroupRest.Builder': ...
+        def acceleratorName(self, string: str) -> 'DefaultParameterGroupDto.Builder': ...
+        def build(self) -> 'DefaultParameterGroupDto': ...
+        def createDate(self, offsetDateTime: java.time.OffsetDateTime) -> 'DefaultParameterGroupDto.Builder': ...
+        def creator(self, string: str) -> 'DefaultParameterGroupDto.Builder': ...
+        def description(self, string: str) -> 'DefaultParameterGroupDto.Builder': ...
+        def id(self, long: int) -> 'DefaultParameterGroupDto.Builder': ...
+        def name(self, string: str) -> 'DefaultParameterGroupDto.Builder': ...
 
-class DefaultParameterRest(ParameterRest):
+class DefaultParameterTreeDataDto(ParameterTreeDataDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParameterRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParameterRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParameterTreeDataDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParameterRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultParameterRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultParameterTreeDataDto.builder()`.
     """
-    def belongsToFunctionBeamProcess(self) -> bool:
-        """
-        
-            Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.belongsToFunctionBeamProcess`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterRest`
-        
-            Returns:
-                The value of the :code:`belongsToFunctionBeamProcess` attribute
-        
-        
-        """
-        ...
     @staticmethod
-    def builder() -> 'DefaultParameterRest.Builder':
+    def builder() -> 'DefaultParameterTreeDataDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterTreeDataDto`.
         
             .. code-block: java
             
-             DefaultParameterRest.builder()
-                .name(String) // required name
-                .belongsToFunctionBeamProcess(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.belongsToFunctionBeamProcess`
-                .critical(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isCritical`
-                .defaultHierarchy(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.getDefaultHierarchy`
-                .device(cern.lsa.client.rest.api.v1.dto.DeviceRest) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.getDevice`
-                .id(long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.getId`
-                .monitorable(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isMonitorable`
-                .multiplexed(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isMultiplexed`
-                .cycleBound(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isCycleBound`
-                .addParameterGroup|addAllParameterGroups(String) // :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.getParameterGroups` elements
-                .parameterType(cern.lsa.client.rest.api.v1.dto.ParameterTypeRest) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.getParameterType`
-                .propertySupportingPartialSet(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isPropertySupportingPartialSet`
-                .readable(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isReadable`
-                .reservedForOpExperts(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isReservedForOpExperts`
-                .trimable(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isTrimable`
-                .valueDescriptor(cern.lsa.client.rest.api.v1.dto.ValueDescriptorRest) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.getValueDescriptor`
-                .valueType(cern.lsa.client.rest.api.v1.dto.TypeRest) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.getValueType`
-                .lsaImplementation(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isLsaImplementation`
-                .writable(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isWritable`
-                .propertyField(cern.lsa.client.rest.api.v1.dto.PropertyFieldRest) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.getPropertyField`
+             DefaultParameterTreeDataDto.builder()
+                .addNode|addAllNodes(cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeDto) // :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataDto.getNodes` elements
+                .addRelation|addAllRelations(cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationDto) // :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataDto.getRelations` elements
+                .addStartNodeId|addAllStartNodeIds(long) // :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataDto.getStartNodeIds` elements
                 .build();
              
         
             Returns:
-                A new DefaultParameterRest builder
+                A new DefaultParameterTreeDataDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(parameterRest: ParameterRest) -> 'DefaultParameterRest':
+    def copyOf(parameterTreeDataDto: ParameterTreeDataDto) -> 'DefaultParameterTreeDataDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParameterRest` value. Uses accessors to get
-            values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
-        
-            Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterRest`): The instance to copy
-        
-            Returns:
-                A copied immutable ParameterRest instance
-        
-        
-        """
-        ...
-    def equals(self, object: typing.Any) -> bool: ...
-    def getDefaultHierarchy(self) -> str:
-        """
-        
-            Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.getDefaultHierarchy`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterRest`
-        
-            Returns:
-                The value of the :code:`defaultHierarchy` attribute
-        
-        
-        """
-        ...
-    def getDevice(self) -> DeviceRest:
-        """
-        
-            Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.getDevice`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterRest`
-        
-            Returns:
-                The value of the :code:`device` attribute
-        
-        
-        """
-        ...
-    def getId(self) -> int:
-        """
-        
-            Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.getId`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterRest`
-        
-            Returns:
-                The value of the :code:`id` attribute
-        
-        
-        """
-        ...
-    def getName(self) -> str:
-        """
-        
-            Specified by:
-                :code:`getName` in interface :code:`cern.accsoft.commons.util.Named`
-        
-            Returns:
-                The value of the :code:`name` attribute
-        
-        
-        """
-        ...
-    def getParameterGroups(self) -> java.util.List[str]: ...
-    def getParameterType(self) -> ParameterTypeRest:
-        """
-        
-            Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.getParameterType`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterRest`
-        
-            Returns:
-                The value of the :code:`parameterType` attribute
-        
-        
-        """
-        ...
-    def getPropertyField(self) -> PropertyFieldRest:
-        """
-        
-            Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.getPropertyField`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterRest`
-        
-            Returns:
-                The value of the :code:`propertyField` attribute
-        
-        
-        """
-        ...
-    def getValueDescriptor(self) -> ValueDescriptorRest:
-        """
-        
-            Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.getValueDescriptor`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterRest`
-        
-            Returns:
-                The value of the :code:`valueDescriptor` attribute
-        
-        
-        """
-        ...
-    def getValueType(self) -> TypeRest:
-        """
-        
-            Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.getValueType`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterRest`
-        
-            Returns:
-                The value of the :code:`valueType` attribute
-        
-        
-        """
-        ...
-    def hashCode(self) -> int:
-        """
-            Computes a hash code from attributes: :code:`name`, :code:`belongsToFunctionBeamProcess`, :code:`critical`,
-            :code:`defaultHierarchy`, :code:`device`, :code:`id`, :code:`monitorable`, :code:`multiplexed`, :code:`cycleBound`,
-            :code:`parameterGroups`, :code:`parameterType`, :code:`propertySupportingPartialSet`, :code:`readable`,
-            :code:`reservedForOpExperts`, :code:`trimable`, :code:`valueDescriptor`, :code:`valueType`, :code:`lsaImplementation`,
-            :code:`writable`, :code:`propertyField`.
-        
-            Overrides:
-                 in class 
-        
-            Returns:
-                hashCode value
-        
-        
-        """
-        ...
-    def isCritical(self) -> bool:
-        """
-        
-            Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isCritical`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterRest`
-        
-            Returns:
-                The value of the :code:`critical` attribute
-        
-        
-        """
-        ...
-    def isCycleBound(self) -> bool:
-        """
-        
-            Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isCycleBound`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterRest`
-        
-            Returns:
-                The value of the :code:`cycleBound` attribute
-        
-        
-        """
-        ...
-    def isLsaImplementation(self) -> bool:
-        """
-        
-            Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isLsaImplementation`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterRest`
-        
-            Returns:
-                The value of the :code:`lsaImplementation` attribute
-        
-        
-        """
-        ...
-    def isMonitorable(self) -> bool:
-        """
-        
-            Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isMonitorable`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterRest`
-        
-            Returns:
-                The value of the :code:`monitorable` attribute
-        
-        
-        """
-        ...
-    def isMultiplexed(self) -> bool:
-        """
-        
-            Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isMultiplexed`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterRest`
-        
-            Returns:
-                The value of the :code:`multiplexed` attribute
-        
-        
-        """
-        ...
-    def isPropertySupportingPartialSet(self) -> bool:
-        """
-        
-            Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isPropertySupportingPartialSet`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterRest`
-        
-            Returns:
-                The value of the :code:`propertySupportingPartialSet` attribute
-        
-        
-        """
-        ...
-    def isReadable(self) -> bool:
-        """
-        
-            Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isReadable`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterRest`
-        
-            Returns:
-                The value of the :code:`readable` attribute
-        
-        
-        """
-        ...
-    def isReservedForOpExperts(self) -> bool:
-        """
-        
-            Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isReservedForOpExperts`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterRest`
-        
-            Returns:
-                The value of the :code:`reservedForOpExperts` attribute
-        
-        
-        """
-        ...
-    def isTrimable(self) -> bool:
-        """
-        
-            Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isTrimable`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterRest`
-        
-            Returns:
-                The value of the :code:`trimable` attribute
-        
-        
-        """
-        ...
-    def isWritable(self) -> bool:
-        """
-        
-            Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isWritable`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterRest`
-        
-            Returns:
-                The value of the :code:`writable` attribute
-        
-        
-        """
-        ...
-    def toString(self) -> str:
-        """
-            Prints the immutable value :code:`ParameterRest` with attribute values.
-        
-            Overrides:
-                 in class 
-        
-            Returns:
-                A string representation of the value
-        
-        
-        """
-        ...
-    def withBelongsToFunctionBeamProcess(self, boolean: bool) -> 'DefaultParameterRest':
-        """
-            Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.belongsToFunctionBeamProcess` attribute. A value equality check is
-            used to prevent copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (boolean): A new value for belongsToFunctionBeamProcess
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    def withCritical(self, boolean: bool) -> 'DefaultParameterRest':
-        """
-            Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isCritical` attribute. A value equality check is used to prevent
-            copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (boolean): A new value for critical
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    def withCycleBound(self, boolean: bool) -> 'DefaultParameterRest':
-        """
-            Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isCycleBound` attribute. A value equality check is used to prevent
-            copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (boolean): A new value for cycleBound
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    def withDefaultHierarchy(self, string: str) -> 'DefaultParameterRest':
-        """
-            Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.getDefaultHierarchy` attribute. An equals check used to prevent
-            copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): A new value for defaultHierarchy
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    def withDevice(self, deviceRest: DeviceRest) -> 'DefaultParameterRest':
-        """
-            Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.getDevice` attribute. A shallow reference equality check is used
-            to prevent copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (:class:`~cern.lsa.client.rest.api.v1.dto.DeviceRest`): A new value for device
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    def withId(self, long: int) -> 'DefaultParameterRest':
-        """
-            Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.getId` attribute. A value equality check is used to prevent
-            copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (long): A new value for id
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    def withLsaImplementation(self, boolean: bool) -> 'DefaultParameterRest':
-        """
-            Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isLsaImplementation` attribute. A value equality check is used to
-            prevent copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (boolean): A new value for lsaImplementation
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    def withMonitorable(self, boolean: bool) -> 'DefaultParameterRest':
-        """
-            Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isMonitorable` attribute. A value equality check is used to
-            prevent copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (boolean): A new value for monitorable
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    def withMultiplexed(self, boolean: bool) -> 'DefaultParameterRest':
-        """
-            Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isMultiplexed` attribute. A value equality check is used to
-            prevent copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (boolean): A new value for multiplexed
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    def withName(self, string: str) -> 'DefaultParameterRest':
-        """
-            Copy the current immutable object by setting a value for the :code:`name` attribute. An equals check used to prevent
-            copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): A new value for name
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    @typing.overload
-    def withParameterGroups(self, iterable: java.lang.Iterable[str]) -> 'DefaultParameterRest': ...
-    @typing.overload
-    def withParameterGroups(self, stringArray: typing.List[str]) -> 'DefaultParameterRest': ...
-    def withParameterType(self, parameterTypeRest: ParameterTypeRest) -> 'DefaultParameterRest':
-        """
-            Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.getParameterType` attribute. A shallow reference equality check is
-            used to prevent copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeRest`): A new value for parameterType
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    def withPropertyField(self, propertyFieldRest: PropertyFieldRest) -> 'DefaultParameterRest':
-        """
-            Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.getPropertyField` attribute. A shallow reference equality check is
-            used to prevent copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (:class:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldRest`): A new value for propertyField
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    def withPropertySupportingPartialSet(self, boolean: bool) -> 'DefaultParameterRest':
-        """
-            Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isPropertySupportingPartialSet` attribute. A value equality check
-            is used to prevent copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (boolean): A new value for propertySupportingPartialSet
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    def withReadable(self, boolean: bool) -> 'DefaultParameterRest':
-        """
-            Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isReadable` attribute. A value equality check is used to prevent
-            copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (boolean): A new value for readable
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    def withReservedForOpExperts(self, boolean: bool) -> 'DefaultParameterRest':
-        """
-            Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isReservedForOpExperts` attribute. A value equality check is used
-            to prevent copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (boolean): A new value for reservedForOpExperts
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    def withTrimable(self, boolean: bool) -> 'DefaultParameterRest':
-        """
-            Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isTrimable` attribute. A value equality check is used to prevent
-            copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (boolean): A new value for trimable
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    def withValueDescriptor(self, valueDescriptorRest: ValueDescriptorRest) -> 'DefaultParameterRest':
-        """
-            Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.getValueDescriptor` attribute. A shallow reference equality check
-            is used to prevent copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (:class:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorRest`): A new value for valueDescriptor
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    def withValueType(self, typeRest: TypeRest) -> 'DefaultParameterRest':
-        """
-            Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.getValueType` attribute. A shallow reference equality check is
-            used to prevent copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (:class:`~cern.lsa.client.rest.api.v1.dto.TypeRest`): A new value for valueType
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    def withWritable(self, boolean: bool) -> 'DefaultParameterRest':
-        """
-            Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterRest.isWritable` attribute. A value equality check is used to prevent
-            copying of the same value by returning :code:`this`.
-        
-            Parameters:
-                value (boolean): A new value for writable
-        
-            Returns:
-                A modified copy of the :code:`this` object
-        
-        
-        """
-        ...
-    class Builder:
-        def addAllParameterGroups(self, iterable: java.lang.Iterable[str]) -> 'DefaultParameterRest.Builder': ...
-        def addParameterGroup(self, string: str) -> 'DefaultParameterRest.Builder': ...
-        def addParameterGroups(self, stringArray: typing.List[str]) -> 'DefaultParameterRest.Builder': ...
-        def belongsToFunctionBeamProcess(self, boolean: bool) -> 'DefaultParameterRest.Builder': ...
-        def build(self) -> 'DefaultParameterRest': ...
-        def critical(self, boolean: bool) -> 'DefaultParameterRest.Builder': ...
-        def cycleBound(self, boolean: bool) -> 'DefaultParameterRest.Builder': ...
-        def defaultHierarchy(self, string: str) -> 'DefaultParameterRest.Builder': ...
-        def device(self, deviceRest: DeviceRest) -> 'DefaultParameterRest.Builder': ...
-        def id(self, long: int) -> 'DefaultParameterRest.Builder': ...
-        def lsaImplementation(self, boolean: bool) -> 'DefaultParameterRest.Builder': ...
-        def monitorable(self, boolean: bool) -> 'DefaultParameterRest.Builder': ...
-        def multiplexed(self, boolean: bool) -> 'DefaultParameterRest.Builder': ...
-        def name(self, string: str) -> 'DefaultParameterRest.Builder': ...
-        def parameterGroups(self, iterable: java.lang.Iterable[str]) -> 'DefaultParameterRest.Builder': ...
-        def parameterType(self, parameterTypeRest: ParameterTypeRest) -> 'DefaultParameterRest.Builder': ...
-        def propertyField(self, propertyFieldRest: PropertyFieldRest) -> 'DefaultParameterRest.Builder': ...
-        def propertySupportingPartialSet(self, boolean: bool) -> 'DefaultParameterRest.Builder': ...
-        def readable(self, boolean: bool) -> 'DefaultParameterRest.Builder': ...
-        def reservedForOpExperts(self, boolean: bool) -> 'DefaultParameterRest.Builder': ...
-        def trimable(self, boolean: bool) -> 'DefaultParameterRest.Builder': ...
-        def valueDescriptor(self, valueDescriptorRest: ValueDescriptorRest) -> 'DefaultParameterRest.Builder': ...
-        def valueType(self, typeRest: TypeRest) -> 'DefaultParameterRest.Builder': ...
-        def writable(self, boolean: bool) -> 'DefaultParameterRest.Builder': ...
-
-class DefaultParameterTreeDataRest(ParameterTreeDataRest):
-    """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParameterTreeDataRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataRest`
-    
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataRest`.
-    
-        Use the builder to create immutable instances: :code:`DefaultParameterTreeDataRest.builder()`.
-    """
-    @staticmethod
-    def builder() -> 'DefaultParameterTreeDataRest.Builder':
-        """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterTreeDataRest`.
-        
-            .. code-block: java
-            
-             DefaultParameterTreeDataRest.builder()
-                .addNode|addAllNodes(cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeRest) // :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataRest.getNodes` elements
-                .addRelation|addAllRelations(cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationRest) // :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataRest.getRelations` elements
-                .addStartNodeId|addAllStartNodeIds(long) // :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataRest.getStartNodeIds` elements
-                .build();
-             
-        
-            Returns:
-                A new DefaultParameterTreeDataRest builder
-        
-        
-        """
-        ...
-    @staticmethod
-    def copyOf(parameterTreeDataRest: ParameterTreeDataRest) -> 'DefaultParameterTreeDataRest':
-        """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataRest` value. Uses accessors to
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataDto` value. Uses accessors to
             get values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataDto`): The instance to copy
         
             Returns:
-                A copied immutable ParameterTreeDataRest instance
+                A copied immutable ParameterTreeDataDto instance
         
         
         """
         ...
     def equals(self, object: typing.Any) -> bool: ...
-    def getNodes(self) -> java.util.Set[ParameterTreeNodeRest]: ...
-    def getRelations(self) -> java.util.Set[ParameterTreeRelationRest]: ...
+    def getNodes(self) -> java.util.Set[ParameterTreeNodeDto]: ...
+    def getRelations(self) -> java.util.Set[ParameterTreeRelationDto]: ...
     def getStartNodeIds(self) -> java.util.Set[int]: ...
     def hashCode(self) -> int:
         """
@@ -4583,7 +4585,7 @@ class DefaultParameterTreeDataRest(ParameterTreeDataRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`ParameterTreeDataRest` with attribute values.
+            Prints the immutable value :code:`ParameterTreeDataDto` with attribute values.
         
             Overrides:
                  in class 
@@ -4595,25 +4597,25 @@ class DefaultParameterTreeDataRest(ParameterTreeDataRest):
         """
         ...
     @typing.overload
-    def withNodes(self, parameterTreeNodeRestArray: typing.List[ParameterTreeNodeRest]) -> 'DefaultParameterTreeDataRest':
+    def withNodes(self, parameterTreeNodeDtoArray: typing.List[ParameterTreeNodeDto]) -> 'DefaultParameterTreeDataDto':
         """
             Copy the current immutable object with elements that replace the content of
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataRest.getNodes`.
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataDto.getNodes`.
         
             Parameters:
-                elements (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeRest`...): The elements to set
+                elements (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeDto`...): The elements to set
         
             Returns:
                 A modified copy of :code:`this` object
         
-        public final :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterTreeDataRest` withNodes (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeRest`> elements)
+        public final :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterTreeDataDto` withNodes (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeDto`> elements)
         
             Copy the current immutable object with elements that replace the content of
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataRest.getNodes`. A shallow reference equality check is used to
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataDto.getNodes`. A shallow reference equality check is used to
             prevent copying of the same value by returning :code:`this`.
         
             Parameters:
-                elements (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeRest`> elements): An iterable of nodes elements to set
+                elements (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeDto`> elements): An iterable of nodes elements to set
         
             Returns:
                 A modified copy of :code:`this` object
@@ -4622,27 +4624,27 @@ class DefaultParameterTreeDataRest(ParameterTreeDataRest):
         """
         ...
     @typing.overload
-    def withNodes(self, iterable: java.lang.Iterable[ParameterTreeNodeRest]) -> 'DefaultParameterTreeDataRest': ...
+    def withNodes(self, iterable: java.lang.Iterable[ParameterTreeNodeDto]) -> 'DefaultParameterTreeDataDto': ...
     @typing.overload
-    def withRelations(self, parameterTreeRelationRestArray: typing.List[ParameterTreeRelationRest]) -> 'DefaultParameterTreeDataRest':
+    def withRelations(self, parameterTreeRelationDtoArray: typing.List[ParameterTreeRelationDto]) -> 'DefaultParameterTreeDataDto':
         """
             Copy the current immutable object with elements that replace the content of
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataRest.getRelations`.
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataDto.getRelations`.
         
             Parameters:
-                elements (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationRest`...): The elements to set
+                elements (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationDto`...): The elements to set
         
             Returns:
                 A modified copy of :code:`this` object
         
-        public final :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterTreeDataRest` withRelations (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationRest`> elements)
+        public final :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterTreeDataDto` withRelations (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationDto`> elements)
         
             Copy the current immutable object with elements that replace the content of
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataRest.getRelations`. A shallow reference equality check is used
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataDto.getRelations`. A shallow reference equality check is used
             to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
-                elements (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationRest`> elements): An iterable of relations elements to set
+                elements (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationDto`> elements): An iterable of relations elements to set
         
             Returns:
                 A modified copy of :code:`this` object
@@ -4651,12 +4653,12 @@ class DefaultParameterTreeDataRest(ParameterTreeDataRest):
         """
         ...
     @typing.overload
-    def withRelations(self, iterable: java.lang.Iterable[ParameterTreeRelationRest]) -> 'DefaultParameterTreeDataRest': ...
+    def withRelations(self, iterable: java.lang.Iterable[ParameterTreeRelationDto]) -> 'DefaultParameterTreeDataDto': ...
     @typing.overload
-    def withStartNodeIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParameterTreeDataRest':
+    def withStartNodeIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParameterTreeDataDto':
         """
             Copy the current immutable object with elements that replace the content of
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataRest.getStartNodeIds`.
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataDto.getStartNodeIds`.
         
             Parameters:
                 elements (long...): The elements to set
@@ -4664,10 +4666,10 @@ class DefaultParameterTreeDataRest(ParameterTreeDataRest):
             Returns:
                 A modified copy of :code:`this` object
         
-        public final :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterTreeDataRest` withStartNodeIds (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<`Long <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Long.html?is-external=true>`> elements)
+        public final :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterTreeDataDto` withStartNodeIds (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<`Long <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Long.html?is-external=true>`> elements)
         
             Copy the current immutable object with elements that replace the content of
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataRest.getStartNodeIds`. A shallow reference equality check is
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeDataDto.getStartNodeIds`. A shallow reference equality check is
             used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -4680,71 +4682,71 @@ class DefaultParameterTreeDataRest(ParameterTreeDataRest):
         """
         ...
     @typing.overload
-    def withStartNodeIds(self, longArray: typing.List[int]) -> 'DefaultParameterTreeDataRest': ...
+    def withStartNodeIds(self, longArray: typing.List[int]) -> 'DefaultParameterTreeDataDto': ...
     class Builder:
-        def addAllNodes(self, iterable: java.lang.Iterable[ParameterTreeNodeRest]) -> 'DefaultParameterTreeDataRest.Builder': ...
-        def addAllRelations(self, iterable: java.lang.Iterable[ParameterTreeRelationRest]) -> 'DefaultParameterTreeDataRest.Builder': ...
-        def addAllStartNodeIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParameterTreeDataRest.Builder': ...
-        def addNode(self, parameterTreeNodeRest: ParameterTreeNodeRest) -> 'DefaultParameterTreeDataRest.Builder': ...
-        def addNodes(self, parameterTreeNodeRestArray: typing.List[ParameterTreeNodeRest]) -> 'DefaultParameterTreeDataRest.Builder': ...
-        def addRelation(self, parameterTreeRelationRest: ParameterTreeRelationRest) -> 'DefaultParameterTreeDataRest.Builder': ...
-        def addRelations(self, parameterTreeRelationRestArray: typing.List[ParameterTreeRelationRest]) -> 'DefaultParameterTreeDataRest.Builder': ...
-        def addStartNodeId(self, long: int) -> 'DefaultParameterTreeDataRest.Builder': ...
-        def addStartNodeIds(self, longArray: typing.List[int]) -> 'DefaultParameterTreeDataRest.Builder': ...
-        def build(self) -> 'DefaultParameterTreeDataRest': ...
-        def nodes(self, iterable: java.lang.Iterable[ParameterTreeNodeRest]) -> 'DefaultParameterTreeDataRest.Builder': ...
-        def relations(self, iterable: java.lang.Iterable[ParameterTreeRelationRest]) -> 'DefaultParameterTreeDataRest.Builder': ...
-        def startNodeIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParameterTreeDataRest.Builder': ...
+        def addAllNodes(self, iterable: java.lang.Iterable[ParameterTreeNodeDto]) -> 'DefaultParameterTreeDataDto.Builder': ...
+        def addAllRelations(self, iterable: java.lang.Iterable[ParameterTreeRelationDto]) -> 'DefaultParameterTreeDataDto.Builder': ...
+        def addAllStartNodeIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParameterTreeDataDto.Builder': ...
+        def addNode(self, parameterTreeNodeDto: ParameterTreeNodeDto) -> 'DefaultParameterTreeDataDto.Builder': ...
+        def addNodes(self, parameterTreeNodeDtoArray: typing.List[ParameterTreeNodeDto]) -> 'DefaultParameterTreeDataDto.Builder': ...
+        def addRelation(self, parameterTreeRelationDto: ParameterTreeRelationDto) -> 'DefaultParameterTreeDataDto.Builder': ...
+        def addRelations(self, parameterTreeRelationDtoArray: typing.List[ParameterTreeRelationDto]) -> 'DefaultParameterTreeDataDto.Builder': ...
+        def addStartNodeId(self, long: int) -> 'DefaultParameterTreeDataDto.Builder': ...
+        def addStartNodeIds(self, longArray: typing.List[int]) -> 'DefaultParameterTreeDataDto.Builder': ...
+        def build(self) -> 'DefaultParameterTreeDataDto': ...
+        def nodes(self, iterable: java.lang.Iterable[ParameterTreeNodeDto]) -> 'DefaultParameterTreeDataDto.Builder': ...
+        def relations(self, iterable: java.lang.Iterable[ParameterTreeRelationDto]) -> 'DefaultParameterTreeDataDto.Builder': ...
+        def startNodeIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParameterTreeDataDto.Builder': ...
 
-class DefaultParameterTreeNodeRest(ParameterTreeNodeRest):
+class DefaultParameterTreeNodeDto(ParameterTreeNodeDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParameterTreeNodeRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParameterTreeNodeDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultParameterTreeNodeRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultParameterTreeNodeDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultParameterTreeNodeRest.Builder':
+    def builder() -> 'DefaultParameterTreeNodeDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterTreeNodeRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterTreeNodeDto`.
         
             .. code-block: java
             
-             DefaultParameterTreeNodeRest.builder()
-                .parameter(cern.lsa.client.rest.api.v1.dto.ParameterRest) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeRest.getParameter`
-                .source(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeRest.isSource`
+             DefaultParameterTreeNodeDto.builder()
+                .parameter(cern.lsa.client.rest.api.v1.dto.ParameterDto) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeDto.getParameter`
+                .source(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeDto.isSource`
                 .build();
              
         
             Returns:
-                A new DefaultParameterTreeNodeRest builder
+                A new DefaultParameterTreeNodeDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(parameterTreeNodeRest: ParameterTreeNodeRest) -> 'DefaultParameterTreeNodeRest':
+    def copyOf(parameterTreeNodeDto: ParameterTreeNodeDto) -> 'DefaultParameterTreeNodeDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeRest` value. Uses accessors to
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeDto` value. Uses accessors to
             get values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeDto`): The instance to copy
         
             Returns:
-                A copied immutable ParameterTreeNodeRest instance
+                A copied immutable ParameterTreeNodeDto instance
         
         
         """
         ...
     def equals(self, object: typing.Any) -> bool: ...
-    def getParameter(self) -> ParameterRest:
+    def getParameter(self) -> ParameterDto:
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeRest.getParameter`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeDto.getParameter`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeDto`
         
             Returns:
                 The value of the :code:`parameter` attribute
@@ -4769,8 +4771,8 @@ class DefaultParameterTreeNodeRest(ParameterTreeNodeRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeRest.isSource`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeDto.isSource`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeDto`
         
             Returns:
                 The value of the :code:`source` attribute
@@ -4780,7 +4782,7 @@ class DefaultParameterTreeNodeRest(ParameterTreeNodeRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`ParameterTreeNodeRest` with attribute values.
+            Prints the immutable value :code:`ParameterTreeNodeDto` with attribute values.
         
             Overrides:
                  in class 
@@ -4791,14 +4793,14 @@ class DefaultParameterTreeNodeRest(ParameterTreeNodeRest):
         
         """
         ...
-    def withParameter(self, parameterRest: ParameterRest) -> 'DefaultParameterTreeNodeRest':
+    def withParameter(self, parameterDto: ParameterDto) -> 'DefaultParameterTreeNodeDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeRest.getParameter` attribute. A shallow reference equality
-            check is used to prevent copying of the same value by returning :code:`this`.
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeDto.getParameter` attribute. A shallow reference equality check
+            is used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
-                value (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterRest`): A new value for parameter
+                value (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterDto`): A new value for parameter
         
             Returns:
                 A modified copy of the :code:`this` object
@@ -4806,10 +4808,10 @@ class DefaultParameterTreeNodeRest(ParameterTreeNodeRest):
         
         """
         ...
-    def withSource(self, boolean: bool) -> 'DefaultParameterTreeNodeRest':
+    def withSource(self, boolean: bool) -> 'DefaultParameterTreeNodeDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeRest.isSource` attribute. A value equality check is used to
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeNodeDto.isSource` attribute. A value equality check is used to
             prevent copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -4822,48 +4824,48 @@ class DefaultParameterTreeNodeRest(ParameterTreeNodeRest):
         """
         ...
     class Builder:
-        def build(self) -> 'DefaultParameterTreeNodeRest': ...
-        def parameter(self, parameterRest: ParameterRest) -> 'DefaultParameterTreeNodeRest.Builder': ...
-        def source(self, boolean: bool) -> 'DefaultParameterTreeNodeRest.Builder': ...
+        def build(self) -> 'DefaultParameterTreeNodeDto': ...
+        def parameter(self, parameterDto: ParameterDto) -> 'DefaultParameterTreeNodeDto.Builder': ...
+        def source(self, boolean: bool) -> 'DefaultParameterTreeNodeDto.Builder': ...
 
-class DefaultParameterTreeRelationRest(ParameterTreeRelationRest):
+class DefaultParameterTreeRelationDto(ParameterTreeRelationDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParameterTreeRelationRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParameterTreeRelationDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultParameterTreeRelationRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultParameterTreeRelationDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultParameterTreeRelationRest.Builder':
+    def builder() -> 'DefaultParameterTreeRelationDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterTreeRelationRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterTreeRelationDto`.
         
             .. code-block: java
             
-             DefaultParameterTreeRelationRest.builder()
-                .parentParameterId(long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationRest.getParentParameterId`
-                .childParameterId(long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationRest.getChildParameterId`
+             DefaultParameterTreeRelationDto.builder()
+                .parentParameterId(long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationDto.getParentParameterId`
+                .childParameterId(long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationDto.getChildParameterId`
                 .build();
              
         
             Returns:
-                A new DefaultParameterTreeRelationRest builder
+                A new DefaultParameterTreeRelationDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(parameterTreeRelationRest: ParameterTreeRelationRest) -> 'DefaultParameterTreeRelationRest':
+    def copyOf(parameterTreeRelationDto: ParameterTreeRelationDto) -> 'DefaultParameterTreeRelationDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationRest` value. Uses accessors
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationDto` value. Uses accessors
             to get values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationDto`): The instance to copy
         
             Returns:
-                A copied immutable ParameterTreeRelationRest instance
+                A copied immutable ParameterTreeRelationDto instance
         
         
         """
@@ -4873,8 +4875,8 @@ class DefaultParameterTreeRelationRest(ParameterTreeRelationRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationRest.getChildParameterId`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationDto.getChildParameterId`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationDto`
         
             Returns:
                 The value of the :code:`childParameterId` attribute
@@ -4886,8 +4888,8 @@ class DefaultParameterTreeRelationRest(ParameterTreeRelationRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationRest.getParentParameterId`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationDto.getParentParameterId`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationDto`
         
             Returns:
                 The value of the :code:`parentParameterId` attribute
@@ -4910,7 +4912,7 @@ class DefaultParameterTreeRelationRest(ParameterTreeRelationRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`ParameterTreeRelationRest` with attribute values.
+            Prints the immutable value :code:`ParameterTreeRelationDto` with attribute values.
         
             Overrides:
                  in class 
@@ -4921,10 +4923,10 @@ class DefaultParameterTreeRelationRest(ParameterTreeRelationRest):
         
         """
         ...
-    def withChildParameterId(self, long: int) -> 'DefaultParameterTreeRelationRest':
+    def withChildParameterId(self, long: int) -> 'DefaultParameterTreeRelationDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationRest.getChildParameterId` attribute. A value equality check
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationDto.getChildParameterId` attribute. A value equality check
             is used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -4936,11 +4938,11 @@ class DefaultParameterTreeRelationRest(ParameterTreeRelationRest):
         
         """
         ...
-    def withParentParameterId(self, long: int) -> 'DefaultParameterTreeRelationRest':
+    def withParentParameterId(self, long: int) -> 'DefaultParameterTreeRelationDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationRest.getParentParameterId` attribute. A value equality
-            check is used to prevent copying of the same value by returning :code:`this`.
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreeRelationDto.getParentParameterId` attribute. A value equality check
+            is used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
                 value (long): A new value for parentParameterId
@@ -4952,49 +4954,49 @@ class DefaultParameterTreeRelationRest(ParameterTreeRelationRest):
         """
         ...
     class Builder:
-        def build(self) -> 'DefaultParameterTreeRelationRest': ...
-        def childParameterId(self, long: int) -> 'DefaultParameterTreeRelationRest.Builder': ...
-        def parentParameterId(self, long: int) -> 'DefaultParameterTreeRelationRest.Builder': ...
+        def build(self) -> 'DefaultParameterTreeRelationDto': ...
+        def childParameterId(self, long: int) -> 'DefaultParameterTreeRelationDto.Builder': ...
+        def parentParameterId(self, long: int) -> 'DefaultParameterTreeRelationDto.Builder': ...
 
-class DefaultParameterTreesRequestRest(ParameterTreesRequestRest):
+class DefaultParameterTreesRequestDto(ParameterTreesRequestDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParameterTreesRequestRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParameterTreesRequestDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultParameterTreesRequestRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultParameterTreesRequestDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultParameterTreesRequestRest.Builder':
+    def builder() -> 'DefaultParameterTreesRequestDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterTreesRequestRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterTreesRequestDto`.
         
             .. code-block: java
             
-             DefaultParameterTreesRequestRest.builder()
-                .addParameterName|addAllParameterNames(String) // :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestRest.getParameterNames` elements
-                .hierarchy(String) // optional :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestRest.getHierarchy`
-                .treeDirection(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestRest.getTreeDirection`
+             DefaultParameterTreesRequestDto.builder()
+                .addParameterName|addAllParameterNames(String) // :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestDto.getParameterNames` elements
+                .hierarchy(String) // optional :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestDto.getHierarchy`
+                .treeDirection(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestDto.getTreeDirection`
                 .build();
              
         
             Returns:
-                A new DefaultParameterTreesRequestRest builder
+                A new DefaultParameterTreesRequestDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(parameterTreesRequestRest: ParameterTreesRequestRest) -> 'DefaultParameterTreesRequestRest':
+    def copyOf(parameterTreesRequestDto: ParameterTreesRequestDto) -> 'DefaultParameterTreesRequestDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestRest` value. Uses accessors
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestDto` value. Uses accessors
             to get values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestDto`): The instance to copy
         
             Returns:
-                A copied immutable ParameterTreesRequestRest instance
+                A copied immutable ParameterTreesRequestDto instance
         
         
         """
@@ -5004,8 +5006,8 @@ class DefaultParameterTreesRequestRest(ParameterTreesRequestRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestRest.getHierarchy`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestDto.getHierarchy`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestDto`
         
             Returns:
                 The value of the :code:`hierarchy` attribute
@@ -5018,8 +5020,8 @@ class DefaultParameterTreesRequestRest(ParameterTreesRequestRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestRest.getTreeDirection`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestDto.getTreeDirection`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestDto`
         
             Returns:
                 The value of the :code:`treeDirection` attribute
@@ -5042,7 +5044,7 @@ class DefaultParameterTreesRequestRest(ParameterTreesRequestRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`ParameterTreesRequestRest` with attribute values.
+            Prints the immutable value :code:`ParameterTreesRequestDto` with attribute values.
         
             Overrides:
                  in class 
@@ -5053,10 +5055,10 @@ class DefaultParameterTreesRequestRest(ParameterTreesRequestRest):
         
         """
         ...
-    def withHierarchy(self, string: str) -> 'DefaultParameterTreesRequestRest':
+    def withHierarchy(self, string: str) -> 'DefaultParameterTreesRequestDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestRest.getHierarchy` attribute. An equals check used to
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestDto.getHierarchy` attribute. An equals check used to
             prevent copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -5069,13 +5071,13 @@ class DefaultParameterTreesRequestRest(ParameterTreesRequestRest):
         """
         ...
     @typing.overload
-    def withParameterNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParameterTreesRequestRest': ...
+    def withParameterNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParameterTreesRequestDto': ...
     @typing.overload
-    def withParameterNames(self, stringArray: typing.List[str]) -> 'DefaultParameterTreesRequestRest': ...
-    def withTreeDirection(self, string: str) -> 'DefaultParameterTreesRequestRest':
+    def withParameterNames(self, stringArray: typing.List[str]) -> 'DefaultParameterTreesRequestDto': ...
+    def withTreeDirection(self, string: str) -> 'DefaultParameterTreesRequestDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestRest.getTreeDirection` attribute. An equals check used to
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTreesRequestDto.getTreeDirection` attribute. An equals check used to
             prevent copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -5088,51 +5090,51 @@ class DefaultParameterTreesRequestRest(ParameterTreesRequestRest):
         """
         ...
     class Builder:
-        def addAllParameterNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParameterTreesRequestRest.Builder': ...
-        def addParameterName(self, string: str) -> 'DefaultParameterTreesRequestRest.Builder': ...
-        def addParameterNames(self, stringArray: typing.List[str]) -> 'DefaultParameterTreesRequestRest.Builder': ...
-        def build(self) -> 'DefaultParameterTreesRequestRest': ...
-        def hierarchy(self, string: str) -> 'DefaultParameterTreesRequestRest.Builder': ...
-        def parameterNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParameterTreesRequestRest.Builder': ...
-        def treeDirection(self, string: str) -> 'DefaultParameterTreesRequestRest.Builder': ...
+        def addAllParameterNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParameterTreesRequestDto.Builder': ...
+        def addParameterName(self, string: str) -> 'DefaultParameterTreesRequestDto.Builder': ...
+        def addParameterNames(self, stringArray: typing.List[str]) -> 'DefaultParameterTreesRequestDto.Builder': ...
+        def build(self) -> 'DefaultParameterTreesRequestDto': ...
+        def hierarchy(self, string: str) -> 'DefaultParameterTreesRequestDto.Builder': ...
+        def parameterNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParameterTreesRequestDto.Builder': ...
+        def treeDirection(self, string: str) -> 'DefaultParameterTreesRequestDto.Builder': ...
 
-class DefaultParameterTypeCategoryRest(ParameterTypeCategoryRest):
+class DefaultParameterTypeCategoryDto(ParameterTypeCategoryDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParameterTypeCategoryRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeCategoryRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParameterTypeCategoryDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeCategoryDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeCategoryRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeCategoryDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultParameterTypeCategoryRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultParameterTypeCategoryDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultParameterTypeCategoryRest.Builder':
+    def builder() -> 'DefaultParameterTypeCategoryDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterTypeCategoryRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterTypeCategoryDto`.
         
             .. code-block: java
             
-             DefaultParameterTypeCategoryRest.builder()
+             DefaultParameterTypeCategoryDto.builder()
                 .name(String) // required name
                 .build();
              
         
             Returns:
-                A new DefaultParameterTypeCategoryRest builder
+                A new DefaultParameterTypeCategoryDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(parameterTypeCategoryRest: ParameterTypeCategoryRest) -> 'DefaultParameterTypeCategoryRest':
+    def copyOf(parameterTypeCategoryDto: ParameterTypeCategoryDto) -> 'DefaultParameterTypeCategoryDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeCategoryRest` value. Uses accessors
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeCategoryDto` value. Uses accessors
             to get values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeCategoryRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeCategoryDto`): The instance to copy
         
             Returns:
-                A copied immutable ParameterTypeCategoryRest instance
+                A copied immutable ParameterTypeCategoryDto instance
         
         
         """
@@ -5165,7 +5167,7 @@ class DefaultParameterTypeCategoryRest(ParameterTypeCategoryRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`ParameterTypeCategoryRest` with attribute values.
+            Prints the immutable value :code:`ParameterTypeCategoryDto` with attribute values.
         
             Overrides:
                  in class 
@@ -5176,7 +5178,7 @@ class DefaultParameterTypeCategoryRest(ParameterTypeCategoryRest):
         
         """
         ...
-    def withName(self, string: str) -> 'DefaultParameterTypeCategoryRest':
+    def withName(self, string: str) -> 'DefaultParameterTypeCategoryDto':
         """
             Copy the current immutable object by setting a value for the :code:`name` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
@@ -5191,60 +5193,60 @@ class DefaultParameterTypeCategoryRest(ParameterTypeCategoryRest):
         """
         ...
     class Builder:
-        def build(self) -> 'DefaultParameterTypeCategoryRest': ...
-        def name(self, string: str) -> 'DefaultParameterTypeCategoryRest.Builder': ...
+        def build(self) -> 'DefaultParameterTypeCategoryDto': ...
+        def name(self, string: str) -> 'DefaultParameterTypeCategoryDto.Builder': ...
 
-class DefaultParameterTypeRest(ParameterTypeRest):
+class DefaultParameterTypeDto(ParameterTypeDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParameterTypeRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParameterTypeDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultParameterTypeRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultParameterTypeDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultParameterTypeRest.Builder':
+    def builder() -> 'DefaultParameterTypeDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterTypeRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterTypeDto`.
         
             .. code-block: java
             
-             DefaultParameterTypeRest.builder()
+             DefaultParameterTypeDto.builder()
                 .name(String) // required name
-                .id(long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeRest.getId`
-                .linkRuleApplicable(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeRest.isLinkRuleApplicable`
-                .category(cern.lsa.client.rest.api.v1.dto.ParameterTypeCategoryRest) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeRest.getCategory`
+                .id(long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeDto.getId`
+                .linkRuleApplicable(boolean) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeDto.isLinkRuleApplicable`
+                .category(cern.lsa.client.rest.api.v1.dto.ParameterTypeCategoryDto) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeDto.getCategory`
                 .build();
              
         
             Returns:
-                A new DefaultParameterTypeRest builder
+                A new DefaultParameterTypeDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(parameterTypeRest: ParameterTypeRest) -> 'DefaultParameterTypeRest':
+    def copyOf(parameterTypeDto: ParameterTypeDto) -> 'DefaultParameterTypeDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeRest` value. Uses accessors to get
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeDto` value. Uses accessors to get
             values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeDto`): The instance to copy
         
             Returns:
-                A copied immutable ParameterTypeRest instance
+                A copied immutable ParameterTypeDto instance
         
         
         """
         ...
     def equals(self, object: typing.Any) -> bool: ...
-    def getCategory(self) -> ParameterTypeCategoryRest:
+    def getCategory(self) -> ParameterTypeCategoryDto:
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeRest.getCategory`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeDto.getCategory`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeDto`
         
             Returns:
                 The value of the :code:`category` attribute
@@ -5256,8 +5258,8 @@ class DefaultParameterTypeRest(ParameterTypeRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeRest.getId`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeDto.getId`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeDto`
         
             Returns:
                 The value of the :code:`id` attribute
@@ -5294,8 +5296,8 @@ class DefaultParameterTypeRest(ParameterTypeRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeRest.isLinkRuleApplicable`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeDto.isLinkRuleApplicable`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeDto`
         
             Returns:
                 The value of the :code:`linkRuleApplicable` attribute
@@ -5305,7 +5307,7 @@ class DefaultParameterTypeRest(ParameterTypeRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`ParameterTypeRest` with attribute values.
+            Prints the immutable value :code:`ParameterTypeDto` with attribute values.
         
             Overrides:
                  in class 
@@ -5316,14 +5318,14 @@ class DefaultParameterTypeRest(ParameterTypeRest):
         
         """
         ...
-    def withCategory(self, parameterTypeCategoryRest: ParameterTypeCategoryRest) -> 'DefaultParameterTypeRest':
+    def withCategory(self, parameterTypeCategoryDto: ParameterTypeCategoryDto) -> 'DefaultParameterTypeDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeRest.getCategory` attribute. A shallow reference equality check is
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeDto.getCategory` attribute. A shallow reference equality check is
             used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
-                value (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeCategoryRest`): A new value for category
+                value (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeCategoryDto`): A new value for category
         
             Returns:
                 A modified copy of the :code:`this` object
@@ -5331,10 +5333,10 @@ class DefaultParameterTypeRest(ParameterTypeRest):
         
         """
         ...
-    def withId(self, long: int) -> 'DefaultParameterTypeRest':
+    def withId(self, long: int) -> 'DefaultParameterTypeDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeRest.getId` attribute. A value equality check is used to prevent
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeDto.getId` attribute. A value equality check is used to prevent
             copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -5346,11 +5348,11 @@ class DefaultParameterTypeRest(ParameterTypeRest):
         
         """
         ...
-    def withLinkRuleApplicable(self, boolean: bool) -> 'DefaultParameterTypeRest':
+    def withLinkRuleApplicable(self, boolean: bool) -> 'DefaultParameterTypeDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeRest.isLinkRuleApplicable` attribute. A value equality check is
-            used to prevent copying of the same value by returning :code:`this`.
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypeDto.isLinkRuleApplicable` attribute. A value equality check is used
+            to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
                 value (boolean): A new value for linkRuleApplicable
@@ -5361,7 +5363,7 @@ class DefaultParameterTypeRest(ParameterTypeRest):
         
         """
         ...
-    def withName(self, string: str) -> 'DefaultParameterTypeRest':
+    def withName(self, string: str) -> 'DefaultParameterTypeDto':
         """
             Copy the current immutable object by setting a value for the :code:`name` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
@@ -5376,50 +5378,50 @@ class DefaultParameterTypeRest(ParameterTypeRest):
         """
         ...
     class Builder:
-        def build(self) -> 'DefaultParameterTypeRest': ...
-        def category(self, parameterTypeCategoryRest: ParameterTypeCategoryRest) -> 'DefaultParameterTypeRest.Builder': ...
-        def id(self, long: int) -> 'DefaultParameterTypeRest.Builder': ...
-        def linkRuleApplicable(self, boolean: bool) -> 'DefaultParameterTypeRest.Builder': ...
-        def name(self, string: str) -> 'DefaultParameterTypeRest.Builder': ...
+        def build(self) -> 'DefaultParameterTypeDto': ...
+        def category(self, parameterTypeCategoryDto: ParameterTypeCategoryDto) -> 'DefaultParameterTypeDto.Builder': ...
+        def id(self, long: int) -> 'DefaultParameterTypeDto.Builder': ...
+        def linkRuleApplicable(self, boolean: bool) -> 'DefaultParameterTypeDto.Builder': ...
+        def name(self, string: str) -> 'DefaultParameterTypeDto.Builder': ...
 
-class DefaultParameterTypesRequestRest(ParameterTypesRequestRest):
+class DefaultParameterTypesRequestDto(ParameterTypesRequestDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParameterTypesRequestRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypesRequestRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParameterTypesRequestDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypesRequestDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypesRequestRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypesRequestDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultParameterTypesRequestRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultParameterTypesRequestDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultParameterTypesRequestRest.Builder':
+    def builder() -> 'DefaultParameterTypesRequestDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterTypesRequestRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParameterTypesRequestDto`.
         
             .. code-block: java
             
-             DefaultParameterTypesRequestRest.builder()
-                .addParameterTypeName|addAllParameterTypeNames(String) // :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypesRequestRest.getParameterTypeNames` elements
-                .allParameterTypesRequested(boolean) // optional :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypesRequestRest.isAllParameterTypesRequested`
+             DefaultParameterTypesRequestDto.builder()
+                .addParameterTypeName|addAllParameterTypeNames(String) // :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypesRequestDto.getParameterTypeNames` elements
+                .allParameterTypesRequested(boolean) // optional :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypesRequestDto.isAllParameterTypesRequested`
                 .build();
              
         
             Returns:
-                A new DefaultParameterTypesRequestRest builder
+                A new DefaultParameterTypesRequestDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(parameterTypesRequestRest: ParameterTypesRequestRest) -> 'DefaultParameterTypesRequestRest':
+    def copyOf(parameterTypesRequestDto: ParameterTypesRequestDto) -> 'DefaultParameterTypesRequestDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypesRequestRest` value. Uses accessors
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypesRequestDto` value. Uses accessors
             to get values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypesRequestRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypesRequestDto`): The instance to copy
         
             Returns:
-                A copied immutable ParameterTypesRequestRest instance
+                A copied immutable ParameterTypesRequestDto instance
         
         
         """
@@ -5443,8 +5445,8 @@ class DefaultParameterTypesRequestRest(ParameterTypesRequestRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypesRequestRest.isAllParameterTypesRequested`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypesRequestRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypesRequestDto.isAllParameterTypesRequested`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParameterTypesRequestDto`
         
             Returns:
                 The value of the :code:`allParameterTypesRequested` attribute
@@ -5454,7 +5456,7 @@ class DefaultParameterTypesRequestRest(ParameterTypesRequestRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`ParameterTypesRequestRest` with attribute values.
+            Prints the immutable value :code:`ParameterTypesRequestDto` with attribute values.
         
             Overrides:
                  in class 
@@ -5465,10 +5467,10 @@ class DefaultParameterTypesRequestRest(ParameterTypesRequestRest):
         
         """
         ...
-    def withAllParameterTypesRequested(self, boolean: bool) -> 'DefaultParameterTypesRequestRest':
+    def withAllParameterTypesRequested(self, boolean: bool) -> 'DefaultParameterTypesRequestDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypesRequestRest.isAllParameterTypesRequested` attribute. A value
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParameterTypesRequestDto.isAllParameterTypesRequested` attribute. A value
             equality check is used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -5481,70 +5483,70 @@ class DefaultParameterTypesRequestRest(ParameterTypesRequestRest):
         """
         ...
     @typing.overload
-    def withParameterTypeNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParameterTypesRequestRest': ...
+    def withParameterTypeNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParameterTypesRequestDto': ...
     @typing.overload
-    def withParameterTypeNames(self, stringArray: typing.List[str]) -> 'DefaultParameterTypesRequestRest': ...
+    def withParameterTypeNames(self, stringArray: typing.List[str]) -> 'DefaultParameterTypesRequestDto': ...
     class Builder:
-        def addAllParameterTypeNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParameterTypesRequestRest.Builder': ...
-        def addParameterTypeName(self, string: str) -> 'DefaultParameterTypesRequestRest.Builder': ...
-        def addParameterTypeNames(self, stringArray: typing.List[str]) -> 'DefaultParameterTypesRequestRest.Builder': ...
-        def allParameterTypesRequested(self, boolean: bool) -> 'DefaultParameterTypesRequestRest.Builder': ...
-        def build(self) -> 'DefaultParameterTypesRequestRest': ...
-        def parameterTypeNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParameterTypesRequestRest.Builder': ...
+        def addAllParameterTypeNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParameterTypesRequestDto.Builder': ...
+        def addParameterTypeName(self, string: str) -> 'DefaultParameterTypesRequestDto.Builder': ...
+        def addParameterTypeNames(self, stringArray: typing.List[str]) -> 'DefaultParameterTypesRequestDto.Builder': ...
+        def allParameterTypesRequested(self, boolean: bool) -> 'DefaultParameterTypesRequestDto.Builder': ...
+        def build(self) -> 'DefaultParameterTypesRequestDto': ...
+        def parameterTypeNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParameterTypesRequestDto.Builder': ...
 
-class DefaultParametersRequestRest(ParametersRequestRest):
+class DefaultParametersRequestDto(ParametersRequestDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParametersRequestRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParametersRequestDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultParametersRequestRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultParametersRequestDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultParametersRequestRest.Builder':
+    def builder() -> 'DefaultParametersRequestDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParametersRequestRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParametersRequestDto`.
         
             .. code-block: java
             
-             DefaultParametersRequestRest.builder()
-                .acceleratorName(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestRest.getAcceleratorName`
-                .parameterNames(Set<String> | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestRest.getParameterNames`
-                .propertyFieldIds(Set<Long> | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestRest.getPropertyFieldIds`
-                .acceleratorZoneNames(Set<String> | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestRest.getAcceleratorZoneNames`
-                .particleTransferNames(Set<String> | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestRest.getParticleTransferNames`
-                .parameterTypeNames(Set<String> | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestRest.getParameterTypeNames`
-                .parameterGroups(Set<String> | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestRest.getParameterGroups`
-                .deviceNames(Set<String> | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestRest.getDeviceNames`
-                .deviceIds(Set<Long> | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestRest.getDeviceIds`
-                .propertyNames(Set<String> | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestRest.getPropertyNames`
-                .multiplexed(Boolean | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestRest.isMultiplexed`
-                .lsaImplementation(Boolean | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestRest.isLsaImplementation`
-                .writable(Boolean | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestRest.isWritable`
-                .readable(Boolean | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestRest.isReadable`
-                .parameterNamePattern(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestRest.getParameterNamePattern`
-                .critical(Boolean | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestRest.isCritical`
-                .valueTypes(Set<String> | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestRest.getValueTypes`
+             DefaultParametersRequestDto.builder()
+                .acceleratorName(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestDto.getAcceleratorName`
+                .parameterNames(Set<String> | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestDto.getParameterNames`
+                .propertyFieldIds(Set<Long> | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestDto.getPropertyFieldIds`
+                .acceleratorZoneNames(Set<String> | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestDto.getAcceleratorZoneNames`
+                .particleTransferNames(Set<String> | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestDto.getParticleTransferNames`
+                .parameterTypeNames(Set<String> | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestDto.getParameterTypeNames`
+                .parameterGroups(Set<String> | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestDto.getParameterGroups`
+                .deviceNames(Set<String> | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestDto.getDeviceNames`
+                .deviceIds(Set<Long> | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestDto.getDeviceIds`
+                .propertyNames(Set<String> | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestDto.getPropertyNames`
+                .multiplexed(Boolean | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestDto.isMultiplexed`
+                .lsaImplementation(Boolean | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestDto.isLsaImplementation`
+                .writable(Boolean | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestDto.isWritable`
+                .readable(Boolean | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestDto.isReadable`
+                .parameterNamePattern(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestDto.getParameterNamePattern`
+                .critical(Boolean | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestDto.isCritical`
+                .valueTypes(Set<String> | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestDto.getValueTypes`
                 .build();
              
         
             Returns:
-                A new DefaultParametersRequestRest builder
+                A new DefaultParametersRequestDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(parametersRequestRest: ParametersRequestRest) -> 'DefaultParametersRequestRest':
+    def copyOf(parametersRequestDto: ParametersRequestDto) -> 'DefaultParametersRequestDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestRest` value. Uses accessors to
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestDto` value. Uses accessors to
             get values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParametersRequestDto`): The instance to copy
         
             Returns:
-                A copied immutable ParametersRequestRest instance
+                A copied immutable ParametersRequestDto instance
         
         
         """
@@ -5585,7 +5587,7 @@ class DefaultParametersRequestRest(ParametersRequestRest):
     def isWritable(self) -> bool: ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`ParametersRequestRest` with attribute values.
+            Prints the immutable value :code:`ParametersRequestDto` with attribute values.
         
             Overrides:
                  in class 
@@ -5596,142 +5598,142 @@ class DefaultParametersRequestRest(ParametersRequestRest):
         
         """
         ...
-    def withAcceleratorName(self, string: str) -> 'DefaultParametersRequestRest': ...
+    def withAcceleratorName(self, string: str) -> 'DefaultParametersRequestDto': ...
     @typing.overload
-    def withAcceleratorZoneNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest': ...
+    def withAcceleratorZoneNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto': ...
     @typing.overload
-    def withAcceleratorZoneNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestRest': ...
-    def withCritical(self, boolean: bool) -> 'DefaultParametersRequestRest': ...
+    def withAcceleratorZoneNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestDto': ...
+    def withCritical(self, boolean: bool) -> 'DefaultParametersRequestDto': ...
     @typing.overload
-    def withDeviceIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParametersRequestRest': ...
+    def withDeviceIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParametersRequestDto': ...
     @typing.overload
-    def withDeviceIds(self, longArray: typing.List[int]) -> 'DefaultParametersRequestRest': ...
+    def withDeviceIds(self, longArray: typing.List[int]) -> 'DefaultParametersRequestDto': ...
     @typing.overload
-    def withDeviceNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest': ...
+    def withDeviceNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto': ...
     @typing.overload
-    def withDeviceNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestRest': ...
-    def withLsaImplementation(self, boolean: bool) -> 'DefaultParametersRequestRest': ...
-    def withMultiplexed(self, boolean: bool) -> 'DefaultParametersRequestRest': ...
+    def withDeviceNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestDto': ...
+    def withLsaImplementation(self, boolean: bool) -> 'DefaultParametersRequestDto': ...
+    def withMultiplexed(self, boolean: bool) -> 'DefaultParametersRequestDto': ...
     @typing.overload
-    def withParameterGroups(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest': ...
+    def withParameterGroups(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto': ...
     @typing.overload
-    def withParameterGroups(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestRest': ...
-    def withParameterNamePattern(self, string: str) -> 'DefaultParametersRequestRest': ...
+    def withParameterGroups(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestDto': ...
+    def withParameterNamePattern(self, string: str) -> 'DefaultParametersRequestDto': ...
     @typing.overload
-    def withParameterNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest': ...
+    def withParameterNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto': ...
     @typing.overload
-    def withParameterNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestRest': ...
+    def withParameterNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestDto': ...
     @typing.overload
-    def withParameterTypeNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest': ...
+    def withParameterTypeNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto': ...
     @typing.overload
-    def withParameterTypeNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestRest': ...
+    def withParameterTypeNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestDto': ...
     @typing.overload
-    def withParticleTransferNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest': ...
+    def withParticleTransferNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto': ...
     @typing.overload
-    def withParticleTransferNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestRest': ...
+    def withParticleTransferNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestDto': ...
     @typing.overload
-    def withPropertyFieldIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParametersRequestRest': ...
+    def withPropertyFieldIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParametersRequestDto': ...
     @typing.overload
-    def withPropertyFieldIds(self, longArray: typing.List[int]) -> 'DefaultParametersRequestRest': ...
+    def withPropertyFieldIds(self, longArray: typing.List[int]) -> 'DefaultParametersRequestDto': ...
     @typing.overload
-    def withPropertyNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest': ...
+    def withPropertyNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto': ...
     @typing.overload
-    def withPropertyNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestRest': ...
-    def withReadable(self, boolean: bool) -> 'DefaultParametersRequestRest': ...
+    def withPropertyNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestDto': ...
+    def withReadable(self, boolean: bool) -> 'DefaultParametersRequestDto': ...
     @typing.overload
-    def withValueTypes(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest': ...
+    def withValueTypes(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto': ...
     @typing.overload
-    def withValueTypes(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestRest': ...
-    def withWritable(self, boolean: bool) -> 'DefaultParametersRequestRest': ...
+    def withValueTypes(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestDto': ...
+    def withWritable(self, boolean: bool) -> 'DefaultParametersRequestDto': ...
     class Builder:
-        def acceleratorName(self, string: str) -> 'DefaultParametersRequestRest.Builder': ...
-        def acceleratorZoneNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def addAcceleratorZoneName(self, string: str) -> 'DefaultParametersRequestRest.Builder': ...
-        def addAcceleratorZoneNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def addAllAcceleratorZoneNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def addAllDeviceIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParametersRequestRest.Builder': ...
-        def addAllDeviceNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def addAllParameterGroups(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def addAllParameterNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def addAllParameterTypeNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def addAllParticleTransferNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def addAllPropertyFieldIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParametersRequestRest.Builder': ...
-        def addAllPropertyNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def addAllValueTypes(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def addDeviceId(self, long: int) -> 'DefaultParametersRequestRest.Builder': ...
-        def addDeviceIds(self, longArray: typing.List[int]) -> 'DefaultParametersRequestRest.Builder': ...
-        def addDeviceName(self, string: str) -> 'DefaultParametersRequestRest.Builder': ...
-        def addDeviceNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def addParameterGroup(self, string: str) -> 'DefaultParametersRequestRest.Builder': ...
-        def addParameterGroups(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def addParameterName(self, string: str) -> 'DefaultParametersRequestRest.Builder': ...
-        def addParameterNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def addParameterTypeName(self, string: str) -> 'DefaultParametersRequestRest.Builder': ...
-        def addParameterTypeNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def addParticleTransferName(self, string: str) -> 'DefaultParametersRequestRest.Builder': ...
-        def addParticleTransferNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def addPropertyFieldId(self, long: int) -> 'DefaultParametersRequestRest.Builder': ...
-        def addPropertyFieldIds(self, longArray: typing.List[int]) -> 'DefaultParametersRequestRest.Builder': ...
-        def addPropertyName(self, string: str) -> 'DefaultParametersRequestRest.Builder': ...
-        def addPropertyNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def addValueType(self, string: str) -> 'DefaultParametersRequestRest.Builder': ...
-        def addValueTypes(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def build(self) -> 'DefaultParametersRequestRest': ...
-        def critical(self, boolean: bool) -> 'DefaultParametersRequestRest.Builder': ...
-        def deviceIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParametersRequestRest.Builder': ...
-        def deviceNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def lsaImplementation(self, boolean: bool) -> 'DefaultParametersRequestRest.Builder': ...
-        def multiplexed(self, boolean: bool) -> 'DefaultParametersRequestRest.Builder': ...
-        def parameterGroups(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def parameterNamePattern(self, string: str) -> 'DefaultParametersRequestRest.Builder': ...
-        def parameterNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def parameterTypeNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def particleTransferNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def propertyFieldIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParametersRequestRest.Builder': ...
-        def propertyNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def readable(self, boolean: bool) -> 'DefaultParametersRequestRest.Builder': ...
-        def valueTypes(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestRest.Builder': ...
-        def writable(self, boolean: bool) -> 'DefaultParametersRequestRest.Builder': ...
+        def acceleratorName(self, string: str) -> 'DefaultParametersRequestDto.Builder': ...
+        def acceleratorZoneNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def addAcceleratorZoneName(self, string: str) -> 'DefaultParametersRequestDto.Builder': ...
+        def addAcceleratorZoneNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def addAllAcceleratorZoneNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def addAllDeviceIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParametersRequestDto.Builder': ...
+        def addAllDeviceNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def addAllParameterGroups(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def addAllParameterNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def addAllParameterTypeNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def addAllParticleTransferNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def addAllPropertyFieldIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParametersRequestDto.Builder': ...
+        def addAllPropertyNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def addAllValueTypes(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def addDeviceId(self, long: int) -> 'DefaultParametersRequestDto.Builder': ...
+        def addDeviceIds(self, longArray: typing.List[int]) -> 'DefaultParametersRequestDto.Builder': ...
+        def addDeviceName(self, string: str) -> 'DefaultParametersRequestDto.Builder': ...
+        def addDeviceNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def addParameterGroup(self, string: str) -> 'DefaultParametersRequestDto.Builder': ...
+        def addParameterGroups(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def addParameterName(self, string: str) -> 'DefaultParametersRequestDto.Builder': ...
+        def addParameterNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def addParameterTypeName(self, string: str) -> 'DefaultParametersRequestDto.Builder': ...
+        def addParameterTypeNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def addParticleTransferName(self, string: str) -> 'DefaultParametersRequestDto.Builder': ...
+        def addParticleTransferNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def addPropertyFieldId(self, long: int) -> 'DefaultParametersRequestDto.Builder': ...
+        def addPropertyFieldIds(self, longArray: typing.List[int]) -> 'DefaultParametersRequestDto.Builder': ...
+        def addPropertyName(self, string: str) -> 'DefaultParametersRequestDto.Builder': ...
+        def addPropertyNames(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def addValueType(self, string: str) -> 'DefaultParametersRequestDto.Builder': ...
+        def addValueTypes(self, stringArray: typing.List[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def build(self) -> 'DefaultParametersRequestDto': ...
+        def critical(self, boolean: bool) -> 'DefaultParametersRequestDto.Builder': ...
+        def deviceIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParametersRequestDto.Builder': ...
+        def deviceNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def lsaImplementation(self, boolean: bool) -> 'DefaultParametersRequestDto.Builder': ...
+        def multiplexed(self, boolean: bool) -> 'DefaultParametersRequestDto.Builder': ...
+        def parameterGroups(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def parameterNamePattern(self, string: str) -> 'DefaultParametersRequestDto.Builder': ...
+        def parameterNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def parameterTypeNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def particleTransferNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def propertyFieldIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParametersRequestDto.Builder': ...
+        def propertyNames(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def readable(self, boolean: bool) -> 'DefaultParametersRequestDto.Builder': ...
+        def valueTypes(self, iterable: java.lang.Iterable[str]) -> 'DefaultParametersRequestDto.Builder': ...
+        def writable(self, boolean: bool) -> 'DefaultParametersRequestDto.Builder': ...
 
-class DefaultParentToChildrenRelationRest(ParentToChildrenRelationRest):
+class DefaultParentToChildrenRelationDto(ParentToChildrenRelationDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParentToChildrenRelationRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultParentToChildrenRelationDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultParentToChildrenRelationRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultParentToChildrenRelationDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultParentToChildrenRelationRest.Builder':
+    def builder() -> 'DefaultParentToChildrenRelationDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParentToChildrenRelationRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParentToChildrenRelationDto`.
         
             .. code-block: java
             
-             DefaultParentToChildrenRelationRest.builder()
-                .addChildrenId|addAllChildrenIds(long) // :meth:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationRest.getChildrenIds` elements
-                .parentId(Long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationRest.getParentId`
+             DefaultParentToChildrenRelationDto.builder()
+                .addChildrenId|addAllChildrenIds(long) // :meth:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationDto.getChildrenIds` elements
+                .parentId(Long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationDto.getParentId`
                 .build();
              
         
             Returns:
-                A new DefaultParentToChildrenRelationRest builder
+                A new DefaultParentToChildrenRelationDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(parentToChildrenRelationRest: ParentToChildrenRelationRest) -> 'DefaultParentToChildrenRelationRest':
+    def copyOf(parentToChildrenRelationDto: ParentToChildrenRelationDto) -> 'DefaultParentToChildrenRelationDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationRest` value. Uses
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationDto` value. Uses
             accessors to get values to initialize the new immutable instance. If an instance is already immutable, it is returned as
             is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationDto`): The instance to copy
         
             Returns:
-                A copied immutable ParentToChildrenRelationRest instance
+                A copied immutable ParentToChildrenRelationDto instance
         
         
         """
@@ -5742,8 +5744,8 @@ class DefaultParentToChildrenRelationRest(ParentToChildrenRelationRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationRest.getParentId`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationDto.getParentId`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationDto`
         
             Returns:
                 The value of the :code:`parentId` attribute
@@ -5766,7 +5768,7 @@ class DefaultParentToChildrenRelationRest(ParentToChildrenRelationRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`ParentToChildrenRelationRest` with attribute values.
+            Prints the immutable value :code:`ParentToChildrenRelationDto` with attribute values.
         
             Overrides:
                  in class 
@@ -5778,10 +5780,10 @@ class DefaultParentToChildrenRelationRest(ParentToChildrenRelationRest):
         """
         ...
     @typing.overload
-    def withChildrenIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParentToChildrenRelationRest':
+    def withChildrenIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParentToChildrenRelationDto':
         """
             Copy the current immutable object with elements that replace the content of
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationRest.getChildrenIds`.
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationDto.getChildrenIds`.
         
             Parameters:
                 elements (long...): The elements to set
@@ -5789,10 +5791,10 @@ class DefaultParentToChildrenRelationRest(ParentToChildrenRelationRest):
             Returns:
                 A modified copy of :code:`this` object
         
-        public final :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParentToChildrenRelationRest` withChildrenIds (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<`Long <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Long.html?is-external=true>`> elements)
+        public final :class:`~cern.lsa.client.rest.api.v1.dto.DefaultParentToChildrenRelationDto` withChildrenIds (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<`Long <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Long.html?is-external=true>`> elements)
         
             Copy the current immutable object with elements that replace the content of
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationRest.getChildrenIds`. A shallow reference equality check
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationDto.getChildrenIds`. A shallow reference equality check
             is used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -5805,11 +5807,11 @@ class DefaultParentToChildrenRelationRest(ParentToChildrenRelationRest):
         """
         ...
     @typing.overload
-    def withChildrenIds(self, longArray: typing.List[int]) -> 'DefaultParentToChildrenRelationRest': ...
-    def withParentId(self, long: int) -> 'DefaultParentToChildrenRelationRest':
+    def withChildrenIds(self, longArray: typing.List[int]) -> 'DefaultParentToChildrenRelationDto': ...
+    def withParentId(self, long: int) -> 'DefaultParentToChildrenRelationDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationRest.getParentId` attribute. An equals check used to
+            :meth:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationDto.getParentId` attribute. An equals check used to
             prevent copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -5822,51 +5824,51 @@ class DefaultParentToChildrenRelationRest(ParentToChildrenRelationRest):
         """
         ...
     class Builder:
-        def addAllChildrenIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParentToChildrenRelationRest.Builder': ...
-        def addChildrenId(self, long: int) -> 'DefaultParentToChildrenRelationRest.Builder': ...
-        def addChildrenIds(self, longArray: typing.List[int]) -> 'DefaultParentToChildrenRelationRest.Builder': ...
-        def build(self) -> 'DefaultParentToChildrenRelationRest': ...
-        def childrenIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParentToChildrenRelationRest.Builder': ...
-        def parentId(self, long: int) -> 'DefaultParentToChildrenRelationRest.Builder': ...
+        def addAllChildrenIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParentToChildrenRelationDto.Builder': ...
+        def addChildrenId(self, long: int) -> 'DefaultParentToChildrenRelationDto.Builder': ...
+        def addChildrenIds(self, longArray: typing.List[int]) -> 'DefaultParentToChildrenRelationDto.Builder': ...
+        def build(self) -> 'DefaultParentToChildrenRelationDto': ...
+        def childrenIds(self, iterable: java.lang.Iterable[int]) -> 'DefaultParentToChildrenRelationDto.Builder': ...
+        def parentId(self, long: int) -> 'DefaultParentToChildrenRelationDto.Builder': ...
 
-class DefaultPropertyAndDeviceRest(PropertyAndDeviceRest):
+class DefaultPropertyAndDeviceDto(PropertyAndDeviceDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultPropertyAndDeviceRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultPropertyAndDeviceDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultPropertyAndDeviceRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultPropertyAndDeviceDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultPropertyAndDeviceRest.Builder':
+    def builder() -> 'DefaultPropertyAndDeviceDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultPropertyAndDeviceRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultPropertyAndDeviceDto`.
         
             .. code-block: java
             
-             DefaultPropertyAndDeviceRest.builder()
-                .deviceId(Long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceRest.getDeviceId`
-                .propertyName(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceRest.getPropertyName`
+             DefaultPropertyAndDeviceDto.builder()
+                .deviceId(Long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceDto.getDeviceId`
+                .propertyName(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceDto.getPropertyName`
                 .build();
              
         
             Returns:
-                A new DefaultPropertyAndDeviceRest builder
+                A new DefaultPropertyAndDeviceDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(propertyAndDeviceRest: PropertyAndDeviceRest) -> 'DefaultPropertyAndDeviceRest':
+    def copyOf(propertyAndDeviceDto: PropertyAndDeviceDto) -> 'DefaultPropertyAndDeviceDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceRest` value. Uses accessors to
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceDto` value. Uses accessors to
             get values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceDto`): The instance to copy
         
             Returns:
-                A copied immutable PropertyAndDeviceRest instance
+                A copied immutable PropertyAndDeviceDto instance
         
         
         """
@@ -5876,8 +5878,8 @@ class DefaultPropertyAndDeviceRest(PropertyAndDeviceRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceRest.getDeviceId`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceDto.getDeviceId`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceDto`
         
             Returns:
                 The value of the :code:`deviceId` attribute
@@ -5889,8 +5891,8 @@ class DefaultPropertyAndDeviceRest(PropertyAndDeviceRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceRest.getPropertyName`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceDto.getPropertyName`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceDto`
         
             Returns:
                 The value of the :code:`propertyName` attribute
@@ -5913,7 +5915,7 @@ class DefaultPropertyAndDeviceRest(PropertyAndDeviceRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`PropertyAndDeviceRest` with attribute values.
+            Prints the immutable value :code:`PropertyAndDeviceDto` with attribute values.
         
             Overrides:
                  in class 
@@ -5924,10 +5926,10 @@ class DefaultPropertyAndDeviceRest(PropertyAndDeviceRest):
         
         """
         ...
-    def withDeviceId(self, long: int) -> 'DefaultPropertyAndDeviceRest':
+    def withDeviceId(self, long: int) -> 'DefaultPropertyAndDeviceDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceRest.getDeviceId` attribute. An equals check used to prevent
+            :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceDto.getDeviceId` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -5939,11 +5941,11 @@ class DefaultPropertyAndDeviceRest(PropertyAndDeviceRest):
         
         """
         ...
-    def withPropertyName(self, string: str) -> 'DefaultPropertyAndDeviceRest':
+    def withPropertyName(self, string: str) -> 'DefaultPropertyAndDeviceDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceRest.getPropertyName` attribute. An equals check used to
-            prevent copying of the same value by returning :code:`this`.
+            :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyAndDeviceDto.getPropertyName` attribute. An equals check used to prevent
+            copying of the same value by returning :code:`this`.
         
             Parameters:
                 value (`String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>`): A new value for propertyName
@@ -5955,50 +5957,50 @@ class DefaultPropertyAndDeviceRest(PropertyAndDeviceRest):
         """
         ...
     class Builder:
-        def build(self) -> 'DefaultPropertyAndDeviceRest': ...
-        def deviceId(self, long: int) -> 'DefaultPropertyAndDeviceRest.Builder': ...
-        def propertyName(self, string: str) -> 'DefaultPropertyAndDeviceRest.Builder': ...
+        def build(self) -> 'DefaultPropertyAndDeviceDto': ...
+        def deviceId(self, long: int) -> 'DefaultPropertyAndDeviceDto.Builder': ...
+        def propertyName(self, string: str) -> 'DefaultPropertyAndDeviceDto.Builder': ...
 
-class DefaultPropertyFieldRest(PropertyFieldRest):
+class DefaultPropertyFieldDto(PropertyFieldDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultPropertyFieldRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultPropertyFieldDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultPropertyFieldRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultPropertyFieldDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultPropertyFieldRest.Builder':
+    def builder() -> 'DefaultPropertyFieldDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultPropertyFieldRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultPropertyFieldDto`.
         
             .. code-block: java
             
-             DefaultPropertyFieldRest.builder()
-                .id(long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldRest.getId`
-                .deviceTypeName(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldRest.getDeviceTypeName`
-                .propertyName(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldRest.getPropertyName`
-                .fieldName(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldRest.getFieldName`
+             DefaultPropertyFieldDto.builder()
+                .id(long) // required :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldDto.getId`
+                .deviceTypeName(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldDto.getDeviceTypeName`
+                .propertyName(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldDto.getPropertyName`
+                .fieldName(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldDto.getFieldName`
                 .build();
              
         
             Returns:
-                A new DefaultPropertyFieldRest builder
+                A new DefaultPropertyFieldDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(propertyFieldRest: PropertyFieldRest) -> 'DefaultPropertyFieldRest':
+    def copyOf(propertyFieldDto: PropertyFieldDto) -> 'DefaultPropertyFieldDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldRest` value. Uses accessors to get
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldDto` value. Uses accessors to get
             values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldDto`): The instance to copy
         
             Returns:
-                A copied immutable PropertyFieldRest instance
+                A copied immutable PropertyFieldDto instance
         
         
         """
@@ -6008,8 +6010,8 @@ class DefaultPropertyFieldRest(PropertyFieldRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldRest.getDeviceTypeName`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldDto.getDeviceTypeName`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldDto`
         
             Returns:
                 The value of the :code:`deviceTypeName` attribute
@@ -6021,8 +6023,8 @@ class DefaultPropertyFieldRest(PropertyFieldRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldRest.getFieldName`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldDto.getFieldName`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldDto`
         
             Returns:
                 The value of the :code:`fieldName` attribute
@@ -6034,8 +6036,8 @@ class DefaultPropertyFieldRest(PropertyFieldRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldRest.getId`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldDto.getId`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldDto`
         
             Returns:
                 The value of the :code:`id` attribute
@@ -6047,8 +6049,8 @@ class DefaultPropertyFieldRest(PropertyFieldRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldRest.getPropertyName`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldDto.getPropertyName`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldDto`
         
             Returns:
                 The value of the :code:`propertyName` attribute
@@ -6071,7 +6073,7 @@ class DefaultPropertyFieldRest(PropertyFieldRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`PropertyFieldRest` with attribute values.
+            Prints the immutable value :code:`PropertyFieldDto` with attribute values.
         
             Overrides:
                  in class 
@@ -6082,10 +6084,10 @@ class DefaultPropertyFieldRest(PropertyFieldRest):
         
         """
         ...
-    def withDeviceTypeName(self, string: str) -> 'DefaultPropertyFieldRest':
+    def withDeviceTypeName(self, string: str) -> 'DefaultPropertyFieldDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldRest.getDeviceTypeName` attribute. An equals check used to prevent
+            :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldDto.getDeviceTypeName` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -6097,10 +6099,10 @@ class DefaultPropertyFieldRest(PropertyFieldRest):
         
         """
         ...
-    def withFieldName(self, string: str) -> 'DefaultPropertyFieldRest':
+    def withFieldName(self, string: str) -> 'DefaultPropertyFieldDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldRest.getFieldName` attribute. An equals check used to prevent
+            :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldDto.getFieldName` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -6112,10 +6114,10 @@ class DefaultPropertyFieldRest(PropertyFieldRest):
         
         """
         ...
-    def withId(self, long: int) -> 'DefaultPropertyFieldRest':
+    def withId(self, long: int) -> 'DefaultPropertyFieldDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldRest.getId` attribute. A value equality check is used to prevent
+            :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldDto.getId` attribute. A value equality check is used to prevent
             copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -6127,10 +6129,10 @@ class DefaultPropertyFieldRest(PropertyFieldRest):
         
         """
         ...
-    def withPropertyName(self, string: str) -> 'DefaultPropertyFieldRest':
+    def withPropertyName(self, string: str) -> 'DefaultPropertyFieldDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldRest.getPropertyName` attribute. An equals check used to prevent
+            :meth:`~cern.lsa.client.rest.api.v1.dto.PropertyFieldDto.getPropertyName` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -6143,50 +6145,50 @@ class DefaultPropertyFieldRest(PropertyFieldRest):
         """
         ...
     class Builder:
-        def build(self) -> 'DefaultPropertyFieldRest': ...
-        def deviceTypeName(self, string: str) -> 'DefaultPropertyFieldRest.Builder': ...
-        def fieldName(self, string: str) -> 'DefaultPropertyFieldRest.Builder': ...
-        def id(self, long: int) -> 'DefaultPropertyFieldRest.Builder': ...
-        def propertyName(self, string: str) -> 'DefaultPropertyFieldRest.Builder': ...
+        def build(self) -> 'DefaultPropertyFieldDto': ...
+        def deviceTypeName(self, string: str) -> 'DefaultPropertyFieldDto.Builder': ...
+        def fieldName(self, string: str) -> 'DefaultPropertyFieldDto.Builder': ...
+        def id(self, long: int) -> 'DefaultPropertyFieldDto.Builder': ...
+        def propertyName(self, string: str) -> 'DefaultPropertyFieldDto.Builder': ...
 
-class DefaultSaveParameterRelationRest(SaveParameterRelationRest):
+class DefaultSaveParameterRelationDto(SaveParameterRelationDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultSaveParameterRelationRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.SaveParameterRelationRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultSaveParameterRelationDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.SaveParameterRelationDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.SaveParameterRelationRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.SaveParameterRelationDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultSaveParameterRelationRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultSaveParameterRelationDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultSaveParameterRelationRest.Builder':
+    def builder() -> 'DefaultSaveParameterRelationDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultSaveParameterRelationRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultSaveParameterRelationDto`.
         
             .. code-block: java
             
-             DefaultSaveParameterRelationRest.builder()
-                .hierarchy(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.SaveParameterRelationRest.getHierarchy`
-                .addParent2ChildrenRelation|addAllParent2ChildrenRelations(cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationRest) // :meth:`~cern.lsa.client.rest.api.v1.dto.SaveParameterRelationRest.getParent2ChildrenRelations` elements
+             DefaultSaveParameterRelationDto.builder()
+                .hierarchy(String) // required :meth:`~cern.lsa.client.rest.api.v1.dto.SaveParameterRelationDto.getHierarchy`
+                .addParent2ChildrenRelation|addAllParent2ChildrenRelations(cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationDto) // :meth:`~cern.lsa.client.rest.api.v1.dto.SaveParameterRelationDto.getParent2ChildrenRelations` elements
                 .build();
              
         
             Returns:
-                A new DefaultSaveParameterRelationRest builder
+                A new DefaultSaveParameterRelationDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(saveParameterRelationRest: SaveParameterRelationRest) -> 'DefaultSaveParameterRelationRest':
+    def copyOf(saveParameterRelationDto: SaveParameterRelationDto) -> 'DefaultSaveParameterRelationDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.SaveParameterRelationRest` value. Uses accessors
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.SaveParameterRelationDto` value. Uses accessors
             to get values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.SaveParameterRelationRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.SaveParameterRelationDto`): The instance to copy
         
             Returns:
-                A copied immutable SaveParameterRelationRest instance
+                A copied immutable SaveParameterRelationDto instance
         
         
         """
@@ -6196,8 +6198,8 @@ class DefaultSaveParameterRelationRest(SaveParameterRelationRest):
         """
         
             Specified by:
-                :meth:`~cern.lsa.client.rest.api.v1.dto.SaveParameterRelationRest.getHierarchy`Â in
-                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.SaveParameterRelationRest`
+                :meth:`~cern.lsa.client.rest.api.v1.dto.SaveParameterRelationDto.getHierarchy`Â in
+                interfaceÂ :class:`~cern.lsa.client.rest.api.v1.dto.SaveParameterRelationDto`
         
             Returns:
                 The value of the :code:`hierarchy` attribute
@@ -6205,7 +6207,7 @@ class DefaultSaveParameterRelationRest(SaveParameterRelationRest):
         
         """
         ...
-    def getParent2ChildrenRelations(self) -> java.util.List[ParentToChildrenRelationRest]: ...
+    def getParent2ChildrenRelations(self) -> java.util.List[ParentToChildrenRelationDto]: ...
     def hashCode(self) -> int:
         """
             Computes a hash code from attributes: :code:`hierarchy`, :code:`parent2ChildrenRelations`.
@@ -6221,7 +6223,7 @@ class DefaultSaveParameterRelationRest(SaveParameterRelationRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`SaveParameterRelationRest` with attribute values.
+            Prints the immutable value :code:`SaveParameterRelationDto` with attribute values.
         
             Overrides:
                  in class 
@@ -6232,10 +6234,10 @@ class DefaultSaveParameterRelationRest(SaveParameterRelationRest):
         
         """
         ...
-    def withHierarchy(self, string: str) -> 'DefaultSaveParameterRelationRest':
+    def withHierarchy(self, string: str) -> 'DefaultSaveParameterRelationDto':
         """
             Copy the current immutable object by setting a value for the
-            :meth:`~cern.lsa.client.rest.api.v1.dto.SaveParameterRelationRest.getHierarchy` attribute. An equals check used to
+            :meth:`~cern.lsa.client.rest.api.v1.dto.SaveParameterRelationDto.getHierarchy` attribute. An equals check used to
             prevent copying of the same value by returning :code:`this`.
         
             Parameters:
@@ -6248,25 +6250,25 @@ class DefaultSaveParameterRelationRest(SaveParameterRelationRest):
         """
         ...
     @typing.overload
-    def withParent2ChildrenRelations(self, parentToChildrenRelationRestArray: typing.List[ParentToChildrenRelationRest]) -> 'DefaultSaveParameterRelationRest':
+    def withParent2ChildrenRelations(self, parentToChildrenRelationDtoArray: typing.List[ParentToChildrenRelationDto]) -> 'DefaultSaveParameterRelationDto':
         """
             Copy the current immutable object with elements that replace the content of
-            :meth:`~cern.lsa.client.rest.api.v1.dto.SaveParameterRelationRest.getParent2ChildrenRelations`.
+            :meth:`~cern.lsa.client.rest.api.v1.dto.SaveParameterRelationDto.getParent2ChildrenRelations`.
         
             Parameters:
-                elements (:class:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationRest`...): The elements to set
+                elements (:class:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationDto`...): The elements to set
         
             Returns:
                 A modified copy of :code:`this` object
         
-        public final :class:`~cern.lsa.client.rest.api.v1.dto.DefaultSaveParameterRelationRest` withParent2ChildrenRelations (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationRest`> elements)
+        public final :class:`~cern.lsa.client.rest.api.v1.dto.DefaultSaveParameterRelationDto` withParent2ChildrenRelations (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationDto`> elements)
         
             Copy the current immutable object with elements that replace the content of
-            :meth:`~cern.lsa.client.rest.api.v1.dto.SaveParameterRelationRest.getParent2ChildrenRelations`. A shallow reference
+            :meth:`~cern.lsa.client.rest.api.v1.dto.SaveParameterRelationDto.getParent2ChildrenRelations`. A shallow reference
             equality check is used to prevent copying of the same value by returning :code:`this`.
         
             Parameters:
-                elements (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationRest`> elements): An iterable of parent2ChildrenRelations elements to set
+                elements (`Iterable <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Iterable.html?is-external=true>`<? extends :class:`~cern.lsa.client.rest.api.v1.dto.ParentToChildrenRelationDto`> elements): An iterable of parent2ChildrenRelations elements to set
         
             Returns:
                 A modified copy of :code:`this` object
@@ -6275,52 +6277,52 @@ class DefaultSaveParameterRelationRest(SaveParameterRelationRest):
         """
         ...
     @typing.overload
-    def withParent2ChildrenRelations(self, iterable: java.lang.Iterable[ParentToChildrenRelationRest]) -> 'DefaultSaveParameterRelationRest': ...
+    def withParent2ChildrenRelations(self, iterable: java.lang.Iterable[ParentToChildrenRelationDto]) -> 'DefaultSaveParameterRelationDto': ...
     class Builder:
-        def addAllParent2ChildrenRelations(self, iterable: java.lang.Iterable[ParentToChildrenRelationRest]) -> 'DefaultSaveParameterRelationRest.Builder': ...
-        def addParent2ChildrenRelation(self, parentToChildrenRelationRest: ParentToChildrenRelationRest) -> 'DefaultSaveParameterRelationRest.Builder': ...
-        def addParent2ChildrenRelations(self, parentToChildrenRelationRestArray: typing.List[ParentToChildrenRelationRest]) -> 'DefaultSaveParameterRelationRest.Builder': ...
-        def build(self) -> 'DefaultSaveParameterRelationRest': ...
-        def hierarchy(self, string: str) -> 'DefaultSaveParameterRelationRest.Builder': ...
-        def parent2ChildrenRelations(self, iterable: java.lang.Iterable[ParentToChildrenRelationRest]) -> 'DefaultSaveParameterRelationRest.Builder': ...
+        def addAllParent2ChildrenRelations(self, iterable: java.lang.Iterable[ParentToChildrenRelationDto]) -> 'DefaultSaveParameterRelationDto.Builder': ...
+        def addParent2ChildrenRelation(self, parentToChildrenRelationDto: ParentToChildrenRelationDto) -> 'DefaultSaveParameterRelationDto.Builder': ...
+        def addParent2ChildrenRelations(self, parentToChildrenRelationDtoArray: typing.List[ParentToChildrenRelationDto]) -> 'DefaultSaveParameterRelationDto.Builder': ...
+        def build(self) -> 'DefaultSaveParameterRelationDto': ...
+        def hierarchy(self, string: str) -> 'DefaultSaveParameterRelationDto.Builder': ...
+        def parent2ChildrenRelations(self, iterable: java.lang.Iterable[ParentToChildrenRelationDto]) -> 'DefaultSaveParameterRelationDto.Builder': ...
 
-class DefaultTypeRest(TypeRest):
+class DefaultTypeDto(TypeDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultTypeRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.TypeRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultTypeDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.TypeDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.TypeRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.TypeDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultTypeRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultTypeDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultTypeRest.Builder':
+    def builder() -> 'DefaultTypeDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultTypeRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultTypeDto`.
         
             .. code-block: java
             
-             DefaultTypeRest.builder()
+             DefaultTypeDto.builder()
                 .name(String) // required name
                 .build();
              
         
             Returns:
-                A new DefaultTypeRest builder
+                A new DefaultTypeDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(typeRest: TypeRest) -> 'DefaultTypeRest':
+    def copyOf(typeDto: TypeDto) -> 'DefaultTypeDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.TypeRest` value. Uses accessors to get values to
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.TypeDto` value. Uses accessors to get values to
             initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.TypeRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.TypeDto`): The instance to copy
         
             Returns:
-                A copied immutable TypeRest instance
+                A copied immutable TypeDto instance
         
         
         """
@@ -6353,7 +6355,7 @@ class DefaultTypeRest(TypeRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`TypeRest` with attribute values.
+            Prints the immutable value :code:`TypeDto` with attribute values.
         
             Overrides:
                  in class 
@@ -6364,7 +6366,7 @@ class DefaultTypeRest(TypeRest):
         
         """
         ...
-    def withName(self, string: str) -> 'DefaultTypeRest':
+    def withName(self, string: str) -> 'DefaultTypeDto':
         """
             Copy the current immutable object by setting a value for the :code:`name` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
@@ -6379,46 +6381,46 @@ class DefaultTypeRest(TypeRest):
         """
         ...
     class Builder:
-        def build(self) -> 'DefaultTypeRest': ...
-        def name(self, string: str) -> 'DefaultTypeRest.Builder': ...
+        def build(self) -> 'DefaultTypeDto': ...
+        def name(self, string: str) -> 'DefaultTypeDto.Builder': ...
 
-class DefaultValueCompareTypeRest(ValueCompareTypeRest):
+class DefaultValueCompareTypeDto(ValueCompareTypeDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultValueCompareTypeRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ValueCompareTypeRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultValueCompareTypeDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ValueCompareTypeDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ValueCompareTypeRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ValueCompareTypeDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultValueCompareTypeRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultValueCompareTypeDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultValueCompareTypeRest.Builder':
+    def builder() -> 'DefaultValueCompareTypeDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultValueCompareTypeRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultValueCompareTypeDto`.
         
             .. code-block: java
             
-             DefaultValueCompareTypeRest.builder()
+             DefaultValueCompareTypeDto.builder()
                 .name(String) // required name
                 .build();
              
         
             Returns:
-                A new DefaultValueCompareTypeRest builder
+                A new DefaultValueCompareTypeDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(valueCompareTypeRest: ValueCompareTypeRest) -> 'DefaultValueCompareTypeRest':
+    def copyOf(valueCompareTypeDto: ValueCompareTypeDto) -> 'DefaultValueCompareTypeDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ValueCompareTypeRest` value. Uses accessors to
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ValueCompareTypeDto` value. Uses accessors to
             get values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ValueCompareTypeRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ValueCompareTypeDto`): The instance to copy
         
             Returns:
-                A copied immutable ValueCompareTypeRest instance
+                A copied immutable ValueCompareTypeDto instance
         
         
         """
@@ -6451,7 +6453,7 @@ class DefaultValueCompareTypeRest(ValueCompareTypeRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`ValueCompareTypeRest` with attribute values.
+            Prints the immutable value :code:`ValueCompareTypeDto` with attribute values.
         
             Overrides:
                  in class 
@@ -6462,7 +6464,7 @@ class DefaultValueCompareTypeRest(ValueCompareTypeRest):
         
         """
         ...
-    def withName(self, string: str) -> 'DefaultValueCompareTypeRest':
+    def withName(self, string: str) -> 'DefaultValueCompareTypeDto':
         """
             Copy the current immutable object by setting a value for the :code:`name` attribute. An equals check used to prevent
             copying of the same value by returning :code:`this`.
@@ -6477,66 +6479,66 @@ class DefaultValueCompareTypeRest(ValueCompareTypeRest):
         """
         ...
     class Builder:
-        def build(self) -> 'DefaultValueCompareTypeRest': ...
-        def name(self, string: str) -> 'DefaultValueCompareTypeRest.Builder': ...
+        def build(self) -> 'DefaultValueCompareTypeDto': ...
+        def name(self, string: str) -> 'DefaultValueCompareTypeDto.Builder': ...
 
-class DefaultValueDescriptorRest(ValueDescriptorRest):
+class DefaultValueDescriptorDto(ValueDescriptorDto):
     """
-    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultValueDescriptorRest extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorRest`
+    `@ParametersAreNonnullByDefault <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true>` `@Generated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/Generated.html?is-external=true>`("org.immutables.processor.ProxyProcessor") @Immutable `@CheckReturnValue <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/javax/annotation/CheckReturnValue.html?is-external=true>` public final class DefaultValueDescriptorDto extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>` implements :class:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorDto`
     
-        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorRest`.
+        Immutable implementation of :class:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorDto`.
     
-        Use the builder to create immutable instances: :code:`DefaultValueDescriptorRest.builder()`.
+        Use the builder to create immutable instances: :code:`DefaultValueDescriptorDto.builder()`.
     """
     @staticmethod
-    def builder() -> 'DefaultValueDescriptorRest.Builder':
+    def builder() -> 'DefaultValueDescriptorDto.Builder':
         """
-            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultValueDescriptorRest`.
+            Creates a builder for :class:`~cern.lsa.client.rest.api.v1.dto.DefaultValueDescriptorDto`.
         
             .. code-block: java
             
-             DefaultValueDescriptorRest.builder()
-                .enumType(cern.lsa.client.rest.api.v1.dto.EnumTypeRest | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorRest.getEnumType`
-                .booleanType(cern.lsa.client.rest.api.v1.dto.BooleanTypeRest | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorRest.getBooleanType`
-                .columnCount(Integer | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorRest.getColumnCount`
-                .rowCount(Integer | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorRest.getRowCount`
-                .max(Double | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorRest.getMax`
-                .min(Double | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorRest.getMin`
-                .absoluteTolerance(Double | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorRest.getAbsoluteTolerance`
-                .relativeTolerance(Double | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorRest.getRelativeTolerance`
-                .xPrecision(Integer | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorRest.getXPrecision`
-                .xUnit(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorRest.getXUnit`
-                .yPrecision(Integer | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorRest.getYPrecision`
-                .yUnit(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorRest.getYUnit`
+             DefaultValueDescriptorDto.builder()
+                .enumType(cern.lsa.client.rest.api.v1.dto.EnumTypeDto | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorDto.getEnumType`
+                .booleanType(cern.lsa.client.rest.api.v1.dto.BooleanTypeDto | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorDto.getBooleanType`
+                .columnCount(Integer | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorDto.getColumnCount`
+                .rowCount(Integer | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorDto.getRowCount`
+                .max(Double | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorDto.getMax`
+                .min(Double | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorDto.getMin`
+                .absoluteTolerance(Double | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorDto.getAbsoluteTolerance`
+                .relativeTolerance(Double | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorDto.getRelativeTolerance`
+                .xPrecision(Integer | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorDto.getXPrecision`
+                .xUnit(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorDto.getXUnit`
+                .yPrecision(Integer | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorDto.getYPrecision`
+                .yUnit(String | null) // nullable :meth:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorDto.getYUnit`
                 .build();
              
         
             Returns:
-                A new DefaultValueDescriptorRest builder
+                A new DefaultValueDescriptorDto builder
         
         
         """
         ...
     @staticmethod
-    def copyOf(valueDescriptorRest: ValueDescriptorRest) -> 'DefaultValueDescriptorRest':
+    def copyOf(valueDescriptorDto: ValueDescriptorDto) -> 'DefaultValueDescriptorDto':
         """
-            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorRest` value. Uses accessors to
-            get values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
+            Creates an immutable copy of a :class:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorDto` value. Uses accessors to get
+            values to initialize the new immutable instance. If an instance is already immutable, it is returned as is.
         
             Parameters:
-                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorRest`): The instance to copy
+                instance (:class:`~cern.lsa.client.rest.api.v1.dto.ValueDescriptorDto`): The instance to copy
         
             Returns:
-                A copied immutable ValueDescriptorRest instance
+                A copied immutable ValueDescriptorDto instance
         
         
         """
         ...
     def equals(self, object: typing.Any) -> bool: ...
     def getAbsoluteTolerance(self) -> float: ...
-    def getBooleanType(self) -> BooleanTypeRest: ...
+    def getBooleanType(self) -> BooleanTypeDto: ...
     def getColumnCount(self) -> int: ...
-    def getEnumType(self) -> EnumTypeRest: ...
+    def getEnumType(self) -> EnumTypeDto: ...
     def getMax(self) -> float: ...
     def getMin(self) -> float: ...
     def getRelativeTolerance(self) -> float: ...
@@ -6562,7 +6564,7 @@ class DefaultValueDescriptorRest(ValueDescriptorRest):
         ...
     def toString(self) -> str:
         """
-            Prints the immutable value :code:`ValueDescriptorRest` with attribute values.
+            Prints the immutable value :code:`ValueDescriptorDto` with attribute values.
         
             Overrides:
                  in class 
@@ -6573,108 +6575,111 @@ class DefaultValueDescriptorRest(ValueDescriptorRest):
         
         """
         ...
-    def withAbsoluteTolerance(self, double: float) -> 'DefaultValueDescriptorRest': ...
-    def withBooleanType(self, booleanTypeRest: BooleanTypeRest) -> 'DefaultValueDescriptorRest': ...
-    def withColumnCount(self, integer: int) -> 'DefaultValueDescriptorRest': ...
-    def withEnumType(self, enumTypeRest: EnumTypeRest) -> 'DefaultValueDescriptorRest': ...
-    def withMax(self, double: float) -> 'DefaultValueDescriptorRest': ...
-    def withMin(self, double: float) -> 'DefaultValueDescriptorRest': ...
-    def withRelativeTolerance(self, double: float) -> 'DefaultValueDescriptorRest': ...
-    def withRowCount(self, integer: int) -> 'DefaultValueDescriptorRest': ...
-    def withXPrecision(self, integer: int) -> 'DefaultValueDescriptorRest': ...
-    def withXUnit(self, string: str) -> 'DefaultValueDescriptorRest': ...
-    def withYPrecision(self, integer: int) -> 'DefaultValueDescriptorRest': ...
-    def withYUnit(self, string: str) -> 'DefaultValueDescriptorRest': ...
+    def withAbsoluteTolerance(self, double: float) -> 'DefaultValueDescriptorDto': ...
+    def withBooleanType(self, booleanTypeDto: BooleanTypeDto) -> 'DefaultValueDescriptorDto': ...
+    def withColumnCount(self, integer: int) -> 'DefaultValueDescriptorDto': ...
+    def withEnumType(self, enumTypeDto: EnumTypeDto) -> 'DefaultValueDescriptorDto': ...
+    def withMax(self, double: float) -> 'DefaultValueDescriptorDto': ...
+    def withMin(self, double: float) -> 'DefaultValueDescriptorDto': ...
+    def withRelativeTolerance(self, double: float) -> 'DefaultValueDescriptorDto': ...
+    def withRowCount(self, integer: int) -> 'DefaultValueDescriptorDto': ...
+    def withXPrecision(self, integer: int) -> 'DefaultValueDescriptorDto': ...
+    def withXUnit(self, string: str) -> 'DefaultValueDescriptorDto': ...
+    def withYPrecision(self, integer: int) -> 'DefaultValueDescriptorDto': ...
+    def withYUnit(self, string: str) -> 'DefaultValueDescriptorDto': ...
     class Builder:
-        def absoluteTolerance(self, double: float) -> 'DefaultValueDescriptorRest.Builder': ...
-        def booleanType(self, booleanTypeRest: BooleanTypeRest) -> 'DefaultValueDescriptorRest.Builder': ...
-        def build(self) -> 'DefaultValueDescriptorRest': ...
-        def columnCount(self, integer: int) -> 'DefaultValueDescriptorRest.Builder': ...
-        def enumType(self, enumTypeRest: EnumTypeRest) -> 'DefaultValueDescriptorRest.Builder': ...
-        def max(self, double: float) -> 'DefaultValueDescriptorRest.Builder': ...
-        def min(self, double: float) -> 'DefaultValueDescriptorRest.Builder': ...
-        def relativeTolerance(self, double: float) -> 'DefaultValueDescriptorRest.Builder': ...
-        def rowCount(self, integer: int) -> 'DefaultValueDescriptorRest.Builder': ...
-        def xPrecision(self, integer: int) -> 'DefaultValueDescriptorRest.Builder': ...
-        def xUnit(self, string: str) -> 'DefaultValueDescriptorRest.Builder': ...
-        def yPrecision(self, integer: int) -> 'DefaultValueDescriptorRest.Builder': ...
-        def yUnit(self, string: str) -> 'DefaultValueDescriptorRest.Builder': ...
+        def absoluteTolerance(self, double: float) -> 'DefaultValueDescriptorDto.Builder': ...
+        def booleanType(self, booleanTypeDto: BooleanTypeDto) -> 'DefaultValueDescriptorDto.Builder': ...
+        def build(self) -> 'DefaultValueDescriptorDto': ...
+        def columnCount(self, integer: int) -> 'DefaultValueDescriptorDto.Builder': ...
+        def enumType(self, enumTypeDto: EnumTypeDto) -> 'DefaultValueDescriptorDto.Builder': ...
+        def max(self, double: float) -> 'DefaultValueDescriptorDto.Builder': ...
+        def min(self, double: float) -> 'DefaultValueDescriptorDto.Builder': ...
+        def relativeTolerance(self, double: float) -> 'DefaultValueDescriptorDto.Builder': ...
+        def rowCount(self, integer: int) -> 'DefaultValueDescriptorDto.Builder': ...
+        def xPrecision(self, integer: int) -> 'DefaultValueDescriptorDto.Builder': ...
+        def xUnit(self, string: str) -> 'DefaultValueDescriptorDto.Builder': ...
+        def yPrecision(self, integer: int) -> 'DefaultValueDescriptorDto.Builder': ...
+        def yUnit(self, string: str) -> 'DefaultValueDescriptorDto.Builder': ...
 
 
 class __module_protocol__(typing.Protocol):
     # A module protocol which reflects the result of ``jp.JPackage("cern.lsa.client.rest.api.v1.dto")``.
 
-    AcceleratorZoneRest: typing.Type[AcceleratorZoneRest]
-    BooleanItemRest: typing.Type[BooleanItemRest]
-    BooleanTypeRest: typing.Type[BooleanTypeRest]
-    DefaultAcceleratorZoneRest: typing.Type[DefaultAcceleratorZoneRest]
-    DefaultBooleanItemRest: typing.Type[DefaultBooleanItemRest]
-    DefaultBooleanTypeRest: typing.Type[DefaultBooleanTypeRest]
-    DefaultDeviceMetaTypeRest: typing.Type[DefaultDeviceMetaTypeRest]
-    DefaultDeviceRest: typing.Type[DefaultDeviceRest]
-    DefaultDeviceStateRest: typing.Type[DefaultDeviceStateRest]
-    DefaultDeviceTypeImplementationRest: typing.Type[DefaultDeviceTypeImplementationRest]
-    DefaultDeviceTypeVersionContainerRest: typing.Type[DefaultDeviceTypeVersionContainerRest]
-    DefaultDeviceTypeVersionNumberRest: typing.Type[DefaultDeviceTypeVersionNumberRest]
-    DefaultDeviceTypeVersionRest: typing.Type[DefaultDeviceTypeVersionRest]
-    DefaultEnumItemRest: typing.Type[DefaultEnumItemRest]
-    DefaultEnumTypeRest: typing.Type[DefaultEnumTypeRest]
+    AcceleratorZoneDto: typing.Type[AcceleratorZoneDto]
+    BooleanItemDto: typing.Type[BooleanItemDto]
+    BooleanTypeDto: typing.Type[BooleanTypeDto]
+    DefaultAcceleratorZoneDto: typing.Type[DefaultAcceleratorZoneDto]
+    DefaultBooleanItemDto: typing.Type[DefaultBooleanItemDto]
+    DefaultBooleanTypeDto: typing.Type[DefaultBooleanTypeDto]
+    DefaultDeviceDto: typing.Type[DefaultDeviceDto]
+    DefaultDeviceMetaTypeDto: typing.Type[DefaultDeviceMetaTypeDto]
+    DefaultDeviceStateDto: typing.Type[DefaultDeviceStateDto]
+    DefaultDeviceTypeImplementationDto: typing.Type[DefaultDeviceTypeImplementationDto]
+    DefaultDeviceTypeVersionContainerDto: typing.Type[DefaultDeviceTypeVersionContainerDto]
+    DefaultDeviceTypeVersionDto: typing.Type[DefaultDeviceTypeVersionDto]
+    DefaultDeviceTypeVersionNumberDto: typing.Type[DefaultDeviceTypeVersionNumberDto]
+    DefaultEnumItemDto: typing.Type[DefaultEnumItemDto]
+    DefaultEnumTypeDto: typing.Type[DefaultEnumTypeDto]
     DefaultErrorDto: typing.Type[DefaultErrorDto]
-    DefaultIncaPropertyFieldInfoRest: typing.Type[DefaultIncaPropertyFieldInfoRest]
-    DefaultIncaPropertyFieldInfosRequestRest: typing.Type[DefaultIncaPropertyFieldInfosRequestRest]
-    DefaultMakeRuleClassInfoRest: typing.Type[DefaultMakeRuleClassInfoRest]
-    DefaultMakeRuleConfigInfoRest: typing.Type[DefaultMakeRuleConfigInfoRest]
-    DefaultMakeRuleConfigStatusRest: typing.Type[DefaultMakeRuleConfigStatusRest]
-    DefaultMakeRuleInfoRest: typing.Type[DefaultMakeRuleInfoRest]
-    DefaultParameterAttributesRest: typing.Type[DefaultParameterAttributesRest]
-    DefaultParameterGroupRest: typing.Type[DefaultParameterGroupRest]
-    DefaultParameterRest: typing.Type[DefaultParameterRest]
-    DefaultParameterTreeDataRest: typing.Type[DefaultParameterTreeDataRest]
-    DefaultParameterTreeNodeRest: typing.Type[DefaultParameterTreeNodeRest]
-    DefaultParameterTreeRelationRest: typing.Type[DefaultParameterTreeRelationRest]
-    DefaultParameterTreesRequestRest: typing.Type[DefaultParameterTreesRequestRest]
-    DefaultParameterTypeCategoryRest: typing.Type[DefaultParameterTypeCategoryRest]
-    DefaultParameterTypeRest: typing.Type[DefaultParameterTypeRest]
-    DefaultParameterTypesRequestRest: typing.Type[DefaultParameterTypesRequestRest]
-    DefaultParametersRequestRest: typing.Type[DefaultParametersRequestRest]
-    DefaultParentToChildrenRelationRest: typing.Type[DefaultParentToChildrenRelationRest]
-    DefaultPropertyAndDeviceRest: typing.Type[DefaultPropertyAndDeviceRest]
-    DefaultPropertyFieldRest: typing.Type[DefaultPropertyFieldRest]
-    DefaultSaveParameterRelationRest: typing.Type[DefaultSaveParameterRelationRest]
-    DefaultTypeRest: typing.Type[DefaultTypeRest]
-    DefaultValueCompareTypeRest: typing.Type[DefaultValueCompareTypeRest]
-    DefaultValueDescriptorRest: typing.Type[DefaultValueDescriptorRest]
-    DeviceMetaTypeRest: typing.Type[DeviceMetaTypeRest]
-    DeviceRest: typing.Type[DeviceRest]
-    DeviceStateRest: typing.Type[DeviceStateRest]
-    DeviceTypeImplementationRest: typing.Type[DeviceTypeImplementationRest]
-    DeviceTypeVersionContainerRest: typing.Type[DeviceTypeVersionContainerRest]
-    DeviceTypeVersionNumberRest: typing.Type[DeviceTypeVersionNumberRest]
-    DeviceTypeVersionRest: typing.Type[DeviceTypeVersionRest]
-    EnumItemRest: typing.Type[EnumItemRest]
-    EnumTypeRest: typing.Type[EnumTypeRest]
+    DefaultIncaPropertyFieldInfoDto: typing.Type[DefaultIncaPropertyFieldInfoDto]
+    DefaultIncaPropertyFieldInfosRequestDto: typing.Type[DefaultIncaPropertyFieldInfosRequestDto]
+    DefaultMakeRuleClassInfoDto: typing.Type[DefaultMakeRuleClassInfoDto]
+    DefaultMakeRuleConfigInfoDto: typing.Type[DefaultMakeRuleConfigInfoDto]
+    DefaultMakeRuleConfigStatusDto: typing.Type[DefaultMakeRuleConfigStatusDto]
+    DefaultMakeRuleInfoDto: typing.Type[DefaultMakeRuleInfoDto]
+    DefaultParameterAttributesDto: typing.Type[DefaultParameterAttributesDto]
+    DefaultParameterDto: typing.Type[DefaultParameterDto]
+    DefaultParameterGroupDto: typing.Type[DefaultParameterGroupDto]
+    DefaultParameterTreeDataDto: typing.Type[DefaultParameterTreeDataDto]
+    DefaultParameterTreeNodeDto: typing.Type[DefaultParameterTreeNodeDto]
+    DefaultParameterTreeRelationDto: typing.Type[DefaultParameterTreeRelationDto]
+    DefaultParameterTreesRequestDto: typing.Type[DefaultParameterTreesRequestDto]
+    DefaultParameterTypeCategoryDto: typing.Type[DefaultParameterTypeCategoryDto]
+    DefaultParameterTypeDto: typing.Type[DefaultParameterTypeDto]
+    DefaultParameterTypesRequestDto: typing.Type[DefaultParameterTypesRequestDto]
+    DefaultParametersRequestDto: typing.Type[DefaultParametersRequestDto]
+    DefaultParentToChildrenRelationDto: typing.Type[DefaultParentToChildrenRelationDto]
+    DefaultPropertyAndDeviceDto: typing.Type[DefaultPropertyAndDeviceDto]
+    DefaultPropertyFieldDto: typing.Type[DefaultPropertyFieldDto]
+    DefaultSaveParameterRelationDto: typing.Type[DefaultSaveParameterRelationDto]
+    DefaultTypeDto: typing.Type[DefaultTypeDto]
+    DefaultValueCompareTypeDto: typing.Type[DefaultValueCompareTypeDto]
+    DefaultValueDescriptorDto: typing.Type[DefaultValueDescriptorDto]
+    DeviceDto: typing.Type[DeviceDto]
+    DeviceMetaTypeDto: typing.Type[DeviceMetaTypeDto]
+    DeviceStateDto: typing.Type[DeviceStateDto]
+    DeviceTypeImplementationDto: typing.Type[DeviceTypeImplementationDto]
+    DeviceTypeVersionContainerDto: typing.Type[DeviceTypeVersionContainerDto]
+    DeviceTypeVersionDto: typing.Type[DeviceTypeVersionDto]
+    DeviceTypeVersionNumberDto: typing.Type[DeviceTypeVersionNumberDto]
+    EnumItemDto: typing.Type[EnumItemDto]
+    EnumTypeDto: typing.Type[EnumTypeDto]
     ErrorDto: typing.Type[ErrorDto]
-    IncaPropertyFieldInfoRest: typing.Type[IncaPropertyFieldInfoRest]
-    IncaPropertyFieldInfosRequestRest: typing.Type[IncaPropertyFieldInfosRequestRest]
-    MakeRuleClassInfoRest: typing.Type[MakeRuleClassInfoRest]
-    MakeRuleConfigInfoRest: typing.Type[MakeRuleConfigInfoRest]
-    MakeRuleConfigStatusRest: typing.Type[MakeRuleConfigStatusRest]
-    MakeRuleInfoRest: typing.Type[MakeRuleInfoRest]
-    ParameterAttributesRest: typing.Type[ParameterAttributesRest]
-    ParameterGroupRest: typing.Type[ParameterGroupRest]
-    ParameterRest: typing.Type[ParameterRest]
-    ParameterTreeDataRest: typing.Type[ParameterTreeDataRest]
-    ParameterTreeNodeRest: typing.Type[ParameterTreeNodeRest]
-    ParameterTreeRelationRest: typing.Type[ParameterTreeRelationRest]
-    ParameterTreesRequestRest: typing.Type[ParameterTreesRequestRest]
-    ParameterTypeCategoryRest: typing.Type[ParameterTypeCategoryRest]
-    ParameterTypeRest: typing.Type[ParameterTypeRest]
-    ParameterTypesRequestRest: typing.Type[ParameterTypesRequestRest]
-    ParametersRequestRest: typing.Type[ParametersRequestRest]
-    ParentToChildrenRelationRest: typing.Type[ParentToChildrenRelationRest]
-    PropertyAndDeviceRest: typing.Type[PropertyAndDeviceRest]
-    PropertyFieldRest: typing.Type[PropertyFieldRest]
-    SaveParameterRelationRest: typing.Type[SaveParameterRelationRest]
-    TypeRest: typing.Type[TypeRest]
-    ValueCompareTypeRest: typing.Type[ValueCompareTypeRest]
-    ValueDescriptorRest: typing.Type[ValueDescriptorRest]
+    IncaPropertyFieldInfoDto: typing.Type[IncaPropertyFieldInfoDto]
+    IncaPropertyFieldInfosRequestDto: typing.Type[IncaPropertyFieldInfosRequestDto]
+    MakeRuleClassInfoDto: typing.Type[MakeRuleClassInfoDto]
+    MakeRuleConfigInfoDto: typing.Type[MakeRuleConfigInfoDto]
+    MakeRuleConfigStatusDto: typing.Type[MakeRuleConfigStatusDto]
+    MakeRuleInfoDto: typing.Type[MakeRuleInfoDto]
+    ParameterAttributesDto: typing.Type[ParameterAttributesDto]
+    ParameterDto: typing.Type[ParameterDto]
+    ParameterGroupDto: typing.Type[ParameterGroupDto]
+    ParameterTreeDataDto: typing.Type[ParameterTreeDataDto]
+    ParameterTreeNodeDto: typing.Type[ParameterTreeNodeDto]
+    ParameterTreeRelationDto: typing.Type[ParameterTreeRelationDto]
+    ParameterTreesRequestDto: typing.Type[ParameterTreesRequestDto]
+    ParameterTypeCategoryDto: typing.Type[ParameterTypeCategoryDto]
+    ParameterTypeDto: typing.Type[ParameterTypeDto]
+    ParameterTypesRequestDto: typing.Type[ParameterTypesRequestDto]
+    ParametersRequestDto: typing.Type[ParametersRequestDto]
+    ParentToChildrenRelationDto: typing.Type[ParentToChildrenRelationDto]
+    PropertyAndDeviceDto: typing.Type[PropertyAndDeviceDto]
+    PropertyFieldDto: typing.Type[PropertyFieldDto]
+    SaveParameterRelationDto: typing.Type[SaveParameterRelationDto]
+    TypeDto: typing.Type[TypeDto]
+    ValueCompareTypeDto: typing.Type[ValueCompareTypeDto]
+    ValueDescriptorDto: typing.Type[ValueDescriptorDto]
+    commons: cern.lsa.client.rest.api.v1.dto.commons.__module_protocol__
+    settings: cern.lsa.client.rest.api.v1.dto.settings.__module_protocol__
+    trim: cern.lsa.client.rest.api.v1.dto.trim.__module_protocol__

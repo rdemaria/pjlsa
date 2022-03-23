@@ -1841,21 +1841,6 @@ class DevicePropertyParametersImpl(cern.lsa.domain.settings.DevicePropertyParame
         
         """
         ...
-    def getDeviceClassName(self) -> str:
-        """
-            Description copied from interface: :meth:`~cern.lsa.domain.settings.DevicePropertyParameters.getDeviceClassName`
-            Return the device class name for which all related parameters are collected.
-        
-            Specified by:
-                :meth:`~cern.lsa.domain.settings.DevicePropertyParameters.getDeviceClassName`Â in
-                interfaceÂ :class:`~cern.lsa.domain.settings.DevicePropertyParameters`
-        
-            Returns:
-                the device class name for which all related parameters are collected
-        
-        
-        """
-        ...
     def getDeviceName(self) -> str:
         """
             Description copied from interface: :meth:`~cern.lsa.domain.settings.DevicePropertyParameters.getDeviceName`
@@ -5219,10 +5204,25 @@ class TrimHeaderImpl(cern.lsa.domain.commons.spi.AbstractIdentifiedEntity[cern.l
         
         """
         ...
+    def isTag(self) -> bool:
+        """
+            Description copied from interface: :meth:`~cern.lsa.domain.settings.TrimHeader.isTag`
+            Returns true if the trim is a tag, false otherwise
+        
+            Specified by:
+                :meth:`~cern.lsa.domain.settings.TrimHeader.isTag` in interface :class:`~cern.lsa.domain.settings.TrimHeader`
+        
+            Returns:
+                true if the trim is a tag, false otherwise
+        
+        
+        """
+        ...
     def setBeamProcesses(self, collection: typing.Union[java.util.Collection[cern.lsa.domain.settings.BeamProcess], typing.Sequence[cern.lsa.domain.settings.BeamProcess]]) -> None: ...
     def setClientInfo(self, string: str) -> None: ...
     def setCreatedDate(self, date: java.util.Date) -> None: ...
     def setDescription(self, string: str) -> None: ...
+    def setTag(self, boolean: bool) -> None: ...
     def toString(self) -> str:
         """
         
@@ -6319,7 +6319,6 @@ class CopySettingsRequestImpl(TrimRequestImpl, cern.lsa.domain.settings.CopySett
     """
     public class CopySettingsRequestImpl extends :class:`~cern.lsa.domain.settings.spi.TrimRequestImpl` implements :class:`~cern.lsa.domain.settings.CopySettingsRequest`
     
-        Default implementation of :class:`~cern.lsa.domain.settings.CopySettingsRequest` interface.
     
         Also see:
             :meth:`~serialized`

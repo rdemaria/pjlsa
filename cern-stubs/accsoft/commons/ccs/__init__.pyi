@@ -108,9 +108,40 @@ class CcdaAccess:
     def getEnvironmentFromSystemProperty() -> cern.accsoft.ccs.ccda.client.core.Environment: ...
 
 class CcdaUtils:
+    """
+    public class :meth:`~src` extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
+    """
     DEFAULT_VALUE_FIELD: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` :meth:`~src`
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     UNDEFINED: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` :meth:`~src`
+    
+        Default value when there is no CCS value defined.
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     DEFAULT_DIMENSION: typing.ClassVar[int] = ...
+    """
+    public static final int :meth:`~src`
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
+    """
     @staticmethod
     def calculateFormatPattern(simpleDescriptor: cern.japc.value.SimpleDescriptor) -> str: ...
     @staticmethod
@@ -165,8 +196,12 @@ class CcdaUtils:
     def isDeviceValid(string: str) -> bool: ...
     @staticmethod
     def isParameterValid(string: str) -> bool: ...
+    @typing.overload
     @staticmethod
     def isSimpleParameter(device: cern.accsoft.ccs.ccda.client.model.device.Device, deviceClassProperty: cern.accsoft.ccs.ccda.client.model.device.DeviceClassProperty) -> bool: ...
+    @typing.overload
+    @staticmethod
+    def isSimpleParameter(device: cern.accsoft.ccs.ccda.client.model.device.Device, deviceClassProperty: cern.accsoft.ccs.ccda.client.model.device.DeviceClassProperty, boolean: bool) -> bool: ...
     @staticmethod
     def toStringArray(stringArray: typing.List[str]) -> typing.List[str]: ...
 
@@ -203,6 +238,16 @@ class CcmCcsAccess:
 class CcmCcsUtils:
     """
     public class :meth:`~src` extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
+    """
+    DEFAULT_INDENT: typing.ClassVar[str] = ...
+    """
+    public static final `String <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/String.html?is-external=true>` :meth:`~src`
+    
+    
+        Also see:
+            :meth:`~constant`
+    
+    
     """
     @staticmethod
     def dumpApplicWindow(applicWindow: cern.accsoft.ccs.ccm.client.model.ApplicWindow) -> str: ...

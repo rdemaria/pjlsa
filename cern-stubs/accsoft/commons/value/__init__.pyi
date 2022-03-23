@@ -1931,6 +1931,16 @@ class ValueDescriptor(java.io.Serializable, java.lang.Cloneable):
         
         """
         ...
+    def getUnit(self) -> str:
+        """
+            Returns the unit of the values (if available) or empty string if not set.
+        
+            Returns:
+                The unit as a string or empty string if not set.
+        
+        
+        """
+        ...
     def getXPrecision(self) -> int:
         """
             Defines precision of X coordinates if the associated parameter is a function.

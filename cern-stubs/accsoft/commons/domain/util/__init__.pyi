@@ -105,7 +105,10 @@ class CodeEntityConverter(typing.Generic[_CodeEntityConverter__E]):
 
 class EnumEmulationUtils:
     """
-    public class EnumEmulationUtils extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
+    `@Deprecated <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Deprecated.html?is-external=true>` public class EnumEmulationUtils extends `Object <http://bewww.cern.ch/ap/dist/java/jdk/1.8/docs/api/java/lang/Object.html?is-external=true>`
+    
+        Deprecated.
+        use cern.accsoft.commons.util.enums.EnumEmulationUtil from accsoft-commons-domain
     """
     _getEnumConstants__T = typing.TypeVar('_getEnumConstants__T')  # <T>
     @staticmethod

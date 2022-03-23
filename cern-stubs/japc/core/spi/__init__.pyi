@@ -2459,7 +2459,6 @@ class AbstractWeakSubscriptionSource(SubscriptionSource, cern.japc.core.Paramete
     
         This class is not thread safe and should not be used concurrently without proper synchronization.
     """
-    def __init__(self, string: str, selector: cern.japc.core.Selector): ...
     def exceptionOccured(self, string: str, string2: str, parameterException: cern.japc.core.ParameterException) -> None:
         """
             Description copied from interface: :meth:`~cern.japc.core.ParameterValueListener.exceptionOccured`
