@@ -239,7 +239,7 @@ class LSAClient(object):
     def findOperationalContexts(self, accelerator: str = 'sps'):
         accelerator = self._getAccelerator(accelerator)
         cycles = self._contextService.findStandAloneCycles(accelerator)
-        cycles = filter(lambda cyc: str(cyc.getContextCategory) == 'OPERATIONAL', cycles)
+        cycles = filter(lambda cyc: str(cyc.getContextCategory()) == 'OPERATIONAL', cycles)
 
         return sorted(map(str, cycles))
 
