@@ -69,6 +69,20 @@ PCInfo = namedtuple(
     ],
 )
 
+
+pcinfogetter={
+        "accelerationLimit":'getAccelerationLimit',
+        "decelerationLimit":'getDecelerationLimit',
+        "didtMin":'getDidtMin',
+        "didtMax":'getDidtMax',
+        "iMinOp":'getIMinOp',
+        "iNom":'getINom',
+        "iPNo":'getIPNo',
+        "iUlt":'getIUlt',
+        "polaritySwitch":'isPolaritySwitch'
+        }
+
+
 Context = namedtuple("Context", ["timestamp", "name", "user"])
 
 
@@ -740,5 +754,5 @@ class LSAClient(object):
 
     def getPCInfo(self, pcname):
         pc = self._deviceService.findPowerConverterInfo(pcname)
-        info = PCInfo(*(getattr(pc, nn) for nn in PCInfo._fields))
+        info = PCInfo(*(getattr(pc, pcinfogetter[nn])() for nn in PCInfo._fields))
         return info
